@@ -1,0 +1,10 @@
+<sdg-breadcrumbs [withRouter]="true" [isHandset]="isHandset()" />
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="d-block primary-title">{{ title() | translate }}</h1>
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

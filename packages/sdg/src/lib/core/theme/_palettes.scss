@@ -1,0 +1,112 @@
+@use 'sass:map';
+@use 'sass:color';
+@use './colors';
+
+// Design Quebec colors
+
+// $primary: colors.$blue-normal-piv;
+// $accent: map.get(colors.$red-colors, 300);
+
+$dark-primary-text: colors.$blue-dark;
+$light-primary-text: white;
+
+$primary-palette: (
+  50: map.get(colors.$blue-colors, 50),
+  100: map.get(colors.$blue-colors, 100),
+  200: map.get(colors.$blue-colors, 200),
+  300: map.get(colors.$blue-colors, 300),
+  400: map.get(colors.$blue-colors, 400),
+  500: map.get(colors.$blue-colors, 500),
+  600: map.get(colors.$blue-colors, 600),
+  700: map.get(colors.$blue-colors, 700),
+  800: map.get(colors.$blue-colors, 800),
+  900: map.get(colors.$blue-colors, 900),
+  A100: map.get(colors.$blue-colors, 500),
+  A200: color.adjust(map.get(colors.$blue-colors, 500), $lightness: 10%),
+  A400: map.get(colors.$grey-colors, 200),
+  A700: map.get(colors.$grey-colors, 100),
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+$accent: map.get(colors.$red-colors, 300);
+
+$accent-palette: (
+  50: map.get(colors.$red-colors, 50),
+  100: color.adjust($accent, $lightness: 40%),
+  200: color.adjust($accent, $lightness: 30%),
+  300: color.adjust($accent, $lightness: 20%),
+  400: color.adjust($accent, $lightness: 10%),
+  500: $accent,
+  600: color.adjust($accent, $lightness: -10%),
+  700: color.adjust($accent, $lightness: -20%),
+  800: color.adjust($accent, $lightness: -30%),
+  900: color.adjust($accent, $lightness: -40%),
+  A100: map.get(colors.$red-colors, 500),
+  A200: color.adjust(map.get(colors.$red-colors, 500), $lightness: 10%),
+  A400: map.get(colors.$grey-colors, 200),
+  A700: map.get(colors.$grey-colors, 100),
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);
+
+$warn-palette: (
+  50: map.get(colors.$red-colors, 50),
+  100: color.adjust(map.get(colors.$red-colors, 200), $lightness: 10%),
+  200: map.get(colors.$red-colors, 200),
+  300: map.get(colors.$red-colors, 300),
+  400: map.get(colors.$red-colors, 400),
+  500: map.get(colors.$red-colors, 500),
+  600: map.get(colors.$red-colors, 550),
+  700: map.get(colors.$red-colors, 700),
+  800: map.get(colors.$red-colors, 800),
+  900: color.adjust(map.get(colors.$red-colors, 800), $lightness: -10%),
+  A100: map.get(colors.$red-colors, 500),
+  A200: color.adjust(map.get(colors.$red-colors, 500), $lightness: 10%),
+  A400: map.get(colors.$grey-colors, 200),
+  A700: map.get(colors.$grey-colors, 100),
+  contrast: (
+    50: $dark-primary-text,
+    100: $dark-primary-text,
+    200: $dark-primary-text,
+    300: $dark-primary-text,
+    400: $dark-primary-text,
+    500: $light-primary-text,
+    600: $light-primary-text,
+    700: $light-primary-text,
+    800: $light-primary-text,
+    900: $light-primary-text,
+    A100: $dark-primary-text,
+    A200: $light-primary-text,
+    A400: $light-primary-text,
+    A700: $light-primary-text
+  )
+);

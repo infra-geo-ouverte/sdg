@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@use '@igo2/core/theming/all-theme' as igo2-lib;
+@use '@igo2/sdg';
+@use '../app/components/components-theme' as app-components;
+
+$theme: sdg.$theme;
+
+@include mat.core();
+@include mat.typography-hierarchy(sdg.$typo-typography);
+@include mat.all-component-themes($theme);
+
+@include igo2-lib.all-component-themes($theme);
+@include sdg.all-component-themes($theme);
+@include app-components.themes($theme);
+
+@include sdg.breakpoint-down(tablet) {
+  @include mat.typography-hierarchy(sdg.$typo-typography-mobile);
+}
+
+@include sdg.typo-set-base-styles();

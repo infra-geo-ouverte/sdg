@@ -1,0 +1,16 @@
+<button
+  mat-icon-button
+  [matMenuTriggerFor]="menu"
+  aria-label="Example icon-button with a menu"
+>
+  <mat-icon>more_horiz</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  @for (subBreadcrumb of breadcrumb().menu; track subBreadcrumb) {
+    <button mat-menu-item [routerLink]="subBreadcrumb.url">
+      <span>{{ subBreadcrumb.title }}</span>
+    </button>
+  }
+</mat-menu>
+
+<mat-icon [inline]="true">chevron_left</mat-icon>

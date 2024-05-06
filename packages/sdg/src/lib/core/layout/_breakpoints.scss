@@ -1,0 +1,79 @@
+@use 'sass:map';
+
+// There is no standard for breakpoints for the Quebec.ca theme
+// This is the Material breakpoint design by devices
+$device: (
+  mobile: (
+    max: 599px
+  ),
+  tablet: (
+    min: 600px,
+    max: 1239px
+  ),
+  laptop: (
+    min: 1240px,
+    max: 1439px
+  ),
+  desktop: (
+    min: 1440px
+  )
+);
+
+$container: (
+  sm: (
+    max: 599px
+  ),
+  md: (
+    min: 600px,
+    max: 768px
+  ),
+  lg: (
+    min: 769px,
+    max: 992px
+  ),
+  xl: (
+    min: 993px,
+    max: 1239px
+  ),
+  xxl: (
+    min: 1240px,
+    max: 1440px
+  )
+);
+
+// // Source: https://github.com/twbs/bootstrap/blob/main/scss/mixins/_breakpoints.scss
+@function min($name, $breakpoints: $device) {
+  $min: map.get($breakpoints, $name, min);
+  @return if($min != 0, $min, null);
+}
+
+@function max($name, $breakpoints: $device) {
+  $max: map.get($breakpoints, $name, max);
+  @return if($max and $max > 0, $max, null);
+}
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin up($name, $breakpoints: $device) {
+  $min: min($name, $breakpoints);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin down($name, $breakpoints: $device) {
+  $max: max($name, $breakpoints);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}

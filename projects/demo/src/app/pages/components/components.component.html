@@ -1,0 +1,9 @@
+<sdg-basic-screen title="Composantes" [isHandset]="isHandset()">
+  <ul>
+    @for (route of routes; track route) {
+      <li>
+        <a [routerLink]="['showcases', route.path]">{{ route.title }}</a>
+      </li>
+    }
+  </ul>
+</sdg-basic-screen>

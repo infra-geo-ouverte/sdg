@@ -1,0 +1,45 @@
+{
+  "name": "@igo2/sdg",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infra-geo-ouverte/sdg.git"
+  },
+  "scripts": {
+    "build": "ng build sdg",
+    "postbuild": "node --import tsx ../../scripts/src/post-build.mts sdg",
+    "format": "prettier --write ./**/*.{ts,js,html,scss,css,json}",
+    "lint": "ng lint sdg",
+    "lint.fix": "ng lint sdg --fix",
+    "test": "ng test sdg --watch=false",
+    "watch": "ng build sdg --watch"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/public-api.ts",
+      "sass": "./src/_index.scss"
+    },
+    "./layout": {
+      "sass": "./src/lib/core/layout/layout.scss"
+    },
+    "./geo": {
+      "import": "./geo/src/public-api.ts"
+    }
+  },
+  "peerDependencies": {
+    "@angular/common": "^17.3.0",
+    "@angular/core": "^17.3.0",
+    "@angular/material": "^17.3.0",
+    "@angular/router": "^17.3.0",
+    "@igo2/context": "^17.0.0-next.7",
+    "@igo2/core": "^17.0.0-next.7",
+    "@igo2/integration": "^17.0.0-next.7",
+    "@igo2/geo": "^17.0.0-next.7",
+    "@igo2/utils": "^17.0.0-next.7",
+    "bootstrap": "^5.3.1"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

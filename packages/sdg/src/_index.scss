@@ -1,0 +1,4 @@
+@forward './lib/core';
+
+@forward './lib/breadcrumb/breadcrumb-theme' as breadcrumb-*;
+@forward './lib/navigation/navigation-theme' as navigation-*;

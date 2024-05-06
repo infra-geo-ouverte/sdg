@@ -1,0 +1,23 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  @include color($theme);
+  @include density($theme);
+}
+
+@mixin color($theme) {
+}
+
+@mixin density($theme) {
+  $theme: map.merge(
+    $theme,
+    (
+      density: -3
+    )
+  );
+
+  sdg-breadcrumb-menu {
+    @include mat.icon-button-density($theme);
+  }
+}

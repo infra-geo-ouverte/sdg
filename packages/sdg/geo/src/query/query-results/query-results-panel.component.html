@@ -1,0 +1,19 @@
+<div class="close-button">
+  <h4 class="title" mat-dialog-title>
+    {{ selection()?.meta?.title ?? '' | translate }}
+  </h4>
+  <button
+    mat-icon-button
+    [matTooltip]="'feature.close' | translate"
+    color="primary"
+    (click)="close()"
+  >
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+@if (selection()) {
+  <igo-feature-details [feature]="selection()!" />
+} @else {
+  <span>No result</span>
+}

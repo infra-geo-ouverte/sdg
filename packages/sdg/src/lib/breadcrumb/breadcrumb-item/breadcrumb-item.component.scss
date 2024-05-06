@@ -1,0 +1,34 @@
+@use '../../core/theme/colors';
+
+li {
+  padding: 0;
+  display: flex;
+  align-items: center;
+  line-height: 24px;
+
+  &.--handset {
+    flex-direction: row-reverse;
+  }
+
+  &.--last {
+    font-weight: 600;
+  }
+}
+
+li,
+a {
+  color: colors.$blue-dark;
+  font-weight: 300;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+mat-icon {
+  margin-left: 4px;
+}

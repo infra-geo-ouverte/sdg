@@ -1,0 +1,82 @@
+@use 'sass:map';
+@use '../core/layout';
+@use '../core/theme/colors';
+@use '../core/theme/palettes';
+
+$height: 72px;
+:host {
+  display: block;
+  background-color: map.get(colors.$blue-colors, 600);
+  max-height: $height;
+}
+
+a,
+p {
+  font-weight: normal;
+  color: #fff;
+}
+
+a {
+  font-size: 14px;
+  text-decoration: none;
+
+  &:focus,
+  &:hover,
+  &:visited {
+    text-decoration: underline;
+    color: #fff;
+  }
+}
+
+@include layout.breakpoint-down(mobile) {
+  p {
+    margin-bottom: 12px;
+  }
+}
+
+.zone-links {
+  align-items: center;
+
+  ul {
+    text-align: left;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    a {
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+      font-family: 'Roboto', sans-serif;
+    }
+  }
+}
+
+.header-title {
+  margin: 0 0 0 60px;
+
+  @include layout.breakpoint-down(md, layout.$breakpoint-container) {
+    margin: 0 0 12px 0;
+  }
+}
+
+ul li:last-child {
+  padding: 0;
+}
+
+.logo {
+  img {
+    display: block;
+    width: 200px;
+    max-width: 20rem;
+    max-height: $height;
+    height: $height;
+
+    @include layout.breakpoint-down(mobile) {
+      max-width: min(100%, 20rem);
+    }
+  }
+}

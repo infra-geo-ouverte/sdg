@@ -1,0 +1,74 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '../core/theme/theme';
+@use '../core/theme/palettes';
+@use '../core/layout';
+
+@mixin theme($theme) {
+  @include color($theme);
+  @include density($theme);
+}
+
+@mixin color($theme) {
+  sdg-navigation {
+    .navigation-header {
+      color: white;
+
+      @include mat.icon-button-color(theme.$dark-theme);
+      @include mat.button-color(theme.$dark-theme);
+      @include mat.tabs-color(theme.$dark-theme);
+
+      .mdc-tab__text-label {
+        color: palettes.$light-primary-text !important;
+      }
+
+      .mdc-tab-indicator__content--underline {
+        border-color: rgba(255, 255, 255, 0.5) !important;
+      }
+    }
+  }
+}
+
+@mixin density($theme) {
+  $density: mat.get-density-config($theme);
+  $theme: map.merge(
+    $theme,
+    (
+      density: $density - 2
+    )
+  );
+
+  sdg-navigation {
+    --mdc-tab-indicator-active-indicator-height: 4px;
+
+    .navbar-tab {
+      @include layout.breakpoint-down(mobile) {
+        padding-left: 0;
+        padding-right: 0;
+      }
+    }
+
+    .navigation-header {
+      &.--is-handset {
+        @include mat.tabs-density($theme);
+
+        button[compact] {
+          @include mat.button-density($theme);
+        }
+      }
+
+      .mdc-tab {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .mdc-tab__text-label {
+        padding-bottom: 12px;
+
+        @include layout.breakpoint-down(tablet) {
+          padding-bottom: 8px;
+        }
+      }
+    }
+  }
+}

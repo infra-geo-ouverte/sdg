@@ -1,0 +1,71 @@
+@use 'sass:map';
+@use 'sass:color';
+
+// https://design.quebec.ca/bases/couleurs
+// https://design.quebec.ca/design/bases/theme-sombre
+$blue-colors: (
+  50: color.adjust(#dae6f0, $lightness: 5%),
+  100: #dae6f0,
+  150: #c6dbee,
+  200: #adcdeb,
+  300: #72b2eb,
+  350: #4a98d9,
+  400: #3b95e1,
+  500: #0078cc,
+  550: #1472bf,
+  600: #095797,
+  650: #19406c,
+  700: #223654,
+  800: #162b47,
+  900: color.adjust(#162b47, $lightness: -10%)
+);
+
+$grey-colors: (
+  100: #f1f1f2,
+  200: #c5cad2,
+  300: #a7acbc,
+  350: #8893a2,
+  400: #8590a8,
+  450: #6b778a,
+  500: #6a7688,
+  600: #4e5662,
+  700: #3b424c,
+  850: #1c2025
+);
+
+$red-colors: (
+  50: #ffdbd6,
+  200: #f3bcb6,
+  300: #e58271,
+  400: #f26049,
+  500: #cb381f,
+  550: #bb3a23,
+  700: #692519,
+  800: #4f180e
+);
+
+$green-colors: (
+  100: #d7f0bb,
+  200: #b0d493,
+  // 300: ,
+  400: #6e9c57,
+  500: #4f813d,
+  600: #2c4024,
+  800: #1e2f17
+);
+
+$yellow-colors: (
+  100: #f8e69a,
+  400: #e0ad03,
+  450: #ac7900,
+  600: #ad781c,
+  650: #6d4512,
+  800: #3f240c
+);
+
+$blue-pale: map.get($blue-colors, 50);
+$blue-light: map.get($blue-colors, 350);
+$blue-normal: map.get($blue-colors, 550);
+$blue-normal-piv: map.get($blue-colors, 600);
+$blue-medium: map.get($blue-colors, 650);
+$blue-dark: map.get($blue-colors, 700);

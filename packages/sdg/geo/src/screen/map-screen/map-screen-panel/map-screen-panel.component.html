@@ -1,0 +1,22 @@
+@switch (type()) {
+  @case ('filter') {
+    <sdg-filter-panel [map]="map()" (closed)="onClose()" />
+  }
+  @case ('legend') {
+    <sdg-legend-panel [map]="map()" (closed)="onClose()" />
+  }
+  @case ('query') {
+    <sdg-query-results-panel
+      [map]="map()"
+      [queryState]="queryState()"
+      (closed)="onClose()"
+    />
+  }
+  @case ('search') {
+    <sdg-search-results-panel
+      [map]="map()"
+      [searchState]="searchState()"
+      (closed)="onClose()"
+    />
+  }
+}

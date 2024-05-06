@@ -1,0 +1,15 @@
+ol {
+  background-color: transparent;
+  display: inline-flex;
+  list-style: none;
+  align-items: center;
+  flex-wrap: wrap;
+
+  padding: unset;
+  margin: 16px 0 12px;
+}
+
+sdg-breadcrumb-item,
+sdg-breadcrumb-menu {
+  margin-right: 4px;
+}

@@ -1,0 +1,9 @@
+<sdg-split-screen [title]="selectedRoute()?.title" [isHandset]="isHandset()">
+  <ul left-slot>
+    @for (route of routes; track route) {
+      <li>{{ route.title }}</li>
+    }
+  </ul>
+
+  <router-outlet></router-outlet>
+</sdg-split-screen>

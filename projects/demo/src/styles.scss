@@ -1,0 +1,24 @@
+@use '@igo2/core/all-style';
+@use '@igo2/sdg/layout';
+
+@use 'theme/theme.scss';
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Fit Linearicons with the mat-icon
+mat-icon.lnr {
+  font-size: 18px;
+  line-height: 24px;
+}

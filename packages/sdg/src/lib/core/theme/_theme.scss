@@ -1,0 +1,30 @@
+@use '@angular/material' as mat;
+@use './palettes';
+@use '../typography';
+
+// https://design.quebec.ca/a-propos-systeme-design
+$theme: mat.define-light-theme(
+  (
+    color: (
+      primary: mat.define-palette(palettes.$primary-palette, 600, 400, 700),
+      accent: mat.define-palette(palettes.$accent-palette, 500),
+      warn: mat.define-palette(palettes.$warn-palette, 500),
+      success: mat.define-palette(palettes.$primary-palette, 900)
+    ),
+    typography: typography.$typo-typography,
+    density: 0
+  )
+);
+
+// Define an alternate dark theme.
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: mat.define-palette(palettes.$primary-palette, 300, 100, 800),
+      accent: mat.define-palette(palettes.$accent-palette, 400, 100, 800),
+      warn: mat.define-palette(palettes.$warn-palette, 400, 200, 800)
+    ),
+    typography: typography.$typo-typography,
+    density: 0
+  )
+);

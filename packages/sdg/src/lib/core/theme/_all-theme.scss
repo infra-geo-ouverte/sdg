@@ -1,0 +1,24 @@
+@use '../style/overrides';
+@use '../../breadcrumb/breadcrumb-theme' as breadcrumb;
+@use '../../navigation/navigation-theme' as navigation;
+
+@mixin all-component-themes($theme) {
+  @include breadcrumb.theme($theme);
+  @include navigation.theme($theme);
+  @include overrides.override-igo2-lib-themes($theme);
+  @include overrides.override-material-themes($theme);
+}
+
+@mixin all-component-colors($theme) {
+  @include breadcrumb.color($theme);
+  @include navigation.color($theme);
+  @include overrides.override-igo2-lib-colors($theme);
+  @include overrides.override-material-colors($theme);
+}
+
+@mixin all-component-densities($theme) {
+  @include breadcrumb.density($theme);
+  @include navigation.density($theme);
+  @include overrides.override-igo2-lib-densities($theme);
+  @include overrides.override-material-densities($theme);
+}

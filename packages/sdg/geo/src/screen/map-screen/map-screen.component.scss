@@ -1,0 +1,92 @@
+@use '@angular/material' as mat;
+
+$panel-padding: 16px;
+$sidenav-width: 400px;
+$top-spacer: $panel-padding + 40px; // 40 for the search-bar height
+
+:host {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+mat-icon.disabled {
+  color: rgba(0, 0, 0, 0.38);
+}
+
+mat-sidenav-container {
+  height: 100%;
+  width: 100%;
+  background-color: #efefef;
+}
+
+mat-sidenav {
+  width: $sidenav-width;
+
+  sdg-map-screen-panel {
+    display: block;
+    padding: $panel-padding;
+
+    margin-top: $top-spacer;
+    height: calc(100% - #{$top-spacer});
+    overflow: auto;
+  }
+}
+
+.portal-desktop-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+
+  igo-search-bar {
+    position: absolute;
+    top: $panel-padding;
+    left: $panel-padding;
+    z-index: 2;
+    width: calc($sidenav-width - $panel-padding * 2);
+  }
+}
+
+mat-expansion-panel {
+  max-height: 60%;
+
+  ::ng-deep {
+    .mat-expansion-panel-content {
+      overflow-y: scroll !important;
+      overflow-x: clip;
+      height: calc(100% - var(--mat-expansion-header-expanded-state-height));
+      transition-delay: 225ms;
+      transition-property: height;
+    }
+
+    igo-search-bar {
+      width: 100%;
+    }
+  }
+}
+
+igo-spinner {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  z-index: 100;
+}
+
+.search-bar-elevation {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.2),
+    0 -1px 0px rgba(0, 0, 0, 0.02);
+}
+
+.toggle-button {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  transition: left 300ms;
+
+  &.--opened {
+    left: $sidenav-width;
+  }
+}

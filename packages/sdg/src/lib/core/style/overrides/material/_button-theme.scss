@@ -1,0 +1,53 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin theme($theme) {
+  @include color($theme);
+  @include density($theme);
+}
+
+@mixin color($theme) {
+  $primary: map.get($theme, primary);
+
+  .mat-mdc-outlined-button {
+    border-color: currentColor !important;
+  }
+}
+
+@mixin density($theme) {
+  .mdc-button {
+    --mdc-text-button-container-height: 52px;
+    --mdc-outlined-button-container-height: 52px;
+    --mdc-protected-button-container-height: 52px;
+    --mdc-filled-button-container-height: 52px;
+    min-width: calc(var(--mdc-outlined-button-container-height) * 2) !important;
+  }
+
+  .mat-mdc-outlined-button {
+    border-width: 2px !important;
+
+    &[compact] {
+      border-width: 1px !important;
+    }
+  }
+
+  .mdc-button[compact] {
+    $theme: map.merge(
+      $theme,
+      (
+        density: 0
+      )
+    );
+    @include mat.button-density($theme);
+  }
+
+  .mdc-icon-button[compact] {
+    // Workaround the @include doesn't work for the icon button, the style is overriden
+    // $theme: map.merge($theme, (density: -2));
+    // @include mat.icon-button-density($theme);
+    --mdc-icon-button-state-layer-size: 40px;
+    width: var(--mdc-icon-button-state-layer-size);
+    height: var(--mdc-icon-button-state-layer-size);
+    padding: 8px;
+  }
+}

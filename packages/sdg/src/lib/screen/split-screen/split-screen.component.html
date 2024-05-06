@@ -1,0 +1,15 @@
+<sdg-breadcrumbs [withRouter]="true" [isHandset]="isHandset()" />
+
+<div class="container split-screen-content">
+  <div class="row">
+    <div class="col-12 col-lg-3 left-slot">
+      <ng-content select="[left-slot]"></ng-content>
+    </div>
+    <div class="col">
+      @if (title()) {
+        <h1 class="d-block primary-title">{{ title()! | translate }}</h1>
+      }
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

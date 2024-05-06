@@ -1,0 +1,13 @@
+@use './search-bar-theme' as search-bar;
+
+@mixin themes($theme) {
+  @include search-bar.theme($theme);
+}
+
+@mixin colors($theme) {
+  @include search-bar.color($theme);
+}
+
+@mixin densities($theme) {
+  @include search-bar.density($theme);
+}

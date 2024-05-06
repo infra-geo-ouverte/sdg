@@ -1,0 +1,57 @@
+@use 'sass:map';
+@use '../core/layout';
+@use '../core/theme/colors';
+@use '../core/theme/palettes';
+
+.navigation-header {
+  background-color: map.get(colors.$blue-colors, 700);
+}
+
+.row {
+  min-height: 72px;
+
+  @include layout.breakpoint-down(mobile) {
+    min-height: 40px;
+  }
+}
+
+.nav-link {
+  letter-spacing: 0;
+  font-size: 18px;
+  line-height: 28px;
+
+  &.active {
+    font-weight: bold;
+  }
+
+  @include layout.breakpoint-down(mobile) {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.navigation-actions {
+  margin-bottom: 4px;
+
+  @include layout.breakpoint-down(mobile) {
+    margin-bottom: 0;
+  }
+
+  ::ng-deep {
+    button {
+      margin-left: 24px;
+
+      @include layout.breakpoint-down(mobile) {
+        margin-left: 16px;
+      }
+    }
+
+    .mat-mdc-icon-button {
+      margin-left: 4px;
+    }
+  }
+}
+
+button.more-links {
+  margin-left: 16px;
+}

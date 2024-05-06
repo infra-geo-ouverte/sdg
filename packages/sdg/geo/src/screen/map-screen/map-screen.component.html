@@ -1,0 +1,119 @@
+@if (isHandset()) {
+  <div class="d-flex flex-fill flex-column">
+    <ng-template [ngTemplateOutlet]="MAIN_TEMPLATE" />
+
+    <mat-expansion-panel
+      class="mat-elevation-z12"
+      [expanded]="panelOpened()"
+      [hideToggle]="false"
+      (opened)="openPanel()"
+      (closed)="closePanel()"
+      (click)="$event.stopPropagation()"
+      (keydown.Enter)="$event.stopPropagation()"
+    >
+      <mat-expansion-panel-header collapsedHeight="56px">
+        <mat-panel-title>
+          <ng-template [ngTemplateOutlet]="SEARCH_TEMPLATE" />
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ng-template [ngTemplateOutlet]="SIDENAV_CONTENT_TEMPLATE" />
+    </mat-expansion-panel>
+  </div>
+} @else {
+  <div class="portal-desktop-container">
+    <ng-template [ngTemplateOutlet]="SEARCH_TEMPLATE" />
+
+    <mat-sidenav-container hasBackdrop="false">
+      <mat-sidenav #sidepanel mode="over" [opened]="panelOpened()">
+        <ng-template [ngTemplateOutlet]="SIDENAV_CONTENT_TEMPLATE" />
+      </mat-sidenav>
+      <mat-sidenav-content position="end">
+        <div class="d-flex flex-column h-100">
+          <button
+            class="toggle-button"
+            mat-mini-fab
+            color="primary"
+            [matTooltip]="
+              (panelOpened() ? 'sidenav.close' : 'sidenav.open') | translate
+            "
+            matTooltipPosition="after"
+            [class.--opened]="panelOpened()"
+            (click)="togglePanel()"
+          >
+            <mat-icon class="icon">
+              {{ panelOpened() ? 'chevron_left' : 'chevron_right' }}
+            </mat-icon>
+          </button>
+
+          <ng-template [ngTemplateOutlet]="MAIN_TEMPLATE" />
+        </div>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+}
+
+<igo-spinner igoSpinnerActivity></igo-spinner>
+
+<ng-template #SIDENAV_CONTENT_TEMPLATE>
+  @if (map()) {
+    <sdg-map-screen-panel
+      [type]="panelType()"
+      [queryState]="queryState"
+      [searchState]="searchState"
+      [map]="map()!"
+      (closed)="closePanel()"
+    />
+  }
+</ng-template>
+
+<ng-template #SEARCH_TEMPLATE>
+  @if (showSearchBar) {
+    <igo-search-bar
+      #searchBar
+      [class.search-bar-elevation]="!panelOpened()"
+      appearance="outline"
+      color="primary"
+      [matTooltip]="'searchBar' | translate"
+      matTooltipShowDelay="500"
+      tooltip-position="after"
+      [searchSettings]="false"
+      [forceNA]="config.app?.forceCoordsNA"
+      [term]="(searchState.searchTerm$ | async)!"
+      [store]="searchState.store"
+      (clearFeature)="clearSearch()"
+      (click)="$event.stopPropagation()"
+      (search)="onSearch($event)"
+      (searchTermChange)="onSearchTermChange($event)"
+    >
+    </igo-search-bar>
+  }
+</ng-template>
+
+<ng-template #MAIN_TEMPLATE>
+  <sdg-map-browser
+    class="flex-fill"
+    [config]="config"
+    [isHandset]="isHandset()"
+    (mapReady)="handleMap($event)"
+    (featuresQuery)="handleFeaturesQuery($event)"
+  >
+    @if (
+      map() &&
+      ($any(map()!.layers$ | async) | filterableDataSource: 'ogc').length > 0
+    ) {
+      <sdg-filter-button
+        [tooltipDisabled]="isHandset()"
+        (toggled)="togglePanel('filter')"
+      />
+    }
+    @if (config.hasLegendButton) {
+      <sdg-legend-button
+        [legendInPanel]="config.legendInPanel"
+        [tooltipDisabled]="isHandset()"
+        [opened]="panelOpened()"
+        (toggled)="togglePanel('legend')"
+      />
+    }
+  </sdg-map-browser>
+</ng-template>

@@ -1,0 +1,16 @@
+@if (config.header) {
+  <sdg-header
+    [title]="config.title"
+    [logo]="config.header.logo"
+    [options]="config.header.options"
+  />
+}
+
+<sdg-navigation
+  class="d-flex flex-column flex-fill"
+  [links]="routes"
+  [isHandset]="isHandset()"
+  [options]="config.navigation?.options"
+>
+  <router-outlet></router-outlet>
+</sdg-navigation>

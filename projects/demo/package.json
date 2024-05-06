@@ -1,0 +1,18 @@
+{
+  "name": "demo",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve demo --configuration=development",
+    "build": "ng build demo",
+    "build.ghpages": "ng build demo --configuration=github",
+    "format": "prettier --write ./src/**/*.{ts,js,html,scss,css,json}",
+    "lint": "ng lint demo",
+    "lint.fix": "ng lint demo --fix",
+    "e2e": "ng run demo:e2e:production",
+    "e2e.local": "ng run demo:e2e:local",
+    "test": "ng test demo --watch=false --browsers=ChromeHeadless",
+    "test.watch": "ng test demo",
+    "circular-deps.check": "madge --circular --extensions ts ./src",
+    "source-map-explorer": "source-map-explorer dist/demo/browser/main.*.js"
+  }
+}

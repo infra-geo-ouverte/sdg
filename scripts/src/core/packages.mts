@@ -88,11 +88,15 @@ export async function publishPackage(
   version: string
 ): Promise<void> {
   const tag = RELEASE_TAGS.find((tag) => version.includes(tag));
-  const tagOptions = tag ? `--tag ${tag}` : '';
 
-  await $({
-    stdio: 'inherit'
-  })`npm publish ./dist/${name} --provenance --access public ${tagOptions}`;
+  let command = `npm publish ./dist/${name} --provenance --access public`;
+
+  if (tag) {
+    command = command + ` --tag ${tag}`;
+  }
+  log.info(command);
+
+  await $({ stdio: 'inherit' })`${command}`;
 
   log.success(`Published @igo2/${name} version ${version}`);
 }

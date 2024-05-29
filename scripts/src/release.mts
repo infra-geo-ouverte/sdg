@@ -32,7 +32,7 @@ executor('Library release', async () => {
             // we bump the version in the "packages" package.json.
             prepareCmd: [
               'npm run pre-release ${nextRelease.version}',
-              'npm i --package-lock-only', // Regenerate the package-lock.json with the latest version
+              'npm i --package-lock-only --no-audit', // Regenerate the package-lock.json with the latest version
               'npm run build.libs'
             ].join(' && '),
             publishCmd:

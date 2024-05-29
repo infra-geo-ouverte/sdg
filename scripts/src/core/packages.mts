@@ -89,10 +89,10 @@ export async function publishPackage(
 ): Promise<void> {
   const tag = RELEASE_TAGS.find((tag) => version.includes(tag));
 
-  let command = `npm publish ./dist/${name} --provenance --access public`;
+  let command = `npm publish dist/${name} --provenance --access public`;
 
   if (tag) {
-    command = command + ` --tag ${tag}`;
+    command += ` --tag ${tag}`;
   }
   log.info(command);
 

@@ -96,6 +96,7 @@ export async function publishPackage(
   }
   log.info(command);
 
+  // shell true is mandotary to publish on Github Actions
   await $({ stdio: 'inherit', shell: true, cwd: `dist/${name}` })`${command}`;
 
   log.success(`Published @igo2/${name} version ${version}`);

@@ -20,11 +20,11 @@ La libairie du [Système de design gouvernemental du Québec (SDG)](https://desi
 
 - [Git]
 - [Node.js] qui inclus le [Node Package Manager][npm]
-- Extensions Eslint, Prettier, Angular Language Service dans votre IDE 
+- Extensions: Eslint, Prettier, Angular Language Service dans votre IDE 
 
 ## 🚀 Config du projet
 
-Installer les dépendances du projet:
+Installer les dépendances du projet et configurer le pre-commit via l'installation:
 ```
 npm clean-install
 ```
@@ -59,9 +59,8 @@ npm clean-install
 
 À documenter...
 
-## SYMLINK - Config du projet et démarrage (AVANCÉ)
 
-### Symlink (méthode avancée de développement)
+## SYMLINK - Config et démarrage (AVANCÉ)
 
 Le lien symbolique permet de développer un projet d'assemblage de manière intégré avec la librairie.
 
@@ -72,9 +71,10 @@ Le lien symbolique permet de développer un projet d'assemblage de manière int�
    git checkout next
    ```
 2. Assurez-vous que vos branches sélectionné de la lib et du projet sont compatibles
-3. Dans une fenêtre terminal, rouler la commande `npm i` pour installer les dépendances. Assurez vous que le l'installation n'a pas créé de dossier `projects/PROJECT_NAME/node_modules/@igo2/sdg`
-4. Vérifier qu'aucun dossier `node_modules/@igo2/sdg` existe dans le répertoire du projet `projets/PROJECT_NAME`. S'il existe, supprimer le et passer à l'étape suivante.
-5. Exécuter la commande `npm run link.start -w PROJECT_NAME`
+3. Dans une fenêtre terminal, rouler la commande `npm i` pour installer les dépendances. 
+4. Assurez vous que l'installation n'a pas créé de dossier `node_modules` dans les répertoires de projets `projects/PROJECT_NAME`. S'il existe, supprimer le ou du moins le dossier `@igo2/sdg`.
+5. Excéuter le build pour la librairie `npm run build -w @igo2/sdg`
+6. Dans VsCode, vous pouvez lancer le processus à partir du panneau `Run and Debug` pour bénéficier des breakpoints sinon exécuter la commande (valider dans les scripts du projet) `npm run link-sdg.start -w PROJECT_NAME`
 
 
 [git]: https://git-scm.com/

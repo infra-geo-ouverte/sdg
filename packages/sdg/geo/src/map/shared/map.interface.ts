@@ -7,6 +7,10 @@ export interface IMapConfig {
   hasFooter: boolean;
   hasLegendButton: boolean;
   legendInPanel: boolean;
+  searchBar?: {
+    showSearchButton?: boolean;
+    showSearchBar?: boolean;
+  };
   app: any;
 }
 

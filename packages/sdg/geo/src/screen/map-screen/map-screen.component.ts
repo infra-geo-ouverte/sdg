@@ -95,7 +95,7 @@ const DEFAULT_PANEL_TYPE: PanelType = 'search';
   styleUrl: './map-screen.component.scss'
 })
 export class MapScreenComponent implements OnInit {
-  public config: IMapConfig;
+  public config: IMapConfig; // TODO: C'est quoi la stratégie pour cette interface? Ça pourrait faire du sens d'avoir une abstraction de la confiugration d'une carte dans SDG versus IGO mais il faudrait qu'elle soit associer dans le EnvironmentOptions
   public hasFooter: boolean;
   public showSearchBar: boolean;
 
@@ -120,10 +120,9 @@ export class MapScreenComponent implements OnInit {
     private languageService: LanguageService,
     private queryService: QueryService
   ) {
-    const config = this.configService.getConfigs();
-    this.config = config;
-    this.showSearchBar = config.searchBar.showSearchBar ?? true;
-    this.hasFooter = config.hasFooter ?? true;
+    this.config = this.configService.getConfigs();
+    this.showSearchBar = this.config.searchBar?.showSearchBar ?? true;
+    this.hasFooter = this.config.hasFooter ?? true;
   }
 
   ngOnInit() {
@@ -215,8 +214,9 @@ export class MapScreenComponent implements OnInit {
   }
 
   private readLanguageParam(params: Params) {
-    if (params.lang) {
-      this.languageService.setLanguage(params.lang);
+    const lang = params['lang'];
+    if (lang) {
+      this.languageService.setLanguage(lang);
     }
   }
 
@@ -272,7 +272,7 @@ export class MapScreenComponent implements OnInit {
               .filter((e) => e.entity.meta.dataType === FEATURE)
               .map((entity: EntityRecord<SearchResult>) =>
                 new olFormatGeoJSON().readFeature(entity.entity.data, {
-                  dataProjection: entity.entity.data.projection,
+                  dataProjection: entity.entity.data['projection'],
                   featureProjection: map?.projectionCode
                 })
               );

@@ -24,6 +24,15 @@
       "url": "http://127.0.0.1:4200",
       "webRoot": "${workspaceFolder}/projects/igo2-quebec",
       "sourceMaps": true
+    },
+    {
+      "name": "serve (QEA-Client)",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "qea-client/start",
+      "url": "http://127.0.0.1:4200",
+      "webRoot": "${workspaceFolder}/projects/qea-client/start",
+      "sourceMaps": true
     }
   ]
 }

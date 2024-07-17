@@ -94,11 +94,13 @@ export class QueryResultsPanelComponent implements OnInit {
     const map = this.map();
     const queryState = this.queryState();
 
-    if (result.meta.dataType !== FEATURE || !result.data.geometry) {
+    const dataMeta = result.data['meta'];
+
+    if (result.meta.dataType !== FEATURE || !result.data['geometry']) {
       return;
     }
 
-    result.data.meta.style = getCommonVectorSelectedStyle({
+    dataMeta.style = getCommonVectorSelectedStyle({
       feature: result.data as Feature | olFeature<OlGeometry>,
       ...queryState.queryOverlayStyleSelection,
       ...(result.style?.selection ? result.style.selection : {})
@@ -108,7 +110,7 @@ export class QueryResultsPanelComponent implements OnInit {
       result.meta.id
     );
     if (feature) {
-      feature.setStyle(result.data.meta.style);
+      feature.setStyle(dataMeta.style);
       return;
     }
     map.queryResultsOverlay.addFeature(

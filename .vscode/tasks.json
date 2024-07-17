@@ -58,5 +58,25 @@
         }
       }
     },
+    {
+      "label": "qea-client/start",
+      "type": "npm",
+      "script": "link-sdg.start",
+      "path": "projects/qea-client",
+      "isBackground": true,
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": "$tsc",
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": {
+            "regexp": "(.*?)"
+          },
+          "endsPattern": {
+            "regexp": "bundle generation complete"
+          }
+        }
+      }
+    },
   ]
 }

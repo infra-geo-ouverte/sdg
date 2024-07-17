@@ -280,8 +280,9 @@ export class MapBrowserComponent implements OnInit {
   }
 
   private computeZoomToExtent(params: Params) {
-    if (params.zoomExtent) {
-      const extentParams: string[] = params.zoomExtent.split(',');
+    const zoomExtent = params['zoomExtent'];
+    if (zoomExtent) {
+      const extentParams: string[] = zoomExtent.split(',');
       const olExtent = transformExtent(
         extentParams.map((str) => Number(str.trim())),
         'EPSG:4326',

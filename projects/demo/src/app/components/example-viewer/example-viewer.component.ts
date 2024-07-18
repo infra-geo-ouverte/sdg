@@ -6,8 +6,10 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-const SRC_PATH =
-  'https://gitlab.forge.gouv.qc.ca/igo2/msp-igo2-lib/tree/master/demo/src';
+const GITHUB_PATH = 'https://github.com/infra-geo-ouverte/sdg/tree/next';
+
+const CODE_PATH = `${GITHUB_PATH}/packages/sdg/src/lib`;
+const DEMO_SHOWCASES_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/components/showcases`;
 
 @Component({
   selector: 'app-example-viewer',
@@ -31,10 +33,10 @@ export class ExampleViewerComponent {
   @HostBinding('class.example-viewer') baseClass = true;
 
   get codeUrl() {
-    return `${SRC_PATH}/app/${this.codeFolder()}`;
+    return `${CODE_PATH}/${this.codeFolder()}`;
   }
 
   get configUrl() {
-    return `${SRC_PATH}/${this.configFolder()}`;
+    return `${DEMO_SHOWCASES_PATH}/${this.configFolder()}`;
   }
 }

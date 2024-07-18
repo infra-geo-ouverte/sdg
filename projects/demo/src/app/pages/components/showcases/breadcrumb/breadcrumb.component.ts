@@ -5,10 +5,10 @@ import { BreadcrumbsComponent } from '@igo2/sdg';
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 
 @Component({
-  selector: 'app-breadcrumb-showcase',
+  selector: 'app-breadcrumb',
   standalone: true,
   imports: [ExampleViewerComponent, BreadcrumbsComponent],
-  templateUrl: './breadcrumb-showcase.component.html',
-  styleUrl: './breadcrumb-showcase.component.scss'
+  templateUrl: './breadcrumb.component.html',
+  styleUrl: './breadcrumb.component.scss'
 })
-export class BreadcrumbShowcaseComponent {}
+export class BreadcrumbComponent {}

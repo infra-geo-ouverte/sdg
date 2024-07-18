@@ -6,8 +6,8 @@ export const routes: INavigationRoutes = [
     path: 'breadcrumb',
     title: 'Breadcrumb',
     loadComponent: () =>
-      import('./breadcrumb-showcase/breadcrumb-showcase.component').then(
-        (m) => m.BreadcrumbShowcaseComponent
+      import('./breadcrumb/breadcrumb.component').then(
+        (m) => m.BreadcrumbComponent
       )
   }
 ];

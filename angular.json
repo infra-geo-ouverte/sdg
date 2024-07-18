@@ -68,12 +68,15 @@
             "tsConfig": "projects/demo/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets",
               {
                 "glob": "**/*",
-                "input": "./node_modules/@igo2/core/locale/",
-                "output": "./locale/libs_locale",
+                "input": "projects/demo/public",
+                "output": ""
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/@igo2/core/locale",
+                "output": "locale/libs_locale",
                 "ignore": ["**/*.core.json"]
               }
             ],

@@ -9,8 +9,8 @@ export const environment: EnvironmentOptions = {
   title: "Angular - Système d'assemblage gouvernemental",
   header: {
     logo: {
-      primary: 'assets/images/signature-PIV.svg',
-      print: 'assets/images/signature-PIV.svg'
+      primary: 'images/signature-PIV.svg',
+      print: 'images/signature-PIV.svg'
     },
     options: {
       contactUs: {

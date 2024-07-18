@@ -11,3 +11,16 @@
 >
   <sdg-breadcrumbs [withRouter]="true"></sdg-breadcrumbs>
 </app-example-viewer>
+
+<p>
+  Pour référencer manuellement les breadcrumbs, utiliser le input
+  [breadcrumbs]="YOUR_BREADCRUMBS". L'overflow via les ... est ajouté lorsqu'on
+  5 niveaux ou plus.
+</p>
+<app-example-viewer
+  title="Breadcrumbs with Angular Router"
+  configFolder="breadcrumb"
+  codeFolder="breadcrumb"
+>
+  <sdg-breadcrumbs [breadcrumbs]="breadcrumbs"></sdg-breadcrumbs>
+</app-example-viewer>

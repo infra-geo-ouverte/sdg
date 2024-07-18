@@ -1,7 +1,7 @@
 <sdg-split-screen [title]="selectedRoute()?.title" [isHandset]="isHandset()">
   <ul left-slot>
     @for (route of routes; track route) {
-      <li>{{ route.title }}</li>
+      <li (click)="handleNavigation(route)">{{ route.title }}</li>
     }
   </ul>
 

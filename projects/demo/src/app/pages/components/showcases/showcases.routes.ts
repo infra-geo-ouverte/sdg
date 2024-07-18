@@ -9,5 +9,11 @@ export const routes: INavigationRoutes = [
       import('./breadcrumb/breadcrumb.component').then(
         (m) => m.BreadcrumbComponent
       )
+  },
+  {
+    path: 'button',
+    title: 'Button',
+    loadComponent: () =>
+      import('./button/button.component').then((m) => m.ButtonComponent)
   }
 ];

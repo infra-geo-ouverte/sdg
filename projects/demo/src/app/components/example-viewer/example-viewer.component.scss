@@ -7,6 +7,7 @@
     justify-content: space-between;
     padding: 8px 8px 0 16px;
     margin-bottom: 0px;
+    min-height: 56px;
   }
 
   ::ng-deep .mat-mdc-card-header-text {
@@ -16,5 +17,9 @@
 
   mat-card-subtitle {
     font-size: 16px;
+  }
+
+  mat-card-content {
+    padding-top: 16px;
   }
 }

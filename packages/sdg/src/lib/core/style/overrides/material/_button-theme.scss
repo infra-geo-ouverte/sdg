@@ -16,11 +16,11 @@
 
 @mixin density($theme) {
   .mdc-button {
-    --mdc-text-button-container-height: 52px;
-    --mdc-outlined-button-container-height: 52px;
-    --mdc-protected-button-container-height: 52px;
-    --mdc-filled-button-container-height: 52px;
-    min-width: calc(var(--mdc-outlined-button-container-height) * 2) !important;
+    --mdc-text-button-container-height: 56px;
+    --mdc-outlined-button-container-height: 56px;
+    --mdc-protected-button-container-height: 56px;
+    --mdc-filled-button-container-height: 56px;
+    min-width: calc(56px * 2) !important;
   }
 
   .mat-mdc-outlined-button {

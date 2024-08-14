@@ -1,18 +1,24 @@
 import { NgFor } from '@angular/common';
 import { Component, OnDestroy, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterOutlet
+} from '@angular/router';
 
 import { INavigationRoute, SplitScreenComponent } from '@igo2/sdg';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 
 import { AppService } from '../../../app.service';
+import { ExternalLinkComponent } from '../../../components/external-link/external-link.component';
 import { routes } from './showcases.routes';
 
 @Component({
   selector: 'app-showcases',
   standalone: true,
-  imports: [NgFor, SplitScreenComponent, RouterOutlet],
+  imports: [NgFor, SplitScreenComponent, RouterOutlet, ExternalLinkComponent],
   templateUrl: './showcases.component.html',
   styleUrl: './showcases.component.scss'
 })
@@ -28,7 +34,8 @@ export class ShowcasesComponent implements OnDestroy {
 
   constructor(
     private appService: AppService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     this.router.events
       .pipe(
@@ -55,6 +62,10 @@ export class ShowcasesComponent implements OnDestroy {
 
         this.selectedRoute.set(config);
       });
+  }
+
+  handleNavigation(route: INavigationRoute) {
+    this.router.navigate([route.path], { relativeTo: this.route });
   }
 
   ngOnDestroy(): void {

@@ -30,11 +30,11 @@ export class NoticeComponent {
   }
 
   getColoredZoneClass() {
-    return `colored-zone --${NoticeType[this.type?.()]}`;
+    return this.type() ? `colored-zone --${NoticeType[this.type()]}` : '';
   }
 
   getColoredZoneIconClass() {
-    return `--${NoticeType[this.type?.()]}`;
+    return this.type() ? `--${NoticeType[this.type()]}` : '';
   }
 
   getColoredZoneIcon(): string | undefined {

@@ -6,14 +6,14 @@
 $height: 72px;
 :host {
   display: block;
-  background-color: map.get(colors.$blue-colors, 600);
+  background-color: colors.$blue-piv;
   max-height: $height;
 }
 
 a,
 p {
   font-weight: normal;
-  color: #fff;
+  color: colors.$white;
 }
 
 a {
@@ -24,7 +24,7 @@ a {
   &:hover,
   &:visited {
     text-decoration: underline;
-    color: #fff;
+    color: colors.$white;
   }
 }
 

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 
 import { NoticeComponent } from '@igo2/sdg';
+
+import { AppService } from '../../../../app.service';
 
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
@@ -13,6 +15,12 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './notice.component.scss'
 })
 export class NoticeDemoComponent {
+  constructor(private appService: AppService) {}
+
+  get isHandset(): Signal<boolean> {
+    return this.appService.isHandset;
+  }
+
   message: string =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';

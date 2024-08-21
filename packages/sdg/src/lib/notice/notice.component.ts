@@ -30,15 +30,15 @@ export class NoticeComponent {
   }
 
   getColoredZoneClass() {
-    return this.type?.() ? `colored-zone --${NoticeType[this.type()]}` : '';
+    return `colored-zone --${NoticeType[this.type()]}`;
   }
 
   getColoredZoneIconClass() {
-    return this.type?.() ? `--${NoticeType[this.type()]}` : '';
+    return `--${NoticeType[this.type()]}`;
   }
 
   getColoredZoneIcon(): string | undefined {
-    if (Object.keys(NoticeType).includes(this.type?.()) && !this.icon?.()) {
+    if (Object.keys(NoticeType).includes(this.type()) && !this.icon()) {
       return NoticeIcon[this.type()];
     } else {
       return this.icon();

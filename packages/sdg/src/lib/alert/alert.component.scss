@@ -1,0 +1,48 @@
+@use 'sass:map';
+@use '../core/theme/colors';
+
+.container {
+  display: flex;
+  align-items: center;
+  padding: 24px 16px;
+  column-gap: 24px;
+
+  &.--general {
+    background-color: map.get(colors.$blue-colors, 100);
+  }
+
+  &.--warning {
+    background-color: map.get(colors.$yellow-colors, 100);
+  }
+
+  &.--is-handset {
+    padding: 16px;
+    align-items: start;
+  }
+
+  .--general {
+    color: colors.$blue-normal-piv;
+  }
+
+  .--warning {
+    color: map.get(colors.$yellow-colors, 600);
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.message {
+  flex-grow: 1;
+  font-weight: 600;
+
+  &.--is-handset {
+    font-size: 14px;
+  }
+}
+
+.close {
+  flex-shrink: 0;
+  cursor: pointer;
+}

@@ -48,9 +48,13 @@ $font-color: map.get(palettes.$primary-palette, 700);
     word-break: break-word;
     overflow-wrap: break-word;
     cursor: pointer;
-    color: map.get(colors.$blue-colors, 550);
+    color: map.get(colors.$blue-colors, 600);
     text-decoration: underline;
     background-color: transparent;
+  }
+
+  a:hover {
+    text-decoration: none;
   }
 
   p,

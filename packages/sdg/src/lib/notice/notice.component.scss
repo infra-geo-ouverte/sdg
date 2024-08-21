@@ -1,0 +1,75 @@
+@use 'sass:map';
+@use '../core/theme/colors';
+
+.container {
+  background-color: #ffffff;
+  border: 1px solid map.get(colors.$grey-colors, 200);
+  display: flex;
+  flex-flow: row;
+  padding: 0;
+}
+
+.colored-zone {
+  padding: 24px 8px;
+  width: 40px;
+
+  &.--general {
+    background-color: map.get(colors.$blue-colors, 100);
+  }
+
+  &.--warning {
+    background-color: map.get(colors.$yellow-colors, 100);
+  }
+
+  &.--error {
+    background-color: map.get(colors.$red-colors, 50);
+  }
+
+  &.--success {
+    background-color: map.get(colors.$green-colors, 100);
+  }
+
+  &.--complementary {
+    background-color: map.get(colors.$grey-colors, 100);
+  }
+
+  .--general {
+    color: colors.$blue-normal-piv;
+  }
+
+  .--warning {
+    color: map.get(colors.$yellow-colors, 600);
+  }
+
+  .--error {
+    color: map.get(colors.$red-colors, 500);
+  }
+
+  .--success {
+    color: map.get(colors.$green-colors, 500);
+  }
+
+  .--complementary {
+    color: map.get(colors.$grey-colors, 700);
+  }
+}
+
+.content {
+  padding: 24px 32px 24px 16px;
+  width: 100%;
+
+  &.--handset {
+    padding: 24px 24px 24px 16px;
+  }
+}
+
+.title,
+.message {
+  font-size: 14px;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+  line-height: 16px;
+}

@@ -9,6 +9,12 @@ export const routes: INavigationRoutes = [
       import('./alert/alert.component').then((m) => m.AlertDemoComponent)
   },
   {
+    path: 'avis',
+    title: 'Avis',
+    loadComponent: () =>
+      import('./notice/notice.component').then((m) => m.NoticeDemoComponent)
+  },
+  {
     path: 'breadcrumb',
     title: 'Breadcrumb',
     loadComponent: () =>

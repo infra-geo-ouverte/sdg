@@ -16,6 +16,9 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
 export class AlertDemoComponent {
   constructor(private appService: AppService) {}
 
+  generalAlertIsOpen = true;
+  alertIsOpen = true;
+
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;
   }

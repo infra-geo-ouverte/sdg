@@ -1,5 +1,12 @@
 import { NgFor, NgIf, NgStyle } from '@angular/common';
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input,
+  output
+} from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { IgoLanguageModule } from '@igo2/core/language';
@@ -9,30 +16,39 @@ import { AlertIcon, AlertType } from './alert.interface';
 @Component({
   selector: 'sdg-alert',
   standalone: true,
-  imports: [NgIf, NgFor, NgStyle, IgoLanguageModule, MatIconModule],
+  imports: [
+    NgIf,
+    NgFor,
+    NgStyle,
+    IgoLanguageModule,
+    MatIconModule,
+    MatButtonModule
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent {
-  constructor() {}
-
   type = input.required<keyof typeof AlertType>();
   message = input.required<string>();
   closeable = input<boolean>(false);
+  isOpen = input<boolean>(true);
   isHandset = input<boolean>();
 
-  showAlert = true;
+  closed = output<boolean>();
+
+  iconName = computed(() => AlertIcon[this.type()]);
+  typeName = computed(() => AlertType[this.type()]);
 
   getAlertClass() {
-    return `container --${AlertType[this.type()]}`;
+    return `container --${this.typeName()}`;
   }
 
   getIconClass() {
-    return `icon --${AlertType[this.type()]}`;
+    return `icon --${this.typeName()}`;
   }
 
-  getIcon(): string | undefined {
-    return AlertIcon[this.type()];
+  onClose() {
+    this.closed.emit(true);
   }
 }

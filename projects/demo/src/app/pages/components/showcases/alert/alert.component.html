@@ -24,7 +24,9 @@
     type="General"
     message="Ceci est une alerte informative pouvant être fermée"
     [closeable]="true"
+    [isOpen]="generalAlertIsOpen"
     [isHandset]="isHandset()"
+    (closed)="generalAlertIsOpen = false"
   ></sdg-alert>
   <br />
   <sdg-alert
@@ -37,6 +39,8 @@
     type="Warning"
     message="Ceci est une alerte pouvant être fermée"
     [closeable]="true"
+    [isOpen]="alertIsOpen"
     [isHandset]="isHandset()"
+    (closed)="alertIsOpen = false"
   ></sdg-alert>
 </app-example-viewer>

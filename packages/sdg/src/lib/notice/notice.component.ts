@@ -15,8 +15,6 @@ import { NoticeIcon, NoticeType } from './notice.enum';
   styleUrls: ['./notice.component.scss']
 })
 export class NoticeComponent {
-  constructor() {}
-
   NoticeType = NoticeType;
 
   type = input.required<keyof typeof NoticeType>();

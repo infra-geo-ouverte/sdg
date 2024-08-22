@@ -33,7 +33,8 @@ $grey-colors: (
   600: #4e5662,
   700: #3b424c,
   850: #1c2025,
-  900: #121519
+  900: #121519,
+  950: #000000,
 );
 
 $red-colors: (
@@ -71,7 +72,7 @@ $violet-colors: (
   500: #6b4fa1
 );
 
-$blue-pale: map.get($blue-colors, 50);
+$blue-pale: map.get($blue-colors, 100);
 $blue-150: map.get($blue-colors, 150);
 $blue-200: map.get($blue-colors, 200);
 $blue-300: map.get($blue-colors, 300);
@@ -97,6 +98,7 @@ $grey-dark: map.get($grey-colors, 600);
 $grey-700: map.get($grey-colors, 700);
 $grey-850: map.get($grey-colors, 500);
 $grey-900: map.get($grey-colors, 900);
+$black: map.get($grey-colors, 950);
 
 $pink-pale: map.get($red-colors, 50);
 $red-200: map.get($red-colors, 200);

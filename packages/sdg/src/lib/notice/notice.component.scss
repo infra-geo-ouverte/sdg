@@ -2,8 +2,8 @@
 @use '../core/theme/colors';
 
 .container {
-  background-color: #ffffff;
-  border: 1px solid map.get(colors.$grey-colors, 200);
+  background-color: colors.$white;
+  border: 1px solid colors.$grey-light;
   display: flex;
   flex-flow: row;
   padding: 0;
@@ -14,23 +14,23 @@
   width: 40px;
 
   &.--general {
-    background-color: map.get(colors.$blue-colors, 100);
+    background-color: colors.$blue-pale;
   }
 
   &.--warning {
-    background-color: map.get(colors.$yellow-colors, 100);
+    background-color: colors.$yellow-pale;
   }
 
   &.--error {
-    background-color: map.get(colors.$red-colors, 50);
+    background-color: colors.$pink-pale;
   }
 
   &.--success {
-    background-color: map.get(colors.$green-colors, 100);
+    background-color: colors.$green-pale;
   }
 
   &.--complementary {
-    background-color: map.get(colors.$grey-colors, 100);
+    background-color: colors.$grey-pale;
   }
 
   .--general {
@@ -38,19 +38,19 @@
   }
 
   .--warning {
-    color: map.get(colors.$yellow-colors, 600);
+    color: colors.$yellow-dark;
   }
 
   .--error {
-    color: map.get(colors.$red-colors, 500);
+    color: colors.$red-normal;
   }
 
   .--success {
-    color: map.get(colors.$green-colors, 500);
+    color: colors.$green-normal;
   }
 
   .--complementary {
-    color: map.get(colors.$grey-colors, 700);
+    color: colors.$grey-700;
   }
 }
 

@@ -37,7 +37,7 @@ $typography-mobile: mat.define-typography-config(
   $subtitle-1: mat.define-typography-level(25px, 32px, bold)
 );
 
-$font-color: map.get(palettes.$primary-palette, 700);
+$font-color: colors.$blue-dark;
 
 @mixin set-base-styles {
   body {

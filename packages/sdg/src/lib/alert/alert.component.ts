@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 
-import { AlertIcon, AlertType } from './alert.enum';
+import { AlertIcon, AlertType } from './alert.interface';
 
 @Component({
   selector: 'sdg-alert',

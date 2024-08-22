@@ -3,7 +3,6 @@ import { Component, Signal } from '@angular/core';
 import { NoticeComponent } from '@igo2/sdg';
 
 import { AppService } from '../../../../app.service';
-
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
 

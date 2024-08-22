@@ -1,10 +1,10 @@
 import { NgFor, NgIf, NgStyle } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-
 import { MatIconModule } from '@angular/material/icon';
 
 import { IgoLanguageModule } from '@igo2/core/language';
-import { NoticeType, NoticeIcon } from './notice.enum';
+
+import { NoticeIcon, NoticeType } from './notice.enum';
 
 @Component({
   selector: 'sdg-notice',

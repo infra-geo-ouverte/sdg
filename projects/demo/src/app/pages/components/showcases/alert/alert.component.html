@@ -1,0 +1,46 @@
+<p>
+  <span
+    >L'alerte générale sert aux avertissements et messages de haute importance.
+    Elle apparaît par défaut dans toutes les pages, directement sous le PIV et
+    la navigation principale, et occupe la largeur de l’écran pour être très
+    visible. Pour plus d'information, voir l'</span
+  >
+  <span
+    ><app-external-link
+      title="Alerte générale"
+      link="https://design.quebec.ca/design/composants/alerte-generale"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer title="Alerte" configFolder="alert" codeFolder="alert">
+  <sdg-alert
+    type="General"
+    message="Ceci est une alerte informative"
+    [isHandset]="isHandset()"
+  ></sdg-alert>
+  <br />
+  <sdg-alert
+    type="General"
+    message="Ceci est une alerte informative pouvant être fermée"
+    [closeable]="true"
+    [isOpen]="generalAlertIsOpen"
+    [isHandset]="isHandset()"
+    (closed)="generalAlertIsOpen = false"
+  ></sdg-alert>
+  <br />
+  <sdg-alert
+    type="Warning"
+    message="Ceci est une alerte"
+    [isHandset]="isHandset()"
+  ></sdg-alert>
+  <br />
+  <sdg-alert
+    type="Warning"
+    message="Ceci est une alerte pouvant être fermée"
+    [closeable]="true"
+    [isOpen]="alertIsOpen"
+    [isHandset]="isHandset()"
+    (closed)="alertIsOpen = false"
+  ></sdg-alert>
+</app-example-viewer>

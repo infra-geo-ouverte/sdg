@@ -1,0 +1,15 @@
+<div class="container">
+  <div [class]="getColoredZoneClass()">
+    <mat-icon [class]="getColoredZoneIconClass()">{{
+      getColoredZoneIcon()
+    }}</mat-icon>
+  </div>
+  <div class="content" [class.--handset]="isHandset()">
+    <p class="title">
+      <b>{{ title() }}</b>
+    </p>
+    <p class="message">
+      {{ message() }}
+    </p>
+  </div>
+</div>

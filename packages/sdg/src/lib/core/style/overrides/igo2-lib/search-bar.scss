@@ -11,10 +11,10 @@ igo-search-bar {
   }
 
   button[mat-icon-button] {
-    background-color: colors.$blue-normal-piv;
+    background-color: colors.$blue-piv;
 
     &:hover {
-      background-color: color.adjust(colors.$blue-normal-piv, $lightness: 5%);
+      background-color: color.adjust(colors.$blue-piv, $lightness: 5%);
     }
   }
 

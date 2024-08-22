@@ -2,5 +2,5 @@
 @use '../../../theme/colors';
 
 .mat-mdc-input-element {
-  color: map.get(colors.$grey-colors, 450) !important;
+  color: colors.$grey-medium !important;
 }

@@ -4,11 +4,11 @@
 
 // Design Quebec colors
 
-// $primary: colors.$blue-normal-piv;
-// $accent: map.get(colors.$red-colors, 300);
+// $primary: colors.$blue-piv;
+// $accent: colors.$pink;
 
 $dark-primary-text: colors.$blue-dark;
-$light-primary-text: white;
+$light-primary-text: colors.$white;
 
 $primary-palette: (
   50: map.get(colors.$blue-colors, 50),

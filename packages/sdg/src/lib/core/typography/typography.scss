@@ -48,7 +48,7 @@ $font-color: map.get(palettes.$primary-palette, 700);
     word-break: break-word;
     overflow-wrap: break-word;
     cursor: pointer;
-    color: map.get(colors.$blue-colors, 550);
+    color: colors.$blue-normal;
     text-decoration: underline;
     background-color: transparent;
   }

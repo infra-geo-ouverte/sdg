@@ -1,2 +1,2 @@
 export * from './notice.component';
-export * from './notice.enum';
+export * from './notice.interface';

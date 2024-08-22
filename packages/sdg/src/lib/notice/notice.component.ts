@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 
-import { NoticeIcon, NoticeType } from './notice.enum';
+import { NoticeIcon, NoticeType } from './notice.interface';
 
 @Component({
   selector: 'sdg-notice',

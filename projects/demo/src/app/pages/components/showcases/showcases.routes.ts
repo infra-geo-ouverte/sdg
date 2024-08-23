@@ -27,5 +27,11 @@ export const routes: INavigationRoutes = [
     title: 'Button',
     loadComponent: () =>
       import('./button/button.component').then((m) => m.ButtonComponent)
+  },
+  {
+    path: 'tuile',
+    title: 'Tuile',
+    loadComponent: () =>
+      import('./tile/tile.component').then((m) => m.TileDemoComponent)
   }
 ];

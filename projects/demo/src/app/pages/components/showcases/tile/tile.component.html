@@ -1,0 +1,44 @@
+<p>
+  <span
+    >La tuile cliquable est un élément de navigation ayant un fort impact
+    visuel, utilisée lorsqu'on souhaite attirer l'attention de l'utilisateur sur
+    certains éléments de navigation. La tuile augmente le repérage visuel de
+    l'information. Pour plus d'information, voir la
+  </span>
+  <span
+    ><app-external-link
+      title="Tuile cliquable"
+      link="https://design.quebec.ca/design/composants/tuiles-cliquables"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer title="Tuile" configFolder="tile" codeFolder="tile">
+  <sdg-tile
+    icon="star"
+    title="Ceci est une tuile standard avec un message et une icône"
+    href="https://www.google.com/"
+    [message]="message"
+    [isHandset]="isHandset()"
+  ></sdg-tile>
+  <br />
+  <sdg-tile
+    title="Ceci est une tuile standard avec un message, sans icône"
+    [message]="message"
+    href="https://www.google.com/"
+    [isHandset]="isHandset()"
+  ></sdg-tile>
+  <br />
+  <sdg-tile
+    icon="star"
+    title="Ceci est une tuile simple sans message, avec une icône"
+    href="https://www.google.com/"
+    [isHandset]="isHandset()"
+  ></sdg-tile>
+  <br />
+  <sdg-tile
+    title="Ceci est une tuile simple sans message ni icône"
+    href="https://www.google.com/"
+    [isHandset]="isHandset()"
+  ></sdg-tile>
+</app-example-viewer>

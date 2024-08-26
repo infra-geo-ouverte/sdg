@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 
-import { environment } from 'projects/demo/src/environments/environment';
-
 @Component({
   selector: 'sdg-tile',
   standalone: true,

@@ -63,14 +63,17 @@
 }
 
 .message {
+  flex-grow: 1;
   font-size: 14px;
   padding-top: 4px;
 }
 
 .arrow {
+  font-variation-settings: 'wght' 800;
+  flex-shrink: 0;
   visibility: hidden;
   align-self: flex-end;
-  width: 11px;
+  width: 12px;
   height: 12px;
   font-size: 12px;
 

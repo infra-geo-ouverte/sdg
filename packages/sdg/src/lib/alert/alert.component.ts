@@ -2,6 +2,7 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
   computed,
   input,
   output
@@ -28,10 +29,12 @@ import { AlertIcon, AlertType } from './alert.interface';
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']
 })
-export class AlertComponent {
+export class AlertComponent implements OnInit {
   type = input.required<keyof typeof AlertType>();
-  message = input.required<string>();
-  closeable = input<boolean>(false);
+  message = input.required<string, string>({
+    transform: this.messageValidation
+  });
+  isCloseable = input<boolean>(false);
   isOpen = input<boolean>(true);
   isHandset = input<boolean>();
 
@@ -39,6 +42,28 @@ export class AlertComponent {
 
   iconName = computed(() => AlertIcon[this.type()]);
   typeName = computed(() => AlertType[this.type()]);
+
+  closeable = false;
+
+  ngOnInit() {
+    this.closeable = this.isCloseable();
+  }
+
+  private messageValidation(message: string): string {
+    if (this.closeable) {
+      if (message.length > 105) {
+        return `${message.slice(0, 105)}...`;
+      }
+
+      return message;
+    } else {
+      if (message.length > 120) {
+        return `${message.slice(0, 120)}...`;
+      }
+
+      return message;
+    }
+  }
 
   getAlertClass() {
     return `container --${this.typeName()}`;
@@ -49,6 +74,9 @@ export class AlertComponent {
   }
 
   onClose() {
+    if (this.isCloseable()) {
+      console.log('hello');
+    }
     this.closed.emit(true);
   }
 }

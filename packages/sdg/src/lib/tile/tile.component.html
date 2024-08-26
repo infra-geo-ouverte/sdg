@@ -11,9 +11,9 @@
     @if (icon()) {
       <mat-icon class="icon">{{ icon() }}</mat-icon>
     }
-    <b
-      ><p class="title" [class.--no-message]="!message()">{{ title() }}</p></b
-    >
+    <b>
+      <p class="title" [class.--no-message]="!message()">{{ title() }}</p>
+    </b>
   </div>
   @if (message()) {
     <div class="message">

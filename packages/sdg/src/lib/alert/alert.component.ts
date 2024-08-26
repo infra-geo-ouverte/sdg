@@ -29,10 +29,10 @@ import { AlertIcon, AlertType } from './alert.interface';
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']
 })
-export class AlertComponent implements OnInit {
+export class AlertComponent {
   type = input.required<keyof typeof AlertType>();
   message = input.required<string, string>({
-    transform: this.messageValidation
+    transform: (message) => this.messageValidation(message)
   });
   isCloseable = input<boolean>(false);
   isOpen = input<boolean>(true);
@@ -43,14 +43,8 @@ export class AlertComponent implements OnInit {
   iconName = computed(() => AlertIcon[this.type()]);
   typeName = computed(() => AlertType[this.type()]);
 
-  closeable = false;
-
-  ngOnInit() {
-    this.closeable = this.isCloseable();
-  }
-
   private messageValidation(message: string): string {
-    if (this.closeable) {
+    if (this.isCloseable()) {
       if (message.length > 105) {
         return `${message.slice(0, 105)}...`;
       }

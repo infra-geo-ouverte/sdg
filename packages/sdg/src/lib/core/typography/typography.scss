@@ -8,33 +8,33 @@
 // https://design.quebec.ca/bases/polices-caracteres
 // https://design.quebec.ca/bases/niveaux-titres
 // https://material.angular.io/guide/typography
-$typography: mat.define-typography-config(
+$typography: mat.m2-define-typography-config(
   $font-family: '"Open Sans", sans-serif',
-  $headline-1: mat.define-typography-level(110px, 110px, 500),
-  $headline-2: mat.define-typography-level(54px, 54px, 500),
-  $headline-3: mat.define-typography-level(43px, 46px, 500),
-  $headline-4: mat.define-typography-level(32px, 38px, 500),
+  $headline-1: mat.m2-define-typography-level(110px, 110px, 500),
+  $headline-2: mat.m2-define-typography-level(54px, 54px, 500),
+  $headline-3: mat.m2-define-typography-level(43px, 46px, 500),
+  $headline-4: mat.m2-define-typography-level(32px, 38px, 500),
   // h1
-  $headline-5: mat.define-typography-level(48px, 56px, bold),
+  $headline-5: mat.m2-define-typography-level(48px, 56px, bold),
   // h2
-  $headline-6: mat.define-typography-level(36px, 40px, bold),
+  $headline-6: mat.m2-define-typography-level(36px, 40px, bold),
   // h3
-  $subtitle-1: mat.define-typography-level(28px, 32px, bold),
+  $subtitle-1: mat.m2-define-typography-level(28px, 32px, bold),
   // h4
-  $subtitle-2: mat.define-typography-level(21px, 24px, bold),
-  $body-1: mat.define-typography-level(16px, 24px, 400),
-  $body-2: mat.define-typography-level(12px, 18px, 400),
-  $caption: mat.define-typography-level(12px, 18px, 400),
-  $button: mat.define-typography-level(13px, 13px, 500)
+  $subtitle-2: mat.m2-define-typography-level(21px, 24px, bold),
+  $body-1: mat.m2-define-typography-level(16px, 24px, 400),
+  $body-2: mat.m2-define-typography-level(12px, 18px, 400),
+  $caption: mat.m2-define-typography-level(12px, 18px, 400),
+  $button: mat.m2-define-typography-level(13px, 13px, 500)
 );
 
-$typography-mobile: mat.define-typography-config(
+$typography-mobile: mat.m2-define-typography-config(
   // h1
-  $headline-5: mat.define-typography-level(36px, 40px, bold),
+  $headline-5: mat.m2-define-typography-level(36px, 40px, bold),
   // h2
-  $headline-6: mat.define-typography-level(28px, 32px, bold),
+  $headline-6: mat.m2-define-typography-level(28px, 32px, bold),
   // h3
-  $subtitle-1: mat.define-typography-level(25px, 32px, bold)
+  $subtitle-1: mat.m2-define-typography-level(25px, 32px, bold)
 );
 
 $font-color: colors.$blue-dark;

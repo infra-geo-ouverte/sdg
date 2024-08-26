@@ -2,7 +2,6 @@ import { NgFor, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  OnInit,
   computed,
   input,
   output

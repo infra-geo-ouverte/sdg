@@ -27,14 +27,7 @@ export class TileComponent {
   isHandset = input<boolean>();
 
   private titleValidation(title: string): string {
-    if (title.length > 45) {
-      if (!environment.production) {
-        console.error('Tile title should not be longer than 45 characters');
-      }
-      return `${title.slice(0, 45)}...`;
-    }
-
-    return title;
+    return title.length > 45 ? `${title.slice(0, 45)}...` : title;
   }
 
   goToLink() {

@@ -8,7 +8,7 @@
   <span
     ><app-external-link
       title="Tuile cliquable"
-      link="https://design.quebec.ca/design/composants/tuiles-cliquables"
+      link="https://design.quebec.ca/design/composants/navigation/tuiles-cliquables"
   /></span>
   <span>du Système de design gouvernemental.</span>
 </p>
@@ -16,29 +16,64 @@
 <app-example-viewer title="Tuile" configFolder="tile" codeFolder="tile">
   <sdg-tile
     icon="star"
-    title="Ceci est une tuile standard avec un message et une icône"
+    title="Ceci est une tuile avec message et icône"
+    [message]="longMessage"
     href="https://www.google.com/"
-    [message]="message"
     [isHandset]="isHandset()"
   ></sdg-tile>
   <br />
   <sdg-tile
-    title="Ceci est une tuile standard avec un message, sans icône"
-    [message]="message"
+    title="Ceci est une tuile avec message, sans icône"
+    [message]="longMessage"
     href="https://www.google.com/"
     [isHandset]="isHandset()"
   ></sdg-tile>
   <br />
   <sdg-tile
     icon="star"
-    title="Ceci est une tuile simple sans message, avec une icône"
+    title="Ceci est une tuile sans message, avec icône"
     href="https://www.google.com/"
     [isHandset]="isHandset()"
   ></sdg-tile>
   <br />
   <sdg-tile
-    title="Ceci est une tuile simple sans message ni icône"
+    title="Ceci est une tuile sans message ni icône"
     href="https://www.google.com/"
     [isHandset]="isHandset()"
   ></sdg-tile>
+</app-example-viewer>
+
+<app-example-viewer
+  title="Ensemble de tuiles"
+  configFolder="tile"
+  codeFolder="tile"
+>
+  <div class="container" [class.--is-handset]="isHandset()">
+    <sdg-tile
+      class="tile"
+      icon="star"
+      title="Ceci est une tuile avec message et icône"
+      href="/"
+      [message]="longMessage"
+      [isHandset]="isHandset()"
+    ></sdg-tile>
+
+    <sdg-tile
+      class="tile"
+      icon="circle"
+      title="Ceci est une tuile avec message et icône"
+      [message]="shortMessage"
+      href="/composantes"
+      [isHandset]="isHandset()"
+    ></sdg-tile>
+
+    <sdg-tile
+      class="tile"
+      icon="info"
+      title="Ceci est une tuile avec message et icône"
+      [message]="longMessage"
+      href="https://www.google.com/"
+      [isHandset]="isHandset()"
+    ></sdg-tile>
+  </div>
 </app-example-viewer>

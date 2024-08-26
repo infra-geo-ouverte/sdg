@@ -8,3 +8,4 @@ export * from './lib/navigation';
 export * from './lib/screen';
 export * from './lib/alert';
 export * from './lib/notice';
+export * from './lib/tile';

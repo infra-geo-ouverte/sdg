@@ -1,0 +1,30 @@
+<div
+  class="container"
+  [class.--is-handset]="isHandset() && !message()"
+  (click)="goToLink()"
+>
+  <div
+    class="title-icon"
+    [class.--no-message]="!message()"
+    [class.--is-handset]="isHandset()"
+  >
+    @if (icon()) {
+      <mat-icon class="icon">{{ icon() }}</mat-icon>
+    }
+    <b>
+      <p class="title" [class.--no-message]="!message()">{{ title() }}</p>
+    </b>
+  </div>
+  @if (message()) {
+    <div class="message">
+      {{ message() }}
+    </div>
+  }
+  <mat-icon
+    class="arrow"
+    [class.--no-message]="!message()"
+    [class.--is-handset]="isHandset()"
+    color="accent"
+    >arrow_forward</mat-icon
+  >
+</div>

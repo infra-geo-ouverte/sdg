@@ -28,4 +28,10 @@ export const routes: INavigationRoutes = [
         (m) => m.BreadcrumbComponent
       )
   },
+  {
+    path: 'tuile',
+    title: 'Tuile',
+    loadComponent: () =>
+      import('./tile/tile.component').then((m) => m.TileDemoComponent)
+  }
 ];

@@ -43,19 +43,11 @@ export class AlertComponent {
   typeName = computed(() => AlertType[this.type()]);
 
   private messageValidation(message: string): string {
-    if (this.isCloseable()) {
-      if (message.length > 105) {
-        return `${message.slice(0, 105)}...`;
-      }
+    const maxLength: number = this.isCloseable() ? 105 : 120;
 
-      return message;
-    } else {
-      if (message.length > 120) {
-        return `${message.slice(0, 120)}...`;
-      }
-
-      return message;
-    }
+    return message.length > maxLength
+      ? `${message.slice(0, maxLength)}...`
+      : message;
   }
 
   getAlertClass() {
@@ -67,9 +59,6 @@ export class AlertComponent {
   }
 
   onClose() {
-    if (this.isCloseable()) {
-      console.log('hello');
-    }
     this.closed.emit(true);
   }
 }

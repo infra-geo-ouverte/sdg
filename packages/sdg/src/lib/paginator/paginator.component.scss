@@ -1,0 +1,47 @@
+@use '../core/theme/colors';
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page {
+  color: colors.$blue-piv;
+  margin: 0;
+  line-height: 40px;
+  cursor: pointer;
+  min-width: 40px;
+  height: 40px;
+  text-align: center;
+
+  &:hover {
+    background-color: colors.$grey-pale;
+  }
+
+  &:focus {
+    outline: 2px solid colors.$blue-light;
+  }
+
+  &:active {
+    background-color: colors.$blue-pale;
+  }
+
+  &.active {
+    color: colors.$blue-dark;
+    font-weight: bold;
+  }
+}
+
+.ellipsis {
+  color: colors.$blue-dark;
+  margin: 0;
+  line-height: 40px;
+  min-width: 40px;
+  height: 40px;
+  text-align: center;
+}
+
+.chevron {
+  font-variation-settings: 'wght' 400;
+}

@@ -1,0 +1,54 @@
+<div class="container">
+  @if (currentPage !== 1) {
+    <button mat-icon-button class="button" (click)="goToPreviousPage()">
+      <mat-icon class="chevron" color="primary">chevron_left</mat-icon>
+    </button>
+  }
+  @for (firstPage of firstPages; track firstPage) {
+    <p
+      class="page"
+      [class.active]="firstPage === currentPage"
+      (click)="goToPage(firstPage)"
+    >
+      {{ firstPage }}
+    </p>
+  }
+  @if ((!middlePages.length && lastPages.length === 1) || middlePages.length) {
+    <p class="ellipsis">...</p>
+  }
+  @for (middlePage of middlePages; track middlePage) {
+    <p
+      class="page"
+      [class.active]="middlePage === currentPage"
+      (click)="goToPage(middlePage)"
+    >
+      {{ middlePage }}
+    </p>
+  }
+  @if ((!middlePages.length && firstPages.length === 1) || middlePages.length) {
+    <p class="ellipsis">...</p>
+  }
+  @for (lastPage of lastPages; track lastPage) {
+    <p
+      class="page"
+      [class.active]="lastPage === currentPage"
+      (click)="goToPage(lastPage)"
+    >
+      {{ lastPage }}
+    </p>
+  }
+  @for (page of pages; track page) {
+    <p
+      class="page"
+      [class.active]="page === currentPage"
+      (click)="goToPage(page)"
+    >
+      {{ page }}
+    </p>
+  }
+  @if (currentPage !== nbOfPages) {
+    <button mat-icon-button (click)="goToNextPage()">
+      <mat-icon class="chevron" color="primary">chevron_right</mat-icon>
+    </button>
+  }
+</div>

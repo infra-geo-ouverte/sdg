@@ -30,8 +30,10 @@ import { AlertIcon, AlertType } from './alert.interface';
 })
 export class AlertComponent {
   type = input.required<keyof typeof AlertType>();
-  message = input.required<string>();
-  closeable = input<boolean>(false);
+  message = input.required<string, string>({
+    transform: (message) => this.messageValidation(message)
+  });
+  isCloseable = input<boolean>(false);
   isOpen = input<boolean>(true);
   isHandset = input<boolean>();
 
@@ -39,6 +41,14 @@ export class AlertComponent {
 
   iconName = computed(() => AlertIcon[this.type()]);
   typeName = computed(() => AlertType[this.type()]);
+
+  private messageValidation(message: string): string {
+    const maxLength: number = this.isCloseable() ? 105 : 120;
+
+    return message.length > maxLength
+      ? `${message.slice(0, maxLength)}...`
+      : message;
+  }
 
   getAlertClass() {
     return `container --${this.typeName()}`;

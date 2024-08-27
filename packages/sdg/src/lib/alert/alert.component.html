@@ -4,7 +4,7 @@
     <div class="message" [class.--is-handset]="isHandset()">
       {{ message() }}
     </div>
-    @if (closeable()) {
+    @if (isCloseable()) {
       <button
         mat-icon-button
         class="close"

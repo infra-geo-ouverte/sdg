@@ -3,39 +3,44 @@ import { Component } from '@angular/core';
 import { Breadcrumb, BreadcrumbsComponent } from '@igo2/sdg';
 
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
+import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
 
 @Component({
   selector: 'app-breadcrumb',
   standalone: true,
-  imports: [ExampleViewerComponent, BreadcrumbsComponent],
+  imports: [
+    ExampleViewerComponent,
+    BreadcrumbsComponent,
+    ExternalLinkComponent
+  ],
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss'
 })
 export class BreadcrumbComponent {
   breadcrumbs: Breadcrumb[] = [
     {
-      title: 'first',
-      url: 'first'
+      title: 'premier',
+      url: 'premier'
     },
     {
-      title: 'two',
-      url: 'two'
+      title: 'deuxième',
+      url: 'deuxième'
     },
     {
-      title: 'three',
-      url: 'three'
+      title: 'troisième',
+      url: 'troisième'
     },
     {
-      title: 'four',
-      url: 'four'
+      title: 'quatrième',
+      url: 'quatrième'
     },
     {
-      title: 'fifth',
-      url: 'fifth'
+      title: 'cinquième',
+      url: 'cinquième'
     },
     {
-      title: 'six',
-      url: 'six'
+      title: 'sixième',
+      url: 'sixième'
     }
   ];
 }

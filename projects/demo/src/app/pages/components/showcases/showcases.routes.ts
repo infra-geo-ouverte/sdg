@@ -15,18 +15,18 @@ export const routes: INavigationRoutes = [
       import('./notice/notice.component').then((m) => m.NoticeDemoComponent)
   },
   {
-    path: 'breadcrumb',
-    title: 'Breadcrumb',
+    path: 'bouton',
+    title: 'Bouton',
+    loadComponent: () =>
+      import('./button/button.component').then((m) => m.ButtonComponent)
+  },
+  {
+    path: 'fil-ariane',
+    title: "Fil d'Ariane",
     loadComponent: () =>
       import('./breadcrumb/breadcrumb.component').then(
         (m) => m.BreadcrumbComponent
       )
-  },
-  {
-    path: 'button',
-    title: 'Button',
-    loadComponent: () =>
-      import('./button/button.component').then((m) => m.ButtonComponent)
   },
   {
     path: 'tuile',

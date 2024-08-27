@@ -3,6 +3,12 @@ import { INavigationRoutes } from '@igo2/sdg';
 export const routes: INavigationRoutes = [
   { path: '', redirectTo: 'breadcrumb', pathMatch: 'full' },
   {
+    path: 'a-consulter-aussi',
+    title: 'À consulter aussi',
+    loadComponent: () =>
+      import('./consult/consult.component').then((m) => m.ConsultDemoComponent)
+  },
+  {
     path: 'alerte',
     title: 'Alerte',
     loadComponent: () =>

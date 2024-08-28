@@ -18,16 +18,16 @@ export class ConsultDemoComponent {
 
   links: Link[] = [
     {
-      text: 'Google',
-      url: 'https://google.com'
+      text: "Page d'accueil",
+      url: '/'
     },
     {
-      text: 'Wikipedia',
-      url: 'https://wikipedia.org'
+      text: 'Composantes',
+      url: '/composantes'
     },
     {
-      text: 'Gouvernement du Québec',
-      url: 'https://www.quebec.ca'
+      text: 'Alerte',
+      url: '/composantes/showcases/alerte'
     }
   ];
 

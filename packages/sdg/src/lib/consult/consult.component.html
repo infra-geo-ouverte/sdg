@@ -3,7 +3,7 @@
 
   <div class="links">
     @for (link of links(); track link) {
-      <a [href]="link.url" target="_blank">{{ link.text }}</a>
+      <a [routerLink]="link.url">{{ link.text }}</a>
     }
   </div>
 
@@ -12,7 +12,7 @@
       @for (file of files(); track file) {
         <div class="file">
           <mat-icon color="primary">draft</mat-icon>
-          <a [href]="file.url" target="_blank">{{ file.text }}</a>
+          <a [routerLink]="file.url">{{ file.text }}</a>
         </div>
       }
     </div>

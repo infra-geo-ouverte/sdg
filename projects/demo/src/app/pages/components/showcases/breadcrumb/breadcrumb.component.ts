@@ -16,7 +16,7 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss'
 })
-export class BreadcrumbComponent {
+export class BreadcrumbDemoComponent {
   breadcrumbs: Breadcrumb[] = [
     {
       title: 'premier',

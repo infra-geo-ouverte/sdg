@@ -11,4 +11,4 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
-export class ButtonComponent {}
+export class ButtonDemoComponent {}

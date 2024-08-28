@@ -18,14 +18,14 @@ export const routes: INavigationRoutes = [
     path: 'bouton',
     title: 'Bouton',
     loadComponent: () =>
-      import('./button/button.component').then((m) => m.ButtonComponent)
+      import('./button/button.component').then((m) => m.ButtonDemoComponent)
   },
   {
     path: 'fil-ariane',
     title: "Fil d'Ariane",
     loadComponent: () =>
       import('./breadcrumb/breadcrumb.component').then(
-        (m) => m.BreadcrumbComponent
+        (m) => m.BreadcrumbDemoComponent
       )
   },
   {

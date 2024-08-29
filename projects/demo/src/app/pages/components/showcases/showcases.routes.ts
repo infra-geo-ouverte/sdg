@@ -29,6 +29,14 @@ export const routes: INavigationRoutes = [
       )
   },
   {
+    path: 'menu-ancres',
+    title: "Menu d'ancres",
+    loadComponent: () =>
+      import('./anchor-menu/anchor-menu.component').then(
+        (m) => m.AnchorMenuDemoComponent
+      )
+  },
+  {
     path: 'tuile',
     title: 'Tuile',
     loadComponent: () =>

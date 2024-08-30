@@ -10,3 +10,4 @@ export * from './lib/alert';
 export * from './lib/notice';
 export * from './lib/tile';
 export * from './lib/paginator';
+export * from './lib/consult';

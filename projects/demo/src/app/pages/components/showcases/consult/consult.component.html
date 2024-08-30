@@ -1,0 +1,31 @@
+<p>
+  <span
+    >Le bloc <b>À consulter aussi</b> propose des éléments d'information qui
+    complètent le contenu principal. Ce bloc est facultatif. Pour plus
+    d'information, voir le bloc
+  </span>
+  <span
+    ><app-external-link
+      title="À consulter aussi"
+      link="https://design.quebec.ca/design/composants/navigation/a-consulter-aussi"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>Le bloc peut contenir seulement des liens:</p>
+<app-example-viewer
+  title="À consulter aussi avec seulement des liens"
+  configFolder="consult"
+  codeFolder="consult"
+>
+  <sdg-consult [links]="links"></sdg-consult>
+</app-example-viewer>
+
+<p>Le bloc peut également contenir des liens et des fichiers:</p>
+<app-example-viewer
+  title="À consulter aussi avec des liens et des fichiers"
+  configFolder="consult"
+  codeFolder="consult"
+>
+  <sdg-consult [links]="links" [files]="links"></sdg-consult>
+</app-example-viewer>

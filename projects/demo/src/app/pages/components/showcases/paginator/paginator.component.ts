@@ -26,10 +26,10 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
 export class PaginatorDemoComponent implements OnInit {
   constructor(private appService: AppService) {}
 
-  initialPage: number = 3;
+  initialPageIndex: number = 2;
 
-  nbOfElementsOptions: number[] = [2, 3, 5, 10, 15];
-  selectedNbOfElements: number = 2;
+  pageSizes: number[] = [2, 3, 5, 10, 15];
+  selectedPageSize: number = 2;
 
   list = Array.from({ length: 35 }, (_, a) => a);
 
@@ -40,17 +40,17 @@ export class PaginatorDemoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.setShownList(this.initialPage);
+    this.setShownList(this.initialPageIndex);
   }
 
-  private setShownList(page: number) {
+  private setShownList(pageIndex: number) {
     this.shownList = this.list.slice(
-      this.selectedNbOfElements * (page - 1),
-      page * this.selectedNbOfElements
+      this.selectedPageSize * pageIndex,
+      this.selectedPageSize * (pageIndex + 1)
     );
   }
 
-  onPageChange(newPage: number) {
-    this.setShownList(newPage);
+  onPageChange(newPageIndex: number) {
+    this.setShownList(newPageIndex);
   }
 }

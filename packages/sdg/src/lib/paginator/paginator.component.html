@@ -1,52 +1,58 @@
 <div class="container">
-  @if (currentPage !== 1) {
+  @if (currentPageIndex !== 0) {
     <button mat-icon-button class="button" (click)="goToPreviousPage()">
       <mat-icon class="chevron" color="primary">chevron_left</mat-icon>
     </button>
   }
-  @for (firstPage of firstPages; track firstPage) {
+  @for (firstPageIndex of firstPagesIndexes; track firstPageIndex) {
     <p
       class="page"
-      [class.active]="firstPage === currentPage"
-      (click)="goToPage(firstPage)"
+      [class.active]="firstPageIndex === currentPageIndex"
+      (click)="goToPage(firstPageIndex)"
     >
-      {{ firstPage }}
+      {{ firstPageIndex + 1 }}
     </p>
   }
-  @if ((!middlePages.length && lastPages.length === 1) || middlePages.length) {
+  @if (
+    (!middlePagesIndexes.length && lastPagesIndexes.length === 1) ||
+    middlePagesIndexes.length
+  ) {
     <p class="ellipsis">...</p>
   }
-  @for (middlePage of middlePages; track middlePage) {
+  @for (middlePageIndex of middlePagesIndexes; track middlePageIndex) {
     <p
       class="page"
-      [class.active]="middlePage === currentPage"
-      (click)="goToPage(middlePage)"
+      [class.active]="middlePageIndex === currentPageIndex"
+      (click)="goToPage(middlePageIndex)"
     >
-      {{ middlePage }}
+      {{ middlePageIndex + 1 }}
     </p>
   }
-  @if ((!middlePages.length && firstPages.length === 1) || middlePages.length) {
+  @if (
+    (!middlePagesIndexes.length && firstPagesIndexes.length === 1) ||
+    middlePagesIndexes.length
+  ) {
     <p class="ellipsis">...</p>
   }
-  @for (lastPage of lastPages; track lastPage) {
+  @for (lastPageIndex of lastPagesIndexes; track lastPageIndex) {
     <p
       class="page"
-      [class.active]="lastPage === currentPage"
-      (click)="goToPage(lastPage)"
+      [class.active]="lastPageIndex === currentPageIndex"
+      (click)="goToPage(lastPageIndex)"
     >
-      {{ lastPage }}
+      {{ lastPageIndex + 1 }}
     </p>
   }
-  @for (page of pages; track page) {
+  @for (pageIndex of pagesIndexes; track pageIndex) {
     <p
       class="page"
-      [class.active]="page === currentPage"
-      (click)="goToPage(page)"
+      [class.active]="pageIndex === currentPageIndex"
+      (click)="goToPage(pageIndex)"
     >
-      {{ page }}
+      {{ pageIndex + 1 }}
     </p>
   }
-  @if (currentPage !== nbOfPages) {
+  @if (currentPageIndex !== nbOfPages - 1) {
     <button mat-icon-button (click)="goToNextPage()">
       <mat-icon class="chevron" color="primary">chevron_right</mat-icon>
     </button>

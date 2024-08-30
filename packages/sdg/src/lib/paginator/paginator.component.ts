@@ -1,7 +1,8 @@
-import { NgFor, NgIf, NgStyle } from '@angular/common';
+import { DOCUMENT, NgFor, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  Inject,
   OnChanges,
   OnInit,
   SimpleChanges,
@@ -29,87 +30,95 @@ import { IgoLanguageModule } from '@igo2/core/language';
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit, OnChanges {
-  constructor() {}
+  constructor(@Inject(DOCUMENT) private document: Document) {}
 
-  nbOfElementsInList = input.required<number>();
-  nbOfElementsPerPage = input.required<number>();
+  listLength = input.required<number>();
+  pageSize = input.required<number>();
   middlePagesMaxRange = input<number>(1);
-  initialPage = input<number>(1);
+  initialPageIndex = input<number>(0);
   isHandset = input<boolean>();
 
   pageChange = output<number>();
 
-  currentPage: number = 0;
+  currentPageIndex: number = 0;
   nbOfPages: number = 0;
 
-  firstPages: number[] = [];
-  middlePages: number[] = [];
-  lastPages: number[] = [];
-  pages: number[] = [];
+  firstPagesIndexes: number[] = [];
+  middlePagesIndexes: number[] = [];
+  lastPagesIndexes: number[] = [];
+  pagesIndexes: number[] = [];
 
   ngOnInit() {
-    this.currentPage = this.initialPage();
+    this.currentPageIndex = this.initialPageIndex();
 
     this.getNbOfPages();
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (
-      !changes.nbOfElementsPerPage.isFirstChange() &&
-      changes.nbOfElementsPerPage
-    ) {
-      this.currentPage = 1;
-      this.pageChange.emit(this.currentPage);
+    if (!changes.pageSize.isFirstChange() && changes.pageSize) {
+      this.currentPageIndex = 0;
+      this.pageChange.emit(this.currentPageIndex);
 
       this.getNbOfPages();
     }
   }
 
   private getNbOfPages() {
-    this.nbOfPages = Math.ceil(
-      this.nbOfElementsInList() / this.nbOfElementsPerPage()
-    );
+    this.nbOfPages = Math.ceil(this.listLength() / this.pageSize());
 
     this.getPages();
   }
 
-  private createPagesArray(start: number, finish: number) {
-    return Array.from({ length: finish - start + 1 }, (_, a) => a + start);
+  private createPagesArray(startIndex: number, finishIndex: number) {
+    return Array.from(
+      { length: finishIndex - startIndex + 1 },
+      (_, a) => a + startIndex
+    );
   }
 
   private getPages() {
-    this.firstPages = [];
-    this.middlePages = [];
-    this.lastPages = [];
-    this.pages = [];
+    this.firstPagesIndexes = [];
+    this.middlePagesIndexes = [];
+    this.lastPagesIndexes = [];
+    this.pagesIndexes = [];
 
     if (this.nbOfPages > 6) {
-      this.firstPages = this.getFirstPages();
-      this.middlePages = this.getMiddlePages();
-      this.lastPages = this.getLastPages();
+      this.firstPagesIndexes = this.getFirstPages();
+      this.middlePagesIndexes = this.getMiddlePages();
+      this.lastPagesIndexes = this.getLastPages();
     } else {
-      this.pages = Array.from({ length: this.nbOfPages }, (v, k) => k + 1);
+      this.pagesIndexes = Array.from({ length: this.nbOfPages }, (v, k) => k);
     }
+
+    this.document
+      .getElementsByTagName('sdg-header')
+      .item(0)
+      ?.scrollIntoView(true);
   }
 
   private getFirstPages() {
-    if (this.currentPage <= 3) {
-      return this.createPagesArray(1, 3);
+    if (this.currentPageIndex <= 2) {
+      return this.createPagesArray(0, 2);
     } else {
-      return this.createPagesArray(1, 1);
+      return this.createPagesArray(0, 0);
     }
   }
 
   private getMiddlePages() {
-    if (this.currentPage >= 4 && this.currentPage <= this.nbOfPages - 3) {
+    if (
+      this.currentPageIndex >= 3 &&
+      this.currentPageIndex <= this.nbOfPages - 4
+    ) {
       return this.createPagesArray(
-        !this.isHandset() && this.currentPage - this.middlePagesMaxRange() > 2
-          ? this.currentPage - this.middlePagesMaxRange()
-          : this.currentPage - 1,
         !this.isHandset() &&
-          this.currentPage + this.middlePagesMaxRange() < this.nbOfPages - 1
-          ? this.currentPage + this.middlePagesMaxRange()
-          : this.currentPage + 1
+          this.currentPageIndex - this.middlePagesMaxRange() > 1
+          ? this.currentPageIndex - this.middlePagesMaxRange()
+          : this.currentPageIndex - 1,
+        !this.isHandset() &&
+          this.currentPageIndex + this.middlePagesMaxRange() <
+            this.nbOfPages - 2
+          ? this.currentPageIndex + this.middlePagesMaxRange()
+          : this.currentPageIndex + 1
       );
     } else {
       return [];
@@ -117,32 +126,32 @@ export class PaginatorComponent implements OnInit, OnChanges {
   }
 
   private getLastPages() {
-    if (this.currentPage >= this.nbOfPages - 2) {
-      return this.createPagesArray(this.nbOfPages - 2, this.nbOfPages);
+    if (this.currentPageIndex >= this.nbOfPages - 3) {
+      return this.createPagesArray(this.nbOfPages - 3, this.nbOfPages - 1);
     } else {
-      return this.createPagesArray(this.nbOfPages, this.nbOfPages);
+      return this.createPagesArray(this.nbOfPages - 1, this.nbOfPages - 1);
     }
   }
 
   goToPreviousPage() {
-    if (this.currentPage !== 1) {
-      this.currentPage -= 1;
+    if (this.currentPageIndex !== 0) {
+      this.currentPageIndex -= 1;
       this.getPages();
-      this.pageChange.emit(this.currentPage);
+      this.pageChange.emit(this.currentPageIndex);
     }
   }
 
-  goToPage(page: number) {
-    this.currentPage = page;
+  goToPage(pageIndex: number) {
+    this.currentPageIndex = pageIndex;
     this.getPages();
-    this.pageChange.emit(this.currentPage);
+    this.pageChange.emit(this.currentPageIndex);
   }
 
   goToNextPage() {
-    if (this.currentPage !== this.nbOfPages) {
-      this.currentPage += 1;
+    if (this.currentPageIndex !== this.nbOfPages - 1) {
+      this.currentPageIndex += 1;
       this.getPages();
-      this.pageChange.emit(this.currentPage);
+      this.pageChange.emit(this.currentPageIndex);
     }
   }
 }

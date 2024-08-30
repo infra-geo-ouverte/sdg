@@ -19,30 +19,25 @@
   codeFolder="paginator"
 >
   <mat-form-field>
-    <mat-label>Nombre d'éléments par page </mat-label>
-    <mat-select [(ngModel)]="selectedNbOfElements">
-      @for (
-        nbOfElementsOption of nbOfElementsOptions;
-        track nbOfElementsOption
-      ) {
-        <mat-option [value]="nbOfElementsOption">
-          {{ nbOfElementsOption }}</mat-option
-        >
+    <mat-label>Nombre d'éléments par page</mat-label>
+    <mat-select [(ngModel)]="selectedPageSize">
+      @for (pageSize of pageSizes; track pageSize) {
+        <mat-option [value]="pageSize"> {{ pageSize }}</mat-option>
       }
     </mat-select>
   </mat-form-field>
 
   <div class="list">
     @for (element of shownList; track element) {
-      <p>{{ element }}&nbsp;</p>
+      <p>{{ element }}</p>
     }
   </div>
 
   <sdg-paginator
-    [nbOfElementsInList]="list.length"
-    [nbOfElementsPerPage]="selectedNbOfElements"
+    [listLength]="list.length"
+    [pageSize]="selectedPageSize"
     [middlePagesMaxRange]="2"
-    [initialPage]="initialPage"
+    [initialPageIndex]="initialPageIndex"
     [isHandset]="isHandset()"
     (pageChange)="onPageChange($event)"
   ></sdg-paginator>

@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'projects/demo/src/test-config';
+
 import { PaginatorDemoComponent } from './paginator.component';
 
 describe('PaginatorDemoComponent', () => {
@@ -8,7 +10,8 @@ describe('PaginatorDemoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PaginatorDemoComponent]
+      imports: [PaginatorDemoComponent],
+      providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
     fixture = TestBed.createComponent(PaginatorDemoComponent);

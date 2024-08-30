@@ -1,6 +1,6 @@
 <div class="container">
   <p><b>Dans cette page :</b></p>
-  @for (anchor of anchors; track anchor) {
+  @for (anchor of anchors(); track anchor) {
     <a routerLink="./" [fragment]="anchor.htmlElementId">{{ anchor.text }}</a>
   }
 </div>

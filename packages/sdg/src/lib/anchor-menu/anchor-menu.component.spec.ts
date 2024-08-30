@@ -15,6 +15,16 @@ describe('AnchorMenuComponent', () => {
 
     fixture = TestBed.createComponent(AnchorMenuComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('anchors', [
+      {
+        id: 'Section 1',
+        htmlElementId: 'section1'
+      },
+      {
+        id: 'Section 2',
+        htmlElementId: 'section2'
+      }
+    ]);
     fixture.detectChanges();
   });
 

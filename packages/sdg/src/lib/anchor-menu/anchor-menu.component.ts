@@ -1,5 +1,12 @@
 import { NgFor, NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnInit,
+  input
+} from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
 import { Anchor } from './anchor-menu.interface';
@@ -13,9 +20,12 @@ import { Anchor } from './anchor-menu.interface';
   styleUrls: ['./anchor-menu.component.scss']
 })
 export class AnchorMenuComponent implements OnInit {
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
+  ) {}
 
-  anchors: Anchor[] = [];
+  anchors = input.required<Anchor[]>();
 
   ngOnInit() {
     this.activatedRoute.fragment.subscribe((fragment) => {
@@ -23,15 +33,9 @@ export class AnchorMenuComponent implements OnInit {
         this.jumpToSection(fragment);
       }
     });
-
-    const elements = document.getElementsByTagName('h2');
-    this.anchors = Array.from(elements).map((element) => ({
-      text: element.innerText,
-      htmlElementId: element.id
-    }));
   }
 
   private jumpToSection(id: string) {
-    document.getElementById(id)?.scrollIntoView();
+    this.document.getElementById(id)?.scrollIntoView();
   }
 }

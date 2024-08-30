@@ -1,4 +1,4 @@
 export interface Anchor {
-  text: string | undefined;
-  htmlElementId: string | undefined;
+  text: string;
+  htmlElementId: string;
 }

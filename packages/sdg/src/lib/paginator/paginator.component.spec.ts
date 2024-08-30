@@ -15,8 +15,8 @@ describe('PaginatorComponent', () => {
 
     fixture = TestBed.createComponent(PaginatorComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('nbOfElementsInList', 15);
-    fixture.componentRef.setInput('nbOfElementsPerPage', 10);
+    fixture.componentRef.setInput('listLength', 15);
+    fixture.componentRef.setInput('pageSize', 10);
     fixture.detectChanges();
   });
 

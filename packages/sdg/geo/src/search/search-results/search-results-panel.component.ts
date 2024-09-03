@@ -54,8 +54,6 @@ export class SearchResultPanelComponent {
 
   public searchResultActionEnum = SearchResultAction;
 
-  constructor() {}
-
   onResult(searchResultAction: SearchResultAction, searchResult: SearchResult) {
     const searchState = this.searchState();
     const map = this.map();

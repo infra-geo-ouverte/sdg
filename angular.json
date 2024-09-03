@@ -42,7 +42,8 @@
             "lintFilePatterns": [
               "packages/sdg/**/*.ts",
               "packages/sdg/**/*.html"
-            ]
+            ],
+            "eslintConfig": "packages/sdg/eslint.config.js"
           }
         }
       }
@@ -165,7 +166,8 @@
             "lintFilePatterns": [
               "projects/demo/**/*.ts",
               "projects/demo/**/*.html"
-            ]
+            ],
+            "eslintConfig": "projects/demo/eslint.config.js"
           }
         }
       }
@@ -173,7 +175,8 @@
   },
   "cli": {
     "schematicCollections": [
-      "@angular-eslint/schematics"
+      "@angular-eslint/schematics",
+      "@schematics/angular"
     ]
   }
 }

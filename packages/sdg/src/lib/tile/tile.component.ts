@@ -27,7 +27,7 @@ export class TileComponent {
   }
 
   goToLink() {
-    const regex: RegExp = /^https?:\/\//;
+    const regex = /^https?:\/\//;
     regex.test(this.href())
       ? window.open(this.href(), '_blank')
       : this.router.navigate([this.href()]);

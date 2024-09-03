@@ -3,9 +3,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   Inject,
-  OnChanges,
+  Injector,
   OnInit,
-  SimpleChanges,
+  effect,
+  inject,
   input,
   output
 } from '@angular/core';
@@ -29,8 +30,9 @@ import { IgoLanguageModule } from '@igo2/core/language';
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
-export class PaginatorComponent implements OnInit, OnChanges {
+export class PaginatorComponent implements OnInit {
   constructor(@Inject(DOCUMENT) private document: Document) {}
+  injector = inject(Injector);
 
   listLength = input.required<number>();
   pageSize = input.required<number>();
@@ -39,6 +41,8 @@ export class PaginatorComponent implements OnInit, OnChanges {
   isHandset = input<boolean>();
 
   pageChange = output<number>();
+
+  initialPageIndexFirstChange = true;
 
   currentPageIndex: number = 0;
   nbOfPages: number = 0;
@@ -51,20 +55,26 @@ export class PaginatorComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.currentPageIndex = this.initialPageIndex();
 
-    this.getNbOfPages();
+    this.getNbOfPages(this.pageSize());
+
+    effect(
+      () => {
+        const pageSize = this.pageSize();
+        if (!this.initialPageIndexFirstChange) {
+          this.currentPageIndex = 0;
+          this.pageChange.emit(this.currentPageIndex);
+
+          this.getNbOfPages(pageSize);
+        } else {
+          this.initialPageIndexFirstChange = false;
+        }
+      },
+      { injector: this.injector }
+    );
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (!changes.pageSize.isFirstChange() && changes.pageSize) {
-      this.currentPageIndex = 0;
-      this.pageChange.emit(this.currentPageIndex);
-
-      this.getNbOfPages();
-    }
-  }
-
-  private getNbOfPages() {
-    this.nbOfPages = Math.ceil(this.listLength() / this.pageSize());
+  private getNbOfPages(pageSize: number) {
+    this.nbOfPages = Math.ceil(this.listLength() / pageSize);
 
     this.getPages();
   }

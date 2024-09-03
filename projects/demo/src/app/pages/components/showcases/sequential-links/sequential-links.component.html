@@ -1,0 +1,24 @@
+<p>
+  <span
+    >Les <b>liens séquentiels</b> sont des liens permettant de naviguer vers une
+    page de contenu suivante ou précédente. Pour plus d'information, voir les
+  </span>
+  <span
+    ><app-external-link
+      title="Liens séquentiels"
+      link="https://design.quebec.ca/design/composants/navigation/liens-sequentiels"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Liens séquentiels"
+  configFolder="sequential-links"
+  codeFolder="sequential-links"
+>
+  <sdg-sequential-links
+    [previous]="previous"
+    [next]="next"
+    [isHandset]="isHandset()"
+  ></sdg-sequential-links>
+</app-example-viewer>

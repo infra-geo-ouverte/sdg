@@ -1,0 +1,51 @@
+@use 'sass:map';
+@use '../core/theme/colors';
+
+.container {
+  display: flex;
+  flex-flow: column;
+  min-height: 88px;
+}
+
+.arrow {
+  font-variation-settings: 'wght' 350;
+}
+
+.link {
+  display: flex;
+  padding: 16px 16px 16px 8px;
+  column-gap: 8px;
+  border-top: 1px solid colors.$grey-light;
+  cursor: pointer;
+
+  &:hover {
+    background-color: colors.$grey-pale;
+
+    .text {
+      text-decoration: underline;
+    }
+  }
+
+  &:focus {
+    outline: solid 2px colors.$blue-light;
+    outline-offset: 0;
+  }
+
+  &:last-of-type {
+    border-bottom: 1px solid colors.$grey-light;
+  }
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  row-gap: 8px;
+}
+
+.text {
+  color: colors.$blue-piv;
+}
+
+p {
+  margin: 0px;
+}

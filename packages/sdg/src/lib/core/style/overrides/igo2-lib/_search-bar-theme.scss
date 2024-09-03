@@ -10,7 +10,7 @@
 }
 
 @mixin density($theme) {
-  $density: mat.get-density-config($theme);
+  $density: mat.m2-get-density-config($theme);
 
   $theme4: map.merge(
     $theme,

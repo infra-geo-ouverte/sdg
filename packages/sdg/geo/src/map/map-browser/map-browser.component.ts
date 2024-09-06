@@ -235,7 +235,7 @@ export class MapBrowserComponent implements OnInit {
     name: string,
     type: LayerType,
     version: string | undefined,
-    visibility: boolean = true,
+    visibility = true,
     zIndex: number | undefined
   ) {
     if (!this.contextLoaded) {

@@ -26,7 +26,7 @@ class ButtonBase {
       mat-icon-button
       [color]="color()"
       [disableRipple]="disableRipple()"
-      (click)="click.emit()"
+      (click)="handleClick($event)"
     >
       <ng-content />
     </button>

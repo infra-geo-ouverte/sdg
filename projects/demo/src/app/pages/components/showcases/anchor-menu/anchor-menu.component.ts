@@ -2,7 +2,10 @@ import { AfterContentInit, Component, ElementRef, Signal } from '@angular/core';
 
 import { AnchorMenuComponent } from '@igo2/sdg';
 
-import { Anchor } from 'packages/sdg/src/lib/anchor-menu/anchor-menu.interface';
+import {
+  Anchor,
+  findTitleAnchors
+} from 'packages/sdg/src/lib/anchor-menu/anchor-menu.interface';
 
 import { AppService } from '../../../../app.service';
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
@@ -28,13 +31,6 @@ export class AnchorMenuDemoComponent implements AfterContentInit {
   }
 
   ngAfterContentInit() {
-    const elements = (
-      this.elementRef.nativeElement as HTMLElement
-    ).getElementsByTagName('h2');
-
-    this.anchors = Array.from(elements).map((element) => ({
-      text: element.innerText,
-      htmlElementId: element.id
-    }));
+    this.anchors = findTitleAnchors(this.elementRef.nativeElement);
   }
 }

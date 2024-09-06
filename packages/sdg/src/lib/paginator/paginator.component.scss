@@ -15,21 +15,28 @@
   height: 40px;
   text-align: center;
 
-  &:hover {
-    background-color: colors.$grey-pale;
-  }
-
   &:focus {
     outline: 2px solid colors.$blue-light;
-  }
-
-  &:active {
-    background-color: colors.$blue-pale;
   }
 
   &.active {
     color: colors.$blue-dark;
     font-weight: bold;
+    outline: none;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &:hover {
+    background-color: colors.$grey-pale;
+  }
+
+  &:active {
+    outline: none;
+    background-color: colors.$blue-pale;
   }
 }
 

@@ -9,6 +9,8 @@
       class="page"
       [class.active]="firstPageIndex === currentPageIndex"
       (click)="goToPage(firstPageIndex)"
+      (keyup.enter)="goToPage(firstPageIndex)"
+      [tabindex]="firstPageIndex !== currentPageIndex ? '0' : '-1'"
     >
       {{ firstPageIndex + 1 }}
     </p>
@@ -24,6 +26,8 @@
       class="page"
       [class.active]="middlePageIndex === currentPageIndex"
       (click)="goToPage(middlePageIndex)"
+      (keyup.enter)="goToPage(middlePageIndex)"
+      [tabindex]="middlePageIndex !== currentPageIndex ? '0' : '-1'"
     >
       {{ middlePageIndex + 1 }}
     </p>
@@ -39,6 +43,8 @@
       class="page"
       [class.active]="lastPageIndex === currentPageIndex"
       (click)="goToPage(lastPageIndex)"
+      (keyup.enter)="goToPage(lastPageIndex)"
+      [tabindex]="lastPageIndex !== currentPageIndex ? '0' : '-1'"
     >
       {{ lastPageIndex + 1 }}
     </p>
@@ -48,6 +54,8 @@
       class="page"
       [class.active]="pageIndex === currentPageIndex"
       (click)="goToPage(pageIndex)"
+      (keyup.enter)="goToPage(pageIndex)"
+      [tabindex]="pageIndex !== currentPageIndex ? '0' : '-1'"
     >
       {{ pageIndex + 1 }}
     </p>

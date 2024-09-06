@@ -31,7 +31,19 @@ import { IgoLanguageModule } from '@igo2/core/language';
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) private document: Document) {}
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    effect(() => {
+      const pageSize = this.pageSize();
+      if (!this.initialPageIndexFirstChange) {
+        this.currentPageIndex = 0;
+        this.pageChange.emit(this.currentPageIndex);
+
+        this.getNbOfPages(pageSize);
+      } else {
+        this.initialPageIndexFirstChange = false;
+      }
+    });
+  }
   injector = inject(Injector);
 
   listLength = input.required<number>();
@@ -44,8 +56,8 @@ export class PaginatorComponent implements OnInit {
 
   initialPageIndexFirstChange = true;
 
-  currentPageIndex: number = 0;
-  nbOfPages: number = 0;
+  currentPageIndex = 0;
+  nbOfPages = 0;
 
   firstPagesIndexes: number[] = [];
   middlePagesIndexes: number[] = [];
@@ -56,21 +68,6 @@ export class PaginatorComponent implements OnInit {
     this.currentPageIndex = this.initialPageIndex();
 
     this.getNbOfPages(this.pageSize());
-
-    effect(
-      () => {
-        const pageSize = this.pageSize();
-        if (!this.initialPageIndexFirstChange) {
-          this.currentPageIndex = 0;
-          this.pageChange.emit(this.currentPageIndex);
-
-          this.getNbOfPages(pageSize);
-        } else {
-          this.initialPageIndexFirstChange = false;
-        }
-      },
-      { injector: this.injector }
-    );
   }
 
   private getNbOfPages(pageSize: number) {

@@ -11,15 +11,6 @@
   /></span>
   <span>du Système de design gouvernemental.</span>
 </p>
-<p>
-  <span>Le concept de bouton est basé sur le </span>
-  <span
-    ><app-external-link
-      title="bouton d'Angular Material"
-      link="https://material.angular.io/components/button/overview"
-  /></span>
-  <span>. Voici quelques uns des types de boutons.</span>
-</p>
 
 <app-example-viewer
   title="Variantes"
@@ -27,10 +18,16 @@
   codeFolder="button"
   class="button-types"
 >
-  <button mat-raised-button color="primary">Raised</button>
-  <button mat-stroked-button color="primary">Stroked</button>
-  <button mat-button color="primary">Basic</button>
-  <button mat-flat-button color="primary">Flat</button>
+  <sdg-button-raised color="primary" (click)="handleClick()"
+    >Raised</sdg-button-raised
+  >
+  <sdg-button-stroked color="primary" (click)="handleClick()"
+    >Stroked</sdg-button-stroked
+  >
+  <sdg-button color="primary" (click)="handleClick()">Basic</sdg-button>
+  <sdg-button-flat color="primary" (click)="handleClick()"
+    >Flat</sdg-button-flat
+  >
 </app-example-viewer>
 
 <p>
@@ -38,15 +35,27 @@
   "color" tout en respectant le thème de l'application.
 </p>
 <app-example-viewer title="Couleurs" class="button-types">
-  <button mat-flat-button color="primary">Primaire</button>
-  <button mat-flat-button color="accent">Accent</button>
-  <button mat-flat-button color="warn">Avertissement</button>
+  <sdg-button-flat color="primary" (click)="handleClick()"
+    >Primaire</sdg-button-flat
+  >
+  <sdg-button-flat color="accent" (click)="handleClick()"
+    >Accent</sdg-button-flat
+  >
+  <sdg-button-flat color="warn" (click)="handleClick()"
+    >Avertissement</sdg-button-flat
+  >
 </app-example-viewer>
 
 <p>Pour répliquer l'exemple du SDG:</p>
 <app-example-viewer title="Types de boutons (SDG)" class="button-types">
-  <button mat-raised-button color="primary">Principal</button>
-  <button mat-stroked-button color="primary">Secondaire</button>
-  <button mat-button color="primary">Tertiaire</button>
-  <button mat-flat-button color="warn">Avertissement</button>
+  <sdg-button-raised color="primary" (click)="handleClick()"
+    >Principal</sdg-button-raised
+  >
+  <sdg-button-stroked color="primary" (click)="handleClick()"
+    >Secondaire</sdg-button-stroked
+  >
+  <sdg-button color="primary" (click)="handleClick()">Tertiaire</sdg-button>
+  <sdg-button-flat color="warn" (click)="handleClick()"
+    >Avertissement</sdg-button-flat
+  >
 </app-example-viewer>

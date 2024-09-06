@@ -3,13 +3,13 @@
 @use '../typography';
 
 // https://design.quebec.ca/a-propos-systeme-design
-$theme: mat.define-light-theme(
+$theme: mat.m2-define-light-theme(
   (
     color: (
-      primary: mat.define-palette(palettes.$primary-palette, 600, 400, 700),
-      accent: mat.define-palette(palettes.$accent-palette, 500),
-      warn: mat.define-palette(palettes.$warn-palette, 500),
-      success: mat.define-palette(palettes.$primary-palette, 900)
+      primary: mat.m2-define-palette(palettes.$primary-palette, 600, 400, 700),
+      accent: mat.m2-define-palette(palettes.$accent-palette, 500),
+      warn: mat.m2-define-palette(palettes.$warn-palette, 500),
+      success: mat.m2-define-palette(palettes.$primary-palette, 900)
     ),
     typography: typography.$typo-typography,
     density: 0
@@ -17,12 +17,12 @@ $theme: mat.define-light-theme(
 );
 
 // Define an alternate dark theme.
-$dark-theme: mat.define-dark-theme(
+$dark-theme: mat.m2-define-dark-theme(
   (
     color: (
-      primary: mat.define-palette(palettes.$primary-palette, 300, 100, 800),
-      accent: mat.define-palette(palettes.$accent-palette, 400, 100, 800),
-      warn: mat.define-palette(palettes.$warn-palette, 400, 200, 800)
+      primary: mat.m2-define-palette(palettes.$primary-palette, 300, 100, 800),
+      accent: mat.m2-define-palette(palettes.$accent-palette, 400, 100, 800),
+      warn: mat.m2-define-palette(palettes.$warn-palette, 400, 200, 800)
     ),
     typography: typography.$typo-typography,
     density: 0

@@ -48,8 +48,6 @@ export class NavigationComponent implements AfterViewInit {
     this.handleOverflow();
   }
 
-  constructor() {}
-
   ngAfterViewInit(): void {
     this.handleOverflow();
   }

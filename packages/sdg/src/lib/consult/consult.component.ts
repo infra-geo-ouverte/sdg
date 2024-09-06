@@ -16,8 +16,6 @@ import { Link } from './link.interface';
   styleUrls: ['./consult.component.scss']
 })
 export class ConsultComponent {
-  constructor() {}
-
   links = input.required<Link[]>();
   files = input<Link[]>([]);
 }

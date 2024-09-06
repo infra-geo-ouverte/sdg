@@ -24,7 +24,6 @@ export class SequentialLinksComponent {
   isHandset = input<boolean>();
 
   goToLink(url: string) {
-    console.log(url);
     this.router.navigate(['../', url], { relativeTo: this.activatedRoute });
   }
 }

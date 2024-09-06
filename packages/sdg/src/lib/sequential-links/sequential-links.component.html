@@ -1,20 +1,18 @@
-<div class="container">
-  @if (previous()) {
-    <div class="link" (click)="goToLink(previous()!.url)">
-      <mat-icon class="arrow">arrow_left_alt</mat-icon>
-      <div class="content">
-        <p><b>Précédent</b></p>
-        <p class="text">{{ previous()?.text }}</p>
-      </div>
+@if (previous()) {
+  <button class="link" (click)="goToLink(previous()!.url)">
+    <mat-icon class="arrow">arrow_left_alt</mat-icon>
+    <div class="content">
+      <p><b>Précédent</b></p>
+      <p class="text">{{ previous()?.text }}</p>
     </div>
-  }
-  @if (next()) {
-    <div class="link" (click)="goToLink(next()!.url)">
-      <mat-icon class="arrow">arrow_right_alt</mat-icon>
-      <div class="content">
-        <p><b>Suivant</b></p>
-        <p class="text">{{ next()?.text }}</p>
-      </div>
+  </button>
+}
+@if (next()) {
+  <button class="link" (click)="goToLink(next()!.url)">
+    <mat-icon class="arrow">arrow_right_alt</mat-icon>
+    <div class="content">
+      <p><b>Suivant</b></p>
+      <p class="text">{{ next()?.text }}</p>
     </div>
-  }
-</div>
+  </button>
+}

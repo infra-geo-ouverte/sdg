@@ -1,12 +1,6 @@
 @use 'sass:map';
 @use '../core/theme/colors';
 
-.container {
-  display: flex;
-  flex-flow: column;
-  min-height: 88px;
-}
-
 .arrow {
   font-variation-settings: 'wght' 350;
 }
@@ -15,7 +9,9 @@
   display: flex;
   padding: 16px 16px 16px 8px;
   column-gap: 8px;
-  border-top: 1px solid colors.$grey-light;
+  border-right: none;
+  border-left: none;
+  background-color: transparent;
   cursor: pointer;
 
   &:hover {
@@ -31,7 +27,13 @@
     outline-offset: 0;
   }
 
+  &:first-of-type {
+    border-top: 1px solid colors.$grey-light;
+    border-bottom: none;
+  }
+
   &:last-of-type {
+    border-top: 1px solid colors.$grey-light;
     border-bottom: 1px solid colors.$grey-light;
   }
 }
@@ -43,6 +45,7 @@
 }
 
 .text {
+  align-self: flex-start;
   color: colors.$blue-piv;
 }
 

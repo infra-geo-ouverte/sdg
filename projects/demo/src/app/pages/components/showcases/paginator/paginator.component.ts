@@ -26,10 +26,10 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
 export class PaginatorDemoComponent implements OnInit {
   constructor(private appService: AppService) {}
 
-  initialPageIndex: number = 2;
+  initialPageIndex = 2;
 
   pageSizes: number[] = [2, 3, 5, 10, 15];
-  selectedPageSize: number = 2;
+  selectedPageSize = 2;
 
   list = Array.from({ length: 35 }, (_, a) => a);
 

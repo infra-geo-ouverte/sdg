@@ -1,0 +1,62 @@
+@if (currentPageIndex !== 0) {
+  <button class="button" (click)="goToPreviousPage()">
+    <mat-icon class="chevron" color="primary">chevron_left</mat-icon>
+  </button>
+}
+@for (firstPageIndex of firstPagesIndexes; track firstPageIndex) {
+  <button
+    class="page"
+    [class.active]="firstPageIndex === currentPageIndex"
+    (click)="goToPage(firstPageIndex)"
+    [tabindex]="firstPageIndex !== currentPageIndex ? '0' : '-1'"
+  >
+    {{ firstPageIndex + 1 }}
+  </button>
+}
+@if (
+  (!middlePagesIndexes.length && lastPagesIndexes.length === 1) ||
+  middlePagesIndexes.length
+) {
+  <p class="ellipsis">...</p>
+}
+@for (middlePageIndex of middlePagesIndexes; track middlePageIndex) {
+  <button
+    class="page"
+    [class.active]="middlePageIndex === currentPageIndex"
+    (click)="goToPage(middlePageIndex)"
+    [tabindex]="middlePageIndex !== currentPageIndex ? '0' : '-1'"
+  >
+    {{ middlePageIndex + 1 }}
+  </button>
+}
+@if (
+  (!middlePagesIndexes.length && firstPagesIndexes.length === 1) ||
+  middlePagesIndexes.length
+) {
+  <p class="ellipsis">...</p>
+}
+@for (lastPageIndex of lastPagesIndexes; track lastPageIndex) {
+  <button
+    class="page"
+    [class.active]="lastPageIndex === currentPageIndex"
+    (click)="goToPage(lastPageIndex)"
+    [tabindex]="lastPageIndex !== currentPageIndex ? '0' : '-1'"
+  >
+    {{ lastPageIndex + 1 }}
+  </button>
+}
+@for (pageIndex of pagesIndexes; track pageIndex) {
+  <button
+    class="page"
+    [class.active]="pageIndex === currentPageIndex"
+    (click)="goToPage(pageIndex)"
+    [tabindex]="pageIndex !== currentPageIndex ? '0' : '-1'"
+  >
+    {{ pageIndex + 1 }}
+  </button>
+}
+@if (currentPageIndex !== nbOfPages - 1) {
+  <button class="button" (click)="goToNextPage()">
+    <mat-icon class="chevron" color="primary">chevron_right</mat-icon>
+  </button>
+}

@@ -1,36 +1,23 @@
 @use '../core/theme/colors';
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.page {
-  color: colors.$blue-piv;
+.button,
+.page,
+.ellipsis {
   margin: 0;
   line-height: 40px;
-  cursor: pointer;
   min-width: 40px;
   height: 40px;
   text-align: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 
   &:focus {
     outline: 2px solid colors.$blue-light;
   }
 
-  &.active {
-    color: colors.$blue-dark;
-    font-weight: bold;
-    outline: none;
-    cursor: default;
-
-    &:hover {
-      background-color: transparent;
-    }
-  }
-
   &:hover {
+    outline: none;
     background-color: colors.$grey-pale;
   }
 
@@ -38,17 +25,35 @@
     outline: none;
     background-color: colors.$blue-pale;
   }
+
+  &.active {
+    outline: none;
+    color: colors.$blue-dark;
+    font-weight: bold;
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.chevron {
+  vertical-align: middle;
+  font-variation-settings: 'wght' 400;
+}
+
+.page {
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  color: colors.$blue-piv;
 }
 
 .ellipsis {
   color: colors.$blue-dark;
-  margin: 0;
-  line-height: 40px;
-  min-width: 40px;
-  height: 40px;
-  text-align: center;
-}
+  cursor: default;
 
-.chevron {
-  font-variation-settings: 'wght' 400;
+  &:hover {
+    background-color: transparent;
+  }
 }

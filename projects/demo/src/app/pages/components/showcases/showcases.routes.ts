@@ -35,6 +35,14 @@ export const routes: INavigationRoutes = [
       )
   },
   {
+    path: 'pagination',
+    title: 'Pagination',
+    loadComponent: () =>
+      import('./paginator/paginator.component').then(
+        (m) => m.PaginatorDemoComponent
+      )
+  },
+  {
     path: 'tuile',
     title: 'Tuile',
     loadComponent: () =>

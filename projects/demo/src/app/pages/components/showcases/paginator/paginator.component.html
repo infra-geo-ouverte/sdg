@@ -1,0 +1,44 @@
+<p>
+  <span
+    >La pagination est utilisée pour diviser le contenu ou les données en
+    plusieurs pages. Elle permet à l'utilisateur de naviguer vers la page
+    suivante ou précédente, ou de choisir une page environnante à la page en
+    cours. Pour plus d'information, voir la
+  </span>
+  <span
+    ><app-external-link
+      title="Pagination"
+      link="https://design.quebec.ca/design/composants/navigation/pagination"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Pagination"
+  configFolder="paginator"
+  codeFolder="paginator"
+>
+  <mat-form-field>
+    <mat-label>Nombre d'éléments par page</mat-label>
+    <mat-select [(ngModel)]="selectedPageSize">
+      @for (pageSize of pageSizes; track pageSize) {
+        <mat-option [value]="pageSize"> {{ pageSize }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <div class="list">
+    @for (element of shownList; track element) {
+      <p>{{ element }}</p>
+    }
+  </div>
+
+  <sdg-paginator
+    [listLength]="list.length"
+    [pageSize]="selectedPageSize"
+    [middlePagesMaxRange]="2"
+    [initialPageIndex]="initialPageIndex"
+    [isHandset]="isHandset()"
+    (pageChange)="onPageChange($event)"
+  ></sdg-paginator>
+</app-example-viewer>

@@ -13,3 +13,4 @@ export * from './lib/tile';
 export * from './lib/anchor-menu';
 export * from './lib/paginator';
 export * from './lib/consult';
+export * from './lib/sequential-links';

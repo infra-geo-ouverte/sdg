@@ -35,6 +35,14 @@ export const routes: INavigationRoutes = [
       )
   },
   {
+    path: 'liens-sequentiels',
+    title: 'Liens séquentiels',
+    loadComponent: () =>
+      import('./sequential-links/sequential-links.component').then(
+        (m) => m.SequentialLinksDemoComponent
+      )
+  },
+  {
     path: 'menu-ancres',
     title: "Menu d'ancres",
     loadComponent: () =>

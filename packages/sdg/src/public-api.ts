@@ -3,6 +3,7 @@
  */
 
 export * from './lib/breadcrumb';
+export * from './lib/button';
 export * from './lib/header';
 export * from './lib/navigation';
 export * from './lib/screen';

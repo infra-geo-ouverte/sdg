@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+
+import {
+  ButtonComponent,
+  ButtonFlatComponent,
+  ButtonRaisedComponent,
+  ButtonStrokedComponent
+} from '@igo2/sdg';
 
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
@@ -7,8 +13,19 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
 @Component({
   selector: 'app-button',
   standalone: true,
-  imports: [ExampleViewerComponent, MatButton, ExternalLinkComponent],
+  imports: [
+    ExampleViewerComponent,
+    ButtonComponent,
+    ButtonStrokedComponent,
+    ButtonRaisedComponent,
+    ButtonFlatComponent,
+    ExternalLinkComponent
+  ],
   templateUrl: './button.component.html',
   styleUrl: './button.component.scss'
 })
-export class ButtonDemoComponent {}
+export class ButtonDemoComponent {
+  handleClick() {
+    alert('Button clicked!');
+  }
+}

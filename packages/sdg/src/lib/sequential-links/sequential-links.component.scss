@@ -1,6 +1,12 @@
 @use 'sass:map';
 @use '../core/theme/colors';
 
+:host {
+  display: flex;
+  flex-flow: column;
+  min-height: 88px;
+}
+
 .arrow {
   font-variation-settings: 'wght' 350;
 }

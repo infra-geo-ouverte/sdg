@@ -47,6 +47,7 @@
 }
 
 .icon {
+  color: colors.$blue-dark;
   flex-shrink: 0;
   width: 40px;
   height: 40px;
@@ -54,6 +55,7 @@
 }
 
 .title {
+  font-family: 'Open Sans', sans-serif;
   font-size: 18px;
   margin: 0;
 
@@ -63,6 +65,9 @@
 }
 
 .message {
+  font-family: 'Open Sans', sans-serif;
+  color: colors.$blue-dark;
+  text-align: left;
   flex-grow: 1;
   font-size: 14px;
   padding-top: 4px;

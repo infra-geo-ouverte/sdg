@@ -6,6 +6,7 @@ import {
   Router,
   RouterOutlet
 } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import { INavigationRoute, SplitScreenComponent } from '@igo2/sdg';
 
@@ -18,7 +19,13 @@ import { routes } from './showcases.routes';
 @Component({
   selector: 'app-showcases',
   standalone: true,
-  imports: [NgFor, SplitScreenComponent, RouterOutlet, ExternalLinkComponent],
+  imports: [
+    NgFor,
+    SplitScreenComponent,
+    RouterOutlet,
+    ExternalLinkComponent,
+    RouterLink
+  ],
   templateUrl: './showcases.component.html',
   styleUrl: './showcases.component.scss'
 })
@@ -62,10 +69,6 @@ export class ShowcasesComponent implements OnDestroy {
 
         this.selectedRoute.set(config);
       });
-  }
-
-  handleNavigation(route: INavigationRoute) {
-    this.router.navigate([route.path], { relativeTo: this.route });
   }
 
   ngOnDestroy(): void {

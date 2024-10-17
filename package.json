@@ -14,7 +14,7 @@
     "projects/*"
   ],
   "scripts": {
-    "postinstall": "git config core.hooksPath ./git-hooks",
+    "postinstall": "git config core.hooksPath .config/git-hooks",
     "ng": "ng",
     "start": "npm run start -w demo",
     "build.libs": "npm run build --workspace=packages --if-present",

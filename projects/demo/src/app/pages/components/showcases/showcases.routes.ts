@@ -27,6 +27,12 @@ export const routes: INavigationRoutes = [
       import('./button/button.component').then((m) => m.ButtonDemoComponent)
   },
   {
+    path: 'coordonnees',
+    title: 'Coordonnées',
+    loadComponent: () =>
+      import('./contact/contact.component').then((m) => m.ContactDemoComponent)
+  },
+  {
     path: 'fil-ariane',
     title: "Fil d'Ariane",
     loadComponent: () =>

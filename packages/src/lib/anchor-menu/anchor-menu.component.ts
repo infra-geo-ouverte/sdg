@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
@@ -14,7 +13,7 @@ import { Anchor } from './anchor-menu.interface';
 @Component({
   selector: 'sdg-anchor-menu',
   standalone: true,
-  imports: [NgIf, NgFor, RouterLink],
+  imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './anchor-menu.component.html',
   styleUrls: ['./anchor-menu.component.scss']

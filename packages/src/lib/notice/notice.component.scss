@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use '../core/theme/colors';
+@use '../../../core/src/theme/colors';
 
 .container {
   background-color: colors.$white;

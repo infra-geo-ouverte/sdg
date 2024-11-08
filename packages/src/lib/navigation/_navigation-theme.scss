@@ -1,8 +1,8 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
-@use '../core/theme/theme';
-@use '../core/theme/palettes';
-@use '../core/layout';
+@use '../../../core/src/theme/theme';
+@use '../../../core/src/theme/palettes';
+@use '../../../core/src/layout';
 
 @mixin theme($theme) {
   @include color($theme);

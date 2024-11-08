@@ -1,0 +1,20 @@
+@use '../style/overrides';
+@use '../../../src/index' as common;
+
+@mixin all-component-themes($theme) {
+  @include common.themes($theme);
+  @include overrides.override-igo2-lib-themes($theme);
+  @include overrides.override-material-themes($theme);
+}
+
+@mixin all-component-colors($theme) {
+  @include common.colors($theme);
+  @include overrides.override-igo2-lib-colors($theme);
+  @include overrides.override-material-colors($theme);
+}
+
+@mixin all-component-densities($theme) {
+  @include common.densities($theme);
+  @include overrides.override-igo2-lib-densities($theme);
+  @include overrides.override-material-densities($theme);
+}

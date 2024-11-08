@@ -1,14 +1,13 @@
-import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { SequentialLink } from './sequential-links.interface';
 
 @Component({
   selector: 'sdg-sequential-links',
   standalone: true,
-  imports: [NgIf, NgFor, MatIconModule, RouterLink],
+  imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './sequential-links.component.html',
   styleUrls: ['./sequential-links.component.scss']

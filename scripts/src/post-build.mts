@@ -20,7 +20,7 @@ executor('Cleaning package.json exports', async () => {
 
 async function compileBaseStyle(): Promise<void> {
   const startTime = performance.now();
-  const baseUrl = 'src/lib/core/layout';
+  const baseUrl = 'core/src/layout';
   const input = resolvePackage('', baseUrl, 'layout.scss');
   const output = resolveDist('sdg', baseUrl);
   await compileStyle(input, output, 'layout.scss');

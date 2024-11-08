@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -14,7 +13,7 @@ import { AlertIcon, AlertType } from './alert.interface';
 @Component({
   selector: 'sdg-alert',
   standalone: true,
-  imports: [NgIf, NgFor, MatIconModule, MatButtonModule],
+  imports: [MatIconModule, MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './alert.component.html',
   styleUrls: ['./alert.component.scss']

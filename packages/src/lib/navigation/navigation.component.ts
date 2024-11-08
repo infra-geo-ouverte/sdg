@@ -1,4 +1,3 @@
-import { NgTemplateOutlet } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -11,7 +10,7 @@ import {
   viewChild
 } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 
@@ -21,14 +20,7 @@ import { INavigationOptions, INavigationRoutes } from './navigation.interface';
   selector: 'sdg-navigation',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    RouterLink,
-    RouterLinkActive,
-    RouterOutlet,
-    MatTabsModule,
-    NgTemplateOutlet,
-    IgoLanguageModule
-  ],
+  imports: [RouterLink, RouterLinkActive, MatTabsModule, IgoLanguageModule],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })

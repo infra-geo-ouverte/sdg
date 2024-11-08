@@ -4,5 +4,9 @@
   "lib": {
     "entryFile": "./src/public-api.ts"
   },
-  "assets": [{ "input": "src", "glob": "**/*.scss", "output": "src" }]
+  "assets": [
+    { "input": "src", "glob": "**/*.scss", "output": "src" },
+    { "input": "core/src", "glob": "**/*.scss", "output": "core/src" },
+    { "input": "geo/src", "glob": "**/*.scss", "output": "geo/src" }
+  ]
 }

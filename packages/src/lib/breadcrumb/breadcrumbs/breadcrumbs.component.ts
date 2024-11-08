@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -24,8 +23,6 @@ import {
   selector: 'sdg-breadcrumbs',
   standalone: true,
   imports: [
-    NgIf,
-    NgFor,
     BreadcrumbItemComponent,
     BreadcrumbMenuComponent,
     RouterModule,

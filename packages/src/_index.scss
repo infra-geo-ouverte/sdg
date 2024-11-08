@@ -1,5 +1,25 @@
-@forward './lib/core';
-
 @forward './lib/breadcrumb/breadcrumb-theme' as breadcrumb-*;
 @forward './lib/navigation/navigation-theme' as navigation-*;
 @forward './lib/paginator/paginator-theme' as paginator-*;
+
+@use './lib/breadcrumb/breadcrumb-theme' as breadcrumb;
+@use './lib/navigation/navigation-theme' as navigation;
+@use './lib/paginator/paginator-theme' as paginator;
+
+@mixin themes($theme) {
+  @include breadcrumb.theme($theme);
+  @include navigation.theme($theme);
+  @include paginator.theme($theme);
+}
+
+@mixin colors($theme) {
+  @include breadcrumb.color($theme);
+  @include navigation.color($theme);
+  @include paginator.color($theme);
+}
+
+@mixin densities($theme) {
+  @include breadcrumb.density($theme);
+  @include navigation.density($theme);
+  @include paginator.density($theme);
+}

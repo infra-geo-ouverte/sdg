@@ -11,5 +11,6 @@ export async function compileStyle(
   const result = compile(input, {
     loadPaths: [PATHS.nodeModules]
   });
-  await createFile(outputFileName, destination, result.css);
+  const output = `/** Auto-compiled file **/ \n ${result.css}`;
+  await createFile(outputFileName, destination, output);
 }

@@ -17,10 +17,10 @@
   "exports": {
     ".": {
       "import": "./src/public-api.ts",
-      "sass": "./src/_index.scss"
+      "sass": "./core/_index.scss"
     },
     "./layout": {
-      "sass": "./src/lib/core/layout/layout.scss"
+      "sass": "./core/src/layout/layout.scss"
     },
     "./geo": {
       "import": "./geo/src/public-api.ts"

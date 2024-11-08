@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
@@ -6,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'sdg-tile',
   standalone: true,
-  imports: [NgIf, NgFor, MatIconModule],
+  imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './tile.component.html',
   styleUrls: ['./tile.component.scss']

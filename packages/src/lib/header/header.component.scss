@@ -1,7 +1,7 @@
 @use 'sass:map';
-@use '../core/layout';
-@use '../core/theme/colors';
-@use '../core/theme/palettes';
+@use '../../../core/src/layout';
+@use '../../../core/src/theme/colors';
+@use '../../../core/src/theme/palettes';
 
 $height: 72px;
 :host {

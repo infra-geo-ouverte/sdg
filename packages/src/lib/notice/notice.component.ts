@@ -1,4 +1,3 @@
-import { NgFor, NgIf } from '@angular/common';
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -7,7 +6,7 @@ import { NoticeIcon, NoticeType } from './notice.interface';
 @Component({
   selector: 'sdg-notice',
   standalone: true,
-  imports: [NgIf, NgFor, MatIconModule],
+  imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './notice.component.html',
   styleUrls: ['./notice.component.scss']

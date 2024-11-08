@@ -1,5 +1,5 @@
 @use 'sass:map';
-@use '../core/theme/colors';
+@use '../../../core/src/theme/colors';
 
 .container {
   padding: 0px;
@@ -34,7 +34,7 @@ a {
 }
 
 mat-icon {
-    width: 28px;
-    height: 28px;
-    font-size: 28px;
+  width: 28px;
+  height: 28px;
+  font-size: 28px;
 }

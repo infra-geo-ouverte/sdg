@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "ng build sdg",
-    "postbuild": "node --import tsx ../../scripts/src/post-build.mts sdg",
+    "postbuild": "node --import tsx ../scripts/src/post-build.mts sdg",
     "format": "prettier --write ./**/*.{ts,js,html,scss,css,json}",
     "lint": "ng lint sdg",
     "lint.fix": "ng lint sdg --fix",

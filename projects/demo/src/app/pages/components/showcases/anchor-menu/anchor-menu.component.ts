@@ -1,11 +1,6 @@
 import { AfterContentInit, Component, ElementRef, Signal } from '@angular/core';
 
-import { AnchorMenuComponent } from '@igo2/sdg';
-
-import {
-  Anchor,
-  findTitleAnchors
-} from 'packages/sdg/src/lib/anchor-menu/anchor-menu.interface';
+import { Anchor, AnchorMenuComponent, findTitleAnchors } from '@igo2/sdg';
 
 import { AppService } from '../../../../app.service';
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';

@@ -1,7 +1,4 @@
-export interface Anchor {
-  text: string;
-  htmlElementId: string;
-}
+import { Anchor } from './anchor-menu.interface';
 
 export function findTitleAnchors(containerElement: HTMLElement): Anchor[] {
   const elements = containerElement.getElementsByTagName('h2');

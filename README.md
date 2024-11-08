@@ -22,12 +22,24 @@ La libairie du [Système de design gouvernemental du Québec (SDG)](https://desi
 - [Node.js] qui inclus le [Node Package Manager][npm]
 - Extensions: Eslint, Prettier, Angular Language Service dans votre IDE 
 
-## 🚀 Config du projet
+## 🚀 Config dans un projet
 
-Installer les dépendances du projet et configurer le pre-commit via l'installation:
+Installer la librairie:
 ```
-npm clean-install
+npm install @igo2/sdg --save
 ```
+
+La majorité des composantes sont accessible au premier niveau d'importation:
+```
+import { YOUR_IMPORT_NAME } from "@igo2/sdg"
+```
+
+Pour le volet cartographique, l'importation se fait via un sous-module:
+```
+import { YOUR_IMPORT_NAME } from "@igo2/sdg/geo"
+```
+
+
 
 
 ## 📜 Commandes

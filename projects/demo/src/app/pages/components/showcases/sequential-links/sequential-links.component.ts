@@ -1,8 +1,7 @@
 import { Component, Signal } from '@angular/core';
 
-import { NoticeComponent, SequentialLink } from '@igo2/sdg';
+import { SequentialLink, SequentialLinksComponent } from '@igo2/sdg';
 
-import { SequentialLinksComponent } from '../../../../../../../../packages/sdg/src/lib/sequential-links/sequential-links.component';
 import { AppService } from '../../../../app.service';
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
@@ -13,7 +12,6 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   imports: [
     ExampleViewerComponent,
     ExternalLinkComponent,
-    NoticeComponent,
     SequentialLinksComponent
   ],
   templateUrl: './sequential-links.component.html',

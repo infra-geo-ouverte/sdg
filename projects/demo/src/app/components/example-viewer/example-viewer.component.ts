@@ -8,7 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 const GITHUB_PATH = 'https://github.com/infra-geo-ouverte/sdg/tree/next';
 
-const CODE_PATH = `${GITHUB_PATH}/packages/sdg/src/lib`;
+const CODE_PATH = `${GITHUB_PATH}/packages/src/lib`;
 const DEMO_SHOWCASES_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/components/showcases`;
 
 @Component({

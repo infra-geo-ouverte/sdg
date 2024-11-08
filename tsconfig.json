@@ -22,10 +22,10 @@
     ],
     "paths": {
       "@igo2/sdg": [
-        "packages/sdg/src/public-api"
+        "packages/src/public-api"
       ],
       "@igo2/sdg/*": [
-        "packages/sdg/*/src/public-api"
+        "packages/*/src/public-api"
       ],
     }
   },

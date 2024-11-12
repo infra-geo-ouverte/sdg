@@ -32,6 +32,7 @@ describe('BreadcrumbItemComponent', () => {
 
   it('should display the breadcrumb label in an anchor element', () => {
     const breadcrumb: Breadcrumb = {
+      id: '1',
       title: 'Home',
       url: '/'
     };
@@ -49,6 +50,7 @@ describe('BreadcrumbItemComponent', () => {
 
   it('should not display the last breadcrumb in an anchor element', () => {
     const breadcrumb: Breadcrumb = {
+      id: '1',
       title: 'Current Page',
       url: ''
     };
@@ -67,6 +69,7 @@ describe('BreadcrumbItemComponent', () => {
 
   it('should display the last breadcrumb on handset device in an anchor element', () => {
     const breadcrumb: Breadcrumb = {
+      id: '1',
       title: 'Current Page',
       url: ''
     };

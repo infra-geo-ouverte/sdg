@@ -17,7 +17,7 @@ import {
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { AppTitleResolver } from './config/title-resolver';
-import { AppTranslationService } from './config/translation.service';
+import { AppTranslationService } from './config/translation/translation.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [

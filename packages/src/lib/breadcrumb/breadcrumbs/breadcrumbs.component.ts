@@ -105,8 +105,8 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
      */
     const home = this.getHomeRoute();
     if (
-      (routes.length && routes[0].title === home?.title) ||
-      routes[0].title === home?.data?.[RouteTitleKey]
+      (routes.length && routes[0]?.title === home?.title) ||
+      routes[0]?.title === home?.data?.[RouteTitleKey]
     ) {
       return [];
     }

@@ -25,6 +25,6 @@ export class ContactUsComponent {
     private route: ActivatedRoute,
     private appService: AppService
   ) {
-    this.title = this.route.routeConfig!.data![RouteTitleKey];
+    this.title = this.route.routeConfig?.data![RouteTitleKey];
   }
 }

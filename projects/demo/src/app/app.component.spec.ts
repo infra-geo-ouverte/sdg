@@ -2,12 +2,13 @@ import { TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../test-config';
 import { AppComponent } from './app.component';
+import { AppTranslationService } from './config/translation/translation.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [...TEST_CONFIG.providers!]
+      providers: [...TEST_CONFIG.providers!, AppTranslationService]
     }).compileComponents();
   });
 

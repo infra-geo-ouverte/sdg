@@ -5,12 +5,14 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
 import { IgoLanguageModule } from '@igo2/core/language';
-import { HeaderComponent, NavigationComponent } from '@igo2/sdg';
-import { Language } from '@igo2/sdg/core';
+import {
+  HeadarLanguageComponent,
+  HeaderComponent,
+  NavigationComponent
+} from '@igo2/sdg';
+import { Language, TranslationService } from '@igo2/sdg/core';
 import { DomUtils } from '@igo2/utils';
 
-import { TranslationService } from 'packages/core';
-import { HeadarLanguageComponent } from 'packages/src/lib/header/headar-language/headar-language.component';
 import { delay, first } from 'rxjs';
 
 import { environment } from '../environments/environment';

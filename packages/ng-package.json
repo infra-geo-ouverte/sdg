@@ -6,7 +6,7 @@
   },
   "assets": [
     { "input": "src", "glob": "**/*.scss", "output": "src" },
-    { "input": "core/src", "glob": "**/*.scss", "output": "core/src" },
+    { "input": "core", "glob": "**/*.scss", "output": "core" },
     { "input": "geo/src", "glob": "**/*.scss", "output": "geo/src" }
   ]
 }

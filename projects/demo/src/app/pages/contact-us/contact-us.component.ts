@@ -1,0 +1,30 @@
+import { Component, Signal } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+import { BasicScreenComponent } from '@igo2/sdg';
+
+import { RouteTitleKey } from 'packages/core';
+
+import { AppService } from '../../app.service';
+
+@Component({
+  selector: 'app-contact-us',
+  standalone: true,
+  imports: [BasicScreenComponent],
+  templateUrl: './contact-us.component.html',
+  styleUrl: './contact-us.component.scss'
+})
+export class ContactUsComponent {
+  title: string;
+
+  get isHandset(): Signal<boolean> {
+    return this.appService.isHandset;
+  }
+
+  constructor(
+    private route: ActivatedRoute,
+    private appService: AppService
+  ) {
+    this.title = this.route.routeConfig!.data![RouteTitleKey];
+  }
+}

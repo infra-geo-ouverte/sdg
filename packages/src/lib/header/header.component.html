@@ -23,21 +23,13 @@
     @if (options()) {
       <div class="col-6 col-md-2 d-flex justify-content-end zone-links">
         <ul class="nav flex-column">
-          @if (language) {
+          <li>
+            <ng-content select="sdg-headar-language"></ng-content>
+          </li>
+          @if (contactUs()) {
             <li>
-              <a
-                rel="noopener noreferrer"
-                (click)="changeLanguage(nextLang!.key)"
-                >{{ nextLang!.label | translate }}
-              </a>
-            </li>
-          }
-          @if (contactUs) {
-            <li>
-              <a
-                rel="noopener noreferrer"
-                [routerLink]="contactUs.redirectionRoute"
-                >{{ contactUs.label | translate }}
+              <a rel="noopener noreferrer" [routerLink]="contactUsRoute()"
+                >{{ contactUs() }}
               </a>
             </li>
           }

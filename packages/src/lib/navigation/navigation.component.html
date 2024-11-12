@@ -17,7 +17,7 @@
               #rla="routerLinkActive"
               [active]="rla.isActive"
             >
-              {{ $any(link.title) | translate }}
+              {{ getTitle(link) }}
             </a>
           }
         </nav>

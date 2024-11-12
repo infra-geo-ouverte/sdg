@@ -34,7 +34,7 @@ La majorité des composantes sont accessible au premier niveau d'importation:
 import { YOUR_IMPORT_NAME } from "@igo2/sdg"
 ```
 
-Pour le volet cartographique, l'importation se fait via un sous-module:
+Il existe des sous-module comme pour le volet cartographique ainsi que des modules de base (core), Un exemple d'importation via un sous-module:
 ```
 import { YOUR_IMPORT_NAME } from "@igo2/sdg/geo"
 ```
@@ -51,11 +51,10 @@ import { YOUR_IMPORT_NAME } from "@igo2/sdg/geo"
 | `format` | Corriger automatiquement les erreurs de syntaxe |
 | `test`   | Permet de rouler la suite de test Karma         |
 
- <!-- @TODO | `start`                                         | Démarre la démo. Ce mode est utilisé pour le développement principalement | -->
-
 
 ## 🌎 Contribution
 
+### Première étape
 1. Prendre/assigner une sous-tâche Github en priorité avant une nouvelle story.
 2. Mettre cette sous-tâche/story en « In Progress ».
 3. Ensuite:
@@ -66,6 +65,12 @@ import { YOUR_IMPORT_NAME } from "@igo2/sdg/geo"
 6. Mettre la story/sous-tâche en « Code review ».
 7. Une fois approuvé, merger la PR. Si la tâche faite est une sous-tâche, simplement la mettre à « Done » sinon mettre la story à « QA ».
 8. Si nouvelle story, faire la validation sur la DEV de ce qui a été fait et mettre en « In Review ».
+
+### Message de commit
+Ce projet utilise un déploiement automatisé qui est basé sur [Conventional Commits][conventional-commits], une convention des messages de commit. Il y une validation du message de commit.
+
+Ressources:
+- Semantic-Release comment ça fonctionne [le format du message de commit][semantic-release]
 
 ## 🧰 Dépannage
 
@@ -92,3 +97,5 @@ Le lien symbolique permet de développer un projet d'assemblage de manière int�
 [git]: https://git-scm.com/
 [node.js]: https://nodejs.org/
 [npm]: https://www.npmjs.com/get-npm
+[conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
+[semantic-release]: https://semantic-release.gitbook.io/semantic-release#how-does-it-work

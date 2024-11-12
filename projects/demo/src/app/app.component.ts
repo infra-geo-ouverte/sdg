@@ -4,9 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
+import { IgoLanguageModule } from '@igo2/core/language';
 import { HeaderComponent, NavigationComponent } from '@igo2/sdg';
+import { Language } from '@igo2/sdg/core';
 import { DomUtils } from '@igo2/utils';
 
+import { TranslationService } from 'packages/core';
+import { HeadarLanguageComponent } from 'packages/src/lib/header/headar-language/headar-language.component';
 import { delay, first } from 'rxjs';
 
 import { environment } from '../environments/environment';
@@ -20,9 +24,11 @@ import { AppService } from './app.service';
   imports: [
     NavigationComponent,
     HeaderComponent,
+    HeadarLanguageComponent,
     RouterOutlet,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    IgoLanguageModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -31,18 +37,27 @@ export class AppComponent implements OnInit {
   config: EnvironmentOptions = environment;
   routes = routes.filter((route) => route.redirectTo == null);
 
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private router: Router,
+    private appService: AppService,
+    private translationService: TranslationService
+  ) {}
+
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;
   }
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private router: Router,
-    private appService: AppService
-  ) {}
+  get language() {
+    return this.translationService.lang;
+  }
 
   ngOnInit(): void {
     this.handleSplashScreen();
+  }
+
+  handleLanguageChange(lang: string): void {
+    this.translationService.setLanguage(lang as Language);
   }
 
   private handleSplashScreen(): void {

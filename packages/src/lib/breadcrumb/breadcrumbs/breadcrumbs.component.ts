@@ -1,7 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Inject,
+  OnDestroy,
   OnInit,
+  Optional,
   Signal,
   computed,
   input,
@@ -9,7 +12,9 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
 
-import { IgoLanguageModule } from '@igo2/core/language';
+import { RouteTitleKey, TitleResolver, getRouteTitle } from '@igo2/sdg/core';
+
+import { Subject, takeUntil } from 'rxjs';
 
 import { BreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
 import { BreadcrumbMenuComponent } from '../breadcrumb-menu/breadcrumb-menu.component';
@@ -22,34 +27,44 @@ import {
 @Component({
   selector: 'sdg-breadcrumbs',
   standalone: true,
-  imports: [
-    BreadcrumbItemComponent,
-    BreadcrumbMenuComponent,
-    RouterModule,
-    IgoLanguageModule
-  ],
+  imports: [BreadcrumbItemComponent, BreadcrumbMenuComponent, RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss']
 })
-export class BreadcrumbsComponent implements OnInit {
+export class BreadcrumbsComponent implements OnInit, OnDestroy {
   breadcrumbs = model<Breadcrumb[]>([]);
   isHandset = input(false);
+
   /** Analyze @angular/router hierarchy to determine the breadcrumbs  */
   withRouter = input(false);
 
   breadcrumbsList = this.getBreadcrumbs();
 
+  private _takeUntil = new Subject<boolean>();
+
   constructor(
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    @Optional()
+    @Inject(TitleResolver)
+    private titleResolver: TitleResolver<string>
   ) {}
 
   ngOnInit(): void {
     if (this.withRouter()) {
-      const breads = this.handleRouterSegments();
+      const breads = this.getBreadsFromRouterSegments();
       this.breadcrumbs.set(breads);
+
+      this.router.events.pipe(takeUntil(this._takeUntil)).subscribe(() => {
+        const breads = this.getBreadsFromRouterSegments();
+        this.breadcrumbs.set(breads);
+      });
     }
+  }
+
+  ngOnDestroy(): void {
+    this._takeUntil.next(true);
   }
 
   isMenu(breadcrumb: AnyBreadcrumb): breadcrumb is BreadcrumbMenu {
@@ -62,14 +77,15 @@ export class BreadcrumbsComponent implements OnInit {
       .find((route) => route.path === '');
   }
 
-  private getBreadcrumbs(): Signal<(AnyBreadcrumb | undefined)[]> {
+  private getBreadcrumbs(): Signal<AnyBreadcrumb[]> {
     return computed(() => {
       const breads = this.breadcrumbs();
 
       if (this.isHandset()) {
-        return breads.length > 1 ? [breads.at(-2)] : [];
+        return breads.length > 1 ? [breads.at(-2)!] : [];
       } else if (breads.length >= 5) {
         const menu: BreadcrumbMenu = {
+          id: 'menu',
           menu: breads.slice(2, -2)
         };
         return [...breads.slice(0, 2), menu, ...breads.slice(-2)];
@@ -79,7 +95,7 @@ export class BreadcrumbsComponent implements OnInit {
     });
   }
 
-  private handleRouterSegments(): Breadcrumb[] {
+  private getBreadsFromRouterSegments(): Breadcrumb[] {
     const routes = this.getRouterBreadcrumbs();
     /**
      * Si on est sur la route du parent "", on n'affiche aucune route?
@@ -88,7 +104,10 @@ export class BreadcrumbsComponent implements OnInit {
      * le libellé "Accueil" avec une redirection vers la route "a-propos"
      */
     const home = this.getHomeRoute();
-    if (routes.length && routes[0].title === home?.title) {
+    if (
+      (routes.length && routes[0].title === home?.title) ||
+      routes[0].title === home?.data?.[RouteTitleKey]
+    ) {
       return [];
     }
 
@@ -97,9 +116,12 @@ export class BreadcrumbsComponent implements OnInit {
        * @todo Gérer les title de route, le type peut être asynchrone comment gérer ça?
        * On pourrait diverger du type de @angular/router et forcer un string?
        */
+      const title = getRouteTitle(home, this.titleResolver) ?? '';
+      const url = home.path ?? '';
       routes.unshift({
-        title: home.title as string,
-        url: home.path ?? ''
+        id: `${title}-${url}`,
+        title,
+        url
       });
     }
 
@@ -120,9 +142,12 @@ export class BreadcrumbsComponent implements OnInit {
 
     return routes.reduce((breadcrumbs, route) => {
       const lastUrl = breadcrumbs.at(-1)?.url ?? '';
+      const title = route.snapshot.title ?? '';
+      const url = `${lastUrl}/${route.snapshot.url.toString()}`;
       const breadcrumb: Breadcrumb = {
-        title: route.snapshot.title ?? '',
-        url: `${lastUrl}/${route.snapshot.url.toString()}`
+        id: `${title}-${url}`,
+        title,
+        url
       };
 
       if (breadcrumbs.some((crumb) => crumb.title === breadcrumb.title)) {

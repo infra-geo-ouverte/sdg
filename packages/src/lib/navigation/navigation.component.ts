@@ -4,6 +4,8 @@ import {
   Component,
   ElementRef,
   HostListener,
+  Inject,
+  Optional,
   computed,
   input,
   signal,
@@ -12,15 +14,19 @@ import {
 import { MatTabsModule } from '@angular/material/tabs';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { IgoLanguageModule } from '@igo2/core/language';
+import { TitleResolver, getRouteTitle } from '@igo2/sdg/core';
 
-import { INavigationOptions, INavigationRoutes } from './navigation.interface';
+import {
+  INavigationOptions,
+  INavigationRoute,
+  INavigationRoutes
+} from './navigation.interface';
 
 @Component({
   selector: 'sdg-navigation',
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterLink, RouterLinkActive, MatTabsModule, IgoLanguageModule],
+  imports: [RouterLink, RouterLinkActive, MatTabsModule],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })
@@ -40,8 +46,18 @@ export class NavigationComponent implements AfterViewInit {
     this.handleOverflow();
   }
 
+  constructor(
+    @Optional()
+    @Inject(TitleResolver)
+    private titleResolver: TitleResolver<string>
+  ) {}
+
   ngAfterViewInit(): void {
     this.handleOverflow();
+  }
+
+  getTitle(link: INavigationRoute): string | undefined {
+    return getRouteTitle(link, this.titleResolver);
   }
 
   /**

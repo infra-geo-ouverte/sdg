@@ -1,8 +1,8 @@
 <li [class.--last]="last()" [class.--handset]="isHandset()" class="mat-body-2">
   @if (last() && !isHandset()) {
-    {{ breadcrumb().title | translate }}
+    {{ breadcrumb().title }}
   } @else {
-    <a [routerLink]="breadcrumb().url">{{ breadcrumb().title | translate }}</a>
+    <a [routerLink]="breadcrumb().url">{{ breadcrumb().title }}</a>
     <mat-icon [inline]="true">chevron_left</mat-icon>
   }
 </li>

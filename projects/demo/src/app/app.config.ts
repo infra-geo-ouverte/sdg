@@ -8,21 +8,26 @@ import {
 } from '@angular/router';
 
 import { provideIcon } from '@igo2/common/icon';
-import { provideConfig } from '@igo2/core/config';
-import { provideTranslation } from '@igo2/core/language';
+import {
+  provideTranslation,
+  withIgo2Translation,
+  withRouterTitleResolver
+} from '@igo2/sdg/core';
 
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
+import { AppTitleResolver } from './config/title-resolver';
+import { AppTranslationService } from './config/translation.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideHttpClient(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideConfig({
-      default: environment
-    }),
-    provideTranslation(),
+    provideTranslation(
+      withIgo2Translation(environment.language!, AppTranslationService),
+      withRouterTitleResolver(AppTitleResolver)
+    ),
     provideIcon()
   ]
 };

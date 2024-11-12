@@ -3,7 +3,6 @@ import { Route } from '@angular/router';
 export type INavigationRoutes = INavigationRoute[];
 
 export interface INavigationRoute extends Route {
-  title?: string;
   /** Hidden in the primary tabs navigation */
   hidden?: boolean;
 }

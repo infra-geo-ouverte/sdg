@@ -1,6 +1,9 @@
+import { Language } from '@igo2/sdg/core';
+
 export interface IHeaderConfig {
   logo: IHeaderLogo;
   options?: IHeaderOptions;
+  contactUs?: IHeaderContactUs;
 }
 
 export interface IHeaderLogo {
@@ -11,11 +14,6 @@ export interface IHeaderLogo {
 export interface IHeaderOptions {
   titleRoute?: string;
   language?: IHeaderLanguage;
-  contactUs?: IHeaderContactUs;
-  // search?: {
-  //   label: string;
-  //   url: string;
-  // };
 }
 
 export interface IHeaderContactUs {
@@ -23,15 +21,13 @@ export interface IHeaderContactUs {
   redirectionRoute: string;
 }
 
-type AppLanguage = 'fr' | 'en';
-
 export interface IHeaderLanguage {
   /** For now, we take only two language */
   choices: [IHeaderLanguageChoice, IHeaderLanguageChoice];
-  default: AppLanguage;
+  default: Language;
 }
 
 export interface IHeaderLanguageChoice {
   label: string;
-  key: AppLanguage;
+  key: Language;
 }

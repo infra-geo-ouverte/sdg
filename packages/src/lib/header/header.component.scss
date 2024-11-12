@@ -8,23 +8,23 @@ $height: 72px;
   display: block;
   background-color: colors.$blue-piv;
   max-height: $height;
-}
 
-a,
-p {
-  font-weight: normal;
-  color: colors.$white;
-}
-
-a {
-  font-size: 14px;
-  text-decoration: none;
-
-  &:focus,
-  &:hover,
-  &:visited {
-    text-decoration: underline;
+  ::ng-deep a,
+  p {
+    font-weight: normal;
     color: colors.$white;
+  }
+
+  ::ng-deep a {
+    font-size: 14px;
+    text-decoration: none;
+
+    &:focus,
+    &:hover,
+    &:visited {
+      text-decoration: underline;
+      color: colors.$white;
+    }
   }
 }
 

@@ -3,23 +3,27 @@
 @forward './lib/paginator/paginator-theme' as paginator-*;
 
 @use './lib/breadcrumb/breadcrumb-theme' as breadcrumb;
+@use './lib/header/header-theme' as header;
 @use './lib/navigation/navigation-theme' as navigation;
 @use './lib/paginator/paginator-theme' as paginator;
 
 @mixin themes($theme) {
   @include breadcrumb.theme($theme);
+  @include header.theme($theme);
   @include navigation.theme($theme);
   @include paginator.theme($theme);
 }
 
 @mixin colors($theme) {
   @include breadcrumb.color($theme);
+  @include header.color($theme);
   @include navigation.color($theme);
   @include paginator.color($theme);
 }
 
 @mixin densities($theme) {
   @include breadcrumb.density($theme);
+  @include header.density($theme);
   @include navigation.density($theme);
   @include paginator.density($theme);
 }

@@ -12,11 +12,11 @@ export const environment: EnvironmentOptions = {
       primary: 'images/signature-PIV.svg',
       print: 'images/signature-PIV.svg'
     },
+    contactUs: {
+      label: 'header.contactUs',
+      redirectionRoute: 'contact-us'
+    },
     options: {
-      contactUs: {
-        label: 'header.contactUs',
-        redirectionRoute: 'contact-us'
-      },
       language: {
         choices: [
           {
@@ -33,7 +33,6 @@ export const environment: EnvironmentOptions = {
     }
   },
   navigation: {
-    // homeLabel: 'Accueil',
     options: {
       title: {
         suffix: 'Système de design gouvernemental',
@@ -41,5 +40,7 @@ export const environment: EnvironmentOptions = {
       }
     }
   },
-  igo: {}
+  language: {
+    prefix: ['locale/']
+  }
 };

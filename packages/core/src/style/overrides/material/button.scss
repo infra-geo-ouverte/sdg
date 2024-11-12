@@ -3,7 +3,10 @@
 
 .mdc-button {
   font-size: mat.m2-font-size(typography.$typo-typography, body-1) !important;
-  line-height: mat.m2-line-height(typography.$typo-typography, body-1) !important;
+  line-height: mat.m2-line-height(
+    typography.$typo-typography,
+    body-1
+  ) !important;
   font-weight: bold !important;
 }
 

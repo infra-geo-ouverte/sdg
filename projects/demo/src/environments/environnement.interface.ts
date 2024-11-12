@@ -8,5 +8,4 @@ export interface EnvironmentOptions extends AllEnvironmentOptions {
   header: IHeaderConfig;
   navigation?: INavigationConfig;
   hasFooter?: boolean;
-  igo: AllEnvironmentOptions;
 }

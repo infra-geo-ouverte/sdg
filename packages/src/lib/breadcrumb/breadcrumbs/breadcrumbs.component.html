@@ -1,6 +1,10 @@
 <div class="container" [class.d-none]="!breadcrumbsList().length">
   <ol>
-    @for (breadcrumb of breadcrumbsList(); track breadcrumb; let last = $last) {
+    @for (
+      breadcrumb of breadcrumbsList();
+      track breadcrumb.id;
+      let last = $last
+    ) {
       @if (isMenu(breadcrumb!)) {
         <sdg-breadcrumb-menu [breadcrumb]="breadcrumb" />
       } @else {

@@ -1,4 +1,4 @@
-<sdg-split-screen [title]="selectedRoute()?.title" [isHandset]="isHandset()">
+<sdg-split-screen [title]="title()" [isHandset]="isHandset()">
   <ul left-slot>
     @for (route of routes; track route) {
       <li>

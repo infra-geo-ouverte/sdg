@@ -1,37 +1,25 @@
-import { NgFor } from '@angular/common';
 import { Component, OnDestroy, signal } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  Router,
-  RouterOutlet
-} from '@angular/router';
+import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
-import { INavigationRoute, SplitScreenComponent } from '@igo2/sdg';
+import { SplitScreenComponent } from '@igo2/sdg';
+import { getRouteTitle } from '@igo2/sdg/core';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 
 import { AppService } from '../../../app.service';
-import { ExternalLinkComponent } from '../../../components/external-link/external-link.component';
 import { routes } from './showcases.routes';
 
 @Component({
   selector: 'app-showcases',
   standalone: true,
-  imports: [
-    NgFor,
-    SplitScreenComponent,
-    RouterOutlet,
-    ExternalLinkComponent,
-    RouterLink
-  ],
+  imports: [SplitScreenComponent, RouterOutlet, RouterLink],
   templateUrl: './showcases.component.html',
   styleUrl: './showcases.component.scss'
 })
 export class ShowcasesComponent implements OnDestroy {
   routes = routes.filter((route) => route.redirectTo == null);
-  selectedRoute = signal<INavigationRoute | undefined>(undefined);
+  title = signal<string | undefined>(undefined);
 
   get isHandset() {
     return this.appService.isHandset;
@@ -41,8 +29,7 @@ export class ShowcasesComponent implements OnDestroy {
 
   constructor(
     private appService: AppService,
-    private router: Router,
-    private route: ActivatedRoute
+    private router: Router
   ) {
     this.router.events
       .pipe(
@@ -67,7 +54,9 @@ export class ShowcasesComponent implements OnDestroy {
           return url.includes(link.path);
         });
 
-        this.selectedRoute.set(config);
+        if (config) {
+          this.title.set(getRouteTitle(config));
+        }
       });
   }
 

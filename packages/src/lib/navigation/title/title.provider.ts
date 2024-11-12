@@ -2,9 +2,6 @@ import { EnvironmentProviders, makeEnvironmentProviders } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { TitleStrategy } from '@angular/router';
 
-import { ConfigService } from '@igo2/core/config';
-import { LanguageService } from '@igo2/core/language';
-
 import { INavigationTitleOptions } from '../navigation.interface';
 import {
   NavigationTitleStrategy,
@@ -20,25 +17,12 @@ export function provideNavigationTitle(
   return makeEnvironmentProviders([
     {
       provide: TITLE_OPTIONS,
-      useFactory: (configService: ConfigService) =>
-        getOptions(configService, options),
-      deps: [ConfigService]
+      useValue: options
     },
     {
       provide: TitleStrategy,
       useClass: NavigationTitleStrategy,
-      deps: [Title, LanguageService, TITLE_OPTIONS]
+      deps: [Title, TITLE_OPTIONS]
     }
   ]);
-}
-
-function getOptions(
-  configService: ConfigService,
-  options?: INavigationTitleOptions
-): INavigationTitleOptions {
-  return options != null
-    ? options
-    : configService.getConfig<INavigationTitleOptions>(
-        'navigation.options.title'
-      );
 }

@@ -8,7 +8,8 @@
   "scripts": {
     "build": "ng build sdg",
     "postbuild": "node --import tsx ../scripts/src/post-build.mts sdg",
-    "format": "prettier --write ./**/*.{ts,js,html,scss,css,json}",
+    "format": "prettier --check ./**/*.{ts,js,html,scss,css,json}",
+    "format.fix": "prettier --write ./**/*.{ts,js,html,scss,css,json}",
     "lint": "ng lint sdg",
     "lint.fix": "ng lint sdg --fix",
     "test": "ng test sdg --watch=false",
@@ -21,6 +22,9 @@
     },
     "./layout": {
       "sass": "./core/src/layout/layout.scss"
+    },
+    "./core": {
+      "import": "./core/src/public-api.ts"
     },
     "./geo": {
       "import": "./geo/src/public-api.ts"

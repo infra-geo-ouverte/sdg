@@ -1,13 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { IgoLanguageModule } from '@igo2/core/language';
-
 import { BreadcrumbsComponent } from '../../breadcrumb';
 
 @Component({
   selector: 'sdg-basic-screen',
   standalone: true,
-  imports: [BreadcrumbsComponent, IgoLanguageModule],
+  imports: [BreadcrumbsComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './basic-screen.component.html',
   styleUrl: './basic-screen.component.scss'

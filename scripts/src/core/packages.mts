@@ -8,14 +8,7 @@ import * as log from '../utils/log.mts';
 import { PATHS, getPackageJson } from './paths.mts';
 import { RELEASE_TAGS } from './release.interface.mts';
 
-export type PackageName =
-  | 'auth'
-  | 'common'
-  | 'context'
-  | 'core'
-  | 'geo'
-  | 'integration'
-  | 'utils';
+export type PackageName = 'common' | 'core' | 'geo' | 'sdg';
 
 export interface PackageOptions {
   dependsOn: PackageName[];
@@ -84,7 +77,7 @@ export function cleanPackageExports(name: string): Promise<void> {
 }
 
 export async function publishPackage(
-  name: PackageName,
+  name: string,
   version: string
 ): Promise<void> {
   const tag = RELEASE_TAGS.find((tag) => version.includes(tag));

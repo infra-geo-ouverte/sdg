@@ -12,13 +12,7 @@ executor('Library Prepublish', async () => {
 
   log.info('Propagating the version to sub-packages');
 
-  // Read all package.json files in parallel and bump the version
-  const packageVersionPromises = packageFolders.map(async (folder) => {
-    await setPackageVersion(folder, version);
-  });
-
-  // Wait for all package.json updates to complete
-  await Promise.all(packageVersionPromises);
+  await setPackageVersion(PATHS.packages, version);
 
   log.info('Version update complete');
 });

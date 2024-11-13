@@ -16,7 +16,7 @@ import { DomUtils } from '@igo2/utils';
 import { delay, first } from 'rxjs';
 
 import { environment } from '../environments/environment';
-import { EnvironmentOptions } from '../environments/environnement.interface';
+import { EnvironmentOptions } from '../environments/environment.interface';
 import { routes } from './app.routes';
 import { AppService } from './app.service';
 

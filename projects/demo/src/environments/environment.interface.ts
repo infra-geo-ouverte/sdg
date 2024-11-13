@@ -1,7 +1,8 @@
-import { AllEnvironmentOptions } from '@igo2/integration';
+import { EnvironmentOptions as CoreEnvironmentOptions } from '@igo2/core/environment';
 import { IHeaderConfig, INavigationConfig } from '@igo2/sdg';
 
-export interface EnvironmentOptions extends AllEnvironmentOptions {
+export interface EnvironmentOptions
+  extends Pick<CoreEnvironmentOptions, 'monitoring' | 'language'> {
   production: boolean;
   title: string;
   description?: string;

@@ -5,11 +5,7 @@ import {
   makeEnvironmentProviders
 } from '@angular/core';
 
-import {
-  LanguageOptions,
-  LanguageService,
-  withStaticConfig
-} from '@igo2/core/language';
+import { LanguageOptions, withStaticConfig } from '@igo2/core/language';
 import { provideTranslation as provideIgo2Translation } from '@igo2/core/language';
 
 import { TitleResolver } from '../router';
@@ -67,7 +63,7 @@ export function withRouterTitleResolver<T>(
       {
         provide: TitleResolver<T>,
         useClass: resolver,
-        deps: [LanguageService]
+        deps: [TranslationService]
       }
     ]
   };

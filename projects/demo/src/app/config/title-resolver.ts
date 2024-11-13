@@ -1,48 +1,47 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Route } from '@angular/router';
+import { ActivatedRouteSnapshot, Data, Route } from '@angular/router';
 
-import { LanguageLoader, LanguageService } from '@igo2/core/language';
 import { RouteTitleKey, TitleResolver } from '@igo2/sdg/core';
 
-import { Observable, filter, switchMap, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+
+import { AppTranslationService } from './translation/translation.service';
 
 @Injectable({ providedIn: 'root' })
 export class AppTitleResolver implements TitleResolver<string> {
-  constructor(private languageService: LanguageService) {}
+  constructor(private translationService: AppTranslationService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<string> {
-    const loader = this.languageService.translate
-      .currentLoader as LanguageLoader;
-    return loader.isLoaded$.pipe(
-      filter((isLoaded) => isLoaded),
-      switchMap(() =>
-        this.languageService.translate.get(route.data.title ?? '')
-      ),
+    return this.translationService.translate.get(route.data.title ?? '').pipe(
       tap((value) => {
         if (!route.routeConfig) {
           return;
         }
-        if (!route.routeConfig.data) {
-          route.routeConfig.data = {};
-        }
 
-        route.routeConfig.data[RouteTitleKey] = value;
+        this.setRouteDataTitle(value, route.routeConfig.data);
       })
     );
   }
 
-  resolveStatic(route: Route): string | undefined {
-    const value = this.languageService.translate.instant(
-      route.data?.title ?? ''
-    );
-
+  resolveStatic(route: Route | null): string | undefined {
     if (!route) {
       return;
     }
-    if (!route.data) {
-      route.data = {};
+
+    const value = this.translationService.translate.instant(
+      route.data?.title ?? ''
+    );
+
+    this.setRouteDataTitle(value, route.data);
+
+    return value;
+  }
+
+  private setRouteDataTitle(value: string, data: Data | undefined) {
+    if (!data) {
+      data = {};
     }
 
-    route.data[RouteTitleKey] = value;
+    data[RouteTitleKey] = value;
   }
 }

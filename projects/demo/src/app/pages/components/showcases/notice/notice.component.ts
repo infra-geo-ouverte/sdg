@@ -14,13 +14,13 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './notice.component.scss'
 })
 export class NoticeDemoComponent {
+  message =
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
   constructor(private appService: AppService) {}
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;
   }
-
-  message =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 }

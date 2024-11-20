@@ -13,14 +13,14 @@ import { SequentialLink } from './sequential-links.interface';
   styleUrls: ['./sequential-links.component.scss']
 })
 export class SequentialLinksComponent {
+  previous = input<SequentialLink>();
+  next = input<SequentialLink>();
+  isHandset = input<boolean>();
+
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {}
-
-  previous = input<SequentialLink>();
-  next = input<SequentialLink>();
-  isHandset = input<boolean>();
 
   goToLink(url: string) {
     this.router.navigate(['../', url], { relativeTo: this.activatedRoute });

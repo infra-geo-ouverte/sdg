@@ -24,8 +24,6 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './paginator.component.scss'
 })
 export class PaginatorDemoComponent implements OnInit {
-  constructor(private appService: AppService) {}
-
   initialPageIndex = 2;
 
   pageSizes: number[] = [2, 3, 5, 10, 15];
@@ -34,6 +32,8 @@ export class PaginatorDemoComponent implements OnInit {
   list = Array.from({ length: 35 }, (_, a) => a);
 
   shownList: number[] = [];
+
+  constructor(private appService: AppService) {}
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;

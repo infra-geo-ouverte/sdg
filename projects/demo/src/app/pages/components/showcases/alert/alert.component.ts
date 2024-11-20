@@ -14,10 +14,10 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './alert.component.scss'
 })
 export class AlertDemoComponent {
-  constructor(private appService: AppService) {}
-
   generalAlertIsOpen = true;
   alertIsOpen = true;
+
+  constructor(private appService: AppService) {}
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;

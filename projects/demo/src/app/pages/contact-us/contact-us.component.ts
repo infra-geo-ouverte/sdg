@@ -17,14 +17,14 @@ import { AppService } from '../../app.service';
 export class ContactUsComponent {
   title: string;
 
-  get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
-  }
-
   constructor(
     private route: ActivatedRoute,
     private appService: AppService
   ) {
     this.title = this.route.routeConfig?.data![RouteTitleKey];
+  }
+
+  get isHandset(): Signal<boolean> {
+    return this.appService.isHandset;
   }
 }

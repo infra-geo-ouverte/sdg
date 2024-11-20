@@ -1,12 +1,10 @@
-import { DOCUMENT, NgFor, NgIf, NgStyle } from '@angular/common';
+import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
   Inject,
-  Injector,
   OnInit,
   effect,
-  inject,
   input,
   output
 } from '@angular/core';
@@ -18,34 +16,12 @@ import { IgoLanguageModule } from '@igo2/core/language';
 @Component({
   selector: 'sdg-paginator',
   standalone: true,
-  imports: [
-    NgIf,
-    NgFor,
-    NgStyle,
-    IgoLanguageModule,
-    MatButtonModule,
-    MatIconModule
-  ],
+  imports: [IgoLanguageModule, MatButtonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
-  constructor(@Inject(DOCUMENT) private document: Document) {
-    effect(() => {
-      const pageSize = this.pageSize();
-      if (!this.initialPageIndexFirstChange) {
-        this.currentPageIndex = 0;
-        this.pageChange.emit(this.currentPageIndex);
-
-        this.getNbOfPages(pageSize);
-      } else {
-        this.initialPageIndexFirstChange = false;
-      }
-    });
-  }
-  injector = inject(Injector);
-
   listLength = input.required<number>();
   pageSize = input.required<number>();
   middlePagesMaxRange = input<number>(1);
@@ -63,6 +39,20 @@ export class PaginatorComponent implements OnInit {
   middlePagesIndexes: number[] = [];
   lastPagesIndexes: number[] = [];
   pagesIndexes: number[] = [];
+
+  constructor(@Inject(DOCUMENT) private document: Document) {
+    effect(() => {
+      const pageSize = this.pageSize();
+      if (!this.initialPageIndexFirstChange) {
+        this.currentPageIndex = 0;
+        this.pageChange.emit(this.currentPageIndex);
+
+        this.getNbOfPages(pageSize);
+      } else {
+        this.initialPageIndexFirstChange = false;
+      }
+    });
+  }
 
   ngOnInit() {
     this.currentPageIndex = this.initialPageIndex();

@@ -14,12 +14,12 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './anchor-menu.component.scss'
 })
 export class AnchorMenuDemoComponent implements AfterContentInit {
+  anchors: Anchor[] = [];
+
   constructor(
     private appService: AppService,
     private elementRef: ElementRef
   ) {}
-
-  anchors: Anchor[] = [];
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;

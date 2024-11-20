@@ -1,6 +1,5 @@
-import { NgFor } from '@angular/common';
 import { Component, Signal } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 import { BasicScreenComponent, INavigationRoutes } from '@igo2/sdg';
 
@@ -10,7 +9,7 @@ import { routes } from './showcases/showcases.routes';
 @Component({
   selector: 'app-components',
   standalone: true,
-  imports: [NgFor, BasicScreenComponent, RouterOutlet, RouterLink],
+  imports: [BasicScreenComponent, RouterLink],
   templateUrl: './components.component.html',
   styleUrl: './components.component.scss'
 })
@@ -19,9 +18,9 @@ export class ComponentsComponent {
     (route) => route.redirectTo == null
   );
 
+  constructor(private appService: AppService) {}
+
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;
   }
-
-  constructor(private appService: AppService) {}
 }

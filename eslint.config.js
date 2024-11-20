@@ -39,6 +39,12 @@ module.exports = tseslint.config(
       '@angular-eslint/no-output-native': 'off',
       '@stylistic/semi': ['error', 'always'],
       '@typescript-eslint/array-type': 'warn',
+      '@typescript-eslint/member-ordering': [
+        'error',
+        {
+          default: ['signature', 'field', 'constructor', 'method']
+        }
+      ],
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-expressions': [
         'error',

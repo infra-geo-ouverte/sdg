@@ -14,8 +14,6 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './consult.component.scss'
 })
 export class ConsultDemoComponent {
-  constructor(private appService: AppService) {}
-
   links: Link[] = [
     {
       text: "Page d'accueil",
@@ -30,6 +28,8 @@ export class ConsultDemoComponent {
       url: '/composantes/showcases/alerte'
     }
   ];
+
+  constructor(private appService: AppService) {}
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;

@@ -21,10 +21,6 @@ export class ShowcasesComponent implements OnDestroy {
   routes = routes.filter((route) => route.redirectTo == null);
   title = signal<string | undefined>(undefined);
 
-  get isHandset() {
-    return this.appService.isHandset;
-  }
-
   private _destroy$ = new Subject();
 
   constructor(
@@ -58,6 +54,10 @@ export class ShowcasesComponent implements OnDestroy {
           this.title.set(getRouteTitle(config));
         }
       });
+  }
+
+  get isHandset() {
+    return this.appService.isHandset;
   }
 
   ngOnDestroy(): void {

@@ -18,8 +18,6 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './sequential-links.component.scss'
 })
 export class SequentialLinksDemoComponent {
-  constructor(private appService: AppService) {}
-
   previous: SequentialLink = {
     text: "Fil d'Ariane",
     url: 'fil-ariane'
@@ -29,6 +27,8 @@ export class SequentialLinksDemoComponent {
     text: 'Tuile',
     url: 'tuile'
   };
+
+  constructor(private appService: AppService) {}
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;

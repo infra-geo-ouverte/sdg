@@ -11,8 +11,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./tile.component.scss']
 })
 export class TileComponent {
-  constructor(private router: Router) {}
-
   icon = input<string>();
   title = input.required<string, string>({
     transform: this.titleValidation
@@ -20,6 +18,8 @@ export class TileComponent {
   message = input<string>();
   href = input.required<string>();
   isHandset = input<boolean>();
+
+  constructor(private router: Router) {}
 
   private titleValidation(title: string): string {
     return title.length > 45 ? `${title.slice(0, 45)}...` : title;

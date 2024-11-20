@@ -14,16 +14,16 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './tile.component.scss'
 })
 export class TileDemoComponent {
-  constructor(private appService: AppService) {}
-
-  get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
-  }
-
   longMessage =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 
   shortMessage =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
+
+  constructor(private appService: AppService) {}
+
+  get isHandset(): Signal<boolean> {
+    return this.appService.isHandset;
+  }
 }

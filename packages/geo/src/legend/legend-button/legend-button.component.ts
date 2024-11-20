@@ -31,13 +31,13 @@ export class LegendButtonComponent {
 
   public dialogRef?: MatDialogRef<LegendDialogComponent>;
 
+  constructor(public dialog: MatDialog) {}
+
   get isOpened(): boolean {
     return (
       this.opened ?? !!this.dialog.getDialogById('legend-dialog-container')
     );
   }
-
-  constructor(public dialog: MatDialog) {}
 
   toggle(): void {
     if (!this.legendInPanel && !this.mobile) {

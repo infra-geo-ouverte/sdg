@@ -3,7 +3,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  HostListener,
   Inject,
   Optional,
   computed,
@@ -28,7 +27,10 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [RouterLink, RouterLinkActive, MatTabsModule],
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss'
+  styleUrl: './navigation.component.scss',
+  host: {
+    '(window:resize)': 'handleOverflow()'
+  }
 })
 export class NavigationComponent implements AfterViewInit {
   links = input.required<INavigationRoutes>();
@@ -40,11 +42,6 @@ export class NavigationComponent implements AfterViewInit {
 
   tabsContainer = viewChild<ElementRef<HTMLElement>>('tabsContainer');
   actionsContainer = viewChild<ElementRef<HTMLElement>>('actionsContainer');
-
-  @HostListener('window:resize', ['$event'])
-  onWindowResize() {
-    this.handleOverflow();
-  }
 
   constructor(
     @Optional()

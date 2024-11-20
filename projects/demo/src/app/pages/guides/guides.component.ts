@@ -12,9 +12,9 @@ import { AppService } from '../../app.service';
   styleUrl: './guides.component.scss'
 })
 export class GuidesComponent {
+  constructor(private appService: AppService) {}
+
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;
   }
-
-  constructor(private appService: AppService) {}
 }

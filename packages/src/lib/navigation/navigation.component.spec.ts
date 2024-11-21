@@ -3,8 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 
-import { TEST_CONFIG } from 'packages/src/test-config';
-
+import { TEST_CONFIG } from '../../test-config';
 import { NavigationComponent } from './navigation.component';
 
 describe('NavigationComponent', () => {

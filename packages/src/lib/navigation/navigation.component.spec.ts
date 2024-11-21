@@ -1,8 +1,9 @@
 import { ComponentRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
 
-import { IgoLanguageModule, provideMockTranslation } from '@igo2/core/language';
+import { IgoLanguageModule } from '@igo2/core/language';
+
+import { TEST_CONFIG } from 'packages/src/test-config';
 
 import { NavigationComponent } from './navigation.component';
 
@@ -14,7 +15,7 @@ describe('NavigationComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [NavigationComponent, IgoLanguageModule],
-      providers: [provideRouter([]), provideMockTranslation()]
+      providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
     fixture = TestBed.createComponent(NavigationComponent);

@@ -1,4 +1,3 @@
-import { NgIf } from '@angular/common';
 import { Component, HostBinding, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,7 +14,6 @@ const DEMO_SHOWCASES_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/componen
   selector: 'app-example-viewer',
   standalone: true,
   imports: [
-    NgIf,
     MatButtonModule,
     MatCardModule,
     MatDividerModule,

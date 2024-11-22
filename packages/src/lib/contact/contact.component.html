@@ -1,0 +1,56 @@
+<div class="title-contact">
+  <p class="title">{{ title() }}</p>
+  <div class="contact">
+    @if (contact().name) {
+      <div class="info">
+        <mat-icon>person</mat-icon>
+        <p>{{ contact().name }}</p>
+      </div>
+    }
+    @if (contact().schedule) {
+      <div class="info">
+        <mat-icon>calendar_today</mat-icon>
+        <p>{{ contact().schedule }}</p>
+      </div>
+    }
+    @if (contact().hours) {
+      <div class="info">
+        <mat-icon>schedule</mat-icon>
+        <p>{{ contact().hours }}</p>
+      </div>
+    }
+    @if (contact().phone) {
+      <div class="info">
+        <mat-icon>call</mat-icon>
+        <p>{{ contact().phone }}</p>
+      </div>
+    }
+    @if (contact().address) {
+      <div class="info">
+        <mat-icon>location_on</mat-icon>
+        <div class="address">
+          <span
+            >{{ contact().address?.number }}
+            {{ contact().address?.street }}</span
+          >
+          <p>{{ contact().address?.city }}</p>
+          <p>{{ contact().address?.postalCode }}</p>
+        </div>
+      </div>
+    }
+    @if (contact().email) {
+      <div class="info">
+        <mat-icon>email</mat-icon>
+        <a href="mailto:{{ contact().email }}">{{ contact().email }}</a>
+      </div>
+    }
+    @if (contact().website) {
+      <div class="info">
+        <mat-icon>mouse</mat-icon>
+        <a [href]="contact().website" target="_blank">{{
+          contact().website
+        }}</a>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,40 @@
+@use 'sass:map';
+@use '../../../core/src/theme/colors';
+
+:host {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid colors.$grey-light;
+  padding: 24px 16px;
+}
+
+.title-contact {
+  display: flex;
+  flex-flow: column;
+  row-gap: 24px;
+}
+
+.title {
+  font-weight: bold;
+  width: fit-content;
+}
+
+.contact {
+  display: flex;
+  flex-flow: column;
+  row-gap: 16px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  column-gap: 16px;
+}
+
+p {
+  margin: 0;
+}
+
+mat-icon {
+  align-self: flex-start;
+}

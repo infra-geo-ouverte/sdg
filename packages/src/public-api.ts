@@ -6,6 +6,7 @@ export * from './lib/alert';
 export * from './lib/anchor-menu';
 export * from './lib/breadcrumb';
 export * from './lib/button';
+export * from './lib/contact';
 export * from './lib/consult';
 export * from './lib/header';
 export * from './lib/navigation';

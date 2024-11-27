@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
   OnDestroy,
   OnInit,
   Optional,
@@ -12,7 +11,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
 
-import { RouteTitleKey, TitleResolver, getRouteTitle } from '@igo2/sdg/core';
+import { RouteTitleKey, TitleResolver, resolveTitle } from '@igo2/sdg/core';
 
 import { Subject, takeUntil } from 'rxjs';
 
@@ -47,8 +46,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     @Optional()
-    @Inject(TitleResolver)
-    private titleResolver: TitleResolver<string>
+    private titleResolver: TitleResolver
   ) {}
 
   ngOnInit(): void {
@@ -116,7 +114,7 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
        * @todo Gérer les title de route, le type peut être asynchrone comment gérer ça?
        * On pourrait diverger du type de @angular/router et forcer un string?
        */
-      const title = getRouteTitle(home, this.titleResolver) ?? '';
+      const title = resolveTitle(home, this.titleResolver) ?? '';
       const url = home.path ?? '';
       routes.unshift({
         id: `${title}-${url}`,

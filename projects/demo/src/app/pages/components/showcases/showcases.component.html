@@ -2,7 +2,7 @@
   <ul left-slot>
     @for (route of routes; track route) {
       <li>
-        <a [routerLink]="[route.path]">{{ route.title }}</a>
+        <a [routerLink]="[route.path]">{{ route | titleResolver }}</a>
       </li>
     }
   </ul>

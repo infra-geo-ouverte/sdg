@@ -3,17 +3,22 @@ import { TestModuleMetadata } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
-import { provideMockTranslation } from '@igo2/core/language';
-import { provideTranslation, withIgo2Translation } from '@igo2/sdg/core';
+import {
+  provideTranslation,
+  withIgo2TranslationMock,
+  withRouterTitleResolver
+} from '@igo2/sdg/core';
 
-import { AppTranslationService } from './app/config/translation/translation.service';
+import { AppTitleResolver } from './app/config/title-resolver';
 
 export const TEST_CONFIG: TestModuleMetadata = {
   providers: [
     provideRouter([]),
-    provideMockTranslation(),
     provideHttpClientTesting(),
-    provideTranslation(withIgo2Translation({}, AppTranslationService)),
+    provideTranslation(
+      withIgo2TranslationMock(),
+      withRouterTitleResolver(AppTitleResolver)
+    ),
     provideAnimations()
   ]
 };

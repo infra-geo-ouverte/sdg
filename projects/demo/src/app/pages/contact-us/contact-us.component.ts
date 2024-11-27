@@ -2,8 +2,7 @@ import { Component, Signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { BasicScreenComponent } from '@igo2/sdg';
-
-import { RouteTitleKey } from 'packages/core';
+import { RouteTitleKey } from '@igo2/sdg/core';
 
 import { AppService } from '../../app.service';
 

@@ -17,7 +17,7 @@
               #rla="routerLinkActive"
               [active]="rla.isActive"
             >
-              {{ getTitle(link) }}
+              {{ link | titleResolver }}
             </a>
           }
         </nav>

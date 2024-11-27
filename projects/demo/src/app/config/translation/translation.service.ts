@@ -31,6 +31,13 @@ export class AppTranslationService
   get(
     key: string | string[],
     interpolateParams?: Record<string, unknown>
+  ): string {
+    return this.translate.instant(key, interpolateParams);
+  }
+
+  getAsync(
+    key: string | string[],
+    interpolateParams?: Record<string, unknown>
   ): Observable<string> {
     return this.translate.get(key, interpolateParams);
   }

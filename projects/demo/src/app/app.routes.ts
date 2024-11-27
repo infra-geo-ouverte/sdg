@@ -1,13 +1,13 @@
-import { INavigationRoutes } from '@igo2/sdg';
+import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg/core';
 
 import { AppTitleResolver } from './config/title-resolver';
 
-export const routes: INavigationRoutes = [
+export const routes: SdgRoutes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   {
     path: '',
     title: AppTitleResolver,
-    data: { title: 'about' },
+    data: { [RouteTranslateKey]: 'about' },
     loadComponent: () =>
       import('./pages/about/about.component').then((m) => m.AboutComponent)
   },
@@ -27,7 +27,7 @@ export const routes: INavigationRoutes = [
     path: 'contact-us',
     title: AppTitleResolver,
     data: {
-      title: 'header.contactUs'
+      [RouteTranslateKey]: 'header.contactUs'
     },
     hidden: true,
     loadComponent: () =>

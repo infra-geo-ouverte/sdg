@@ -3,7 +3,7 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
 import { SplitScreenComponent } from '@igo2/sdg';
-import { getRouteTitle } from '@igo2/sdg/core';
+import { TitleResolverPipe } from '@igo2/sdg/core';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 
@@ -13,7 +13,8 @@ import { routes } from './showcases.routes';
 @Component({
   selector: 'app-showcases',
   standalone: true,
-  imports: [SplitScreenComponent, RouterOutlet, RouterLink],
+  imports: [SplitScreenComponent, RouterOutlet, RouterLink, TitleResolverPipe],
+  providers: [TitleResolverPipe],
   templateUrl: './showcases.component.html',
   styleUrl: './showcases.component.scss'
 })
@@ -25,7 +26,8 @@ export class ShowcasesComponent implements OnDestroy {
 
   constructor(
     private appService: AppService,
-    private router: Router
+    private router: Router,
+    private titleResolverPipe: TitleResolverPipe
   ) {
     this.router.events
       .pipe(
@@ -51,7 +53,7 @@ export class ShowcasesComponent implements OnDestroy {
         });
 
         if (config) {
-          this.title.set(getRouteTitle(config));
+          this.title.set(this.titleResolverPipe.transform(config));
         }
       });
   }

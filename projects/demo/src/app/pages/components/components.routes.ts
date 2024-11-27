@@ -1,6 +1,6 @@
-import { INavigationRoutes } from '@igo2/sdg';
+import { SdgRoutes } from '@igo2/sdg/core';
 
-export const routes: INavigationRoutes = [
+export const routes: SdgRoutes = [
   { path: '', redirectTo: '', pathMatch: 'full' },
   {
     path: '',

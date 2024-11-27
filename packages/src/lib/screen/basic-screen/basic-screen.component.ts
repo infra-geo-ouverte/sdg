@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { BreadcrumbsComponent } from '../../breadcrumb';
+import { BreadcrumbsWithRouterComponent } from '../../breadcrumb/breadcrumbs-with-router.component';
 
 @Component({
   selector: 'sdg-basic-screen',
   standalone: true,
-  imports: [BreadcrumbsComponent],
+  imports: [BreadcrumbsWithRouterComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './basic-screen.component.html',
   styleUrl: './basic-screen.component.scss'

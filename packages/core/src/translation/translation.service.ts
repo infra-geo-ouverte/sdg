@@ -10,6 +10,12 @@ export abstract class TranslationService {
   abstract get(
     key: string | string[],
     interpolateParams?: Record<string, unknown>
+  ): string;
+
+  abstract getAsync(
+    key: string | string[],
+    interpolateParams?: Record<string, unknown>
   ): Observable<string>;
+
   abstract setLanguage(lang: Language): void;
 }

@@ -2,5 +2,8 @@
   "about": "About",
   "header": {
     "contactUs": "Contact us"
+  },
+  "showcases": {
+    "alsoSee": "Also see"
   }
 }

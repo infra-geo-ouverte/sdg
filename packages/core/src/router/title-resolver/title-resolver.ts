@@ -8,7 +8,7 @@ import {
 } from '@angular/router';
 
 @Injectable()
-export abstract class TitleResolver<T> implements Resolve<T> {
+export abstract class TitleResolver<T = string> implements Resolve<T> {
   abstract resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot

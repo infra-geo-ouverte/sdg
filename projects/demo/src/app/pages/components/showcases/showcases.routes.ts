@@ -1,10 +1,15 @@
-import { INavigationRoutes } from '@igo2/sdg';
+import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg/core';
 
-export const routes: INavigationRoutes = [
+import { AppTitleResolver } from '../../../config/title-resolver';
+
+export const routes: SdgRoutes = [
   { path: '', redirectTo: 'breadcrumb', pathMatch: 'full' },
   {
     path: 'a-consulter-aussi',
-    title: 'À consulter aussi',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.alsoSee'
+    },
     loadComponent: () =>
       import('./consult/consult.component').then((m) => m.ConsultDemoComponent)
   },

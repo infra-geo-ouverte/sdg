@@ -1,12 +1,3 @@
-import { Route } from '@angular/router';
-
-export type INavigationRoutes = INavigationRoute[];
-
-export interface INavigationRoute extends Route {
-  /** Hidden in the primary tabs navigation */
-  hidden?: boolean;
-}
-
 export interface INavigationConfig {
   options?: INavigationOptions;
 }

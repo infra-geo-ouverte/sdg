@@ -24,8 +24,11 @@
       "@igo2/sdg": [
         "packages/src/public-api"
       ],
-      "@igo2/sdg/*": [
-        "packages/*/src/public-api"
+      "@igo2/sdg/core": [
+        "packages/core/src/public-api",
+      ],
+      "@igo2/sdg/geo": [
+        "packages/geo/src/public-api",
       ],
     }
   },

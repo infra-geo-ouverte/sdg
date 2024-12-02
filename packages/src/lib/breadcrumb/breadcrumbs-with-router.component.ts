@@ -4,10 +4,7 @@ import {
   OnDestroy,
   OnInit,
   Optional,
-  Signal,
-  computed,
-  input,
-  model
+  signal
 } from '@angular/core';
 import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
 
@@ -15,30 +12,35 @@ import { RouteTitleKey, TitleResolver, resolveTitle } from '@igo2/sdg/core';
 
 import { Subject, takeUntil } from 'rxjs';
 
-import { BreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
-import { BreadcrumbMenuComponent } from '../breadcrumb-menu/breadcrumb-menu.component';
-import {
-  AnyBreadcrumb,
-  Breadcrumb,
-  BreadcrumbMenu
-} from '../shared/breadcrumb.interface';
+import { BreadcrumbsBase } from './breadcrumbs-base';
+import { BreadcrumbsListComponent } from './breadcrumbs-list/breadcrumbs-list.component';
+import { Breadcrumb } from './shared/breadcrumb.interface';
 
 @Component({
-  selector: 'sdg-breadcrumbs',
+  selector: 'sdg-breadcrumbs-with-router',
   standalone: true,
-  imports: [BreadcrumbItemComponent, BreadcrumbMenuComponent, RouterModule],
+  imports: [RouterModule, BreadcrumbsListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  template: `
+    <sdg-breadcrumbs-list
+      [breadcrumbs]="breadcrumbsList()"
+      [isHandset]="isHandset()"
+    />
+  `,
+  styles: `
+    :host {
+      display: block;
+    }
+  `,
+  host: {
+    '[class.d-none]': '!hasBreadcrumbs()'
+  }
 })
-export class BreadcrumbsComponent implements OnInit, OnDestroy {
-  breadcrumbs = model<Breadcrumb[]>([]);
-  isHandset = input(false);
-
-  /** Analyze @angular/router hierarchy to determine the breadcrumbs  */
-  withRouter = input(false);
-
-  breadcrumbsList = this.getBreadcrumbs();
+export class BreadcrumbsWithRouterComponent
+  extends BreadcrumbsBase
+  implements OnInit, OnDestroy
+{
+  breadcrumbs = signal<Breadcrumb[]>([]);
 
   private _takeUntil = new Subject<boolean>();
 
@@ -47,50 +49,28 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
     private router: Router,
     @Optional()
     private titleResolver: TitleResolver
-  ) {}
+  ) {
+    super();
+  }
 
   ngOnInit(): void {
-    if (this.withRouter()) {
+    const breads = this.getBreadsFromRouterSegments();
+    this.breadcrumbs.set(breads);
+
+    this.router.events.pipe(takeUntil(this._takeUntil)).subscribe(() => {
       const breads = this.getBreadsFromRouterSegments();
       this.breadcrumbs.set(breads);
-
-      this.router.events.pipe(takeUntil(this._takeUntil)).subscribe(() => {
-        const breads = this.getBreadsFromRouterSegments();
-        this.breadcrumbs.set(breads);
-      });
-    }
+    });
   }
 
   ngOnDestroy(): void {
     this._takeUntil.next(true);
   }
 
-  isMenu(breadcrumb: AnyBreadcrumb): breadcrumb is BreadcrumbMenu {
-    return !!(breadcrumb as BreadcrumbMenu)?.menu;
-  }
-
   private getHomeRoute(): Route | undefined {
     return this.router.config
       .filter((route) => route.redirectTo == null)
       .find((route) => route.path === '');
-  }
-
-  private getBreadcrumbs(): Signal<AnyBreadcrumb[]> {
-    return computed(() => {
-      const breads = this.breadcrumbs();
-
-      if (this.isHandset()) {
-        return breads.length > 1 ? [breads.at(-2)!] : [];
-      } else if (breads.length >= 5) {
-        const menu: BreadcrumbMenu = {
-          id: 'menu',
-          menu: breads.slice(2, -2)
-        };
-        return [...breads.slice(0, 2), menu, ...breads.slice(-2)];
-      } else {
-        return breads;
-      }
-    });
   }
 
   private getBreadsFromRouterSegments(): Breadcrumb[] {

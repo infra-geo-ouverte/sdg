@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 
-import { Breadcrumb, BreadcrumbsComponent } from '@igo2/sdg';
+import {
+  Breadcrumb,
+  BreadcrumbsComponent,
+  BreadcrumbsWithRouterComponent
+} from '@igo2/sdg';
 
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
@@ -11,7 +15,8 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   imports: [
     ExampleViewerComponent,
     BreadcrumbsComponent,
-    ExternalLinkComponent
+    ExternalLinkComponent,
+    BreadcrumbsWithRouterComponent
   ],
   templateUrl: './breadcrumb.component.html',
   styleUrl: './breadcrumb.component.scss'

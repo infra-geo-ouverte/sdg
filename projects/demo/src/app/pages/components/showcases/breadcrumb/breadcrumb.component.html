@@ -14,23 +14,26 @@
 </p>
 <p>
   Deux types de fils d'Ariane sont disponibles: un premier qui utilise
-  l'autogénération basé sur le Router d'Angular et un second, manuel, où on peut
-  spécifier les éléments via l'input.
+  l'autogénération basé sur le Router d'Angular et un second, qui opte pour une
+  définition plus standard, où on peut spécifier les éléments via l'input.
 </p>
 
-<p>Pour utiliser l'autogénération, activer la propriété [withRouter]="true"</p>
+<p>
+  Pour utiliser l'autogénération, utiliser la variante de composante
+  BreadcrumbsWithRouterComponent
+</p>
 
 <app-example-viewer
   title="Fil d'Ariane avec Angular Router"
   configFolder="breadcrumb"
   codeFolder="breadcrumb"
 >
-  <sdg-breadcrumbs [withRouter]="true"></sdg-breadcrumbs>
+  <sdg-breadcrumbs-with-router />
 </app-example-viewer>
 <p>
   Pour référencer manuellement les éléments du fils, on utilise le input
-  [breadcrumbs]="YOUR_BREADCRUMBS". L'overflow via les ... est ajouté lorsqu'on
-  a 5 niveaux ou plus.
+  BreadcrumbsComponent. Cet exemple démontre l'utilisation avec un overflow via
+  les ... qui est ajouté lorsqu'on a 5 niveaux ou plus.
 </p>
 <app-example-viewer
   title="Fil d'Ariane manuel"

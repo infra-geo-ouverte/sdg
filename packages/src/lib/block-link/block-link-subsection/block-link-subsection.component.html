@@ -1,0 +1,5 @@
+@if (externalPath()) {
+  <a [href]="subsection().path" target="_blank">{{ subsection().title }}</a>
+} @else {
+  <a [routerLink]="subsection().path">{{ subsection().title }}</a>
+}

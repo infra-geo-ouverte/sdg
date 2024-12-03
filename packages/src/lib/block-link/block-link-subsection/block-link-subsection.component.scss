@@ -1,0 +1,11 @@
+@use '../../../../core/src/theme/colors';
+
+a {
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

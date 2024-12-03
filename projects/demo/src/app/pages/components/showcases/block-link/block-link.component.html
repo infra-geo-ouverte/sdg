@@ -1,0 +1,25 @@
+<p>
+  Le <b>lien en bloc</b> est un élément de navigation qui permet aux
+  utilisateurs de naviguer rapidement vers différentes sections d'une
+  application ou vers un site web externe. Le lien en bloc contient le titre de
+  la section à consulter ainsi que des informations complémentaires. Il peut
+  aussi contenir des liens vers des sous-sections.
+</p>
+
+<p>
+  Malgré que ce type de composant est utilisé au travers des sites
+  gouvernementaux, aucune spécification officielle n'est disponible pour le
+  moment.
+</p>
+
+<app-example-viewer
+  title="Lien en bloc"
+  configFolder="block-link"
+  codeFolder="block-link"
+>
+  <div class="block-links">
+    @for (section of sections; track section) {
+      <sdg-block-link [section]="section"></sdg-block-link>
+    }
+  </div>
+</app-example-viewer>

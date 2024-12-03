@@ -1,8 +1,8 @@
 import { Component, Signal } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
-import { BasicScreenComponent } from '@igo2/sdg';
-import { SdgRoutes, TitleResolverPipe } from '@igo2/sdg/core';
+import { BasicScreenComponent, BlockLinkComponent } from '@igo2/sdg';
+import { Section, Sections } from '@igo2/sdg';
+import { SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
 
 import { AppService } from '../../app.service';
 import { routes } from './showcases/showcases.routes';
@@ -10,16 +10,48 @@ import { routes } from './showcases/showcases.routes';
 @Component({
   selector: 'app-components',
   standalone: true,
-  imports: [BasicScreenComponent, RouterLink, TitleResolverPipe],
+  imports: [BasicScreenComponent, BlockLinkComponent],
+  providers: [TitleResolverPipe],
   templateUrl: './components.component.html',
   styleUrl: './components.component.scss'
 })
 export class ComponentsComponent {
-  routes: SdgRoutes = routes.filter((route) => route.redirectTo == null);
+  sections: Sections;
 
-  constructor(private appService: AppService) {}
+  constructor(
+    private appService: AppService,
+    private titleResolverPipe: TitleResolverPipe
+  ) {
+    this.sections = this.setSections();
+  }
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;
   }
+
+  private setSections(): Sections {
+    return routes
+      .filter((route) => isSection(route))
+      .map((section, sectionIndex) => {
+        const title = this.titleResolverPipe.transform(section);
+        if (!title) {
+          throw new Error(`Title not found for section ${sectionIndex}`);
+        }
+        return {
+          ...section,
+          title: title,
+          path: `/composantes/showcases/${section.path}`,
+          description: section.description
+        };
+      });
+  }
+}
+
+function isSection(route: SdgRoute): route is Section {
+  return !!(
+    route.title &&
+    route.description &&
+    route.path &&
+    !route.redirectTo
+  );
 }

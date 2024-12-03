@@ -1,11 +1,11 @@
 <sdg-basic-screen title="Composantes" [isHandset]="isHandset()">
-  <ul>
-    @for (route of routes; track route) {
-      <li>
-        <a [routerLink]="['showcases', route.path]">{{
-          route | titleResolver
-        }}</a>
-      </li>
+  <div class="block-links">
+    @for (section of sections; track section) {
+      <sdg-block-link
+        [class.--handset]="isHandset()"
+        [section]="section"
+        [isHandset]="isHandset()"
+      ></sdg-block-link>
     }
-  </ul>
+  </div>
 </sdg-basic-screen>

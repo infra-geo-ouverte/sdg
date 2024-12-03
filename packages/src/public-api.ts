@@ -4,6 +4,7 @@
 
 export * from './lib/alert';
 export * from './lib/anchor-menu';
+export * from './lib/block-link';
 export * from './lib/breadcrumb';
 export * from './lib/button';
 export * from './lib/contact';

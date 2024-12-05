@@ -1,47 +1,41 @@
-<div class="container">
-  <div class="row">
-    <div class="col-6 col-md-10 d-flex flex-wrap align-items-center">
-      <a class="logo" tabindex="5" routerLink="">
-        <img alt="Logo" [src]="logo().primary" />
+<div class="container" [class.--handset]="isHandset()">
+  <div class="header-content" [class.--handset]="isHandset()">
+    <div class="logo-title">
+      <a class="logo" href="https://www.quebec.ca/">
+        <img class="logo-image" alt="Logo" src="images/signature-PIV.svg" />
       </a>
-      @if (logo().print) {
-        <img
-          id="header-logo-print"
-          class="d-none"
-          alt="Logo"
-          [src]="logo().print"
-          width="199"
-          height="60"
-        />
+      @if (!isHandset()) {
+        <div class="title-container">
+          <h6>
+            <a class="title" [routerLink]="['/']">{{ title() }}</a>
+          </h6>
+        </div>
       }
-      <!-- d-none to show title on another row for mobile -->
-      <p class="header-title d-none d-md-block">
-        <a [routerLink]="options()?.titleRoute ?? '/'">{{ title() }}</a>
-      </p>
     </div>
-
-    @if (options() || contactUs()) {
-      <div class="col-6 col-md-2 d-flex justify-content-end zone-links">
-        <ul class="nav flex-column">
-          <li>
-            <ng-content select="sdg-headar-language"></ng-content>
-          </li>
-          @if (contactUs()) {
-            <li>
-              <a rel="noopener noreferrer" [routerLink]="contactUsRoute()"
-                >{{ contactUs() }}
-              </a>
-            </li>
-          }
-        </ul>
+    @if (languages() || contactUs()) {
+      <div class="options">
+        @if (languages()) {
+          <a
+            class="language"
+            tabindex="0"
+            (click)="changeLanguage(nextLanguage!.key)"
+            (keypress.enter)="changeLanguage(nextLanguage!.key)"
+            >{{ nextLanguage!.label }}
+          </a>
+        }
+        @if (contactUs()) {
+          <a class="contact-us" [routerLink]="contactUs()!.route">{{
+            contactUs()!.label
+          }}</a>
+        }
       </div>
     }
   </div>
-
-  <!-- Show title on another row for mobile -->
-  <div class="row d-md-none">
-    <p class="header-title col">
-      <a [routerLink]="options()?.titleRoute ?? '/'">{{ title() }}</a>
-    </p>
-  </div>
+  @if (isHandset()) {
+    <div class="title-container" [class.--handset]="isHandset()">
+      <h6>
+        <a class="title" [routerLink]="['/']">{{ title() }}</a>
+      </h6>
+    </div>
+  }
 </div>

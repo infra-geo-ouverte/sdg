@@ -19,13 +19,13 @@ export class BlockLinkDemoComponent {
   sections: Sections = [
     {
       title: 'Avis',
-      path: '/composantes/showcases/avis',
+      path: '/composants/showcases/avis',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
     {
       title: 'Pagination',
-      path: '/composantes/showcases/pagination',
+      path: '/composants/showcases/pagination',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },

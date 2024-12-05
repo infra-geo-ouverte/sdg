@@ -40,7 +40,7 @@ export class ComponentsComponent {
         return {
           ...section,
           title: title,
-          path: `/composantes/showcases/${section.path}`,
+          path: `/composants/showcases/${section.path}`,
           description: section.description
         };
       });

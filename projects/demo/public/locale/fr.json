@@ -1,9 +1,25 @@
 {
-  "about": "À propos",
+  
   "header": {
-    "contactUs": "Contactez-nous"
+    "contactUs": "Nous joindre"
+  },
+  "navigation": {
+    "about": "À propos",
+    "components": "Composants",
+    "guides": "Guides"
   },
   "showcases": {
-    "alsoSee": "À consulter aussi"
+    "alert": "Alerte",
+    "anchorMenu": "Menu d'ancres",
+    "blockLink": "Lien en bloc",
+    "button": "Bouton",
+    "breadcrumbs": "Fil d'Ariane",
+    "consult": "À consulter aussi",
+    "contact": "Coordonnées",
+    "header": "Bandeau d'en-tête du PIV",
+    "notice": "Avis",
+    "paginator": "Pagination",
+    "sequentialLinks": "Liens séquentiels",
+    "tile": "Tuile cliquable"
   }
 }

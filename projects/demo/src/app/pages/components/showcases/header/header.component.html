@@ -1,0 +1,30 @@
+<p>
+  <span
+    >Le
+    <b>Bandeau d'en-tête du Programme d'identification visuelle (PIV)</b> est le
+    premier élément visible dans le haut de chaque page. Il permet d'identifier
+    le site et d'indiquer que celui-ci est un site officiel du gouvernement du
+    Québec. Pour plus d'information, voir le
+  </span>
+  <span
+    ><app-external-link
+      title="Bandeau d'en-tête du Programme d'identification visuelle"
+      link="https://design.quebec.ca/design/modeles/bandeau-en-tete-piv"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Bandeau d'en-tête du Programme d'identification visuelle"
+  configFolder="header"
+  codeFolder="header"
+>
+  <sdg-header
+    [title]="config.title"
+    [contactUs]="config.header.contactUs"
+    [languages]="config.header.languages"
+    [currentLanguage]="currentLanguage()"
+    (languageChange)="handleLanguageChange($event)"
+    [isHandset]="isHandset()"
+  />
+</app-example-viewer>

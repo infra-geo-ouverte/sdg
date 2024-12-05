@@ -68,7 +68,7 @@ export class ContactDemoComponent {
     name: 'John Doe',
     phone: '418 555-1234',
     schedule: 'Du lundi au vendredi',
-    website: 'http://localhost:4200/composantes/showcases/coordonnees'
+    website: 'http://localhost:4200/composants/showcases/coordonnees'
   };
 
   constructor(private appService: AppService) {}

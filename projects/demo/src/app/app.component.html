@@ -1,15 +1,11 @@
 <sdg-header
   [title]="config.title"
-  [logo]="config.header.logo"
-  [options]="config.header.options"
-  [contactUs]="config.header.contactUs!.label | translate"
-  [contactUsRoute]="config.header.contactUs!.redirectionRoute"
+  [languages]="config.header.languages"
+  [currentLanguage]="currentLanguage()"
+  [contactUs]="config.header.contactUs"
+  [isHandset]="isHandset()"
+  (languageChange)="handleLanguageChange($event)"
 >
-  <sdg-headar-language
-    [options]="config.header.options!.language!"
-    [language]="language()"
-    (languageChange)="handleLanguageChange($event)"
-  ></sdg-headar-language>
 </sdg-header>
 
 <sdg-navigation

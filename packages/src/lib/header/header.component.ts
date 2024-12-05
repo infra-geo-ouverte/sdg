@@ -1,20 +1,40 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { IHeaderLogo, IHeaderOptions } from './header.interface';
+import {
+  IHeaderContactUs,
+  IHeaderLanguageChoice,
+  IHeaderLanguages
+} from './header.interface';
 
 @Component({
   selector: 'sdg-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [RouterLink]
+  imports: [RouterLink, MatButtonModule, MatIconModule]
 })
 export class HeaderComponent {
-  logo = input.required<IHeaderLogo>();
   title = input.required<string>();
-  options = input<IHeaderOptions>();
+  contactUs = input<IHeaderContactUs>();
+  languages = input<IHeaderLanguages>();
+  currentLanguage = input<string>();
+  isHandset = input.required<boolean>();
 
-  contactUs = input<string>();
-  contactUsRoute = input<string>();
+  languageChange = output<string>();
+
+  showSearch = false;
+
+  get nextLanguage(): IHeaderLanguageChoice | undefined {
+    // For now we have only two language
+    return this.languages()?.choices.find(
+      (language) => language.key !== this.currentLanguage()
+    );
+  }
+
+  changeLanguage(language: string): void {
+    this.languageChange.emit(language);
+  }
 }

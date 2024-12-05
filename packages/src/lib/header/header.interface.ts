@@ -1,27 +1,22 @@
 import { Language } from '@igo2/sdg/core';
 
 export interface IHeaderConfig {
-  logo: IHeaderLogo;
-  options?: IHeaderOptions;
   contactUs?: IHeaderContactUs;
+  languages?: IHeaderLanguages;
 }
 
 export interface IHeaderLogo {
   primary: string;
   print?: string;
-}
-
-export interface IHeaderOptions {
-  titleRoute?: string;
-  language?: IHeaderLanguage;
+  url: string;
 }
 
 export interface IHeaderContactUs {
   label: string;
-  redirectionRoute: string;
+  route: string;
 }
 
-export interface IHeaderLanguage {
+export interface IHeaderLanguages {
   /** For now, we take only two language */
   choices: [IHeaderLanguageChoice, IHeaderLanguageChoice];
   default: Language;

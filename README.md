@@ -29,7 +29,7 @@ Installer la librairie:
 npm install @igo2/sdg --save
 ```
 
-La majorité des composantes sont accessible au premier niveau d'importation:
+La majorité des composants sont accessible au premier niveau d'importation:
 ```
 import { YOUR_IMPORT_NAME } from "@igo2/sdg"
 ```
@@ -58,7 +58,7 @@ import { YOUR_IMPORT_NAME } from "@igo2/sdg/geo"
 1. Prendre/assigner une sous-tâche Github en priorité avant une nouvelle story.
 2. Mettre cette sous-tâche/story en « In Progress ».
 3. Ensuite:
-   1. Si nouvelle story, faire un kickoff technique avec le tech lead, l’architecte associé et désigneur si nécessaire.
+   1. Si nouvelle story, faire un kickoff technique avec le tech lead, l'architecte associé et désigneur si nécessaire.
    2. Pour une sous-tâche, simplement aviser la personne associée à la story liée.
 4. Faire ce qui est demandé dans la story/sous-tâche.
 5. Créer une PR sur Github avec une description la plus claire possible avec des screenshots/vidéos si changement visuel.

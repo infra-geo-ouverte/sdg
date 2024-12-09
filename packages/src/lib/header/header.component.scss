@@ -1,82 +1,100 @@
-@use 'sass:map';
-@use '../../../core/src/layout';
 @use '../../../core/src/theme/colors';
-@use '../../../core/src/theme/palettes';
+@use '../../../core/src/typography/typography';
 
-$height: 72px;
-:host {
-  display: block;
+:host,
+.container {
   background-color: colors.$blue-piv;
-  max-height: $height;
-
-  ::ng-deep a,
-  p {
-    font-weight: normal;
-    color: colors.$white;
-  }
-
-  ::ng-deep a {
-    font-size: 14px;
-    text-decoration: none;
-
-    &:focus,
-    &:hover,
-    &:visited {
-      text-decoration: underline;
-      color: colors.$white;
-    }
-  }
 }
 
-@include layout.breakpoint-down(mobile) {
-  p {
-    margin-bottom: 12px;
-  }
+.container {
+  display: flex;
+  flex-flow: column;
 }
 
-.zone-links {
-  align-items: center;
-
-  ul {
-    text-align: left;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-
-    a {
-      &:hover,
-      &:focus {
-        text-decoration: underline;
-        cursor: pointer;
-      }
-      font-family: 'Roboto', sans-serif;
-    }
-  }
-}
-
-.header-title {
-  margin: 0 0 0 60px;
-
-  @include layout.breakpoint-down(md, layout.$breakpoint-container) {
-    margin: 0 0 12px 0;
-  }
-}
-
-ul li:last-child {
-  padding: 0;
-}
-
+.header-content,
+.logo-title,
 .logo {
-  img {
-    display: block;
-    width: 200px;
-    max-width: 20rem;
-    max-height: $height;
-    height: $height;
+  display: flex;
+  align-items: center;
+}
 
-    @include layout.breakpoint-down(mobile) {
-      max-width: min(100%, 20rem);
+.header-content {
+  min-height: 72px;
+
+  .logo-title {
+    flex-grow: 1;
+
+    .logo-image {
+      width: 200px;
+
+      &.--handset {
+        width: 175px;
+      }
+    }
+
+    &:not(.--handset) {
+      column-gap: 64px;
     }
   }
+
+  &:not(.--handset) {
+    column-gap: 40px;
+  }
+
+  &.--handset {
+    justify-content: space-between;
+  }
+}
+
+.options {
+  display: flex;
+  flex-flow: column;
+}
+
+.language,
+.contact-us {
+  font-family: typography.$font-family-title; // override font family to title
+  line-height: 20px;
+  color: colors.$white;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.title-container {
+  overflow: hidden;
+
+  h6 {
+    font-weight: normal !important;
+    margin: 0 !important;
+
+    .title {
+      color: colors.$white;
+      text-decoration: none;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &:not(.--handset) {
+    margin: 16px 0;
+  }
+
+  &.--handset {
+    margin-bottom: 16px;
+  }
+}
+
+.language,
+.contact-us {
+  font-size: 12px;
+  white-space: nowrap;
 }

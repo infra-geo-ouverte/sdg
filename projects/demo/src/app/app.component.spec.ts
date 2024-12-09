@@ -29,7 +29,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const app = fixture.componentInstance;
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.header-title')?.textContent).toContain(
+    expect(compiled.querySelector('.title')?.textContent).toContain(
       app.config.title
     );
   });

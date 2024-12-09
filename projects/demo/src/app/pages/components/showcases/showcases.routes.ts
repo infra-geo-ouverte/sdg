@@ -8,16 +8,19 @@ export const routes: SdgRoutes = [
     path: 'a-consulter-aussi',
     title: AppTitleResolver,
     data: {
-      [RouteTranslateKey]: 'showcases.alsoSee'
+      [RouteTranslateKey]: 'showcases.consult'
     },
     description:
-      'Le bloc À consulter aussi propose des éléments d’information qui complètent le contenu principal.',
+      "Le bloc À consulter aussi propose des éléments d'information qui complètent le contenu principal.",
     loadComponent: () =>
       import('./consult/consult.component').then((m) => m.ConsultDemoComponent)
   },
   {
     path: 'alerte',
-    title: 'Alerte',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.alert'
+    },
     description:
       "L'alerte générale sert aux avertissements et messages de haute importance qui touchent l'ensemble de la population ou la grande majorité.",
     loadComponent: () =>
@@ -25,15 +28,32 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'avis',
-    title: 'Avis',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.notice'
+    },
     description:
-      'Les avis sont des messages contextuels qui peuvent s’afficher sur une page ou sur plusieurs pages d’un même sujet.',
+      "Les avis sont des messages contextuels qui peuvent s'afficher sur une page ou sur plusieurs pages d'un même sujet.",
     loadComponent: () =>
       import('./notice/notice.component').then((m) => m.NoticeDemoComponent)
   },
   {
+    path: 'bandeau-piv',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.header'
+    },
+    description:
+      "Le Bandeau d'en-tête du Programme d'identification visuelle (PIV) est le premier élément visible dans le haut de chaque page. Il permet d'identifier le site et d'indiquer que celui-ci est un site officiel du gouvernement du Québec.",
+    loadComponent: () =>
+      import('./header/header.component').then((m) => m.HeaderDemoComponent)
+  },
+  {
     path: 'bouton',
-    title: 'Bouton',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.button'
+    },
     description:
       'Les boutons indiquent les actions qui peuvent être exécutées sur une page.',
     loadComponent: () =>
@@ -41,17 +61,23 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'coordonnees',
-    title: 'Coordonnées',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.contact'
+    },
     description:
-      'Le bloc de coordonnées sert à présenter des informations de contact telles que le numéro de téléphone, l’adresse, le courriel et les heures d’ouverture d’un lieu ou d’un service.',
+      "Le bloc de coordonnées sert à présenter des informations de contact telles que le numéro de téléphone, l'adresse, le courriel et les heures d'ouverture d'un lieu ou d'un service.",
     loadComponent: () =>
       import('./contact/contact.component').then((m) => m.ContactDemoComponent)
   },
   {
     path: 'fil-ariane',
-    title: "Fil d'Ariane",
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.breadcrumbs'
+    },
     description:
-      'Le fil d’Ariane permet de se situer dans la structure d’un site.',
+      "Le fil d'Ariane permet de se situer dans la structure d'un site.",
     loadComponent: () =>
       import('./breadcrumb/breadcrumb.component').then(
         (m) => m.BreadcrumbDemoComponent
@@ -59,7 +85,10 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'liens-sequentiels',
-    title: 'Liens séquentiels',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.sequentialLinks'
+    },
     description:
       'Les liens séquentiels sont des liens permettant de naviguer vers une page de contenu suivante ou précédente.',
     loadComponent: () =>
@@ -69,7 +98,10 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'lien-en-bloc',
-    title: 'Lien en bloc',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.blockLink'
+    },
     description:
       "Le lien en bloc est un élément de navigation qui permet aux utilisateurs de naviguer rapidement vers différentes sections d'une application ou vers un site web externe.",
     loadComponent: () =>
@@ -79,9 +111,12 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'menu-ancres',
-    title: "Menu d'ancres",
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.anchorMenu'
+    },
     description:
-      'Le menu d’ancres est un élément de navigation interne qui permet aux utilisateurs de naviguer rapidement vers différentes sections d’une page Web.',
+      "Le menu d'ancres est un élément de navigation interne qui permet aux utilisateurs de naviguer rapidement vers différentes sections d'une page Web.",
     loadComponent: () =>
       import('./anchor-menu/anchor-menu.component').then(
         (m) => m.AnchorMenuDemoComponent
@@ -89,7 +124,10 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'pagination',
-    title: 'Pagination',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.paginator'
+    },
     description:
       'La pagination, en divisant le contenu en pages, simplifie la gestion des données volumineuses tout en facilitant la navigation.',
     loadComponent: () =>
@@ -99,7 +137,10 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'tuile',
-    title: 'Tuile',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.tile'
+    },
     description:
       'Les tuiles cliquables sont des éléments de navigation mis en évidence.',
     loadComponent: () =>

@@ -5,11 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
 import { IgoLanguageModule } from '@igo2/core/language';
-import {
-  HeadarLanguageComponent,
-  HeaderComponent,
-  NavigationComponent
-} from '@igo2/sdg';
+import { HeaderComponent, NavigationComponent } from '@igo2/sdg';
 import { Language, TranslationService } from '@igo2/sdg/core';
 import { DomUtils } from '@igo2/utils';
 
@@ -26,7 +22,6 @@ import { AppService } from './app.service';
   imports: [
     NavigationComponent,
     HeaderComponent,
-    HeadarLanguageComponent,
     RouterOutlet,
     MatButtonModule,
     MatIconModule,
@@ -44,13 +39,18 @@ export class AppComponent implements OnInit {
     private router: Router,
     private appService: AppService,
     private translationService: TranslationService
-  ) {}
+  ) {
+    if (environment.header.contactUs) {
+      environment.header.contactUs.label =
+        this.translationService.get('header.contactUs');
+    }
+  }
 
   get isHandset(): Signal<boolean> {
     return this.appService.isHandset;
   }
 
-  get language() {
+  get currentLanguage() {
     return this.translationService.lang;
   }
 

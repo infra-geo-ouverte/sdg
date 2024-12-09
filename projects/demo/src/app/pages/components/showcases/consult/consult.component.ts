@@ -20,12 +20,12 @@ export class ConsultDemoComponent {
       url: '/'
     },
     {
-      text: 'Composantes',
-      url: '/composantes'
+      text: 'Composants',
+      url: '/composants'
     },
     {
       text: 'Alerte',
-      url: '/composantes/showcases/alerte'
+      url: '/composants/showcases/alerte'
     }
   ];
 

@@ -1,9 +1,25 @@
 {
-  "about": "About",
+  
   "header": {
     "contactUs": "Contact us"
   },
+  "navigation": {
+    "about": "About",
+    "components": "Components",
+    "guides": "Guides"
+  },
   "showcases": {
-    "alsoSee": "Also see"
+    "alert": "Alert",
+    "anchorMenu": "Anchor menu",
+    "blockLink": "Block link",
+    "button": "Button",
+    "breadcrumbs": "Breadcrumbs",
+    "consult": "Consult",
+    "contact": "Contact",
+    "header": "Header",
+    "notice": "Notice",
+    "paginator": "Paginator",
+    "sequentialLinks": "Sequential Links",
+    "tile": "Clickable tile"
   }
 }

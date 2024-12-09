@@ -7,19 +7,21 @@ export const routes: SdgRoutes = [
   {
     path: '',
     title: AppTitleResolver,
-    data: { [RouteTranslateKey]: 'about' },
+    data: { [RouteTranslateKey]: 'navigation.about' },
     loadComponent: () =>
       import('./pages/about/about.component').then((m) => m.AboutComponent)
   },
   {
-    path: 'composantes',
-    title: 'Composantes',
+    path: 'composants',
+    title: AppTitleResolver,
+    data: { [RouteTranslateKey]: 'navigation.components' },
     loadChildren: () =>
       import('./pages/components/components.routes').then((m) => m.routes)
   },
   {
     path: 'guides',
-    title: 'Guides',
+    title: AppTitleResolver,
+    data: { [RouteTranslateKey]: 'navigation.guides' },
     loadComponent: () =>
       import('./pages/guides/guides.component').then((m) => m.GuidesComponent)
   },

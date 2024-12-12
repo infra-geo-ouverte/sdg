@@ -3,7 +3,7 @@
     <div
       #headerRow
       class="sdg-navigation-header-row"
-      [class.--two-lines]="hasHandsetOverflow()"
+      [class.--two-lines]="hasActions() && hasHandsetOverflow()"
     >
       <div #tabsSection class="sdg-navigation-tab-panel">
         <nav

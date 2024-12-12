@@ -111,7 +111,6 @@ $mobileRowHeight: 40px;
     letter-spacing: 0;
     font-size: 18px;
     line-height: 28px;
-    --mdc-filled-button-container-height: #{$mobileRowHeight};
 
     mat-icon {
       $size: 18px;
@@ -130,12 +129,6 @@ $mobileRowHeight: 40px;
         opacity: 1;
       }
     }
-
-    @include layout.breakpoint-down(mobile) {
-      --mdc-filled-button-container-height: 24px;
-      font-size: 14px;
-      line-height: 20px;
-    }
   }
 
   &-more-links {
@@ -151,6 +144,17 @@ $mobileRowHeight: 40px;
       mat-icon {
         margin-left: 4px;
       }
+    }
+  }
+
+  &-tab-link,
+  &-more-links {
+    --mdc-filled-button-container-height: 40px;
+
+    @include layout.breakpoint-down(mobile) {
+      --mdc-filled-button-container-height: 24px;
+      font-size: 14px;
+      line-height: 20px;
     }
   }
 

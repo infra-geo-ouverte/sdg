@@ -58,6 +58,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   linksInMore = signal<INavigationLinks>([]);
   hasOverflow = signal(false);
   hasHandsetOverflow = signal(false);
+  hasActions = signal(false);
   isHandset: Signal<boolean>;
 
   readonly links = input.required<INavigationLinks>();
@@ -96,6 +97,10 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
       this.detectHandsetOverflow();
       this.handleResize();
     });
+
+    this.hasActions.set(
+      !!this.actionsSection()?.nativeElement.childElementCount
+    );
   }
 
   ngOnDestroy(): void {

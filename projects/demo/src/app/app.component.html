@@ -9,10 +9,14 @@
 </sdg-header>
 
 <sdg-navigation
-  class="d-flex flex-column flex-fill"
-  [links]="routes"
-  [isHandset]="isHandset()"
+  [links]="links"
   [options]="config.navigation?.options"
+  headerContainerClass="container"
 >
+  <div navigation-actions>
+    <button mat-icon-button>
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
   <router-outlet></router-outlet>
 </sdg-navigation>

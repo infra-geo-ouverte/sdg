@@ -1,6 +1,9 @@
-export interface INavigationConfig {
-  options?: INavigationOptions;
-}
+import { SdgRoute } from '@igo2/sdg/core';
+
+export type INavigationLinks = INavigationLink[];
+
+export type INavigationLink = Required<Pick<SdgRoute, 'title' | 'path'>> &
+  Pick<SdgRoute, 'data'>;
 
 export interface INavigationOptions {
   title?: INavigationTitleOptions;

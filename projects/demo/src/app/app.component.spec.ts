@@ -21,7 +21,7 @@ describe('AppComponent', () => {
   it(`should have the routes defined`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.routes).toBeDefined();
+    expect(app.links).toBeDefined();
   });
 
   it('should render title', () => {

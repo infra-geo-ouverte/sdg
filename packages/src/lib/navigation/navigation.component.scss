@@ -3,55 +3,158 @@
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/theme/palettes';
 
-.navigation-header {
-  background-color: colors.$blue-dark;
-}
+$desktopRowHeight: 72px;
+$mobileRowHeight: 40px;
 
-.row {
-  min-height: 72px;
+.sdg-navigation {
+  &-header {
+    color: white;
+    background-color: colors.$blue-medium;
+    width: 100%;
 
-  @include layout.breakpoint-down(mobile) {
-    min-height: 40px;
-  }
-}
-
-.nav-link {
-  letter-spacing: 0;
-  font-size: 18px;
-  line-height: 28px;
-
-  &.active {
-    font-weight: bold;
-  }
-
-  @include layout.breakpoint-down(mobile) {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-
-.navigation-actions {
-  margin-bottom: 4px;
-
-  @include layout.breakpoint-down(mobile) {
-    margin-bottom: 0;
-  }
-
-  ::ng-deep {
-    button {
-      margin-left: 24px;
+    &-container {
+      padding: 0 16px;
 
       @include layout.breakpoint-down(mobile) {
-        margin-left: 16px;
+        padding: 0 8px;
       }
     }
 
-    .mat-mdc-icon-button {
-      margin-left: 4px;
+    &-row {
+      display: flex;
+      align-items: center;
+      min-height: $desktopRowHeight;
+      height: $desktopRowHeight;
+
+      &.--two-lines {
+        flex-direction: column-reverse;
+
+        > * {
+          height: $mobileRowHeight;
+        }
+
+        .sdg-navigation-header-actions {
+          align-self: flex-end;
+        }
+      }
+
+      @include layout.breakpoint-down(mobile) {
+        height: fit-content;
+        min-height: $mobileRowHeight;
+      }
+    }
+
+    &-actions {
+      @include layout.breakpoint-down(mobile) {
+        margin-bottom: 0;
+      }
+
+      ::ng-deep {
+        button {
+          margin-left: 24px;
+
+          @include layout.breakpoint-down(mobile) {
+            margin-left: 16px;
+          }
+        }
+
+        .mat-mdc-icon-button {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    .mdc-tab {
+      --mdc-secondary-navigation-tab-container-height: #{$desktopRowHeight};
+
+      min-width: fit-content;
+      padding-left: 8px;
+      padding-right: 8px;
+
+      @include layout.breakpoint-down(mobile) {
+        --mdc-secondary-navigation-tab-container-height: #{$mobileRowHeight};
+        padding-left: 4px;
+        padding-right: 4px;
+      }
+    }
+
+    ::ng-deep .mat-mdc-tab-links {
+      align-items: center;
+
+      & > * {
+        margin-left: 8px;
+        margin-right: 8px;
+
+        @include layout.breakpoint-down(mobile) {
+          margin-left: 4px;
+          margin-right: 4px;
+        }
+      }
     }
   }
-}
 
-button.more-links {
-  margin-left: 16px;
+  &-tab-panel {
+    flex-grow: 1;
+    overflow: hidden;
+    align-self: flex-end;
+    height: inherit;
+
+    @include layout.breakpoint-down(mobile) {
+      width: 100%;
+      flex-grow: unset;
+      height: fit-content;
+      min-height: $mobileRowHeight;
+    }
+  }
+
+  &-tab-link {
+    letter-spacing: 0;
+    font-size: 18px;
+    line-height: 28px;
+    --mdc-filled-button-container-height: #{$mobileRowHeight};
+
+    mat-icon {
+      $size: 18px;
+      height: $size;
+      width: $size;
+      font-size: $size;
+    }
+
+    &.active {
+      font-weight: bold;
+    }
+
+    &:hover {
+      ::ng-deep .mdc-tab-indicator__content--underline {
+        height: 3px;
+        opacity: 1;
+      }
+    }
+
+    @include layout.breakpoint-down(mobile) {
+      --mdc-filled-button-container-height: 24px;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  &-more-links {
+    padding: 0 8px;
+    min-width: fit-content !important;
+    background-color: colors.$blue-pale !important;
+    color: colors.$blue-piv !important;
+
+    &-container {
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  &-content {
+    flex: 1 1 auto !important;
+  }
 }

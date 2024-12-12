@@ -4,8 +4,7 @@ import { Injectable, signal } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
-  /** @deprecated use the BreakpointService instead */
+export class BreakpointService {
   isHandset = signal(false);
 
   constructor(private breakpointObserver: BreakpointObserver) {

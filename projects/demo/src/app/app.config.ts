@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 
 import { provideIcon } from '@igo2/common/icon';
+import { provideNavigationTitle } from '@igo2/sdg';
 import {
   provideTranslation,
   withIgo2Translation,
@@ -28,6 +29,10 @@ export const appConfig: ApplicationConfig = {
       withIgo2Translation(environment.language!, AppTranslationService),
       withRouterTitleResolver(AppTitleResolver)
     ),
+    provideNavigationTitle({
+      separator: '·',
+      suffix: 'Démo SDG'
+    }),
     provideIcon()
   ]
 };

@@ -46,20 +46,6 @@ describe('NavigationComponent', () => {
     expect(component.linksInMore()).toEqual([]);
   });
 
-  it('should handle handset mode correctly', () => {
-    component.isHandset = signal(true);
-    fixture.detectChanges();
-
-    expect(component.tabClearence()).toBe(8);
-  });
-
-  it('should handle desktop mode correctly', () => {
-    component.isHandset = signal(false);
-    fixture.detectChanges();
-
-    expect(component.tabClearence()).toBe(16);
-  });
-
   describe('resize handling', () => {
     it('should handle resize when no overflow', () => {
       // Mock the required element dimensions

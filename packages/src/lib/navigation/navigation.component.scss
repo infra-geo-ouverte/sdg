@@ -1,4 +1,5 @@
 @use 'sass:map';
+@use 'sass:math';
 @use '../../../core/src/layout';
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/theme/palettes';
@@ -6,9 +7,13 @@
 $desktopRowHeight: 72px;
 $mobileRowHeight: 40px;
 
+:host {
+  display: block; // add default display to be sure that the host resize listener will work
+}
+
 .sdg-navigation {
   &-header {
-    color: white;
+    color: colors.$white;
     background-color: colors.$blue-medium;
     width: 100%;
 
@@ -64,40 +69,46 @@ $mobileRowHeight: 40px;
       }
     }
 
+    --tab-inner-spacing: 16px;
+
+    @include layout.breakpoint-down(mobile) {
+      --tab-inner-spacing: 8px;
+    }
+
     .mdc-tab {
       --mdc-secondary-navigation-tab-container-height: #{$desktopRowHeight};
 
       min-width: fit-content;
-      padding-left: 8px;
-      padding-right: 8px;
+      padding: 0 calc(var(--tab-inner-spacing) / 2);
+
+      &:hover {
+        --mat-tab-header-active-ripple-color: none;
+        --mat-tab-header-inactive-ripple-color: none;
+      }
 
       @include layout.breakpoint-down(mobile) {
         --mdc-secondary-navigation-tab-container-height: #{$mobileRowHeight};
-        padding-left: 4px;
-        padding-right: 4px;
       }
     }
 
     ::ng-deep .mat-mdc-tab-links {
       align-items: center;
 
-      & > * {
-        margin-left: 8px;
-        margin-right: 8px;
+      .mdc-tab__content {
+        padding: 0 var(--tab-inner-spacing);
+      }
 
-        @include layout.breakpoint-down(mobile) {
-          margin-left: 4px;
-          margin-right: 4px;
-        }
+      .mdc-tab-indicator__content {
+        width: calc(100% - var(--tab-inner-spacing)) !important;
       }
     }
   }
 
   &-tab-panel {
     flex-grow: 1;
-    overflow: hidden;
     align-self: flex-end;
     height: inherit;
+    max-width: 100%;
 
     @include layout.breakpoint-down(mobile) {
       width: 100%;
@@ -111,15 +122,9 @@ $mobileRowHeight: 40px;
     letter-spacing: 0;
     font-size: 18px;
     line-height: 28px;
+    font-weight: 500; // The spec said 600 but for now we like this actual font-weight
 
-    mat-icon {
-      $size: 18px;
-      height: $size;
-      width: $size;
-      font-size: $size;
-    }
-
-    &.active {
+    &.--active {
       font-weight: bold;
     }
 
@@ -132,10 +137,18 @@ $mobileRowHeight: 40px;
   }
 
   &-more-links {
-    padding: 0 8px;
+    padding: 0 calc(var(--tab-inner-spacing) / 2);
     min-width: fit-content !important;
     background-color: colors.$blue-pale !important;
     color: colors.$blue-piv !important;
+    margin-left: calc(var(--tab-inner-spacing) / 2);
+
+    mat-icon {
+      $size: 18px;
+      height: $size;
+      width: $size;
+      font-size: $size;
+    }
 
     &-container {
       display: flex;
@@ -153,8 +166,8 @@ $mobileRowHeight: 40px;
 
     @include layout.breakpoint-down(mobile) {
       --mdc-filled-button-container-height: 24px;
-      font-size: 14px;
-      line-height: 20px;
+      font-size: 13px !important;
+      line-height: 16px !important;
     }
   }
 

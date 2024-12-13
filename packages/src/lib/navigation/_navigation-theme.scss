@@ -1,7 +1,9 @@
 @use 'sass:map';
+@use 'sass:math';
 @use '@angular/material' as mat;
 @use '../../../core/src/theme/theme';
 @use '../../../core/src/theme/palettes';
+@use '../../../core/src/theme/colors';
 @use '../../../core/src/layout';
 
 @mixin theme($theme) {
@@ -21,7 +23,7 @@
       }
 
       .mdc-tab-indicator__content--underline {
-        border-color: rgba(255, 255, 255, 0.5) !important;
+        border-color: colors.$blue-pale !important;
       }
     }
   }

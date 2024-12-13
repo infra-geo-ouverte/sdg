@@ -26,11 +26,7 @@ import {
 
 import { Observable, Subject, filter, shareReplay, takeUntil } from 'rxjs';
 
-import {
-  INavigationLink,
-  INavigationLinks,
-  INavigationOptions
-} from './navigation.interface';
+import { INavigationLink, INavigationLinks } from './navigation.interface';
 
 const TABS_MIN_DISPLAYED = 2 as const;
 
@@ -62,10 +58,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   isHandset: Signal<boolean>;
 
   readonly links = input.required<INavigationLinks>();
-  readonly options = input<INavigationOptions>();
   readonly headerContainerClass = input<string>();
-
-  readonly tabClearence = computed(() => (this.isHandset() ? 8 : 16));
 
   private headerRow = viewChild<ElementRef<HTMLElement>>('headerRow');
   private tabsSection = viewChild<ElementRef<HTMLElement>>('tabsSection');
@@ -132,10 +125,10 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     if (!tabsSection) {
       return;
     }
-    const tabsSectionWidth = tabsSection.nativeElement.clientWidth;
 
-    const tabClearence = this.tabClearence();
-    const maxWidth = tabsSectionWidth - (72 + tabClearence);
+    const tabClearence = this.isHandset() ? 4 : 8;
+    const moreButtonWidth = (this.isHandset() ? 58 : 72) + tabClearence;
+    const maxWidth = tabsSection.nativeElement.clientWidth - moreButtonWidth;
     const tabsLinks = this.tabsLinks();
     const links = this.links();
 
@@ -150,7 +143,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
       const element = tabsLinks[index]?.elementRef.nativeElement as HTMLElement;
       const elementWidth = element?.clientWidth ?? this.estimateLinkWidth(link);
 
-      accWidth += elementWidth + tabClearence;
+      accWidth += elementWidth;
       if (accWidth > maxWidth) {
         break;
       }
@@ -197,13 +190,12 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private getTabsItemsWidth(): number {
     const tabsLinks = this.tabsLinks();
-    const tabClearence = this.tabClearence();
 
     return this.links().reduce((accWidth, link, index) => {
       const element = tabsLinks[index]?.elementRef.nativeElement as HTMLElement;
       const elementWidth = element?.clientWidth ?? this.estimateLinkWidth(link);
 
-      accWidth += elementWidth + tabClearence;
+      accWidth += elementWidth;
       return accWidth;
     }, 0);
   }

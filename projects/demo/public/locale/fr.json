@@ -1,5 +1,5 @@
 {
-  
+
   "header": {
     "contactUs": "Nous joindre"
   },
@@ -17,6 +17,7 @@
     "consult": "À consulter aussi",
     "contact": "Coordonnées",
     "header": "Bandeau d'en-tête du PIV",
+    "navigation": "Menu de navigation principale",
     "notice": "Avis",
     "paginator": "Pagination",
     "sequentialLinks": "Liens séquentiels",

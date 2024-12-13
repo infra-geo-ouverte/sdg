@@ -123,6 +123,19 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'navigation',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.navigation'
+    },
+    description:
+      'La pagination, en divisant le contenu en pages, simplifie la gestion des données volumineuses tout en facilitant la navigation.',
+    loadComponent: () =>
+      import('./navigation/navigation.component').then(
+        (m) => m.NavigationDemoComponent
+      )
+  },
+  {
     path: 'pagination',
     title: AppTitleResolver,
     data: {

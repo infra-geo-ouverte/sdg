@@ -1,0 +1,35 @@
+<p>
+  <span
+    >Le <b>menu de navigation principale</b> est un élément essentiel pour une
+    navigation fluide et intuitive sur un site Web ou une application.
+  </span>
+  <span
+    ><app-external-link
+      title="Menu de navigation principale"
+      link="https://design.quebec.ca/design/modeles/menu-navigation-principale"
+  /></span>
+  <span> du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  À noter que l'implémentation est partiel, les premières sections ont été
+  faits, la Conceptualisation et les éléments de navigations. Pour les autres
+  spécification comme les sous-menu et les mégamenus, ils restent à faire.
+</p>
+
+<app-example-viewer title="Navigation" configFolder="alert" codeFolder="alert">
+  <sdg-navigation [links]="mockLinks" headerContainerClass="container">
+  </sdg-navigation>
+</app-example-viewer>
+
+<app-example-viewer
+  title="Navigation with overflow"
+  configFolder="alert"
+  codeFolder="alert"
+>
+  <sdg-navigation
+    [links]="mockLinksForOverflow"
+    headerContainerClass="container"
+  >
+  </sdg-navigation>
+</app-example-viewer>

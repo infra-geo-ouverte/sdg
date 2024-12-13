@@ -8,15 +8,6 @@
 >
 </sdg-header>
 
-<sdg-navigation
-  [links]="links"
-  [options]="config.navigation?.options"
-  headerContainerClass="container"
->
-  <div navigation-actions>
-    <button mat-icon-button>
-      <mat-icon>add</mat-icon>
-    </button>
-  </div>
+<sdg-navigation [links]="links" headerContainerClass="container">
   <router-outlet></router-outlet>
 </sdg-navigation>

@@ -1,5 +1,5 @@
 {
-  
+
   "header": {
     "contactUs": "Contact us"
   },
@@ -17,6 +17,7 @@
     "consult": "Consult",
     "contact": "Contact",
     "header": "Header",
+    "navigation": "Main navigation menu",
     "notice": "Notice",
     "paginator": "Paginator",
     "sequentialLinks": "Sequential Links",

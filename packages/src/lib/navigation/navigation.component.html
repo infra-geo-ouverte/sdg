@@ -26,28 +26,38 @@
             </a>
           }
           @if (linksInMore() && linksInMore().length) {
-            <button
-              mat-flat-button
-              [matMenuTriggerFor]="menu"
+            <a
+              mat-tab-link
               class="sdg-navigation-more-links"
+              tabindex="0"
+              (keydown)="(undefined)"
+              (keyup)="(undefined)"
+              (click)="buttonMoreLink._elementRef.nativeElement.click()"
             >
-              <div class="sdg-navigation-more-links-container">
-                Plus
-                <mat-icon>keyboard_arrow_down</mat-icon>
-              </div>
-            </button>
-            <mat-menu #menu="matMenu">
-              @for (moreLink of linksInMore(); track moreLink) {
-                <a
-                  mat-menu-item
-                  [routerLink]="moreLink.path"
-                  routerLinkActive="active"
-                  [routerLinkActiveOptions]="{ exact: moreLink.path === '' }"
-                  #rla="routerLinkActive"
-                  >{{ moreLink | titleResolver }}</a
-                >
-              }
-            </mat-menu>
+              <button
+                #buttonMoreLink
+                mat-flat-button
+                [matMenuTriggerFor]="menu"
+                (click)="$event.stopImmediatePropagation()"
+              >
+                <div class="sdg-navigation-more-links-container">
+                  Plus
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </div>
+              </button>
+              <mat-menu #menu="matMenu">
+                @for (moreLink of linksInMore(); track moreLink) {
+                  <a
+                    mat-menu-item
+                    [routerLink]="moreLink.path"
+                    routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: moreLink.path === '' }"
+                    #rla="routerLinkActive"
+                    >{{ moreLink | titleResolver }}</a
+                  >
+                }
+              </mat-menu>
+            </a>
           }
         </nav>
       </div>

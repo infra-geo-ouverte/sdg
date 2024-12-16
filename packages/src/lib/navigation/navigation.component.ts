@@ -126,7 +126,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     const tabClearence = this.isHandset() ? 4 : 8;
-    const moreButtonWidth = (this.isHandset() ? 58 : 72) + tabClearence;
+    const moreButtonWidth = (this.isHandset() ? 80 : 104) + tabClearence;
     const maxWidth = tabsSection.nativeElement.clientWidth - moreButtonWidth;
     const tabsLinks = this.tabsLinks();
     const links = this.links();

@@ -129,7 +129,7 @@ export const routes: SdgRoutes = [
       [RouteTranslateKey]: 'showcases.navigation'
     },
     description:
-      'La pagination, en divisant le contenu en pages, simplifie la gestion des données volumineuses tout en facilitant la navigation.',
+      'Le menu de navigation principale est un élément essentiel pour une navigation fluide et intuitive sur un site Web ou une application.',
     loadComponent: () =>
       import('./navigation/navigation.component').then(
         (m) => m.NavigationDemoComponent

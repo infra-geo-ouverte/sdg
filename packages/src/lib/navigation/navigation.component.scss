@@ -79,11 +79,18 @@ $mobileRowHeight: 40px;
       --mdc-secondary-navigation-tab-container-height: #{$desktopRowHeight};
 
       min-width: fit-content;
-      padding: 0 calc(var(--tab-inner-spacing) / 2);
+      padding: 0 var(--tab-inner-spacing);
 
-      &:hover {
+      &:hover,
+      &.--active {
         --mat-tab-header-active-ripple-color: none;
         --mat-tab-header-inactive-ripple-color: none;
+
+        ::ng-deep {
+          .mdc-tab-indicator__content {
+            width: calc(100% - var(--tab-inner-spacing)) !important;
+          }
+        }
       }
 
       @include layout.breakpoint-down(mobile) {
@@ -93,14 +100,6 @@ $mobileRowHeight: 40px;
 
     ::ng-deep .mat-mdc-tab-links {
       align-items: center;
-
-      .mdc-tab__content {
-        padding: 0 var(--tab-inner-spacing);
-      }
-
-      .mdc-tab-indicator__content {
-        width: calc(100% - var(--tab-inner-spacing)) !important;
-      }
     }
   }
 
@@ -118,11 +117,16 @@ $mobileRowHeight: 40px;
     }
   }
 
-  &-tab-link {
+  &-tab-link,
+  &-more-links {
     letter-spacing: 0;
     font-size: 18px;
     line-height: 28px;
-    font-weight: 500; // The spec said 600 but for now we like this actual font-weight
+    font-weight: 500 !important; // The spec said 600 but for now we like this actual font-weight
+
+    ::ng-deep button {
+      font-weight: 500 !important;
+    }
 
     &.--active {
       font-weight: bold;
@@ -137,11 +141,14 @@ $mobileRowHeight: 40px;
   }
 
   &-more-links {
-    padding: 0 calc(var(--tab-inner-spacing) / 2);
-    min-width: fit-content !important;
-    background-color: colors.$blue-pale !important;
-    color: colors.$blue-piv !important;
-    margin-left: calc(var(--tab-inner-spacing) / 2);
+    $spacingHalf: calc(var(--tab-inner-spacing) / 2);
+
+    button {
+      padding: 0 calc($spacingHalf / 2) 0 $spacingHalf;
+      min-width: fit-content !important;
+      background-color: colors.$blue-pale !important;
+      color: colors.$blue-piv !important;
+    }
 
     mat-icon {
       $size: 18px;
@@ -156,16 +163,24 @@ $mobileRowHeight: 40px;
 
       mat-icon {
         margin-left: 4px;
+
+        @include layout.breakpoint-down(mobile) {
+          margin-left: 0px;
+        }
       }
     }
   }
 
   &-tab-link,
   &-more-links {
-    --mdc-filled-button-container-height: 40px;
+    button {
+      --mdc-filled-button-container-height: 40px;
+    }
 
     @include layout.breakpoint-down(mobile) {
-      --mdc-filled-button-container-height: 24px;
+      button {
+        --mdc-filled-button-container-height: 24px;
+      }
       font-size: 13px !important;
       line-height: 16px !important;
     }

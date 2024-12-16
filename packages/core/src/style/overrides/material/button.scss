@@ -1,14 +1,4 @@
 @use '@angular/material' as mat;
-@use '../../../typography';
-
-.mdc-button {
-  font-size: mat.m2-font-size(typography.$typo-typography, body-1) !important;
-  line-height: mat.m2-line-height(
-    typography.$typo-typography,
-    body-1
-  ) !important;
-  font-weight: bold !important;
-}
 
 .mat-mdc-button-base {
   border-radius: 0 !important;

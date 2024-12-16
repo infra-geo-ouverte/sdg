@@ -122,13 +122,15 @@ $row-height-mobile: 40px;
 
   &-tab-link,
   &-more-links {
+    $font-size: 18px;
     letter-spacing: 0;
-    font-size: 18px;
-    line-height: 28px;
+    font-size: $font-size;
     font-weight: 500; // The spec said 600 but for now we like this actual font-weight
 
-    ::ng-deep button {
-      font-weight: 500;
+    button {
+      --mdc-filled-button-container-height: 40px;
+      --mdc-filled-button-label-text-weight: 500;
+      --mdc-filled-button-label-text-size: $font-size;
     }
 
     &.--active {
@@ -140,6 +142,15 @@ $row-height-mobile: 40px;
         height: 3px;
         opacity: 1;
       }
+    }
+
+    @include layout.breakpoint-down(mobile) {
+      $font-size-mobile: 13px;
+      button {
+        --mdc-filled-button-container-height: 24px;
+        --mdc-filled-button-label-text-size: $font-size-mobile;
+      }
+      font-size: $font-size-mobile;
     }
   }
 
@@ -172,22 +183,6 @@ $row-height-mobile: 40px;
           margin-left: 0px;
         }
       }
-    }
-  }
-
-  &-tab-link,
-  &-more-links {
-    button {
-      --mdc-filled-button-container-height: 40px;
-    }
-
-    @include layout.breakpoint-down(mobile) {
-      button {
-        --mdc-filled-button-container-height: 24px;
-        font-size: 13px !important;
-      }
-      font-size: 13px !important;
-      line-height: 16px !important;
     }
   }
 

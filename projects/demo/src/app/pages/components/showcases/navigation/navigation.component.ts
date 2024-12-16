@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { INavigationLinks, NavigationComponent } from '@igo2/sdg';
 
@@ -8,7 +10,13 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
 @Component({
   selector: 'app-navigation-demo',
   standalone: true,
-  imports: [ExampleViewerComponent, ExternalLinkComponent, NavigationComponent],
+  imports: [
+    ExampleViewerComponent,
+    ExternalLinkComponent,
+    NavigationComponent,
+    MatButtonModule,
+    MatIconModule
+  ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })

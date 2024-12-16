@@ -6,6 +6,7 @@ import {
   OnDestroy,
   OnInit,
   Signal,
+  computed,
   input,
   signal,
   viewChild,
@@ -52,7 +53,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   linksInTabs = signal<INavigationLinks>([]);
   linksInMore = signal<INavigationLinks>([]);
   hasOverflow = signal(false);
-  hasHandsetOverflow = signal(false);
+  readonly isOnTwoLine = computed(() => this.detectHandsetOverflow());
   hasActions = signal(false);
   isHandset: Signal<boolean>;
 
@@ -86,7 +87,6 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.observeHostResize().subscribe(() => {
-      this.detectHandsetOverflow();
       this.handleResize();
     });
 
@@ -101,7 +101,6 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   private handleResize(): void {
     const hasTabsOverflow = this.hasTabsOverflow();
-    this.hasHandsetOverflow.set(this.isHandset() && hasTabsOverflow);
 
     const links = this.links();
     if (!hasTabsOverflow) {
@@ -183,8 +182,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     const hasOverflow =
       linksEstimatedWidth + actionsItemsWidth > headerRowWidth;
 
-    this.hasHandsetOverflow.set(hasOverflow);
-    return hasOverflow;
+    return this.isHandset() && hasOverflow;
   }
 
   private getTabsItemsWidth(): number {

@@ -50,6 +50,8 @@ $mobileRowHeight: 40px;
     }
 
     &-actions {
+      display: flex;
+
       @include layout.breakpoint-down(mobile) {
         margin-bottom: 0;
       }
@@ -108,6 +110,7 @@ $mobileRowHeight: 40px;
     align-self: flex-end;
     height: inherit;
     max-width: 100%;
+    overflow: hidden;
 
     @include layout.breakpoint-down(mobile) {
       width: 100%;

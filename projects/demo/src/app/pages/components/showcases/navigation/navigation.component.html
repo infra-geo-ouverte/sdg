@@ -27,7 +27,7 @@
 </app-example-viewer>
 
 <app-example-viewer
-  title="Navigation with overflow"
+  title="Navigation avec overflow"
   configFolder="navigation"
   codeFolder="navigation"
 >
@@ -35,5 +35,28 @@
     [links]="mockLinksForOverflow"
     headerContainerClass="container"
   >
+  </sdg-navigation>
+</app-example-viewer>
+
+<app-example-viewer
+  title="Navigation avec overflow et les boutons utilitaires"
+  configFolder="navigation"
+  codeFolder="navigation"
+>
+  <sdg-navigation
+    [links]="mockLinksForOverflow"
+    headerContainerClass="container"
+  >
+    <ng-container navigation-actions>
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+    </ng-container>
   </sdg-navigation>
 </app-example-viewer>

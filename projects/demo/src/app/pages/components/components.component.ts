@@ -1,10 +1,11 @@
 import { Component, Signal } from '@angular/core';
 
-import { BasicScreenComponent, BlockLinkComponent } from '@igo2/sdg';
+import { BlockLinkComponent } from '@igo2/sdg';
 import { Section, Sections } from '@igo2/sdg';
 import { SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
 
 import { AppService } from '../../app.service';
+import { BasicScreenComponent } from '../../components';
 import { routes } from './showcases/showcases.routes';
 
 @Component({

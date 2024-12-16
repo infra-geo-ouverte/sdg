@@ -2,12 +2,12 @@ import { Component, OnDestroy, signal } from '@angular/core';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { RouterLink } from '@angular/router';
 
-import { SplitScreenComponent } from '@igo2/sdg';
 import { TitleResolverPipe } from '@igo2/sdg/core';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 
 import { AppService } from '../../../app.service';
+import { SplitScreenComponent } from '../../../components';
 import { routes } from './showcases.routes';
 
 @Component({

@@ -1,21 +1,21 @@
 import { ComponentRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from '../../../test-config';
-import { SplitScreenComponent } from './split-screen.component';
+import { TEST_CONFIG } from '../../../../test-config';
+import { BasicScreenComponent } from './basic-screen.component';
 
-describe('SplitScreenComponent', () => {
-  let component: SplitScreenComponent;
-  let ref: ComponentRef<SplitScreenComponent>;
-  let fixture: ComponentFixture<SplitScreenComponent>;
+describe('BasicScreenComponent', () => {
+  let component: BasicScreenComponent;
+  let ref: ComponentRef<BasicScreenComponent>;
+  let fixture: ComponentFixture<BasicScreenComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SplitScreenComponent],
+      imports: [BasicScreenComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SplitScreenComponent);
+    fixture = TestBed.createComponent(BasicScreenComponent);
     component = fixture.componentInstance;
     ref = fixture.componentRef;
 

@@ -8,11 +8,6 @@
 >
 </sdg-header>
 
-<sdg-navigation
-  class="d-flex flex-column flex-fill"
-  [links]="routes"
-  [isHandset]="isHandset()"
-  [options]="config.navigation?.options"
->
+<sdg-navigation [links]="links" headerContainerClass="container">
   <router-outlet></router-outlet>
 </sdg-navigation>

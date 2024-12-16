@@ -123,6 +123,19 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'navigation',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.navigation'
+    },
+    description:
+      'Le menu de navigation principale est un élément essentiel pour une navigation fluide et intuitive sur un site Web ou une application.',
+    loadComponent: () =>
+      import('./navigation/navigation.component').then(
+        (m) => m.NavigationDemoComponent
+      )
+  },
+  {
     path: 'pagination',
     title: AppTitleResolver,
     data: {

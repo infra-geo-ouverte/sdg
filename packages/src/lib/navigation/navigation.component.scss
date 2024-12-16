@@ -3,55 +3,189 @@
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/theme/palettes';
 
-.navigation-header {
-  background-color: colors.$blue-dark;
+$row-height-desktop: 72px;
+$row-height-mobile: 40px;
+
+:host {
+  display: block; // add default display to be sure that the host resize listener will work
 }
 
-.row {
-  min-height: 72px;
+.sdg-navigation {
+  &-header {
+    color: colors.$white;
+    background-color: colors.$blue-medium;
+    width: 100%;
 
-  @include layout.breakpoint-down(mobile) {
-    min-height: 40px;
-  }
-}
-
-.nav-link {
-  letter-spacing: 0;
-  font-size: 18px;
-  line-height: 28px;
-
-  &.active {
-    font-weight: bold;
-  }
-
-  @include layout.breakpoint-down(mobile) {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-
-.navigation-actions {
-  margin-bottom: 4px;
-
-  @include layout.breakpoint-down(mobile) {
-    margin-bottom: 0;
-  }
-
-  ::ng-deep {
-    button {
-      margin-left: 24px;
+    &-container {
+      padding: 0 16px;
 
       @include layout.breakpoint-down(mobile) {
-        margin-left: 16px;
+        padding: 0 8px;
       }
     }
 
-    .mat-mdc-icon-button {
-      margin-left: 4px;
+    &-row {
+      display: flex;
+      align-items: center;
+      min-height: $row-height-desktop;
+      height: $row-height-desktop;
+
+      &.--two-lines {
+        flex-direction: column-reverse;
+
+        > * {
+          height: $row-height-mobile;
+        }
+
+        .sdg-navigation-header-actions {
+          align-self: flex-end;
+        }
+      }
+
+      @include layout.breakpoint-down(mobile) {
+        height: fit-content;
+        min-height: $row-height-mobile;
+      }
+    }
+
+    &-actions {
+      display: flex;
+
+      @include layout.breakpoint-down(mobile) {
+        margin-bottom: 0;
+      }
+
+      ::ng-deep {
+        button {
+          margin-left: 24px;
+
+          @include layout.breakpoint-down(mobile) {
+            margin-left: 16px;
+          }
+        }
+
+        .mat-mdc-icon-button {
+          margin-left: 4px;
+        }
+      }
+    }
+
+    --tab-inner-spacing: 16px;
+
+    @include layout.breakpoint-down(mobile) {
+      --tab-inner-spacing: 8px;
+    }
+
+    .mdc-tab {
+      --mdc-secondary-navigation-tab-container-height: #{$row-height-desktop};
+
+      min-width: fit-content;
+      padding: 0 var(--tab-inner-spacing);
+
+      &:hover,
+      &.--active {
+        --mat-tab-header-active-ripple-color: none;
+        --mat-tab-header-inactive-ripple-color: none;
+
+        ::ng-deep {
+          .mdc-tab-indicator__content {
+            width: calc(100% - var(--tab-inner-spacing)) !important;
+          }
+        }
+      }
+
+      @include layout.breakpoint-down(mobile) {
+        --mdc-secondary-navigation-tab-container-height: #{$row-height-mobile};
+      }
+    }
+
+    ::ng-deep .mat-mdc-tab-links {
+      align-items: center;
     }
   }
-}
 
-button.more-links {
-  margin-left: 16px;
+  &-tab-panel {
+    flex-grow: 1;
+    align-self: flex-end;
+    height: inherit;
+    max-width: 100%;
+    overflow: hidden;
+
+    @include layout.breakpoint-down(mobile) {
+      width: 100%;
+      flex-grow: unset;
+      height: fit-content;
+      min-height: $row-height-mobile;
+    }
+  }
+
+  &-tab-link,
+  &-more-links {
+    $font-size: 18px;
+    letter-spacing: 0;
+    font-size: $font-size;
+    font-weight: 500; // The spec said 600 but for now we like this actual font-weight
+
+    button {
+      --mdc-filled-button-container-height: 40px;
+      --mdc-filled-button-label-text-weight: 500;
+      --mdc-filled-button-label-text-size: $font-size;
+    }
+
+    &.--active {
+      font-weight: bold;
+    }
+
+    &:hover {
+      ::ng-deep .mdc-tab-indicator__content--underline {
+        height: 3px;
+        opacity: 1;
+      }
+    }
+
+    @include layout.breakpoint-down(mobile) {
+      $font-size-mobile: 13px;
+      button {
+        --mdc-filled-button-container-height: 24px;
+        --mdc-filled-button-label-text-size: $font-size-mobile;
+      }
+      font-size: $font-size-mobile;
+    }
+  }
+
+  &-more-links {
+    $spacing-half: calc(var(--tab-inner-spacing) / 2);
+    padding: 0 $spacing-half !important;
+
+    button {
+      padding: 0 calc($spacing-half / 2) 0 $spacing-half;
+      min-width: fit-content !important;
+      background-color: colors.$blue-pale !important;
+      color: colors.$blue-piv !important;
+    }
+
+    mat-icon {
+      $size: 18px;
+      height: $size;
+      width: $size;
+      font-size: $size;
+    }
+
+    &-container {
+      display: flex;
+      align-items: center;
+
+      mat-icon {
+        margin-left: 4px;
+
+        @include layout.breakpoint-down(mobile) {
+          margin-left: 0px;
+        }
+      }
+    }
+  }
+
+  &-content {
+    flex: 1 1 auto !important;
+  }
 }

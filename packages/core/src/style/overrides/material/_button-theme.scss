@@ -1,9 +1,12 @@
 @use 'sass:map';
 @use '@angular/material' as mat;
 
+@use '../../../typography';
+
 @mixin theme($theme) {
   @include color($theme);
   @include density($theme);
+  @include typography($theme);
 }
 
 @mixin color($theme) {
@@ -49,5 +52,24 @@
     width: var(--mdc-icon-button-state-layer-size);
     height: var(--mdc-icon-button-state-layer-size);
     padding: 8px;
+  }
+}
+
+@mixin typography($theme) {
+  .mdc-button {
+    --mdc-text-button-label-text-weight: bold;
+    --mdc-outlined-button-label-text-weight: bold;
+    --mdc-protected-button-label-text-weight: bold;
+    --mdc-filled-button-label-text-weight: bold;
+
+    --mdc-filled-button-label-text-size: #{mat.m2-font-size(
+        typography.$typo-typography,
+        body-1
+      )};
+
+    line-height: mat.m2-line-height(
+      typography.$typo-typography,
+      body-1
+    ) !important;
   }
 }

@@ -5,7 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
 import { IgoLanguageModule } from '@igo2/core/language';
-import { HeaderComponent, NavigationComponent } from '@igo2/sdg';
+import {
+  HeaderComponent,
+  INavigationLinks,
+  NavigationComponent,
+  isNavigationLink
+} from '@igo2/sdg';
 import { Language, TranslationService } from '@igo2/sdg/core';
 import { DomUtils } from '@igo2/utils';
 
@@ -32,7 +37,7 @@ import { AppService } from './app.service';
 })
 export class AppComponent implements OnInit {
   config: EnvironmentOptions = environment;
-  routes = routes.filter((route) => route.redirectTo == null);
+  links: INavigationLinks;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -44,6 +49,8 @@ export class AppComponent implements OnInit {
       environment.header.contactUs.label =
         this.translationService.get('header.contactUs');
     }
+
+    this.links = this.getLinks();
   }
 
   get isHandset(): Signal<boolean> {
@@ -60,6 +67,17 @@ export class AppComponent implements OnInit {
 
   handleLanguageChange(lang: string): void {
     this.translationService.setLanguage(lang as Language);
+  }
+
+  private getLinks(): INavigationLinks {
+    return routes
+      .filter((route) => route.redirectTo == null && !route.hidden)
+      .reduce((links: INavigationLinks, route) => {
+        if (isNavigationLink(route)) {
+          return links.concat(route);
+        }
+        return links;
+      }, []);
   }
 
   private handleSplashScreen(): void {

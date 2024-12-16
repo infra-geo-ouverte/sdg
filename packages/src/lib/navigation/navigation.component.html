@@ -1,18 +1,23 @@
-<div class="navigation-header" [class.--is-handset]="isHandset()">
-  <div class="container">
-    <div class="row">
-      <div
-        #tabsContainer
-        class="navbar-tab col align-self-end"
-        [class.order-2]="isHandset() && hasOverflow()"
-      >
-        <nav mat-tab-nav-bar [tabPanel]="tabPanel" [mat-stretch-tabs]="false">
-          @for (link of linksFiltered(); track link) {
+<div class="sdg-navigation-header">
+  <div class="sdg-navigation-header-container" [class]="headerContainerClass()">
+    <div
+      #headerRow
+      class="sdg-navigation-header-row"
+      [class.--two-lines]="isOnTwoLine()"
+    >
+      <div #tabsSection class="sdg-navigation-tab-panel">
+        <nav
+          mat-tab-nav-bar
+          [tabPanel]="tabPanel"
+          [mat-stretch-tabs]="false"
+          disablePagination
+        >
+          @for (link of linksInTabs(); track link) {
             <a
               mat-tab-link
-              class="nav-link"
+              class="sdg-navigation-tab-link"
               [routerLink]="link.path"
-              routerLinkActive="active"
+              routerLinkActive="--active"
               [routerLinkActiveOptions]="{ exact: link.path === '' }"
               #rla="routerLinkActive"
               [active]="rla.isActive"
@@ -20,19 +25,50 @@
               {{ link | titleResolver }}
             </a>
           }
+          @if (linksInMore() && linksInMore().length) {
+            <a
+              mat-tab-link
+              class="sdg-navigation-more-links"
+              tabindex="0"
+              (keydown)="(undefined)"
+              (keyup)="(undefined)"
+              (click)="buttonMoreLink._elementRef.nativeElement.click()"
+            >
+              <button
+                #buttonMoreLink
+                mat-flat-button
+                [matMenuTriggerFor]="menu"
+                (click)="$event.stopImmediatePropagation()"
+              >
+                <div class="sdg-navigation-more-links-container">
+                  Plus
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </div>
+              </button>
+              <mat-menu #menu="matMenu">
+                @for (moreLink of linksInMore(); track moreLink) {
+                  <a
+                    mat-menu-item
+                    [routerLink]="moreLink.path"
+                    routerLinkActive="--active"
+                    [routerLinkActiveOptions]="{ exact: moreLink.path === '' }"
+                    #rla="routerLinkActive"
+                    >{{ moreLink | titleResolver }}</a
+                  >
+                }
+              </mat-menu>
+            </a>
+          }
         </nav>
       </div>
-      <div
-        #actionsContainer
-        class="navigation-actions col align-self-end align-items-center d-flex justify-content-end"
-        [class.order-1]="isHandset()"
-      >
+      <!-- This section is a starting point, but at the moment it is not in the SPEC compliances and the implementation is subject to change at any moment -->
+      <div #actionsSection class="sdg-navigation-header-actions">
         <ng-content select="[navigation-actions]"></ng-content>
       </div>
     </div>
   </div>
 </div>
 
-<mat-tab-nav-panel #tabPanel class="flex-fill">
+<mat-tab-nav-panel #tabPanel class="sdg-navigation-content">
   <ng-content />
 </mat-tab-nav-panel>

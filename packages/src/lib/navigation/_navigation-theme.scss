@@ -2,6 +2,7 @@
 @use '@angular/material' as mat;
 @use '../../../core/src/theme/theme';
 @use '../../../core/src/theme/palettes';
+@use '../../../core/src/theme/colors';
 @use '../../../core/src/layout';
 
 @mixin theme($theme) {
@@ -11,9 +12,7 @@
 
 @mixin color($theme) {
   sdg-navigation {
-    .navigation-header {
-      color: white;
-
+    .sdg-navigation-header {
       @include mat.icon-button-color(theme.$dark-theme);
       @include mat.button-color(theme.$dark-theme);
       @include mat.tabs-color(theme.$dark-theme);
@@ -23,7 +22,7 @@
       }
 
       .mdc-tab-indicator__content--underline {
-        border-color: rgba(255, 255, 255, 0.5) !important;
+        border-color: colors.$blue-pale !important;
       }
     }
   }
@@ -41,33 +40,11 @@
   sdg-navigation {
     --mdc-tab-indicator-active-indicator-height: 4px;
 
-    .navbar-tab {
+    .sdg-navigation-header {
       @include layout.breakpoint-down(mobile) {
-        padding-left: 0;
-        padding-right: 0;
-      }
-    }
-
-    .navigation-header {
-      &.--is-handset {
         @include mat.tabs-density($theme);
-
-        button[compact] {
-          @include mat.button-density($theme);
-        }
-      }
-
-      .mdc-tab {
-        padding-left: 16px;
-        padding-right: 16px;
-      }
-
-      .mdc-tab__text-label {
-        padding-bottom: 12px;
-
-        @include layout.breakpoint-down(tablet) {
-          padding-bottom: 8px;
-        }
+        @include mat.button-density($theme);
+        @include mat.icon-button-density($theme);
       }
     }
   }

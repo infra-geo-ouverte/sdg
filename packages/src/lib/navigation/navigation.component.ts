@@ -53,9 +53,12 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   linksInTabs = signal<INavigationLinks>([]);
   linksInMore = signal<INavigationLinks>([]);
   hasOverflow = signal(false);
-  readonly isOnTwoLine = computed(() => this.detectHandsetOverflow());
   hasActions = signal(false);
   isHandset: Signal<boolean>;
+
+  readonly isOnTwoLine = computed(
+    () => this.hasActions() && this.isHandset() && this.detectHandsetOverflow()
+  );
 
   readonly links = input.required<INavigationLinks>();
   readonly headerContainerClass = input<string>();
@@ -182,7 +185,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     const hasOverflow =
       linksEstimatedWidth + actionsItemsWidth > headerRowWidth;
 
-    return this.isHandset() && hasOverflow;
+    return hasOverflow;
   }
 
   private getTabsItemsWidth(): number {

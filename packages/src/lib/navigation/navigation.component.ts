@@ -44,10 +44,7 @@ const TABS_MIN_DISPLAYED = 2 as const;
     TitleResolverPipe
   ],
   templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.scss',
-  host: {
-    '[class.--handset]': 'isHandset()'
-  }
+  styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   linksInTabs = signal<INavigationLinks>([]);

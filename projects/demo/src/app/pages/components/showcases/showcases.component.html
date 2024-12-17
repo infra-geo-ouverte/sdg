@@ -1,4 +1,4 @@
-<sdg-split-screen [title]="title()" [isHandset]="isHandset()">
+<app-split-screen [title]="title()" [isHandset]="isHandset()">
   <ul left-slot>
     @for (route of routes; track route) {
       <li>
@@ -8,4 +8,4 @@
   </ul>
 
   <router-outlet></router-outlet>
-</sdg-split-screen>
+</app-split-screen>

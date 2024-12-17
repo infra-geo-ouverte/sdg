@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { BreadcrumbsWithRouterComponent } from '../../breadcrumb/breadcrumbs-with-router.component';
+import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
 
 @Component({
-  selector: 'sdg-split-screen',
+  selector: 'app-split-screen',
   standalone: true,
   imports: [BreadcrumbsWithRouterComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,

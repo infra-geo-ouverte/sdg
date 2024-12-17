@@ -1,10 +1,10 @@
 import { Component, Signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { BasicScreenComponent } from '@igo2/sdg';
 import { RouteTitleKey } from '@igo2/sdg/core';
 
 import { AppService } from '../../app.service';
+import { BasicScreenComponent } from '../../components';
 
 @Component({
   selector: 'app-contact-us',

@@ -1,8 +1,7 @@
 import { Component, Signal } from '@angular/core';
 
-import { BasicScreenComponent } from '@igo2/sdg';
-
 import { AppService } from '../../app.service';
+import { BasicScreenComponent } from '../../components';
 
 @Component({
   selector: 'app-about',

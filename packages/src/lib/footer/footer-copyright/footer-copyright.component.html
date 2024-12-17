@@ -1,0 +1,16 @@
+<div class="sdg-footer-copyright-container" [class]="containerClass()">
+  <div class="sdg-footer-copyright-content">
+    <a [href]="copyright().logoUrl" target="_blank"
+      ><img
+        class="sdg-footer-copyright-logo"
+        [src]="copyright().logo"
+        alt="Logo"
+    /></a>
+    <a
+      class="sdg-footer-copyright-copyright"
+      href="https://www.quebec.ca/droit-auteur"
+      target="_blank"
+      >© Gouvernement du Québec, {{ year() }}</a
+    >
+  </div>
+</div>

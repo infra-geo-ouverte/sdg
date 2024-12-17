@@ -149,6 +149,17 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'pied-de-page',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.footer'
+    },
+    description:
+      "Le pied de page permet d'accéder aux différentes sections du site web, de consulter des liens complémentaires et accéder aux informations de droit d'auteur.",
+    loadComponent: () =>
+      import('./footer/footer.component').then((m) => m.FooterDemoComponent)
+  },
+  {
     path: 'tuile',
     title: AppTitleResolver,
     data: {

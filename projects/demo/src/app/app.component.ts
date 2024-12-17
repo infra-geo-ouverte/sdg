@@ -6,12 +6,19 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 import {
+  FooterComponent,
   HeaderComponent,
   INavigationLinks,
   NavigationComponent,
+  SiteMapLink,
   isNavigationLink
 } from '@igo2/sdg';
-import { Language, TranslationService } from '@igo2/sdg/core';
+import {
+  Language,
+  SdgRoute,
+  TitleResolverPipe,
+  TranslationService
+} from '@igo2/sdg/core';
 import { DomUtils } from '@igo2/utils';
 
 import { delay, first } from 'rxjs';
@@ -30,8 +37,10 @@ import { AppService } from './app.service';
     RouterOutlet,
     MatButtonModule,
     MatIconModule,
-    IgoLanguageModule
+    IgoLanguageModule,
+    FooterComponent
   ],
+  providers: [TitleResolverPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -39,11 +48,29 @@ export class AppComponent implements OnInit {
   config: EnvironmentOptions = environment;
   links: INavigationLinks;
 
+  siteMapLinks = routes
+    .filter((route) => isSiteMapLink(route))
+    .map((siteMapLink, siteMapLinkIndex) => {
+      const title = this.titleResolverPipe.transform(siteMapLink);
+      if (!title) {
+        throw new Error(
+          `Title not found for site map link ${siteMapLinkIndex}`
+        );
+      }
+      return {
+        ...siteMapLink,
+        title: title
+      };
+    });
+
+  copyright = this.config.footer.copyright;
+
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
     private appService: AppService,
-    private translationService: TranslationService
+    private translationService: TranslationService,
+    private titleResolverPipe: TitleResolverPipe
   ) {
     if (environment.header.contactUs) {
       environment.header.contactUs.label =
@@ -108,4 +135,8 @@ export class AppComponent implements OnInit {
       }
     }, destroyingAnimationTime);
   }
+}
+
+function isSiteMapLink(route: SdgRoute): route is SiteMapLink {
+  return !!(route.title && route.path && !route.redirectTo);
 }

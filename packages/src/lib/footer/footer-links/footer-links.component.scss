@@ -1,0 +1,14 @@
+.sdg-footer-links {
+  display: flex;
+  justify-content: center;
+  column-gap: 32px;
+
+  &-link {
+    font-size: 14px;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

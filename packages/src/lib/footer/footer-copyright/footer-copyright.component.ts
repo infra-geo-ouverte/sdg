@@ -1,0 +1,23 @@
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input
+} from '@angular/core';
+
+import { FooterCopyright } from './../footer.interface';
+
+@Component({
+  selector: 'sdg-footer-copyright',
+  standalone: true,
+  imports: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './footer-copyright.component.html',
+  styleUrls: ['./footer-copyright.component.scss']
+})
+export class FooterCopyrightComponent {
+  copyright = input.required<FooterCopyright>();
+  readonly containerClass = input<string>();
+
+  year = computed(() => this.copyright().year || new Date().getFullYear());
+}

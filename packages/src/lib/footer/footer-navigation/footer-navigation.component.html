@@ -1,0 +1,26 @@
+<div class="sdg-footer-navigation-container" [class]="containerClass()">
+  @if (logo()) {
+    <a [routerLink]="['/']"
+      ><img
+        class="sdg-footer-navigation-logo"
+        [src]="logo()!.url"
+        [height]="logo()!.height"
+        alt="Logo"
+    /></a>
+  } @else if (title()) {
+    <h2>
+      <a class="sdg-footer-navigation-title" [routerLink]="['/']">{{
+        title()
+      }}</a>
+    </h2>
+  }
+  <div class="sdg-footer-navigation-site-map-links">
+    @for (siteMapLink of siteMapLinks(); track siteMapLink) {
+      <a
+        class="sdg-footer-navigation-site-map-link"
+        [routerLink]="siteMapLink.path"
+        >{{ siteMapLink.title }}</a
+      >
+    }
+  </div>
+</div>

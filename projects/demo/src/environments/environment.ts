@@ -34,6 +34,12 @@ export const environment: EnvironmentOptions = {
       }
     }
   },
+  footer: {
+    copyright: {
+      logo: 'images/MSP.svg',
+      logoUrl: 'https://www.quebec.ca/gouvernement/ministere/securite-publique'
+    }
+  },
   language: {
     prefix: ['locale/']
   }

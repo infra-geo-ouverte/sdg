@@ -5,9 +5,17 @@
   [contactUs]="config.header.contactUs"
   [isHandset]="isHandset()"
   (languageChange)="handleLanguageChange($event)"
->
-</sdg-header>
+/>
 
 <sdg-navigation [links]="links" headerContainerClass="container">
   <router-outlet></router-outlet>
 </sdg-navigation>
+
+<footer>
+  <sdg-footer
+    [title]="config.title"
+    [siteMapLinks]="siteMapLinks"
+    [copyright]="copyright"
+    containerClass="container"
+  />
+</footer>

@@ -1,0 +1,10 @@
+<div class="sdg-footer-links" [class]="containerClass()">
+  @for (externalLink of externalLinks(); track externalLink) {
+    <a
+      class="sdg-footer-links-link"
+      [href]="externalLink.path"
+      target="_blank"
+      >{{ externalLink.title }}</a
+    >
+  }
+</div>

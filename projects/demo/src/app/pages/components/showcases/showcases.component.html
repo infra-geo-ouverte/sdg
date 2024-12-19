@@ -1,11 +1,10 @@
 <app-split-screen [title]="title()" [isHandset]="isHandset()">
-  <ul left-slot>
-    @for (route of routes; track route) {
-      <li>
-        <a [routerLink]="[route.path]">{{ route | titleResolver }}</a>
-      </li>
-    }
-  </ul>
+  <sdg-lateral-menu
+    left-slot
+    [title]="menuTitle"
+    [sections]="sections"
+    [isHandset]="isHandset()"
+  />
 
   <router-outlet></router-outlet>
 </app-split-screen>

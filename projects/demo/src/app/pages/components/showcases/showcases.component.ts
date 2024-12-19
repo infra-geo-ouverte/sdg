@@ -1,32 +1,49 @@
-import { Component, OnDestroy, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
-import { RouterLink } from '@angular/router';
+import { Component, OnDestroy, Signal, signal } from '@angular/core';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterOutlet
+} from '@angular/router';
 
-import { TitleResolverPipe } from '@igo2/sdg/core';
+import { LateralMenuItem, LateralMenuSections } from '@igo2/sdg';
+import { LateralMenuComponent } from '@igo2/sdg';
+import { BreakpointService, SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 
-import { AppService } from '../../../app.service';
 import { SplitScreenComponent } from '../../../components';
 import { routes } from './showcases.routes';
 
 @Component({
   selector: 'app-showcases',
   standalone: true,
-  imports: [SplitScreenComponent, RouterOutlet, RouterLink, TitleResolverPipe],
+  imports: [SplitScreenComponent, RouterOutlet, LateralMenuComponent],
   providers: [TitleResolverPipe],
   templateUrl: './showcases.component.html',
   styleUrl: './showcases.component.scss'
 })
 export class ShowcasesComponent implements OnDestroy {
-  routes = routes.filter((route) => route.redirectTo == null);
+  sections: LateralMenuSections = routes
+    .filter((route) => isSection(route))
+    .map((item, itemIndex) => {
+      const title = this.titleResolverPipe.transform(item);
+      if (!title) {
+        throw new Error(`Title not found for section ${itemIndex}`);
+      }
+      return {
+        ...item,
+        title: title
+      };
+    });
   title = signal<string | undefined>(undefined);
 
   private _destroy$ = new Subject();
 
   constructor(
-    private appService: AppService,
+    private breakpointService: BreakpointService,
     private router: Router,
+    private activatedRoute: ActivatedRoute,
     private titleResolverPipe: TitleResolverPipe
   ) {
     this.router.events
@@ -58,11 +75,19 @@ export class ShowcasesComponent implements OnDestroy {
       });
   }
 
-  get isHandset() {
-    return this.appService.isHandset;
+  get menuTitle(): string {
+    return this.activatedRoute.snapshot.title as string;
+  }
+
+  get isHandset(): Signal<boolean> {
+    return this.breakpointService.isHandset;
   }
 
   ngOnDestroy(): void {
     this._destroy$.next(true);
   }
+}
+
+function isSection(route: SdgRoute): route is LateralMenuItem {
+  return !!(route.title && route.path && !route.redirectTo);
 }

@@ -1,0 +1,27 @@
+@if (isHandset()) {
+  <button
+    mat-icon-button
+    class="lateral-menu-route-title-mobile"
+    (click)="toggle()"
+  >
+    <span class="lateral-menu-route-title-text-mobile">{{ title() }}</span>
+    <mat-icon color="primary" [@openCloseArrow]="opened() ? 'opened' : 'closed'"
+      >keyboard_arrow_down</mat-icon
+    >
+  </button>
+} @else {
+  <span class="lateral-menu-route-title">{{ title() }}</span>
+}
+
+<div
+  class="lateral-menu-sections"
+  [@openCloseSection]="opened() || !isHandset() ? 'opened' : 'closed'"
+>
+  @for (item of sections(); track item) {
+    @if (item.items) {
+      <sdg-lateral-menu-section [section]="item" [isHandset]="isHandset()" />
+    } @else {
+      <sdg-lateral-menu-item [item]="item" [isHandset]="isHandset()" />
+    }
+  }
+</div>

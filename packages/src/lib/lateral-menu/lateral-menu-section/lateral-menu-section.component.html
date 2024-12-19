@@ -1,0 +1,36 @@
+<div class="lateral-menu-section" [class.--handset]="isHandset()">
+  <button
+    class="lateral-menu-section-header"
+    [class.--active-section]="active"
+    [class.--handset]="isHandset()"
+    (click)="toggle()"
+  >
+    <p
+      class="lateral-menu-section-header-title"
+      [class.--active-section]="active"
+      [class.--handset]="isHandset()"
+    >
+      {{ section().title }}
+    </p>
+    <mat-icon
+      class="lateral-menu-section-header-arrow"
+      color="primary"
+      [@openCloseArrow]="opened() ? 'opened' : 'closed'"
+      >keyboard_arrow_down</mat-icon
+    >
+  </button>
+
+  <div
+    class="lateral-menu-section-subsections"
+    [class.--handset]="isHandset()"
+    [@openCloseSection]="opened() ? 'opened' : 'closed'"
+  >
+    @for (item of section().items; track item) {
+      <sdg-lateral-menu-item
+        [item]="item"
+        [isHandset]="isHandset()"
+        [isSectionItem]="true"
+      />
+    }
+  </div>
+</div>

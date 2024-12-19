@@ -1,10 +1,10 @@
-export type Sections = Section[];
+export type BlockLinkSections = BlockLinkSection[];
 
-export interface Section {
+export interface BlockLinkSection {
   title: string;
   path: string;
   description: string;
-  subsections?: Subsection[];
+  subsections?: BlockLinkSubsection[];
 }
 
-export type Subsection = Pick<Section, 'title' | 'path'>;
+export type BlockLinkSubsection = Pick<BlockLinkSection, 'title' | 'path'>;

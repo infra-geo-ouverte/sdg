@@ -1,0 +1,56 @@
+@use '../../../../core/src/theme/colors';
+
+.lateral-menu-section {
+  display: flex;
+  flex-flow: column;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    padding: 16px 8px;
+    border: none;
+    cursor: pointer;
+
+    &-title {
+      flex-grow: 1;
+      text-align: start;
+      color: colors.$blue-piv;
+      margin: 0;
+
+      &:not(.--handset) {
+        font-size: 14px;
+      }
+
+      &.--active-section {
+        font-weight: bold;
+      }
+    }
+
+    &:hover:not(.--handset, .--active-section) {
+      background-color: rgba(colors.$blue-pale, 0.5);
+    }
+
+    &.--active-section {
+      background-color: colors.$blue-pale;
+    }
+
+    &.--handset {
+      padding: 8px 8px 8px 24px;
+    }
+  }
+
+  &-subsections {
+    display: flex;
+    flex-direction: column;
+
+    &.--handset {
+      background-color: colors.$blue-pale;
+      padding-left: 24px;
+    }
+  }
+
+  &:not(.--handset) {
+    border-bottom: 1px solid colors.$grey-light;
+  }
+}

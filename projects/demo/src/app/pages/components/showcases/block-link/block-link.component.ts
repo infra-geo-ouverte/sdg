@@ -1,7 +1,7 @@
 import { Component, Signal } from '@angular/core';
 
 import { BlockLinkComponent } from '@igo2/sdg';
-import { Sections } from '@igo2/sdg';
+import { BlockLinkSections } from '@igo2/sdg';
 import { TitleResolverPipe } from '@igo2/sdg/core';
 
 import { AppService } from '../../../../app.service';
@@ -16,7 +16,7 @@ import { ExampleViewerComponent } from '../../../../components/example-viewer/ex
   styleUrl: './block-link.component.scss'
 })
 export class BlockLinkDemoComponent {
-  sections: Sections = [
+  sections: BlockLinkSections = [
     {
       title: 'Avis',
       path: '/composants/showcases/avis',

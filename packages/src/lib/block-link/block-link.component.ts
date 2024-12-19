@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
 import { pathIsExternal } from '@igo2/sdg/core';
 
 import { BlockLinkSubsectionComponent } from './block-link-subsection/block-link-subsection.component';
-import { Section } from './block-link.interface';
+import { BlockLinkSection } from './block-link.interface';
 
 @Component({
   selector: 'sdg-block-link',
@@ -22,7 +22,7 @@ import { Section } from './block-link.interface';
   styleUrls: ['./block-link.component.scss']
 })
 export class BlockLinkComponent {
-  section = input.required<Section>();
+  section = input.required<BlockLinkSection>();
   isHandset = input<boolean>();
 
   externalPath: Signal<boolean | undefined> = computed(() => {

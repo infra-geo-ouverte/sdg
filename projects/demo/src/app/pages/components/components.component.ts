@@ -1,7 +1,7 @@
 import { Component, Signal } from '@angular/core';
 
 import { BlockLinkComponent } from '@igo2/sdg';
-import { Section, Sections } from '@igo2/sdg';
+import { BlockLinkSection, BlockLinkSections } from '@igo2/sdg';
 import { SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
 
 import { AppService } from '../../app.service';
@@ -17,7 +17,7 @@ import { routes } from './showcases/showcases.routes';
   styleUrl: './components.component.scss'
 })
 export class ComponentsComponent {
-  sections: Sections;
+  sections: BlockLinkSections;
 
   constructor(
     private appService: AppService,
@@ -30,7 +30,7 @@ export class ComponentsComponent {
     return this.appService.isHandset;
   }
 
-  private setSections(): Sections {
+  private setSections(): BlockLinkSections {
     return routes
       .filter((route) => isSection(route))
       .map((section, sectionIndex) => {
@@ -48,7 +48,7 @@ export class ComponentsComponent {
   }
 }
 
-function isSection(route: SdgRoute): route is Section {
+function isSection(route: SdgRoute): route is BlockLinkSection {
   return !!(
     route.title &&
     route.description &&

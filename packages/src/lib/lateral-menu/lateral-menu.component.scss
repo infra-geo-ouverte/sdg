@@ -1,0 +1,41 @@
+@use '../../../core/src/theme/colors';
+@use '../../../core/src/typography/typography';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.lateral-menu {
+  &-sections {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-route-title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 16px 8px;
+    margin: 0;
+    border-bottom: 1px solid colors.$grey-light;
+
+    &-mobile {
+      display: flex;
+      align-items: center;
+      border: none;
+      background-color: colors.$blue-pale;
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    &-text-mobile {
+      flex-grow: 1;
+      font-family: typography.$font-family-text;
+      font-size: 16px;
+      color: colors.$blue-piv;
+      margin: 0;
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+}

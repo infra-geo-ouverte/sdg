@@ -1,7 +1,13 @@
-.primary-title {
-  margin-top: 0 !important;
+.split-screen-content {
+  display: flex;
+  column-gap: 32px;
+
+  &.--handset {
+    flex-direction: column;
+  }
 }
 
-.split-screen-content {
+.lateral-menu {
+  flex: 0 0 25%;
   margin-top: 72px;
 }

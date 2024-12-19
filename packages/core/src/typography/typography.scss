@@ -8,7 +8,7 @@
 // https://design.quebec.ca/bases/polices-caracteres
 // https://design.quebec.ca/bases/niveaux-titres
 // https://material.angular.io/guide/typography
-$font-family-text: '"Open Sans", sans-serif';
+$font-family-text: 'Open Sans', sans-serif;
 $font-family-title: 'Roboto', sans-serif;
 
 $typography: mat.m2-define-typography-config(
@@ -48,6 +48,7 @@ $font-color: colors.$blue-dark;
   }
 
   a {
+    font-family: $font-family-text;
     word-break: break-word;
     overflow-wrap: break-word;
     cursor: pointer;
@@ -66,6 +67,7 @@ $font-color: colors.$blue-dark;
   li,
   u,
   .text {
+    font-family: $font-family-text;
     color: $font-color;
     font-size: 16px;
     line-height: 24px;

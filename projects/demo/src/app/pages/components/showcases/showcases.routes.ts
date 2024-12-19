@@ -110,6 +110,16 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'menu-lateral',
+    title: 'Menu latéral',
+    description:
+      "Le menu latéral est une liste de liens permettant de naviguer entre différentes sections d'un site web.",
+    loadComponent: () =>
+      import('./lateral-menu/lateral-menu.component').then(
+        (m) => m.LateralMenuDemoComponent
+      )
+  },
+  {
     path: 'menu-ancres',
     title: AppTitleResolver,
     data: {

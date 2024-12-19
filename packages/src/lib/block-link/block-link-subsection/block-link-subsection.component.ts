@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 
 import { pathIsExternal } from '@igo2/sdg/core';
 
-import { Subsection } from '../block-link.interface';
+import { BlockLinkSubsection } from '../block-link.interface';
 
 @Component({
   selector: 'sdg-block-link-subsection',
@@ -21,7 +21,7 @@ import { Subsection } from '../block-link.interface';
   styleUrls: ['./block-link-subsection.component.scss']
 })
 export class BlockLinkSubsectionComponent {
-  subsection = input.required<Subsection>();
+  subsection = input.required<BlockLinkSubsection>();
 
   externalPath: Signal<boolean | undefined> = computed(() => {
     const path = this.subsection().path;

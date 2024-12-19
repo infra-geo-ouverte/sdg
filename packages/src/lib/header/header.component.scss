@@ -51,6 +51,7 @@
   flex-flow: column;
 }
 
+.title,
 .language,
 .contact-us {
   font-family: typography.$font-family-title; // override font family to title

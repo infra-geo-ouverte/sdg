@@ -11,6 +11,7 @@ export * from './lib/contact';
 export * from './lib/consult';
 export * from './lib/footer';
 export * from './lib/header';
+export * from './lib/lateral-menu';
 export * from './lib/navigation';
 export * from './lib/notice';
 export * from './lib/paginator';

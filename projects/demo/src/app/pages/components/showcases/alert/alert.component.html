@@ -18,29 +18,31 @@
     type="General"
     message="Ceci est une alerte informative"
     [isHandset]="isHandset()"
-  ></sdg-alert>
-  <br />
-  <sdg-alert
-    type="General"
-    message="Ceci est une alerte informative pouvant être fermée"
-    [isCloseable]="true"
-    [isOpen]="generalAlertIsOpen"
-    [isHandset]="isHandset()"
-    (closed)="generalAlertIsOpen = false"
-  ></sdg-alert>
-  <br />
+  />
+
+  @if (generalAlertIsOpened) {
+    <sdg-alert
+      type="General"
+      message="Ceci est une alerte informative pouvant être fermée"
+      [closeable]="true"
+      [isHandset]="isHandset()"
+      (closed)="generalAlertIsOpened = false"
+    />
+  }
+
   <sdg-alert
     type="Warning"
     message="Ceci est une alerte"
     [isHandset]="isHandset()"
-  ></sdg-alert>
-  <br />
-  <sdg-alert
-    type="Warning"
-    message="Ceci est une alerte pouvant être fermée"
-    [isCloseable]="true"
-    [isOpen]="alertIsOpen"
-    [isHandset]="isHandset()"
-    (closed)="alertIsOpen = false"
-  ></sdg-alert>
+  />
+
+  @if (alertIsOpened) {
+    <sdg-alert
+      type="Warning"
+      message="Ceci est une alerte pouvant être fermée"
+      [closeable]="true"
+      [isHandset]="isHandset()"
+      (closed)="alertIsOpened = false"
+    />
+  }
 </app-example-viewer>

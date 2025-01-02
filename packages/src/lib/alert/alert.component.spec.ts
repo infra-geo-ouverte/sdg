@@ -17,6 +17,7 @@ describe('AlertComponent', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('type', 'General');
     fixture.componentRef.setInput('message', 'Message');
+    fixture.componentRef.setInput('isHandset', false);
     fixture.detectChanges();
   });
 

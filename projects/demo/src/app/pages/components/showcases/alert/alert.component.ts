@@ -16,8 +16,8 @@ import {
   styleUrl: './alert.component.scss'
 })
 export class AlertDemoComponent {
-  generalAlertIsOpen = true;
-  alertIsOpen = true;
+  generalAlertIsOpened = true;
+  alertIsOpened = true;
 
   constructor(private breakpointService: BreakpointService) {}
 

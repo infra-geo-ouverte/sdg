@@ -1,18 +1,17 @@
-@if (isOpen()) {
-  <div [class]="getAlertClass()" [class.--is-handset]="isHandset()">
-    <mat-icon [class]="getIconClass()">{{ iconName() }}</mat-icon>
-    <div class="message" [class.--is-handset]="isHandset()">
+<div class="sdg-alert-container" [class]="getAlertClass()">
+  <div [class]="containerClass()" [class.--handset]="isHandset()">
+    <mat-icon class="sdg-alert-icon" [class]="getAlertClass()">{{
+      icon()
+    }}</mat-icon>
+
+    <div class="sdg-alert-message" [class.--handset]="isHandset()">
       {{ message() }}
     </div>
-    @if (isCloseable()) {
-      <button
-        mat-icon-button
-        class="close"
-        [disableRipple]="true"
-        (click)="onClose()"
-      >
-        <mat-icon>close</mat-icon>
+
+    @if (closeable()) {
+      <button class="sdg-alert-button" (click)="close()">
+        <mat-icon class="sdg-alert-button-icon">close</mat-icon>
       </button>
     }
   </div>
-}
+</div>

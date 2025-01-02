@@ -1,14 +1,17 @@
-<div class="container">
-  <div [class]="getColoredZoneClass()">
-    <mat-icon [class]="getColoredZoneIconClass()">{{
-      getColoredZoneIcon()
-    }}</mat-icon>
+<div class="sdg-notice-container">
+  <div class="sdg-notice-colored-zone" [class]="getColoredZoneClass()">
+    <mat-icon
+      class="sdg-notice-colored-zone-icon"
+      [class]="getColoredZoneIconClass()"
+      >{{ getColoredZoneIcon() }}</mat-icon
+    >
   </div>
-  <div class="content" [class.--handset]="isHandset()">
-    <p class="title">
-      <b>{{ title() }}</b>
+
+  <div class="sdg-notice-content" [class.--handset]="isHandset()">
+    <p class="sdg-notice-content-title">
+      {{ title() }}
     </p>
-    <p class="message">
+    <p class="sdg-notice-content-message">
       {{ message() }}
     </p>
   </div>

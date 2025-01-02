@@ -1,74 +1,77 @@
 @use '../../../core/src/theme/colors';
 
-.container {
-  background-color: colors.$white;
-  border: 1px solid colors.$grey-light;
-  display: flex;
-  flex-flow: row;
-  padding: 0;
-}
-
-.colored-zone {
-  padding: 24px 8px;
-  width: 40px;
-
-  &.--general {
-    background-color: colors.$blue-pale;
+.sdg-notice {
+  &-container {
+    display: flex;
+    background-color: colors.$white;
+    border: 1px solid colors.$grey-light;
   }
 
-  &.--warning {
-    background-color: colors.$yellow-pale;
+  &-colored-zone {
+    padding: 24px 8px 0px 8px;
+    width: 40px;
+
+    &-icon {
+      &.--general {
+        color: colors.$blue-piv;
+      }
+
+      &.--warning {
+        color: colors.$yellow-dark;
+      }
+
+      &.--error {
+        color: colors.$red-normal;
+      }
+
+      &.--success {
+        color: colors.$green-normal;
+      }
+
+      &.--complementary {
+        color: colors.$grey-700;
+      }
+    }
+
+    &.--general {
+      background-color: colors.$blue-pale;
+    }
+
+    &.--warning {
+      background-color: colors.$yellow-pale;
+    }
+
+    &.--error {
+      background-color: colors.$pink-pale;
+    }
+
+    &.--success {
+      background-color: colors.$green-pale;
+    }
+
+    &.--complementary {
+      background-color: colors.$grey-pale;
+    }
   }
 
-  &.--error {
-    background-color: colors.$pink-pale;
+  &-content {
+    padding: 24px 32px 24px 16px;
+    width: 100%;
+
+    &-title,
+    &-message {
+      font-size: 14px;
+      padding: 0;
+      margin: 0;
+      line-height: 18px;
+    }
+
+    &-title {
+      font-weight: bold;
+    }
+
+    &.--handset {
+      padding: 24px 24px 24px 16px;
+    }
   }
-
-  &.--success {
-    background-color: colors.$green-pale;
-  }
-
-  &.--complementary {
-    background-color: colors.$grey-pale;
-  }
-
-  .--general {
-    color: colors.$blue-piv;
-  }
-
-  .--warning {
-    color: colors.$yellow-dark;
-  }
-
-  .--error {
-    color: colors.$red-normal;
-  }
-
-  .--success {
-    color: colors.$green-normal;
-  }
-
-  .--complementary {
-    color: colors.$grey-700;
-  }
-}
-
-.content {
-  padding: 24px 32px 24px 16px;
-  width: 100%;
-
-  &.--handset {
-    padding: 24px 24px 24px 16px;
-  }
-}
-
-.title,
-.message {
-  font-size: 14px;
-}
-
-p {
-  padding: 0;
-  margin: 0;
-  line-height: 16px;
 }

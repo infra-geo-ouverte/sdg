@@ -4,8 +4,10 @@ import { HeaderComponent } from '@igo2/sdg';
 import { Language, TranslationService } from '@igo2/sdg/core';
 
 import { AppService } from 'projects/demo/src/app/app.service';
-import { ExampleViewerComponent } from 'projects/demo/src/app/components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from 'projects/demo/src/app/components/external-link/external-link.component';
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
 import { environment } from 'projects/demo/src/environments/environment';
 import { EnvironmentOptions } from 'projects/demo/src/environments/environment.interface';
 

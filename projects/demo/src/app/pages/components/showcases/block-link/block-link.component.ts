@@ -1,11 +1,11 @@
 import { Component, Signal } from '@angular/core';
 
-import { BlockLinkComponent } from '@igo2/sdg';
-import { BlockLinkSections } from '@igo2/sdg';
+import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg';
 import { TitleResolverPipe } from '@igo2/sdg/core';
 
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+
 import { AppService } from '../../../../app.service';
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 
 @Component({
   selector: 'app-block-link',

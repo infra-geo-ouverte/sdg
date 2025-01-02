@@ -5,9 +5,12 @@ import { MatSelectModule } from '@angular/material/select';
 
 import { PaginatorComponent } from '@igo2/sdg';
 
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
+
 import { AppService } from '../../../../app.service';
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
 
 @Component({
   selector: 'app-paginator',

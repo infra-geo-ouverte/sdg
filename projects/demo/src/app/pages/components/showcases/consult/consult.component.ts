@@ -1,6 +1,6 @@
 import { Component, Signal } from '@angular/core';
 
-import { ConsultComponent, Link } from '@igo2/sdg';
+import { ConsultComponent, ConsultLinks } from '@igo2/sdg';
 import { BreakpointService } from '@igo2/sdg/core';
 
 import {
@@ -16,17 +16,17 @@ import {
   styleUrl: './consult.component.scss'
 })
 export class ConsultDemoComponent {
-  links: Link[] = [
+  links: ConsultLinks = [
     {
-      text: "Page d'accueil",
+      label: "Page d'accueil",
       url: '/'
     },
     {
-      text: 'Composants',
+      label: 'Composants',
       url: '/composants'
     },
     {
-      text: 'Alerte',
+      label: 'Alerte',
       url: '/composants/showcases/alerte'
     }
   ];

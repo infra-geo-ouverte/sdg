@@ -1,20 +1,18 @@
-<div class="container">
-  <h3>À consulter aussi</h3>
+<h3 class="sdg-consult-title">À consulter aussi</h3>
 
-  <div class="links">
-    @for (link of links(); track link) {
-      <a [routerLink]="link.url">{{ link.text }}</a>
-    }
-  </div>
-
-  @if (files().length) {
-    <div class="files">
-      @for (file of files(); track file) {
-        <div class="file">
-          <mat-icon color="primary">draft</mat-icon>
-          <a [routerLink]="file.url">{{ file.text }}</a>
-        </div>
-      }
-    </div>
+<div class="sdg-consult-links">
+  @for (link of links(); track link) {
+    <a [routerLink]="link.url">{{ link.label }}</a>
   }
 </div>
+
+@if (files().length) {
+  <div class="sdg-consult-files">
+    @for (file of files(); track file) {
+      <div class="sdg-consult-file">
+        <mat-icon class="sdg-consult-file-icon" color="primary">draft</mat-icon>
+        <a [routerLink]="file.url">{{ file.label }}</a>
+      </div>
+    }
+  </div>
+}

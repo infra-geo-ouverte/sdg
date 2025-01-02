@@ -1,39 +1,38 @@
 @use '../../../core/src/theme/colors';
 
-.container {
-  padding: 0px;
-  border-top: 2px solid colors.$blue-dark;
-}
-
-.links {
+:host {
   display: flex;
   flex-flow: column;
-  padding-bottom: 40px;
-  border-bottom: 1px solid colors.$grey-light;
 }
 
-.files {
-  display: flex;
-  flex-flow: column;
-  padding: 40px 0px;
-  border-bottom: 1px solid colors.$grey-light;
-}
+.sdg-consult {
+  &-title {
+    margin-top: 0 !important;
+    padding-top: 40px;
+    border-top: 2px solid colors.$blue-dark;
+  }
 
-.file {
-  display: flex;
-  align-items: center;
-}
+  &-links,
+  &-files {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
+    border-bottom: 1px solid colors.$grey-light;
+    padding: 40px 0;
+  }
 
-h3 {
-  margin-top: 40px !important;
-}
+  &-links {
+    padding-top: 0;
+  }
 
-a {
-  line-height: 36px;
-}
+  &-file {
+    display: flex;
+    align-items: center;
 
-mat-icon {
-  width: 28px;
-  height: 28px;
-  font-size: 28px;
+    &-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 28px;
+    }
+  }
 }

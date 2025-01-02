@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { Link } from './link.interface';
+import { ConsultLinks } from './consult.interface';
 
 @Component({
   selector: 'sdg-consult',
@@ -13,6 +13,6 @@ import { Link } from './link.interface';
   styleUrls: ['./consult.component.scss']
 })
 export class ConsultComponent {
-  links = input.required<Link[]>();
-  files = input<Link[]>([]);
+  readonly links = input.required<ConsultLinks>();
+  readonly files = input<ConsultLinks>([]);
 }

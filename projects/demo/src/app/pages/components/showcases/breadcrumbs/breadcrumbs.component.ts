@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
 
 import {
-  Breadcrumb,
+  Breadcrumbs,
   BreadcrumbsComponent,
   BreadcrumbsWithRouterComponent
 } from '@igo2/sdg';
 
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
 
 @Component({
-  selector: 'app-breadcrumb',
+  selector: 'app-breadcrumbs',
   standalone: true,
   imports: [
     ExampleViewerComponent,
@@ -18,11 +20,11 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
     ExternalLinkComponent,
     BreadcrumbsWithRouterComponent
   ],
-  templateUrl: './breadcrumb.component.html',
-  styleUrl: './breadcrumb.component.scss'
+  templateUrl: './breadcrumbs.component.html',
+  styleUrl: './breadcrumbs.component.scss'
 })
 export class BreadcrumbDemoComponent {
-  breadcrumbs: Breadcrumb[] = [
+  breadcrumbs: Breadcrumbs = [
     {
       id: '0',
       title: 'premier',

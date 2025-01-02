@@ -1,6 +1,6 @@
 import { Component, Signal } from '@angular/core';
 
-import { ConsultComponent, Link } from '@igo2/sdg';
+import { ConsultComponent, ConsultLinks } from '@igo2/sdg';
 
 import { AppService } from '../../../../app.service';
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
@@ -14,17 +14,17 @@ import { ExternalLinkComponent } from '../../../../components/external-link/exte
   styleUrl: './consult.component.scss'
 })
 export class ConsultDemoComponent {
-  links: Link[] = [
+  links: ConsultLinks = [
     {
-      text: "Page d'accueil",
+      label: "Page d'accueil",
       url: '/'
     },
     {
-      text: 'Composants',
+      label: 'Composants',
       url: '/composants'
     },
     {
-      text: 'Alerte',
+      label: 'Alerte',
       url: '/composants/showcases/alerte'
     }
   ];

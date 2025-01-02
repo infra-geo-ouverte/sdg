@@ -1,4 +1,5 @@
 export type AnyBreadcrumb = Breadcrumb | BreadcrumbMenu;
+export type Breadcrumbs = Breadcrumb[];
 
 export interface Breadcrumb {
   id: string;
@@ -8,5 +9,5 @@ export interface Breadcrumb {
 
 export interface BreadcrumbMenu {
   id: string;
-  menu: Breadcrumb[];
+  menu: Breadcrumbs;
 }

@@ -3,7 +3,7 @@ import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg/core';
 import { AppTitleResolver } from '../../../config/title-resolver';
 
 export const routes: SdgRoutes = [
-  { path: '', redirectTo: 'breadcrumb', pathMatch: 'full' },
+  { path: '', redirectTo: 'breadcrumbs', pathMatch: 'full' },
   {
     path: 'a-consulter-aussi',
     title: AppTitleResolver,
@@ -79,7 +79,7 @@ export const routes: SdgRoutes = [
     description:
       "Le fil d'Ariane permet de se situer dans la structure d'un site.",
     loadComponent: () =>
-      import('./breadcrumb/breadcrumb.component').then(
+      import('./breadcrumbs/breadcrumbs.component').then(
         (m) => m.BreadcrumbDemoComponent
       )
   },

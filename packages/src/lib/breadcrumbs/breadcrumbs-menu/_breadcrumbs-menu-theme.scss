@@ -17,7 +17,7 @@
     )
   );
 
-  sdg-breadcrumb-menu {
+  sdg-breadcrumbs-menu {
     @include mat.icon-button-density($theme);
   }
 }

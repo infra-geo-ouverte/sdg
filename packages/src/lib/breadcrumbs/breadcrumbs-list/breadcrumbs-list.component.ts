@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { BreadcrumbItemComponent } from '../breadcrumb-item/breadcrumb-item.component';
-import { BreadcrumbMenuComponent } from '../breadcrumb-menu/breadcrumb-menu.component';
+import { BreadcrumbsItemComponent } from '../breadcrumbs-item/breadcrumbs-item.component';
+import { BreadcrumbsMenuComponent } from '../breadcrumbs-menu/breadcrumbs-menu.component';
 import { AnyBreadcrumb, BreadcrumbMenu } from '../shared';
 
 @Component({
   selector: 'sdg-breadcrumbs-list',
   standalone: true,
-  imports: [BreadcrumbItemComponent, BreadcrumbMenuComponent],
+  imports: [BreadcrumbsItemComponent, BreadcrumbsMenuComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ol>
@@ -17,9 +17,9 @@ import { AnyBreadcrumb, BreadcrumbMenu } from '../shared';
         let last = $last
       ) {
         @if (isMenu(breadcrumb!)) {
-          <sdg-breadcrumb-menu [breadcrumb]="breadcrumb" />
+          <sdg-breadcrumbs-menu [breadcrumb]="breadcrumb" />
         } @else {
-          <sdg-breadcrumb-item
+          <sdg-breadcrumbs-item
             [breadcrumb]="breadcrumb!"
             [last]="last"
             [isHandset]="isHandset()"
@@ -40,8 +40,8 @@ import { AnyBreadcrumb, BreadcrumbMenu } from '../shared';
       margin: 16px 0 12px;
     }
 
-    sdg-breadcrumb-item,
-    sdg-breadcrumb-menu {
+    sdg-breadcrumbs-item,
+    sdg-breadcrumbs-menu {
       margin-right: 4px;
     }
   `

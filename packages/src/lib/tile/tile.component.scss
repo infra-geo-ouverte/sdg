@@ -14,7 +14,7 @@
   max-width: 500px;
   cursor: pointer;
 
-  &.--is-handset {
+  &.--handset {
     flex-flow: row;
     align-items: center;
     column-gap: 16px;
@@ -40,7 +40,7 @@
     flex-flow: column;
     row-gap: 8px;
 
-    &.--is-handset {
+    &.--handset {
       flex-flow: row;
     }
   }
@@ -82,7 +82,7 @@
   height: 12px;
   font-size: 12px;
 
-  &.--is-handset {
+  &.--handset {
     visibility: visible;
 
     &.--no-message {

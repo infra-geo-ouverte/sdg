@@ -7,7 +7,7 @@ import {
   SiteMapLinks
 } from '@igo2/sdg';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components/example-viewer/example-viewer.component';
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 import { environment } from 'projects/demo/src/environments/environment';
 import { EnvironmentOptions } from 'projects/demo/src/environments/environment.interface';
 

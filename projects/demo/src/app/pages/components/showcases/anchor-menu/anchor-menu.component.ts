@@ -1,8 +1,8 @@
 import { AfterContentInit, Component, ElementRef, Signal } from '@angular/core';
 
 import { Anchor, AnchorMenuComponent, findTitleAnchors } from '@igo2/sdg';
+import { BreakpointService } from '@igo2/sdg/core';
 
-import { AppService } from '../../../../app.service';
 import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
 import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
 
@@ -17,12 +17,12 @@ export class AnchorMenuDemoComponent implements AfterContentInit {
   anchors: Anchor[] = [];
 
   constructor(
-    private appService: AppService,
+    private breakpointService: BreakpointService,
     private elementRef: ElementRef
   ) {}
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 
   ngAfterContentInit() {

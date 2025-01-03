@@ -31,23 +31,31 @@ describe('HeaderComponent', () => {
   });
 
   it('should render logo', () => {
-    const logoElement = fixture.nativeElement.querySelector('.logo');
+    const logoElement = fixture.nativeElement.querySelector(
+      '.sdg-header-content-logo'
+    );
     expect(logoElement).toBeTruthy();
   });
 
   it('should render title', () => {
-    const titleElement = fixture.nativeElement.querySelector('.title');
+    const titleElement = fixture.nativeElement.querySelector(
+      '.sdg-header-content-title'
+    );
     expect(titleElement).toBeTruthy();
   });
 
   it('should render options', () => {
-    const optionsElement = fixture.nativeElement.querySelector('.options');
+    const optionsElement = fixture.nativeElement.querySelector(
+      '.sdg-header-content-options'
+    );
     expect(optionsElement).toBeTruthy();
   });
 
   it('should render contact us', () => {
     fixture.detectChanges();
-    const contactUsElement = fixture.nativeElement.querySelector('.contact-us');
+    const contactUsElement = fixture.nativeElement.querySelector(
+      '.sdg-header-content-options-contact-us'
+    );
     expect(contactUsElement).toBeTruthy();
   });
 });

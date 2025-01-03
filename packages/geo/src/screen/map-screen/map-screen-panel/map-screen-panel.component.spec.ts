@@ -3,7 +3,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { IgoMap } from '@igo2/geo';
 
-import { TEST_CONFIG } from '../../../../../src/test-config';
+import { TEST_CONFIG } from 'packages/src/test-config';
+
 import { MapScreenPanelComponent } from './map-screen-panel.component';
 
 describe('MapScreenPanelComponent', () => {

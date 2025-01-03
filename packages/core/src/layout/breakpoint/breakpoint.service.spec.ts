@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from '../../../../src/test-config';
+import { TEST_CONFIG } from 'packages/src/test-config';
+
 import { BreakpointService } from './breakpoint.service';
 
 describe('BreakpointService', () => {

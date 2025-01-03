@@ -29,8 +29,8 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const app = fixture.componentInstance;
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.title')?.textContent).toContain(
-      app.config.title
-    );
+    expect(
+      compiled.querySelector('.sdg-header-content-title')?.textContent
+    ).toContain(app.config.title);
   });
 });

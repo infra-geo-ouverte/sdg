@@ -1,77 +1,40 @@
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/typography/typography';
 
-:host,
-.container {
+:host {
   background-color: colors.$blue-piv;
 }
 
-.container {
-  display: flex;
-  flex-flow: column;
-}
+.sdg-header {
+  &-container {
+    display: flex;
+    flex-flow: column;
+    background-color: colors.$blue-piv;
+  }
 
-.header-content,
-.logo-title,
-.logo {
-  display: flex;
-  align-items: center;
-}
+  &-content {
+    display: flex;
+    align-items: center;
+    min-height: 72px;
 
-.header-content {
-  min-height: 72px;
+    &-logo {
+      display: flex;
+      align-items: center;
 
-  .logo-title {
-    flex-grow: 1;
+      &-title {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
 
-    .logo-image {
-      width: 200px;
-
-      &.--handset {
-        width: 175px;
+        &:not(.--handset) {
+          column-gap: 64px;
+        }
       }
     }
 
-    &:not(.--handset) {
-      column-gap: 64px;
-    }
-  }
-
-  &:not(.--handset) {
-    column-gap: 40px;
-  }
-
-  &.--handset {
-    justify-content: space-between;
-  }
-}
-
-.options {
-  display: flex;
-  flex-flow: column;
-}
-
-.title,
-.language,
-.contact-us {
-  font-family: typography.$font-family-title; // override font family to title
-  line-height: 20px;
-  color: colors.$white;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.title-container {
-  overflow: hidden;
-
-  h6 {
-    font-weight: normal !important;
-    margin: 0 !important;
-
-    .title {
+    &-title {
+      font-family: typography.$font-family-title; // override font family to title
+      line-height: 20px;
       color: colors.$white;
       text-decoration: none;
       display: -webkit-box;
@@ -79,23 +42,53 @@
       line-clamp: 3;
       -webkit-box-orient: vertical;
 
+      &-container {
+        overflow: hidden;
+
+        > h6 {
+          font-weight: normal !important;
+          margin: 0 !important;
+        }
+
+        &:not(.--handset) {
+          margin: 16px 0;
+        }
+
+        &.--handset {
+          margin-bottom: 16px;
+        }
+      }
+
       &:hover {
         text-decoration: underline;
       }
     }
-  }
 
-  &:not(.--handset) {
-    margin: 16px 0;
-  }
+    &-options {
+      display: flex;
+      flex-flow: column;
 
-  &.--handset {
-    margin-bottom: 16px;
-  }
-}
+      &-language,
+      &-contact-us {
+        font-family: typography.$font-family-title; // override font family to title
+        font-size: 12px;
+        white-space: nowrap;
+        line-height: 20px;
+        color: colors.$white;
+        text-decoration: none;
 
-.language,
-.contact-us {
-  font-size: 12px;
-  white-space: nowrap;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &:not(.--handset) {
+      column-gap: 40px;
+    }
+
+    &.--handset {
+      justify-content: space-between;
+    }
+  }
 }

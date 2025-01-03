@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from '../../../test-config';
+import { TEST_CONFIG } from 'packages/src/test-config';
+
 import { INavigationTitleOptions } from '../navigation.interface';
 import {
   NavigationTitleStrategy,

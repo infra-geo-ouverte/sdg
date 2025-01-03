@@ -27,6 +27,9 @@
     },
     "./geo": {
       "import": "./geo/src/public-api.ts"
+    },
+    "./src/test-config": {
+      "import": "./src/test-config.ts"
     }
   },
   "peerDependencies": {

@@ -4,7 +4,8 @@ import { By } from '@angular/platform-browser';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 
-import { TEST_CONFIG } from '../../test-config';
+import { TEST_CONFIG } from 'packages/src/test-config';
+
 import { NavigationComponent } from './navigation.component';
 import { INavigationLinks } from './navigation.interface';
 

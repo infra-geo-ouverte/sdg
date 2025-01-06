@@ -1,6 +1,7 @@
 import { Component, Signal } from '@angular/core';
 
-import { AppService } from '../../app.service';
+import { BreakpointService } from '@igo2/sdg/core';
+
 import { BasicScreenComponent } from '../../components';
 
 @Component({
@@ -11,9 +12,9 @@ import { BasicScreenComponent } from '../../components';
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
-  constructor(private appService: AppService) {}
+  constructor(private breakpointService: BreakpointService) {}
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 }

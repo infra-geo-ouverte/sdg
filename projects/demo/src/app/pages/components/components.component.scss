@@ -3,7 +3,6 @@
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 64px 16px;
-  row-gap: 64px;
 
   & > * {
     flex-basis: calc(33.33% - 16px);

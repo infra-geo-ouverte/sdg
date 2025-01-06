@@ -41,17 +41,12 @@ export class ComponentsComponent {
           ...section,
           title: title,
           path: `/composants/showcases/${section.path}`,
-          description: section.description
+          description: section.description ? section.description : undefined
         };
       });
   }
 }
 
 function isSection(route: SdgRoute): route is BlockLinkSection {
-  return !!(
-    route.title &&
-    route.description &&
-    route.path &&
-    !route.redirectTo
-  );
+  return !!(route.title && route.path && !route.redirectTo);
 }

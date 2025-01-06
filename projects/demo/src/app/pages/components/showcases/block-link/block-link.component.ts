@@ -14,18 +14,12 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
   styleUrl: './block-link.component.scss'
 })
 export class BlockLinkDemoComponent {
-  sections: BlockLinkSections = [
+  sections1: BlockLinkSections = [
     {
       title: 'Avis',
       path: '/composants/showcases/avis',
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-    },
-    {
-      title: 'Pagination',
-      path: '/composants/showcases/pagination',
-      description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
     {
       title: 'Google',
@@ -35,18 +29,61 @@ export class BlockLinkDemoComponent {
     }
   ];
 
+  sections2: BlockLinkSections = [
+    {
+      title: 'Pagination',
+      path: '/composants/showcases/pagination',
+      subsections: [
+        { title: 'Alerte', path: '/composants/showcases/alerte' },
+        { title: 'Google', path: 'https://www.google.com/' }
+      ]
+    },
+    {
+      title: 'Pagination',
+      path: '/composants/showcases/pagination',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      subsections: [
+        { title: 'Alerte', path: '/composants/showcases/alerte' },
+        { title: 'Google', path: 'https://www.google.com/' }
+      ]
+    }
+  ];
+
+  sections3: BlockLinkSections = [
+    {
+      icon: 'info',
+      title: 'Avis',
+      path: '/composants/showcases/avis',
+      description:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+    }
+  ];
+
   constructor(
     private breakpointService: BreakpointService,
     private titleResolverPipe: TitleResolverPipe
   ) {
-    this.sections.forEach((section, sectionIndex) => {
+    this.getSections(this.sections1);
+    this.getSections(this.sections2);
+    this.getSections(this.sections3);
+  }
+
+  get isHandset(): Signal<boolean> {
+    return this.breakpointService.isHandset;
+  }
+
+  private getSections(sections: BlockLinkSections): void {
+    sections.forEach((section, sectionIndex) => {
       const sectionTitle = this.titleResolverPipe.transform(section);
       if (!sectionTitle) {
         throw new Error(`Title not found for section ${sectionIndex}`);
       } else if (!section.path) {
         throw new Error(`Path not found or section ${sectionIndex}`);
-      } else if (!section.description) {
-        throw new Error(`Description not found for section ${sectionIndex}`);
+      } else if (!section.description && !section.subsections) {
+        throw new Error(
+          `Subsections array must not be empty for section ${sectionIndex}`
+        );
       }
       if (section.subsections) {
         if (section.subsections.length === 0) {
@@ -68,9 +105,5 @@ export class BlockLinkDemoComponent {
         });
       }
     });
-  }
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
   }
 }

@@ -1,71 +1,105 @@
 @use '../../../core/src/theme/colors';
 
-:host,
-.title-description,
-.subsections {
-  display: flex;
-  flex-flow: column;
-}
-
-:host {
-  row-gap: 16px;
-}
-
-.title-description {
-  row-gap: 8px;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover .title {
-    text-decoration: underline;
+.sdg-block-link {
+  &-container {
+    display: flex;
+    column-gap: 16px;
   }
 
-  &:hover .title-icon {
-    visibility: visible;
+  &-content {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
   }
-}
 
-.title,
-.see-more {
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
-  color: colors.$blue-piv;
-  margin: 0 !important;
-  text-decoration: none;
-}
+  &-icon {
+    &-link {
+      height: fit-content;
 
-.title {
-  color: colors.$blue-piv;
-}
+      &-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+      }
 
-.title-icon,
-.see-more-icon {
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
-}
+      &:hover
+        ~ .sdg-block-link-content
+        .sdg-block-link-title-description
+        .sdg-block-link-title {
+        text-decoration: underline;
 
-.title-icon {
-  visibility: hidden;
-
-  &.--handset {
-    visibility: visible;
+        &-icon {
+          visibility: visible;
+        }
+      }
+    }
   }
-}
 
-.description {
-  margin: 0;
-}
+  &-title {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    color: colors.$blue-piv;
+    margin: 0 !important;
+    text-decoration: none;
 
-.subsections {
-  row-gap: 8px;
-}
+    &-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      visibility: hidden;
 
-.see-more {
-  font-size: 14px;
+      &.--handset {
+        visibility: visible;
+      }
+    }
 
-  &:hover {
-    text-decoration: underline;
+    &-description {
+      display: flex;
+      flex-flow: column;
+      row-gap: 8px;
+      text-decoration: none;
+      cursor: pointer;
+
+      &:hover {
+        .sdg-block-link-title {
+          text-decoration: underline;
+
+          &-icon {
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+
+  &-description {
+    margin: 0;
+  }
+
+  &-subsections {
+    display: flex;
+    flex-flow: column;
+    row-gap: 8px;
+  }
+
+  &-see-more {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    font-size: 14px;
+    color: colors.$blue-piv;
+    margin: 0 !important;
+    text-decoration: none;
+
+    &-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

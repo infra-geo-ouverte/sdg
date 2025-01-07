@@ -7,8 +7,10 @@ import {
   ButtonStrokedComponent
 } from '@igo2/sdg';
 
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-button',

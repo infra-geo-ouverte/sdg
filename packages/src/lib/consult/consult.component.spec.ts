@@ -16,7 +16,7 @@ describe('ConsultComponent', () => {
     fixture = TestBed.createComponent(ConsultComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('links', [
-      { text: 'test', url: 'https://www.google.com' }
+      { label: 'test', url: 'https://www.google.com' }
     ]);
     fixture.detectChanges();
   });

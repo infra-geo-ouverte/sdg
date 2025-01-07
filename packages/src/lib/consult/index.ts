@@ -1,2 +1,2 @@
 export * from './consult.component';
-export * from './link.interface';
+export * from './consult.interface';

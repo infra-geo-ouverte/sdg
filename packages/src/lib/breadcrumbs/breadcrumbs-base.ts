@@ -2,13 +2,13 @@ import { Directive, Signal, computed, input } from '@angular/core';
 
 import {
   AnyBreadcrumb,
-  Breadcrumb,
-  BreadcrumbMenu
-} from './shared/breadcrumb.interface';
+  BreadcrumbMenu,
+  Breadcrumbs
+} from './shared/breadcrumbs.interface';
 
 @Directive()
 export abstract class BreadcrumbsBase {
-  abstract breadcrumbs: Signal<Breadcrumb[]>;
+  abstract breadcrumbs: Signal<Breadcrumbs>;
 
   readonly isHandset = input(false);
 

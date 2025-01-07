@@ -14,7 +14,7 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { BreadcrumbsBase } from './breadcrumbs-base';
 import { BreadcrumbsListComponent } from './breadcrumbs-list/breadcrumbs-list.component';
-import { Breadcrumb } from './shared/breadcrumb.interface';
+import { Breadcrumb, Breadcrumbs } from './shared/breadcrumbs.interface';
 
 @Component({
   selector: 'sdg-breadcrumbs-with-router',
@@ -40,7 +40,7 @@ export class BreadcrumbsWithRouterComponent
   extends BreadcrumbsBase
   implements OnInit, OnDestroy
 {
-  breadcrumbs = signal<Breadcrumb[]>([]);
+  breadcrumbs = signal<Breadcrumbs>([]);
 
   private _takeUntil = new Subject<boolean>();
 
@@ -73,7 +73,7 @@ export class BreadcrumbsWithRouterComponent
       .find((route) => route.path === '');
   }
 
-  private getBreadsFromRouterSegments(): Breadcrumb[] {
+  private getBreadsFromRouterSegments(): Breadcrumbs {
     const routes = this.getRouterBreadcrumbs();
     /**
      * Si on est sur la route du parent "", on n'affiche aucune route?
@@ -106,7 +106,7 @@ export class BreadcrumbsWithRouterComponent
     return routes;
   }
 
-  private getRouterBreadcrumbs(): Breadcrumb[] {
+  private getRouterBreadcrumbs(): Breadcrumbs {
     const routes = this.activatedRoute.pathFromRoot
       .filter(
         (route) =>
@@ -133,6 +133,6 @@ export class BreadcrumbsWithRouterComponent
       }
 
       return breadcrumbs.concat(breadcrumb);
-    }, [] as Breadcrumb[]);
+    }, [] as Breadcrumbs);
   }
 }

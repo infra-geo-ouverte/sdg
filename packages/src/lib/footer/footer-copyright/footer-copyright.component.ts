@@ -5,7 +5,7 @@ import {
   input
 } from '@angular/core';
 
-import { FooterCopyright } from './../footer.interface';
+import { FooterCopyright } from '../footer.interface';
 
 @Component({
   selector: 'sdg-footer-copyright',

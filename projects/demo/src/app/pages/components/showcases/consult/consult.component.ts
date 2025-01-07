@@ -1,13 +1,12 @@
 import { Component, Signal } from '@angular/core';
 
 import { ConsultComponent, Link } from '@igo2/sdg';
+import { BreakpointService } from '@igo2/sdg/core';
 
 import {
   ExampleViewerComponent,
   ExternalLinkComponent
 } from 'projects/demo/src/app/components';
-
-import { AppService } from '../../../../app.service';
 
 @Component({
   selector: 'app-consult',
@@ -32,9 +31,9 @@ export class ConsultDemoComponent {
     }
   ];
 
-  constructor(private appService: AppService) {}
+  constructor(private breakpointService: BreakpointService) {}
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 }

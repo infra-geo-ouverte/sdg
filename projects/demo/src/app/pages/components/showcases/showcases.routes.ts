@@ -80,7 +80,7 @@ export const routes: SdgRoutes = [
       "Le fil d'Ariane permet de se situer dans la structure d'un site.",
     loadComponent: () =>
       import('./breadcrumbs/breadcrumbs.component').then(
-        (m) => m.BreadcrumbDemoComponent
+        (m) => m.BreadcrumbsDemoComponent
       )
   },
   {

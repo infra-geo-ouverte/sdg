@@ -23,7 +23,7 @@ import {
   templateUrl: './breadcrumbs.component.html',
   styleUrl: './breadcrumbs.component.scss'
 })
-export class BreadcrumbDemoComponent {
+export class BreadcrumbsDemoComponent {
   breadcrumbs: Breadcrumbs = [
     {
       id: '0',

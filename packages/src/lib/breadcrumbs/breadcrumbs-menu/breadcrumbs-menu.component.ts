@@ -4,16 +4,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { RouterLink } from '@angular/router';
 
-import { BreadcrumbMenu } from '../shared/breadcrumb.interface';
+import { BreadcrumbMenu } from '../shared/breadcrumbs.interface';
 
 @Component({
-  selector: 'sdg-breadcrumb-menu',
+  selector: 'sdg-breadcrumbs-menu',
   standalone: true,
   imports: [MatMenuModule, MatButtonModule, MatIconModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './breadcrumb-menu.component.html',
-  styleUrl: './breadcrumb-menu.component.scss'
+  templateUrl: './breadcrumbs-menu.component.html',
+  styleUrl: './breadcrumbs-menu.component.scss'
 })
-export class BreadcrumbMenuComponent {
+export class BreadcrumbsMenuComponent {
   breadcrumb = input.required<BreadcrumbMenu>();
 }

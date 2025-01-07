@@ -14,6 +14,7 @@ import {
   isNavigationLink
 } from '@igo2/sdg';
 import {
+  BreakpointService,
   Language,
   SdgRoute,
   TitleResolverPipe,
@@ -26,7 +27,6 @@ import { delay, first } from 'rxjs';
 import { environment } from '../environments/environment';
 import { EnvironmentOptions } from '../environments/environment.interface';
 import { routes } from './app.routes';
-import { AppService } from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
-    private appService: AppService,
+    private breakpointService: BreakpointService,
     private translationService: TranslationService,
     private titleResolverPipe: TitleResolverPipe
   ) {
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
   }
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 
   get currentLanguage() {

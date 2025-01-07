@@ -4,11 +4,13 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { INavigationLinks, NavigationComponent } from '@igo2/sdg';
 
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
 
 @Component({
-  selector: 'app-navigation-demo',
+  selector: 'app-navigation',
   standalone: true,
   imports: [
     ExampleViewerComponent,

@@ -24,27 +24,27 @@
     [message]="longMessage"
     href="https://www.google.com/"
     [isHandset]="isHandset()"
-  ></sdg-tile>
+  />
   <br />
   <sdg-tile
     title="Ceci est une tuile avec message, sans icône"
     [message]="longMessage"
     href="https://www.google.com/"
     [isHandset]="isHandset()"
-  ></sdg-tile>
+  />
   <br />
   <sdg-tile
     icon="star"
     title="Ceci est une tuile sans message, avec icône"
     href="https://www.google.com/"
     [isHandset]="isHandset()"
-  ></sdg-tile>
+  />
   <br />
   <sdg-tile
     title="Ceci est une tuile sans message ni icône"
     href="https://www.google.com/"
     [isHandset]="isHandset()"
-  ></sdg-tile>
+  />
 </app-example-viewer>
 
 <app-example-viewer
@@ -52,7 +52,7 @@
   configFolder="tile"
   codeFolder="tile"
 >
-  <div class="container" [class.--is-handset]="isHandset()">
+  <div class="container" [class.--handset]="isHandset()">
     <sdg-tile
       class="tile"
       icon="star"
@@ -60,8 +60,7 @@
       href="/"
       [message]="longMessage"
       [isHandset]="isHandset()"
-    ></sdg-tile>
-
+    />
     <sdg-tile
       class="tile"
       icon="circle"
@@ -69,8 +68,7 @@
       [message]="shortMessage"
       href="/composants"
       [isHandset]="isHandset()"
-    ></sdg-tile>
-
+    />
     <sdg-tile
       class="tile"
       icon="info"
@@ -78,6 +76,6 @@
       [message]="longMessage"
       href="https://www.google.com/"
       [isHandset]="isHandset()"
-    ></sdg-tile>
+    />
   </div>
 </app-example-viewer>

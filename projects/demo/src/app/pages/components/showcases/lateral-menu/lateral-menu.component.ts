@@ -1,10 +1,9 @@
 import { Component, Signal } from '@angular/core';
 
-import { LateralMenuComponent } from '@igo2/sdg';
+import { LateralMenuComponent, LateralMenuSections } from '@igo2/sdg';
 import { BreakpointService } from '@igo2/sdg/core';
 
-import { LateralMenuSections } from 'packages/src/lib/lateral-menu/lateral-menu.interface';
-import { ExampleViewerComponent } from 'projects/demo/src/app/components/example-viewer/example-viewer.component';
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-lateral-menu',

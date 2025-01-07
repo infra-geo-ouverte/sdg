@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 import { BreadcrumbsBase } from './breadcrumbs-base';
 import { BreadcrumbsListComponent } from './breadcrumbs-list/breadcrumbs-list.component';
-import { Breadcrumb } from './shared/breadcrumb.interface';
+import { Breadcrumbs } from './shared';
 
 @Component({
   selector: 'sdg-breadcrumbs',
@@ -25,5 +25,5 @@ import { Breadcrumb } from './shared/breadcrumb.interface';
   }
 })
 export class BreadcrumbsComponent extends BreadcrumbsBase {
-  breadcrumbs = input.required<Breadcrumb[]>();
+  breadcrumbs = input.required<Breadcrumbs>();
 }

@@ -2,9 +2,8 @@ import { Component, Signal } from '@angular/core';
 
 import { BlockLinkComponent } from '@igo2/sdg';
 import { BlockLinkSection, BlockLinkSections } from '@igo2/sdg';
-import { SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
+import { BreakpointService, SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
 
-import { AppService } from '../../app.service';
 import { BasicScreenComponent } from '../../components';
 import { routes } from './showcases/showcases.routes';
 
@@ -20,14 +19,14 @@ export class ComponentsComponent {
   sections: BlockLinkSections;
 
   constructor(
-    private appService: AppService,
+    private breakpointService: BreakpointService,
     private titleResolverPipe: TitleResolverPipe
   ) {
     this.sections = this.setSections();
   }
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 
   private setSections(): BlockLinkSections {

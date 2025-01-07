@@ -1,11 +1,9 @@
 import { Component, Signal } from '@angular/core';
 
-import { BlockLinkComponent } from '@igo2/sdg';
-import { BlockLinkSections } from '@igo2/sdg';
-import { TitleResolverPipe } from '@igo2/sdg/core';
+import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg';
+import { BreakpointService, TitleResolverPipe } from '@igo2/sdg/core';
 
-import { AppService } from '../../../../app.service';
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-block-link',
@@ -38,7 +36,7 @@ export class BlockLinkDemoComponent {
   ];
 
   constructor(
-    private appService: AppService,
+    private breakpointService: BreakpointService,
     private titleResolverPipe: TitleResolverPipe
   ) {
     this.sections.forEach((section, sectionIndex) => {
@@ -73,6 +71,6 @@ export class BlockLinkDemoComponent {
   }
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 }

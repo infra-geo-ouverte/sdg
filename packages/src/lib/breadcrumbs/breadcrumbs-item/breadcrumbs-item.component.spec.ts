@@ -3,20 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../test-config';
 import { Breadcrumb } from '../shared';
-import { BreadcrumbItemComponent } from './breadcrumb-item.component';
+import { BreadcrumbsItemComponent } from './breadcrumbs-item.component';
 
-describe('BreadcrumbItemComponent', () => {
-  let component: BreadcrumbItemComponent;
-  let ref: ComponentRef<BreadcrumbItemComponent>;
-  let fixture: ComponentFixture<BreadcrumbItemComponent>;
+describe('BreadcrumbsItemComponent', () => {
+  let component: BreadcrumbsItemComponent;
+  let ref: ComponentRef<BreadcrumbsItemComponent>;
+  let fixture: ComponentFixture<BreadcrumbsItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BreadcrumbItemComponent],
+      imports: [BreadcrumbsItemComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BreadcrumbItemComponent);
+    fixture = TestBed.createComponent(BreadcrumbsItemComponent);
     component = fixture.componentInstance;
     ref = fixture.componentRef;
 

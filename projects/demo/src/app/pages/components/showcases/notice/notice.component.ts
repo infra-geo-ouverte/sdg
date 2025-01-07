@@ -1,10 +1,12 @@
 import { Component, Signal } from '@angular/core';
 
 import { NoticeComponent } from '@igo2/sdg';
+import { BreakpointService } from '@igo2/sdg/core';
 
-import { AppService } from '../../../../app.service';
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-notice',
@@ -18,9 +20,9 @@ export class NoticeDemoComponent {
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
 
-  constructor(private appService: AppService) {}
+  constructor(private breakpointService: BreakpointService) {}
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 }

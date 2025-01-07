@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { SiteMapLinks } from './../footer.interface';
+import { SiteMapLinks } from '../footer.interface';
 
 @Component({
   selector: 'sdg-footer-links',

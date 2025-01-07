@@ -4,10 +4,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 import { PaginatorComponent } from '@igo2/sdg';
+import { BreakpointService } from '@igo2/sdg/core';
 
-import { AppService } from '../../../../app.service';
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-paginator',
@@ -33,10 +35,10 @@ export class PaginatorDemoComponent implements OnInit {
 
   shownList: number[] = [];
 
-  constructor(private appService: AppService) {}
+  constructor(private breakpointService: BreakpointService) {}
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 
   ngOnInit() {

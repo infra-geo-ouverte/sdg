@@ -1,10 +1,12 @@
 import { Component, Signal } from '@angular/core';
 
 import { AlertComponent } from '@igo2/sdg';
+import { BreakpointService } from '@igo2/sdg/core';
 
-import { AppService } from '../../../../app.service';
-import { ExampleViewerComponent } from '../../../../components/example-viewer/example-viewer.component';
-import { ExternalLinkComponent } from '../../../../components/external-link/external-link.component';
+import {
+  ExampleViewerComponent,
+  ExternalLinkComponent
+} from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-alert',
@@ -17,9 +19,9 @@ export class AlertDemoComponent {
   generalAlertIsOpen = true;
   alertIsOpen = true;
 
-  constructor(private appService: AppService) {}
+  constructor(private breakpointService: BreakpointService) {}
 
   get isHandset(): Signal<boolean> {
-    return this.appService.isHandset;
+    return this.breakpointService.isHandset;
   }
 }

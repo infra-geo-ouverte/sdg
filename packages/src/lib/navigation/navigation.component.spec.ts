@@ -1,4 +1,4 @@
-import { ComponentRef, signal } from '@angular/core';
+import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
@@ -17,7 +17,6 @@ const MOCK_LINKS: INavigationLinks = [
 
 describe('NavigationComponent', () => {
   let component: NavigationComponent;
-  let ref: ComponentRef<NavigationComponent>;
   let fixture: ComponentFixture<NavigationComponent>;
 
   beforeEach(async () => {
@@ -28,10 +27,9 @@ describe('NavigationComponent', () => {
 
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
-    ref = fixture.componentRef;
 
     // Set required inputs
-    ref.setInput('links', MOCK_LINKS);
+    fixture.componentRef.setInput('links', MOCK_LINKS);
     component.isHandset = signal(false);
 
     fixture.detectChanges();

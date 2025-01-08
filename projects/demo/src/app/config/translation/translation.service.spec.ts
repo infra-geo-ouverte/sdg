@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
 
 import { TranslateService } from '@ngx-translate/core';
+import { TEST_CONFIG } from 'projects/demo/src/test-config';
 
-import { TEST_CONFIG } from '../../../test-config';
 import { AppTranslationService } from './translation.service';
 
 describe('AppTranslationService', () => {

@@ -1,4 +1,3 @@
-import { ComponentRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../test-config';
@@ -7,7 +6,6 @@ import { BreadcrumbsItemComponent } from './breadcrumbs-item.component';
 
 describe('BreadcrumbsItemComponent', () => {
   let component: BreadcrumbsItemComponent;
-  let ref: ComponentRef<BreadcrumbsItemComponent>;
   let fixture: ComponentFixture<BreadcrumbsItemComponent>;
 
   beforeEach(async () => {
@@ -18,10 +16,11 @@ describe('BreadcrumbsItemComponent', () => {
 
     fixture = TestBed.createComponent(BreadcrumbsItemComponent);
     component = fixture.componentInstance;
-    ref = fixture.componentRef;
 
-    ref.setInput('breadcrumb', { menu: [{ title: '', url: '' }] });
-    ref.setInput('last', false);
+    fixture.componentRef.setInput('breadcrumb', {
+      menu: [{ title: '', url: '' }]
+    });
+    fixture.componentRef.setInput('last', false);
 
     fixture.detectChanges();
   });
@@ -37,8 +36,8 @@ describe('BreadcrumbsItemComponent', () => {
       url: '/'
     };
 
-    ref.setInput('breadcrumb', breadcrumb);
-    ref.setInput('last', false);
+    fixture.componentRef.setInput('breadcrumb', breadcrumb);
+    fixture.componentRef.setInput('last', false);
 
     fixture.detectChanges();
 
@@ -55,8 +54,8 @@ describe('BreadcrumbsItemComponent', () => {
       url: ''
     };
 
-    ref.setInput('breadcrumb', breadcrumb);
-    ref.setInput('last', true);
+    fixture.componentRef.setInput('breadcrumb', breadcrumb);
+    fixture.componentRef.setInput('last', true);
 
     fixture.detectChanges();
 
@@ -74,9 +73,9 @@ describe('BreadcrumbsItemComponent', () => {
       url: ''
     };
 
-    ref.setInput('breadcrumb', breadcrumb);
-    ref.setInput('last', true);
-    ref.setInput('isHandset', true);
+    fixture.componentRef.setInput('breadcrumb', breadcrumb);
+    fixture.componentRef.setInput('last', true);
+    fixture.componentRef.setInput('isHandset', true);
 
     fixture.detectChanges();
 

@@ -9,10 +9,15 @@
       display: flex;
       flex-flow: column;
       align-items: center;
+      row-gap: 4px;
     }
 
-    &-logo {
-      height: 35px;
+    &-logo-link {
+      display: flex;
+
+      &-logo {
+        height: 35px;
+      }
     }
 
     &-copyright {

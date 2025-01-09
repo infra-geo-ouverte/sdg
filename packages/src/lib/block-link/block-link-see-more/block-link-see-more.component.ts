@@ -10,24 +10,23 @@ import { MatIconModule } from '@angular/material/icon';
 import { pathIsExternal } from '@igo2/sdg/core';
 
 import { AnchorComponent } from '../../shared/anchor/anchor.component';
-import { BlockLinkSubsection } from '../block-link.interface';
+import { BlockLinkSection } from '../block-link.interface';
 
 @Component({
-  selector: 'sdg-block-link-subsection',
+  selector: 'sdg-block-link-see-more',
   standalone: true,
   imports: [MatIconModule, AnchorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './block-link-subsection.component.html',
-  styleUrls: ['./block-link-subsection.component.scss']
+  templateUrl: './block-link-see-more.component.html',
+  styleUrls: ['./block-link-see-more.component.scss']
 })
-export class BlockLinkSubsectionComponent {
-  readonly subsection = input.required<BlockLinkSubsection>();
+export class BlockLinkSeeMoreComponent {
+  readonly path = input.required<BlockLinkSection['path']>();
 
   externalPath: Signal<boolean | undefined> = computed(() => {
-    const path = this.subsection().path;
-    if (!path) {
+    if (!this.path()) {
       return;
     }
-    return pathIsExternal(path);
+    return pathIsExternal(this.path());
   });
 }

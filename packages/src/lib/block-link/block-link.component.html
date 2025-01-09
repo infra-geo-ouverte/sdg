@@ -1,53 +1,24 @@
-@if (externalPath()) {
-  <a class="title-description" [href]="section().path" target="_blank">
-    <h5 class="title">
-      {{ section().title }}
-      <mat-icon
-        class="title-icon"
-        [class.--handset]="isHandset()"
-        color="accent"
-        >arrow_forward</mat-icon
-      >
-    </h5>
-
-    <p class="description">{{ section().description }}</p>
-  </a>
-} @else {
-  <a class="title-description" [routerLink]="section().path">
-    <h5 class="title">
-      {{ section().title }}
-      <mat-icon
-        class="title-icon"
-        [class.--handset]="isHandset()"
-        color="accent"
-        >arrow_forward</mat-icon
-      >
-    </h5>
-
-    <p class="description">{{ section().description }}</p>
-  </a>
+@if (section().icon) {
+  <sdg-block-link-icon
+    [icon]="section().icon!"
+    [path]="section().path"
+    [description]="section().description"
+  />
 }
 
-@if (section().subsections) {
-  <div class="subsections">
-    @for (subsection of section().subsections; track subsection) {
-      <sdg-block-link-subsection
-        [subsection]="subsection"
-      ></sdg-block-link-subsection>
-    }
-  </div>
-}
+<div class="sdg-block-link-content">
+  <sdg-block-link-title-description
+    [section]="section()"
+    [isHandset]="isHandset()"
+  />
 
-@if (externalPath()) {
-  <a class="see-more" [href]="section().path" target="_blank">
-    Voir plus<mat-icon class="see-more-icon" color="primary"
-      >arrow_forward</mat-icon
-    >
-  </a>
-} @else {
-  <a class="see-more" [routerLink]="section().path">
-    Voir plus<mat-icon class="see-more-icon" color="primary"
-      >arrow_forward</mat-icon
-    >
-  </a>
-}
+  @if (section().subsections) {
+    <div class="sdg-block-link-subsections">
+      @for (subsection of section().subsections; track subsection) {
+        <sdg-block-link-subsection [subsection]="subsection" />
+      }
+    </div>
+  }
+
+  <sdg-block-link-see-more [path]="section().path" />
+</div>

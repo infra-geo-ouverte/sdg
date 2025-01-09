@@ -1,0 +1,11 @@
+@use '../../../../core/src/theme/colors';
+
+.sdg-block-link-icon-link-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 40px;
+
+  &.--no-description {
+    color: colors.$blue-dark;
+  }
+}

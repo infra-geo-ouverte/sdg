@@ -1,10 +1,18 @@
 .block-links {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+  row-gap: 32px;
 
-.block-links > * {
-  flex-basis: calc(33.33% - 16px);
-  margin: 0px 8px;
+  &:not(.--handset) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    > * {
+      flex-basis: calc(50% - 16px);
+      margin: 0px 8px;
+    }
+  }
+
+  &.--handset {
+    flex-direction: column;
+  }
 }

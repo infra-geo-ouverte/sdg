@@ -14,14 +14,14 @@ import { NoticeIcon, NoticeType } from './notice.interface';
 export class NoticeComponent {
   NoticeType = NoticeType;
 
-  type = input.required<keyof typeof NoticeType>();
-  icon = input<string | undefined>();
-  title = input.required<string>();
-  message = input.required<string>();
-  isHandset = input<boolean>();
+  readonly type = input.required<keyof typeof NoticeType>();
+  readonly icon = input<string>();
+  readonly title = input.required<string>();
+  readonly message = input.required<string>();
+  readonly isHandset = input.required<boolean>();
 
   getColoredZoneClass() {
-    return `colored-zone --${NoticeType[this.type()]}`;
+    return `--${NoticeType[this.type()]}`;
   }
 
   getColoredZoneIconClass() {

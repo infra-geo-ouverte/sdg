@@ -1,9 +1,10 @@
 export type BlockLinkSections = BlockLinkSection[];
 
 export interface BlockLinkSection {
+  icon?: string;
   title: string;
   path: string;
-  description: string;
+  description?: string;
   subsections?: BlockLinkSubsection[];
 }
 

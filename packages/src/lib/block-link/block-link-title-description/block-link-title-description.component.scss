@@ -1,0 +1,49 @@
+@use '../../../../core/src/theme/colors';
+
+sdg-anchor ::ng-deep a {
+  display: flex;
+  flex-flow: column;
+  row-gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    .sdg-block-link-title {
+      text-decoration: underline;
+
+      &-arrow {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.sdg-block-link {
+  &-title {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    color: colors.$blue-piv;
+    margin: 0 !important;
+    text-decoration: none;
+
+    &-arrow {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      visibility: hidden;
+
+      &.--handset {
+        visibility: visible;
+      }
+    }
+
+    &.--no-description {
+      color: colors.$blue-dark;
+    }
+  }
+
+  &-description {
+    margin: 0;
+  }
+}

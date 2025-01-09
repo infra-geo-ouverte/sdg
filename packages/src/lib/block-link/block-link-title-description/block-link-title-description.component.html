@@ -1,0 +1,18 @@
+<sdg-anchor [path]="section().path"
+  ><h5
+    class="sdg-block-link-title"
+    [class.--no-description]="!section().description"
+  >
+    {{ section().title }}
+    <mat-icon
+      class="sdg-block-link-title-arrow"
+      [class.--handset]="isHandset()"
+      color="accent"
+      >arrow_forward</mat-icon
+    >
+  </h5>
+
+  @if (section().description) {
+    <p class="sdg-block-link-description">{{ section().description }}</p>
+  }
+</sdg-anchor>

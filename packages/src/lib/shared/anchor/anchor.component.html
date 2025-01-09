@@ -1,0 +1,11 @@
+@if (externalPath()) {
+  <a [href]="path()" target="_blank"
+    ><ng-container [ngTemplateOutlet]="CONTENT" />
+  </a>
+} @else {
+  <a [routerLink]="path()"><ng-container [ngTemplateOutlet]="CONTENT" /></a>
+}
+
+<ng-template #CONTENT>
+  <ng-content />
+</ng-template>

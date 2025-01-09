@@ -1,71 +1,35 @@
 @use '../../../core/src/theme/colors';
 
-:host,
-.title-description,
-.subsections {
-  display: flex;
-  flex-flow: column;
-}
-
 :host {
-  row-gap: 16px;
-}
-
-.title-description {
-  row-gap: 8px;
-  text-decoration: none;
-  cursor: pointer;
-
-  &:hover .title {
-    text-decoration: underline;
-  }
-
-  &:hover .title-icon {
-    visibility: visible;
-  }
-}
-
-.title,
-.see-more {
   display: flex;
-  align-items: center;
-  column-gap: 8px;
-  color: colors.$blue-piv;
-  margin: 0 !important;
-  text-decoration: none;
+  column-gap: 16px;
 }
 
-.title {
-  color: colors.$blue-piv;
-}
-
-.title-icon,
-.see-more-icon {
-  width: 16px;
-  height: 16px;
-  font-size: 16px;
-}
-
-.title-icon {
-  visibility: hidden;
-
-  &.--handset {
-    visibility: visible;
-  }
-}
-
-.description {
-  margin: 0;
-}
-
-.subsections {
-  row-gap: 8px;
-}
-
-.see-more {
-  font-size: 14px;
+sdg-block-link-icon {
+  height: fit-content;
 
   &:hover {
-    text-decoration: underline;
+    ~ .sdg-block-link-content ::ng-deep.sdg-block-link-title {
+      text-decoration: underline;
+
+      &-arrow {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.sdg-block-link {
+  &-content,
+  &-subsections {
+    display: flex;
+    flex-flow: column;
+  }
+  &-content {
+    row-gap: 16px;
+  }
+
+  &-subsections {
+    row-gap: 8px;
   }
 }

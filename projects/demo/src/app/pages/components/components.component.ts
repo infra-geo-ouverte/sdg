@@ -48,10 +48,5 @@ export class ComponentsComponent {
 }
 
 function isSection(route: SdgRoute): route is BlockLinkSection {
-  return !!(
-    route.title &&
-    route.description &&
-    route.path &&
-    !route.redirectTo
-  );
+  return !!(route.title && route.path && !route.redirectTo);
 }

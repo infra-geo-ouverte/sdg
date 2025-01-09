@@ -17,15 +17,14 @@ import {
   imports: [RouterLink, MatButtonModule, MatIconModule]
 })
 export class HeaderComponent {
-  title = input.required<string>();
-  contactUs = input<IHeaderContactUs>();
-  languages = input<IHeaderLanguages>();
-  currentLanguage = input<string>();
-  isHandset = input.required<boolean>();
+  readonly title = input.required<string>();
+  readonly contactUs = input<IHeaderContactUs>();
+  readonly languages = input<IHeaderLanguages>();
+  readonly currentLanguage = input<string>();
+  readonly isHandset = input.required<boolean>();
+  readonly containerClass = input<string>();
 
   languageChange = output<string>();
-
-  showSearch = false;
 
   get nextLanguage(): IHeaderLanguageChoice | undefined {
     // For now we have only two language

@@ -5,12 +5,6 @@ export interface IHeaderConfig {
   languages?: IHeaderLanguages;
 }
 
-export interface IHeaderLogo {
-  primary: string;
-  print?: string;
-  url: string;
-}
-
 export interface IHeaderContactUs {
   label: string;
   route: string;

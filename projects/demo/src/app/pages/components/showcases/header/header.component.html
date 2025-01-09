@@ -24,7 +24,8 @@
     [contactUs]="config.header.contactUs"
     [languages]="config.header.languages"
     [currentLanguage]="currentLanguage()"
-    (languageChange)="handleLanguageChange($event)"
     [isHandset]="isHandset()"
+    containerClass="container"
+    (languageChange)="handleLanguageChange($event)"
   />
 </app-example-viewer>

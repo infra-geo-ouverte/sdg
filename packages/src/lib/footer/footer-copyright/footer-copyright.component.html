@@ -1,8 +1,11 @@
 <div class="sdg-footer-copyright-container" [class]="containerClass()">
   <div class="sdg-footer-copyright-content">
-    <a [href]="copyright().logoUrl" target="_blank"
+    <a
+      class="sdg-footer-copyright-logo-link"
+      [href]="copyright().logoUrl"
+      target="_blank"
       ><img
-        class="sdg-footer-copyright-logo"
+        class="sdg-footer-copyright-logo-link-logo"
         [src]="copyright().logo"
         alt="Logo"
     /></a>

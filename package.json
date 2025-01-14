@@ -1,6 +1,6 @@
 {
   "name": "sdg",
-  "version": "1.0.0-next.42",
+  "version": "1.0.0-next.43",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/infra-geo-ouverte/sdg.git"

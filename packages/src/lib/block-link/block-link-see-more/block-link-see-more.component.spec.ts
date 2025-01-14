@@ -15,6 +15,7 @@ describe('BlockLinkSeeMoreComponent', () => {
 
     fixture = TestBed.createComponent(BlockLinkSeeMoreComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('label', 'Test');
     fixture.componentRef.setInput('path', 'https://www.google.com/maps');
     fixture.detectChanges();
   });

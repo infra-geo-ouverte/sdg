@@ -6,6 +6,7 @@ export interface BlockLinkSection {
   path: string;
   description?: string;
   subsections?: BlockLinkSubsection[];
+  seeMoreLabel: string;
 }
 
 export type BlockLinkSubsection = Pick<BlockLinkSection, 'title' | 'path'>;

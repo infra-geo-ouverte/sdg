@@ -2,7 +2,12 @@ import { Component, Signal } from '@angular/core';
 
 import { BlockLinkComponent } from '@igo2/sdg';
 import { BlockLinkSection, BlockLinkSections } from '@igo2/sdg';
-import { BreakpointService, SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
+import {
+  BreakpointService,
+  SdgRoute,
+  TitleResolverPipe,
+  TranslationService
+} from '@igo2/sdg/core';
 
 import { BasicScreenComponent } from '../../components';
 import { routes } from './showcases/showcases.routes';
@@ -20,7 +25,8 @@ export class ComponentsComponent {
 
   constructor(
     private breakpointService: BreakpointService,
-    private titleResolverPipe: TitleResolverPipe
+    private titleResolverPipe: TitleResolverPipe,
+    private translationService: TranslationService
   ) {
     this.sections = this.setSections();
   }
@@ -41,7 +47,8 @@ export class ComponentsComponent {
           ...section,
           title: title,
           path: `/composants/showcases/${section.path}`,
-          description: section.description
+          description: section.description,
+          seeMoreLabel: this.translationService.get('seeMore')
         };
       });
   }

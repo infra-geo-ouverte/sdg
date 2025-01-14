@@ -1,11 +1,11 @@
 .block-links {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: 64px 16px;
 
   & > * {
-    flex-basis: calc(33.33% - 16px);
+    flex-basis: calc(100% / 3 - 16px);
 
     &.--handset {
       flex-basis: 100%;

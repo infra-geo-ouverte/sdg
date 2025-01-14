@@ -23,5 +23,6 @@
     "paginator": "Paginator",
     "sequentialLinks": "Sequential Links",
     "tile": "Clickable tile"
-  }
+  },
+  "seeMore": "See more"
 }

@@ -3,7 +3,7 @@
     class="sdg-block-link-title"
     [class.--no-description]="!section().description"
   >
-    {{ section().title }}
+    <span>{{ section().title }}</span>
     <mat-icon
       class="sdg-block-link-title-arrow"
       [class.--handset]="isHandset()"

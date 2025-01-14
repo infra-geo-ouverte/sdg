@@ -21,6 +21,7 @@ import { BlockLinkSection } from '../block-link.interface';
   styleUrls: ['./block-link-see-more.component.scss']
 })
 export class BlockLinkSeeMoreComponent {
+  readonly label = input.required<BlockLinkSection['seeMoreLabel']>();
   readonly path = input.required<BlockLinkSection['path']>();
 
   externalPath: Signal<boolean | undefined> = computed(() => {

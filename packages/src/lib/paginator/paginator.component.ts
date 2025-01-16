@@ -22,11 +22,11 @@ import { IgoLanguageModule } from '@igo2/core/language';
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
-  listLength = input.required<number>();
-  pageSize = input.required<number>();
-  middlePagesMaxRange = input<number>(1);
-  initialPageIndex = input<number>(0);
-  isHandset = input<boolean>();
+  readonly listLength = input.required<number>();
+  readonly pageSize = input.required<number>();
+  readonly middlePagesMaxRange = input<number>(1);
+  readonly initialPageIndex = input<number>(0);
+  readonly isHandset = input.required<boolean>();
 
   pageChange = output<number>();
 

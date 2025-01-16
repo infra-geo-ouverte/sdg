@@ -25,7 +25,7 @@ export class BlockLinkIconComponent {
   readonly icon = input.required<BlockLinkSection['icon']>();
   readonly description = input<BlockLinkSection['description']>();
 
-  externalPath: Signal<boolean | undefined> = computed(() => {
+  readonly externalPath: Signal<boolean | undefined> = computed(() => {
     if (!this.path()) {
       return;
     }

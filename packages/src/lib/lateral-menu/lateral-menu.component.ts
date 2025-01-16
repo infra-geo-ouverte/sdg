@@ -54,9 +54,9 @@ import { LateralMenuSections } from './lateral-menu.interface';
   ]
 })
 export class LateralMenuComponent {
-  title = input.required<string>();
-  sections = input.required<LateralMenuSections>();
-  isHandset = input.required<boolean>();
+  readonly title = input.required<string>();
+  readonly sections = input.required<LateralMenuSections>();
+  readonly isHandset = input.required<boolean>();
 
   opened = signal(false);
 

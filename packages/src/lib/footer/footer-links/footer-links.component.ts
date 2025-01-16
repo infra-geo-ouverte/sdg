@@ -11,6 +11,6 @@ import { SiteMapLinks } from '../footer.interface';
   styleUrls: ['./footer-links.component.scss']
 })
 export class FooterLinksComponent {
-  externalLinks = input<SiteMapLinks>();
+  readonly externalLinks = input<SiteMapLinks>();
   readonly containerClass = input<string>();
 }

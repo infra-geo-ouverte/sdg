@@ -53,8 +53,8 @@ import { LateralMenuItem } from '../lateral-menu.interface';
   ]
 })
 export class LateralMenuSectionComponent implements OnInit {
-  section = input.required<LateralMenuItem>();
-  isHandset = input.required<boolean>();
+  readonly section = input.required<LateralMenuItem>();
+  readonly isHandset = input.required<boolean>();
 
   opened = signal(false);
 

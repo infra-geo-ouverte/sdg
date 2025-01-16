@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  input
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 import { NoticeIcon, NoticeType } from './notice.interface';
@@ -20,19 +25,12 @@ export class NoticeComponent {
   readonly message = input.required<string>();
   readonly isHandset = input.required<boolean>();
 
-  getColoredZoneClass() {
-    return `--${NoticeType[this.type()]}`;
-  }
-
-  getColoredZoneIconClass() {
-    return `--${NoticeType[this.type()]}`;
-  }
-
-  getColoredZoneIcon(): string | undefined {
+  readonly coloredZoneClass = computed(() => `--${NoticeType[this.type()]}`);
+  readonly coloredZoneIcon = computed(() => {
     if (Object.keys(NoticeType).includes(this.type()) && !this.icon()) {
       return NoticeIcon[this.type()];
     } else {
       return this.icon();
     }
-  }
+  });
 }

@@ -23,7 +23,7 @@ import { BlockLinkSubsection } from '../block-link.interface';
 export class BlockLinkSubsectionComponent {
   readonly subsection = input.required<BlockLinkSubsection>();
 
-  externalPath: Signal<boolean | undefined> = computed(() => {
+  readonly externalPath: Signal<boolean | undefined> = computed(() => {
     const path = this.subsection().path;
     if (!path) {
       return;

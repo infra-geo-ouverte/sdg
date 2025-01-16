@@ -5,8 +5,8 @@ type ButtonColor = 'primary' | 'accent' | 'warn';
 
 @Directive()
 class ButtonBase {
-  color = input<ButtonColor>();
-  disableRipple = input<boolean>();
+  readonly color = input<ButtonColor>();
+  readonly disableRipple = input<boolean>();
 
   click = output();
 

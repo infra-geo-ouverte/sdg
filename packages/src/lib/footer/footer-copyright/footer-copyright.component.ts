@@ -16,8 +16,10 @@ import { FooterCopyright } from '../footer.interface';
   styleUrls: ['./footer-copyright.component.scss']
 })
 export class FooterCopyrightComponent {
-  copyright = input.required<FooterCopyright>();
+  readonly copyright = input.required<FooterCopyright>();
   readonly containerClass = input<string>();
 
-  year = computed(() => this.copyright().year || new Date().getFullYear());
+  readonly year = computed(
+    () => this.copyright().year || new Date().getFullYear()
+  );
 }

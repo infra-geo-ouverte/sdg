@@ -24,7 +24,7 @@ export class BlockLinkSeeMoreComponent {
   readonly label = input.required<BlockLinkSection['seeMoreLabel']>();
   readonly path = input.required<BlockLinkSection['path']>();
 
-  externalPath: Signal<boolean | undefined> = computed(() => {
+  readonly externalPath: Signal<boolean | undefined> = computed(() => {
     if (!this.path()) {
       return;
     }

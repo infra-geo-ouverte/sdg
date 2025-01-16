@@ -11,6 +11,6 @@ import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
   styleUrl: './basic-screen.component.scss'
 })
 export class BasicScreenComponent {
-  title = input.required<string>();
-  isHandset = input.required<boolean>();
+  readonly title = input.required<string>();
+  readonly isHandset = input.required<boolean>();
 }

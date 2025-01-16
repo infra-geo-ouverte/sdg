@@ -12,6 +12,6 @@ import { IContact } from './contact.interface';
   styleUrls: ['./contact.component.scss']
 })
 export class ContactComponent {
-  title = input.required<string>();
-  contact = input.required<IContact>();
+  readonly title = input.required<string>();
+  readonly contact = input.required<IContact>();
 }

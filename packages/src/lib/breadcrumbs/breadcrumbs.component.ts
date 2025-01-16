@@ -25,5 +25,5 @@ import { Breadcrumbs } from './shared';
   }
 })
 export class BreadcrumbsComponent extends BreadcrumbsBase {
-  breadcrumbs = input.required<Breadcrumbs>();
+  readonly breadcrumbs = input.required<Breadcrumbs>();
 }

@@ -13,9 +13,9 @@ import { SequentialLink } from './sequential-links.interface';
   styleUrls: ['./sequential-links.component.scss']
 })
 export class SequentialLinksComponent {
-  previous = input<SequentialLink>();
-  next = input<SequentialLink>();
-  isHandset = input<boolean>();
+  readonly previous = input<SequentialLink>();
+  readonly next = input<SequentialLink>();
+  readonly isHandset = input.required<boolean>();
 
   constructor(
     private router: Router,

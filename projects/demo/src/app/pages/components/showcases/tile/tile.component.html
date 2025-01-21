@@ -18,62 +18,31 @@
   configFolder="tile"
   codeFolder="tile"
 >
-  <sdg-tile
-    icon="star"
-    title="Ceci est une tuile avec message et icône"
-    [message]="longMessage"
-    href="https://www.google.com/"
-    [isHandset]="isHandset()"
-  />
-  <br />
-  <sdg-tile
-    title="Ceci est une tuile avec message, sans icône"
-    [message]="longMessage"
-    href="https://www.google.com/"
-    [isHandset]="isHandset()"
-  />
-  <br />
-  <sdg-tile
-    icon="star"
-    title="Ceci est une tuile sans message, avec icône"
-    href="https://www.google.com/"
-    [isHandset]="isHandset()"
-  />
-  <br />
-  <sdg-tile
-    title="Ceci est une tuile sans message ni icône"
-    href="https://www.google.com/"
-    [isHandset]="isHandset()"
-  />
-</app-example-viewer>
-
-<app-example-viewer
-  title="Ensemble de tuiles cliquables"
-  configFolder="tile"
-  codeFolder="tile"
->
-  <div class="container" [class.--handset]="isHandset()">
+  <div class="tiles">
     <sdg-tile
-      class="tile"
       icon="star"
       title="Ceci est une tuile avec message et icône"
-      href="/"
       [message]="longMessage"
+      href="https://www.google.com/"
       [isHandset]="isHandset()"
     />
+
     <sdg-tile
-      class="tile"
-      icon="circle"
-      title="Ceci est une tuile avec message et icône"
-      [message]="shortMessage"
-      href="/composants"
+      title="Ceci est une tuile avec message, sans icône"
+      [message]="longMessage"
+      href="https://www.google.com/"
       [isHandset]="isHandset()"
     />
+
     <sdg-tile
-      class="tile"
-      icon="info"
-      title="Ceci est une tuile avec message et icône"
-      [message]="longMessage"
+      icon="star"
+      title="Ceci est une tuile sans message, avec icône"
+      href="https://www.google.com/"
+      [isHandset]="isHandset()"
+    />
+
+    <sdg-tile
+      title="Ceci est une tuile sans message ni icône"
       href="https://www.google.com/"
       [isHandset]="isHandset()"
     />

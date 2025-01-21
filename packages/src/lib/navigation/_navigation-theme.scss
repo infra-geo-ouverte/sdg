@@ -41,7 +41,7 @@
     --mdc-tab-indicator-active-indicator-height: 4px;
 
     .sdg-navigation-header {
-      @include layout.breakpoint-down(mobile) {
+      @include layout.media(mobile) {
         @include mat.tabs-density($theme);
         @include mat.button-density($theme);
         @include mat.icon-button-density($theme);

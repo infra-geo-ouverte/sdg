@@ -18,7 +18,7 @@ $row-height-mobile: 40px;
     &-container {
       padding: 0 16px;
 
-      @include layout.breakpoint-down(mobile) {
+      @include layout.media(mobile) {
         padding: 0 8px;
       }
     }
@@ -41,7 +41,7 @@ $row-height-mobile: 40px;
         }
       }
 
-      @include layout.breakpoint-down(mobile) {
+      @include layout.media(mobile) {
         height: fit-content;
         min-height: $row-height-mobile;
       }
@@ -50,7 +50,7 @@ $row-height-mobile: 40px;
     &-actions {
       display: flex;
 
-      @include layout.breakpoint-down(mobile) {
+      @include layout.media(mobile) {
         margin-bottom: 0;
       }
 
@@ -58,7 +58,7 @@ $row-height-mobile: 40px;
         button {
           margin-left: 24px;
 
-          @include layout.breakpoint-down(mobile) {
+          @include layout.media(mobile) {
             margin-left: 16px;
           }
         }
@@ -71,7 +71,7 @@ $row-height-mobile: 40px;
 
     --tab-inner-spacing: 16px;
 
-    @include layout.breakpoint-down(mobile) {
+    @include layout.media(mobile) {
       --tab-inner-spacing: 8px;
     }
 
@@ -93,7 +93,7 @@ $row-height-mobile: 40px;
         }
       }
 
-      @include layout.breakpoint-down(mobile) {
+      @include layout.media(mobile) {
         --mdc-secondary-navigation-tab-container-height: #{$row-height-mobile};
       }
     }
@@ -110,7 +110,7 @@ $row-height-mobile: 40px;
     max-width: 100%;
     overflow: hidden;
 
-    @include layout.breakpoint-down(mobile) {
+    @include layout.media(mobile) {
       width: 100%;
       flex-grow: unset;
       height: fit-content;
@@ -142,7 +142,7 @@ $row-height-mobile: 40px;
       }
     }
 
-    @include layout.breakpoint-down(mobile) {
+    @include layout.media(mobile) {
       $font-size-mobile: 13px;
       button {
         --mdc-filled-button-container-height: 24px;
@@ -177,7 +177,7 @@ $row-height-mobile: 40px;
       mat-icon {
         margin-left: 4px;
 
-        @include layout.breakpoint-down(mobile) {
+        @include layout.media(mobile) {
           margin-left: 0px;
         }
       }

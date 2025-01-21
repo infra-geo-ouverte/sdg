@@ -14,7 +14,7 @@ $theme: sdg.$theme;
 @include sdg.all-component-themes($theme);
 @include app-components.themes($theme);
 
-@include sdg.breakpoint-down(tablet) {
+@include sdg.media(mobile) {
   @include mat.typography-hierarchy(sdg.$typo-typography-mobile);
 }
 

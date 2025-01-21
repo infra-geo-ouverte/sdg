@@ -1,79 +1,122 @@
 @use 'sass:map';
 
-// There is no standard for breakpoints for the Quebec.ca theme
-// This is the Material breakpoint design by devices
-$device: (
-  mobile: (
-    max: 599px
+// https://design.quebec.ca/design/bases/grille-8px#c84016
+$breakpoints: (
+  small: (
+    min-width: 0,
+    max-width: 599px,
+    // should be 575px, but set at 599px because of isHandset for now.
+    container-max-width: container-max-width('mobile'),
+    columns: 4,
+    spacing: 16px,
+    margins: 8px
   ),
-  tablet: (
-    min: 600px,
-    max: 1239px
+  medium: (
+    min-width: 600px,
+    // should be 576px, but set at 600px because of isHandset for now.
+    max-width: 767px,
+    container-max-width: container-max-width('mobile-landscape'),
+    columns: 4,
+    spacing: 16px,
+    margins: 8px
   ),
-  laptop: (
-    min: 1240px,
-    max: 1439px
+  large: (
+    min-width: 768px,
+    max-width: 991px,
+    container-max-width: container-max-width('tablet'),
+    columns: 12,
+    spacing: 24px,
+    margins: 12px
   ),
-  desktop: (
-    min: 1440px
+  extra-large: (
+    min-width: 992px,
+    max-width: 1199px,
+    container-max-width: container-max-width('laptop'),
+    columns: 12,
+    spacing: 24px,
+    margins: 12px
+  ),
+  maximum: (
+    min-width: 1200px,
+    max-width: 9999px,
+    container-max-width: container-max-width('desktop'),
+    columns: 12,
+    spacing: 32px,
+    margins: 16px
   )
 );
 
-$container: (
-  sm: (
-    max: 599px
-  ),
-  md: (
-    min: 600px,
-    max: 768px
-  ),
-  lg: (
-    min: 769px,
-    max: 992px
-  ),
-  xl: (
-    min: 993px,
-    max: 1239px
-  ),
-  xxl: (
-    min: 1240px,
-    max: 1440px
-  )
+$devices: (
+  mobile: 'small',
+  mobile-landscape: 'medium',
+  tablet: 'large',
+  laptop: 'extra-large',
+  desktop: 'maximum'
 );
 
-// // Source: https://github.com/twbs/bootstrap/blob/main/scss/mixins/_breakpoints.scss
-@function min($name, $breakpoints: $device) {
-  $min: map.get($breakpoints, $name, min);
-  @return if($min != 0, $min, null);
+@function breakpoint($device) {
+  @return map.get($devices, $device);
 }
 
-@function max($name, $breakpoints: $device) {
-  $max: map.get($breakpoints, $name, max);
-  @return if($max and $max > 0, $max, null);
+@function min-width($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    @return map.get($breakpoints, $breakpoint, min-width);
+  }
 }
 
-// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
-// Makes the @content apply to the given breakpoint and wider.
-@mixin up($name, $breakpoints: $device) {
-  $min: min($name, $breakpoints);
-  @if $min {
-    @media (min-width: $min) {
-      @content;
-    }
+@function max-width($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    @return map.get($breakpoints, $breakpoint, max-width);
+  }
+}
+
+@function container-max-width($device) {
+  $breakpoint: breakpoint($device);
+  $margins: map.get($breakpoints, $breakpoint, margins);
+
+  @if $breakpoint == 'small' {
+    @return calc(map.get($breakpoints, $breakpoint, max-width) - 2 * $margins);
   } @else {
-    @content;
+    @return calc(map.get($breakpoints, $breakpoint, min-width) - 2 * $margins);
+  }
+}
+
+@function columns($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    @return map.get($breakpoints, $breakpoint, columns);
+  }
+}
+
+@function spacing($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    @return map.get($breakpoints, $breakpoint, spacing);
+  }
+}
+
+@function margins($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    @return map.get($breakpoints, $breapoint, margins);
   }
 }
 
 // Media of at most the maximum breakpoint width. No query for the largest breakpoint.
 // Makes the @content apply to the given breakpoint and narrower.
-@mixin down($name, $breakpoints: $device) {
-  $max: max($name, $breakpoints);
-  @if $max {
-    @media (max-width: $max) {
+// https://github.com/twbs/bootstrap/blob/main/scss/mixins/_breakpoints.scss
+@mixin media($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    $max-width: map.get($breakpoints, $breakpoint, max-width);
+    @if $max-width {
+      @media (max-width: $max-width) {
+        @content;
+      }
+    } @else {
       @content;
     }
-  } @else {
-    @content;
   }
 }

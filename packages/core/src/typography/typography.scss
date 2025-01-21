@@ -102,7 +102,7 @@ $font-color: colors.$blue-dark;
 
     @include typo-utils.title-border;
 
-    @include breakpoints.down(tablet) {
+    @include breakpoints.media(mobile) {
       margin-top: 48px !important;
       margin-bottom: 16px !important;
     }

@@ -1,14 +1,43 @@
+@use '@igo2/sdg';
+
 .block-links {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 64px 16px;
+  gap: 48px sdg.spacing(desktop);
+
+  &-container {
+    padding: 48px 0;
+    background-color: sdg.$blue-pale;
+  }
 
   & > * {
-    flex-basis: calc(100% / 3 - 16px);
+    flex-basis: calc(100% / 3 - sdg.spacing(desktop));
+  }
+}
 
-    &.--handset {
-      flex-basis: 100%;
+@media only screen and (max-width: sdg.max-width(laptop)) {
+  .block-links {
+    column-gap: sdg.spacing(laptop);
+
+    & > * {
+      flex-basis: calc(100% / 3 - sdg.spacing(laptop));
     }
+  }
+}
+
+@media only screen and (max-width: sdg.max-width(tablet)) {
+  .block-links {
+    column-gap: sdg.spacing(tablet);
+
+    & > * {
+      flex-basis: calc(100% / 2 - sdg.spacing(tablet));
+    }
+  }
+}
+
+@media only screen and (max-width: sdg.max-width(mobile)) {
+  .block-links > * {
+    flex-basis: 100%;
   }
 }

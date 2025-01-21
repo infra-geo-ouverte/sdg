@@ -1,17 +1,22 @@
-.container {
+@use '@igo2/sdg';
+
+.tiles {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 32px;
-  column-gap: 24px;
-  padding: 16px;
-  background-color: #dae6f0;
+  justify-content: space-between;
+  gap: 32px sdg.spacing(desktop);
 
-  &.--handset {
-    row-gap: 24px;
+  & > * {
+    flex-basis: calc(100% / 2 - sdg.spacing(desktop));
   }
 }
 
-.tile {
-  display: flex;
-  flex: 1;
+@media only screen and (max-width: sdg.max-width(tablet)) {
+  .tiles {
+    row-gap: 24px;
+
+    & > * {
+      flex-basis: 100%;
+    }
+  }
 }

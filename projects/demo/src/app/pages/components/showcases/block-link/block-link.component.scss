@@ -1,18 +1,18 @@
+@use '@igo2/sdg';
+
 .block-links {
   display: flex;
-  row-gap: 32px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 48px sdg.spacing(desktop);
 
-  &:not(.--handset) {
-    flex-wrap: wrap;
-    justify-content: space-between;
-
-    > * {
-      flex-basis: calc(50% - 16px);
-      margin: 0px 8px;
-    }
+  & > * {
+    flex-basis: calc(100% / 2 - sdg.spacing(desktop));
   }
+}
 
-  &.--handset {
-    flex-direction: column;
+@media only screen and (max-width: sdg.max-width(mobile)) {
+  .block-links > * {
+    flex-basis: 100%;
   }
 }

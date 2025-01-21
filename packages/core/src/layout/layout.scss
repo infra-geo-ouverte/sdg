@@ -9,24 +9,20 @@
 // 2. Include any default variable overrides here
 $grid-gutter-width: 2rem;
 $grid-breakpoints: (
-  xs: 0,
-  sm: breakpoints.max(sm, breakpoints.$container),
-  md: breakpoints.max(md, breakpoints.$container),
-  lg: breakpoints.max(lg, breakpoints.$container),
-  xl: breakpoints.max(xl, breakpoints.$container),
-  xxl: breakpoints.max(xxl, breakpoints.$container)
+  xs: breakpoints.min-width('mobile'),
+  sm: breakpoints.min-width('mobile-landscape'),
+  md: breakpoints.min-width('tablet'),
+  lg: breakpoints.min-width('laptop'),
+  xl: breakpoints.min-width('desktop')
 );
 
 $container-max-widths: (
-  sm: breakpoints.max(sm, breakpoints.$container),
-  md: breakpoints.max(md, breakpoints.$container),
-  lg: breakpoints.max(lg, breakpoints.$container),
-  xl: breakpoints.max(xl, breakpoints.$container),
-  xxl: breakpoints.max(xxl, breakpoints.$container)
+  xs: breakpoints.container-max-width('mobile'),
+  sm: breakpoints.container-max-width('mobile-landscape'),
+  md: breakpoints.container-max-width('tablet'),
+  lg: breakpoints.container-max-width('laptop'),
+  xl: breakpoints.container-max-width('desktop')
 );
-
-$navbar-nav-link-padding-x: 16px;
-$navbar-nav-link-padding-y: 16px;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import '../../../../node_modules/bootstrap/scss/variables';

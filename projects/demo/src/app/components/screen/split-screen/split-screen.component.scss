@@ -1,13 +1,29 @@
+@use '@igo2/sdg';
+
 .split-screen-content {
   display: flex;
-  column-gap: 32px;
-
-  &.--handset {
-    flex-direction: column;
-  }
+  column-gap: sdg.spacing(desktop);
 }
 
 .lateral-menu {
   flex: 0 0 25%;
   margin-top: 72px;
+}
+
+@media only screen and (max-width: sdg.max-width(laptop)) {
+  .split-screen-content {
+    column-gap: sdg.spacing(laptop);
+  }
+}
+
+@media only screen and (max-width: sdg.max-width(tablet)) {
+  .split-screen-content {
+    column-gap: sdg.spacing(tablet);
+  }
+}
+
+@media only screen and (max-width: sdg.max-width(mobile)) {
+  .split-screen-content {
+    flex-direction: column;
+  }
 }

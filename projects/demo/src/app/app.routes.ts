@@ -3,9 +3,15 @@ import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg/core';
 import { AppTitleResolver } from './config/title-resolver';
 
 export const routes: SdgRoutes = [
-  { path: '', redirectTo: '', pathMatch: 'full' },
   {
     path: '',
+    redirectTo: '',
+    pathMatch: 'full',
+    hidden: true
+  },
+  {
+    path: '',
+    isHome: true,
     title: AppTitleResolver,
     data: { [RouteTranslateKey]: 'navigation.about' },
     loadComponent: () =>

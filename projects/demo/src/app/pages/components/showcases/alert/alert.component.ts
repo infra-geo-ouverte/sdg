@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'app-alert',
-  standalone: true,
   imports: [ExampleViewerComponent, ExternalLinkComponent, AlertComponent],
   templateUrl: './alert.component.html',
   styleUrl: './alert.component.scss'

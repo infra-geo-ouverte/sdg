@@ -8,7 +8,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { ActionbarComponent } from '@igo2/common/action';
 import { type EntityRecord } from '@igo2/common/entity';
 import {
   SpinnerActivityDirective,
@@ -55,7 +54,6 @@ const DEFAULT_PANEL_TYPE: PanelType = 'search';
 
 @Component({
   selector: 'sdg-map-screen',
-  standalone: true,
   imports: [
     AsyncPipe,
     CommonModule,
@@ -71,7 +69,6 @@ const DEFAULT_PANEL_TYPE: PanelType = 'search';
     MapScreenPanelComponent,
     FilterButtonComponent,
     LegendButtonComponent,
-    ActionbarComponent,
     IgoLanguageModule,
     SpinnerComponent,
     SpinnerActivityDirective

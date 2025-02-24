@@ -13,7 +13,6 @@ import {
 
 @Component({
   selector: 'app-paginator',
-  standalone: true,
   imports: [
     ExampleViewerComponent,
     ExternalLinkComponent,

@@ -13,7 +13,8 @@
 </div>
 
 @for (
-  layer of $any(map().layers$ | async) | filterableDataSource: 'ogc';
+  layer of $any(map().layerController.all$ | async)
+    | filterableDataSource: 'ogc';
   track layer
 ) {
   <igo-ogc-filterable-item [map]="map()" [layer]="layer" [header]="false" />

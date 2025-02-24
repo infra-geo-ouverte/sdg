@@ -12,7 +12,6 @@ import { Anchor } from './anchor-menu.interface';
 
 @Component({
   selector: 'sdg-anchor-menu',
-  standalone: true,
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './anchor-menu.component.html',

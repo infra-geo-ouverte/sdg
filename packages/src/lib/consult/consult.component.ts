@@ -6,7 +6,6 @@ import { ConsultLinks } from './consult.interface';
 
 @Component({
   selector: 'sdg-consult',
-  standalone: true,
   imports: [RouterLink, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './consult.component.html',

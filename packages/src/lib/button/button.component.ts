@@ -18,7 +18,6 @@ class ButtonBase {
 
 @Component({
   selector: 'sdg-button-icon',
-  standalone: true,
   imports: [MatButtonModule],
   styleUrl: './button.scss',
   template: `
@@ -36,7 +35,6 @@ export class IconButtonComponent extends ButtonBase {}
 
 @Component({
   selector: 'sdg-button-raised',
-  standalone: true,
   imports: [MatButtonModule],
   styleUrl: './button.scss',
   template: `
@@ -54,7 +52,6 @@ export class ButtonRaisedComponent extends ButtonBase {}
 
 @Component({
   selector: 'sdg-button-flat',
-  standalone: true,
   imports: [MatButtonModule],
   styleUrl: './button.scss',
   template: `
@@ -72,7 +69,6 @@ export class ButtonFlatComponent extends ButtonBase {}
 
 @Component({
   selector: 'sdg-button-stroked',
-  standalone: true,
   imports: [MatButtonModule],
   styleUrl: './button.scss',
   template: `
@@ -90,7 +86,6 @@ export class ButtonStrokedComponent extends ButtonBase {}
 
 @Component({
   selector: 'sdg-button',
-  standalone: true,
   imports: [MatButtonModule],
   styleUrl: './button.scss',
   template: `

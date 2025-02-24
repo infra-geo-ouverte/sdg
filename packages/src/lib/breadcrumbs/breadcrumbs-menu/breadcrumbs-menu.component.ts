@@ -8,7 +8,6 @@ import { BreadcrumbMenu } from '../shared/breadcrumbs.interface';
 
 @Component({
   selector: 'sdg-breadcrumbs-menu',
-  standalone: true,
   imports: [MatMenuModule, MatButtonModule, MatIconModule, RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './breadcrumbs-menu.component.html',

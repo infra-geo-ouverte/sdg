@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'app-sequential-links',
-  standalone: true,
   imports: [
     ExampleViewerComponent,
     ExternalLinkComponent,

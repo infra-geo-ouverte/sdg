@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'app-anchor-menu',
-  standalone: true,
   imports: [ExampleViewerComponent, AnchorMenuComponent, ExternalLinkComponent],
   templateUrl: './anchor-menu.component.html',
   styleUrl: './anchor-menu.component.scss'

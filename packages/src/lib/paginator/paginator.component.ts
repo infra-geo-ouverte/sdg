@@ -15,7 +15,6 @@ import { IgoLanguageModule } from '@igo2/core/language';
 
 @Component({
   selector: 'sdg-paginator',
-  standalone: true,
   imports: [IgoLanguageModule, MatButtonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './paginator.component.html',

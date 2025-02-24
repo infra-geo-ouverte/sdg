@@ -7,7 +7,6 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-lateral-menu',
-  standalone: true,
   imports: [ExampleViewerComponent, LateralMenuComponent],
   templateUrl: './lateral-menu.component.html',
   styleUrl: './lateral-menu.component.scss'

@@ -14,7 +14,6 @@ import {
 
 @Component({
   selector: 'app-button',
-  standalone: true,
   imports: [
     ExampleViewerComponent,
     ButtonComponent,

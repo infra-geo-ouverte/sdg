@@ -4,7 +4,6 @@ import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
 
 @Component({
   selector: 'app-split-screen',
-  standalone: true,
   imports: [BreadcrumbsWithRouterComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './split-screen.component.html',

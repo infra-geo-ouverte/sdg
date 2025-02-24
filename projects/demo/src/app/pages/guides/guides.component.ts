@@ -6,7 +6,6 @@ import { BasicScreenComponent } from '../../components';
 
 @Component({
   selector: 'app-guides',
-  standalone: true,
   imports: [BasicScreenComponent],
   templateUrl: './guides.component.html',
   styleUrl: './guides.component.scss'

@@ -4,7 +4,6 @@ import { SiteMapLinks } from '../footer.interface';
 
 @Component({
   selector: 'sdg-footer-links',
-  standalone: true,
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer-links.component.html',

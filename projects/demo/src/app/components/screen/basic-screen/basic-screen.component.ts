@@ -4,7 +4,6 @@ import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
 
 @Component({
   selector: 'app-basic-screen',
-  standalone: true,
   imports: [BreadcrumbsWithRouterComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './basic-screen.component.html',

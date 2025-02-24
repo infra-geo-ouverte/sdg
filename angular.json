@@ -44,7 +44,7 @@
               "packages/**/*.ts",
               "packages/**/*.html"
             ],
-            "eslintConfig": "packages/eslint.config.js"
+            "eslintConfig": "packages/eslint.config.mjs"
           }
         }
       }
@@ -168,7 +168,7 @@
               "projects/demo/**/*.ts",
               "projects/demo/**/*.html"
             ],
-            "eslintConfig": "projects/demo/eslint.config.js"
+            "eslintConfig": "projects/demo/eslint.config.mjs"
           }
         }
       }

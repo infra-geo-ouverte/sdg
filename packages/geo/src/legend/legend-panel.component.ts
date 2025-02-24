@@ -11,7 +11,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatTooltip } from '@angular/material/tooltip';
 
 import { IgoLanguageModule } from '@igo2/core/language';
-import { AnyLayer, IgoMap, Layer, LayerLegendListComponent } from '@igo2/geo';
+import { AnyLayer, IgoMap, LayerLegendListComponent } from '@igo2/geo';
 
 import { Subscription } from 'rxjs';
 

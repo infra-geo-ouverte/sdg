@@ -9,7 +9,7 @@ import {
 import { MatIcon } from '@angular/material/icon';
 
 import { IgoLanguageModule } from '@igo2/core/language';
-import { AnyLayer, IgoMap, Layer, LayerLegendListComponent } from '@igo2/geo';
+import { AnyLayer, IgoMap, LayerLegendListComponent } from '@igo2/geo';
 import { MapState } from '@igo2/integration';
 
 import { Observable } from 'rxjs';

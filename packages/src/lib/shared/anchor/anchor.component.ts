@@ -12,7 +12,6 @@ import { pathIsExternal } from '@igo2/sdg/core';
 
 @Component({
   selector: 'sdg-anchor',
-  standalone: true,
   imports: [RouterLink, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './anchor.component.html',

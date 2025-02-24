@@ -30,7 +30,6 @@ import { routes } from './app.routes';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [
     NavigationComponent,
     HeaderComponent,

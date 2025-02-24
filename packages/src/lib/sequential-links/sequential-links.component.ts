@@ -6,7 +6,6 @@ import { SequentialLink } from './sequential-links.interface';
 
 @Component({
   selector: 'sdg-sequential-links',
-  standalone: true,
   imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './sequential-links.component.html',

@@ -11,6 +11,8 @@ $row-height-mobile: 40px;
 
 .sdg-navigation {
   &-header {
+    --tab-inner-spacing: 16px;
+
     color: colors.$white;
     background-color: colors.$blue-medium;
     width: 100%;
@@ -68,8 +70,6 @@ $row-height-mobile: 40px;
         }
       }
     }
-
-    --tab-inner-spacing: 16px;
 
     @include layout.media(mobile) {
       --tab-inner-spacing: 8px;

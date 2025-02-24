@@ -17,7 +17,6 @@ import { BlockLinkSection } from './block-link.interface';
 
 @Component({
   selector: 'sdg-block-link',
-  standalone: true,
   imports: [
     MatIconModule,
     BlockLinkSubsectionComponent,

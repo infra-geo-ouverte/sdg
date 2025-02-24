@@ -23,7 +23,6 @@ import { Breadcrumb, Breadcrumbs } from './shared/breadcrumbs.interface';
 
 @Component({
   selector: 'sdg-breadcrumbs-with-router',
-  standalone: true,
   imports: [RouterModule, BreadcrumbsListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

@@ -9,7 +9,13 @@ export async function compileStyle(
   outputFileName: string
 ) {
   const result = compile(input, {
-    loadPaths: [PATHS.nodeModules]
+    loadPaths: [PATHS.nodeModules],
+    silenceDeprecations: [
+      'color-functions',
+      'global-builtin',
+      'import',
+      'mixed-decls'
+    ]
   });
   const output = `/** Auto-compiled file **/ \n ${result.css}`;
   await createFile(outputFileName, destination, output);

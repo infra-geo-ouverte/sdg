@@ -9,7 +9,7 @@ import {
 import { MatIcon } from '@angular/material/icon';
 
 import { IgoLanguageModule } from '@igo2/core/language';
-import { IgoMap, Layer, LayerLegendListComponent } from '@igo2/geo';
+import { AnyLayer, IgoMap, Layer, LayerLegendListComponent } from '@igo2/geo';
 import { MapState } from '@igo2/integration';
 
 import { Observable } from 'rxjs';
@@ -18,7 +18,6 @@ import { Observable } from 'rxjs';
   selector: 'sdg-legend-dialog',
   templateUrl: 'legend-dialog.component.html',
   styleUrls: ['./legend-dialog.component.scss'],
-  standalone: true,
   imports: [
     MatDialogTitle,
     MatDialogActions,
@@ -31,7 +30,7 @@ import { Observable } from 'rxjs';
 })
 export class LegendDialogComponent implements OnInit {
   public getState?: MatDialogState;
-  public mapLayersShownInLegend!: Layer[];
+  public mapLayersShownInLegend!: AnyLayer[];
 
   constructor(private mapState: MapState) {}
 
@@ -39,12 +38,12 @@ export class LegendDialogComponent implements OnInit {
     return this.mapState.map;
   }
 
-  get layers$(): Observable<Layer[]> {
-    return this.map.layers$;
+  get layers$(): Observable<AnyLayer[]> {
+    return this.map.layerController.all$;
   }
 
   ngOnInit() {
-    this.mapLayersShownInLegend = this.map.layers.filter(
+    this.mapLayersShownInLegend = this.map.layerController.all.filter(
       (layer) => layer.showInLayerList !== false
     );
   }

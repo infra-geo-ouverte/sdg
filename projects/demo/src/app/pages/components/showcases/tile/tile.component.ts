@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'app-tile',
-  standalone: true,
   imports: [ExampleViewerComponent, ExternalLinkComponent, TileComponent],
   templateUrl: './tile.component.html',
   styleUrl: './tile.component.scss'

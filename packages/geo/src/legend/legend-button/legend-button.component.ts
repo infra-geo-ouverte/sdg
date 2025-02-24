@@ -17,7 +17,6 @@ import { LegendDialogComponent } from '../legend-dialog/legend-dialog.component'
   selector: 'sdg-legend-button',
   templateUrl: './legend-button.component.html',
   styleUrls: ['./legend-button.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatButton, MatTooltip, IgoLanguageModule]
 })

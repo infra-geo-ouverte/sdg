@@ -16,7 +16,6 @@ import { EnvironmentOptions } from 'projects/demo/src/environments/environment.i
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [ExampleViewerComponent, ExternalLinkComponent, HeaderComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'

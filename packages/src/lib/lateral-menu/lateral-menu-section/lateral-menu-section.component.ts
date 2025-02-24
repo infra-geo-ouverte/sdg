@@ -21,7 +21,6 @@ import { LateralMenuItem } from '../lateral-menu.interface';
 
 @Component({
   selector: 'sdg-lateral-menu-section',
-  standalone: true,
   imports: [MatIconModule, LateralMenuItemComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './lateral-menu-section.component.html',

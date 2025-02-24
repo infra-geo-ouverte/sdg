@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,9 +14,8 @@ import { IgoLanguageModule } from '@igo2/core/language';
   selector: 'sdg-filter-button',
   templateUrl: './filter-button.component.html',
   styleUrls: ['./filter-button.component.scss'],
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [MatButton, MatTooltip, IgoLanguageModule, AsyncPipe]
+  imports: [MatButton, MatTooltip, IgoLanguageModule]
 })
 export class FilterButtonComponent {
   @Input() tooltipDisabled = false;

@@ -46,7 +46,6 @@ const contactData: IContactData = {
 
 @Component({
   selector: 'app-contact',
-  standalone: true,
   imports: [ExampleViewerComponent, ExternalLinkComponent, ContactComponent],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'

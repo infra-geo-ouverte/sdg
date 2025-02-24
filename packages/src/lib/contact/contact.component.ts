@@ -5,7 +5,6 @@ import { IContact } from './contact.interface';
 
 @Component({
   selector: 'sdg-contact',
-  standalone: true,
   imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './contact.component.html',

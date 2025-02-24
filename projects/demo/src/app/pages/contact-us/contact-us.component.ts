@@ -7,7 +7,6 @@ import { BasicScreenComponent } from '../../components';
 
 @Component({
   selector: 'app-contact-us',
-  standalone: true,
   imports: [BasicScreenComponent],
   templateUrl: './contact-us.component.html',
   styleUrl: './contact-us.component.scss'

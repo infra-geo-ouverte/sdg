@@ -12,7 +12,6 @@ import { AlertIcon, AlertType } from './alert.interface';
 
 @Component({
   selector: 'sdg-alert',
-  standalone: true,
   imports: [MatIconModule, MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './alert.component.html',

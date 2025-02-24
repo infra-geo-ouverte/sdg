@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '../../../core/src/theme/colors';
 
 .container {
@@ -6,7 +7,7 @@
   row-gap: 4px;
   border: 1px solid colors.$grey-light;
   background-color: colors.$white;
-  box-shadow: 0px 1px 4px transparentize(colors.$blue-dark, 0.76);
+  box-shadow: 0px 1px 4px color.adjust(colors.$blue-dark, $alpha: -0.76);
   padding: 32px 24px 24px 24px;
   width: fit-content;
   min-width: 200px;
@@ -22,7 +23,7 @@
 
   &:hover {
     border: 1px solid colors.$blue-normal;
-    box-shadow: 0px 2px 8px transparentize(colors.$blue-dark, 0.76);
+    box-shadow: 0px 2px 8px color.adjust(colors.$blue-dark, $alpha: -0.76);
   }
 
   &:hover .arrow {

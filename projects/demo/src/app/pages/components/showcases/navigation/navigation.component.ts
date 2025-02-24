@@ -11,7 +11,6 @@ import {
 
 @Component({
   selector: 'app-navigation',
-  standalone: true,
   imports: [
     ExampleViewerComponent,
     ExternalLinkComponent,

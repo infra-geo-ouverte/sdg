@@ -11,8 +11,8 @@ import { FooterNavLogo, SiteMapLinks } from '../footer.interface';
   styleUrls: ['./footer-navigation.component.scss']
 })
 export class FooterNavigationComponent {
-  title = input<string>();
-  logo = input<FooterNavLogo>();
-  siteMapLinks = input<SiteMapLinks>();
+  readonly title = input<string>();
+  readonly logo = input<FooterNavLogo>();
+  readonly siteMapLinks = input<SiteMapLinks>();
   readonly containerClass = input<string>();
 }

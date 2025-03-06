@@ -14,5 +14,5 @@ import { BreadcrumbMenu } from '../shared/breadcrumbs.interface';
   styleUrl: './breadcrumbs-menu.component.scss'
 })
 export class BreadcrumbsMenuComponent {
-  breadcrumb = input.required<BreadcrumbMenu>();
+  readonly breadcrumb = input.required<BreadcrumbMenu>();
 }

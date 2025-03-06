@@ -3,6 +3,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
+import { Language } from '@igo2/sdg/core';
+
 import {
   IHeaderContactUs,
   IHeaderLanguageChoice,
@@ -19,7 +21,7 @@ export class HeaderComponent {
   readonly title = input.required<string>();
   readonly contactUs = input<IHeaderContactUs>();
   readonly languages = input<IHeaderLanguages>();
-  readonly currentLanguage = input<string>();
+  readonly currentLanguage = input<IHeaderLanguageChoice['key']>();
   readonly isHandset = input.required<boolean>();
   readonly containerClass = input<string>();
 
@@ -32,7 +34,7 @@ export class HeaderComponent {
     );
   }
 
-  changeLanguage(language: string): void {
+  changeLanguage(language: Language): void {
     this.languageChange.emit(language);
   }
 }

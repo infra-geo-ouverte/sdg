@@ -12,7 +12,7 @@ import { Breadcrumb } from '../shared/breadcrumbs.interface';
   styleUrl: './breadcrumbs-item.component.scss'
 })
 export class BreadcrumbsItemComponent {
-  breadcrumb = input.required<Breadcrumb>();
-  last = input.required<boolean>();
-  isHandset = input<boolean>();
+  readonly breadcrumb = input.required<Breadcrumb>();
+  readonly last = input.required<boolean>();
+  readonly isHandset = input.required<boolean>();
 }

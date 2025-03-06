@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./tile.component.scss']
 })
 export class TileComponent {
-  icon = input<string>();
-  title = input.required<string, string>({
+  readonly icon = input<string>();
+  readonly title = input.required<string, string>({
     transform: this.titleValidation
   });
-  message = input<string>();
-  href = input.required<string>();
-  isHandset = input<boolean>();
+  readonly message = input<string>();
+  readonly href = input.required<string>();
+  readonly isHandset = input.required<boolean>();
 
   constructor(private router: Router) {}
 

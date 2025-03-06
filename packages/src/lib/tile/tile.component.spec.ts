@@ -17,6 +17,7 @@ describe('TileComponent', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('title', 'Title');
     fixture.componentRef.setInput('href', 'https://www.google.com/');
+    fixture.componentRef.setInput('isHandset', false);
     fixture.detectChanges();
   });
 

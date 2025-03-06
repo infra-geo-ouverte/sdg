@@ -23,9 +23,9 @@ const DEMO_SHOWCASES_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/componen
   styleUrls: ['./example-viewer.component.scss']
 })
 export class ExampleViewerComponent {
-  title = input.required<string>();
-  codeFolder = input<string>();
-  configFolder = input<string>();
+  readonly title = input.required<string>();
+  readonly codeFolder = input<string>();
+  readonly configFolder = input<string>();
 
   @HostBinding('class.example-viewer') baseClass = true;
 

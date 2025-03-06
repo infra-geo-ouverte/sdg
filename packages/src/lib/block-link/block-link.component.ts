@@ -32,7 +32,7 @@ export class BlockLinkComponent {
   readonly section = input.required<BlockLinkSection>();
   readonly isHandset = input.required<boolean>();
 
-  externalPath: Signal<boolean | undefined> = computed(() => {
+  readonly externalPath: Signal<boolean | undefined> = computed(() => {
     const path = this.section().path;
     if (!path) {
       return;

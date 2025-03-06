@@ -11,7 +11,7 @@ import { LateralMenuItem } from '../lateral-menu.interface';
   styleUrls: ['./lateral-menu-item.component.scss']
 })
 export class LateralMenuItemComponent {
-  item = input.required<LateralMenuItem>();
-  isSectionItem = input<boolean>();
-  isHandset = input.required<boolean>();
+  readonly item = input.required<LateralMenuItem>();
+  readonly isSectionItem = input<boolean>();
+  readonly isHandset = input.required<boolean>();
 }

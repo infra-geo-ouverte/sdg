@@ -18,7 +18,7 @@ import { Anchor } from './anchor-menu.interface';
   styleUrls: ['./anchor-menu.component.scss']
 })
 export class AnchorMenuComponent implements OnInit {
-  anchors = input.required<Anchor[]>();
+  readonly anchors = input.required<Anchor[]>();
 
   constructor(
     private activatedRoute: ActivatedRoute,

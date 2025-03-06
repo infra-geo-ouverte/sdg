@@ -21,6 +21,7 @@ describe('BreadcrumbsItemComponent', () => {
       menu: [{ title: '', url: '' }]
     });
     fixture.componentRef.setInput('last', false);
+    fixture.componentRef.setInput('isHandset', false);
 
     fixture.detectChanges();
   });
@@ -38,6 +39,7 @@ describe('BreadcrumbsItemComponent', () => {
 
     fixture.componentRef.setInput('breadcrumb', breadcrumb);
     fixture.componentRef.setInput('last', false);
+    fixture.componentRef.setInput('isHandset', false);
 
     fixture.detectChanges();
 
@@ -56,6 +58,7 @@ describe('BreadcrumbsItemComponent', () => {
 
     fixture.componentRef.setInput('breadcrumb', breadcrumb);
     fixture.componentRef.setInput('last', true);
+    fixture.componentRef.setInput('isHandset', false);
 
     fixture.detectChanges();
 

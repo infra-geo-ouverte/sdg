@@ -10,6 +10,6 @@ import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
   styleUrl: './split-screen.component.scss'
 })
 export class SplitScreenComponent {
-  title = input<string>();
-  isHandset = input.required<boolean>();
+  readonly title = input<string>();
+  readonly isHandset = input.required<boolean>();
 }

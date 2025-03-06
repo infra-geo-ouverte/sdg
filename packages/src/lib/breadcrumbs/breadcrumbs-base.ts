@@ -10,7 +10,7 @@ import {
 export abstract class BreadcrumbsBase {
   abstract breadcrumbs: Signal<Breadcrumbs>;
 
-  readonly isHandset = input(false);
+  readonly isHandset = input.required<boolean>();
 
   readonly breadcrumbsList = this.getBreadcrumbs();
 

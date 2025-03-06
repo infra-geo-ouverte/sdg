@@ -21,10 +21,10 @@ import {
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  title = input<string>();
-  logo = input<FooterNavLogo>();
-  siteMapLinks = input<SiteMapLinks>();
-  externalLinks = input<SiteMapLinks>();
-  copyright = input.required<FooterCopyright>();
-  containerClass = input<string>();
+  readonly title = input<string>();
+  readonly logo = input<FooterNavLogo>();
+  readonly siteMapLinks = input<SiteMapLinks>();
+  readonly externalLinks = input<SiteMapLinks>();
+  readonly copyright = input.required<FooterCopyright>();
+  readonly containerClass = input<string>();
 }

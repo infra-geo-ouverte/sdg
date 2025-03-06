@@ -46,8 +46,8 @@ import { AnyBreadcrumb, BreadcrumbMenu } from '../shared';
   `
 })
 export class BreadcrumbsListComponent {
-  breadcrumbs = input.required<AnyBreadcrumb[]>();
-  isHandset = input(false);
+  readonly breadcrumbs = input.required<AnyBreadcrumb[]>();
+  readonly isHandset = input.required<boolean>();
 
   isMenu(breadcrumb: AnyBreadcrumb): breadcrumb is BreadcrumbMenu {
     return !!(breadcrumb as BreadcrumbMenu)?.menu;

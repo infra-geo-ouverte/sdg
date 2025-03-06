@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
@@ -46,9 +45,7 @@ import { IMapConfig, LayerType } from '../shared/map.interface';
 
 @Component({
   selector: 'sdg-map-browser',
-  standalone: true,
   imports: [
-    AsyncPipe,
     IgoMapBrowserComponent,
     QueryDirective,
     MapOverlayComponent,
@@ -273,8 +270,11 @@ export class MapBrowserComponent implements OnInit {
           visible: visibility,
           sourceOptions
         })
-        .subscribe((l) => {
-          this.map.addLayer(l);
+        .subscribe((layer) => {
+          if (!layer) {
+            return;
+          }
+          this.map.layerController.add(layer);
         })
     );
   }

@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'app-notice',
-  standalone: true,
   imports: [ExampleViewerComponent, ExternalLinkComponent, NoticeComponent],
   templateUrl: './notice.component.html',
   styleUrl: './notice.component.scss'

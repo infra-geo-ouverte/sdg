@@ -6,7 +6,6 @@ import { Breadcrumb } from '../shared/breadcrumbs.interface';
 
 @Component({
   selector: 'sdg-breadcrumbs-item',
-  standalone: true,
   imports: [RouterLink, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './breadcrumbs-item.component.html',

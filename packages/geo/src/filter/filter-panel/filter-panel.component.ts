@@ -21,14 +21,12 @@ import {
   templateUrl: './filter-panel.component.html',
   styleUrls: ['./filter-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     AsyncPipe,
     MatTooltip,
     MatIconButton,
     MatIcon,
     IgoLanguageModule,
-    AsyncPipe,
     FilterableDataSourcePipe,
     OgcFilterableItemComponent
   ]

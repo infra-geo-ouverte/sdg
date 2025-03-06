@@ -17,7 +17,6 @@ import { routes } from './showcases.routes';
 
 @Component({
   selector: 'app-showcases',
-  standalone: true,
   imports: [SplitScreenComponent, RouterOutlet, LateralMenuComponent],
   providers: [TitleResolverPipe],
   templateUrl: './showcases.component.html',

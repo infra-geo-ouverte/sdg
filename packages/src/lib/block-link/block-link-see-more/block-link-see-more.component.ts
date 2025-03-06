@@ -14,7 +14,6 @@ import { BlockLinkSection } from '../block-link.interface';
 
 @Component({
   selector: 'sdg-block-link-see-more',
-  standalone: true,
   imports: [MatIconModule, AnchorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './block-link-see-more.component.html',

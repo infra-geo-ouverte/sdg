@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'app-consult',
-  standalone: true,
   imports: [ExampleViewerComponent, ExternalLinkComponent, ConsultComponent],
   templateUrl: './consult.component.html',
   styleUrl: './consult.component.scss'

@@ -6,9 +6,14 @@ import {
   Optional,
   signal
 } from '@angular/core';
-import { ActivatedRoute, Route, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
-import { RouteTitleKey, TitleResolver, resolveTitle } from '@igo2/sdg/core';
+import {
+  RouteTitleKey,
+  SdgRoute,
+  TitleResolver,
+  resolveTitle
+} from '@igo2/sdg/core';
 
 import { Subject, takeUntil } from 'rxjs';
 
@@ -18,7 +23,6 @@ import { Breadcrumb, Breadcrumbs } from './shared/breadcrumbs.interface';
 
 @Component({
   selector: 'sdg-breadcrumbs-with-router',
-  standalone: true,
   imports: [RouterModule, BreadcrumbsListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
@@ -67,41 +71,43 @@ export class BreadcrumbsWithRouterComponent
     this._takeUntil.next(true);
   }
 
-  private getHomeRoute(): Route | undefined {
-    return this.router.config
-      .filter((route) => route.redirectTo == null)
-      .find((route) => route.path === '');
+  private getHomeRoute(): SdgRoute | undefined {
+    return this.router.config.find((route: SdgRoute) => route.isHome);
   }
 
   private getBreadsFromRouterSegments(): Breadcrumbs {
     const routes = this.getRouterBreadcrumbs();
+    if (!routes.length) {
+      return [];
+    }
+
+    const home = this.getHomeRoute();
+    if (!home) {
+      throw new Error(
+        'We need at least one home to construct the breadcrumbs list. You need to setup a route with the isHome property at true'
+      );
+    }
     /**
      * Si on est sur la route du parent "", on n'affiche aucune route?
      * @todo Cette logique est à discuté et analysé pour voir comment gérer ce comportement et
      * sur une stratégie pour gérer cette configuration. Par exemple le système gouvernemental met
      * le libellé "Accueil" avec une redirection vers la route "a-propos"
      */
-    const home = this.getHomeRoute();
-    if (
-      (routes.length && routes[0]?.title === home?.title) ||
-      routes[0]?.title === home?.data?.[RouteTitleKey]
-    ) {
+    if (routeEqualHome(routes[0], home)) {
       return [];
     }
 
-    if (home) {
-      /**
-       * @todo Gérer les title de route, le type peut être asynchrone comment gérer ça?
-       * On pourrait diverger du type de @angular/router et forcer un string?
-       */
-      const title = resolveTitle(home, this.titleResolver) ?? '';
-      const url = home.path ?? '';
-      routes.unshift({
-        id: `${title}-${url}`,
-        title,
-        url
-      });
-    }
+    /**
+     * @todo Gérer les title de route, le type peut être asynchrone comment gérer ça?
+     * On pourrait diverger du type de @angular/router et forcer un string?
+     */
+    const title = resolveTitle(home, this.titleResolver) ?? '';
+    const url = home.path ?? '';
+    routes.unshift({
+      id: `${title}-${url}`,
+      title,
+      url
+    });
 
     return routes;
   }
@@ -135,4 +141,14 @@ export class BreadcrumbsWithRouterComponent
       return breadcrumbs.concat(breadcrumb);
     }, [] as Breadcrumbs);
   }
+}
+
+function routeEqualHome(route: SdgRoute, home: SdgRoute | undefined): boolean {
+  if (!home) {
+    return false;
+  }
+
+  return (
+    route.title === home.title || route.title === home.data?.[RouteTitleKey]
+  );
 }

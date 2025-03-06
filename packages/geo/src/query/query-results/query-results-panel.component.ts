@@ -1,4 +1,3 @@
-import { AsyncPipe } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -31,14 +30,12 @@ import type { default as OlGeometry } from 'ol/geom/Geometry';
   templateUrl: './query-results-panel.component.html',
   styleUrls: ['./query-results-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [
     MatTooltip,
     MatIconButton,
     MatIcon,
     IgoLanguageModule,
-    FeatureDetailsComponent,
-    AsyncPipe
+    FeatureDetailsComponent
   ]
 })
 export class QueryResultsPanelComponent implements OnInit {

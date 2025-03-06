@@ -15,7 +15,6 @@ import {
   selector: 'sdg-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  standalone: true,
   imports: [RouterLink, MatButtonModule, MatIconModule]
 })
 export class HeaderComponent {

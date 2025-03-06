@@ -3,7 +3,6 @@ import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-external-link',
-  standalone: true,
   imports: [MatIcon],
   templateUrl: './external-link.component.html',
   styleUrl: './external-link.component.scss'

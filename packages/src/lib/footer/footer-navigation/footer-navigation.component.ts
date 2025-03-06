@@ -5,7 +5,6 @@ import { FooterNavLogo, SiteMapLinks } from '../footer.interface';
 
 @Component({
   selector: 'sdg-footer-navigation',
-  standalone: true,
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer-navigation.component.html',

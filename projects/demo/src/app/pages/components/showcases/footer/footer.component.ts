@@ -13,7 +13,6 @@ import { EnvironmentOptions } from 'projects/demo/src/environments/environment.i
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
   imports: [ExampleViewerComponent, FooterComponent],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'

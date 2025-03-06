@@ -10,7 +10,6 @@ import { NoticeIcon, NoticeType } from './notice.interface';
 
 @Component({
   selector: 'sdg-notice',
-  standalone: true,
   imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './notice.component.html',

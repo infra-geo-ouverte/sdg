@@ -20,7 +20,6 @@ import { LateralMenuSections } from './lateral-menu.interface';
 
 @Component({
   selector: 'sdg-lateral-menu',
-  standalone: true,
   imports: [
     MatIconModule,
     LateralMenuItemComponent,

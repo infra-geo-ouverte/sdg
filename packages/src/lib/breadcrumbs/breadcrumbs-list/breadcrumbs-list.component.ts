@@ -6,7 +6,6 @@ import { AnyBreadcrumb, BreadcrumbMenu } from '../shared';
 
 @Component({
   selector: 'sdg-breadcrumbs-list',
-  standalone: true,
   imports: [BreadcrumbsItemComponent, BreadcrumbsMenuComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `

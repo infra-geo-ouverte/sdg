@@ -14,7 +14,6 @@ import {
 
 @Component({
   selector: 'app-breadcrumbs',
-  standalone: true,
   imports: [
     ExampleViewerComponent,
     BreadcrumbsComponent,

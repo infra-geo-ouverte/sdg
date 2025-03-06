@@ -7,7 +7,6 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-block-link',
-  standalone: true,
   imports: [ExampleViewerComponent, BlockLinkComponent],
   templateUrl: './block-link.component.html',
   styleUrl: './block-link.component.scss'

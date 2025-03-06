@@ -32,7 +32,6 @@ const TABS_MIN_DISPLAYED = 2 as const;
 
 @Component({
   selector: 'sdg-navigation',
-  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     RouterLink,

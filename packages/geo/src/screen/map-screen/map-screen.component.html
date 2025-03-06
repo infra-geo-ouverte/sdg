@@ -100,7 +100,8 @@
   >
     @if (
       map() &&
-      ($any(map()!.layers$ | async) | filterableDataSource: 'ogc').length > 0
+      ($any(map()!.layerController.all$ | async) | filterableDataSource: 'ogc')
+        .length > 0
     ) {
       <sdg-filter-button
         [tooltipDisabled]="isHandset()"

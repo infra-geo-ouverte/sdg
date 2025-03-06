@@ -5,7 +5,6 @@ import { LateralMenuItem } from '../lateral-menu.interface';
 
 @Component({
   selector: 'sdg-lateral-menu-item',
-  standalone: true,
   imports: [RouterLink, RouterLinkActive],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './lateral-menu-item.component.html',

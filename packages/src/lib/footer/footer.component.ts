@@ -11,7 +11,6 @@ import {
 
 @Component({
   selector: 'sdg-footer',
-  standalone: true,
   imports: [
     FooterNavigationComponent,
     FooterLinksComponent,

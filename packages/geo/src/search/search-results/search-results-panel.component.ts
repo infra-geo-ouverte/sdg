@@ -5,9 +5,6 @@ import {
   input,
   output
 } from '@angular/core';
-import { MatIconButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MatTooltip } from '@angular/material/tooltip';
 
 import { IgoLanguageModule } from '@igo2/core/language';
 import {
@@ -36,15 +33,7 @@ enum SearchResultAction {
   templateUrl: './search-results-panel.component.html',
   styleUrls: ['./search-results-panel.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    MatTooltip,
-    MatIconButton,
-    MatIcon,
-    IgoLanguageModule,
-    SearchResultsComponent,
-    AsyncPipe
-  ]
+  imports: [IgoLanguageModule, SearchResultsComponent, AsyncPipe]
 })
 export class SearchResultPanelComponent {
   map = input.required<IgoMap>();

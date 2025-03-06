@@ -14,7 +14,6 @@ import { BlockLinkSubsection } from '../block-link.interface';
 
 @Component({
   selector: 'sdg-block-link-subsection',
-  standalone: true,
   imports: [MatIconModule, AnchorComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './block-link-subsection.component.html',

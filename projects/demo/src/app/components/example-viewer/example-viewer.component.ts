@@ -12,7 +12,6 @@ const DEMO_SHOWCASES_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/componen
 
 @Component({
   selector: 'app-example-viewer',
-  standalone: true,
   imports: [
     MatButtonModule,
     MatCardModule,

@@ -6,7 +6,6 @@ import { BasicScreenComponent } from '../../components';
 
 @Component({
   selector: 'app-about',
-  standalone: true,
   imports: [BasicScreenComponent],
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'

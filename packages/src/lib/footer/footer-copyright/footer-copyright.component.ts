@@ -9,7 +9,6 @@ import { FooterCopyright } from '../footer.interface';
 
 @Component({
   selector: 'sdg-footer-copyright',
-  standalone: true,
   imports: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer-copyright.component.html',

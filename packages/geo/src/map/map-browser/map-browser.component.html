@@ -10,7 +10,7 @@
   (query)="onMapQuery($event)"
   [igoHoverFeatureDelay]="10"
   [map]="map"
-  [class.igo-attribution-offset]="map.getBaseLayers().length > 1"
+  [class.igo-attribution-offset]="map.layerController.baseLayers.length > 1"
   class="flex-fill"
 >
   @if (isHandset()) {

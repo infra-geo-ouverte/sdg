@@ -1,4 +1,3 @@
-import { NgSwitchCase } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -17,9 +16,7 @@ import { PanelType } from '../shared/map-screen.interface';
 
 @Component({
   selector: 'sdg-map-screen-panel',
-  standalone: true,
   imports: [
-    NgSwitchCase,
     SearchResultPanelComponent,
     LegendPanelComponent,
     QueryResultsPanelComponent,

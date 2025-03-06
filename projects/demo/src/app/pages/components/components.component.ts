@@ -14,7 +14,6 @@ import { routes } from './showcases/showcases.routes';
 
 @Component({
   selector: 'app-components',
-  standalone: true,
   imports: [BasicScreenComponent, BlockLinkComponent],
   providers: [TitleResolverPipe],
   templateUrl: './components.component.html',

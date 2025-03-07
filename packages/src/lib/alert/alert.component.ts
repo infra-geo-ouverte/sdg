@@ -15,39 +15,33 @@ import { AlertIcon, AlertType } from './alert.interface';
   imports: [MatIconModule, MatButtonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './alert.component.html',
-  styleUrls: ['./alert.component.scss']
+  styleUrls: ['./alert.component.scss'],
+  host: {
+    '[class]': 'typeClass()'
+  }
 })
 export class AlertComponent {
-  type = input.required<keyof typeof AlertType>();
-  message = input.required<string, string>({
+  readonly type = input.required<keyof typeof AlertType>();
+  readonly message = input.required<string, string>({
     transform: (message) => this.messageValidation(message)
   });
-  isCloseable = input<boolean>(false);
-  isOpen = input<boolean>(true);
-  isHandset = input<boolean>();
+  readonly closeable = input<boolean>(false);
+  readonly containerClass = input<string>();
+
+  readonly icon = computed(() => AlertIcon[this.type()]);
+  readonly typeClass = computed(() => `--${AlertType[this.type()]}`);
 
   closed = output<boolean>();
 
-  iconName = computed(() => AlertIcon[this.type()]);
-  typeName = computed(() => AlertType[this.type()]);
-
   private messageValidation(message: string): string {
-    const maxLength: number = this.isCloseable() ? 105 : 120;
+    const maxLength: number = this.closeable() ? 105 : 120;
 
     return message.length > maxLength
       ? `${message.slice(0, maxLength)}...`
       : message;
   }
 
-  getAlertClass() {
-    return `container --${this.typeName()}`;
-  }
-
-  getIconClass() {
-    return `icon --${this.typeName()}`;
-  }
-
-  onClose() {
+  close(): void {
     this.closed.emit(true);
   }
 }

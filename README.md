@@ -1,4 +1,4 @@
-[Issues](https://github.com/infra-geo-ouverte/sdg/issues)
+[Issues](https://github.com/infra-geo-ouverte/sdg/issues) [Demo](https://infra-geo-ouverte.github.io/sdg)
 
 # Libairie du Système de design gouvernemental du Québec (SDG) de IGO pour Angular
 

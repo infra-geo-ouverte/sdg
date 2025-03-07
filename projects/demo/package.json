@@ -4,7 +4,6 @@
     "ng": "ng",
     "start": "ng serve demo --configuration=development",
     "build": "ng build demo",
-    "build.ghpages": "ng build demo --configuration=github",
     "format": "prettier --check ./src/**/*.{ts,js,html,scss,css,json}",
     "format.fix": "prettier --write ./src/**/*.{ts,js,html,scss,css,json}",
     "lint": "ng lint demo",

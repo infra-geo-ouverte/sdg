@@ -3,44 +3,9 @@
 // `ng build --env=prod` then `environment.prod.ts` will be used instead.
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 import { EnvironmentOptions } from './environment.interface';
+import { environment as prodEnvironment } from './environment.prod';
 
 export const environment: EnvironmentOptions = {
-  production: false,
-  title: "Angular - Système d'assemblage gouvernemental",
-  header: {
-    contactUs: {
-      label: 'header.contactUs',
-      route: 'contact-us'
-    },
-    languages: {
-      choices: [
-        {
-          label: 'English',
-          key: 'en'
-        },
-        {
-          label: 'Français',
-          key: 'fr'
-        }
-      ],
-      default: 'fr'
-    }
-  },
-  navigation: {
-    options: {
-      title: {
-        suffix: 'Système de design gouvernemental',
-        separator: '·'
-      }
-    }
-  },
-  footer: {
-    copyright: {
-      logo: 'images/MSP.svg',
-      logoUrl: 'https://www.quebec.ca/gouvernement/ministere/securite-publique'
-    }
-  },
-  language: {
-    prefix: ['locale/']
-  }
+  ...prodEnvironment,
+  production: false
 };

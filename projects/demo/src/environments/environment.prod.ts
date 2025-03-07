@@ -2,7 +2,7 @@ import { EnvironmentOptions } from './environment.interface';
 
 export const environment: EnvironmentOptions = {
   production: true,
-  title: "Angular - Système d'assemblage gouvernemental",
+  title: "Système d'assemblage gouvernemental (Angular)",
   header: {
     contactUs: {
       label: 'header.contactUs',
@@ -23,10 +23,21 @@ export const environment: EnvironmentOptions = {
       default: 'fr'
     }
   },
+  navigation: {
+    options: {
+      title: {
+        suffix: 'Système de design gouvernemental',
+        separator: '·'
+      }
+    }
+  },
   footer: {
     copyright: {
       logo: 'images/MSP.svg',
       logoUrl: 'https://www.quebec.ca/gouvernement/ministere/securite-publique'
     }
+  },
+  language: {
+    prefix: ['locale/']
   }
 };

@@ -1,7 +1,7 @@
 {
   "name": "@igo2/sdg",
   "sideEffects": false,
-  "version": "1.0.0-next.50",
+  "version": "1.0.0-next.51",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/infra-geo-ouverte/sdg.git"

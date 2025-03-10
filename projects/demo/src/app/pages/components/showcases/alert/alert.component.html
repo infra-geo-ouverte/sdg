@@ -14,33 +14,27 @@
 </p>
 
 <app-example-viewer title="Alerte" configFolder="alert" codeFolder="alert">
-  <sdg-alert
-    type="General"
-    message="Ceci est une alerte informative"
-    [isHandset]="isHandset()"
-  ></sdg-alert>
-  <br />
-  <sdg-alert
-    type="General"
-    message="Ceci est une alerte informative pouvant être fermée"
-    [isCloseable]="true"
-    [isOpen]="generalAlertIsOpen"
-    [isHandset]="isHandset()"
-    (closed)="generalAlertIsOpen = false"
-  ></sdg-alert>
-  <br />
-  <sdg-alert
-    type="Warning"
-    message="Ceci est une alerte"
-    [isHandset]="isHandset()"
-  ></sdg-alert>
-  <br />
-  <sdg-alert
-    type="Warning"
-    message="Ceci est une alerte pouvant être fermée"
-    [isCloseable]="true"
-    [isOpen]="alertIsOpen"
-    [isHandset]="isHandset()"
-    (closed)="alertIsOpen = false"
-  ></sdg-alert>
+  <div class="alerts">
+    <sdg-alert type="General" message="Ceci est une alerte informative" />
+
+    @if (generalAlertIsOpened) {
+      <sdg-alert
+        type="General"
+        message="Ceci est une alerte informative pouvant être fermée"
+        [closeable]="true"
+        (closed)="generalAlertIsOpened = false"
+      />
+    }
+
+    <sdg-alert type="Warning" message="Ceci est une alerte" />
+
+    @if (alertIsOpened) {
+      <sdg-alert
+        type="Warning"
+        message="Ceci est une alerte pouvant être fermée"
+        [closeable]="true"
+        (closed)="alertIsOpened = false"
+      />
+    }
+  </div>
 </app-example-viewer>

@@ -1,7 +1,7 @@
-import { Component, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg';
-import { BreakpointService, TranslationService } from '@igo2/sdg/core';
+import { TranslationService } from '@igo2/sdg/core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
@@ -73,10 +73,7 @@ export class BlockLinkDemoComponent {
     }
   ];
 
-  constructor(
-    private breakpointService: BreakpointService,
-    private translationService: TranslationService
-  ) {
+  constructor(private translationService: TranslationService) {
     this.getSections(this.sections1);
     this.getSections(this.sections2);
     this.getSections(this.sections3);
@@ -117,9 +114,5 @@ export class BlockLinkDemoComponent {
         });
       }
     });
-  }
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
   }
 }

@@ -1,7 +1,6 @@
-import { Component, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { SequentialLink, SequentialLinksComponent } from '@igo2/sdg';
-import { BreakpointService } from '@igo2/sdg/core';
 
 import {
   ExampleViewerComponent,
@@ -28,10 +27,4 @@ export class SequentialLinksDemoComponent {
     text: 'Tuile',
     url: 'tuile'
   };
-
-  constructor(private breakpointService: BreakpointService) {}
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
-  }
 }

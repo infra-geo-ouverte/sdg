@@ -1,11 +1,7 @@
-import { Component, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { HeaderComponent } from '@igo2/sdg';
-import {
-  BreakpointService,
-  Language,
-  TranslationService
-} from '@igo2/sdg/core';
+import { Language, TranslationService } from '@igo2/sdg/core';
 
 import {
   ExampleViewerComponent,
@@ -23,14 +19,7 @@ import { EnvironmentOptions } from 'projects/demo/src/environments/environment.i
 export class HeaderDemoComponent {
   config: EnvironmentOptions = environment;
 
-  constructor(
-    private breakpointService: BreakpointService,
-    private translationService: TranslationService
-  ) {}
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
-  }
+  constructor(private translationService: TranslationService) {}
 
   get currentLanguage() {
     return this.translationService.lang;

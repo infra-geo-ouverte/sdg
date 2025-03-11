@@ -1,10 +1,9 @@
-import { Component, OnInit, Signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 import { PaginatorComponent } from '@igo2/sdg';
-import { BreakpointService } from '@igo2/sdg/core';
 
 import {
   ExampleViewerComponent,
@@ -33,12 +32,6 @@ export class PaginatorDemoComponent implements OnInit {
   list = Array.from({ length: 35 }, (_, a) => a);
 
   shownList: number[] = [];
-
-  constructor(private breakpointService: BreakpointService) {}
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
-  }
 
   ngOnInit() {
     this.setShownList(this.initialPageIndex);

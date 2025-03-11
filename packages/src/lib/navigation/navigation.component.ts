@@ -5,7 +5,6 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
-  Signal,
   computed,
   input,
   signal,
@@ -50,7 +49,8 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   linksInMore = signal<INavigationLinks>([]);
   hasOverflow = signal(false);
   hasActions = signal(false);
-  isHandset: Signal<boolean>;
+
+  isHandset = this.breakpointService.isHandset;
 
   readonly isOnTwoLine = computed(
     () => this.hasActions() && this.isHandset() && this.detectHandsetOverflow()
@@ -76,8 +76,6 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     this._resizeObserver = new ResizeObserver((entries) =>
       this._resizeSubject.next(entries)
     );
-
-    this.isHandset = this.breakpointService.isHandset;
   }
 
   ngOnInit(): void {

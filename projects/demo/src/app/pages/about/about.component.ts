@@ -1,6 +1,4 @@
-import { Component, Signal } from '@angular/core';
-
-import { BreakpointService } from '@igo2/sdg/core';
+import { Component } from '@angular/core';
 
 import { BasicScreenComponent } from '../../components';
 
@@ -10,10 +8,4 @@ import { BasicScreenComponent } from '../../components';
   templateUrl: './about.component.html',
   styleUrl: './about.component.scss'
 })
-export class AboutComponent {
-  constructor(private breakpointService: BreakpointService) {}
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
-  }
-}
+export class AboutComponent {}

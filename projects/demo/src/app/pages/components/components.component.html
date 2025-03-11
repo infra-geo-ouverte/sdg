@@ -1,7 +1,7 @@
-<app-basic-screen title="Composants" [isHandset]="isHandset()">
+<app-basic-screen title="Composants">
   <div class="block-links">
     @for (section of sections; track section) {
-      <sdg-block-link [section]="section" [isHandset]="isHandset()" />
+      <sdg-block-link [section]="section" />
     }
   </div>
 </app-basic-screen>

@@ -8,25 +8,19 @@ import { AnyBreadcrumb, BreadcrumbMenu } from '../shared';
   selector: 'sdg-breadcrumbs-list',
   imports: [BreadcrumbsItemComponent, BreadcrumbsMenuComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <ol>
-      @for (
-        breadcrumb of breadcrumbs();
-        track breadcrumb.id;
-        let last = $last
-      ) {
-        @if (isMenu(breadcrumb!)) {
-          <sdg-breadcrumbs-menu [breadcrumb]="breadcrumb" />
-        } @else {
-          <sdg-breadcrumbs-item
-            [breadcrumb]="breadcrumb!"
-            [last]="last"
-            [isHandset]="isHandset()"
-          />
-        }
+  template: `<ol>
+    @for (breadcrumb of breadcrumbs(); track breadcrumb.id; let last = $last) {
+      @if (isMenu(breadcrumb!)) {
+        <sdg-breadcrumbs-menu [breadcrumb]="breadcrumb" />
+      } @else {
+        <sdg-breadcrumbs-item
+          [breadcrumb]="breadcrumb!"
+          [last]="last"
+          [isHandset]="isHandset()"
+        />
       }
-    </ol>
-  `,
+    }
+  </ol>`,
   styles: `
     ol {
       background-color: transparent;
@@ -36,7 +30,7 @@ import { AnyBreadcrumb, BreadcrumbMenu } from '../shared';
       flex-wrap: wrap;
 
       padding: unset;
-      margin: 16px 0 12px;
+      margin: 0;
     }
 
     sdg-breadcrumbs-item,

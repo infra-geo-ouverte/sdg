@@ -20,7 +20,6 @@ describe('BlockLinkTitleDescriptionComponent', () => {
       path: 'test.com',
       description: 'Test'
     });
-    fixture.componentRef.setInput('isHandset', false);
     fixture.detectChanges();
   });
 

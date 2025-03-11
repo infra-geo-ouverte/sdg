@@ -20,7 +20,6 @@ describe('HeaderComponent', () => {
       label: 'Nous joindre',
       route: 'contact-us'
     });
-    fixture.componentRef.setInput('isHandset', false);
 
     fixture.detectChanges();
   });

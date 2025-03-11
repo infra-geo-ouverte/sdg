@@ -1,5 +1,6 @@
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/typography/typography.scss';
+@use '../../../core/src/layout/breakpoints';
 
 :host {
   display: flex;
@@ -69,9 +70,11 @@
     &-title {
       font-family: typography.$font-family-text !important;
     }
+  }
+}
 
-    &.--handset {
-      padding: 24px 24px 24px 16px;
-    }
+@media only screen and (max-width: breakpoints.max-width(mobile)) {
+  .sdg-notice-content {
+    padding: 24px 24px 24px 16px;
   }
 }

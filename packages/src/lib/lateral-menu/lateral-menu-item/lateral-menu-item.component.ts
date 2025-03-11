@@ -13,5 +13,4 @@ import { LateralMenuItem } from '../lateral-menu.interface';
 export class LateralMenuItemComponent {
   readonly item = input.required<LateralMenuItem>();
   readonly isSectionItem = input<boolean>();
-  readonly isHandset = input.required<boolean>();
 }

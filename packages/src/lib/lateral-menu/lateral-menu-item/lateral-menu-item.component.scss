@@ -1,4 +1,5 @@
 @use '../../../../core/src/theme/colors';
+@use '../../../../core/src/layout/breakpoints';
 
 :host {
   display: flex;
@@ -7,35 +8,24 @@
 
 .lateral-menu {
   &-item {
+    font-size: 14px;
+    border-bottom: 1px solid colors.$grey-light;
     width: 100%;
     padding: 16px 8px;
     text-decoration: none;
 
-    &.--active-item,
-    &.--handset {
-      background-color: colors.$blue-pale;
-    }
-
-    &.--handset {
-      font-size: 16px;
-      padding: 8px 0px 8px 24px;
-    }
-
-    &:not(.--handset) {
-      font-size: 14px;
-      border-bottom: 1px solid colors.$grey-light;
-    }
-
     &.--active-item {
+      background-color: colors.$blue-pale;
       font-weight: bold;
     }
 
-    &:hover:not(.--handset, .--active-item) {
+    &:hover:not(.--active-item) {
       background-color: rgba(colors.$blue-pale, 0.5);
     }
   }
 
   &-section-item {
+    font-size: 14px;
     line-height: 20px;
     width: 100%;
     padding: 8px 0px 8px 24px;
@@ -45,12 +35,27 @@
       text-decoration: underline;
     }
 
-    &:not(.--handset) {
-      font-size: 14px;
-    }
-
     &.--active-item {
       font-weight: bold;
+    }
+  }
+}
+
+@media only screen and (max-width: breakpoints.max-width(mobile)) {
+  .lateral-menu {
+    &-item {
+      font-size: 16px;
+      padding: 8px 0px 8px 24px;
+      background-color: colors.$blue-pale;
+      border: none;
+
+      &:hover:not(.--active-item) {
+        background-color: colors.$blue-pale;
+      }
+    }
+
+    &-section-item {
+      font-size: 16px;
     }
   }
 }

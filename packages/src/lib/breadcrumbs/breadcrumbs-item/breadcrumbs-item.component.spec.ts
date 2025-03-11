@@ -84,7 +84,6 @@ describe('BreadcrumbsItemComponent', () => {
 
     const compiled: HTMLElement = fixture.nativeElement;
     const element = compiled.querySelector('li');
-    expect(element?.classList).toContain('--handset');
     expect(element?.classList).toContain('--last');
 
     const linkElement = compiled.querySelector('a');

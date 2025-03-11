@@ -16,7 +16,6 @@ describe('LateralMenuSectionComponent', () => {
     fixture = TestBed.createComponent(LateralMenuSectionComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('section', [{ path: '', title: 'Test' }]);
-    fixture.componentRef.setInput('isHandset', false);
     fixture.detectChanges();
   });
 

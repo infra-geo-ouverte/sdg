@@ -1,8 +1,10 @@
 @use '../../../../core/src/theme/colors';
+@use '../../../../core/src/layout/breakpoints';
 
 .lateral-menu-section {
   display: flex;
   flex-flow: column;
+  border-bottom: 1px solid colors.$grey-light;
 
   &-header {
     display: flex;
@@ -15,42 +17,45 @@
     &-title {
       flex-grow: 1;
       text-align: start;
+      font-size: 14px;
       color: colors.$blue-piv;
       margin: 0;
-
-      &:not(.--handset) {
-        font-size: 14px;
-      }
 
       &.--active-section {
         font-weight: bold;
       }
     }
 
-    &:hover:not(.--handset, .--active-section) {
+    &:hover:not(.--active-section) {
       background-color: rgba(colors.$blue-pale, 0.5);
     }
 
     &.--active-section {
       background-color: colors.$blue-pale;
     }
-
-    &.--handset {
-      padding: 8px 8px 8px 24px;
-    }
   }
 
   &-subsections {
     display: flex;
     flex-direction: column;
+  }
+}
 
-    &.--handset {
+@media only screen and (max-width: breakpoints.max-width(mobile)) {
+  .lateral-menu-section {
+    border: none;
+
+    &-header {
+      padding: 8px 8px 8px 24px;
+
+      &-title {
+        font-size: 16px;
+      }
+    }
+
+    &-subsections {
       background-color: colors.$blue-pale;
       padding-left: 24px;
     }
-  }
-
-  &:not(.--handset) {
-    border-bottom: 1px solid colors.$grey-light;
   }
 }

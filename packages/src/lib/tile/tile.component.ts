@@ -16,7 +16,6 @@ export class TileComponent {
   });
   readonly message = input<string>();
   readonly href = input.required<string>();
-  readonly isHandset = input.required<boolean>();
 
   constructor(private router: Router) {}
 

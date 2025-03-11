@@ -22,7 +22,6 @@ describe('BlockLinkComponent', () => {
         description: 'Test'
       }
     });
-    fixture.componentRef.setInput('isHandset', false);
     fixture.detectChanges();
   });
 

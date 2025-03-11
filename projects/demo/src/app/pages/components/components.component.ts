@@ -1,9 +1,8 @@
-import { Component, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { BlockLinkComponent } from '@igo2/sdg';
 import { BlockLinkSection, BlockLinkSections } from '@igo2/sdg';
 import {
-  BreakpointService,
   SdgRoute,
   TitleResolverPipe,
   TranslationService
@@ -23,15 +22,10 @@ export class ComponentsComponent {
   sections: BlockLinkSections;
 
   constructor(
-    private breakpointService: BreakpointService,
     private titleResolverPipe: TitleResolverPipe,
     private translationService: TranslationService
   ) {
     this.sections = this.setSections();
-  }
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
   }
 
   private setSections(): BlockLinkSections {

@@ -21,7 +21,6 @@ import { BlockLinkSection } from '../block-link.interface';
 })
 export class BlockLinkTitleDescriptionComponent {
   readonly section = input.required<BlockLinkSection>();
-  readonly isHandset = input.required<boolean>();
 
   readonly externalPath: Signal<boolean | undefined> = computed(() => {
     const path = this.section().path;

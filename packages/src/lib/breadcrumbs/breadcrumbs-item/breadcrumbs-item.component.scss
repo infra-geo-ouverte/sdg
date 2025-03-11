@@ -1,3 +1,4 @@
+@use '../../../../core/src/layout/breakpoints';
 @use '../../../../core/src/theme/colors';
 
 li {
@@ -5,10 +6,6 @@ li {
   display: flex;
   align-items: center;
   line-height: 24px;
-
-  &.--handset {
-    flex-direction: row-reverse;
-  }
 
   &.--last {
     font-weight: 600;
@@ -31,4 +28,20 @@ a {
 
 mat-icon {
   margin-left: 4px;
+}
+
+@media only screen and (max-width: breakpoints.max-width(mobile)) {
+  li {
+    flex-direction: row-reverse;
+  }
+
+  a {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 12px !important;
+    color: colors.$blue-piv;
+  }
+
+  mat-icon {
+    margin-right: 4px;
+  }
 }

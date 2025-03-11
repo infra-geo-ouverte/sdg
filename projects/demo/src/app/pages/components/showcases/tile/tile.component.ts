@@ -1,7 +1,6 @@
-import { Component, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { TileComponent } from '@igo2/sdg';
-import { BreakpointService } from '@igo2/sdg/core';
 
 import {
   ExampleViewerComponent,
@@ -21,10 +20,4 @@ export class TileDemoComponent {
 
   shortMessage =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.';
-
-  constructor(private breakpointService: BreakpointService) {}
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
-  }
 }

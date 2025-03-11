@@ -1,7 +1,7 @@
-import { Component, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { BreakpointService, RouteTitleKey } from '@igo2/sdg/core';
+import { RouteTitleKey } from '@igo2/sdg/core';
 
 import { BasicScreenComponent } from '../../components';
 
@@ -14,14 +14,7 @@ import { BasicScreenComponent } from '../../components';
 export class ContactUsComponent {
   title: string;
 
-  constructor(
-    private route: ActivatedRoute,
-    private breakpointService: BreakpointService
-  ) {
+  constructor(private route: ActivatedRoute) {
     this.title = this.route.routeConfig?.data![RouteTitleKey];
-  }
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
   }
 }

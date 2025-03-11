@@ -1,11 +1,15 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Injectable, signal } from '@angular/core';
+import { BreakpointObserver } from '@angular/cdk/layout';
+import { Injectable, Signal, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreakpointService {
-  isHandset = signal(false);
+  private _isHandset = signal(false);
+
+  get isHandset(): Signal<boolean> {
+    return this._isHandset.asReadonly();
+  }
 
   constructor(private breakpointObserver: BreakpointObserver) {
     this.handleBreakpoint();
@@ -13,9 +17,9 @@ export class BreakpointService {
 
   private handleBreakpoint(): void {
     this.breakpointObserver
-      .observe(Breakpoints.HandsetPortrait)
+      .observe('(max-width: 575px)')
       .subscribe((result) => {
-        this.isHandset.set(result.matches);
+        this._isHandset.set(result.matches);
       });
   }
 }

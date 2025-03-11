@@ -1,4 +1,6 @@
-import { Directive, Signal, computed, input } from '@angular/core';
+import { Directive, Signal, computed } from '@angular/core';
+
+import { BreakpointService } from '@igo2/sdg/core';
 
 import {
   AnyBreadcrumb,
@@ -8,13 +10,13 @@ import {
 
 @Directive()
 export abstract class BreadcrumbsBase {
-  abstract breadcrumbs: Signal<Breadcrumbs>;
-
-  readonly isHandset = input.required<boolean>();
-
-  readonly breadcrumbsList = this.getBreadcrumbs();
-
   readonly hasBreadcrumbs = computed(() => this.breadcrumbsList().length > 0);
+
+  abstract breadcrumbs: Signal<Breadcrumbs>;
+  breadcrumbsList = this.getBreadcrumbs();
+  isHandset = this.breakpointService.isHandset;
+
+  constructor(private breakpointService: BreakpointService) {}
 
   isMenu(breadcrumb: AnyBreadcrumb): breadcrumb is BreadcrumbMenu {
     return !!(breadcrumb as BreadcrumbMenu)?.menu;

@@ -4,16 +4,14 @@
 $breakpoints: (
   small: (
     min-width: 0,
-    max-width: 599px,
-    // should be 575px, but set at 599px because of isHandset for now.
+    max-width: 575px,
     container-max-width: container-max-width('mobile'),
     columns: 4,
     spacing: 16px,
     margins: 8px
   ),
   medium: (
-    min-width: 600px,
-    // should be 576px, but set at 600px because of isHandset for now.
+    min-width: 576px,
     max-width: 767px,
     container-max-width: container-max-width('mobile-landscape'),
     columns: 4,

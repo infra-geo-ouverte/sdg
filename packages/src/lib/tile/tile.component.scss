@@ -1,5 +1,6 @@
 @use 'sass:color';
 @use '../../../core/src/theme/colors';
+@use '../../../core/src/layout/breakpoints';
 
 .container {
   display: flex;
@@ -13,13 +14,6 @@
   min-width: 200px;
   max-width: 500px;
   cursor: pointer;
-
-  &.--handset {
-    flex-flow: row;
-    align-items: center;
-    column-gap: 16px;
-    padding: 24px;
-  }
 
   &:hover {
     border: 1px solid colors.$blue-normal;
@@ -39,10 +33,6 @@
   &.--no-message {
     flex-flow: column;
     row-gap: 8px;
-
-    &.--handset {
-      flex-flow: row;
-    }
   }
 }
 
@@ -81,8 +71,21 @@
   width: 12px;
   height: 12px;
   font-size: 12px;
+}
 
-  &.--handset {
+@media only screen and (max-width: breakpoints.max-width(mobile)) {
+  .container {
+    flex-flow: row;
+    align-items: center;
+    column-gap: 16px;
+    padding: 24px;
+  }
+
+  .title-icon.--no-message {
+    flex-flow: row;
+  }
+
+  .arrow {
     visibility: visible;
 
     &.--no-message {

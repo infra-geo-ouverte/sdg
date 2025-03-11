@@ -14,6 +14,8 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
+import { BreakpointService } from '@igo2/sdg/core';
+
 import { LateralMenuItemComponent } from './lateral-menu-item/lateral-menu-item.component';
 import { LateralMenuSectionComponent } from './lateral-menu-section/lateral-menu-section.component';
 import { LateralMenuSections } from './lateral-menu.interface';
@@ -55,9 +57,12 @@ import { LateralMenuSections } from './lateral-menu.interface';
 export class LateralMenuComponent {
   readonly title = input.required<string>();
   readonly sections = input.required<LateralMenuSections>();
-  readonly isHandset = input.required<boolean>();
 
   opened = signal(false);
+
+  isHandset = this.breakpointService.isHandset;
+
+  constructor(private breakpointService: BreakpointService) {}
 
   toggle(): void {
     this.opened.set(!this.opened());

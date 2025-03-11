@@ -9,6 +9,7 @@ import {
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 
 import {
+  BreakpointService,
   RouteTitleKey,
   SdgRoute,
   TitleResolver,
@@ -52,9 +53,10 @@ export class BreadcrumbsWithRouterComponent
     private activatedRoute: ActivatedRoute,
     private router: Router,
     @Optional()
-    private titleResolver: TitleResolver
+    private titleResolver: TitleResolver,
+    breakpointService: BreakpointService
   ) {
-    super();
+    super(breakpointService);
   }
 
   ngOnInit(): void {

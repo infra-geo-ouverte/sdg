@@ -11,5 +11,4 @@ import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
 })
 export class SplitScreenComponent {
   readonly title = input<string>();
-  readonly isHandset = input.required<boolean>();
 }

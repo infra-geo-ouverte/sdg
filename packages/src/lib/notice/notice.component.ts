@@ -22,7 +22,6 @@ export class NoticeComponent {
   readonly icon = input<string>();
   readonly title = input.required<string>();
   readonly message = input.required<string>();
-  readonly isHandset = input.required<boolean>();
 
   readonly coloredZoneClass = computed(() => `--${NoticeType[this.type()]}`);
   readonly coloredZoneIcon = computed(() => {

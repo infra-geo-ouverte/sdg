@@ -1,4 +1,4 @@
-import { Component, OnDestroy, Signal, signal } from '@angular/core';
+import { Component, OnDestroy, signal } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -76,10 +76,6 @@ export class ShowcasesComponent implements OnDestroy {
 
   get menuTitle(): string {
     return this.activatedRoute.snapshot.title as string;
-  }
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
   }
 
   ngOnDestroy(): void {

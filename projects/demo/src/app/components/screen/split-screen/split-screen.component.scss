@@ -1,5 +1,9 @@
 @use '@igo2/sdg';
 
+sdg-breadcrumbs-with-router {
+  margin-top: 16px;
+}
+
 .split-screen-content {
   display: flex;
   column-gap: sdg.spacing(desktop);

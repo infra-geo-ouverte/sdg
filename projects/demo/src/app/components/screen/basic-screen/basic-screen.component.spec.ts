@@ -21,7 +21,6 @@ describe('BasicScreenComponent', () => {
     ref = fixture.componentRef;
 
     ref.setInput('title', 'Test');
-    ref.setInput('isHandset', false);
     fixture.detectChanges();
   });
 

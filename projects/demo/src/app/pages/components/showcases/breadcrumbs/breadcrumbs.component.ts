@@ -1,11 +1,10 @@
-import { Component, Signal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
   Breadcrumbs,
   BreadcrumbsComponent,
   BreadcrumbsWithRouterComponent
 } from '@igo2/sdg';
-import { BreakpointService } from '@igo2/sdg/core';
 
 import {
   ExampleViewerComponent,
@@ -56,10 +55,4 @@ export class BreadcrumbsDemoComponent {
       url: 'sixième'
     }
   ];
-
-  constructor(private breakpointService: BreakpointService) {}
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
-  }
 }

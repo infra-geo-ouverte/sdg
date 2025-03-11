@@ -19,9 +19,9 @@
 >
   @for (item of sections(); track item) {
     @if (item.items) {
-      <sdg-lateral-menu-section [section]="item" [isHandset]="isHandset()" />
+      <sdg-lateral-menu-section [section]="item" />
     } @else {
-      <sdg-lateral-menu-item [item]="item" [isHandset]="isHandset()" />
+      <sdg-lateral-menu-item [item]="item" />
     }
   }
 </div>

@@ -1,13 +1,5 @@
-<button
-  class="container"
-  [class.--handset]="isHandset() && !message()"
-  (click)="goToLink()"
->
-  <div
-    class="title-icon"
-    [class.--no-message]="!message()"
-    [class.--handset]="isHandset()"
-  >
+<button class="container" (click)="goToLink()">
+  <div class="title-icon" [class.--no-message]="!message()">
     @if (icon()) {
       <mat-icon class="icon">{{ icon() }}</mat-icon>
     }
@@ -20,11 +12,7 @@
       {{ message() }}
     </div>
   }
-  <mat-icon
-    class="arrow"
-    [class.--no-message]="!message()"
-    [class.--handset]="isHandset()"
-    color="accent"
+  <mat-icon class="arrow" [class.--no-message]="!message()" color="accent"
     >arrow_forward</mat-icon
   >
 </button>

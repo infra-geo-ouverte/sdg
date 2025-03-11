@@ -18,7 +18,6 @@ describe('NoticeComponent', () => {
     fixture.componentRef.setInput('type', 'General');
     fixture.componentRef.setInput('title', 'Title');
     fixture.componentRef.setInput('message', 'Message');
-    fixture.componentRef.setInput('isHandset', false);
     fixture.detectChanges();
   });
 

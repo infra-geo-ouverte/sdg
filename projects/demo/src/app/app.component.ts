@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, Signal } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
@@ -14,7 +14,6 @@ import {
   isNavigationLink
 } from '@igo2/sdg';
 import {
-  BreakpointService,
   Language,
   SdgRoute,
   TitleResolverPipe,
@@ -67,7 +66,6 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
-    private breakpointService: BreakpointService,
     private translationService: TranslationService,
     private titleResolverPipe: TitleResolverPipe
   ) {
@@ -77,10 +75,6 @@ export class AppComponent implements OnInit {
     }
 
     this.links = this.getLinks();
-  }
-
-  get isHandset(): Signal<boolean> {
-    return this.breakpointService.isHandset;
   }
 
   get currentLanguage() {

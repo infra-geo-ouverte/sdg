@@ -1,9 +1,5 @@
-<div
-  class="sdg-header-container"
-  [class]="containerClass()"
-  [class.--handset]="isHandset()"
->
-  <div class="sdg-header-content" [class.--handset]="isHandset()">
+<div class="sdg-header-container" [class]="containerClass()">
+  <div class="sdg-header-content">
     <div class="sdg-header-content-logo-title">
       <a class="sdg-header-content-logo" href="https://www.quebec.ca/">
         <svg
@@ -56,10 +52,7 @@
     }
   </div>
   @if (isHandset()) {
-    <div
-      class="sdg-header-content-title-container"
-      [class.--handset]="isHandset()"
-    >
+    <div class="sdg-header-content-title-container">
       <h6>
         <a class="sdg-header-content-title" [routerLink]="['/']">{{
           title()

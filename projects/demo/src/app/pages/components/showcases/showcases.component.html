@@ -1,10 +1,5 @@
-<app-split-screen [title]="title()" [isHandset]="isHandset()">
-  <sdg-lateral-menu
-    left-slot
-    [title]="menuTitle"
-    [sections]="sections"
-    [isHandset]="isHandset()"
-  />
+<app-split-screen [title]="title()">
+  <sdg-lateral-menu left-slot [title]="menuTitle" [sections]="sections" />
 
   <router-outlet></router-outlet>
 </app-split-screen>

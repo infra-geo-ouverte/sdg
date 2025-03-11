@@ -11,5 +11,4 @@ import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
 })
 export class BasicScreenComponent {
   readonly title = input.required<string>();
-  readonly isHandset = input.required<boolean>();
 }

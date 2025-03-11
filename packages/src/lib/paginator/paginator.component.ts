@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { IgoLanguageModule } from '@igo2/core/language';
+import { BreakpointService } from '@igo2/sdg/core';
 
 @Component({
   selector: 'sdg-paginator',
@@ -25,9 +26,10 @@ export class PaginatorComponent implements OnInit {
   readonly pageSize = input.required<number>();
   readonly middlePagesMaxRange = input<number>(1);
   readonly initialPageIndex = input<number>(0);
-  readonly isHandset = input.required<boolean>();
 
   pageChange = output<number>();
+
+  private isHandset = this.breakpointService.isHandset;
 
   initialPageIndexFirstChange = true;
 
@@ -39,7 +41,10 @@ export class PaginatorComponent implements OnInit {
   lastPagesIndexes: number[] = [];
   pagesIndexes: number[] = [];
 
-  constructor(@Inject(DOCUMENT) private document: Document) {
+  constructor(
+    @Inject(DOCUMENT) private document: Document,
+    private breakpointService: BreakpointService
+  ) {
     effect(() => {
       const pageSize = this.pageSize();
       if (!this.initialPageIndexFirstChange) {

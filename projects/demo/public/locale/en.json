@@ -23,5 +23,28 @@
     "sequentialLinks": "Sequential Links",
     "tile": "Clickable tile"
   },
+  "showcasesCarto": {
+    "referenceMap": "Reference map",
+    "buttons": {
+      "zoom": {
+        "zoomIn": "Zoom in",
+        "zoomOut": "Zoom out"
+      },
+      "rotation": {
+        "reset": "Reset the map to the north"
+      },
+      "home": {
+        "goHome": "Default map view"
+      },
+      "geolocation": {
+        "active": "Find my location",
+        "inactive": "Hide my location"
+      }
+    },
+    "restrictions": {
+      "ctrlScroll": "Use ctrl + scroll to zoom the map",
+      "twoFingers": "Use two fingers to move the map"
+    }
+  },
   "seeMore": "See more"
 }

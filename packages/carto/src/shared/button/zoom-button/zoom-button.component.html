@@ -1,0 +1,19 @@
+<button
+  mat-mini-fab
+  matTooltipPosition="left"
+  [matTooltip]="labels().zoomIn"
+  [disabled]="maxDisabled()"
+  (click)="zoomIn()"
+>
+  <mat-icon [color]="color()">add</mat-icon>
+</button>
+
+<button
+  mat-mini-fab
+  matTooltipPosition="left"
+  [matTooltip]="labels().zoomOut"
+  [disabled]="minDisabled()"
+  (click)="zoomOut()"
+>
+  <mat-icon [color]="color()">remove</mat-icon>
+</button>

@@ -22,3 +22,13 @@ mat-icon.lnr {
   font-size: 18px;
   line-height: 24px;
 }
+
+.pre-code {
+  display: block;
+  margin: 24px auto;
+  overflow-x: auto;
+  padding: 20px;
+  white-space: pre-wrap;
+  border: solid 1px #ccc;
+  border-radius: 12px;
+}

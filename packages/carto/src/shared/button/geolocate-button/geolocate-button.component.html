@@ -1,0 +1,10 @@
+<button
+  mat-mini-fab
+  matTooltipPosition="left"
+  [matTooltip]="isActive() ? labels().inactive : labels().active"
+  (click)="toggle()"
+>
+  <mat-icon [color]="color()">{{
+    isActive() ? 'my_location' : 'location_searching'
+  }}</mat-icon>
+</button>

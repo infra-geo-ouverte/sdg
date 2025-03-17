@@ -23,5 +23,28 @@
     "sequentialLinks": "Liens séquentiels",
     "tile": "Tuile cliquable"
   },
+  "showcasesCarto": {
+    "referenceMap": "Carte de référence",
+    "buttons": {
+      "zoom": {
+        "zoomIn": "Zoom avant",
+        "zoomOut": "Zoom arrière"
+      },
+      "rotation": {
+        "reset": "Réinitialiser la carte vers le nord"
+      },
+      "home": {
+        "goHome": "Vue cartographique par défaut"
+      },
+      "geolocation": {
+        "active": "Rechercher ma localisation",
+        "inactive": "Masquer ma localisation"
+      }
+    },
+    "restrictions": {
+      "ctrlScroll": "Vous pouvez zoomer sur la carte à l'aide de CTRL+Molette de défilement",
+      "twoFingers": "Utilisez deux doigts pour déplacer la carte"
+    }
+  },
   "seeMore": "Voir plus"
 }

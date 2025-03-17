@@ -1,0 +1,35 @@
+@use 'sass:math';
+@use '@angular/material' as mat;
+
+$base-padding: 8px;
+
+:host {
+  ::ng-deep {
+    .map-actions {
+      position: absolute;
+      display: flex;
+      transition:
+        bottom 250ms,
+        left 250ms;
+
+      &.--vertical {
+        flex-direction: column;
+        gap: $base-padding;
+      }
+
+      &.--bottom {
+        bottom: $base-padding;
+      }
+
+      &.--right {
+        right: $base-padding;
+        align-items: flex-end;
+      }
+    }
+  }
+}
+
+sdg-map-browser {
+  position: relative;
+  display: block;
+}

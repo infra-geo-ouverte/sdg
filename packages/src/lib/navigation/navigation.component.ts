@@ -5,6 +5,7 @@ import {
   ElementRef,
   OnDestroy,
   OnInit,
+  Signal,
   computed,
   input,
   signal,
@@ -50,7 +51,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   hasOverflow = signal(false);
   hasActions = signal(false);
 
-  isHandset = this.breakpointService.isHandset;
+  isHandset: Signal<boolean>;
 
   readonly isOnTwoLine = computed(
     () => this.hasActions() && this.isHandset() && this.detectHandsetOverflow()
@@ -73,6 +74,8 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     private host: ElementRef,
     private breakpointService: BreakpointService
   ) {
+    this.isHandset = this.breakpointService.isHandset;
+
     this._resizeObserver = new ResizeObserver((entries) =>
       this._resizeSubject.next(entries)
     );

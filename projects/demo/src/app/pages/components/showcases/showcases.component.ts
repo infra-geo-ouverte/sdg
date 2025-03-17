@@ -8,7 +8,7 @@ import {
 
 import { LateralMenuItem, LateralMenuSections } from '@igo2/sdg';
 import { LateralMenuComponent } from '@igo2/sdg';
-import { BreakpointService, SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
+import { SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 
@@ -23,28 +23,29 @@ import { routes } from './showcases.routes';
   styleUrl: './showcases.component.scss'
 })
 export class ShowcasesComponent implements OnDestroy {
-  sections: LateralMenuSections = routes
-    .filter((route) => isSection(route))
-    .map((item, itemIndex) => {
-      const title = this.titleResolverPipe.transform(item);
-      if (!title) {
-        throw new Error(`Title not found for section ${itemIndex}`);
-      }
-      return {
-        ...item,
-        title: title
-      };
-    });
+  sections: LateralMenuSections;
   title = signal<string | undefined>(undefined);
 
   private _destroy$ = new Subject();
 
   constructor(
-    private breakpointService: BreakpointService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private titleResolverPipe: TitleResolverPipe
   ) {
+    this.sections = routes
+      .filter((route) => isSection(route))
+      .map((item, itemIndex) => {
+        const title = this.titleResolverPipe.transform(item);
+        if (!title) {
+          throw new Error(`Title not found for section ${itemIndex}`);
+        }
+        return {
+          ...item,
+          title: title
+        };
+      });
+
     this.router.events
       .pipe(
         filter((events) => events instanceof NavigationEnd),

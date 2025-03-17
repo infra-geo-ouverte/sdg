@@ -14,9 +14,11 @@ export abstract class BreadcrumbsBase {
 
   abstract breadcrumbs: Signal<Breadcrumbs>;
   breadcrumbsList = this.getBreadcrumbs();
-  isHandset = this.breakpointService.isHandset;
+  isHandset: Signal<boolean>;
 
-  constructor(private breakpointService: BreakpointService) {}
+  constructor(private breakpointService: BreakpointService) {
+    this.isHandset = this.breakpointService.isHandset;
+  }
 
   isMenu(breadcrumb: AnyBreadcrumb): breadcrumb is BreadcrumbMenu {
     return !!(breadcrumb as BreadcrumbMenu)?.menu;

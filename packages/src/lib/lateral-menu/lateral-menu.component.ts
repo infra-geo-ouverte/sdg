@@ -9,6 +9,7 @@ import {
 import {
   ChangeDetectionStrategy,
   Component,
+  Signal,
   input,
   signal
 } from '@angular/core';
@@ -60,9 +61,11 @@ export class LateralMenuComponent {
 
   opened = signal(false);
 
-  isHandset = this.breakpointService.isHandset;
+  isHandset: Signal<boolean>;
 
-  constructor(private breakpointService: BreakpointService) {}
+  constructor(private breakpointService: BreakpointService) {
+    this.isHandset = this.breakpointService.isHandset;
+  }
 
   toggle(): void {
     this.opened.set(!this.opened());

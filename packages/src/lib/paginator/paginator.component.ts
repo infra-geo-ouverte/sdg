@@ -4,6 +4,7 @@ import {
   Component,
   Inject,
   OnInit,
+  Signal,
   effect,
   input,
   output
@@ -29,7 +30,7 @@ export class PaginatorComponent implements OnInit {
 
   pageChange = output<number>();
 
-  private isHandset = this.breakpointService.isHandset;
+  private isHandset: Signal<boolean>;
 
   initialPageIndexFirstChange = true;
 
@@ -45,6 +46,8 @@ export class PaginatorComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private breakpointService: BreakpointService
   ) {
+    this.isHandset = this.breakpointService.isHandset;
+
     effect(() => {
       const pageSize = this.pageSize();
       if (!this.initialPageIndexFirstChange) {

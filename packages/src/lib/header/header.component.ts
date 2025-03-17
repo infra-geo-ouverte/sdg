@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, Signal, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -26,9 +26,11 @@ export class HeaderComponent {
 
   languageChange = output<string>();
 
-  isHandset = this.breakpointService.isHandset;
+  isHandset: Signal<boolean>;
 
-  constructor(private breakpointService: BreakpointService) {}
+  constructor(private breakpointService: BreakpointService) {
+    this.isHandset = this.breakpointService.isHandset;
+  }
 
   get nextLanguage(): IHeaderLanguageChoice | undefined {
     // For now we have only two language

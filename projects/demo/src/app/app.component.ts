@@ -11,6 +11,7 @@ import {
   INavigationLinks,
   NavigationComponent,
   SiteMapLink,
+  SiteMapLinks,
   isNavigationLink
 } from '@igo2/sdg';
 import {
@@ -46,20 +47,7 @@ export class AppComponent implements OnInit {
   config: EnvironmentOptions = environment;
   links: INavigationLinks;
 
-  siteMapLinks = routes
-    .filter((route) => isSiteMapLink(route))
-    .map((siteMapLink, siteMapLinkIndex) => {
-      const title = this.titleResolverPipe.transform(siteMapLink);
-      if (!title) {
-        throw new Error(
-          `Title not found for site map link ${siteMapLinkIndex}`
-        );
-      }
-      return {
-        ...siteMapLink,
-        title: title
-      };
-    });
+  siteMapLinks: SiteMapLinks;
 
   copyright = this.config.footer.copyright;
 
@@ -75,6 +63,21 @@ export class AppComponent implements OnInit {
     }
 
     this.links = this.getLinks();
+
+    this.siteMapLinks = routes
+      .filter((route) => isSiteMapLink(route))
+      .map((siteMapLink, siteMapLinkIndex) => {
+        const title = this.titleResolverPipe.transform(siteMapLink);
+        if (!title) {
+          throw new Error(
+            `Title not found for site map link ${siteMapLinkIndex}`
+          );
+        }
+        return {
+          ...siteMapLink,
+          title: title
+        };
+      });
   }
 
   get currentLanguage() {

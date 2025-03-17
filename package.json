@@ -62,6 +62,7 @@
     "@semantic-release/github": "^11.0.0",
     "@stylistic/eslint-plugin": "^4.0.1",
     "@trivago/prettier-plugin-sort-imports": "^5.2.0",
+    "@types/geojson": "^7946.0.16",
     "@types/jasmine": "~5.1.0",
     "@types/node": "^22.13.0",
     "angular-eslint": "19.1.0",

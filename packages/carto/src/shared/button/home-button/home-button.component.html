@@ -1,0 +1,9 @@
+<button
+  mat-mini-fab
+  matTooltipPosition="left"
+  [matTooltip]="labels().goHome"
+  [disabled]="isDisabled()"
+  (click)="goHome()"
+>
+  <mat-icon [color]="color()">home</mat-icon>
+</button>

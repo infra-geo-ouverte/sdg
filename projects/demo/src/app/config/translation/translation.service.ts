@@ -3,7 +3,12 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { LanguageService } from '@igo2/core/language';
-import { Language, parseUrlWithLanguage } from '@igo2/sdg/core';
+import {
+  Language,
+  Translation,
+  TranslationObject,
+  parseUrlWithLanguage
+} from '@igo2/sdg/core';
 import { TranslationService } from '@igo2/sdg/core';
 
 import { TranslateService } from '@ngx-translate/core';
@@ -31,14 +36,14 @@ export class AppTranslationService
   get(
     key: string | string[],
     interpolateParams?: Record<string, unknown>
-  ): string {
+  ): Translation | TranslationObject {
     return this.translate.instant(key, interpolateParams);
   }
 
   getAsync(
     key: string | string[],
     interpolateParams?: Record<string, unknown>
-  ): Observable<string> {
+  ): Observable<Translation | TranslationObject> {
     return this.translate.get(key, interpolateParams);
   }
 

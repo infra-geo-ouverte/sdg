@@ -30,7 +30,7 @@
       "type": "chrome",
       "request": "launch",
       "preLaunchTask": "qea-client/start",
-      "url": "http://127.0.0.1:4210",
+      "url": "http://localhost:4210",
       "webRoot": "${workspaceFolder}/projects/qea-client/start",
       "sourceMaps": true
     }

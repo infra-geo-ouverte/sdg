@@ -7,9 +7,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 const GITHUB_PATH = 'https://github.com/infra-geo-ouverte/sdg/tree/next';
 
-const CODE_PATH = `${GITHUB_PATH}/packages/src/lib`;
+const COMMON_CODE_PATH = `${GITHUB_PATH}/packages/src/lib`;
+const CARTO_CODE_PATH = `${GITHUB_PATH}/packages/geo/src`;
 const DEMO_SHOWCASES_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/components/showcases`;
+const DEMO_SHOWCASES_CARTO_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/components/showcases-carto`;
 
+type ShowcaseType = 'common' | 'carto';
 @Component({
   selector: 'app-example-viewer',
   imports: [
@@ -24,16 +27,17 @@ const DEMO_SHOWCASES_PATH = `${GITHUB_PATH}/projects/demo/src/app/pages/componen
 })
 export class ExampleViewerComponent {
   readonly title = input.required<string>();
+  readonly showcase = input<ShowcaseType>('common');
   readonly codeFolder = input<string>();
   readonly configFolder = input<string>();
 
   @HostBinding('class.example-viewer') baseClass = true;
 
   get codeUrl() {
-    return `${CODE_PATH}/${this.codeFolder()}`;
+    return `${this.showcase() === 'common' ? COMMON_CODE_PATH : CARTO_CODE_PATH}/${this.codeFolder()}`;
   }
 
   get configUrl() {
-    return `${DEMO_SHOWCASES_PATH}/${this.configFolder()}`;
+    return `${this.showcase() === 'common' ? DEMO_SHOWCASES_PATH : DEMO_SHOWCASES_CARTO_PATH}/${this.configFolder()}`;
   }
 }

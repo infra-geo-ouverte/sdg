@@ -1,0 +1,14 @@
+@if (rotation()) {
+  <button
+    mat-mini-fab
+    matTooltipPosition="left"
+    [matTooltip]="labels().reset"
+    (click)="reset()"
+  >
+    <mat-icon
+      [color]="color()"
+      [style.transform]="'rotate(' + rotation() + 'deg)'"
+      >navigation
+    </mat-icon>
+  </button>
+}

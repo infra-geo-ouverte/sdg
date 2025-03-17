@@ -4,11 +4,13 @@ import { BlockLinkComponent } from '@igo2/sdg';
 import { BlockLinkSection, BlockLinkSections } from '@igo2/sdg';
 import {
   SdgRoute,
+  SdgRoutes,
   TitleResolverPipe,
   TranslationService
 } from '@igo2/sdg/core';
 
 import { BasicScreenComponent } from '../../components';
+import { routes as routesCarto } from './showcases-carto/showcases-carto.routes';
 import { routes } from './showcases/showcases.routes';
 
 @Component({
@@ -20,15 +22,20 @@ import { routes } from './showcases/showcases.routes';
 })
 export class ComponentsComponent {
   sections: BlockLinkSections;
+  sectionsCarto: BlockLinkSections;
 
   constructor(
     private titleResolverPipe: TitleResolverPipe,
     private translationService: TranslationService
   ) {
-    this.sections = this.setSections();
+    this.sections = this.setSections(routes, 'common');
+    this.sectionsCarto = this.setSections(routesCarto, 'carto');
   }
 
-  private setSections(): BlockLinkSections {
+  private setSections(
+    routes: SdgRoutes,
+    prefixSection: string
+  ): BlockLinkSections {
     return routes
       .filter((route) => isSection(route))
       .map((section, sectionIndex) => {
@@ -39,7 +46,7 @@ export class ComponentsComponent {
         return {
           ...section,
           title: title,
-          path: `/composants/showcases/${section.path}`,
+          path: `/composants/showcases/${prefixSection}/${section.path}`,
           description: section.description,
           seeMoreLabel: this.translationService.get('seeMore')
         };

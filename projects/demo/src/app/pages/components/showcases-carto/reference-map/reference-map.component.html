@@ -1,0 +1,66 @@
+<p>
+  <span
+    >La <b>carte de référence</b> correspond à une vignette cartographique
+    permettant la localisation ou la mise en contexte d'un sujet. Elle est
+    placée dans une page informationnelle. Voir la
+  </span>
+  <span
+    ><app-external-link
+      title="Carte de référence"
+      link="https://design.quebec.ca/design/modeles/cartographie/types-de-cartes#c280762"
+  /></span>
+  <span> du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  Elle est optimisée pour une navigation fluide sur tous les appareils. Le zoom
+  et le déplacement sont désactivés lors du défilement et des interactions à un
+  doigt, pour une expérience utilisateur sans interruption.
+</p>
+<app-example-viewer
+  title="Interactions de la carte"
+  showcase="carto"
+  configFolder="reference-map"
+  codeFolder="reference-map"
+>
+  <section>
+    <p>
+      Pour une navigation fluide, certaines interactions sont bloquées et un
+      message d'aide apparait indiquant l'interaction à réaliser. Le message
+      s'affiche pour une durée de 2 secondes.
+    </p>
+    <ol>
+      <li>Avec la souris, le zoom est bloqué lors du défilement;</li>
+      <li>
+        Sur appareil avec écran tactile, le déplacement est bloqué au défilement
+        à un doigt.
+      </li>
+    </ol>
+  </section>
+  <sdg-ol-reference-map [options]="map1" />
+</app-example-viewer>
+
+<app-example-viewer
+  title="Afficher une donnée GeoJSON"
+  showcase="carto"
+  configFolder="reference-map"
+  codeFolder="reference-map"
+>
+  <sdg-ol-reference-map [options]="map2" />
+</app-example-viewer>
+
+<section>
+  <h3>Configuration de la carte</h3>
+  <p>
+    Il est possible de modifier certaines options globalement comme les libellés
+    ou la durée de l'affichage des messages d'aide. Par exemple, pour les
+    libellés vous devez définir la clé de traduction qui sera utilisée pour
+    récupérer les traductions via le TranslationService
+  </p>
+
+  <pre class="pre-code">
+    <code [innerHTML]="example">
+
+    </code>
+  </pre>
+</section>

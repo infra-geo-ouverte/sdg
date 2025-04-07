@@ -84,6 +84,19 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'haut-page',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.topPage'
+    },
+    description:
+      'Le bouton haut de page permet de remonter rapidement vers le haut de la page.',
+    loadComponent: () =>
+      import('./top-page-button/top-page-button.component').then(
+        (m) => m.TopPageButtonDemoComponent
+      )
+  },
+  {
     path: 'liens-sequentiels',
     title: AppTitleResolver,
     data: {

@@ -12,6 +12,7 @@ import {
   NavigationComponent,
   SiteMapLink,
   SiteMapLinks,
+  TopPageButtonComponent,
   isNavigationLink
 } from '@igo2/sdg';
 import {
@@ -37,7 +38,8 @@ import { routes } from './app.routes';
     MatButtonModule,
     MatIconModule,
     IgoLanguageModule,
-    FooterComponent
+    FooterComponent,
+    TopPageButtonComponent
   ],
   providers: [TitleResolverPipe],
   templateUrl: './app.component.html',

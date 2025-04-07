@@ -1,0 +1,11 @@
+<button
+  mat-mini-fab
+  color="primary"
+  disableRipple
+  [class.--visible]="showButton()"
+  [matTooltip]="tooltip()"
+  matTooltipPosition="left"
+  (click)="scrollToTop()"
+>
+  <mat-icon>north</mat-icon>
+</button>

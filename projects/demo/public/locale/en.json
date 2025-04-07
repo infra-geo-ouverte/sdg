@@ -21,7 +21,8 @@
     "notice": "Notice",
     "paginator": "Paginator",
     "sequentialLinks": "Sequential Links",
-    "tile": "Clickable tile"
+    "tile": "Clickable tile",
+    "topPage": "Scroll to top"
   },
   "showcasesCarto": {
     "referenceMap": "Reference map",

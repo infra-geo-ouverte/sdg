@@ -21,7 +21,8 @@
     "notice": "Avis",
     "paginator": "Pagination",
     "sequentialLinks": "Liens séquentiels",
-    "tile": "Tuile cliquable"
+    "tile": "Tuile cliquable",
+    "topPage": "Haut de page"
   },
   "showcasesCarto": {
     "referenceMap": "Carte de référence",

@@ -17,3 +17,4 @@ export * from './lib/notice';
 export * from './lib/paginator';
 export * from './lib/sequential-links';
 export * from './lib/tile';
+export * from './lib/top-page-button';

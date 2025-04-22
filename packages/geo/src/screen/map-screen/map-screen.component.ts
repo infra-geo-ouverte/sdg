@@ -275,7 +275,7 @@ export class MapScreenComponent implements OnInit {
               );
             if (map) {
               const totalExtent = computeOlFeaturesExtent(
-                searchResultsOlFeatures,
+                searchResultsOlFeatures.flat(),
                 map.viewProjection
               );
               map.viewController.zoomToExtent(totalExtent);

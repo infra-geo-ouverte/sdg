@@ -3,7 +3,8 @@ import {
   Component,
   OnInit,
   inject,
-  input
+  input,
+  output
 } from '@angular/core';
 
 import {
@@ -37,6 +38,8 @@ import { SdgReferenceMapInteractionsDirective } from './reference-map-interactio
 export class SdgOlReferenceMapComponent implements OnInit {
   readonly options = input.required<IOlMapOptions>();
 
+  mapReady = output<SdgOlMap>();
+
   defaultOptions = inject<SdgReferenceMapDefaultOptions>(
     SDG_REFERENCE_MAP_OPTIONS,
     {
@@ -52,5 +55,6 @@ export class SdgOlReferenceMapComponent implements OnInit {
   ngOnInit(): void {
     this.map = new SdgOlMap(this.options());
     this.geolocation = new SdgOlGeolocationController(this.map);
+    this.mapReady.emit(this.map);
   }
 }

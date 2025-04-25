@@ -32,7 +32,7 @@ export class FooterDemoComponent {
     { title: 'Wikipedia', path: 'https://www.wikipedia.org/' }
   ];
   copyright: FooterCopyright = {
-    logo: 'images/MSP.svg',
+    logo: 'images/piv-pied-page.svg',
     logoUrl: 'https://www.quebec.ca',
     year: 2022
   };

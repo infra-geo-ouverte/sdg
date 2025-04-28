@@ -1,6 +1,6 @@
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/typography/typography.scss';
-@use '../../../core/src/layout/breakpoints';
+@use '../../../core/src/layout';
 
 :host {
   display: flex;
@@ -60,6 +60,10 @@
     padding: 24px 32px 24px 16px;
     width: 100%;
 
+    @include layout.media(mobile) {
+      padding: 24px 24px 24px 16px;
+    }
+
     &-title,
     &-message {
       font-size: 14px !important;
@@ -70,11 +74,5 @@
     &-title {
       font-family: typography.$font-family-text !important;
     }
-  }
-}
-
-@media only screen and (max-width: breakpoints.max-width(mobile)) {
-  .sdg-notice-content {
-    padding: 24px 24px 24px 16px;
   }
 }

@@ -1,17 +1,17 @@
-<div class="lateral-menu-section">
+<div class="sdg-lateral-menu-section">
   <button
-    class="lateral-menu-section-header"
+    class="sdg-lateral-menu-section-header"
     [class.--active-section]="active"
     (click)="toggle()"
   >
     <p
-      class="lateral-menu-section-header-title"
+      class="sdg-lateral-menu-section-header-title"
       [class.--active-section]="active"
     >
       {{ section().title }}
     </p>
     <mat-icon
-      class="lateral-menu-section-header-arrow"
+      class="sdg-lateral-menu-section-header-arrow"
       color="primary"
       [@openCloseArrow]="opened() ? 'opened' : 'closed'"
       >keyboard_arrow_down</mat-icon
@@ -19,7 +19,7 @@
   </button>
 
   <div
-    class="lateral-menu-section-subsections"
+    class="sdg-lateral-menu-section-subsections"
     [@openCloseSection]="opened() ? 'opened' : 'closed'"
   >
     @for (item of section().items; track item) {

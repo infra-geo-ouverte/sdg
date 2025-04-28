@@ -1,6 +1,6 @@
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/typography/typography';
-@use '../../../core/src/layout/breakpoints';
+@use '../../../core/src/layout';
 
 :host {
   background-color: colors.$blue-piv;
@@ -19,6 +19,11 @@
     column-gap: 40px;
     min-height: 72px;
 
+    @include layout.media(mobile) {
+      column-gap: 0;
+      justify-content: space-between;
+    }
+
     &-logo {
       display: flex;
       align-items: center;
@@ -26,7 +31,7 @@
       &-title {
         display: flex;
         align-items: center;
-        column-gap: calc(breakpoints.spacing(desktop) * 2);
+        column-gap: calc(layout.spacing(desktop) * 2);
         flex-grow: 1;
       }
     }
@@ -44,6 +49,10 @@
       &-container {
         margin: 16px 0;
         overflow: hidden;
+
+        @include layout.media(mobile) {
+          margin-top: 0;
+        }
 
         > h6 {
           font-weight: normal !important;
@@ -72,19 +81,6 @@
         &:hover {
           text-decoration: underline;
         }
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: breakpoints.max-width(mobile)) {
-  .sdg-header {
-    &-content {
-      column-gap: 0;
-      justify-content: space-between;
-
-      &-title-container {
-        margin-top: 0;
       }
     }
   }

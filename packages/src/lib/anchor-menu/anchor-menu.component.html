@@ -1,5 +1,5 @@
-<div class="container">
-  <p><b>Dans cette page :</b></p>
+<div class="sdg-anchor-menu-container">
+  <p>Dans cette page :</p>
   @for (anchor of anchors(); track anchor) {
     <a routerLink="./" [fragment]="anchor.htmlElementId">{{ anchor.text }}</a>
   }

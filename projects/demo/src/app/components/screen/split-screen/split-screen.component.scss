@@ -9,15 +9,15 @@ sdg-breadcrumbs-with-router {
     display: flex;
     column-gap: sdg.spacing(desktop);
     flex: 1;
-    @media only screen and (max-width: sdg.max-width(laptop)) {
+    @include sdg.media(laptop) {
       column-gap: sdg.spacing(laptop);
     }
 
-    @media only screen and (max-width: sdg.max-width(tablet)) {
+    @include sdg.media(tablet) {
       column-gap: sdg.spacing(tablet);
     }
 
-    @media only screen and (max-width: sdg.max-width(mobile)) {
+    @include sdg.media(mobile) {
       flex-direction: column;
     }
   }

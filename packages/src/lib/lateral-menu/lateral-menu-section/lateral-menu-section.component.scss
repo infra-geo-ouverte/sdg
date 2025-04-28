@@ -1,10 +1,14 @@
 @use '../../../../core/src/theme/colors';
-@use '../../../../core/src/layout/breakpoints';
+@use '../../../../core/src/layout';
 
-.lateral-menu-section {
+.sdg-lateral-menu-section {
   display: flex;
   flex-flow: column;
   border-bottom: 1px solid colors.$grey-light;
+
+  @include layout.media(mobile) {
+    border: none;
+  }
 
   &-header {
     display: flex;
@@ -14,12 +18,20 @@
     border: none;
     cursor: pointer;
 
+    @include layout.media(mobile) {
+      padding: 8px 8px 8px 24px;
+    }
+
     &-title {
       flex-grow: 1;
       text-align: start;
       font-size: 14px;
       color: colors.$blue-piv;
       margin: 0;
+
+      @include layout.media(mobile) {
+        font-size: 16px;
+      }
 
       &.--active-section {
         font-weight: bold;
@@ -38,22 +50,8 @@
   &-subsections {
     display: flex;
     flex-direction: column;
-  }
-}
 
-@media only screen and (max-width: breakpoints.max-width(mobile)) {
-  .lateral-menu-section {
-    border: none;
-
-    &-header {
-      padding: 8px 8px 8px 24px;
-
-      &-title {
-        font-size: 16px;
-      }
-    }
-
-    &-subsections {
+    @include layout.media(mobile) {
       background-color: colors.$blue-pale;
       padding-left: 24px;
     }

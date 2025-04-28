@@ -33,7 +33,7 @@ export const environment: EnvironmentOptions = {
   },
   footer: {
     copyright: {
-      logo: 'images/MSP.svg',
+      logo: 'images/piv-pied-page.svg',
       logoUrl: 'https://www.quebec.ca/gouvernement/ministere/securite-publique'
     }
   },

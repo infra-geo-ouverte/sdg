@@ -6,16 +6,14 @@
   justify-content: space-between;
   gap: 32px sdg.spacing(desktop);
 
+  @include sdg.media(tablet) {
+    row-gap: 24px;
+  }
+
   & > * {
     flex-basis: calc(100% / 2 - sdg.spacing(desktop));
-  }
-}
 
-@media only screen and (max-width: sdg.max-width(tablet)) {
-  .tiles {
-    row-gap: 24px;
-
-    & > * {
+    @include sdg.media(tablet) {
       flex-basis: 100%;
     }
   }

@@ -8,11 +8,9 @@
 
   & > * {
     flex-basis: calc(100% / 2 - sdg.spacing(desktop));
-  }
-}
 
-@media only screen and (max-width: sdg.max-width(mobile)) {
-  .block-links > * {
-    flex-basis: 100%;
+    @include sdg.media(mobile) {
+      flex-basis: 100%;
+    }
   }
 }

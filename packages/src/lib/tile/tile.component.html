@@ -1,18 +1,23 @@
-<button class="container" (click)="goToLink()">
-  <div class="title-icon" [class.--no-message]="!message()">
+<button class="sdg-tile-container" (click)="goToLink()">
+  <div class="sdg-tile-title-icon" [class.--no-message]="!message()">
     @if (icon()) {
-      <mat-icon class="icon">{{ icon() }}</mat-icon>
+      <mat-icon class="sdg-tile-icon">{{ icon() }}</mat-icon>
     }
     <b>
-      <p class="title" [class.--no-message]="!message()">{{ title() }}</p>
+      <p class="sdg-tile-title" [class.--no-message]="!message()">
+        {{ title() }}
+      </p>
     </b>
   </div>
   @if (message()) {
-    <div class="message">
+    <div class="sdg-tile-message">
       {{ message() }}
     </div>
   }
-  <mat-icon class="arrow" [class.--no-message]="!message()" color="accent"
+  <mat-icon
+    class="sdg-tile-arrow"
+    [class.--no-message]="!message()"
+    color="accent"
     >arrow_forward</mat-icon
   >
 </button>

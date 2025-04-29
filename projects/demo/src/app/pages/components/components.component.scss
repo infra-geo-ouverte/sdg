@@ -6,6 +6,14 @@
   justify-content: space-between;
   gap: 48px sdg.spacing(desktop);
 
+  @include sdg.media(laptop) {
+    column-gap: sdg.spacing(laptop);
+  }
+
+  @include sdg.media(tablet) {
+    column-gap: sdg.spacing(tablet);
+  }
+
   &-container {
     padding: 48px 0;
     background-color: sdg.$blue-pale;
@@ -13,31 +21,17 @@
 
   & > * {
     flex-basis: calc(100% / 3 - sdg.spacing(desktop));
-  }
-}
 
-@media only screen and (max-width: sdg.max-width(laptop)) {
-  .block-links {
-    column-gap: sdg.spacing(laptop);
-
-    & > * {
+    @include sdg.media(laptop) {
       flex-basis: calc(100% / 3 - sdg.spacing(laptop));
     }
-  }
-}
 
-@media only screen and (max-width: sdg.max-width(tablet)) {
-  .block-links {
-    column-gap: sdg.spacing(tablet);
-
-    & > * {
+    @include sdg.media(tablet) {
       flex-basis: calc(100% / 2 - sdg.spacing(tablet));
     }
-  }
-}
 
-@media only screen and (max-width: sdg.max-width(mobile)) {
-  .block-links > * {
-    flex-basis: 100%;
+    @include sdg.media(mobile) {
+      flex-basis: 100%;
+    }
   }
 }

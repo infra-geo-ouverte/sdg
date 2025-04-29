@@ -1,6 +1,6 @@
 @use '../../../core/src/theme/colors';
 @use '../../../core/src/typography/typography';
-@use '../../../core/src/layout/breakpoints';
+@use '../../../core/src/layout';
 @use '@angular/material' as mat;
 
 :host {
@@ -20,6 +20,11 @@
     align-items: center;
     padding: 24px 16px;
     column-gap: 24px;
+
+    @include layout.media(mobile) {
+      padding: 16px;
+      align-items: start;
+    }
   }
 
   &-icon {
@@ -46,6 +51,11 @@
     flex-grow: 1;
     font-size: 16px;
     font-weight: 600;
+
+    @include layout.media(mobile) {
+      font-family: typography.$font-family-text;
+      font-size: 14px;
+    }
   }
 
   &-button {
@@ -58,18 +68,6 @@
 
     &.mat-mdc-icon-button.mat-mdc-button-base {
       padding: 0;
-    }
-  }
-
-  @media only screen and (max-width: breakpoints.max-width(mobile)) {
-    &-container {
-      padding: 16px;
-      align-items: start;
-    }
-
-    &-message {
-      font-family: typography.$font-family-text;
-      font-size: 14px;
     }
   }
 }

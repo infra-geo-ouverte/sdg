@@ -1,4 +1,4 @@
-@use '../../../../core/src/layout/breakpoints';
+@use '../../../../core/src/layout';
 @use '../../../../core/src/theme/colors';
 
 li {
@@ -9,6 +9,10 @@ li {
 
   &.--last {
     font-weight: 600;
+  }
+
+  @include layout.media(mobile) {
+    flex-direction: row-reverse;
   }
 }
 
@@ -24,24 +28,18 @@ a {
   &:hover {
     text-decoration: underline;
   }
-}
 
-mat-icon {
-  margin-left: 4px;
-}
-
-@media only screen and (max-width: breakpoints.max-width(mobile)) {
-  li {
-    flex-direction: row-reverse;
-  }
-
-  a {
+  @include layout.media(mobile) {
     font-family: 'Open Sans', sans-serif !important;
     font-size: 12px !important;
     color: colors.$blue-piv;
   }
+}
 
-  mat-icon {
+mat-icon {
+  margin-left: 4px;
+
+  @include layout.media(mobile) {
     margin-right: 4px;
   }
 }

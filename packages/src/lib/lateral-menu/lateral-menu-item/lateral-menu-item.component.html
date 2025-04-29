@@ -1,5 +1,7 @@
 <a
-  [class]="isSectionItem() ? 'lateral-menu-section-item' : 'lateral-menu-item'"
+  [class]="
+    isSectionItem() ? 'sdg-lateral-menu-section-item' : 'sdg-lateral-menu-item'
+  "
   routerLinkActive="--active-item"
   [routerLinkActiveOptions]="{ exact: true }"
   [routerLink]="item().path"

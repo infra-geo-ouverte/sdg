@@ -1,5 +1,5 @@
 @use '../../../../core/src/theme/colors';
-@use '../../../../core/src/layout/breakpoints';
+@use '../../../../core/src/layout';
 
 sdg-anchor ::ng-deep a {
   display: flex;
@@ -33,7 +33,7 @@ sdg-anchor ::ng-deep a {
       visibility: hidden;
       margin-left: 8px;
 
-      @media only screen and (max-width: breakpoints.max-width(mobile)) {
+      @include layout.media(mobile) {
         visibility: visible;
       }
     }

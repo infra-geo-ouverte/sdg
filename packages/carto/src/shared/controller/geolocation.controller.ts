@@ -42,7 +42,7 @@ export abstract class GeolocationBase {
 
   abstract showPosition(): void;
   abstract unshowPosition(): void;
-  abstract centerPosition(position: GeolocationPosition): void;
+  abstract zoomToPosition(position: GeolocationPosition): void;
 
   get accuracy(): number | undefined {
     return this.coordinates?.accuracy;

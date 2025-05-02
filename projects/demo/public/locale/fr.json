@@ -38,8 +38,8 @@
         "goHome": "Vue cartographique par défaut"
       },
       "geolocation": {
-        "active": "Rechercher ma localisation",
-        "inactive": "Masquer ma localisation"
+        "active": "Afficher votre position",
+        "inactive": "Masquer votre position"
       }
     },
     "restrictions": {

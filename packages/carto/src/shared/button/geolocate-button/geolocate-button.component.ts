@@ -52,7 +52,7 @@ export class GeolocateButtonComponent {
     controller.position$
       .pipe(first((position) => !!position))
       .subscribe((position) => {
-        controller.centerPosition(position);
+        controller.zoomToPosition(position);
       });
   }
 

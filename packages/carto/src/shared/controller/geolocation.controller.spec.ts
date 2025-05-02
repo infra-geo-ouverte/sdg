@@ -11,7 +11,7 @@ class GeolocationTest extends GeolocationBase {
     // Mock implementation
   }
 
-  centerPosition(): void {
+  zoomToPosition(): void {
     // Mock implementation
   }
 }

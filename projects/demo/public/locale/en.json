@@ -38,8 +38,8 @@
         "goHome": "Default map view"
       },
       "geolocation": {
-        "active": "Find my location",
-        "inactive": "Hide my location"
+        "active": "Find your location",
+        "inactive": "Hide your location"
       }
     },
     "restrictions": {

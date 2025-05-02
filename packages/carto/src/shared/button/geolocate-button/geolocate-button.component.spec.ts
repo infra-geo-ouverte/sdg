@@ -26,7 +26,7 @@ describe('GeolocateButtonComponent', () => {
   beforeEach(async () => {
     mockController = jasmine.createSpyObj(
       'GeolocationBase',
-      ['activate', 'deactivate', 'centerPosition'],
+      ['activate', 'deactivate', 'zoomToPosition'],
       {
         position$: of(POSITION_MOCKED)
       }
@@ -70,6 +70,6 @@ describe('GeolocateButtonComponent', () => {
 
   it('should center position when activated and position is available', () => {
     component.toggle();
-    expect(mockController.centerPosition).toHaveBeenCalledWith(POSITION_MOCKED);
+    expect(mockController.zoomToPosition).toHaveBeenCalledWith(POSITION_MOCKED);
   });
 });

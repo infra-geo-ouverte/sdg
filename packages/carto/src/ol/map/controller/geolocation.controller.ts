@@ -30,11 +30,15 @@ export class SdgOlGeolocationController extends GeolocationBase {
     super(DEFAULT_OPTIONS);
   }
 
-  centerPosition(position: GeolocationPosition): void {
+  zoomToPosition(position: GeolocationPosition): void {
     const coordinates = position.coords;
-    this.map.goTo({
-      center: this.transformPosition(coordinates)
-    });
+    const center = this.transformPosition(coordinates);
+
+    const circle = new Circle(center, coordinates.accuracy);
+
+    const extent = circle.getExtent();
+
+    this.map.fit(extent);
   }
 
   showPosition(): void {

@@ -23,7 +23,7 @@ describe('SdgOlGeolocationController', () => {
   let mockMap: jasmine.SpyObj<SdgOlMap>;
 
   beforeEach(() => {
-    mockMap = jasmine.createSpyObj('SdgOlMap', ['goTo'], {
+    mockMap = jasmine.createSpyObj('SdgOlMap', ['fit'], {
       engine: jasmine.createSpyObj('engine', ['removeLayer'])
     });
     TestBed.configureTestingModule({});
@@ -35,11 +35,9 @@ describe('SdgOlGeolocationController', () => {
   });
 
   it('should center the map on the given position', () => {
-    controller.centerPosition(MOCK_POSITION);
+    controller.zoomToPosition(MOCK_POSITION);
 
-    expect(mockMap.goTo).toHaveBeenCalledWith({
-      center: jasmine.any(Array)
-    });
+    expect(mockMap.fit).toHaveBeenCalledWith(jasmine.any(Array));
   });
 
   it('should remove the position from the map', () => {

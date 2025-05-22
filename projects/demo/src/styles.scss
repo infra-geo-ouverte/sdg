@@ -1,4 +1,5 @@
-@use '@igo2/core/all-style';
+@use '@igo2/core/style';
+@use '@igo2/common/style' as common-style;
 @use '@igo2/sdg/layout';
 
 @use 'theme/theme.scss';

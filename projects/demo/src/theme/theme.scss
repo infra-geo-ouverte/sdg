@@ -1,6 +1,8 @@
 @use '@angular/material' as mat;
 
-@use '@igo2/core/theming/all-theme' as igo2-lib;
+@use '@igo2/core/theming/material-theme-override' as igo-material-theme-override;
+@use '@igo2/core/theme' as igo-core;
+@use '@igo2/common/theme' as igo-common;
 @use '@igo2/sdg';
 @use '../app/components/components-theme' as app-components;
 
@@ -11,7 +13,10 @@ $theme: sdg.$theme;
 @include mat.typography-hierarchy(sdg.$typo-typography);
 @include mat.all-component-themes($theme);
 
-@include igo2-lib.all-component-themes($theme);
+@include igo-material-theme-override.material-override($theme);
+@include igo-core.core-component-themes($theme);
+@include igo-common.common-component-themes($theme);
+
 @include sdg.all-component-themes($theme);
 @include app-components.themes($theme);
 

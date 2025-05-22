@@ -28,10 +28,7 @@
       ],
       "@igo2/sdg/carto": [
         "packages/carto/src/public-api",
-      ],
-      "@igo2/sdg/geo": [
-        "packages/geo/src/public-api",
-      ],
+      ]
     }
   },
   "exclude": [

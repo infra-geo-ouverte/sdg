@@ -1,0 +1,94 @@
+@use 'sass:color';
+@use '@igo2/sdg-core' as sdg;
+
+.sdg-tile {
+  &-container {
+    display: flex;
+    flex-flow: column;
+    row-gap: 4px;
+    border: 1px solid sdg.$grey-light;
+    background-color: sdg.$white;
+    box-shadow: 0px 1px 4px color.adjust(sdg.$blue-dark, $alpha: -0.76);
+    padding: 32px 24px 24px 24px;
+    width: fit-content;
+    min-width: 200px;
+    max-width: 500px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid sdg.$blue-normal;
+      box-shadow: 0px 2px 8px color.adjust(sdg.$blue-dark, $alpha: -0.76);
+    }
+
+    &:hover .sdg-tile-arrow {
+      visibility: visible;
+    }
+
+    @include sdg.media(mobile) {
+      flex-flow: row;
+      align-items: center;
+      column-gap: 16px;
+      padding: 24px;
+    }
+  }
+
+  &-title {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 18px;
+    margin: 0;
+
+    &.--no-message {
+      text-align: center;
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+
+      &.--no-message {
+        flex-flow: column;
+        row-gap: 8px;
+
+        @include sdg.media(mobile) {
+          flex-flow: row;
+        }
+      }
+    }
+  }
+
+  &-icon {
+    color: sdg.$blue-dark;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+  }
+
+  &-message {
+    font-family: 'Open Sans', sans-serif;
+    color: sdg.$blue-dark;
+    text-align: left;
+    flex-grow: 1;
+    font-size: 14px;
+    padding-top: 4px;
+  }
+
+  &-arrow {
+    font-variation-settings: 'wght' 800;
+    flex-shrink: 0;
+    visibility: hidden;
+    align-self: flex-end;
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+
+    @include sdg.media(mobile) {
+      visibility: visible;
+
+      &.--no-message {
+        align-self: auto;
+      }
+    }
+  }
+}

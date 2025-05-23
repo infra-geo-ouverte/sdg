@@ -9,12 +9,12 @@ import {
 
 import { provideIcon } from '@igo2/common/icon';
 import { provideMessage } from '@igo2/core/message';
-import { provideNavigationTitle } from '@igo2/sdg';
+import { provideNavigationTitle } from '@igo2/sdg-common';
 import {
   provideTranslation,
   withIgo2Translation,
   withRouterTitleResolver
-} from '@igo2/sdg/core';
+} from '@igo2/sdg-core';
 
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';

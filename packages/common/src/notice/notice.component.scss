@@ -1,0 +1,76 @@
+@use '@igo2/sdg-core' as sdg;
+
+:host {
+  display: flex;
+  background-color: sdg.$white;
+  border: 1px solid sdg.$grey-light;
+}
+
+.sdg-notice {
+  &-colored-zone {
+    padding: 24px 8px 0px 8px;
+    width: 40px;
+
+    &-icon {
+      &.--general {
+        color: sdg.$blue-piv;
+      }
+
+      &.--warning {
+        color: sdg.$yellow-dark;
+      }
+
+      &.--error {
+        color: sdg.$red-normal;
+      }
+
+      &.--success {
+        color: sdg.$green-normal;
+      }
+
+      &.--complementary {
+        color: sdg.$grey-700;
+      }
+    }
+
+    &.--general {
+      background-color: sdg.$blue-pale;
+    }
+
+    &.--warning {
+      background-color: sdg.$yellow-pale;
+    }
+
+    &.--error {
+      background-color: sdg.$pink-pale;
+    }
+
+    &.--success {
+      background-color: sdg.$green-pale;
+    }
+
+    &.--complementary {
+      background-color: sdg.$grey-pale;
+    }
+  }
+
+  &-content {
+    padding: 24px 32px 24px 16px;
+    width: 100%;
+
+    @include sdg.media(mobile) {
+      padding: 24px 24px 24px 16px;
+    }
+
+    &-title,
+    &-message {
+      font-size: 14px !important;
+      margin: 0 !important;
+      line-height: 18px;
+    }
+
+    &-title {
+      font-family: sdg.$font-family-text !important;
+    }
+  }
+}

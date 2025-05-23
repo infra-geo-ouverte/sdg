@@ -1,0 +1,33 @@
+:host {
+  display: flex;
+  column-gap: 16px;
+}
+
+sdg-block-link-icon {
+  height: fit-content;
+
+  &:hover {
+    ~ .sdg-block-link-content ::ng-deep.sdg-block-link-title {
+      text-decoration: underline;
+
+      &-arrow {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.sdg-block-link {
+  &-content,
+  &-subsections {
+    display: flex;
+    flex-flow: column;
+  }
+  &-content {
+    row-gap: 16px;
+  }
+
+  &-subsections {
+    row-gap: 8px;
+  }
+}

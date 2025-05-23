@@ -1,0 +1,41 @@
+{
+  "name": "@igo2/sdg-common",
+  "version": "0.0.1",
+  "license": "LiLiQ-R",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infra-geo-ouverte/sdg.git",
+    "directory": "packages/common"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/public-api.ts",
+      "sass": "./src/_index.scss"
+    }
+  },
+  "scripts": {
+    "build": "ng build common --configuration production",
+    "postbuild": "node --import tsx ../../scripts/src/post-build.mts common",
+    "format": "prettier --check ./src/**/*.{ts,js,html,scss,css,json}",
+    "format.fix": "prettier --write ./src/**/*.{ts,js,html,scss,css,json}",
+    "lint": "ng lint common",
+    "lint.fix": "ng lint common --fix",
+    "test": "ng test common --watch=false",
+    "test.watch": "ng test common",
+    "watch": "ng build common --watch && npm run postbuild"
+  },
+  "peerDependencies": {
+    "@angular/animations": "^19.2.0",
+    "@angular/cdk": "^19.2.0",
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "@angular/material": "^19.2.0",
+    "@angular/platform-browser": "^19.2.0",
+    "@angular/router": "^19.2.0",
+    "@igo2/sdg-core": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.6.0"
+  },
+  "sideEffects": false
+}

@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 
-import { Contact, ContactComponent, IContact, IContactData } from '@igo2/sdg';
+import {
+  Contact,
+  ContactComponent,
+  IContact,
+  IContactData
+} from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

@@ -1,0 +1,85 @@
+@use '@igo2/sdg-core' as sdg;
+
+:host {
+  background-color: sdg.$blue-piv;
+}
+
+.sdg-header {
+  &-container {
+    display: flex;
+    flex-flow: column;
+    background-color: sdg.$blue-piv;
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    min-height: 72px;
+
+    @include sdg.media(mobile) {
+      column-gap: 0;
+      justify-content: space-between;
+    }
+
+    &-logo {
+      display: flex;
+      align-items: center;
+
+      &-title {
+        display: flex;
+        align-items: center;
+        column-gap: calc(sdg.spacing(desktop) * 2);
+        flex-grow: 1;
+      }
+    }
+
+    &-title {
+      font-family: sdg.$font-family-title; // override font family to title
+      line-height: 20px;
+      color: sdg.$white;
+      text-decoration: none;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+
+      &-container {
+        margin: 16px 0;
+        overflow: hidden;
+
+        @include sdg.media(mobile) {
+          margin-top: 0;
+        }
+
+        > h6 {
+          font-weight: normal !important;
+          margin: 0 !important;
+        }
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-options {
+      display: flex;
+      flex-flow: column;
+
+      &-language,
+      &-contact-us {
+        font-family: sdg.$font-family-title; // override font family to title
+        font-size: 12px;
+        white-space: nowrap;
+        line-height: 20px;
+        color: sdg.$white;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@use '@igo2/sdg-core' as sdg;
+
+:host {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid sdg.$grey-light;
+  padding: 24px 16px;
+}
+
+.sdg-contact {
+  &-title {
+    font-weight: bold;
+    width: fit-content;
+
+    &-contact {
+      display: flex;
+      flex-flow: column;
+      row-gap: 24px;
+    }
+  }
+
+  &-contact {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
+  }
+
+  &-info {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+
+    mat-icon {
+      align-self: flex-start;
+    }
+  }
+}
+
+p {
+  margin: 0;
+}

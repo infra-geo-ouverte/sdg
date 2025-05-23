@@ -41,7 +41,7 @@ $typography-mobile: mat.m2-define-typography-config(
 
 $font-color: colors.$blue-dark;
 
-@mixin set-base-styles {
+@mixin typo-set-base-styles {
   body {
     color: $font-color;
   }

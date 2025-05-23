@@ -1,4 +1,4 @@
-import { Address, Contact, IContactData, Range, Time } from '@igo2/sdg';
+import { Address, Contact, IContactData, Range, Time } from '@igo2/sdg-common';
 
 export class ContactCustom extends Contact {
   constructor(data: IContactData) {

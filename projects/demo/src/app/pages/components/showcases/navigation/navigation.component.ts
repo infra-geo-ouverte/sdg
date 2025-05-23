@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { INavigationLinks, NavigationComponent } from '@igo2/sdg';
+import { INavigationLinks, NavigationComponent } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

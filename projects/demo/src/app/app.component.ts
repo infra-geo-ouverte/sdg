@@ -14,13 +14,13 @@ import {
   SiteMapLinks,
   TopPageButtonComponent,
   isNavigationLink
-} from '@igo2/sdg';
+} from '@igo2/sdg-common';
 import {
   Language,
   SdgRoute,
   TitleResolverPipe,
   TranslationService
-} from '@igo2/sdg/core';
+} from '@igo2/sdg-core';
 import { DomUtils } from '@igo2/utils';
 
 import { delay, first } from 'rxjs';

@@ -1,6 +1,10 @@
 import { AfterContentInit, Component, ElementRef } from '@angular/core';
 
-import { Anchor, AnchorMenuComponent, findTitleAnchors } from '@igo2/sdg';
+import {
+  Anchor,
+  AnchorMenuComponent,
+  findTitleAnchors
+} from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

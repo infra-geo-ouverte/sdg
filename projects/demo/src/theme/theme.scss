@@ -3,25 +3,27 @@
 @use '@igo2/core/theming/material-theme-override' as igo-material-theme-override;
 @use '@igo2/core/theme' as igo-core;
 @use '@igo2/common/theme' as igo-common;
-@use '@igo2/sdg';
+@use '@igo2/sdg-core';
+@use '@igo2/sdg-common';
 @use '../app/components/components-theme' as app-components;
 
-$theme: sdg.$theme;
+$theme: sdg-core.$theme;
 
 @include mat.elevation-classes();
 @include mat.app-background();
-@include mat.typography-hierarchy(sdg.$typo-typography);
+@include mat.typography-hierarchy(sdg-core.$typography);
 @include mat.all-component-themes($theme);
 
 @include igo-material-theme-override.material-override($theme);
 @include igo-core.core-component-themes($theme);
 @include igo-common.common-component-themes($theme);
 
-@include sdg.all-component-themes($theme);
+@include sdg-core.themes($theme);
+@include sdg-common.themes($theme);
 @include app-components.themes($theme);
 
-@include sdg.media(mobile) {
-  @include mat.typography-hierarchy(sdg.$typo-typography-mobile);
+@include sdg-core.media(mobile) {
+  @include mat.typography-hierarchy(sdg-core.$typography-mobile);
 }
 
-@include sdg.typo-set-base-styles();
+@include sdg-core.typo-set-base-styles();

@@ -1,4 +1,5 @@
 @use '@angular/material' as mat;
+@use '../style/overrides';
 @use './palettes';
 @use '../typography';
 
@@ -11,7 +12,7 @@ $theme: mat.m2-define-light-theme(
       warn: mat.m2-define-palette(palettes.$warn-palette, 500),
       success: mat.m2-define-palette(palettes.$primary-palette, 900)
     ),
-    typography: typography.$typo-typography,
+    typography: typography.$typography,
     density: 0
   )
 );
@@ -24,7 +25,22 @@ $dark-theme: mat.m2-define-dark-theme(
       accent: mat.m2-define-palette(palettes.$accent-palette, 400, 100, 800),
       warn: mat.m2-define-palette(palettes.$warn-palette, 400, 200, 800)
     ),
-    typography: typography.$typo-typography,
+    typography: typography.$typography,
     density: 0
   )
 );
+
+@mixin themes($theme) {
+  @include overrides.override-igo2-lib-themes($theme);
+  @include overrides.override-material-themes($theme);
+}
+
+@mixin colors($theme) {
+  @include overrides.override-igo2-lib-colors($theme);
+  @include overrides.override-material-colors($theme);
+}
+
+@mixin densities($theme) {
+  @include overrides.override-igo2-lib-densities($theme);
+  @include overrides.override-material-densities($theme);
+}

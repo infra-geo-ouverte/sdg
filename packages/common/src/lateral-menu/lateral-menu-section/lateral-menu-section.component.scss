@@ -1,0 +1,58 @@
+@use '@igo2/sdg-core' as sdg;
+
+.sdg-lateral-menu-section {
+  display: flex;
+  flex-flow: column;
+  border-bottom: 1px solid sdg.$grey-light;
+
+  @include sdg.media(mobile) {
+    border: none;
+  }
+
+  &-header {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    padding: 16px 8px;
+    border: none;
+    cursor: pointer;
+
+    @include sdg.media(mobile) {
+      padding: 8px 8px 8px 24px;
+    }
+
+    &-title {
+      flex-grow: 1;
+      text-align: start;
+      font-size: 14px;
+      color: sdg.$blue-piv;
+      margin: 0;
+
+      @include sdg.media(mobile) {
+        font-size: 16px;
+      }
+
+      &.--active-section {
+        font-weight: bold;
+      }
+    }
+
+    &:hover:not(.--active-section) {
+      background-color: rgba(sdg.$blue-pale, 0.5);
+    }
+
+    &.--active-section {
+      background-color: sdg.$blue-pale;
+    }
+  }
+
+  &-subsections {
+    display: flex;
+    flex-direction: column;
+
+    @include sdg.media(mobile) {
+      background-color: sdg.$blue-pale;
+      padding-left: 24px;
+    }
+  }
+}

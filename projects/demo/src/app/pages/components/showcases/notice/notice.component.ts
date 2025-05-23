@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { NoticeComponent } from '@igo2/sdg';
+import { NoticeComponent } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

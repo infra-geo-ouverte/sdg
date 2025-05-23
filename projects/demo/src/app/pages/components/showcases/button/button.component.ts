@@ -5,7 +5,7 @@ import {
   ButtonFlatComponent,
   ButtonRaisedComponent,
   ButtonStrokedComponent
-} from '@igo2/sdg';
+} from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

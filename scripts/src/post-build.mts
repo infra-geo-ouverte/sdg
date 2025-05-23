@@ -15,14 +15,14 @@ import { compileStyle } from './utils/style.utils.mts';
 executor('Cleaning package.json exports', async () => {
   const [_nodePath, _scriptPath, name] = process.argv;
   await compileBaseStyle();
-  cleanPackageExports(name);
+  await cleanPackageExports(name);
 });
 
 async function compileBaseStyle(): Promise<void> {
   const startTime = performance.now();
-  const baseUrl = 'core/src/layout';
-  const input = resolvePackage('', baseUrl, 'layout.scss');
-  const output = resolveDist('sdg', baseUrl);
+  const baseUrl = 'src/layout';
+  const input = resolvePackage('core', baseUrl, 'layout.scss');
+  const output = resolveDist('core', baseUrl);
   await compileStyle(input, output, 'layout.scss');
 
   const duration = getDuration(startTime);

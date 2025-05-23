@@ -1,4 +1,4 @@
-import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg/core';
+import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg-core';
 
 import { AppTitleResolver } from '../../config/title-resolver';
 

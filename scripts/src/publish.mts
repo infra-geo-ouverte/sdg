@@ -9,12 +9,12 @@ executor('Library publishing', async () => {
   try {
     const [_nodePath, _scriptPath, argVersion, type] = process.argv;
     const version = argVersion ?? process.env.npm_new_version;
-    try {
-      await publishPackage('sdg' as PackageName, version);
-    } catch (error: any) {
-      log.error(`The automated publishing failed`);
-      log.error(error.message);
-      process.exit(1);
+
+    const folders = readdirSync(PATHS.packages);
+    for (const name of folders) {
+      log.info(`Start publishing @igo2/sdg-${name}@${version}`);
+      await publishPackage(name as PackageName, version);
+      log.success(`@igo2/sdg-${name}@${version} was published successfully`);
     }
     log.info(`Published ${type} release version ${version}`);
   } catch (err: any) {

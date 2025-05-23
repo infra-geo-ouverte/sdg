@@ -5,7 +5,7 @@ import {
   SdgOlReferenceMapComponent,
   provideMap,
   withMapOptions
-} from '@igo2/sdg/carto';
+} from '@igo2/sdg-carto/ol';
 
 import { default as olGeoJSON } from 'ol/format/GeoJSON.js';
 import TileLayer from 'ol/layer/Tile';

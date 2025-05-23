@@ -19,14 +19,14 @@ export type PackageTopologies = Map<PackageName, PackageOptions>;
 
 /**
  *
- * @param scope This is the npm scope of the library, ex: '@igo2/core' the scope is '@igo2'
+ * @param scope This is the npm scope of the library, ex: '@igo2/sdg-core' the scope is '@igo2'
  * @returns
  */
-export function getPackagesTopologies(scope: string): PackageTopologies {
-  const packageFolders = readdirSync(PATHS.packages) as PackageName[];
-  const packageTopologies: PackageTopologies = new Map();
+export function getPackagesTopologies(scope = '@igo2/sdg-'): PackageTopologies {
+  const folders = readdirSync(PATHS.packages) as PackageName[];
+  const topologies: PackageTopologies = new Map();
 
-  packageFolders.forEach((folder) => {
+  folders.forEach((folder) => {
     if (!folder) {
       return;
     }
@@ -37,14 +37,16 @@ export function getPackagesTopologies(scope: string): PackageTopologies {
       ...packageJson.dependencies
     })
       .filter((key) => key.includes(scope))
-      .map((key) => key.split('/')[1]) as PackageName[];
+      .map((key) => {
+        return key.split('/sdg-')[1];
+      }) as PackageName[];
 
-    packageTopologies.set(folder, {
+    topologies.set(folder, {
       dependsOn: igoDependencies,
       observer: new BehaviorSubject(false)
     });
   });
-  return packageTopologies;
+  return topologies;
 }
 
 export async function waitOnPackageRelations(
@@ -92,5 +94,5 @@ export async function publishPackage(
   // shell true is mandotary to publish on Github Actions
   await $({ stdio: 'inherit', shell: true, cwd: `dist/${name}` })`${command}`;
 
-  log.success(`Published @igo2/${name} version ${version}`);
+  log.success(`Published @igo2/sdg-${name} version ${version}`);
 }

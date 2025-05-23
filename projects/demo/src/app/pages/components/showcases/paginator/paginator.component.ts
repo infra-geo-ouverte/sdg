@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
-import { PaginatorComponent } from '@igo2/sdg';
+import { PaginatorComponent } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

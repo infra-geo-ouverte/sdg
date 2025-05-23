@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TileComponent } from '@igo2/sdg';
+import { TileComponent } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

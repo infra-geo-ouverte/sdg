@@ -8,7 +8,7 @@ import {
   provideTranslation,
   withIgo2TranslationMock,
   withRouterTitleResolver
-} from '@igo2/sdg/core';
+} from '@igo2/sdg-core';
 
 import { AppTitleResolver } from './app/config/title-resolver';
 

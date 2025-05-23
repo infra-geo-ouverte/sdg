@@ -1,0 +1,9 @@
+sdg-anchor ::ng-deep a {
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

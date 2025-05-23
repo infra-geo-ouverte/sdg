@@ -5,7 +5,7 @@ import {
   FooterCopyright,
   FooterNavLogo,
   SiteMapLinks
-} from '@igo2/sdg';
+} from '@igo2/sdg-common';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 import { environment } from 'projects/demo/src/environments/environment';

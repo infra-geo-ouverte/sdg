@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RouteTitleKey } from '@igo2/sdg/core';
+import { RouteTitleKey } from '@igo2/sdg-core';
 
 import { BasicScreenComponent } from '../../components';
 

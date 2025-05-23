@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { TopPageButtonComponent } from '@igo2/sdg';
+import { TopPageButtonComponent } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

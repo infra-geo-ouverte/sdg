@@ -1,0 +1,25 @@
+@forward './breadcrumbs/breadcrumbs-theme' as breadcrumbs-*;
+@forward './navigation/navigation-theme' as navigation-*;
+@forward './paginator/paginator-theme' as paginator-*;
+
+@use './breadcrumbs/breadcrumbs-theme' as breadcrumbs;
+@use './navigation/navigation-theme' as navigation;
+@use './paginator/paginator-theme' as paginator;
+
+@mixin themes($theme) {
+  @include breadcrumbs.theme($theme);
+  @include navigation.theme($theme);
+  @include paginator.theme($theme);
+}
+
+@mixin colors($theme) {
+  @include breadcrumbs.color($theme);
+  @include navigation.color($theme);
+  @include paginator.color($theme);
+}
+
+@mixin densities($theme) {
+  @include breadcrumbs.density($theme);
+  @include navigation.density($theme);
+  @include paginator.density($theme);
+}

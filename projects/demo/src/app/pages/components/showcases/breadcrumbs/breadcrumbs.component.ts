@@ -4,7 +4,7 @@ import {
   Breadcrumbs,
   BreadcrumbsComponent,
   BreadcrumbsWithRouterComponent
-} from '@igo2/sdg';
+} from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

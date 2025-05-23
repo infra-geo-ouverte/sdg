@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
 
-import { BlockLinkComponent } from '@igo2/sdg';
-import { BlockLinkSection, BlockLinkSections } from '@igo2/sdg';
+import {
+  BlockLinkComponent,
+  BlockLinkSection,
+  BlockLinkSections
+} from '@igo2/sdg-common';
 import {
   SdgRoute,
   SdgRoutes,
   TitleResolverPipe,
   TranslationService
-} from '@igo2/sdg/core';
+} from '@igo2/sdg-core';
 
 import { BasicScreenComponent } from '../../components';
 import { routes as routesCarto } from './showcases-carto/showcases-carto.routes';

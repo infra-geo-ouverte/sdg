@@ -10,8 +10,8 @@ import {
   LateralMenuComponent,
   LateralMenuItem,
   LateralMenuSections
-} from '@igo2/sdg';
-import { SdgRoute, TitleResolverPipe } from '@igo2/sdg/core';
+} from '@igo2/sdg-common';
+import { SdgRoute, TitleResolverPipe } from '@igo2/sdg-core';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 

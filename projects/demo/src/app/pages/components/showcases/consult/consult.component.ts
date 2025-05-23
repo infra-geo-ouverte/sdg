@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { ConsultComponent, ConsultLinks } from '@igo2/sdg';
+import { ConsultComponent, ConsultLinks } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

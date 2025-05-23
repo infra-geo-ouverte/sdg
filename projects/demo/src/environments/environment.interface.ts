@@ -1,5 +1,9 @@
 import { EnvironmentOptions as CoreEnvironmentOptions } from '@igo2/core/environment';
-import { IFooterConfig, IHeaderConfig, INavigationOptions } from '@igo2/sdg';
+import {
+  IFooterConfig,
+  IHeaderConfig,
+  INavigationOptions
+} from '@igo2/sdg-common';
 
 export interface EnvironmentOptions
   extends Pick<CoreEnvironmentOptions, 'monitoring' | 'language'> {

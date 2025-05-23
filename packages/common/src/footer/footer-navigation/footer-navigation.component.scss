@@ -1,0 +1,46 @@
+@use '@igo2/sdg-core' as sdg;
+
+:host {
+  background-color: sdg.$blue-medium;
+}
+
+.sdg-footer-navigation {
+  &-container {
+    display: flex;
+    flex-flow: column;
+
+    > h2 {
+      margin-top: 36px !important;
+    }
+  }
+
+  &-logo {
+    margin: 36px 0 16px 0;
+  }
+
+  &-title,
+  &-site-map-link {
+    color: sdg.$white;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  &-site-map-links {
+    display: flex;
+    flex-flow: column;
+    row-gap: 8px;
+    margin-bottom: 36px;
+  }
+
+  &-site-map-link {
+    font-size: 14px;
+  }
+}

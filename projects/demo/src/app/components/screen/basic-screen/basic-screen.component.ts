@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { BreadcrumbsWithRouterComponent } from '@igo2/sdg';
+import { BreadcrumbsWithRouterComponent } from '@igo2/sdg-common';
 
 @Component({
   selector: 'app-basic-screen',

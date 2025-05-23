@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { SequentialLink, SequentialLinksComponent } from '@igo2/sdg';
+import { SequentialLink, SequentialLinksComponent } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

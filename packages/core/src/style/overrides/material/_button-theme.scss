@@ -62,16 +62,13 @@
     --mdc-protected-button-label-text-weight: bold;
     --mdc-filled-button-label-text-weight: bold;
 
-    $font-size: mat.m2-font-size(typography.$typo-typography, body-1);
+    $font-size: mat.m2-font-size(typography.$typography, body-1);
 
     --mdc-filled-button-label-text-size: $font-size;
     --mdc-text-button-label-text-size: $font-size;
     --mdc-outlined-button-label-text-size: $font-size;
     --mdc-protected-button-label-text-size: $font-size;
 
-    line-height: mat.m2-line-height(
-      typography.$typo-typography,
-      body-1
-    ) !important;
+    line-height: mat.m2-line-height(typography.$typography, body-1) !important;
   }
 }

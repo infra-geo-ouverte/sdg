@@ -20,14 +20,17 @@
       "dom"
     ],
     "paths": {
-      "@igo2/sdg": [
-        "packages/src/public-api"
+      "@igo2/sdg-common": [
+        "packages/common/src/public-api"
       ],
-      "@igo2/sdg/core": [
-        "packages/core/src/public-api",
+      "@igo2/sdg-core": [
+        "packages/core/src/public-api"
       ],
-      "@igo2/sdg/carto": [
+      "@igo2/sdg-carto": [
         "packages/carto/src/public-api",
+      ],
+      "@igo2/sdg-carto/*": [
+        "packages/carto/*/src/public-api",
       ]
     }
   },

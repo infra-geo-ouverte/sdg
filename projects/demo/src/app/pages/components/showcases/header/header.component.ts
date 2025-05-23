@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { HeaderComponent } from '@igo2/sdg';
-import { Language, TranslationService } from '@igo2/sdg/core';
+import { HeaderComponent } from '@igo2/sdg-common';
+import { Language, TranslationService } from '@igo2/sdg-core';
 
 import {
   ExampleViewerComponent,

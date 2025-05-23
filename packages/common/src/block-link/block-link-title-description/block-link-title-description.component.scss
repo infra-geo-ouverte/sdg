@@ -1,0 +1,48 @@
+@use '@igo2/sdg-core' as sdg;
+
+sdg-anchor ::ng-deep a {
+  display: flex;
+  flex-flow: column;
+  row-gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+
+  &:hover {
+    .sdg-block-link-title {
+      text-decoration: underline;
+
+      &-arrow {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.sdg-block-link {
+  &-title {
+    color: sdg.$blue-piv;
+    margin: 0 !important;
+    text-decoration: none;
+
+    &-arrow {
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      visibility: hidden;
+      margin-left: 8px;
+
+      @include sdg.media(mobile) {
+        visibility: visible;
+      }
+    }
+
+    &.--no-description {
+      color: sdg.$blue-dark;
+    }
+  }
+
+  &-description {
+    margin: 0;
+  }
+}

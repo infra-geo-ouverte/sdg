@@ -8,8 +8,8 @@ import {
   Translation,
   TranslationObject,
   parseUrlWithLanguage
-} from '@igo2/sdg/core';
-import { TranslationService } from '@igo2/sdg/core';
+} from '@igo2/sdg-core';
+import { TranslationService } from '@igo2/sdg-core';
 
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';

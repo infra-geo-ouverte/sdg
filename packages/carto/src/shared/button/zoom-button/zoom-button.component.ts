@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { labelAttribute } from '@igo2/sdg/core';
+import { labelAttribute } from '@igo2/sdg-core';
 
 import { debounceTime, fromEvent } from 'rxjs';
 

@@ -5,7 +5,7 @@ import {
   RouteTitleKey,
   RouteTranslateKey,
   TitleResolver
-} from '@igo2/sdg/core';
+} from '@igo2/sdg-core';
 
 import { Observable, tap } from 'rxjs';
 

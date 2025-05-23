@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg';
-import { TranslationService } from '@igo2/sdg/core';
+import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg-common';
+import { TranslationService } from '@igo2/sdg-core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 

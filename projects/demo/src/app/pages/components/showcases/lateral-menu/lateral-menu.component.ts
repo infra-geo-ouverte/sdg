@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { LateralMenuComponent, LateralMenuSections } from '@igo2/sdg';
+import { LateralMenuComponent, LateralMenuSections } from '@igo2/sdg-common';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 

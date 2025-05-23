@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { AlertComponent } from '@igo2/sdg';
+import { AlertComponent } from '@igo2/sdg-common';
 
 import {
   ExampleViewerComponent,

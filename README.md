@@ -24,22 +24,21 @@ La libairie du [Système de design gouvernemental du Québec (SDG)](https://desi
 
 ## 🚀 Config dans un projet
 
-Installer la librairie:
+Installer les librairies, il existe 3 modules (carto, core et common):
 
 ```shell
-npm install @igo2/sdg --save
+npm install @igo2/sdg-common --save
 ```
 
-La majorité des composants sont accessible au premier niveau d'importation:
 
 ```typescript
-import { YOUR_IMPORT_NAME } from "@igo2/sdg"
+import { YOUR_IMPORT_NAME } from "@igo2/sdg-common"
 ```
 
-Il existe des sous-module comme pour le volet cartographique ainsi que des modules de base (core), Un exemple d'importation via un sous-module:
+Il existe des sous-module comme pour le volet cartographique. Un exemple d'importation du volet carto pour le moteur cartographique Openlayers via le sous-module:
 
 ```typescript
-import { YOUR_IMPORT_NAME } from "@igo2/sdg/carto"
+import { SdgOlReferenceMapComponent } from "@igo2/sdg-carto/ol"
 ```
 
 ## 📜 Commandes

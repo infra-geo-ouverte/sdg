@@ -22,8 +22,10 @@ export default {
       {
         // The prepareCmd is important because the files will be include in the commit and
         // we bump the version in the "packages" package.json.
-        prepareCmd: 'npm run pre-release ${nextRelease.version}',
-        publishCmd: 'npm run publish ${nextRelease.version} ${nextRelease.type}'
+        prepareCmd:
+          'node --import tsx scripts/src/pre-release.mts ${nextRelease.version}',
+        publishCmd:
+          'node --import tsx scripts/src/publish.mts ${nextRelease.version} ${nextRelease.type}'
       }
     ],
     '@semantic-release/github',

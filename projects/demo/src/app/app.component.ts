@@ -19,7 +19,8 @@ import {
   Language,
   SdgRoute,
   TitleResolverPipe,
-  TranslationService
+  TranslationService,
+  resolveTitle
 } from '@igo2/sdg-core';
 import { DomUtils } from '@igo2/utils';
 
@@ -28,6 +29,7 @@ import { delay, first } from 'rxjs';
 import { environment } from '../environments/environment';
 import { EnvironmentOptions } from '../environments/environment.interface';
 import { routes } from './app.routes';
+import { AppTitleResolver } from './config/title-resolver';
 
 @Component({
   selector: 'app-root',
@@ -57,6 +59,7 @@ export class AppComponent implements OnInit {
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
     private translationService: TranslationService,
+    private titleResolver: AppTitleResolver,
     private titleResolverPipe: TitleResolverPipe
   ) {
     if (environment.header.contactUs) {
@@ -95,10 +98,14 @@ export class AppComponent implements OnInit {
   }
 
   private getLinks(): INavigationLinks {
-    return routes
+    return [...routes]
       .filter((route) => route.redirectTo == null && !route.hidden)
       .reduce((links: INavigationLinks, route) => {
         if (isNavigationLink(route)) {
+          const title = resolveTitle(route, this.titleResolver);
+          if (title) {
+            route.title = title;
+          }
           return links.concat(route);
         }
         return links;

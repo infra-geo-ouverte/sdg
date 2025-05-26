@@ -1,6 +1,6 @@
-import { InjectionToken, Provider } from '@angular/core';
+import { InjectionToken, Provider, Type } from '@angular/core';
 
-import { TranslationService } from '@igo2/sdg-core';
+import type { TranslationService } from '@igo2/sdg-core';
 
 import { MapLabels } from './reference-map.interface';
 
@@ -43,27 +43,30 @@ export function provideMap(
 
 export function withMapOptions(options: {
   /** The translation is dependant on the `TranlationService` of `@igo2/sdg-core`, be sure to implements and inject the service */
-  translationKey?: string;
+  translation?: {
+    key: string;
+    service: Type<TranslationService>;
+  };
   /** Default to 2000 ms (2 seconds) */
   helpMessageDuration?: number;
 }): MapFeature<MapFeatureKind.Options> {
-  const { translationKey, ...restOptions } = options;
+  const { translation, ...restOptions } = options;
 
   const baseOptions: SdgReferenceMapDefaultOptions = restOptions;
 
   return {
     kind: MapFeatureKind.Options,
     providers: [
-      translationKey
+      translation
         ? {
             provide: SDG_REFERENCE_MAP_OPTIONS,
             useFactory: (translationService: TranslationService) => {
               return {
                 ...baseOptions,
-                labels: translationService.get(translationKey!)
+                labels: translationService.get(translation.key!)
               } satisfies SdgReferenceMapDefaultOptions;
             },
-            deps: [TranslationService]
+            deps: [translation.service]
           }
         : {
             provide: SDG_REFERENCE_MAP_OPTIONS,

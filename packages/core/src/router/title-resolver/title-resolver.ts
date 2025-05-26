@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   MaybeAsync,
@@ -7,7 +6,6 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 
-@Injectable()
 export abstract class TitleResolver<T = string> implements Resolve<T> {
   abstract resolve(
     route: ActivatedRouteSnapshot,

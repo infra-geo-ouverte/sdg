@@ -22,7 +22,7 @@
               #rla="routerLinkActive"
               [active]="rla.isActive"
             >
-              {{ link | titleResolver }}
+              {{ link.title }}
             </a>
           }
           @if (linksInMore() && linksInMore().length) {
@@ -53,7 +53,7 @@
                     routerLinkActive="--active"
                     [routerLinkActiveOptions]="{ exact: moreLink.path === '' }"
                     #rla="routerLinkActive"
-                    >{{ moreLink | titleResolver }}</a
+                    >{{ moreLink.title }}</a
                   >
                 }
               </mat-menu>

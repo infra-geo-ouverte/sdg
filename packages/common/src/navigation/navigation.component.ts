@@ -18,11 +18,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabLink, MatTabNav, MatTabsModule } from '@angular/material/tabs';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import {
-  BreakpointService,
-  TitleResolverPipe,
-  resolveTitle
-} from '@igo2/sdg-core';
+import { BreakpointService } from '@igo2/sdg-core';
 
 import { Observable, Subject, filter, shareReplay, takeUntil } from 'rxjs';
 
@@ -39,8 +35,7 @@ const TABS_MIN_DISPLAYED = 2 as const;
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
-    MatTabsModule,
-    TitleResolverPipe
+    MatTabsModule
   ],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
@@ -158,8 +153,8 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     const baseWidth = this.tabsLinks()[0]?.elementRef.nativeElement
       .clientWidth as number;
 
-    const baseTitleLength = resolveTitle(baseLink)?.length ?? 0;
-    const titleLength = resolveTitle(link)?.length ?? 0;
+    const baseTitleLength = baseLink.title?.length ?? 0;
+    const titleLength = link.title?.length ?? 0;
 
     return (baseWidth * titleLength) / baseTitleLength;
   }

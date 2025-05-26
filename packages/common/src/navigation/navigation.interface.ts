@@ -2,8 +2,9 @@ import { SdgRoute } from '@igo2/sdg-core';
 
 export type INavigationLinks = INavigationLink[];
 
-export type INavigationLink = Required<Pick<SdgRoute, 'title' | 'path'>> &
-  Pick<SdgRoute, 'data'>;
+export type INavigationLink = Required<Pick<SdgRoute, 'path'>> & {
+  title: string;
+};
 
 export interface INavigationOptions {
   title?: INavigationTitleOptions;

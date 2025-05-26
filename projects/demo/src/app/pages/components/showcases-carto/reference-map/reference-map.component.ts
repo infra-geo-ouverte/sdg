@@ -21,6 +21,7 @@ import {
   ExampleViewerComponent,
   ExternalLinkComponent
 } from 'projects/demo/src/app/components';
+import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 const geojson: GeoJSON = {
   type: 'FeatureCollection',
@@ -54,7 +55,16 @@ const BASEMAP = () =>
     ExampleViewerComponent,
     ExternalLinkComponent
   ],
-  providers: [provideMap(withMapOptions({ translationKey: 'showcasesCarto' }))],
+  providers: [
+    provideMap(
+      withMapOptions({
+        translation: {
+          key: 'showcasesCarto',
+          service: AppTranslationService
+        }
+      })
+    )
+  ],
   templateUrl: './reference-map.component.html',
   styleUrl: './reference-map.component.scss'
 })

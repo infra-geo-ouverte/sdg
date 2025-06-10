@@ -1,10 +1,13 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ElementRef,
+  Inject,
   OnDestroy,
   OnInit,
+  PLATFORM_ID,
   Signal,
   computed,
   input,
@@ -61,19 +64,22 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   private tabsLinks = viewChildren<MatTabLink>(MatTabLink);
   private actionsSection = viewChild<ElementRef<HTMLElement>>('actionsSection');
 
-  private _resizeObserver: ResizeObserver;
+  private _resizeObserver: ResizeObserver | undefined;
   private _resizeSubject = new Subject<ResizeObserverEntry[]>();
   private _destroyed = new Subject<void>();
 
   constructor(
     private host: ElementRef,
-    private breakpointService: BreakpointService
+    private breakpointService: BreakpointService,
+    @Inject(PLATFORM_ID) private platformId: string
   ) {
     this.isHandset = this.breakpointService.isHandset;
 
-    this._resizeObserver = new ResizeObserver((entries) =>
-      this._resizeSubject.next(entries)
-    );
+    if (isPlatformBrowser(this.platformId)) {
+      this._resizeObserver = new ResizeObserver((entries) =>
+        this._resizeSubject.next(entries)
+      );
+    }
   }
 
   ngOnInit(): void {
@@ -81,9 +87,11 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit(): void {
-    this.observeHostResize().subscribe(() => {
-      this.handleResize();
-    });
+    if (isPlatformBrowser(this.platformId)) {
+      this.observeHostResize().subscribe(() => {
+        this.handleResize();
+      });
+    }
 
     this.hasActions.set(
       !!this.actionsSection()?.nativeElement.childElementCount
@@ -213,9 +221,9 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
     const target = this.host.nativeElement;
     return new Observable<ResizeObserverEntry[]>((observer) => {
       const subscription = this._resizeSubject.subscribe(observer);
-      this._resizeObserver.observe(target);
+      this._resizeObserver?.observe(target);
       return () => {
-        this._resizeObserver.unobserve(target);
+        this._resizeObserver?.unobserve(target);
         subscription.unsubscribe();
       };
     }).pipe(

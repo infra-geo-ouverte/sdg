@@ -1,6 +1,13 @@
 @if (previous()) {
   <button class="sdg-sequential-links-link" (click)="goToLink(previous()!.url)">
-    <mat-icon class="sdg-sequential-links-arrow">arrow_left_alt</mat-icon>
+    <mat-icon class="sdg-sequential-links-arrow">
+      <!-- icon name: arrow_left_alt -->
+      <svg viewBox="0 -960 960 960">
+        <path
+          d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z"
+        />
+      </svg>
+    </mat-icon>
     <div class="sdg-sequential-links-content">
       <p><b>Précédent</b></p>
       <p class="sdg-sequential-links-text">{{ previous()?.text }}</p>
@@ -9,7 +16,14 @@
 }
 @if (next()) {
   <button class="sdg-sequential-links-link" (click)="goToLink(next()!.url)">
-    <mat-icon class="sdg-sequential-links-arrow">arrow_right_alt</mat-icon>
+    <mat-icon class="sdg-sequential-links-arrow">
+      <!-- icon name: arrow_right_alt -->
+      <svg viewBox="0 -960 960 960">
+        <path
+          d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"
+        />
+      </svg>
+    </mat-icon>
     <div class="sdg-sequential-links-content">
       <p><b>Suivant</b></p>
       <p class="sdg-sequential-links-text">{{ next()?.text }}</p>

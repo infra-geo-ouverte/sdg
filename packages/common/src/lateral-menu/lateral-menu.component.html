@@ -5,9 +5,15 @@
     (click)="toggle()"
   >
     <span class="sdg-lateral-menu-route-title-text-mobile">{{ title() }}</span>
-    <mat-icon color="primary" [@openCloseArrow]="opened() ? 'opened' : 'closed'"
-      >keyboard_arrow_down</mat-icon
+    <mat-icon
+      color="primary"
+      [@openCloseArrow]="opened() ? 'opened' : 'closed'"
     >
+      <!-- icon name: keyboard_arrow_down -->
+      <svg viewBox="0 -960 960 960">
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+      </svg>
+    </mat-icon>
   </button>
 } @else {
   <span class="sdg-lateral-menu-route-title">{{ title() }}</span>

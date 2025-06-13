@@ -8,7 +8,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { AlertIcon, AlertType } from './alert.interface';
+import { AlertType } from './alert.interface';
 
 @Component({
   selector: 'sdg-alert',
@@ -28,7 +28,6 @@ export class AlertComponent {
   readonly closeable = input<boolean>(false);
   readonly containerClass = input<string>();
 
-  readonly icon = computed(() => AlertIcon[this.type()]);
   readonly typeClass = computed(() => `--${AlertType[this.type()]}`);
 
   closed = output<boolean>();

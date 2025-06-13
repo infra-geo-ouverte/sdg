@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { NoticeIcon, NoticeType } from './notice.interface';
+import { NoticeType } from './notice.interface';
 
 @Component({
   selector: 'sdg-notice',
@@ -24,11 +24,4 @@ export class NoticeComponent {
   readonly message = input.required<string>();
 
   readonly coloredZoneClass = computed(() => `--${NoticeType[this.type()]}`);
-  readonly coloredZoneIcon = computed(() => {
-    if (Object.keys(NoticeType).includes(this.type()) && !this.icon()) {
-      return NoticeIcon[this.type()];
-    } else {
-      return this.icon();
-    }
-  });
 }

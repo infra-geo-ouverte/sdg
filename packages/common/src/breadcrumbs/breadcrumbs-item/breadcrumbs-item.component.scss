@@ -36,6 +36,7 @@ a {
 }
 
 mat-icon {
+  display: flex;
   margin-left: 4px;
 
   @include sdg.media(mobile) {

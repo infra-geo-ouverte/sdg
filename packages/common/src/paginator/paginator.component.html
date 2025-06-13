@@ -1,8 +1,11 @@
 @if (currentPageIndex !== 0) {
   <button class="sdg-paginator-button" (click)="goToPreviousPage()">
-    <mat-icon class="sdg-paginator-chevron" color="primary"
-      >chevron_left</mat-icon
-    >
+    <mat-icon class="sdg-paginator-chevron" color="primary">
+      <!-- icon name: chevron_left -->
+      <svg viewBox="0 -960 960 960">
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+      </svg>
+    </mat-icon>
   </button>
 }
 @for (firstPageIndex of firstPagesIndexes; track firstPageIndex) {
@@ -59,8 +62,11 @@
 }
 @if (currentPageIndex !== nbOfPages - 1) {
   <button class="sdg-paginator-button" (click)="goToNextPage()">
-    <mat-icon class="sdg-paginator-chevron" color="primary"
-      >chevron_right</mat-icon
-    >
+    <mat-icon class="sdg-paginator-chevron" color="primary">
+      <!-- icon name: chevron_right -->
+      <svg viewBox="0 -960 960 960">
+        <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+      </svg>
+    </mat-icon>
   </button>
 }

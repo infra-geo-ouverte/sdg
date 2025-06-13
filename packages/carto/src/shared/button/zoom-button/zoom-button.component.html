@@ -5,7 +5,12 @@
   [disabled]="maxDisabled()"
   (click)="zoomIn()"
 >
-  <mat-icon [color]="color()">add</mat-icon>
+  <mat-icon [color]="color()">
+    <!-- icon name: add -->
+    <svg viewBox="0 -960 960 960">
+      <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+    </svg>
+  </mat-icon>
 </button>
 
 <button
@@ -15,5 +20,10 @@
   [disabled]="minDisabled()"
   (click)="zoomOut()"
 >
-  <mat-icon [color]="color()">remove</mat-icon>
+  <mat-icon [color]="color()">
+    <!-- icon name: remove -->
+    <svg viewBox="0 -960 960 960">
+      <path d="M200-440v-80h560v80H200Z" />
+    </svg>
+  </mat-icon>
 </button>

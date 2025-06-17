@@ -44,6 +44,14 @@ const TABS_MIN_DISPLAYED = 2 as const;
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
+  readonly links = input.required<INavigationLinks>();
+  readonly headerContainerClass = input<string>();
+  /**
+   * Option to configure how to determine if the router link is active.
+   * This options are passed to the RouterLinkActiveOptions exact property
+   */
+  readonly exactPathMatch = input<string>('/');
+
   linksInTabs = signal<INavigationLinks>([]);
   linksInMore = signal<INavigationLinks>([]);
   hasOverflow = signal(false);
@@ -54,9 +62,6 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly isOnTwoLine = computed(
     () => this.hasActions() && this.isHandset() && this.detectHandsetOverflow()
   );
-
-  readonly links = input.required<INavigationLinks>();
-  readonly headerContainerClass = input<string>();
 
   private headerRow = viewChild<ElementRef<HTMLElement>>('headerRow');
   private tabsSection = viewChild<ElementRef<HTMLElement>>('tabsSection');

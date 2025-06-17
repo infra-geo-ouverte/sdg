@@ -49,7 +49,7 @@ export class ComponentsComponent {
         return {
           ...section,
           title: title,
-          path: `/composants/showcases/${prefixSection}/${section.path}`,
+          path: `../composants/showcases/${prefixSection}/${section.path}`,
           description: section.description,
           seeMoreLabel: this.translationService.get('seeMore')
         };

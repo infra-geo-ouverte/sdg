@@ -16,10 +16,6 @@ export function resolveTitle(
   if (hasStaticTitle(config)) {
     return config.title as string;
   } else {
-    if (config.data?.[RouteTitleKey]) {
-      return config.data[RouteTitleKey];
-    }
-
     return (
       titleResolver?.resolveStatic(config) ?? config.data?.[RouteTranslateKey] // try to fallback on the translation key
     );

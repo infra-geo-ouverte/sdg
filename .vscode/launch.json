@@ -31,7 +31,7 @@
       "request": "launch",
       "preLaunchTask": "qea-client/start",
       "url": "http://localhost:4210",
-      "webRoot": "${workspaceFolder}/projects/qea-client/start",
+      "webRoot": "${workspaceFolder}/projects/qea-client",
       "sourceMaps": true
     }
   ]

@@ -18,7 +18,9 @@
               class="sdg-navigation-tab-link"
               [routerLink]="link.path"
               routerLinkActive="--active"
-              [routerLinkActiveOptions]="{ exact: link.path === '' }"
+              [routerLinkActiveOptions]="{
+                exact: link.path === exactPathMatch()
+              }"
               #rla="routerLinkActive"
               [active]="rla.isActive"
             >

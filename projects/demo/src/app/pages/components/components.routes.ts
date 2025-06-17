@@ -15,6 +15,7 @@ export const routes: SdgRoutes = [
     data: {
       [RouteTranslateKey]: 'Composants communs'
     },
+    hidden: true,
     loadComponent: () =>
       import('./showcases/showcases.component').then(
         (m) => m.ShowcasesComponent
@@ -28,6 +29,7 @@ export const routes: SdgRoutes = [
     data: {
       [RouteTranslateKey]: 'Cartographie'
     },
+    hidden: true,
     loadComponent: () =>
       import('./showcases-carto/showcases-carto.component').then(
         (m) => m.ShowcasesCartoComponent

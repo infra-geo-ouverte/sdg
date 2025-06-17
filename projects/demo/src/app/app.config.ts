@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 
 import { provideIcon } from '@igo2/common/icon';
+import { withUrlDefaultLanguage } from '@igo2/core/language';
 import { provideMessage } from '@igo2/core/message';
 import { provideNavigationTitle } from '@igo2/sdg-common';
 import {
@@ -28,7 +29,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideTranslation(
       withIgo2Translation(environment.language!, AppTranslationService),
-      withRouterTitleResolver(AppTitleResolver)
+      withRouterTitleResolver(AppTitleResolver),
+      withUrlDefaultLanguage() as any
     ),
     provideMessage(),
     provideNavigationTitle({

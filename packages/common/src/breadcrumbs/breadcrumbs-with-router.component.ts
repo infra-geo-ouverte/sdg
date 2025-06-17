@@ -12,6 +12,7 @@ import {
   BreakpointService,
   RouteTitleKey,
   SdgRoute,
+  SdgRoutes,
   TitleResolver,
   resolveTitle
 } from '@igo2/sdg-core';
@@ -73,8 +74,63 @@ export class BreadcrumbsWithRouterComponent
     this._takeUntil.next(true);
   }
 
-  private getHomeRoute(): SdgRoute | undefined {
-    return this.router.config.find((route: SdgRoute) => route.isHome);
+  private findHomeRoute(
+    routes: SdgRoutes = this.router.config,
+    basePath = ''
+  ): SdgRoute | undefined {
+    let homeRoute: SdgRoute | undefined;
+
+    routes.some((route: SdgRoute) => {
+      const path = this.getPath(route, basePath);
+      if (route.isHome) {
+        homeRoute = {
+          ...route,
+          path
+        };
+        return true;
+      }
+
+      if (route.children) {
+        homeRoute = this.findHomeRoute(route.children, path);
+        if (homeRoute) {
+          return true;
+        }
+      }
+
+      return false;
+    });
+
+    return homeRoute;
+  }
+
+  private getPath(
+    route: SdgRoute,
+    basePath: string | undefined
+  ): string | undefined {
+    let path = '';
+
+    if (basePath?.length) {
+      path = basePath;
+    }
+
+    if (route.path) {
+      const pathResolved = this.resolveRoute(route);
+      path += `/${pathResolved}`;
+    }
+
+    return path;
+  }
+
+  private resolveRoute(route: SdgRoute): string | undefined {
+    return route.path
+      ?.split('/')
+      .map((pathSegment) => {
+        if (pathSegment.includes(':')) {
+          return this.activatedRoute.snapshot.params[pathSegment.substring(1)];
+        }
+        return pathSegment;
+      })
+      .join('/');
   }
 
   private getBreadsFromRouterSegments(): Breadcrumbs {
@@ -83,7 +139,7 @@ export class BreadcrumbsWithRouterComponent
       return [];
     }
 
-    const home = this.getHomeRoute();
+    const home = this.findHomeRoute();
     if (!home) {
       throw new Error(
         'We need at least one home to construct the breadcrumbs list. You need to setup a route with the isHome property at true'
@@ -115,30 +171,33 @@ export class BreadcrumbsWithRouterComponent
   }
 
   private getRouterBreadcrumbs(): Breadcrumbs {
-    const routes = this.activatedRoute.pathFromRoot
-      .filter(
-        (route) =>
-          route.children.length &&
-          !(
-            route.children[0]?.component != null &&
-            route.children[0]?.children.length
-          )
-      )
-      .map((route) => route.children[0]);
+    const routes = this.activatedRoute.pathFromRoot.filter((route) => {
+      return route.routeConfig;
+    });
 
+    if (this.activatedRoute.children.length) {
+      routes.push(...this.activatedRoute.children);
+    }
+
+    let lastUrl = '';
     return routes.reduce((breadcrumbs, route) => {
-      const lastUrl = breadcrumbs.at(-1)?.url ?? '';
+      const config: SdgRoute | null = route.routeConfig;
+      if (!route || !config?.path) {
+        return breadcrumbs;
+      }
+
+      if (config?.hidden) {
+        lastUrl = `${lastUrl}/${route.snapshot.url.join('/')}`;
+        return breadcrumbs;
+      }
+
       const title = route.snapshot.title ?? '';
-      const url = `${lastUrl}/${route.snapshot.url.toString()}`;
+      const url = (lastUrl = `${lastUrl}/${route.snapshot.url.join('/')}`);
       const breadcrumb: Breadcrumb = {
         id: `${title}-${url}`,
         title,
         url
       };
-
-      if (breadcrumbs.some((crumb) => crumb.title === breadcrumb.title)) {
-        return breadcrumbs;
-      }
 
       return breadcrumbs.concat(breadcrumb);
     }, [] as Breadcrumbs);

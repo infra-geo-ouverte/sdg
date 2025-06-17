@@ -8,6 +8,7 @@ import { IgoLanguageModule } from '@igo2/core/language';
 import {
   FooterComponent,
   HeaderComponent,
+  IHeaderContactUs,
   INavigationLinks,
   NavigationComponent,
   SiteMapLink,
@@ -49,8 +50,8 @@ import { AppTitleResolver } from './config/title-resolver';
 })
 export class AppComponent implements OnInit {
   config: EnvironmentOptions = environment;
+  contactUs: IHeaderContactUs | undefined;
   links: INavigationLinks;
-
   siteMapLinks: SiteMapLinks;
 
   copyright = this.config.footer.copyright;
@@ -62,27 +63,18 @@ export class AppComponent implements OnInit {
     private titleResolver: AppTitleResolver,
     private titleResolverPipe: TitleResolverPipe
   ) {
-    if (environment.header.contactUs) {
-      environment.header.contactUs.label =
-        this.translationService.get('header.contactUs');
+    const contactUsOptions = environment.header.contactUs;
+    if (contactUsOptions) {
+      this.contactUs = {
+        label: this.translationService.get(contactUsOptions.label),
+        route: `${this.currentLanguage()}/${contactUsOptions.route}`
+      };
     }
 
-    this.links = this.getLinks();
+    this.validateUrlLanguage();
 
-    this.siteMapLinks = routes
-      .filter((route) => isSiteMapLink(route))
-      .map((siteMapLink, siteMapLinkIndex) => {
-        const title = this.titleResolverPipe.transform(siteMapLink);
-        if (!title) {
-          throw new Error(
-            `Title not found for site map link ${siteMapLinkIndex}`
-          );
-        }
-        return {
-          ...siteMapLink,
-          title: title
-        };
-      });
+    this.links = this.getLinks();
+    this.siteMapLinks = this.getSiteMapLinks();
   }
 
   get currentLanguage() {
@@ -98,18 +90,44 @@ export class AppComponent implements OnInit {
   }
 
   private getLinks(): INavigationLinks {
-    return [...routes]
-      .filter((route) => route.redirectTo == null && !route.hidden)
-      .reduce((links: INavigationLinks, route) => {
-        if (isNavigationLink(route)) {
-          const title = resolveTitle(route, this.titleResolver);
-          if (title) {
-            route.title = title;
-          }
-          return links.concat(route);
+    const lang = this.translationService.lang();
+    return [...routes[0].children!]
+      .filter((route) => !route.hidden)
+      .reduce((links, route, index) => {
+        if (!isNavigationLink(route)) {
+          return links;
         }
-        return links;
-      }, []);
+
+        const title = resolveTitle(route, this.titleResolver);
+        if (!title) {
+          throw new Error(`Title not found for route ${index}`);
+        }
+
+        return links.concat({
+          ...route,
+          title: title,
+          path: route.path ? `/${lang}/${route.path}` : `/${lang}`
+        });
+      }, [] as INavigationLinks);
+  }
+
+  private getSiteMapLinks(): SiteMapLinks {
+    const lang = this.translationService.lang();
+    return [...routes[0].children!]
+      .filter((route) => isSiteMapLink(route))
+      .map((route, siteMapLinkIndex) => {
+        const title = this.titleResolverPipe.transform(route);
+        if (!title) {
+          throw new Error(
+            `Title not found for site map link ${siteMapLinkIndex}`
+          );
+        }
+        return {
+          ...route,
+          title: title,
+          path: route.path ? `/${lang}/${route.path}` : `/${lang}`
+        };
+      });
   }
 
   private handleSplashScreen(): void {
@@ -140,8 +158,26 @@ export class AppComponent implements OnInit {
       }
     }, destroyingAnimationTime);
   }
+
+  private validateUrlLanguage(): void {
+    const urlLang = getUrlLang(this.document);
+    if (!urlLang) {
+      this.router.navigate(['/']);
+    }
+  }
 }
 
 function isSiteMapLink(route: SdgRoute): route is SiteMapLink {
   return !!(route.title && route.path && !route.redirectTo);
+}
+
+function getUrlLang(document: Document): Language | undefined {
+  const url = new URL(document.location.href);
+  const urlLang = url.pathname.split('/').filter(Boolean)[0];
+
+  if (['fr', 'en'].includes(urlLang as Language)) {
+    return urlLang as Language;
+  }
+
+  return;
 }

@@ -5,6 +5,7 @@ export type SdgRoutes = SdgRoute[];
 export interface SdgRoute extends Route {
   isHome?: boolean;
   description?: string;
-  /** Hidden in the primary tabs navigation */
+  children?: SdgRoutes;
+  /** Hidden in the primary tabs navigation and in the breadcrumbs */
   hidden?: boolean;
 }

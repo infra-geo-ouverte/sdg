@@ -10,7 +10,6 @@ import { provideTranslation as provideIgo2Translation } from '@igo2/core/languag
 
 import { TitleResolver } from '../router';
 import { TranslationService } from './translation.service';
-import { readQueryParamLanguage } from './translation.utils';
 
 export interface TranslationFeature<KindT extends TranslationFeatureKind> {
   kind: KindT;
@@ -37,14 +36,14 @@ export function provideTranslation(
 /** Base on the @ngx-translate library with the IgoLanguageModule */
 export function withIgo2Translation(
   options: LanguageOptions,
-  service: Type<TranslationService>
+  service: Type<TranslationService>,
+  defaultLanguage?: string
 ): TranslationFeature<TranslationFeatureKind.Translation> {
-  const paramLanguage = readQueryParamLanguage();
   return {
     kind: TranslationFeatureKind.Translation,
     providers: [
-      provideIgo2Translation(withStaticConfig(options, paramLanguage)),
-      { provide: TranslationService, useClass: service }
+      { provide: TranslationService, useClass: service },
+      provideIgo2Translation(withStaticConfig(options, defaultLanguage))
     ]
   };
 }
@@ -62,8 +61,7 @@ export function withRouterTitleResolver<T>(
     providers: [
       {
         provide: TitleResolver<T>,
-        useClass: resolver,
-        deps: [TranslationService]
+        useClass: resolver
       }
     ]
   };

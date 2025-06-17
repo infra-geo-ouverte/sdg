@@ -1,33 +1,22 @@
-export function readQueryParamLanguage(): string | undefined {
-  if (!window) {
-    return undefined;
-  }
-  const queryParams = window.location.search.slice(1);
-  const params = queryParams.split('&');
-  const langParams = params.find((param) => param.includes('lang'));
-  if (langParams) {
-    return langParams.split('=').pop();
-  }
-
-  return undefined;
-}
-
+/**
+ *
+ * @param routerUrl
+ * @param lang
+ * @param strategy default to 'segment' set the first segment of the path (e.g., '/en/alerts' => 'en')
+ */
 export function parseUrlWithLanguage(
   routerUrl: string,
   lang: string
 ): [url: string, params: string | undefined] {
-  const [url, params] = routerUrl.split('?');
+  // eslint-disable-next-line prefer-const
+  let [url, params] = routerUrl.split('?');
 
-  let urlSegements = `lang=${lang}`;
-  if (params) {
-    const segments = params.split('&');
-    const segmentsFiltered = segments.filter(
-      (segement) => !segement.includes('lang=')
-    );
-    if (segmentsFiltered.length) {
-      urlSegements += segmentsFiltered.join('&');
-    }
+  const urlParts = url.split('/');
+  if (urlParts.length > 1) {
+    urlParts[1] = lang;
   }
 
-  return [url, urlSegements];
+  url = urlParts.join('/');
+
+  return [url, params];
 }

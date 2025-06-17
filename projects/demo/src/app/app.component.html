@@ -2,12 +2,16 @@
   [title]="config.title"
   [languages]="config.header.languages"
   [currentLanguage]="currentLanguage()"
-  [contactUs]="config.header.contactUs"
+  [contactUs]="contactUs"
   containerClass="container"
   (languageChange)="handleLanguageChange($event)"
 />
 
-<sdg-navigation [links]="links" headerContainerClass="container">
+<sdg-navigation
+  [links]="links"
+  headerContainerClass="container"
+  [exactPathMatch]="`/${currentLanguage()}`"
+>
   <router-outlet></router-outlet>
 </sdg-navigation>
 

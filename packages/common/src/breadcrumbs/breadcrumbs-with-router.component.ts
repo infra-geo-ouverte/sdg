@@ -6,7 +6,12 @@ import {
   Optional,
   signal
 } from '@angular/core';
-import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  Router,
+  RouterModule
+} from '@angular/router';
 
 import {
   BreakpointService,
@@ -17,7 +22,7 @@ import {
   resolveTitle
 } from '@igo2/sdg-core';
 
-import { Subject, takeUntil } from 'rxjs';
+import { Subject, filter, takeUntil } from 'rxjs';
 
 import { BreadcrumbsBase } from './breadcrumbs-base';
 import { BreadcrumbsListComponent } from './breadcrumbs-list/breadcrumbs-list.component';
@@ -64,10 +69,15 @@ export class BreadcrumbsWithRouterComponent
     const breads = this.getBreadsFromRouterSegments();
     this.breadcrumbs.set(breads);
 
-    this.router.events.pipe(takeUntil(this._takeUntil)).subscribe(() => {
-      const breads = this.getBreadsFromRouterSegments();
-      this.breadcrumbs.set(breads);
-    });
+    this.router.events
+      .pipe(
+        filter((events) => events instanceof NavigationEnd),
+        takeUntil(this._takeUntil)
+      )
+      .subscribe(() => {
+        const breads = this.getBreadsFromRouterSegments();
+        this.breadcrumbs.set(breads);
+      });
   }
 
   ngOnDestroy(): void {
@@ -175,8 +185,10 @@ export class BreadcrumbsWithRouterComponent
       return route.routeConfig;
     });
 
-    if (this.activatedRoute.children.length) {
-      routes.push(...this.activatedRoute.children);
+    let currentRoute = this.activatedRoute;
+    if (currentRoute.children.length) {
+      currentRoute = this.activatedRoute.children[0];
+      routes.push(currentRoute);
     }
 
     let lastUrl = '';
@@ -186,7 +198,8 @@ export class BreadcrumbsWithRouterComponent
         return breadcrumbs;
       }
 
-      if (config?.hidden) {
+      const isCurrentRoute = currentRoute.toString() === route.toString();
+      if (config?.hidden && !isCurrentRoute) {
         lastUrl = `${lastUrl}/${route.snapshot.url.join('/')}`;
         return breadcrumbs;
       }

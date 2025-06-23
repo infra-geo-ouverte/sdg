@@ -48,9 +48,9 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly headerContainerClass = input<string>();
   /**
    * Option to configure how to determine if the router link is active.
-   * This options are passed to the RouterLinkActiveOptions exact property
+   * This options are passed to the RouterLinkActiveOptions exact property. Default to ''
    */
-  readonly exactPathMatch = input<string>('/');
+  readonly exactPathMatch = input<string>('');
 
   linksInTabs = signal<INavigationLinks>([]);
   linksInMore = signal<INavigationLinks>([]);

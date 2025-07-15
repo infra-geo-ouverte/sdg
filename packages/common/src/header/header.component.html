@@ -2,11 +2,7 @@
   <div class="sdg-header-content">
     <div class="sdg-header-content-logo-title">
       <a class="sdg-header-content-logo" href="https://www.quebec.ca/">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 463.55 91"
-          [attr.width]="isHandset() ? '175' : '200'"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 463.55 91">
           <g style="fill: white">
             <path
               d="M125.22 62.89V24.11h-.29c-1.38 1.27-6.48 1.37-8.64 1.37h-3.75v.31c4.33 2.66 3.74 6.59 3.74 11.48v16.41c0 8.21-8.06 14-14.56 14-8.56 0-12.11-6.08-12.11-15.89V24.11h-.3c-1.38 1.27-6.51 1.37-8.67 1.37h-3.7v.32c4.33 2.66 3.74 6.58 3.74 11.47v16.36c0 15 6.49 22.08 18.1 22.08 6.89 0 14-2.44 17.51-8.28v7.08H129v-.32c-4.37-2.45-3.78-6.4-3.78-11.3m19.66-20.74c1.18-6.66 6.1-10.89 12.7-10.89 7.09 0 11.61 3.49 12.7 10.89Zm35.74 6.18c.39-13.68-8.77-24-22.16-24-14.66 0-24.6 10.64-24.6 25.4s11.51 26.21 28.25 26.21a33.3 33.3 0 0 0 13.58-2.64l4.93-10h-.3a24.65 24.65 0 0 1-16.15 5.7c-11.12 0-19.49-7.59-19.68-20.65Zm7.8-46.75c2.36 0 7.17-.15 8.63-1.58h.29v67.17a30.3 30.3 0 0 0 8.12 1.27c10.75 0 16.92-7.53 16.92-18 0-10.28-4.8-18.23-14.67-18.23a15.9 15.9 0 0 0-8.22 2.33l5.28-9a19.5 19.5 0 0 1 6.95-1.17c11.15 0 20.63 9.68 20.63 24.2 0 16.63-11.25 27.39-29 27.39-6.65 0-13-1.18-17.85-1.92v-.33c3.25-1.49 3-5 3-8.51V16.33c0-4.91.59-11.77-3.64-14.43v-.32Zm61.41 40.57c1.18-6.66 6.1-10.89 12.7-10.89 7.09 0 11.61 3.49 12.7 10.89Zm35.73 6.18c.4-13.68-8.76-24-22.15-24-14.66 0-24.6 10.64-24.6 25.4s11.51 26.21 28.24 26.21a33.3 33.3 0 0 0 13.59-2.64l4.92-10h-.29a24.65 24.65 0 0 1-16.15 5.7c-11.12 0-19.49-7.59-19.69-20.65Zm44.03-11.84h-.3c-2.85-3.52-7.58-5.23-12-5.23-9.55 0-16.43 7.25-16.43 17.37 0 12.25 9.54 20.35 20.47 20.35a24.18 24.18 0 0 0 14.37-5.22h.3l-5.12 10.06a34.3 34.3 0 0 1-13 2.11c-15.15 0-27-10.68-27-24.53 0-18.32 13.22-27.08 28.09-27.08a45.4 45.4 0 0 1 10.63 1.26Z"
@@ -20,15 +16,15 @@
           </g>
         </svg>
       </a>
-      @if (!isHandset()) {
-        <div class="sdg-header-content-title-container">
-          <h6>
-            <a class="sdg-header-content-title" [routerLink]="['/']">{{
-              title()
-            }}</a>
-          </h6>
-        </div>
-      }
+      <div
+        class="sdg-header-content-title-container sdg-header-content-title-container-desktop"
+      >
+        <h6>
+          <a class="sdg-header-content-title" [routerLink]="['/']">{{
+            title()
+          }}</a>
+        </h6>
+      </div>
     </div>
     @if (languages() || contactUs()) {
       <div class="sdg-header-content-options">
@@ -51,13 +47,11 @@
       </div>
     }
   </div>
-  @if (isHandset()) {
-    <div class="sdg-header-content-title-container">
-      <h6>
-        <a class="sdg-header-content-title" [routerLink]="['/']">{{
-          title()
-        }}</a>
-      </h6>
-    </div>
-  }
+  <div
+    class="sdg-header-content-title-container sdg-header-content-title-container-mobile"
+  >
+    <h6>
+      <a class="sdg-header-content-title" [routerLink]="['/']">{{ title() }}</a>
+    </h6>
+  </div>
 </div>

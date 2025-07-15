@@ -26,6 +26,14 @@
       display: flex;
       align-items: center;
 
+      svg {
+        width: 200px;
+
+        @include sdg.media(mobile) {
+          width: 175px;
+        }
+      }
+
       &-title {
         display: flex;
         align-items: center;
@@ -48,8 +56,19 @@
         margin: 16px 0;
         overflow: hidden;
 
+        &-mobile {
+          display: none;
+        }
+
         @include sdg.media(mobile) {
           margin-top: 0;
+
+          &-mobile {
+            display: block;
+          }
+          &-desktop {
+            display: none;
+          }
         }
 
         > h6 {

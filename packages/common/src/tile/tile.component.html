@@ -4,9 +4,9 @@
       <mat-icon class="sdg-tile-icon">{{ icon() }}</mat-icon>
     }
     <b>
-      <p class="sdg-tile-title" [class.--no-message]="!message()">
+      <span class="sdg-tile-title" [class.--no-message]="!message()">
         {{ title() }}
-      </p>
+      </span>
     </b>
   </div>
   @if (message()) {

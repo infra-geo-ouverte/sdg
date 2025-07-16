@@ -22,7 +22,7 @@
   (!middlePagesIndexes.length && lastPagesIndexes.length === 1) ||
   middlePagesIndexes.length
 ) {
-  <p class="sdg-paginator-ellipsis">...</p>
+  <span class="sdg-paginator-ellipsis">...</span>
 }
 @for (middlePageIndex of middlePagesIndexes; track middlePageIndex) {
   <button
@@ -38,7 +38,7 @@
   (!middlePagesIndexes.length && firstPagesIndexes.length === 1) ||
   middlePagesIndexes.length
 ) {
-  <p class="sdg-paginator-ellipsis">...</p>
+  <span class="sdg-paginator-ellipsis">...</span>
 }
 @for (lastPageIndex of lastPagesIndexes; track lastPageIndex) {
   <button

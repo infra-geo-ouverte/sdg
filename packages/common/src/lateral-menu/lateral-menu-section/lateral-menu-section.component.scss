@@ -24,9 +24,9 @@
     &-title {
       flex-grow: 1;
       text-align: start;
+      font-family: 'Open Sans', sans-serif;
       font-size: 14px;
       color: sdg.$blue-piv;
-      margin: 0;
 
       @include sdg.media(mobile) {
         font-size: 16px;

@@ -55,6 +55,7 @@ $font-color: colors.$blue-dark;
     text-decoration: underline;
     background-color: transparent;
     width: fit-content;
+    max-inline-size: breakpoints.$max-content-width;
   }
 
   a:hover {
@@ -63,17 +64,30 @@ $font-color: colors.$blue-dark;
 
   p,
   ul,
-  li,
+  ol,
   u,
   .text {
     font-family: $font-family-text;
     color: $font-color;
     font-size: 16px;
     line-height: 24px;
+    max-inline-size: breakpoints.$max-content-width;
+  }
+
+  ul,
+  ol {
+    margin-top: 0;
+    margin-bottom: 24px;
+    padding-left: 16px;
   }
 
   p {
-    margin-bottom: 24px;
+    margin-bottom: 24px !important;
+  }
+
+  li {
+    margin-top: 16px;
+    margin-bottom: 16px;
   }
 
   strong {
@@ -94,6 +108,7 @@ $font-color: colors.$blue-dark;
   .h6 {
     font-family: $font-family-title !important;
     color: $font-color;
+    max-inline-size: breakpoints.$max-content-width;
   }
 
   h1 {
@@ -150,7 +165,7 @@ $font-color: colors.$blue-dark;
     font-size: 18px;
     line-height: 28px;
     font-weight: 600;
-    max-width: 82.5rem;
+    max-width: breakpoints.$max-content-width;
     padding-bottom: 24px;
   }
 }

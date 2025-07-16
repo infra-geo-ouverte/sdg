@@ -4,7 +4,7 @@
   display: flex;
   flex-flow: column;
   row-gap: 16px;
-  max-width: 825px;
+  max-width: sdg.$max-content-width;
   margin: 24px 0px;
   border-top: 1px solid sdg.$grey-light;
   border-bottom: 1px solid sdg.$grey-light;

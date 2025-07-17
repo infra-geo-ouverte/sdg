@@ -61,15 +61,7 @@ $font-color: colors.$blue-dark;
     text-decoration: none;
   }
 
-  span,
-  button,
-  div,
-  a,
-  p,
-  ul,
-  ol,
-  u,
-  .text {
+  button {
     font-family: $font-family-text;
   }
 

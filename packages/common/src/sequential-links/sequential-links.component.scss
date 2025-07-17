@@ -8,6 +8,7 @@
 
 .sdg-sequential-links {
   &-arrow {
+    color: sdg.$blue-dark;
     font-variation-settings: 'wght' 350;
   }
 
@@ -50,12 +51,18 @@
     row-gap: 8px;
   }
 
+  &-title,
   &-text {
+    font-size: 16px;
     align-self: flex-start;
+  }
+
+  &-title {
+    font-weight: bold;
+    color: sdg.$blue-dark;
+  }
+
+  &-text {
     color: sdg.$blue-piv;
   }
-}
-
-p {
-  margin: 0px;
 }

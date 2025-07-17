@@ -26,7 +26,6 @@
       text-align: start;
       font-size: 14px;
       color: sdg.$blue-piv;
-      margin: 0;
 
       @include sdg.media(mobile) {
         font-size: 16px;

@@ -1,5 +1,5 @@
 <div class="sdg-contact-title-contact">
-  <p class="sdg-contact-title">{{ title() }}</p>
+  <span class="sdg-contact-title">{{ title() }}</span>
   <div class="sdg-contact-contact">
     @if (contact().name) {
       <div class="sdg-contact-info">
@@ -11,7 +11,7 @@
             />
           </svg>
         </mat-icon>
-        <p>{{ contact().name }}</p>
+        <span>{{ contact().name }}</span>
       </div>
     }
     @if (contact().schedule) {
@@ -24,7 +24,7 @@
             />
           </svg>
         </mat-icon>
-        <p>{{ contact().schedule }}</p>
+        <span>{{ contact().schedule }}</span>
       </div>
     }
     @if (contact().hours) {
@@ -37,7 +37,7 @@
             />
           </svg>
         </mat-icon>
-        <p>{{ contact().hours }}</p>
+        <span>{{ contact().hours }}</span>
       </div>
     }
     @if (contact().phone) {
@@ -50,7 +50,7 @@
             />
           </svg>
         </mat-icon>
-        <p>{{ contact().phone }}</p>
+        <span>{{ contact().phone }}</span>
       </div>
     }
     @if (contact().address) {
@@ -68,8 +68,8 @@
             >{{ contact().address?.number }}
             {{ contact().address?.street }}</span
           >
-          <p>{{ contact().address?.city }}</p>
-          <p>{{ contact().address?.postalCode }}</p>
+          <span>{{ contact().address?.city }}</span>
+          <span>{{ contact().address?.postalCode }}</span>
         </div>
       </div>
     }

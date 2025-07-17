@@ -4,7 +4,6 @@
   &-button,
   &-page,
   &-ellipsis {
-    margin: 0;
     line-height: 40px;
     min-width: 40px;
     height: 40px;
@@ -46,7 +45,6 @@
 
   &-page {
     font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
     color: sdg.$blue-piv;
   }
 

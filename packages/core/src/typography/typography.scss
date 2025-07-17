@@ -47,7 +47,6 @@ $font-color: colors.$blue-dark;
   }
 
   a {
-    font-family: $font-family-text;
     word-break: break-word;
     overflow-wrap: break-word;
     cursor: pointer;
@@ -62,12 +61,15 @@ $font-color: colors.$blue-dark;
     text-decoration: none;
   }
 
+  button {
+    font-family: $font-family-text;
+  }
+
   p,
   ul,
   ol,
   u,
   .text {
-    font-family: $font-family-text;
     color: $font-color;
     font-size: 16px;
     line-height: 24px;

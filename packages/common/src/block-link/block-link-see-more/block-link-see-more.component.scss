@@ -3,7 +3,7 @@
 sdg-anchor ::ng-deep a {
   display: flex;
   align-items: center;
-  column-gap: 8px;
+  column-gap: 4px;
   font-size: 14px;
   color: sdg.$blue-piv;
   margin: 0 !important;
@@ -14,7 +14,7 @@ sdg-anchor ::ng-deep a {
   }
 }
 
-.sdg-block-link-see-more-arrow {
+.sdg-block-link-see-more-icon {
   width: 16px;
   height: 16px;
   font-size: 16px;

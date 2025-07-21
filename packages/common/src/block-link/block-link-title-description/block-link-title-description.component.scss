@@ -13,6 +13,10 @@ sdg-anchor ::ng-deep a {
 
       &-arrow {
         visibility: visible;
+
+        @include sdg.media(mobile) {
+          visibility: hidden;
+        }
       }
     }
   }
@@ -31,10 +35,6 @@ sdg-anchor ::ng-deep a {
       font-size: 16px;
       visibility: hidden;
       margin-left: 8px;
-
-      @include sdg.media(mobile) {
-        visibility: visible;
-      }
     }
 
     &.--no-description {

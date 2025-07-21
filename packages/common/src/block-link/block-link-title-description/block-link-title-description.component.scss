@@ -13,6 +13,10 @@ sdg-anchor ::ng-deep a {
 
       &-arrow {
         visibility: visible;
+
+        @include sdg.media(mobile) {
+          visibility: hidden;
+        }
       }
     }
   }

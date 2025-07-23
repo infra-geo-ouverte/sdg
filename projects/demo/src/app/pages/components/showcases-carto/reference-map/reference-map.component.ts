@@ -6,6 +6,7 @@ import {
   provideMap,
   withMapOptions
 } from '@igo2/sdg-carto/ol';
+import { ExternalLinkComponent } from '@igo2/sdg-common';
 
 import { default as olGeoJSON } from 'ol/format/GeoJSON.js';
 import TileLayer from 'ol/layer/Tile';
@@ -17,10 +18,7 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style.js';
 
 import type { GeoJSON } from 'geojson';
-import {
-  ExampleViewerComponent,
-  ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 const geojson: GeoJSON = {

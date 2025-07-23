@@ -38,6 +38,19 @@ export const routes: SdgRoutes = [
       import('./notice/notice.component').then((m) => m.NoticeDemoComponent)
   },
   {
+    path: 'bandeau-charte',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.charterBanner'
+    },
+    description:
+      "Le bandeau Charte de langue française permet à un organisme d'aviser clairement l'internaute que le contenu n'a été traduit que pour les personnes visées par les exceptions prévues dans la Charte.",
+    loadComponent: () =>
+      import('./charter-banner/charter-banner.component').then(
+        (m) => m.CharterBannerDemoComponent
+      )
+  },
+  {
     path: 'bandeau-piv',
     title: AppTitleResolver,
     data: {
@@ -94,6 +107,19 @@ export const routes: SdgRoutes = [
     loadComponent: () =>
       import('./top-page-button/top-page-button.component').then(
         (m) => m.TopPageButtonDemoComponent
+      )
+  },
+  {
+    path: 'lien-externe',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.externalLink'
+    },
+    description:
+      'Le lien externe mène vers des contenus externes au site actuel.',
+    loadComponent: () =>
+      import('./external-link/external-link.component').then(
+        (m) => m.ExternalLinkDemoComponent
       )
   },
   {

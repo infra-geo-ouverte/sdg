@@ -23,6 +23,7 @@ describe('FooterComponent', () => {
       logo: 'test',
       logoUrl: 'test'
     });
+    fixture.componentRef.setInput('containerClass', 'container');
     fixture.detectChanges();
   });
 

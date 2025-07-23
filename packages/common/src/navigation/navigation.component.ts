@@ -45,7 +45,7 @@ const TABS_MIN_DISPLAYED = 2 as const;
 })
 export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   readonly links = input.required<INavigationLinks>();
-  readonly headerContainerClass = input<string>();
+  readonly containerClass = input.required<string>();
   /**
    * Option to configure how to determine if the router link is active.
    * This options are passed to the RouterLinkActiveOptions exact property. Default to ''

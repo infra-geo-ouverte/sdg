@@ -22,7 +22,7 @@ export class HeaderComponent {
   readonly contactUs = input<IHeaderContactUs>();
   readonly languages = input<IHeaderLanguages>();
   readonly currentLanguage = input<IHeaderLanguageChoice['key']>();
-  readonly containerClass = input<string>();
+  readonly containerClass = input.required<string>();
 
   languageChange = output<string>();
 

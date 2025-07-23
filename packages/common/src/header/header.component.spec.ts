@@ -20,7 +20,7 @@ describe('HeaderComponent', () => {
       label: 'Nous joindre',
       route: 'contact-us'
     });
-
+    fixture.componentRef.setInput('containerClass', 'container');
     fixture.detectChanges();
   });
 

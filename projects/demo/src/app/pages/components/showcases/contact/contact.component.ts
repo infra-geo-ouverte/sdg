@@ -3,14 +3,12 @@ import { Component } from '@angular/core';
 import {
   Contact,
   ContactComponent,
+  ExternalLinkComponent,
   IContact,
   IContactData
 } from '@igo2/sdg-common';
 
-import {
-  ExampleViewerComponent,
-  ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 import { ContactCustom } from './contact-custom';
 

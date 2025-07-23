@@ -1,22 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../test-config';
-import { AlertComponent } from './alert.component';
+import { CharterBannerComponent } from './charter-banner.component';
 
-describe('AlertComponent', () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe('CharterBannerComponent', () => {
+  let component: CharterBannerComponent;
+  let fixture: ComponentFixture<CharterBannerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AlertComponent],
+      imports: [CharterBannerComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(CharterBannerComponent);
     component = fixture.componentInstance;
-    fixture.componentRef.setInput('type', 'General');
-    fixture.componentRef.setInput('message', 'Message');
     fixture.componentRef.setInput('containerClass', 'container');
     fixture.detectChanges();
   });

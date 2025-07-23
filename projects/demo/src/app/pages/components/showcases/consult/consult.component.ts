@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
-import { ConsultComponent, ConsultLinks } from '@igo2/sdg-common';
-
 import {
-  ExampleViewerComponent,
+  ConsultComponent,
+  ConsultLinks,
   ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+} from '@igo2/sdg-common';
+
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-consult',

@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { INavigationLinks, NavigationComponent } from '@igo2/sdg-common';
-
 import {
-  ExampleViewerComponent,
-  ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+  ExternalLinkComponent,
+  INavigationLinks,
+  NavigationComponent
+} from '@igo2/sdg-common';
+
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-navigation',

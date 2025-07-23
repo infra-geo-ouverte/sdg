@@ -17,8 +17,8 @@ describe('ExternalLinkComponent', () => {
     component = fixture.componentInstance;
     ref = fixture.componentRef;
 
-    ref.setInput('title', 'Test');
-    ref.setInput('link', 'test');
+    ref.setInput('text', 'Test');
+    ref.setInput('url', 'https://www.google.com');
 
     fixture.detectChanges();
   });

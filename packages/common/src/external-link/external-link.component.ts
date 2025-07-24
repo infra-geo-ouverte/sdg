@@ -1,6 +1,8 @@
 import { Component, input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
+import { isSafeUrl, pathIsExternal } from '@igo2/sdg-core';
+
 @Component({
   selector: 'sdg-external-link',
   imports: [MatIcon],
@@ -30,5 +32,18 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class ExternalLinkComponent {
   readonly text = input.required<string>();
-  readonly url = input.required<string>();
+  readonly url = input.required<string, string>({
+    transform: this.urlValidation
+  });
+
+  private urlValidation(url: string): string {
+    if (!isSafeUrl(url)) {
+      throw new Error('Invalid URL protocol detected');
+    }
+
+    if (!pathIsExternal(url)) {
+      throw new Error('URL is not external');
+    }
+    return url;
+  }
 }

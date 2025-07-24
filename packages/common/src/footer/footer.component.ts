@@ -26,5 +26,5 @@ export class FooterComponent {
   readonly siteMapLinks = input<SiteMapLinks>();
   readonly externalLinks = input<SiteMapLinks>();
   readonly copyright = input.required<FooterCopyright>();
-  readonly containerClass = input.required<string>();
+  readonly containerClass = input<string>('');
 }

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 
-import { TopPageButtonComponent } from '@igo2/sdg-common';
-
 import {
-  ExampleViewerComponent,
-  ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+  ExternalLinkComponent,
+  TopPageButtonComponent
+} from '@igo2/sdg-common';
+
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-top-page-button',

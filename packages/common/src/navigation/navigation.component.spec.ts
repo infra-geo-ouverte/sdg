@@ -27,9 +27,8 @@ describe('NavigationComponent', () => {
 
     fixture = TestBed.createComponent(NavigationComponent);
     component = fixture.componentInstance;
-
-    // Set required inputs
     fixture.componentRef.setInput('links', MOCK_LINKS);
+    fixture.componentRef.setInput('containerClass', 'container');
     component.isHandset = signal(false);
 
     fixture.detectChanges();

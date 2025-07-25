@@ -16,11 +16,13 @@
   &-container {
     display: flex;
     align-items: center;
-    padding: 24px 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
     column-gap: 24px;
 
     @include sdg.media(mobile) {
-      padding: 16px;
+      padding-top: 16px;
+      padding-bottom: 16px;
       align-items: start;
     }
   }

@@ -6,33 +6,43 @@
     visible. Pour plus d'information, voir l'</span
   >
   <span
-    ><app-external-link
-      title="Alerte générale"
-      link="https://design.quebec.ca/design/composants/alerte-generale"
+    ><sdg-external-link
+      text="Alerte générale"
+      url="https://design.quebec.ca/design/composants/alerte-generale"
   /></span>
   <span>du Système de design gouvernemental.</span>
 </p>
 
 <app-example-viewer title="Alerte" configFolder="alert" codeFolder="alert">
   <div class="alerts">
-    <sdg-alert type="General" message="Ceci est une alerte informative" />
+    <sdg-alert
+      type="General"
+      message="Ceci est une alerte informative"
+      containerClass="container"
+    />
 
     @if (generalAlertIsOpened) {
       <sdg-alert
         type="General"
         message="Ceci est une alerte informative pouvant être fermée"
         [closeable]="true"
+        containerClass="container"
         (closed)="generalAlertIsOpened = false"
       />
     }
 
-    <sdg-alert type="Warning" message="Ceci est une alerte" />
+    <sdg-alert
+      type="Warning"
+      message="Ceci est une alerte"
+      containerClass="container"
+    />
 
     @if (alertIsOpened) {
       <sdg-alert
         type="Warning"
         message="Ceci est une alerte pouvant être fermée"
         [closeable]="true"
+        containerClass="container"
         (closed)="alertIsOpened = false"
       />
     }

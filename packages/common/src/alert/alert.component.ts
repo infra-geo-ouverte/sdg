@@ -26,7 +26,7 @@ export class AlertComponent {
     transform: (message) => this.messageValidation(message)
   });
   readonly closeable = input<boolean>(false);
-  readonly containerClass = input<string>();
+  readonly containerClass = input<string>('');
 
   readonly typeClass = computed(() => `--${AlertType[this.type()]}`);
 

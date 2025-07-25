@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 
-import { SequentialLink, SequentialLinksComponent } from '@igo2/sdg-common';
-
 import {
-  ExampleViewerComponent,
-  ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+  ExternalLinkComponent,
+  SequentialLink,
+  SequentialLinksComponent
+} from '@igo2/sdg-common';
+
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-sequential-links',

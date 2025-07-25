@@ -1,0 +1,16 @@
+@use '@igo2/sdg-core' as sdg;
+
+:host {
+  display: block;
+  background-color: sdg.$blue-pale;
+}
+
+.charter-banner-container {
+  font-size: 14px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+span {
+  font-size: 14px;
+}

@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
 
-import { TileComponent } from '@igo2/sdg-common';
+import { ExternalLinkComponent, TileComponent } from '@igo2/sdg-common';
 
-import {
-  ExampleViewerComponent,
-  ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
   selector: 'app-tile',

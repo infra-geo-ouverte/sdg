@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 
-import { HeaderComponent } from '@igo2/sdg-common';
+import { ExternalLinkComponent, HeaderComponent } from '@igo2/sdg-common';
 import { Language, TranslationService } from '@igo2/sdg-core';
 
-import {
-  ExampleViewerComponent,
-  ExternalLinkComponent
-} from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 import { environment } from 'projects/demo/src/environments/environment';
 import { EnvironmentOptions } from 'projects/demo/src/environments/environment.interface';
 

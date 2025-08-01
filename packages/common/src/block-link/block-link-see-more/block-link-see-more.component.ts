@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { pathIsExternal } from '@igo2/sdg-core';
+import { Language, pathIsExternal } from '@igo2/sdg-core';
 
 import { AnchorComponent } from '../../shared/anchor/anchor.component';
 import { BlockLinkSection } from '../block-link.interface';
@@ -20,8 +20,8 @@ import { BlockLinkSection } from '../block-link.interface';
   styleUrls: ['./block-link-see-more.component.scss']
 })
 export class BlockLinkSeeMoreComponent {
-  readonly label = input.required<BlockLinkSection['seeMoreLabel']>();
   readonly path = input.required<BlockLinkSection['path']>();
+  readonly language = input<Language>('fr');
 
   readonly externalPath: Signal<boolean | undefined> = computed(() => {
     if (!this.path()) {

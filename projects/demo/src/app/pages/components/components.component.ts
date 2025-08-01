@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal } from '@angular/core';
 
 import {
   BlockLinkComponent,
@@ -6,13 +6,14 @@ import {
   BlockLinkSections
 } from '@igo2/sdg-common';
 import {
+  Language,
   SdgRoute,
   SdgRoutes,
-  TitleResolverPipe,
-  TranslationService
+  TitleResolverPipe
 } from '@igo2/sdg-core';
 
 import { BasicScreenComponent } from '../../components';
+import { AppTranslationService } from '../../config/translation/translation.service';
 import { routes as routesCarto } from './showcases-carto/showcases-carto.routes';
 import { routes } from './showcases/showcases.routes';
 
@@ -29,10 +30,14 @@ export class ComponentsComponent {
 
   constructor(
     private titleResolverPipe: TitleResolverPipe,
-    private translationService: TranslationService
+    private translationService: AppTranslationService
   ) {
     this.sections = this.setSections(routes, 'common');
     this.sectionsCarto = this.setSections(routesCarto, 'carto');
+  }
+
+  get lang(): WritableSignal<Language> {
+    return this.translationService.lang;
   }
 
   private setSections(
@@ -50,8 +55,7 @@ export class ComponentsComponent {
           ...section,
           title: title,
           path: `../composants/showcases/${prefixSection}/${section.path}`,
-          description: section.description,
-          seeMoreLabel: this.translationService.get('seeMore')
+          description: section.description
         };
       });
   }

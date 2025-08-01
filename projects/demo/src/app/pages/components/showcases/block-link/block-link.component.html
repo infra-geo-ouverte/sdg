@@ -24,7 +24,7 @@
 >
   <div class="block-links">
     @for (section of sections1; track section) {
-      <sdg-block-link [section]="section" />
+      <sdg-block-link [section]="section" [language]="lang()" />
     }
   </div>
 </app-example-viewer>
@@ -42,7 +42,7 @@
 >
   <div class="block-links">
     @for (section of sections2; track section) {
-      <sdg-block-link [section]="section" />
+      <sdg-block-link [section]="section" [language]="lang()" />
     }
   </div>
 </app-example-viewer>
@@ -59,7 +59,7 @@
 >
   <div class="block-links">
     @for (section of sections3; track section) {
-      <sdg-block-link [section]="section" />
+      <sdg-block-link [section]="section" [language]="lang()" />
     }
   </div>
 </app-example-viewer>

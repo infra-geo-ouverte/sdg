@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal } from '@angular/core';
 
 import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg-common';
-import { TranslationService } from '@igo2/sdg-core';
+import { Language } from '@igo2/sdg-core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 @Component({
   selector: 'app-block-link',
@@ -17,15 +18,13 @@ export class BlockLinkDemoComponent {
       title: 'showcases.notice',
       path: '/composants/showcases/avis',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      seeMoreLabel: 'seeMore'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
     {
       title: 'Google',
       path: 'https://www.google.com/',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      seeMoreLabel: 'seeMore'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     }
   ];
 
@@ -36,8 +35,7 @@ export class BlockLinkDemoComponent {
       subsections: [
         { title: 'showcases.alert', path: '/composants/showcases/alerte' },
         { title: 'Google', path: 'https://www.google.com/' }
-      ],
-      seeMoreLabel: 'seeMore'
+      ]
     },
     {
       title: 'showcases.paginator',
@@ -47,8 +45,7 @@ export class BlockLinkDemoComponent {
       subsections: [
         { title: 'showcases.alert', path: '/composants/showcases/alerte' },
         { title: 'Google', path: 'https://www.google.com/' }
-      ],
-      seeMoreLabel: 'seeMore'
+      ]
     }
   ];
 
@@ -58,8 +55,7 @@ export class BlockLinkDemoComponent {
       title: 'showcases.notice',
       path: '/composants/showcases/avis',
       description:
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      seeMoreLabel: 'seeMore'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
     },
     {
       icon: 'info',
@@ -68,21 +64,24 @@ export class BlockLinkDemoComponent {
       subsections: [
         { title: 'showcases.alert', path: '/composants/showcases/alerte' },
         { title: 'Google', path: 'https://www.google.com/' }
-      ],
-      seeMoreLabel: 'seeMore'
+      ]
     }
   ];
 
-  constructor(private translationService: TranslationService) {
+  constructor(private translationService: AppTranslationService) {
     this.getSections(this.sections1);
     this.getSections(this.sections2);
     this.getSections(this.sections3);
   }
 
+  get lang(): WritableSignal<Language> {
+    return this.translationService.lang;
+  }
+
   private getSections(sections: BlockLinkSections): void {
     sections.forEach((section, sectionIndex) => {
       section.title = this.translationService.get(section.title);
-      section.seeMoreLabel = this.translationService.get(section.seeMoreLabel);
+
       if (!section.title) {
         throw new Error(`Title not found for section ${sectionIndex}`);
       } else if (!section.path) {
@@ -91,8 +90,6 @@ export class BlockLinkDemoComponent {
         throw new Error(
           `Subsections array must not be empty for section ${sectionIndex}`
         );
-      } else if (!section.seeMoreLabel) {
-        throw new Error(`See more label not found for section ${sectionIndex}`);
       }
       if (section.subsections) {
         if (section.subsections.length === 0) {

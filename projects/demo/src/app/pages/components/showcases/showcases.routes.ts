@@ -8,12 +8,14 @@ export const routes: SdgRoutes = [
     path: 'a-consulter-aussi',
     title: AppTitleResolver,
     data: {
-      [RouteTranslateKey]: 'showcases.consult'
+      [RouteTranslateKey]: 'showcases.seeAlso'
     },
     description:
       "Le bloc À consulter aussi propose des éléments d'information qui complètent le contenu principal.",
     loadComponent: () =>
-      import('./consult/consult.component').then((m) => m.ConsultDemoComponent)
+      import('./see-also/see-also.component').then(
+        (m) => m.SeeAlsoDemoComponent
+      )
   },
   {
     path: 'alerte',
@@ -150,7 +152,10 @@ export const routes: SdgRoutes = [
   },
   {
     path: 'menu-lateral',
-    title: 'Menu latéral',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.lateralMenu'
+    },
     description:
       "Le menu latéral est une liste de liens permettant de naviguer entre différentes sections d'un site web.",
     loadComponent: () =>

@@ -5,7 +5,7 @@ export * from './breadcrumbs';
 export * from './button';
 export * from './charter-banner';
 export * from './contact';
-export * from './consult';
+export * from './see-also';
 export * from './external-link';
 export * from './footer';
 export * from './header';

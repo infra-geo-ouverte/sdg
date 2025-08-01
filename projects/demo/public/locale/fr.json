@@ -14,11 +14,12 @@
     "button": "Bouton",
     "breadcrumbs": "Fil d'Ariane",
     "charterBanner": "Bandeau Charte de la langue française",
-    "consult": "À consulter aussi",
+    "seeAlso": "À consulter aussi",
     "contact": "Coordonnées",
     "externalLink": "Lien externe",
     "footer": "Pied de page",
     "header": "Bandeau d'en-tête du PIV",
+    "lateralMenu": "Menu latéral",
     "navigation": "Menu de navigation principale",
     "notice": "Avis",
     "paginator": "Pagination",
@@ -48,6 +49,5 @@
       "ctrlScroll": "Vous pouvez zoomer sur la carte à l'aide de CTRL+Molette de défilement",
       "twoFingers": "Utilisez deux doigts pour déplacer la carte"
     }
-  },
-  "seeMore": "Voir plus"
+  }
 }

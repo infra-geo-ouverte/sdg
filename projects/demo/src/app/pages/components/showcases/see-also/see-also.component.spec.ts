@@ -2,19 +2,19 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from 'projects/demo/src/test-config';
 
-import { ConsultDemoComponent } from './consult.component';
+import { SeeAlsoDemoComponent } from './see-also.component';
 
-describe('ConsultDemoComponent', () => {
-  let component: ConsultDemoComponent;
-  let fixture: ComponentFixture<ConsultDemoComponent>;
+describe('SeeAlsoDemoComponent', () => {
+  let component: SeeAlsoDemoComponent;
+  let fixture: ComponentFixture<SeeAlsoDemoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConsultDemoComponent],
+      imports: [SeeAlsoDemoComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ConsultDemoComponent);
+    fixture = TestBed.createComponent(SeeAlsoDemoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

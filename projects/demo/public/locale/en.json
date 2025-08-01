@@ -14,15 +14,16 @@
     "button": "Button",
     "breadcrumbs": "Breadcrumbs",
     "charterBanner": "Charter of the French language banner",
-    "consult": "Consult",
+    "seeAlso": "See also",
     "contact": "Contact",
     "externalLink": "External link",
     "footer": "Footer",
     "header": "Header",
+    "lateralMenu": "Lateral menu",
     "navigation": "Main navigation menu",
     "notice": "Notice",
     "paginator": "Paginator",
-    "sequentialLinks": "Sequential Links",
+    "sequentialLinks": "Sequential links",
     "tile": "Clickable tile",
     "topPage": "Scroll to top"
   },
@@ -48,6 +49,5 @@
       "ctrlScroll": "Use ctrl + scroll to zoom the map",
       "twoFingers": "Use two fingers to move the map"
     }
-  },
-  "seeMore": "See more"
+  }
 }

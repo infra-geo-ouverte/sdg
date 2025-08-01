@@ -8,6 +8,8 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
+import { Language } from '@igo2/sdg-core';
+
 import { Anchor } from './anchor-menu.interface';
 
 @Component({
@@ -19,6 +21,7 @@ import { Anchor } from './anchor-menu.interface';
 })
 export class AnchorMenuComponent implements OnInit {
   readonly anchors = input.required<Anchor[]>();
+  readonly language = input<Language>('fr');
 
   constructor(
     private activatedRoute: ActivatedRoute,

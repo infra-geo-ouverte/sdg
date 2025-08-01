@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Language } from '@igo2/sdg-core';
+
 import { SequentialLink } from './sequential-links.interface';
 
 @Component({
@@ -14,6 +16,7 @@ import { SequentialLink } from './sequential-links.interface';
 export class SequentialLinksComponent {
   readonly previous = input<SequentialLink>();
   readonly next = input<SequentialLink>();
+  readonly language = input<Language>('fr');
 
   constructor(
     private router: Router,

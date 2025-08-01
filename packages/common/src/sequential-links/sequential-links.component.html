@@ -9,7 +9,9 @@
       </svg>
     </mat-icon>
     <div class="sdg-sequential-links-content">
-      <span class="sdg-sequential-links-title">Précédent</span>
+      <span class="sdg-sequential-links-title">{{
+        language() === 'fr' ? 'Précédent' : 'Previous'
+      }}</span>
       <span class="sdg-sequential-links-text">{{ previous()?.text }}</span>
     </div>
   </button>
@@ -25,7 +27,9 @@
       </svg>
     </mat-icon>
     <div class="sdg-sequential-links-content">
-      <span class="sdg-sequential-links-title">Suivant</span>
+      <span class="sdg-sequential-links-title">{{
+        language() === 'fr' ? 'Suivant' : 'Next'
+      }}</span>
       <span class="sdg-sequential-links-text">{{ next()?.text }}</span>
     </div>
   </button>

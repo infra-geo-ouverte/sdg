@@ -4,11 +4,7 @@ export const environment: EnvironmentOptions = {
   production: true,
   title: "Système d'assemblage gouvernemental (Angular)",
   header: {
-    contactUs: {
-      label: 'header.contactUs',
-      route: 'contact-us'
-    },
-
+    contactUsRoute: 'contact-us',
     languages: {
       choices: [
         {

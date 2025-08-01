@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal } from '@angular/core';
 
 import { ExternalLinkComponent, HeaderComponent } from '@igo2/sdg-common';
-import { Language, TranslationService } from '@igo2/sdg-core';
+import { Language } from '@igo2/sdg-core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 import { environment } from 'projects/demo/src/environments/environment';
 import { EnvironmentOptions } from 'projects/demo/src/environments/environment.interface';
 
@@ -16,9 +17,9 @@ import { EnvironmentOptions } from 'projects/demo/src/environments/environment.i
 export class HeaderDemoComponent {
   config: EnvironmentOptions = environment;
 
-  constructor(private translationService: TranslationService) {}
+  constructor(private translationService: AppTranslationService) {}
 
-  get currentLanguage() {
+  get currentLanguage(): WritableSignal<Language> {
     return this.translationService.lang;
   }
 

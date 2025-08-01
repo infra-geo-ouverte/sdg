@@ -26,7 +26,7 @@
         </h6>
       </div>
     </div>
-    @if (languages() || contactUs()) {
+    @if (languages() || contactUsRoute()) {
       <div class="sdg-header-content-options">
         @if (languages()) {
           <a
@@ -37,11 +37,11 @@
             >{{ nextLanguage!.label }}
           </a>
         }
-        @if (contactUs()) {
+        @if (contactUsRoute()) {
           <a
             class="sdg-header-content-options-contact-us"
-            [routerLink]="contactUs()!.route"
-            >{{ contactUs()!.label }}</a
+            [routerLink]="contactUsRoute()!"
+            >{{ currentLanguage() === 'fr' ? 'Nous joindre' : 'Contact us' }}</a
           >
         }
       </div>

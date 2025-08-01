@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, WritableSignal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
@@ -8,7 +8,6 @@ import { IgoLanguageModule } from '@igo2/core/language';
 import {
   FooterComponent,
   HeaderComponent,
-  IHeaderContactUs,
   INavigationLinks,
   NavigationComponent,
   SiteMapLink,
@@ -20,7 +19,6 @@ import {
   Language,
   SdgRoute,
   TitleResolverPipe,
-  TranslationService,
   resolveTitle
 } from '@igo2/sdg-core';
 import { DomUtils } from '@igo2/utils';
@@ -31,6 +29,7 @@ import { environment } from '../environments/environment';
 import { EnvironmentOptions } from '../environments/environment.interface';
 import { routes } from './app.routes';
 import { AppTitleResolver } from './config/title-resolver';
+import { AppTranslationService } from './config/translation/translation.service';
 
 @Component({
   selector: 'app-root',
@@ -50,7 +49,7 @@ import { AppTitleResolver } from './config/title-resolver';
 })
 export class AppComponent implements OnInit {
   config: EnvironmentOptions = environment;
-  contactUs: IHeaderContactUs | undefined;
+  contactUsRoute: string | undefined;
   links: INavigationLinks;
   siteMapLinks: SiteMapLinks;
 
@@ -59,16 +58,13 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
-    private translationService: TranslationService,
+    private translationService: AppTranslationService,
     private titleResolver: AppTitleResolver,
     private titleResolverPipe: TitleResolverPipe
   ) {
-    const contactUsOptions = environment.header.contactUs;
-    if (contactUsOptions) {
-      this.contactUs = {
-        label: this.translationService.get(contactUsOptions.label),
-        route: `${this.currentLanguage()}/${contactUsOptions.route}`
-      };
+    const contactUsRoute = environment.header.contactUsRoute;
+    if (contactUsRoute) {
+      this.contactUsRoute = `${this.currentLanguage()}/${contactUsRoute}`;
     }
 
     this.validateUrlLanguage();
@@ -77,7 +73,7 @@ export class AppComponent implements OnInit {
     this.siteMapLinks = this.getSiteMapLinks();
   }
 
-  get currentLanguage() {
+  get currentLanguage(): WritableSignal<Language> {
     return this.translationService.lang;
   }
 
@@ -90,7 +86,7 @@ export class AppComponent implements OnInit {
   }
 
   private getLinks(): INavigationLinks {
-    const lang = this.translationService.lang();
+    const lang = this.currentLanguage();
     return [...routes[0].children!]
       .filter((route) => !route.hidden)
       .reduce((links, route, index) => {
@@ -112,7 +108,7 @@ export class AppComponent implements OnInit {
   }
 
   private getSiteMapLinks(): SiteMapLinks {
-    const lang = this.translationService.lang();
+    const lang = this.currentLanguage();
     return [...routes[0].children!]
       .filter((route) => isSiteMapLink(route))
       .map((route, siteMapLinkIndex) => {

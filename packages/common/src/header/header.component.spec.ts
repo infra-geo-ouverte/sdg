@@ -16,10 +16,7 @@ describe('HeaderComponent', () => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('title', '');
-    fixture.componentRef.setInput('contactUs', {
-      label: 'Nous joindre',
-      route: 'contact-us'
-    });
+    fixture.componentRef.setInput('contactUsRoute', 'contact-us');
     fixture.componentRef.setInput('containerClass', 'container');
     fixture.detectChanges();
   });

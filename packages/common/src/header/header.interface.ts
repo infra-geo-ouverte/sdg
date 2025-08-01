@@ -1,7 +1,7 @@
 import { Language } from '@igo2/sdg-core';
 
 export interface IHeaderConfig {
-  contactUs?: IHeaderContactUs;
+  contactUsRoute?: string;
   languages?: IHeaderLanguages;
 }
 

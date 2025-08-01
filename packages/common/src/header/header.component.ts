@@ -5,11 +5,7 @@ import { RouterLink } from '@angular/router';
 
 import { BreakpointService, Language } from '@igo2/sdg-core';
 
-import {
-  IHeaderContactUs,
-  IHeaderLanguageChoice,
-  IHeaderLanguages
-} from './header.interface';
+import { IHeaderLanguageChoice, IHeaderLanguages } from './header.interface';
 
 @Component({
   selector: 'sdg-header',
@@ -19,7 +15,7 @@ import {
 })
 export class HeaderComponent {
   readonly title = input.required<string>();
-  readonly contactUs = input<IHeaderContactUs>();
+  readonly contactUsRoute = input<string>();
   readonly languages = input<IHeaderLanguages>();
   readonly currentLanguage = input<IHeaderLanguageChoice['key']>();
   readonly containerClass = input.required<string>();

@@ -5,6 +5,20 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
 import { provideMockTranslation } from '@igo2/core/language';
+import {
+  SDG_ANCHOR_MENU_LABELS,
+  SDG_BLOCK_LINK_LABELS,
+  SDG_HEADER_LABELS,
+  SDG_SEE_ALSO_LABELS,
+  SDG_SEQUENTIAL_LINKS_LABELS
+} from '@igo2/sdg-common';
+import { TranslationService, provideTranslatedLabels } from '@igo2/sdg-core';
+
+class MockTranslationService {
+  get(key: string) {
+    return key;
+  }
+}
 
 export const TEST_CONFIG: TestModuleMetadata = {
   providers: [
@@ -12,6 +26,12 @@ export const TEST_CONFIG: TestModuleMetadata = {
     provideMockTranslation(),
     provideHttpClient(),
     provideHttpClientTesting(),
-    provideAnimations()
+    provideAnimations(),
+    provideTranslatedLabels(SDG_ANCHOR_MENU_LABELS, 'sdg.anchorMenu.title'),
+    provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink.seeMore'),
+    provideTranslatedLabels(SDG_SEE_ALSO_LABELS, 'sdg.seeAlso.title'),
+    provideTranslatedLabels(SDG_HEADER_LABELS, 'sdg.header.contactUs'),
+    provideTranslatedLabels(SDG_SEQUENTIAL_LINKS_LABELS, 'sdg.sequentialLinks'),
+    { provide: TranslationService, useClass: MockTranslationService }
   ]
 };

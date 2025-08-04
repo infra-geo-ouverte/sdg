@@ -1,10 +1,20 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  InjectionToken,
+  inject,
+  input
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { Language } from '@igo2/sdg-core';
-
 import { SeeAlsoLinks } from './see-also.interface';
+
+export const SDG_SEE_ALSO_LABELS = new InjectionToken<string>(
+  'SDG_SEE_ALSO_LABELS'
+);
+
+const TITLE = 'À consulter aussi';
 
 @Component({
   selector: 'sdg-see-also',
@@ -16,5 +26,13 @@ import { SeeAlsoLinks } from './see-also.interface';
 export class SeeAlsoComponent {
   readonly links = input.required<SeeAlsoLinks>();
   readonly files = input<SeeAlsoLinks>([]);
-  readonly language = input<Language>('fr');
+
+  title = TITLE;
+
+  constructor() {
+    const labelsOverride = inject(SDG_SEE_ALSO_LABELS);
+    if (labelsOverride) {
+      this.title = labelsOverride;
+    }
+  }
 }

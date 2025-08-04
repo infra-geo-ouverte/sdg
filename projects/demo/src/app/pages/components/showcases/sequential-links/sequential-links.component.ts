@@ -1,14 +1,12 @@
-import { Component, WritableSignal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
   ExternalLinkComponent,
   SequentialLink,
   SequentialLinksComponent
 } from '@igo2/sdg-common';
-import { Language } from '@igo2/sdg-core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 @Component({
   selector: 'app-sequential-links',
@@ -30,10 +28,4 @@ export class SequentialLinksDemoComponent {
     text: 'Tuile',
     url: 'tuile'
   };
-
-  constructor(private translationService: AppTranslationService) {}
-
-  get lang(): WritableSignal<Language> {
-    return this.translationService.lang;
-  }
 }

@@ -1,8 +1,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  InjectionToken,
   Signal,
   computed,
+  inject,
   input
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +13,12 @@ import { Language, pathIsExternal } from '@igo2/sdg-core';
 
 import { AnchorComponent } from '../../shared/anchor/anchor.component';
 import { BlockLinkSection } from '../block-link.interface';
+
+export const SDG_BLOCK_LINK_LABELS = new InjectionToken<string>(
+  'SDG_BLOCK_LINK_LABELS'
+);
+
+const SEE_MORE = 'Voir plus';
 
 @Component({
   selector: 'sdg-block-link-see-more',
@@ -29,4 +37,13 @@ export class BlockLinkSeeMoreComponent {
     }
     return pathIsExternal(this.path());
   });
+
+  seeMore = SEE_MORE;
+
+  constructor() {
+    const labelsOverride = inject(SDG_BLOCK_LINK_LABELS);
+    if (labelsOverride) {
+      this.seeMore = labelsOverride;
+    }
+  }
 }

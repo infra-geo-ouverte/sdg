@@ -49,5 +49,23 @@
       "ctrlScroll": "Use ctrl + scroll to zoom the map",
       "twoFingers": "Use two fingers to move the map"
     }
+  },
+  "sdg": {
+    "anchorMenu": {
+      "title": "On this page:"
+    },
+    "blockLink": {
+      "seeMore": "See more"
+    },
+    "header": {
+      "contactUs": "Contact us"
+    },
+    "seeAlso": {
+      "title": "See also"
+    },
+    "sequentialLinks": {
+      "previous": "Previous",
+      "next": "Next"
+    }
   }
 }

@@ -3,7 +3,7 @@
     <h2>Composants communs</h2>
     <div class="block-links">
       @for (section of sections; track section) {
-        <sdg-block-link [section]="section" [language]="lang()" />
+        <sdg-block-link [section]="section" />
       }
     </div>
   </section>
@@ -12,7 +12,7 @@
     <h2>Cartographie</h2>
     <div class="block-links">
       @for (section of sectionsCarto; track section) {
-        <sdg-block-link [section]="section" [language]="lang()" />
+        <sdg-block-link [section]="section" />
       }
     </div>
   </section>

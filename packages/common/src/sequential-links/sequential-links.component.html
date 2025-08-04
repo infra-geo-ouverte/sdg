@@ -1,5 +1,8 @@
-@if (previous()) {
-  <button class="sdg-sequential-links-link" (click)="goToLink(previous()!.url)">
+@if (previousLink()) {
+  <button
+    class="sdg-sequential-links-link"
+    (click)="goToLink(previousLink()!.url)"
+  >
     <mat-icon class="sdg-sequential-links-arrow">
       <!-- icon name: arrow_left_alt -->
       <svg viewBox="0 -960 960 960">
@@ -9,15 +12,13 @@
       </svg>
     </mat-icon>
     <div class="sdg-sequential-links-content">
-      <span class="sdg-sequential-links-title">{{
-        language() === 'fr' ? 'Précédent' : 'Previous'
-      }}</span>
-      <span class="sdg-sequential-links-text">{{ previous()?.text }}</span>
+      <span class="sdg-sequential-links-title">{{ previous }}</span>
+      <span class="sdg-sequential-links-text">{{ previousLink()?.text }}</span>
     </div>
   </button>
 }
-@if (next()) {
-  <button class="sdg-sequential-links-link" (click)="goToLink(next()!.url)">
+@if (nextLink()) {
+  <button class="sdg-sequential-links-link" (click)="goToLink(nextLink()!.url)">
     <mat-icon class="sdg-sequential-links-arrow">
       <!-- icon name: arrow_right_alt -->
       <svg viewBox="0 -960 960 960">
@@ -27,10 +28,8 @@
       </svg>
     </mat-icon>
     <div class="sdg-sequential-links-content">
-      <span class="sdg-sequential-links-title">{{
-        language() === 'fr' ? 'Suivant' : 'Next'
-      }}</span>
-      <span class="sdg-sequential-links-text">{{ next()?.text }}</span>
+      <span class="sdg-sequential-links-title">{{ next }}</span>
+      <span class="sdg-sequential-links-text">{{ nextLink()?.text }}</span>
     </div>
   </button>
 }

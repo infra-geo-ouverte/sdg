@@ -1,7 +1,6 @@
-import { Component, WritableSignal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg-common';
-import { Language } from '@igo2/sdg-core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
@@ -72,10 +71,6 @@ export class BlockLinkDemoComponent {
     this.getSections(this.sections1);
     this.getSections(this.sections2);
     this.getSections(this.sections3);
-  }
-
-  get lang(): WritableSignal<Language> {
-    return this.translationService.lang;
   }
 
   private getSections(sections: BlockLinkSections): void {

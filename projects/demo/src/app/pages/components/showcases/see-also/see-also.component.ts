@@ -1,14 +1,12 @@
-import { Component, WritableSignal } from '@angular/core';
+import { Component } from '@angular/core';
 
 import {
   ExternalLinkComponent,
   SeeAlsoComponent,
   SeeAlsoLinks
 } from '@igo2/sdg-common';
-import { Language } from '@igo2/sdg-core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 @Component({
   selector: 'app-see-also',
@@ -31,10 +29,4 @@ export class SeeAlsoDemoComponent {
       url: '/composants/showcases/alerte'
     }
   ];
-
-  constructor(private translationService: AppTranslationService) {}
-
-  get lang(): WritableSignal<Language> {
-    return this.translationService.lang;
-  }
 }

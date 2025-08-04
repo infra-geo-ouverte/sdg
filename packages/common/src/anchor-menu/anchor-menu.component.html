@@ -1,8 +1,6 @@
 <div class="sdg-anchor-menu-container">
   <span
-    ><b>{{
-      language() === 'fr' ? 'Dans cette page :' : 'On this page:'
-    }}</b></span
+    ><b>{{ title }}</b></span
   >
   @for (anchor of anchors(); track anchor) {
     <a routerLink="./" [fragment]="anchor.htmlElementId">{{ anchor.text }}</a>

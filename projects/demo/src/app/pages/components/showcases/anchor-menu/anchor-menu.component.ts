@@ -1,9 +1,4 @@
-import {
-  AfterContentInit,
-  Component,
-  ElementRef,
-  WritableSignal
-} from '@angular/core';
+import { AfterContentInit, Component, ElementRef } from '@angular/core';
 
 import {
   Anchor,
@@ -11,10 +6,8 @@ import {
   ExternalLinkComponent,
   findTitleAnchors
 } from '@igo2/sdg-common';
-import { Language } from '@igo2/sdg-core';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 @Component({
   selector: 'app-anchor-menu',
@@ -25,14 +18,7 @@ import { AppTranslationService } from 'projects/demo/src/app/config/translation/
 export class AnchorMenuDemoComponent implements AfterContentInit {
   anchors: Anchor[] = [];
 
-  constructor(
-    private elementRef: ElementRef,
-    private translationService: AppTranslationService
-  ) {}
-
-  get lang(): WritableSignal<Language> {
-    return this.translationService.lang;
-  }
+  constructor(private elementRef: ElementRef) {}
 
   ngAfterContentInit() {
     this.anchors = findTitleAnchors(this.elementRef.nativeElement);

@@ -1,4 +1,11 @@
-import { Component, Signal, input, output } from '@angular/core';
+import {
+  Component,
+  InjectionToken,
+  Signal,
+  inject,
+  input,
+  output
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -6,6 +13,12 @@ import { RouterLink } from '@angular/router';
 import { BreakpointService, Language } from '@igo2/sdg-core';
 
 import { IHeaderLanguageChoice, IHeaderLanguages } from './header.interface';
+
+export const SDG_HEADER_LABELS = new InjectionToken<string>(
+  'SDG_HEADER_LABELS'
+);
+
+const CONTACT_US = 'Nous joindre';
 
 @Component({
   selector: 'sdg-header',
@@ -24,8 +37,15 @@ export class HeaderComponent {
 
   isHandset: Signal<boolean>;
 
+  contactUs = CONTACT_US;
+
   constructor(private breakpointService: BreakpointService) {
     this.isHandset = this.breakpointService.isHandset;
+
+    const labelsOverride = inject(SDG_HEADER_LABELS);
+    if (labelsOverride) {
+      this.contactUs = labelsOverride;
+    }
   }
 
   get nextLanguage(): IHeaderLanguageChoice | undefined {

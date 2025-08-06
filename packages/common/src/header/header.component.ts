@@ -12,13 +12,15 @@ import { RouterLink } from '@angular/router';
 
 import { BreakpointService, Language } from '@igo2/sdg-core';
 
-import { IHeaderLanguageChoice, IHeaderLanguages } from './header.interface';
+import {
+  HeaderLabels,
+  IHeaderLanguageChoice,
+  IHeaderLanguages
+} from './header.interface';
 
-export const SDG_HEADER_LABELS = new InjectionToken<string>(
+export const SDG_HEADER_LABELS = new InjectionToken<HeaderLabels>(
   'SDG_HEADER_LABELS'
 );
-
-const CONTACT_US = 'Nous joindre';
 
 @Component({
   selector: 'sdg-header',
@@ -37,14 +39,14 @@ export class HeaderComponent {
 
   isHandset: Signal<boolean>;
 
-  contactUs = CONTACT_US;
+  contactUs = 'Nous joindre';
 
   constructor(private breakpointService: BreakpointService) {
     this.isHandset = this.breakpointService.isHandset;
 
     const labelsOverride = inject(SDG_HEADER_LABELS);
     if (labelsOverride) {
-      this.contactUs = labelsOverride;
+      this.contactUs = labelsOverride.contactUs;
     }
   }
 

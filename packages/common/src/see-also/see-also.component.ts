@@ -8,13 +8,11 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { SeeAlsoLinks } from './see-also.interface';
+import { SeeAlsoLabels, SeeAlsoLinks } from './see-also.interface';
 
-export const SDG_SEE_ALSO_LABELS = new InjectionToken<string>(
+export const SDG_SEE_ALSO_LABELS = new InjectionToken<SeeAlsoLabels>(
   'SDG_SEE_ALSO_LABELS'
 );
-
-const TITLE = 'À consulter aussi';
 
 @Component({
   selector: 'sdg-see-also',
@@ -27,12 +25,12 @@ export class SeeAlsoComponent {
   readonly links = input.required<SeeAlsoLinks>();
   readonly files = input<SeeAlsoLinks>([]);
 
-  title = TITLE;
+  title = 'À consulter aussi';
 
   constructor() {
     const labelsOverride = inject(SDG_SEE_ALSO_LABELS);
     if (labelsOverride) {
-      this.title = labelsOverride;
+      this.title = labelsOverride.title;
     }
   }
 }

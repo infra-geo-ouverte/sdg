@@ -10,13 +10,11 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
-import { Anchor } from './anchor-menu.interface';
+import { Anchor, AnchorMenuLabels } from './anchor-menu.interface';
 
-export const SDG_ANCHOR_MENU_LABELS = new InjectionToken<string>(
+export const SDG_ANCHOR_MENU_LABELS = new InjectionToken<AnchorMenuLabels>(
   'SDG_ANCHOR_MENU_LABELS'
 );
-
-const TITLE = 'Dans cette page :';
 
 @Component({
   selector: 'sdg-anchor-menu',
@@ -28,7 +26,7 @@ const TITLE = 'Dans cette page :';
 export class AnchorMenuComponent implements OnInit {
   readonly anchors = input.required<Anchor[]>();
 
-  title = TITLE;
+  title = 'Dans cette page :';
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -36,7 +34,7 @@ export class AnchorMenuComponent implements OnInit {
   ) {
     const labelsOverride = inject(SDG_ANCHOR_MENU_LABELS);
     if (labelsOverride) {
-      this.title = labelsOverride;
+      this.title = labelsOverride.title;
     }
   }
 

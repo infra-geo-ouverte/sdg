@@ -27,10 +27,10 @@ export const TEST_CONFIG: TestModuleMetadata = {
     provideHttpClient(),
     provideHttpClientTesting(),
     provideAnimations(),
-    provideTranslatedLabels(SDG_ANCHOR_MENU_LABELS, 'sdg.anchorMenu.title'),
-    provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink.seeMore'),
-    provideTranslatedLabels(SDG_SEE_ALSO_LABELS, 'sdg.seeAlso.title'),
-    provideTranslatedLabels(SDG_HEADER_LABELS, 'sdg.header.contactUs'),
+    provideTranslatedLabels(SDG_ANCHOR_MENU_LABELS, 'sdg.anchorMenu'),
+    provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink'),
+    provideTranslatedLabels(SDG_SEE_ALSO_LABELS, 'sdg.seeAlso'),
+    provideTranslatedLabels(SDG_HEADER_LABELS, 'sdg.header'),
     provideTranslatedLabels(SDG_SEQUENTIAL_LINKS_LABELS, 'sdg.sequentialLinks'),
     { provide: TranslationService, useClass: MockTranslationService }
   ]

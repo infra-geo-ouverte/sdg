@@ -9,16 +9,14 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { Language, pathIsExternal } from '@igo2/sdg-core';
+import { pathIsExternal } from '@igo2/sdg-core';
 
 import { AnchorComponent } from '../../shared/anchor/anchor.component';
-import { BlockLinkSection } from '../block-link.interface';
+import { BlockLinkLabels, BlockLinkSection } from '../block-link.interface';
 
-export const SDG_BLOCK_LINK_LABELS = new InjectionToken<string>(
+export const SDG_BLOCK_LINK_LABELS = new InjectionToken<BlockLinkLabels>(
   'SDG_BLOCK_LINK_LABELS'
 );
-
-const SEE_MORE = 'Voir plus';
 
 @Component({
   selector: 'sdg-block-link-see-more',
@@ -29,7 +27,6 @@ const SEE_MORE = 'Voir plus';
 })
 export class BlockLinkSeeMoreComponent {
   readonly path = input.required<BlockLinkSection['path']>();
-  readonly language = input<Language>('fr');
 
   readonly externalPath: Signal<boolean | undefined> = computed(() => {
     if (!this.path()) {
@@ -38,12 +35,12 @@ export class BlockLinkSeeMoreComponent {
     return pathIsExternal(this.path());
   });
 
-  seeMore = SEE_MORE;
+  seeMore = 'Voir plus';
 
   constructor() {
     const labelsOverride = inject(SDG_BLOCK_LINK_LABELS);
     if (labelsOverride) {
-      this.seeMore = labelsOverride;
+      this.seeMore = labelsOverride.seeMore;
     }
   }
 }

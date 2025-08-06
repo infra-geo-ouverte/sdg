@@ -1,3 +1,7 @@
+export interface BlockLinkLabels {
+  seeMore: string;
+}
+
 export type BlockLinkSections = BlockLinkSection[];
 
 export interface BlockLinkSection {

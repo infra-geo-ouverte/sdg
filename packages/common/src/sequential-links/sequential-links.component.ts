@@ -16,9 +16,6 @@ import {
 export const SDG_SEQUENTIAL_LINKS_LABELS =
   new InjectionToken<SequentialLinksLabels>('SDG_SEQUENTIAL_LINKS_LABELS');
 
-const PREVIOUS = 'Précédent';
-const NEXT = 'Suivant';
-
 @Component({
   selector: 'sdg-sequential-links',
   imports: [MatIconModule],
@@ -30,8 +27,8 @@ export class SequentialLinksComponent {
   readonly previousLink = input<SequentialLink>();
   readonly nextLink = input<SequentialLink>();
 
-  previous = PREVIOUS;
-  next = NEXT;
+  previous = 'Précédent';
+  next = 'Suivant';
 
   constructor(
     private router: Router,

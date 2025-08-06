@@ -1,5 +1,6 @@
 import {
   EnvironmentProviders,
+  InjectionToken,
   Provider,
   Type,
   makeEnvironmentProviders
@@ -19,6 +20,22 @@ export interface TranslationFeature<KindT extends TranslationFeatureKind> {
 export enum TranslationFeatureKind {
   Translation = 0,
   RouterTitleResolver = 1
+}
+
+export function provideTranslatedLabels(
+  token: InjectionToken<unknown>,
+  key: string
+) {
+  return {
+    provide: token,
+    useFactory: (translationService: TranslationService) =>
+      labelsFactory(translationService, key),
+    deps: [TranslationService]
+  };
+}
+
+function labelsFactory(translationService: TranslationService, key: string) {
+  return translationService.get(key);
 }
 
 export function provideTranslation(

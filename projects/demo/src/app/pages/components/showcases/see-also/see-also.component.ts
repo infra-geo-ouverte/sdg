@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 
 import {
-  ConsultComponent,
-  ConsultLinks,
-  ExternalLinkComponent
+  ExternalLinkComponent,
+  SeeAlsoComponent,
+  SeeAlsoLinks
 } from '@igo2/sdg-common';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 
 @Component({
-  selector: 'app-consult',
-  imports: [ExampleViewerComponent, ExternalLinkComponent, ConsultComponent],
-  templateUrl: './consult.component.html',
-  styleUrl: './consult.component.scss'
+  selector: 'app-see-also',
+  imports: [ExampleViewerComponent, ExternalLinkComponent, SeeAlsoComponent],
+  templateUrl: './see-also.component.html',
+  styleUrl: './see-also.component.scss'
 })
-export class ConsultDemoComponent {
-  links: ConsultLinks = [
+export class SeeAlsoDemoComponent {
+  links: SeeAlsoLinks = [
     {
       label: "Page d'accueil",
       url: '/'

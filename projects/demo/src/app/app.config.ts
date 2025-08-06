@@ -10,8 +10,16 @@ import {
 import { provideIcon } from '@igo2/common/icon';
 import { withUrlDefaultLanguage } from '@igo2/core/language';
 import { provideMessage } from '@igo2/core/message';
-import { provideNavigationTitle } from '@igo2/sdg-common';
 import {
+  SDG_ANCHOR_MENU_LABELS,
+  SDG_BLOCK_LINK_LABELS,
+  SDG_HEADER_LABELS,
+  SDG_SEE_ALSO_LABELS,
+  SDG_SEQUENTIAL_LINKS_LABELS,
+  provideNavigationTitle
+} from '@igo2/sdg-common';
+import {
+  provideTranslatedLabels,
   provideTranslation,
   withIgo2Translation,
   withRouterTitleResolver
@@ -37,6 +45,11 @@ export const appConfig: ApplicationConfig = {
       separator: '·',
       suffix: 'Démo SDG'
     }),
-    provideIcon()
+    provideIcon(),
+    provideTranslatedLabels(SDG_ANCHOR_MENU_LABELS, 'sdg.anchorMenu'),
+    provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink'),
+    provideTranslatedLabels(SDG_SEE_ALSO_LABELS, 'sdg.seeAlso'),
+    provideTranslatedLabels(SDG_HEADER_LABELS, 'sdg.header'),
+    provideTranslatedLabels(SDG_SEQUENTIAL_LINKS_LABELS, 'sdg.sequentialLinks')
   ]
 };

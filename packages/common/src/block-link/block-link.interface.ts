@@ -1,3 +1,7 @@
+export interface BlockLinkLabels {
+  seeMore: string;
+}
+
 export type BlockLinkSections = BlockLinkSection[];
 
 export interface BlockLinkSection {
@@ -6,7 +10,6 @@ export interface BlockLinkSection {
   path: string;
   description?: string;
   subsections?: BlockLinkSubsection[];
-  seeMoreLabel: string;
 }
 
 export type BlockLinkSubsection = Pick<BlockLinkSection, 'title' | 'path'>;

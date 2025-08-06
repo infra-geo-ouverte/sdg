@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../test-config';
-import { ConsultComponent } from './consult.component';
+import { SeeAlsoComponent } from './see-also.component';
 
-describe('ConsultComponent', () => {
-  let component: ConsultComponent;
-  let fixture: ComponentFixture<ConsultComponent>;
+describe('SeeAlsoComponent', () => {
+  let component: SeeAlsoComponent;
+  let fixture: ComponentFixture<SeeAlsoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ConsultComponent],
+      imports: [SeeAlsoComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ConsultComponent);
+    fixture = TestBed.createComponent(SeeAlsoComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('links', [
       { label: 'test', url: 'https://www.google.com' }

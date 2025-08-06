@@ -1,8 +1,20 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  InjectionToken,
+  inject,
+  input
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { SequentialLink } from './sequential-links.interface';
+import {
+  SequentialLink,
+  SequentialLinksLabels
+} from './sequential-links.interface';
+
+export const SDG_SEQUENTIAL_LINKS_LABELS =
+  new InjectionToken<SequentialLinksLabels>('SDG_SEQUENTIAL_LINKS_LABELS');
 
 @Component({
   selector: 'sdg-sequential-links',
@@ -12,13 +24,22 @@ import { SequentialLink } from './sequential-links.interface';
   styleUrls: ['./sequential-links.component.scss']
 })
 export class SequentialLinksComponent {
-  readonly previous = input<SequentialLink>();
-  readonly next = input<SequentialLink>();
+  readonly previousLink = input<SequentialLink>();
+  readonly nextLink = input<SequentialLink>();
+
+  previous = 'Précédent';
+  next = 'Suivant';
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    const labelsOverride = inject(SDG_SEQUENTIAL_LINKS_LABELS);
+    if (labelsOverride) {
+      this.previous = labelsOverride.previous;
+      this.next = labelsOverride.next;
+    }
+  }
 
   goToLink(url: string) {
     this.router.navigate(['../', url], { relativeTo: this.activatedRoute });

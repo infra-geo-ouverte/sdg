@@ -5,12 +5,7 @@ import {
   BlockLinkSection,
   BlockLinkSections
 } from '@igo2/sdg-common';
-import {
-  SdgRoute,
-  SdgRoutes,
-  TitleResolverPipe,
-  TranslationService
-} from '@igo2/sdg-core';
+import { SdgRoute, SdgRoutes, TitleResolverPipe } from '@igo2/sdg-core';
 
 import { BasicScreenComponent } from '../../components';
 import { routes as routesCarto } from './showcases-carto/showcases-carto.routes';
@@ -27,10 +22,7 @@ export class ComponentsComponent {
   sections: BlockLinkSections;
   sectionsCarto: BlockLinkSections;
 
-  constructor(
-    private titleResolverPipe: TitleResolverPipe,
-    private translationService: TranslationService
-  ) {
+  constructor(private titleResolverPipe: TitleResolverPipe) {
     this.sections = this.setSections(routes, 'common');
     this.sectionsCarto = this.setSections(routesCarto, 'carto');
   }
@@ -50,8 +42,7 @@ export class ComponentsComponent {
           ...section,
           title: title,
           path: `../composants/showcases/${prefixSection}/${section.path}`,
-          description: section.description,
-          seeMoreLabel: this.translationService.get('seeMore')
+          description: section.description
         };
       });
   }

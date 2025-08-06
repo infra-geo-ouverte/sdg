@@ -1,4 +1,11 @@
-import { Component, Signal, input, output } from '@angular/core';
+import {
+  Component,
+  InjectionToken,
+  Signal,
+  inject,
+  input,
+  output
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -6,10 +13,14 @@ import { RouterLink } from '@angular/router';
 import { BreakpointService, Language } from '@igo2/sdg-core';
 
 import {
-  IHeaderContactUs,
+  HeaderLabels,
   IHeaderLanguageChoice,
   IHeaderLanguages
 } from './header.interface';
+
+export const SDG_HEADER_LABELS = new InjectionToken<HeaderLabels>(
+  'SDG_HEADER_LABELS'
+);
 
 @Component({
   selector: 'sdg-header',
@@ -19,7 +30,7 @@ import {
 })
 export class HeaderComponent {
   readonly title = input.required<string>();
-  readonly contactUs = input<IHeaderContactUs>();
+  readonly contactUsRoute = input<string>();
   readonly languages = input<IHeaderLanguages>();
   readonly currentLanguage = input<IHeaderLanguageChoice['key']>();
   readonly containerClass = input.required<string>();
@@ -28,8 +39,15 @@ export class HeaderComponent {
 
   isHandset: Signal<boolean>;
 
+  contactUs = 'Nous joindre';
+
   constructor(private breakpointService: BreakpointService) {
     this.isHandset = this.breakpointService.isHandset;
+
+    const labelsOverride = inject(SDG_HEADER_LABELS);
+    if (labelsOverride) {
+      this.contactUs = labelsOverride.contactUs;
+    }
   }
 
   get nextLanguage(): IHeaderLanguageChoice | undefined {

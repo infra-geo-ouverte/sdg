@@ -1,16 +1,16 @@
-<h3 class="sdg-consult-title">À consulter aussi</h3>
+<h3 class="sdg-see-also-title">{{ title }}</h3>
 
-<div class="sdg-consult-links">
+<div class="sdg-see-also-links">
   @for (link of links(); track link) {
     <a [routerLink]="link.url">{{ link.label }}</a>
   }
 </div>
 
 @if (files().length) {
-  <div class="sdg-consult-files">
+  <div class="sdg-see-also-files">
     @for (file of files(); track file) {
-      <div class="sdg-consult-file">
-        <mat-icon class="sdg-consult-file-icon" color="primary">
+      <div class="sdg-see-also-file">
+        <mat-icon class="sdg-see-also-file-icon" color="primary">
           <!-- icon name: draft -->
           <svg viewBox="0 -960 960 960">
             <path

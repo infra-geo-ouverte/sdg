@@ -21,5 +21,6 @@ export interface SiteMapLink {
 export interface FooterCopyright {
   logo: string;
   logoUrl: string;
+  copyrightUrl?: string;
   year?: number;
 }

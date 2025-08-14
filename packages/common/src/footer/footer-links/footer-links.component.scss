@@ -1,7 +1,8 @@
 .sdg-footer-links {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  column-gap: 32px;
+  gap: 8px 32px;
 
   &-link {
     font-size: 14px;

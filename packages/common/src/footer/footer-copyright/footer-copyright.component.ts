@@ -19,9 +19,9 @@ export class FooterCopyrightComponent {
   readonly containerClass = input<string>();
 
   readonly url = computed(
-    () => this.copyright().copyrightUrl || 'https://www.quebec.ca/droit-auteur'
+    () => this.copyright().copyrightUrl ?? 'https://www.quebec.ca/droit-auteur'
   );
   readonly year = computed(
-    () => this.copyright().year || new Date().getFullYear()
+    () => this.copyright().year ?? new Date().getFullYear()
   );
 }

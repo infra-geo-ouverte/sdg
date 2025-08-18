@@ -94,7 +94,7 @@ describe('GoogleAnalyticsService', () => {
       routerEvents.next(mockEvent);
 
       // Assert
-      expect(gtagSpy).toHaveBeenCalledWith('config', 'UA-123456789-1', {
+      expect(gtagSpy).toHaveBeenCalledWith('event', 'page_view', {
         page_path: '/test-page'
       });
     });

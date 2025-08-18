@@ -1,19 +1,9 @@
 import { DOCUMENT, isPlatformServer } from '@angular/common';
-import {
-  InjectionToken,
-  PLATFORM_ID,
-  inject,
-  provideAppInitializer
-} from '@angular/core';
+import { PLATFORM_ID, inject, provideAppInitializer } from '@angular/core';
 
 import { AnalyticsFeature, AnalyticsFeatureKind } from '../analytics.interface';
 import { IGoogleAnalyticsOptions } from './google-analytics.interface';
 import { GoogleAnalyticsService } from './google-analytics.service';
-
-export const GOOGLE_ANALYTICS_OPTIONS =
-  new InjectionToken<IGoogleAnalyticsOptions | null>(
-    'google-analytics.options'
-  );
 
 export function withGoogleAnalytics(
   options: IGoogleAnalyticsOptions
@@ -25,7 +15,6 @@ export function withGoogleAnalytics(
   return {
     kind: AnalyticsFeatureKind.GoogleAnalytic,
     providers: [
-      { provide: GOOGLE_ANALYTICS_OPTIONS, useValue: options },
       GoogleAnalyticsService,
       provideAppInitializer(() => {
         const platformId = inject(PLATFORM_ID);

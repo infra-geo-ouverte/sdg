@@ -2,10 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { ApplicationRef, PLATFORM_ID, inject } from '@angular/core';
 import { TestBed, fakeAsync, tick } from '@angular/core/testing';
 
-import {
-  GOOGLE_ANALYTICS_OPTIONS,
-  withGoogleAnalytics
-} from './google-analytics.provider';
+import { withGoogleAnalytics } from './google-analytics.provider';
 import { GoogleAnalyticsService } from './google-analytics.service';
 
 describe('withGoogleAnalytics', () => {
@@ -51,13 +48,6 @@ describe('withGoogleAnalytics', () => {
         { provide: DOCUMENT, useValue: doc },
         { provide: GoogleAnalyticsService, useValue: gaService }
       ]
-    });
-  });
-
-  it('should provide the GOOGLE_ANALYTICS_OPTIONS', () => {
-    TestBed.runInInjectionContext(() => {
-      const options = inject(GOOGLE_ANALYTICS_OPTIONS);
-      expect(options).toEqual({ targetId: mockTargetId });
     });
   });
 

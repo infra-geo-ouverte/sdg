@@ -1,10 +1,7 @@
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { Subscription, filter } from 'rxjs';
-
-import { IGoogleAnalyticsOptions } from './google-analytics.interface';
-import { GOOGLE_ANALYTICS_OPTIONS } from './google-analytics.provider';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 declare let gtag: Function;
@@ -15,10 +12,7 @@ declare let gtag: Function;
 export class GoogleAnalyticsService {
   private routerEvents$$?: Subscription;
 
-  constructor(
-    @Inject(GOOGLE_ANALYTICS_OPTIONS) private options: IGoogleAnalyticsOptions,
-    private router: Router
-  ) {}
+  constructor(private router: Router) {}
 
   initialize(): void {
     if (!gtag) {

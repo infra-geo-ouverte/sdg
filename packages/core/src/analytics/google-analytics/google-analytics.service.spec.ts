@@ -3,7 +3,6 @@ import { NavigationEnd, Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 
-import { GOOGLE_ANALYTICS_OPTIONS } from './google-analytics.provider';
 import { GoogleAnalyticsService } from './google-analytics.service';
 
 // The global gtag function is typically added to the window object by the Google Analytics script.
@@ -31,12 +30,6 @@ describe('GoogleAnalyticsService', () => {
     TestBed.configureTestingModule({
       providers: [
         GoogleAnalyticsService,
-        {
-          provide: GOOGLE_ANALYTICS_OPTIONS,
-          useValue: {
-            targetId: 'UA-123456789-1'
-          }
-        },
         {
           provide: Router,
           useValue: {

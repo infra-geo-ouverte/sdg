@@ -40,7 +40,7 @@ export class GoogleAnalyticsService {
     this.routerEvents$$ = this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
-        gtag!('config', this.options.targetId, {
+        gtag!('event', 'page_view', {
           page_path: event.urlAfterRedirects
         });
       });

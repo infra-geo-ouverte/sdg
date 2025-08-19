@@ -62,7 +62,12 @@ async function googleAnalyticsFactory(
       });
 
       gaService.initialize();
-      gaService.trackPageView();
+
+      /**
+       * Track the first page view but after we fallback on the default TagManager event. You can manage this event in the TagManger admin console.
+       * https://support.google.com/tagmanager/answer/7679319?hl=en&ref_topic=7679108&sjid=1071553345249084852-NA
+       */
+      gaService.trackFirstPageView();
 
       resolve(true);
     };

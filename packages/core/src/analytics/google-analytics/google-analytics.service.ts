@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
-import { Subscription, filter } from 'rxjs';
+import { Subscription, filter, first } from 'rxjs';
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 declare let gtag: Function;
@@ -24,7 +24,7 @@ export class GoogleAnalyticsService {
     gtag('event', eventName, eventParams);
   }
 
-  trackPageView(): void {
+  trackFirstPageView(): void {
     if (this.routerEvents$$) {
       throw new Error(
         'Page tracking is already instantiated for Google Analytics'
@@ -32,7 +32,10 @@ export class GoogleAnalyticsService {
     }
 
     this.routerEvents$$ = this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        first()
+      )
       .subscribe((event: NavigationEnd) => {
         gtag!('event', 'page_view', {
           page_path: event.urlAfterRedirects

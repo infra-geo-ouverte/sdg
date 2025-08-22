@@ -12,6 +12,22 @@
   containerClass="container"
   [exactPathMatch]="`/${currentLanguage()}`"
 >
+  <ng-container navigation-actions>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div mat-menu-item>
+        <mat-slide-toggle
+          labelPosition="before"
+          [checked]="isDarkMode()"
+          (click)="toggleTheme()"
+        >
+          Thème foncé
+        </mat-slide-toggle>
+      </div>
+    </mat-menu>
+  </ng-container>
   <router-outlet></router-outlet>
 </sdg-navigation>
 

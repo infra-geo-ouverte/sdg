@@ -1,0 +1,24 @@
+@use 'sass:meta';
+
+/// Include content under the current selector (&) or the document root if there is no current
+/// selector.
+/// @param {String} $root [html] The default root selector to use when there is no current selector.
+/// @output The given content under the current selector, or root selector if there is no current
+///     selector.
+/// @content Content to output under the current selector, or root selector if there is no current
+///     selector.
+@mixin current-selector-or-root($root: html) {
+  @if & {
+    @content;
+  } @else {
+    #{$root} {
+      @content;
+    }
+  }
+}
+
+// Returns whether the $value is a CSS variable name based on whether it's a string prefixed
+// by "--".
+@function is-css-var-name($value) {
+  @return meta.type-of($value) == string and string.index($value, '--') == 1;
+}

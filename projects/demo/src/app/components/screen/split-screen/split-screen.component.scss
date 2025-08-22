@@ -7,14 +7,14 @@ sdg-breadcrumbs-with-router {
 .split-screen {
   &-container {
     display: flex;
-    column-gap: sdg.spacing(desktop);
+    column-gap: var(--sdg-grid-spacing-max);
     flex: 1;
     @include sdg.media(laptop) {
-      column-gap: sdg.spacing(laptop);
+      column-gap: var(--sdg-spacer-md);
     }
 
     @include sdg.media(tablet) {
-      column-gap: sdg.spacing(tablet);
+      column-gap: var(--sdg-spacer-md);
     }
 
     @include sdg.media(mobile) {

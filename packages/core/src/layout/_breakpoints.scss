@@ -1,8 +1,8 @@
 @use 'sass:map';
 
 // https://design.quebec.ca/design/bases/grille-8px#c84016
-$breakpoints: (
-  small: (
+$grids: (
+  sm: (
     min-width: 0,
     max-width: 575px,
     container-max-width: container-max-width('mobile'),
@@ -10,7 +10,7 @@ $breakpoints: (
     spacing: 16px,
     margins: 8px
   ),
-  medium: (
+  md: (
     min-width: 576px,
     max-width: 767px,
     container-max-width: container-max-width('mobile-landscape'),
@@ -18,7 +18,7 @@ $breakpoints: (
     spacing: 16px,
     margins: 8px
   ),
-  large: (
+  lg: (
     min-width: 768px,
     max-width: 991px,
     container-max-width: container-max-width('tablet'),
@@ -26,7 +26,7 @@ $breakpoints: (
     spacing: 24px,
     margins: 12px
   ),
-  extra-large: (
+  xl: (
     min-width: 992px,
     max-width: 1199px,
     container-max-width: container-max-width('laptop'),
@@ -34,7 +34,7 @@ $breakpoints: (
     spacing: 24px,
     margins: 12px
   ),
-  maximum: (
+  max: (
     min-width: 1200px,
     max-width: 9999px,
     container-max-width: container-max-width('desktop'),
@@ -42,17 +42,32 @@ $breakpoints: (
     spacing: 32px,
     margins: 16px
   )
-);
-
-$max-content-width: 825px;
+) !default;
 
 $devices: (
-  mobile: 'small',
-  mobile-landscape: 'medium',
-  tablet: 'large',
-  laptop: 'extra-large',
-  desktop: 'maximum'
+  mobile: 'sm',
+  mobile-landscape: 'md',
+  tablet: 'lg',
+  laptop: 'xl',
+  desktop: 'max'
 );
+
+// Flattens a nested map, concatenating keys with '-' and returning a flat map.
+@function get-grid-tokens() {
+  $result: ();
+  @each $breakpoint, $valueMap in $grids {
+    @each $key, $value in $valueMap {
+      $full-key: $key + '-' + $breakpoint;
+      $result: map.merge(
+        $result,
+        (
+          $full-key: $value
+        )
+      );
+    }
+  }
+  @return $result;
+}
 
 @function breakpoint($device) {
   @return map.get($devices, $device);
@@ -61,46 +76,25 @@ $devices: (
 @function min-width($device) {
   $breakpoint: breakpoint($device);
   @if $breakpoint {
-    @return map.get($breakpoints, $breakpoint, min-width);
+    @return map.get($grids, $breakpoint, min-width);
   }
 }
 
 @function max-width($device) {
   $breakpoint: breakpoint($device);
   @if $breakpoint {
-    @return map.get($breakpoints, $breakpoint, max-width);
+    @return map.get($grids, $breakpoint, max-width);
   }
 }
 
 @function container-max-width($device) {
   $breakpoint: breakpoint($device);
-  $margins: map.get($breakpoints, $breakpoint, margins);
+  $margins: map.get($grids, $breakpoint, margins);
 
-  @if $breakpoint == 'small' {
-    @return calc(map.get($breakpoints, $breakpoint, max-width) - 2 * $margins);
+  @if $breakpoint == 'sm' {
+    @return calc(map.get($grids, $breakpoint, max-width) - 2 * $margins);
   } @else {
-    @return calc(map.get($breakpoints, $breakpoint, min-width) - 2 * $margins);
-  }
-}
-
-@function columns($device) {
-  $breakpoint: breakpoint($device);
-  @if $breakpoint {
-    @return map.get($breakpoints, $breakpoint, columns);
-  }
-}
-
-@function spacing($device) {
-  $breakpoint: breakpoint($device);
-  @if $breakpoint {
-    @return map.get($breakpoints, $breakpoint, spacing);
-  }
-}
-
-@function margins($device) {
-  $breakpoint: breakpoint($device);
-  @if $breakpoint {
-    @return map.get($breakpoints, $breapoint, margins);
+    @return calc(map.get($grids, $breakpoint, min-width) - 2 * $margins);
   }
 }
 
@@ -110,7 +104,7 @@ $devices: (
 @mixin media($device) {
   $breakpoint: breakpoint($device);
   @if $breakpoint {
-    $max-width: map.get($breakpoints, $breakpoint, max-width);
+    $max-width: map.get($grids, $breakpoint, max-width);
     @if $max-width {
       @media (max-width: $max-width) {
         @content;

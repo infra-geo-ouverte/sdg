@@ -1,9 +1,7 @@
-@use '@igo2/sdg-core' as sdg;
-
 :host {
   display: flex;
   flex-flow: column;
-  border: 1px solid sdg.$grey-light;
+  border: 1px solid var(--sdg-color-grey-light);
   padding: 24px 16px;
 }
 

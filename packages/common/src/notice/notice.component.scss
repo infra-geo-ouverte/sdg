@@ -2,8 +2,8 @@
 
 :host {
   display: flex;
-  background-color: sdg.$white;
-  border: 1px solid sdg.$grey-light;
+  background-color: var(--sdg-color-background);
+  border: 1px solid var(--sdg-color-grey-light);
 }
 
 .sdg-notice {
@@ -13,44 +13,44 @@
 
     &-icon {
       &.--general {
-        color: sdg.$blue-piv;
+        color: var(--sdg-color-blue-piv);
       }
 
       &.--warning {
-        color: sdg.$yellow-dark;
+        color: var(--sdg-color-yellow-dark);
       }
 
       &.--error {
-        color: sdg.$red-normal;
+        color: var(--sdg-color-red-normal);
       }
 
       &.--success {
-        color: sdg.$green-normal;
+        color: var(--sdg-color-green-normal);
       }
 
       &.--complementary {
-        color: sdg.$grey-700;
+        color: var(--sdg-palette-grey-700);
       }
     }
 
     &.--general {
-      background-color: sdg.$blue-pale;
+      background-color: var(--sdg-color-blue-pale);
     }
 
     &.--warning {
-      background-color: sdg.$yellow-pale;
+      background-color: var(--sdg-color-yellow-pale);
     }
 
     &.--error {
-      background-color: sdg.$pink-pale;
+      background-color: var(--sdg-color-pink-pale);
     }
 
     &.--success {
-      background-color: sdg.$green-pale;
+      background-color: var(--sdg-color-green-pale);
     }
 
     &.--complementary {
-      background-color: sdg.$grey-pale;
+      background-color: var(--sdg-color-grey-pale);
     }
   }
 
@@ -70,7 +70,7 @@
     }
 
     &-title {
-      font-family: sdg.$font-family-text !important;
+      font-family: var(--sdg-font-family-text) !important;
     }
   }
 }

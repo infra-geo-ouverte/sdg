@@ -5,10 +5,10 @@
   display: block;
 
   &.--general {
-    background-color: sdg.$blue-pale;
+    background-color: var(--sdg-color-blue-pale);
   }
   &.--warning {
-    background-color: sdg.$yellow-pale;
+    background-color: var(--sdg-color-yellow-pale);
   }
 }
 
@@ -33,7 +33,7 @@
     &.--general {
       @include mat.icon-overrides(
         (
-          color: sdg.$blue-piv
+          color: var(--sdg-color-blue-piv)
         )
       );
     }
@@ -41,7 +41,7 @@
     &.--warning {
       @include mat.icon-overrides(
         (
-          color: sdg.$yellow-dark
+          color: var(--sdg-color-yellow-dark)
         )
       );
     }
@@ -53,7 +53,7 @@
     font-weight: 600;
 
     @include sdg.media(mobile) {
-      font-family: sdg.$font-family-text;
+      font-family: var(--sdg-font-family-text);
       font-size: 14px;
     }
   }

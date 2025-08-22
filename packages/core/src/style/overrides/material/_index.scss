@@ -1,6 +1,17 @@
 @use './button';
 @use './dialog';
+@use './divider';
 @use './form-field';
+@use './icon';
 @use './input';
+@use './sidenav';
 
-@forward './index-theme' as override-material-*;
+@mixin overrides() {
+  @include button.overrides();
+  @include dialog.overrides();
+  @include divider.overrides();
+  @include form-field.overrides();
+  @include icon.overrides();
+  @include input.overrides();
+  @include sidenav.overrides();
+}

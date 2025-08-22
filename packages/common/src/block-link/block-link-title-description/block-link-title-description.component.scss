@@ -24,7 +24,7 @@ sdg-anchor ::ng-deep a {
 
 .sdg-block-link {
   &-title {
-    color: sdg.$blue-piv;
+    color: var(--sdg-color-blue-piv);
     margin: 0 !important;
     text-decoration: none;
 
@@ -38,7 +38,7 @@ sdg-anchor ::ng-deep a {
     }
 
     &.--no-description {
-      color: sdg.$blue-dark;
+      color: var(--sdg-color-blue-dark);
     }
   }
 

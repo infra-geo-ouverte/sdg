@@ -1,14 +1,14 @@
 @use '@igo2/sdg-core' as sdg;
 
 :host {
-  background-color: sdg.$blue-piv;
+  background-color: var(--sdg-palette-blue-600);
 }
 
 .sdg-header {
   &-container {
     display: flex;
     flex-flow: column;
-    background-color: sdg.$blue-piv;
+    background-color: var(--sdg-palette-blue-600);
   }
 
   &-content {
@@ -37,15 +37,17 @@
       &-title {
         display: flex;
         align-items: center;
-        column-gap: calc(sdg.spacing(desktop) * 2);
+        column-gap: calc(var(--sdg-grid-spacing-max) * 2);
         flex-grow: 1;
       }
     }
 
     &-title {
-      font-family: sdg.$font-family-title; // override font family to title
+      font-family: var(
+        --sdg-font-family-title
+      ); // override font family to title
       line-height: 20px;
-      color: sdg.$white;
+      color: var(--sdg-color-white);
       text-decoration: none;
       display: -webkit-box;
       -webkit-line-clamp: 3;
@@ -88,11 +90,13 @@
 
       &-language,
       &-contact-us {
-        font-family: sdg.$font-family-title; // override font family to title
+        font-family: var(
+          --sdg-font-family-title
+        ); // override font family to title
         font-size: 12px;
         white-space: nowrap;
         line-height: 20px;
-        color: sdg.$white;
+        color: var(--sdg-color-white);
         text-decoration: none;
 
         &:hover {

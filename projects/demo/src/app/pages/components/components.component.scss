@@ -4,30 +4,30 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 48px sdg.spacing(desktop);
+  gap: 48px var(--sdg-grid-spacing-max);
 
   @include sdg.media(laptop) {
-    column-gap: sdg.spacing(laptop);
+    column-gap: var(--sdg-spacer-md);
   }
 
   @include sdg.media(tablet) {
-    column-gap: sdg.spacing(tablet);
+    column-gap: var(--sdg-spacer-md);
   }
 
   &-container {
     padding: 48px 0;
-    background-color: sdg.$blue-pale;
+    background-color: var(--sdg-color-blue-pale);
   }
 
   & > * {
-    flex-basis: calc(100% / 3 - sdg.spacing(desktop));
+    flex-basis: calc(100% / 3 - var(--sdg-grid-spacing-max));
 
     @include sdg.media(laptop) {
-      flex-basis: calc(100% / 3 - sdg.spacing(laptop));
+      flex-basis: calc(100% / 3 - var(--sdg-spacer-md));
     }
 
     @include sdg.media(tablet) {
-      flex-basis: calc(100% / 2 - sdg.spacing(tablet));
+      flex-basis: calc(100% / 2 - var(--sdg-spacer-md));
     }
 
     @include sdg.media(mobile) {

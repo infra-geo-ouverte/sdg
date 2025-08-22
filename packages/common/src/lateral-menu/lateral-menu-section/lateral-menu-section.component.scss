@@ -3,7 +3,7 @@
 .sdg-lateral-menu-section {
   display: flex;
   flex-flow: column;
-  border-bottom: 1px solid sdg.$grey-light;
+  border-bottom: 1px solid var(--sdg-color-grey-light);
 
   @include sdg.media(mobile) {
     border: none;
@@ -25,7 +25,7 @@
       flex-grow: 1;
       text-align: start;
       font-size: 14px;
-      color: sdg.$blue-piv;
+      color: var(--sdg-color-blue-piv);
 
       @include sdg.media(mobile) {
         font-size: 16px;
@@ -37,11 +37,11 @@
     }
 
     &:hover:not(.--active-section) {
-      background-color: rgba(sdg.$blue-pale, 0.5);
+      background-color: rgba(var(--sdg-color-blue-pale), 0.5);
     }
 
     &.--active-section {
-      background-color: sdg.$blue-pale;
+      background-color: var(--sdg-color-blue-pale);
     }
   }
 
@@ -50,7 +50,7 @@
     flex-direction: column;
 
     @include sdg.media(mobile) {
-      background-color: sdg.$blue-pale;
+      background-color: var(--sdg-color-blue-pale);
       padding-left: 24px;
     }
   }

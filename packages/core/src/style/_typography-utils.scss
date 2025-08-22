@@ -1,0 +1,23 @@
+@use 'sass:math';
+
+$percent-root-font-size: 100 !default;
+$rem-ratio: math.div(1, 0.16 * $percent-root-font-size);
+
+@function rem($px-size) {
+  @return $px-size * $rem-ratio * 1rem;
+}
+
+@function rem-ratio($px-size) {
+  @return math.div($px-size, 16 * $percent-root-font-size * 0.01) * 1rem;
+}
+
+@mixin title-border {
+  &:after {
+    content: '';
+    display: block;
+    margin: 0;
+    width: 48px;
+    padding-top: 4px;
+    border-bottom: 4px solid var(--sdg-color-pink-normal);
+  }
+}

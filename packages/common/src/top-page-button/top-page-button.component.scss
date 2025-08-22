@@ -1,30 +1,28 @@
-@use 'sass:color';
 @use '@angular/material' as mat;
-@use '@igo2/sdg-core' as sdg;
 
 button {
   visibility: hidden;
   opacity: 0;
-  box-shadow: 0 1px 4px color.adjust(sdg.$blue-dark, $alpha: -0.76);
+  box-shadow: var(--sdg-elevation-1);
   transition:
     visibility 0.3s,
     opacity 0.3s linear;
 
   &:hover,
   &:active {
-    box-shadow: 0 1px 4px color.adjust(sdg.$blue-dark, $alpha: -0.76);
+    box-shadow: var(--sdg-elevation-1);
   }
 
   &:focus {
-    box-shadow: 0 2px 8px color.adjust(sdg.$blue-dark, $alpha: -0.76);
-    border: 2px solid sdg.$blue-dark;
-    outline: 2px solid sdg.$blue-light;
+    box-shadow: var(--sdg-elevation-2);
+    border: 2px solid var(--sdg-color-blue-dark);
+    outline: 2px solid var(--sdg-color-blue-light);
   }
 
   &:hover {
     @include mat.fab-overrides(
       (
-        state-layer-color: sdg.$blue-normal,
+        state-layer-color: var(--sdg-color-blue-normal),
         hover-state-layer-opacity: 1,
         focus-state-layer-opacity: 1
       )

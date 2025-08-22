@@ -1,7 +1,15 @@
 import { DOCUMENT } from '@angular/common';
-import { Component, Inject, OnInit, WritableSignal } from '@angular/core';
+import {
+  Component,
+  Inject,
+  OnInit,
+  WritableSignal,
+  signal
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
 import { IgoLanguageModule } from '@igo2/core/language';
@@ -39,6 +47,8 @@ import { AppTranslationService } from './config/translation/translation.service'
     RouterOutlet,
     MatButtonModule,
     MatIconModule,
+    MatMenuModule,
+    MatSlideToggleModule,
     IgoLanguageModule,
     FooterComponent,
     TopPageButtonComponent
@@ -52,6 +62,8 @@ export class AppComponent implements OnInit {
   contactUsRoute: string | undefined;
   links: INavigationLinks;
   siteMapLinks: SiteMapLinks;
+
+  isDarkMode = signal(false);
 
   copyright = this.config.footer.copyright;
 
@@ -83,6 +95,18 @@ export class AppComponent implements OnInit {
 
   handleLanguageChange(lang: string): void {
     this.translationService.setLanguage(lang as Language);
+  }
+
+  toggleTheme(): void {
+    const isDark = this.isDarkMode();
+
+    this.document.body.classList[isDark ? 'remove' : 'add']('dark-mode');
+    this.document.documentElement.style.setProperty(
+      'color-scheme',
+      isDark ? 'light' : 'dark'
+    );
+
+    this.isDarkMode.update((value) => !value);
   }
 
   private getLinks(): INavigationLinks {

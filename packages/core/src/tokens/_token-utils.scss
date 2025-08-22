@@ -1,0 +1,79 @@
+/**
+ * Most of the code is inspired or from @angular/material
+ * https://github.com/angular/components/tree/main/src/material/core/tokens/_token-utils.scss
+ */
+
+@use 'sass:map';
+@use '../style/sass-utils';
+
+// Creates a CSS variable, including the fallback if provided.
+@function _create-var($name, $fallback: null) {
+  @if ($fallback) {
+    @return var($name, $fallback);
+  } @else {
+    @return var($name);
+  }
+}
+
+// Returns the token slot value.
+// Accepts an optional fallback parameter to include in the CSS variable.
+// If $fallback is `true`, then use the tokens map to get the fallback.
+@function slot($token, $fallbacks, $fallback: null) {
+  // Fallbacks are a map of base, color, typography, and density tokens. To simplify
+  // lookup, flatten these token groups into a single map.
+  $fallbacks-flattened: ();
+  @each $tokens in map.values($fallbacks) {
+    @each $token, $value in $tokens {
+      $fallbacks-flattened: map.set($fallbacks-flattened, $token, $value);
+    }
+  }
+  @if not map.has-key($fallbacks-flattened, $token) {
+    @error 'Token #{$token} does not exist. Configured tokens are:' +
+        #{map.keys($fallbacks-flattened)};
+  }
+
+  $sys-fallback: map.get($fallbacks-flattened, $token);
+  @if (sass-utils.is-css-var-name($sys-fallback)) {
+    $sys-fallback: _create-var($sys-fallback, $fallback);
+  }
+
+  @return _create-var(--sdg-#{$token}, $sys-fallback);
+}
+
+// Outputs a map of token values as CSS variable definitions.
+@mixin values($tokens) {
+  @include sass-utils.current-selector-or-root() {
+    @each $key, $value in $tokens {
+      @if $value != null {
+        --sdg-#{$key}: #{$value};
+      }
+    }
+  }
+}
+
+// Flattens a nested map, concatenating keys with '-' and returning a flat map.
+@function flatten-tokens-map($map, $prefix: '') {
+  $result: ();
+  @each $key, $value in $map {
+    $full-key: if($prefix != '', $prefix + '-' + $key, $key);
+    @if type-of($value) == 'map' {
+      $nested: flatten-tokens-map($value, $full-key);
+      @each $nkey, $nvalue in $nested {
+        $result: map.merge(
+          $result,
+          (
+            $nkey: $nvalue
+          )
+        );
+      }
+    } @else {
+      $result: map.merge(
+        $result,
+        (
+          $full-key: $value
+        )
+      );
+    }
+  }
+  @return $result;
+}

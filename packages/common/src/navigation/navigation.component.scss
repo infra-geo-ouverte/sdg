@@ -1,7 +1,10 @@
 @use '@igo2/sdg-core' as sdg;
+@use '@angular/material' as mat;
 
 $row-height-desktop: 72px;
 $row-height-mobile: 40px;
+$font-size: 18px;
+$font-size-mobile: 13px;
 
 :host {
   display: block; // add default display to be sure that the host resize listener will work
@@ -11,8 +14,8 @@ $row-height-mobile: 40px;
   &-header {
     --tab-inner-spacing: 16px;
 
-    color: sdg.$white;
-    background-color: sdg.$blue-medium;
+    color: var(--sdg-color-white);
+    background-color: var(--sdg-palette-blue-650);
     width: 100%;
 
     &-container {
@@ -66,6 +69,14 @@ $row-height-mobile: 40px;
         .mat-mdc-icon-button {
           margin-left: 4px;
         }
+
+        .mdc-icon-button {
+          @include mat.icon-button-overrides(
+            (
+              icon-color: var(--sdg-color-white)
+            )
+          );
+        }
       }
     }
 
@@ -73,31 +84,22 @@ $row-height-mobile: 40px;
       --tab-inner-spacing: 8px;
     }
 
-    .mdc-tab {
-      --mdc-secondary-navigation-tab-container-height: #{$row-height-desktop};
-
-      min-width: fit-content;
-      padding: 0 var(--tab-inner-spacing);
-
-      &:hover,
-      &.--active {
-        --mat-tab-header-active-ripple-color: none;
-        --mat-tab-header-inactive-ripple-color: none;
-
-        ::ng-deep {
-          .mdc-tab-indicator__content {
-            width: calc(100% - var(--tab-inner-spacing)) !important;
-          }
-        }
+    ::ng-deep {
+      .mat-mdc-tab-links {
+        align-items: center;
       }
 
-      @include sdg.media(mobile) {
-        --mdc-secondary-navigation-tab-container-height: #{$row-height-mobile};
+      .mdc-tab__text-label {
+        color: var(--sdg-color-white) !important;
       }
-    }
 
-    ::ng-deep .mat-mdc-tab-links {
-      align-items: center;
+      .mdc-tab-indicator__content--underline {
+        border-color: var(--sdg-color-blue-pale) !important;
+      }
+
+      .mat-mdc-tab-link-container {
+        border: none;
+      }
     }
   }
 
@@ -118,16 +120,9 @@ $row-height-mobile: 40px;
 
   &-tab-link,
   &-more-links {
-    $font-size: 18px;
     letter-spacing: 0;
     font-size: $font-size;
     font-weight: 500; // The spec said 600 but for now we like this actual font-weight
-
-    button {
-      --mdc-filled-button-container-height: 40px;
-      --mdc-filled-button-label-text-weight: 500;
-      --mdc-filled-button-label-text-size: $font-size;
-    }
 
     &.--active {
       font-weight: bold;
@@ -141,11 +136,6 @@ $row-height-mobile: 40px;
     }
 
     @include sdg.media(mobile) {
-      $font-size-mobile: 13px;
-      button {
-        --mdc-filled-button-container-height: 24px;
-        --mdc-filled-button-label-text-size: $font-size-mobile;
-      }
       font-size: $font-size-mobile;
     }
   }
@@ -157,8 +147,8 @@ $row-height-mobile: 40px;
     button {
       padding: 0 calc($spacing-half / 2) 0 $spacing-half;
       min-width: fit-content !important;
-      background-color: sdg.$blue-pale !important;
-      color: sdg.$blue-piv !important;
+      background-color: var(--sdg-color-blue-pale) !important;
+      color: var(--sdg-color-blue-piv) !important;
     }
 
     mat-icon {
@@ -184,5 +174,60 @@ $row-height-mobile: 40px;
 
   &-content {
     flex: 1 1 auto !important;
+  }
+}
+
+.mdc-button {
+  @include mat.button-overrides(
+    (
+      filled-container-height: 40px,
+      filled-label-text-weight: 500,
+      filled-label-text-size: $font-size
+    )
+  );
+
+  @include sdg.media(mobile) {
+    @include mat.button-overrides(
+      (
+        filled-container-height: 24px,
+        filled-label-text-size: $font-size-mobile
+      )
+    );
+  }
+}
+
+.mdc-tab {
+  min-width: fit-content;
+  padding: 0 var(--tab-inner-spacing);
+
+  @include mat.tabs-overrides(
+    (
+      active-indicator-height: 4px,
+      container-height: $row-height-desktop
+    )
+  );
+
+  &:hover,
+  &.--active {
+    @include mat.tabs-overrides(
+      (
+        active-ripple-color: none,
+        inactive-ripple-color: none
+      )
+    );
+
+    ::ng-deep {
+      .mdc-tab-indicator__content {
+        width: calc(100% - var(--tab-inner-spacing)) !important;
+      }
+    }
+  }
+
+  @include sdg.media(mobile) {
+    @include mat.tabs-overrides(
+      (
+        container-height: $row-height-mobile
+      )
+    );
   }
 }

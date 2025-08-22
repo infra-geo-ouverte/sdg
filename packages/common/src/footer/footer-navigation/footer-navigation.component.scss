@@ -1,7 +1,5 @@
-@use '@igo2/sdg-core' as sdg;
-
 :host {
-  background-color: sdg.$blue-medium;
+  background-color: var(--sdg-palette-blue-650);
 }
 
 .sdg-footer-navigation {
@@ -20,7 +18,7 @@
 
   &-title,
   &-site-map-link {
-    color: sdg.$white;
+    color: var(--sdg-color-white);
     text-decoration: none;
 
     &:hover {

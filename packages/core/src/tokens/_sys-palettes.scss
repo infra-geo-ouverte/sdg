@@ -1,0 +1,72 @@
+@use 'sass:color';
+
+@use './token-utils';
+
+$dark-blue: #223654;
+
+// https://design.quebec.ca/bases/couleurs
+$palettes: (
+  'blue': (
+    100: #dae6f0,
+    150: #c6dbee,
+    200: #adcdeb,
+    300: #72b2eb,
+    350: #4a98d9,
+    400: #3b95e1,
+    500: #0078cc,
+    550: #1472bf,
+    600: #095797,
+    650: #19406c,
+    700: #223654,
+    800: #162b47
+  ),
+  'grey': (
+    100: #f1f1f2,
+    150: #d7d8dd,
+    200: #c5cad2,
+    300: #a7acbc,
+    350: #8893a2,
+    400: #8590a8,
+    450: #6b778a,
+    500: #6a7688,
+    600: #4e5662,
+    700: #3b424c,
+    850: #1c2025,
+    900: #121519
+  ),
+  'red': (
+    50: #ffdbd6,
+    200: #f3bcb6,
+    300: #e58271,
+    350: #f17b6c,
+    400: #f26049,
+    500: #cb381f,
+    550: #bb3a23,
+    700: #692519,
+    800: #4f180e
+  ),
+  'green': (
+    100: #d7f0bb,
+    200: #b0d493,
+    400: #6e9c57,
+    500: #4f813d,
+    600: #2c4024,
+    800: #1e2f17
+  ),
+  'yellow': (
+    100: #f8e69a,
+    400: #e0ad03,
+    450: #ac7900,
+    600: #ad781c,
+    650: #6d4512,
+    800: #3f240c
+  ),
+  'violet': (
+    300: #b3a5d4,
+    500: #6b4fa1
+  )
+);
+
+@function sys-palette-values() {
+  @return token-utils.flatten-tokens-map($palettes, 'palette');
+}

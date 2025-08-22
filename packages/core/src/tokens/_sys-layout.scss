@@ -1,0 +1,56 @@
+@use './token-utils';
+@use '../layout/breakpoints';
+@use '../style/typography-utils' as *;
+
+@function sys-layout-values() {
+  $base-spacer: 8 !default;
+
+  $values: (
+    max-content-width: 825px,
+    spacer: (
+      // base scale
+      // 8px
+      xs: rem(1 * $base-spacer),
+      // 16px
+      sm: rem(2 * $base-spacer),
+      // 24px
+      md: rem(3 * $base-spacer),
+      // 48px
+      lg: rem(6 * $base-spacer),
+      // 96px
+      xl: rem(12 * $base-spacer),
+      section: var(--sdg-spacer-xl),
+      // prefixes : m -> margin, p -> padding, t -> top, b -> bottom, l -> left, r -> right
+      // x -> horizontal i.e. left and right, y -> vertical i.e. top and bottom
+      // mt -> margin top
+      h1: (
+          // 72px
+          mt: rem(9 * $base-spacer),
+          mb: rem(4 * $base-spacer)
+        ),
+      h2: (
+        mt: var(--sdg-spacer-lg),
+        mb: var(--sdg-spacer-sm)
+      ),
+      h3: (
+        mt: var(--sdg-spacer-md),
+        mb: var(--sdg-spacer-sm)
+      ),
+      h4: (
+        mt: var(--sdg-spacer-md),
+        mb: var(--sdg-spacer-xs)
+      ),
+      h5: (
+        mt: var(--sdg-spacer-sm),
+        mb: 0
+      ),
+      h6: (
+        mt: var(--sdg-spacer-sm),
+        mb: 0
+      )
+    ),
+    grid: breakpoints.get-grid-tokens()
+  );
+
+  @return token-utils.flatten-tokens-map($values);
+}

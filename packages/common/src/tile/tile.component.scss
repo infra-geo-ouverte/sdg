@@ -1,4 +1,3 @@
-@use 'sass:color';
 @use '@igo2/sdg-core' as sdg;
 
 .sdg-tile {
@@ -6,9 +5,9 @@
     display: flex;
     flex-flow: column;
     row-gap: 4px;
-    border: 1px solid sdg.$grey-light;
-    background-color: sdg.$white;
-    box-shadow: 0px 1px 4px color.adjust(sdg.$blue-dark, $alpha: -0.76);
+    border: 1px solid var(--sdg-color-grey-light);
+    background-color: var(--sdg-color-background);
+    box-shadow: var(--sdg-elevation-2);
     padding: 32px 24px 24px 24px;
     width: fit-content;
     min-width: 200px;
@@ -16,8 +15,8 @@
     cursor: pointer;
 
     &:hover {
-      border: 1px solid sdg.$blue-normal;
-      box-shadow: 0px 2px 8px color.adjust(sdg.$blue-dark, $alpha: -0.76);
+      border: 1px solid var(--sdg-color-blue-normal);
+      box-shadow: var(--sdg-elevation-2);
     }
 
     &:hover .sdg-tile-arrow {
@@ -34,7 +33,7 @@
 
   &-title {
     font-size: 18px;
-    color: sdg.$blue-dark;
+    color: var(--sdg-color-blue-dark);
 
     &.--no-message {
       text-align: center;
@@ -57,7 +56,7 @@
   }
 
   &-icon {
-    color: sdg.$blue-dark;
+    color: var(--sdg-color-blue-dark);
     flex-shrink: 0;
     width: 40px;
     height: 40px;
@@ -65,7 +64,7 @@
   }
 
   &-message {
-    color: sdg.$blue-dark;
+    color: var(--sdg-color-blue-dark);
     text-align: left;
     flex-grow: 1;
     font-size: 14px;

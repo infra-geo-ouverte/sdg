@@ -1,15 +1,13 @@
-@use '@igo2/sdg-core' as sdg;
-
 .sdg-anchor-menu-container {
   display: flex;
   flex-flow: column;
   row-gap: 16px;
-  max-width: sdg.$max-content-width;
+  max-width: var(--sdg-max-content-width);
   margin: 24px 0px;
-  border-top: 1px solid sdg.$grey-light;
-  border-bottom: 1px solid sdg.$grey-light;
+  border-top: 1px solid var(--sdg-color-grey-light);
+  border-bottom: 1px solid var(--sdg-color-grey-light);
   padding: 32px;
-  background-color: #f7f7f7;
+  background-color: var(--sdg-color-grey-pale);
 }
 
 a {

@@ -6,6 +6,7 @@ li {
   display: flex;
   align-items: center;
   line-height: 24px;
+  font-size: var(--sdg-font-size-xs);
 
   &.--last {
     font-weight: 600;
@@ -18,7 +19,7 @@ li {
 
 li,
 a {
-  color: sdg.$blue-dark;
+  color: var(--sdg-color-blue-dark);
   font-weight: 300;
 }
 
@@ -31,7 +32,7 @@ a {
 
   @include sdg.media(mobile) {
     font-size: 12px !important;
-    color: sdg.$blue-piv;
+    color: var(--sdg-color-blue-piv);
   }
 }
 

@@ -1,5 +1,3 @@
-@use '@igo2/sdg-core' as sdg;
-
 .sdg-paginator {
   &-button,
   &-page,
@@ -13,22 +11,22 @@
     cursor: pointer;
 
     &:focus {
-      outline: 2px solid sdg.$blue-light;
+      outline: 2px solid var(--sdg-color-blue-light);
     }
 
     &:hover {
       outline: none;
-      background-color: sdg.$grey-pale;
+      background-color: var(--sdg-color-grey-pale);
     }
 
     &:active {
       outline: none;
-      background-color: sdg.$blue-pale;
+      background-color: var(--sdg-color-blue-pale);
     }
 
     &.--active {
       outline: none;
-      color: sdg.$blue-dark;
+      color: var(--sdg-color-blue-dark);
       font-weight: bold;
       cursor: default;
 
@@ -45,11 +43,11 @@
 
   &-page {
     font-size: 16px;
-    color: sdg.$blue-piv;
+    color: var(--sdg-color-blue-piv);
   }
 
   &-ellipsis {
-    color: sdg.$blue-dark;
+    color: var(--sdg-color-blue-dark);
     cursor: default;
 
     &:hover {

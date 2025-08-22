@@ -9,8 +9,7 @@
   },
   "exports": {
     ".": {
-      "import": "./src/public-api.ts",
-      "sass": "./src/_index.scss"
+      "import": "./src/public-api.ts"
     }
   },
   "scripts": {

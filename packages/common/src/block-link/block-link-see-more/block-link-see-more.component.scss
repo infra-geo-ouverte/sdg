@@ -1,11 +1,9 @@
-@use '@igo2/sdg-core' as sdg;
-
 sdg-anchor ::ng-deep a {
   display: flex;
   align-items: center;
   column-gap: 4px;
   font-size: 14px;
-  color: sdg.$blue-piv;
+  color: var(--sdg-color-blue-piv);
   margin: 0 !important;
   text-decoration: none;
 

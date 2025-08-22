@@ -1,0 +1,7 @@
+@mixin overrides() {
+  .igo-panel-header,
+  .igo-panel-header button,
+  .igo-panel-title {
+    color: var(--sdg-color-blue-piv) !important;
+  }
+}

@@ -1,8 +1,6 @@
-@use '@igo2/sdg-core' as sdg;
-
 :host {
   display: block;
-  background-color: sdg.$blue-pale;
+  background-color: var(--sdg-color-blue-pale);
 }
 
 .charter-banner-container {

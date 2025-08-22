@@ -1,5 +1,4 @@
 @use '@angular/material' as mat;
-@use '@igo2/sdg-core' as sdg;
 
 :host {
   button {
@@ -7,7 +6,8 @@
 
     @include mat.fab-overrides(
       (
-        small-container-color: sdg.$white
+        small-container-color: var(--sdg-color-background),
+        small-foreground-color: var(--sdg-color-blue-piv)
       )
     );
   }

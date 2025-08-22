@@ -1,6 +1,9 @@
 @use './list';
 @use './panel';
 @use './search-bar';
-@use './scrollbar';
 
-@forward './index-theme' as override-igo2-lib-*;
+@mixin overrides() {
+  @include list.overrides();
+  @include panel.overrides();
+  @include search-bar.overrides();
+}

@@ -1,0 +1,29 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-icon {
+    &.mat-accent {
+      @include mat.icon-overrides(
+        (
+          color: var(--sdg-color-pink-normal)
+        )
+      );
+    }
+
+    &.mat-primary {
+      @include mat.icon-overrides(
+        (
+          color: var(--sdg-color-blue-piv)
+        )
+      );
+    }
+
+    &.mat-warn {
+      @include mat.icon-overrides(
+        (
+          color: var(--sdg-color-red-normal)
+        )
+      );
+    }
+  }
+}

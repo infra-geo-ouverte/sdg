@@ -21,9 +21,9 @@ executor('Cleaning package.json exports', async () => {
 async function compileBaseStyle(): Promise<void> {
   const startTime = performance.now();
   const baseUrl = 'src/layout';
-  const input = resolvePackage('core', baseUrl, 'layout.scss');
+  const input = resolvePackage('core', baseUrl, 'bootstrap-layout.scss');
   const output = resolveDist('core', baseUrl);
-  await compileStyle(input, output, 'layout.scss');
+  await compileStyle(input, output, 'bootstrap-layout.scss');
 
   const duration = getDuration(startTime);
   log.success(`✔ Compile base style in ${duration}`);

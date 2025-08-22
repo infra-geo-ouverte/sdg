@@ -1,3 +1,1 @@
-@forward './colors';
-@forward './palettes';
-@forward './theme';
+@forward './material' as material-*;

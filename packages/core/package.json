@@ -13,7 +13,7 @@
       "sass": "./src/_index.scss"
     },
     "./layout": {
-      "sass": "./src/layout/layout.scss"
+      "sass": "./src/layout/bootstrap-layout.scss"
     }
   },
   "scripts": {

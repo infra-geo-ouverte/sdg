@@ -4,10 +4,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 48px sdg.spacing(desktop);
+  gap: 48px var(--sdg-grid-spacing-max);
 
   & > * {
-    flex-basis: calc(100% / 2 - sdg.spacing(desktop));
+    flex-basis: calc(100% / 2 - var(--sdg-grid-spacing-max));
 
     @include sdg.media(mobile) {
       flex-basis: 100%;

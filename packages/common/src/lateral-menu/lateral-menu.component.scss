@@ -1,5 +1,3 @@
-@use '@igo2/sdg-core' as sdg;
-
 :host {
   display: flex;
   flex-direction: column;
@@ -16,22 +14,22 @@
     font-weight: bold;
     padding: 16px 8px;
     margin: 0;
-    border-bottom: 1px solid sdg.$grey-light;
+    border-bottom: 1px solid var(--sdg-color-grey-light);
 
     &-mobile {
       display: flex;
       align-items: center;
       border: none;
-      background-color: sdg.$blue-pale;
+      background-color: var(--sdg-color-blue-pale);
       padding: 8px;
       cursor: pointer;
     }
 
     &-text-mobile {
       flex-grow: 1;
-      font-family: sdg.$font-family-text;
+      font-family: var(--sdg-font-family-text);
       font-size: 16px;
-      color: sdg.$blue-piv;
+      color: var(--sdg-color-blue-piv);
       margin: 0;
       text-align: left;
       font-weight: bold;

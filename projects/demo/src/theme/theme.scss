@@ -1,29 +1,13 @@
 @use '@angular/material' as mat;
 
-@use '@igo2/core/theming/material-theme-override' as igo-material-theme-override;
-@use '@igo2/core/theme' as igo-core;
-@use '@igo2/common/theme' as igo-common;
-@use '@igo2/sdg-core';
-@use '@igo2/sdg-common';
-@use '../app/components/components-theme' as app-components;
+@use '@igo2/sdg-core' as sdg;
 
-$theme: sdg-core.$theme;
+html {
+  color-scheme: light;
 
-@include mat.elevation-classes();
-@include mat.app-background();
-@include mat.typography-hierarchy(sdg-core.$typography);
-@include mat.all-component-themes($theme);
+  @include mat.theme(sdg.$material-theme);
 
-@include igo-material-theme-override.material-override($theme);
-@include igo-core.core-component-themes($theme);
-@include igo-common.common-component-themes($theme);
-
-@include sdg-core.themes($theme);
-@include sdg-common.themes($theme);
-@include app-components.themes($theme);
-
-@include sdg-core.media(mobile) {
-  @include mat.typography-hierarchy(sdg-core.$typography-mobile);
+  @include sdg.theme();
 }
 
-@include sdg-core.typo-set-base-styles();
+@include sdg.typo-set-base-styles();

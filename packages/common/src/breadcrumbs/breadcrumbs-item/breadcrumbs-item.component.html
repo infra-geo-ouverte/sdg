@@ -1,10 +1,8 @@
-<li [class.--last]="last()" class="mat-body-2">
+<li [class.--last]="last()">
   @if (last() && !isHandset()) {
     {{ breadcrumb().title }}
   } @else {
-    <a class="mat-body-2" [routerLink]="breadcrumb().url">{{
-      breadcrumb().title
-    }}</a>
+    <a [routerLink]="breadcrumb().url">{{ breadcrumb().title }}</a>
     <mat-icon [inline]="true">
       <!-- icon name: chevron_left -->
       <svg height="18px" viewBox="0 -960 960 960" width="12px">

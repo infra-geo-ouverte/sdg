@@ -1,0 +1,111 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mdc-button {
+    $height: 56px;
+    $font-size: var(--sdg-font-size-md);
+    $border-radius: 0;
+    $horizontal-padding: 16px;
+
+    min-width: calc($height * 2) !important;
+    max-width: 360px;
+    line-height: var(--sdg-line-height-md) !important;
+
+    @include mat.button-overrides(
+      (
+        filled-container-height: $height,
+        filled-label-text-size: $font-size,
+        filled-label-text-weight: bold,
+        filled-container-shape: $border-radius,
+        filled-horizontal-padding: $horizontal-padding,
+        outlined-container-height: $height,
+        outlined-label-text-size: $font-size,
+        outlined-label-text-weight: bold,
+        outlined-container-shape: $border-radius,
+        outlined-horizontal-padding: $horizontal-padding,
+        protected-container-height: $height,
+        protected-label-text-size: $font-size,
+        protected-label-text-weight: bold,
+        protected-container-shape: $border-radius,
+        protected-horizontal-padding: $horizontal-padding,
+        text-container-height: $height,
+        text-label-text-size: $font-size,
+        text-label-text-weight: bold,
+        text-container-shape: $border-radius,
+        text-horizontal-padding: $horizontal-padding
+      )
+    );
+
+    &[compact] {
+      $height: 40px;
+      @include mat.button-overrides(
+        (
+          filled-container-height: $height,
+          outlined-container-height: $height,
+          protected-container-height: $height,
+          text-container-height: $height
+        )
+      );
+
+      min-width: calc($height * 2) !important;
+    }
+
+    &.mat-warn {
+      @include mat.button-overrides(
+        (
+          filled-container-color: var(--sdg-color-red-normal)
+        )
+      );
+    }
+    &.mat-primary {
+      @include mat.button-overrides(
+        (
+          filled-container-color: var(--sdg-color-blue-piv)
+        )
+      );
+    }
+  }
+
+  .mdc-icon-button {
+    &.mat-warn {
+      @include mat.icon-button-overrides(
+        (
+          icon-color: var(--sdg-color-red-normal)
+        )
+      );
+    }
+    &.mat-primary {
+      @include mat.icon-button-overrides(
+        (
+          icon-color: var(--sdg-color-blue-piv)
+        )
+      );
+    }
+  }
+
+  .mat-mdc-outlined-button {
+    border-color: currentColor !important;
+    border-width: 2px !important;
+
+    &[compact] {
+      border-width: 1px !important;
+    }
+  }
+
+  .mdc-fab {
+    $background: var(--sdg-color-blue-piv);
+    $foreground: var(--sdg-color-white);
+    $border-radius: 0;
+
+    @include mat.fab-overrides(
+      (
+        container-color: $background,
+        container-shape: $border-radius,
+        foreground-color: $foreground,
+        small-container-color: $background,
+        small-container-shape: $border-radius,
+        small-foreground-color: $foreground
+      )
+    );
+  }
+}

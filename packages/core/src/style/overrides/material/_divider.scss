@@ -1,0 +1,9 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  @include mat.divider-overrides(
+    (
+      color: rgba(0, 0, 0, 0.12)
+    )
+  );
+}

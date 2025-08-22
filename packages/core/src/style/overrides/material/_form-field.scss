@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-text-field-wrapper,
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__trailing {
+    border-radius: 0 !important;
+  }
+
+  @include mat.form-field-overrides(
+    (
+      outlined-outline-color: rgba(0, 0, 0, 0.38)
+    )
+  );
+}

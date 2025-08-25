@@ -7,9 +7,7 @@
     <span class="sdg-lateral-menu-route-title-text-mobile">{{ title() }}</span>
     <mat-icon
       color="primary"
-      [@openCloseArrow]="
-        lateralMenuService.isMenuOpened() ? 'opened' : 'closed'
-      "
+      [@openCloseArrow]="lateralMenuService.opened() ? 'opened' : 'closed'"
     >
       <!-- icon name: keyboard_arrow_down -->
       <svg viewBox="0 -960 960 960">
@@ -24,7 +22,7 @@
 <div
   class="sdg-lateral-menu-sections"
   [@openCloseSection]="
-    lateralMenuService.isMenuOpened() || !isHandset() ? 'opened' : 'closed'
+    lateralMenuService.opened() || !isHandset() ? 'opened' : 'closed'
   "
 >
   @for (item of sections(); track item) {

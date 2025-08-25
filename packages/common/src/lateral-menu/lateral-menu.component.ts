@@ -69,8 +69,6 @@ export class LateralMenuComponent {
   }
 
   toggle(): void {
-    this.lateralMenuService.isMenuOpened.set(
-      !this.lateralMenuService.isMenuOpened()
-    );
+    this.lateralMenuService.toggle();
   }
 }

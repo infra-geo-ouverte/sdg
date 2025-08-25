@@ -4,5 +4,13 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class LateralMenuService {
-  isMenuOpened = signal<boolean>(false);
+  opened = signal<boolean>(false);
+
+  close(): void {
+    this.opened.set(false);
+  }
+
+  toggle(): void {
+    this.opened.update((value) => !value);
+  }
 }

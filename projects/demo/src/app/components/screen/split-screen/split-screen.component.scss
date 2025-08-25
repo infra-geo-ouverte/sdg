@@ -10,11 +10,11 @@ sdg-breadcrumbs-with-router {
     column-gap: var(--sdg-grid-spacing-max);
     flex: 1;
     @include sdg.media(laptop) {
-      column-gap: var(--sdg-spacer-md);
+      column-gap: var(--sdg-grid-spacing-xl);
     }
 
     @include sdg.media(tablet) {
-      column-gap: var(--sdg-spacer-md);
+      column-gap: var(--sdg-grid-spacing-lg);
     }
 
     @include sdg.media(mobile) {

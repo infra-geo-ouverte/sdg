@@ -5,7 +5,7 @@
 @use './sass-utils';
 @use '../tokens/sys-palettes';
 
-$values: (
+$shadow-elevations: (
   0: '0px 0px 0px 0px',
   1: '0px 1px 4px 0px ',
   2: '0px 2px 8px 0px',
@@ -17,12 +17,12 @@ $values: (
 $color: map.get(sys-palettes.$palettes, 'blue', 700) !default;
 
 // Applies the correct css rules to an element to give it the elevation specified by $zValue.
-// The $zValue must be between 0 and 24.
+// The $zValue must be between 0 and 4.
 @mixin elevation($zValue, $color: $color, $opacity: null) {
   box-shadow: get-box-shadow($zValue, $color, $opacity);
 }
 
-@function get-box-shadow($zValue, $opacity: null) {
+@function get-box-shadow($zValue, $shadow-color: $color, $opacity: null) {
   @if $zValue == null {
     @return null;
   }
@@ -39,10 +39,10 @@ $color: map.get(sys-palettes.$palettes, 'blue', 700) !default;
     @error '$zValue must be between 0 and 4, but received `#{$zValue}`';
   }
 
-  $z-value: map.get($values, $zValue);
-  $shadow-color: _compute-color-opacity($color, 0.24);
+  $z-value: map.get($shadow-elevations, $zValue);
+  $color: _compute-color-opacity($shadow-color, 0.24);
 
-  @return string.unquote('#{$z-value} #{$shadow-color}');
+  @return string.unquote('#{$z-value} #{$color}');
 }
 
 @function _compute-color-opacity($color, $opacity) {

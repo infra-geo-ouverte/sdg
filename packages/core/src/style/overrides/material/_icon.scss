@@ -1,6 +1,11 @@
 @use '@angular/material' as mat;
 
 @mixin overrides() {
+  @include color-variants-backwards-compatibility();
+}
+
+// Material custom color variants backwards compatibility
+@mixin color-variants-backwards-compatibility() {
   .mat-icon {
     &.mat-accent {
       @include mat.icon-overrides(

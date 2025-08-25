@@ -49,7 +49,40 @@
 
       min-width: calc($height * 2) !important;
     }
+  }
 
+  .mat-mdc-outlined-button {
+    border-color: currentColor !important;
+    border-width: 2px !important;
+
+    &[compact] {
+      border-width: 1px !important;
+    }
+  }
+
+  .mdc-fab {
+    $background: var(--sdg-color-blue-piv);
+    $foreground: var(--sdg-color-white);
+    $border-radius: 0;
+
+    @include mat.fab-overrides(
+      (
+        container-color: $background,
+        container-shape: $border-radius,
+        foreground-color: $foreground,
+        small-container-color: $background,
+        small-container-shape: $border-radius,
+        small-foreground-color: $foreground
+      )
+    );
+  }
+
+  @include color-variants-backwards-compatibility();
+}
+
+// Material custom color variants backwards compatibility
+@mixin color-variants-backwards-compatibility() {
+  .mdc-button {
     &.mat-warn {
       @include mat.button-overrides(
         (
@@ -81,31 +114,5 @@
         )
       );
     }
-  }
-
-  .mat-mdc-outlined-button {
-    border-color: currentColor !important;
-    border-width: 2px !important;
-
-    &[compact] {
-      border-width: 1px !important;
-    }
-  }
-
-  .mdc-fab {
-    $background: var(--sdg-color-blue-piv);
-    $foreground: var(--sdg-color-white);
-    $border-radius: 0;
-
-    @include mat.fab-overrides(
-      (
-        container-color: $background,
-        container-shape: $border-radius,
-        foreground-color: $foreground,
-        small-container-color: $background,
-        small-container-shape: $border-radius,
-        small-foreground-color: $foreground
-      )
-    );
   }
 }

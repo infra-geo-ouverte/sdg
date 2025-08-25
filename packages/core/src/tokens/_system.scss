@@ -9,14 +9,16 @@
 @use './sys-typography';
 @use './token-utils';
 
-@mixin theme() {
+@mixin theme($withDarkMode: false) {
   @include _system-colors();
   @include _system-typographies();
   @include _system-layout();
   @include _system-level-elevation();
 
-  body.dark-mode {
-    @include _system-dark-colors();
+  @if ($withDarkMode) {
+    body.dark-mode {
+      @include _system-dark-colors();
+    }
   }
 
   body {

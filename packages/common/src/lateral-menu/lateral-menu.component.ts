@@ -67,8 +67,4 @@ export class LateralMenuComponent {
   ) {
     this.isHandset = this.breakpointService.isHandset;
   }
-
-  toggle(): void {
-    this.lateralMenuService.toggle();
-  }
 }

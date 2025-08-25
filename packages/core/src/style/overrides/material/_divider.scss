@@ -1,9 +1,11 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
+@use '../../../tokens/sys-colors';
 
 @mixin overrides() {
   @include mat.divider-overrides(
     (
-      color: rgba(0, 0, 0, 0.12)
+      color: rgba(map.get(sys-colors.$light-colors, 'black'), 0.12)
     )
   );
 }

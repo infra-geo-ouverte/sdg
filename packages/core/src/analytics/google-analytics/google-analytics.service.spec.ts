@@ -44,7 +44,6 @@ describe('GoogleAnalyticsService', () => {
   // Reset the spy after each test
   afterEach(() => {
     gtagSpy.calls.reset();
-    (window as any).gtag?.calls.reset();
   });
 
   describe('initialize', () => {

@@ -1,4 +1,6 @@
+@use 'sass:map';
 @use '@angular/material' as mat;
+@use '../../../tokens/sys-colors';
 
 @mixin overrides() {
   .mat-mdc-text-field-wrapper,
@@ -9,7 +11,10 @@
 
   @include mat.form-field-overrides(
     (
-      outlined-outline-color: rgba(0, 0, 0, 0.38)
+      outlined-outline-color: rgba(
+          map.get(sys-colors.$light-colors, 'black'),
+          0.38
+        )
     )
   );
 }

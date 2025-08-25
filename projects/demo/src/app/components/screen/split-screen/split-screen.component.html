@@ -6,12 +6,12 @@
 
 <div class="container split-screen-container">
   <div class="split-screen-lateral-menu">
-    <ng-content select="[left-slot]"></ng-content>
+    <ng-content select="[left-slot]" />
   </div>
   <div class="split-screen-content">
     @if (title()) {
       <h1>{{ title() }}</h1>
     }
-    <ng-content></ng-content>
+    <ng-content />
   </div>
 </div>

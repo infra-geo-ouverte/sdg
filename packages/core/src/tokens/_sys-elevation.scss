@@ -4,7 +4,7 @@
 @function sys-elevation-values() {
   $result: ();
 
-  @each $key, $value in elevation.$values {
+  @each $key, $value in elevation.$shadow-elevations {
     $result: map.merge(
       $result,
       (

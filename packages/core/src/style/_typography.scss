@@ -134,6 +134,6 @@
 @mixin header-font($header) {
   font-size: var(--sdg-font-size-#{$header});
   line-height: var(--sdg-line-height-#{$header});
-  margin-top: var(--sdg-spacer-#{$header}-mt) !important;
-  margin-bottom: var(--sdg-spacer-#{$header}-mb) !important;
+  margin-top: var(--sdg-title-margin-#{$header}-mt) !important;
+  margin-bottom: var(--sdg-title-margin-#{$header}-mb) !important;
 }

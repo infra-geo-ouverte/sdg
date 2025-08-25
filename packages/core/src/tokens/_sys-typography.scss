@@ -56,6 +56,34 @@ $typography: (
     md: var(--sdg-line-height-100),
     lg: var(--sdg-line-height-120),
     xl: var(--sdg-line-height-200)
+  ),
+  title: (
+    margin: (
+      h1: (
+        mt: var(--sdg-spacer-72),
+        mb: var(--sdg-spacer-32)
+      ),
+      h2: (
+        mt: var(--sdg-spacer-lg),
+        mb: var(--sdg-spacer-sm)
+      ),
+      h3: (
+        mt: var(--sdg-spacer-md),
+        mb: var(--sdg-spacer-sm)
+      ),
+      h4: (
+        mt: var(--sdg-spacer-md),
+        mb: var(--sdg-spacer-xs)
+      ),
+      h5: (
+        mt: var(--sdg-spacer-sm),
+        mb: 0
+      ),
+      h6: (
+        mt: var(--sdg-spacer-sm),
+        mb: 0
+      )
+    )
   )
 );
 

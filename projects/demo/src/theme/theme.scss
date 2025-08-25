@@ -7,7 +7,7 @@ html {
 
   @include mat.theme(sdg.$material-theme);
 
-  @include sdg.theme();
+  @include sdg.theme(true);
 }
 
 @include sdg.typo-set-base-styles();

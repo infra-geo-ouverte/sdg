@@ -6,7 +6,7 @@
 
 .sdg-sequential-links {
   &-arrow {
-    color: var(--sdg-color-blue-dark);
+    color: var(--sdg-color-text);
     font-variation-settings: 'wght' 350;
   }
 
@@ -57,7 +57,7 @@
 
   &-title {
     font-weight: bold;
-    color: var(--sdg-color-blue-dark);
+    color: var(--sdg-color-text);
   }
 
   &-text {

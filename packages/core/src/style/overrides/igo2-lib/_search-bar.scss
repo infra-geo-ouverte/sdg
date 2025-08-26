@@ -52,7 +52,7 @@
   igo-search-results {
     igo-collapsible {
       .mdc-list-item__primary-text {
-        color: var(--sdg-color-blue-dark);
+        color: var(--sdg-color-text);
         font-weight: bold;
       }
     }
@@ -64,7 +64,7 @@
     }
 
     .mdc-list-item--with-leading-icon .mdc-list-item__start {
-      color: var(--sdg-color-blue-dark);
+      color: var(--sdg-color-text);
     }
   }
 }

@@ -26,7 +26,7 @@
 
     &.--active {
       outline: none;
-      color: var(--sdg-color-blue-dark);
+      color: var(--sdg-color-text);
       font-weight: bold;
       cursor: default;
 
@@ -47,7 +47,7 @@
   }
 
   &-ellipsis {
-    color: var(--sdg-color-blue-dark);
+    color: var(--sdg-color-text);
     cursor: default;
 
     &:hover {

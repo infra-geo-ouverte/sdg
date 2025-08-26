@@ -10,7 +10,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   Signal,
-  input
+  input,
+  signal
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -19,7 +20,6 @@ import { BreakpointService } from '@igo2/sdg-core';
 import { LateralMenuItemComponent } from './lateral-menu-item/lateral-menu-item.component';
 import { LateralMenuSectionComponent } from './lateral-menu-section/lateral-menu-section.component';
 import { LateralMenuSections } from './lateral-menu.interface';
-import { LateralMenuService } from './lateral-menu.service';
 
 @Component({
   selector: 'sdg-lateral-menu',
@@ -60,11 +60,9 @@ export class LateralMenuComponent {
   readonly sections = input.required<LateralMenuSections>();
 
   isHandset: Signal<boolean>;
+  opened = signal<boolean>(false);
 
-  constructor(
-    private breakpointService: BreakpointService,
-    public lateralMenuService: LateralMenuService
-  ) {
+  constructor(private breakpointService: BreakpointService) {
     this.isHandset = this.breakpointService.isHandset;
   }
 }

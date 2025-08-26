@@ -2,12 +2,12 @@
   <button
     mat-icon-button
     class="sdg-lateral-menu-route-title-mobile"
-    (click)="lateralMenuService.toggle()"
+    (click)="opened.set(!opened())"
   >
     <span class="sdg-lateral-menu-route-title-text-mobile">{{ title() }}</span>
     <mat-icon
       color="primary"
-      [@openCloseArrow]="lateralMenuService.opened() ? 'opened' : 'closed'"
+      [@openCloseArrow]="opened() ? 'opened' : 'closed'"
     >
       <!-- icon name: keyboard_arrow_down -->
       <svg viewBox="0 -960 960 960">
@@ -21,15 +21,21 @@
 
 <div
   class="sdg-lateral-menu-sections"
-  [@openCloseSection]="
-    lateralMenuService.opened() || !isHandset() ? 'opened' : 'closed'
-  "
+  [@openCloseSection]="opened() || !isHandset() ? 'opened' : 'closed'"
 >
   @for (item of sections(); track item) {
     @if (item.items) {
-      <sdg-lateral-menu-section [section]="item" />
+      <sdg-lateral-menu-section
+        [section]="item"
+        [menuOpened]="opened()"
+        (menuOpenedChange)="this.opened.set($event)"
+      />
     } @else {
-      <sdg-lateral-menu-item [item]="item" />
+      <sdg-lateral-menu-item
+        [item]="item"
+        [menuOpened]="opened()"
+        (menuOpenedChange)="this.opened.set($event)"
+      />
     }
   }
 </div>

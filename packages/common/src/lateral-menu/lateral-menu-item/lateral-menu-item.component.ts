@@ -1,8 +1,12 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  model
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { LateralMenuItem } from '../lateral-menu.interface';
-import { LateralMenuService } from '../lateral-menu.service';
 
 @Component({
   selector: 'sdg-lateral-menu-item',
@@ -14,6 +18,5 @@ import { LateralMenuService } from '../lateral-menu.service';
 export class LateralMenuItemComponent {
   readonly item = input.required<LateralMenuItem>();
   readonly isSectionItem = input<boolean>();
-
-  constructor(public lateralMenuService: LateralMenuService) {}
+  readonly menuOpened = model.required<boolean>();
 }

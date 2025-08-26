@@ -5,6 +5,6 @@
   routerLinkActive="--active-item"
   [routerLinkActiveOptions]="{ exact: true }"
   [routerLink]="item().path"
-  (click)="lateralMenuService.close()"
+  (click)="menuOpened.set(false)"
   >{{ item().title }}
 </a>

@@ -33,7 +33,7 @@
 
   &-title {
     font-size: 18px;
-    color: var(--sdg-color-blue-dark);
+    color: var(--sdg-color-text);
 
     &.--no-message {
       text-align: center;
@@ -56,7 +56,7 @@
   }
 
   &-icon {
-    color: var(--sdg-color-blue-dark);
+    color: var(--sdg-color-text);
     flex-shrink: 0;
     width: 40px;
     height: 40px;
@@ -64,7 +64,7 @@
   }
 
   &-message {
-    color: var(--sdg-color-blue-dark);
+    color: var(--sdg-color-text);
     text-align: left;
     flex-grow: 1;
     font-size: 14px;

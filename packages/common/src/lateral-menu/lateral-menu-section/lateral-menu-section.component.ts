@@ -11,6 +11,7 @@ import {
   Component,
   OnInit,
   input,
+  model,
   signal
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -53,6 +54,7 @@ import { LateralMenuItem } from '../lateral-menu.interface';
 })
 export class LateralMenuSectionComponent implements OnInit {
   readonly section = input.required<LateralMenuItem>();
+  readonly menuOpened = model.required<boolean>();
 
   opened = signal(false);
 

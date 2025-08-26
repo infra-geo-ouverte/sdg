@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  model
+} from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 import { LateralMenuItem } from '../lateral-menu.interface';
@@ -13,4 +18,5 @@ import { LateralMenuItem } from '../lateral-menu.interface';
 export class LateralMenuItemComponent {
   readonly item = input.required<LateralMenuItem>();
   readonly isSectionItem = input<boolean>();
+  readonly menuOpened = model.required<boolean>();
 }

@@ -2,7 +2,7 @@
   <button
     mat-icon-button
     class="sdg-lateral-menu-route-title-mobile"
-    (click)="toggle()"
+    (click)="opened.set(!opened())"
   >
     <span class="sdg-lateral-menu-route-title-text-mobile">{{ title() }}</span>
     <mat-icon
@@ -25,9 +25,9 @@
 >
   @for (item of sections(); track item) {
     @if (item.items) {
-      <sdg-lateral-menu-section [section]="item" />
+      <sdg-lateral-menu-section [section]="item" [(menuOpened)]="opened" />
     } @else {
-      <sdg-lateral-menu-item [item]="item" />
+      <sdg-lateral-menu-item [item]="item" [(menuOpened)]="opened" />
     }
   }
 </div>

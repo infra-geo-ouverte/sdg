@@ -27,7 +27,11 @@
     [@openCloseSection]="opened() ? 'opened' : 'closed'"
   >
     @for (item of section().items; track item) {
-      <sdg-lateral-menu-item [item]="item" [isSectionItem]="true" />
+      <sdg-lateral-menu-item
+        [item]="item"
+        [isSectionItem]="true"
+        [(menuOpened)]="menuOpened"
+      />
     }
   </div>
 </div>

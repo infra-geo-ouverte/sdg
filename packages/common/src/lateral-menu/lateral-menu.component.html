@@ -25,17 +25,9 @@
 >
   @for (item of sections(); track item) {
     @if (item.items) {
-      <sdg-lateral-menu-section
-        [section]="item"
-        [menuOpened]="opened()"
-        (menuOpenedChange)="this.opened.set($event)"
-      />
+      <sdg-lateral-menu-section [section]="item" [(menuOpened)]="opened" />
     } @else {
-      <sdg-lateral-menu-item
-        [item]="item"
-        [menuOpened]="opened()"
-        (menuOpenedChange)="this.opened.set($event)"
-      />
+      <sdg-lateral-menu-item [item]="item" [(menuOpened)]="opened" />
     }
   }
 </div>

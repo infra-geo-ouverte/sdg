@@ -30,8 +30,7 @@
       <sdg-lateral-menu-item
         [item]="item"
         [isSectionItem]="true"
-        [menuOpened]="menuOpened()"
-        (menuOpenedChange)="this.menuOpened.set($event)"
+        [(menuOpened)]="menuOpened"
       />
     }
   </div>

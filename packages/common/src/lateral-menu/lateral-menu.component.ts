@@ -11,7 +11,7 @@ import {
   Component,
   Signal,
   input,
-  signal
+  model
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -60,7 +60,7 @@ export class LateralMenuComponent {
   readonly sections = input.required<LateralMenuSections>();
 
   isHandset: Signal<boolean>;
-  opened = signal<boolean>(false);
+  opened = model<boolean>(false);
 
   constructor(private breakpointService: BreakpointService) {
     this.isHandset = this.breakpointService.isHandset;

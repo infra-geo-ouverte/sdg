@@ -44,8 +44,8 @@ export class SdgOlMap implements ISdgMap<olMap> {
     return this.engine.getView();
   }
 
-  setInitialExtent(): void {
-    this.initialExtent = this.getExtent();
+  setInitialExtent(extent?: Extent): void {
+    this.initialExtent = extent ? extent : this.getExtent();
   }
 
   getExtent(): Extent {

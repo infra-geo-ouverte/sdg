@@ -1,0 +1,109 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-radio-button {
+    $font-size: var(--sdg-font-size-md);
+    $line-height: var(--sdg-line-height-md);
+    $disabled-color: var(--sdg-color-grey-light);
+    $unselected-color: var(--sdg-color-blue-dark);
+    $selected-color: var(--sdg-color-blue-normal);
+
+    $radio-button-size: 24px;
+
+    @include mat.radio-overrides(
+      (
+        label-text-size: $font-size,
+        label-text-line-height: $line-height,
+        label-text-color: $unselected-color,
+
+        ripple-color: transparent,
+        checked-ripple-color: transparent,
+
+        disabled-label-color: $disabled-color,
+        disabled-unselected-icon-color: $disabled-color,
+        disabled-unselected-icon-opacity: 1,
+        disabled-selected-icon-color: $disabled-color,
+        disabled-selected-icon-opacity: 1,
+
+        unselected-icon-color: $unselected-color,
+        unselected-hover-icon-color: $unselected-color,
+        unselected-focus-icon-color: $selected-color,
+        unselected-pressed-icon-color: $selected-color,
+
+        selected-icon-color: $selected-color,
+        selected-hover-icon-color: $selected-color,
+        selected-focus-icon-color: $selected-color,
+        selected-pressed-icon-color: $selected-color,
+
+        state-layer-size: $radio-button-size
+      )
+    );
+
+    .mdc-radio {
+      height: $radio-button-size;
+      width: $radio-button-size;
+
+      .mdc-radio__native-control:checked
+        + .mdc-radio__background
+        > .mdc-radio__inner-circle {
+        transform: scale(0.6);
+      }
+
+      .mdc-radio__background {
+        position: absolute;
+        height: $radio-button-size;
+        width: $radio-button-size;
+
+        .mdc-radio__inner-circle {
+          border-width: calc($radio-button-size / 2);
+        }
+      }
+    }
+
+    .mat-mdc-radio-touch-target {
+      height: $radio-button-size;
+      width: $radio-button-size;
+    }
+
+    .mdc-form-field {
+      column-gap: 8px;
+
+      .mdc-label {
+        padding: 0;
+      }
+    }
+
+    &[compact] {
+      $radio-button-size: 16px;
+
+      @include mat.radio-overrides(
+        (
+          state-layer-size: $radio-button-size
+        )
+      );
+
+      .mdc-radio {
+        height: $radio-button-size;
+        width: $radio-button-size;
+
+        .mdc-radio__background {
+          height: $radio-button-size;
+          width: $radio-button-size;
+
+          .mdc-radio__inner-circle {
+            border-width: calc($radio-button-size / 2);
+          }
+
+          .mdc-radio__outer-circle {
+            border-width: 1px;
+          }
+        }
+      }
+
+      .mat-mdc-radio-touch-target {
+        height: $radio-button-size;
+        width: $radio-button-size;
+      }
+    }
+  }
+}

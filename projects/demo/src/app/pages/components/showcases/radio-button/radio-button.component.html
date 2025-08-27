@@ -1,0 +1,81 @@
+<p>
+  <span
+    >Le <b>bouton radio</b>, ou case d'option, permet à l'utilisateur de choisir
+    une seule option dans une liste. Pour plus d'information, voir le
+  </span>
+  <span
+    ><sdg-external-link
+      text="Bouton radio"
+      url="https://design.quebec.ca/design/composants/formulaire/bouton-radio"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer title="Bouton radio" codeFolder="radio-button">
+  <div class="radio-button-container">
+    <mat-radio-group
+      ><mat-radio-button
+        [checked]="checked()"
+        [disabled]="disabled()"
+        value="normal"
+        (change)="checked.set(true)"
+        >Ceci est un bouton radio</mat-radio-button
+      >
+    </mat-radio-group>
+
+    <div class="buttons">
+      <button
+        compact
+        mat-stroked-button
+        color="primary"
+        (click)="this.disabled.set(!this.disabled())"
+      >
+        {{ disabled() ? 'Activer' : 'Désactiver' }}
+      </button>
+      <button
+        compact
+        mat-stroked-button
+        color="primary"
+        [disabled]="!checked()"
+        (click)="this.checked.set(!this.checked())"
+      >
+        Décocher
+      </button>
+    </div>
+  </div>
+</app-example-viewer>
+
+<app-example-viewer title="Bouton radio compact" codeFolder="radio-button">
+  <div class="radio-button-container">
+    <mat-radio-group>
+      <mat-radio-button
+        compact
+        [checked]="checkedCompact()"
+        [disabled]="disabledCompact()"
+        value="compact"
+        (change)="checkedCompact.set(true)"
+        >Ceci est un bouton radio compact</mat-radio-button
+      >
+    </mat-radio-group>
+
+    <div class="buttons">
+      <button
+        compact
+        mat-stroked-button
+        color="primary"
+        (click)="this.disabledCompact.set(!this.disabledCompact())"
+      >
+        {{ disabledCompact() ? 'Activer' : 'Désactiver' }}
+      </button>
+      <button
+        compact
+        mat-stroked-button
+        color="primary"
+        [disabled]="!checkedCompact()"
+        (click)="this.checkedCompact.set(!this.checkedCompact())"
+      >
+        Décocher
+      </button>
+    </div>
+  </div>
+</app-example-viewer>

@@ -1,19 +1,25 @@
 @use '@angular/material' as mat;
 
 @mixin overrides() {
+  .mat-mdc-radio-group {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
+  }
+
   .mat-mdc-radio-button {
-    $font-size: var(--sdg-font-size-md);
-    $line-height: var(--sdg-line-height-md);
     $disabled-color: var(--sdg-color-grey-light);
     $unselected-color: var(--sdg-color-blue-dark);
     $selected-color: var(--sdg-color-blue-normal);
 
     $radio-button-size: 24px;
+    $size-with-padding: calc($radio-button-size + 4px);
 
     @include mat.radio-overrides(
       (
-        label-text-size: $font-size,
-        label-text-line-height: $line-height,
+        label-text-size: var(--sdg-font-size-md),
+        label-text-line-height: var(--sdg-font-size-md),
+        // same as font size to avoid extra space above and below
         label-text-color: $unselected-color,
 
         ripple-color: transparent,
@@ -35,13 +41,16 @@
         selected-focus-icon-color: $selected-color,
         selected-pressed-icon-color: $selected-color,
 
-        state-layer-size: $radio-button-size
+        state-layer-size: $size-with-padding
       )
     );
 
     .mdc-radio {
       height: $radio-button-size;
       width: $radio-button-size;
+      padding: calc(
+        (var(--mdc-radio-state-layer-size, 40px) - $radio-button-size) / 2
+      );
 
       .mdc-radio__native-control:checked
         + .mdc-radio__background
@@ -50,7 +59,6 @@
       }
 
       .mdc-radio__background {
-        position: absolute;
         height: $radio-button-size;
         width: $radio-button-size;
 
@@ -61,8 +69,8 @@
     }
 
     .mat-mdc-radio-touch-target {
-      height: $radio-button-size;
-      width: $radio-button-size;
+      height: $size-with-padding;
+      width: $size-with-padding;
     }
 
     .mdc-form-field {
@@ -70,21 +78,28 @@
 
       .mdc-label {
         padding: 0;
+        transform: translateY(
+          1px
+        ); // visually center the label with the radio button
       }
     }
 
     &[compact] {
       $radio-button-size: 16px;
+      $size-with-padding: calc($radio-button-size + 4px);
 
       @include mat.radio-overrides(
         (
-          state-layer-size: $radio-button-size
+          state-layer-size: $size-with-padding
         )
       );
 
       .mdc-radio {
         height: $radio-button-size;
         width: $radio-button-size;
+        padding: calc(
+          (var(--mdc-radio-state-layer-size, 40px) - $radio-button-size) / 2
+        );
 
         .mdc-radio__background {
           height: $radio-button-size;
@@ -101,8 +116,8 @@
       }
 
       .mat-mdc-radio-touch-target {
-        height: $radio-button-size;
-        width: $radio-button-size;
+        height: $size-with-padding;
+        width: $size-with-padding;
       }
     }
   }

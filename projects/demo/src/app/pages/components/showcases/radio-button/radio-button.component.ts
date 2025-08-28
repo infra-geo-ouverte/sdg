@@ -18,8 +18,12 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
   styleUrl: './radio-button.component.scss'
 })
 export class RadioButtonDemoComponent {
-  checked = signal(false);
-  checkedCompact = signal(false);
-  disabled = signal(false);
-  disabledCompact = signal(false);
+  checked1 = signal(false);
+  checked2 = signal(false);
+  checkedCompact1 = signal(false);
+  checkedCompact2 = signal(false);
+  disabled1 = signal(false);
+  disabled2 = signal(false);
+  disabledCompact1 = signal(false);
+  disabledCompact2 = signal(false);
 }

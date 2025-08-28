@@ -11,16 +11,25 @@
   <span>du Système de design gouvernemental.</span>
 </p>
 
-<app-example-viewer title="Bouton radio" codeFolder="radio-button">
+<app-example-viewer title="Bouton radio" configFolder="radio-button">
   <div class="radio-button-container">
-    <mat-radio-group
-      ><mat-radio-button
-        [checked]="checked()"
-        [disabled]="disabled()"
-        value="normal"
-        (change)="checked.set(true)"
-        >Ceci est un bouton radio</mat-radio-button
+    <mat-radio-group>
+      <mat-radio-button
+        [checked]="checked1()"
+        [disabled]="disabled1()"
+        value="normal1"
+        (change)="checked1.set(true)"
       >
+        Ceci est un bouton radio
+      </mat-radio-button>
+      <mat-radio-button
+        [checked]="checked2()"
+        [disabled]="disabled2()"
+        value="normal2"
+        (change)="checked2.set(true)"
+      >
+        Ceci est un autre bouton radio
+      </mat-radio-button>
     </mat-radio-group>
 
     <div class="buttons">
@@ -28,16 +37,19 @@
         compact
         mat-stroked-button
         color="primary"
-        (click)="this.disabled.set(!this.disabled())"
+        (click)="
+          this.disabled1.set(!this.disabled1());
+          this.disabled2.set(!this.disabled2())
+        "
       >
-        {{ disabled() ? 'Activer' : 'Désactiver' }}
+        {{ disabled1() || disabled2() ? 'Activer' : 'Désactiver' }}
       </button>
       <button
         compact
         mat-stroked-button
         color="primary"
-        [disabled]="!checked()"
-        (click)="this.checked.set(!this.checked())"
+        [disabled]="!checked1() && !checked2()"
+        (click)="this.checked1.set(false); this.checked2.set(false)"
       >
         Décocher
       </button>
@@ -45,17 +57,27 @@
   </div>
 </app-example-viewer>
 
-<app-example-viewer title="Bouton radio compact" codeFolder="radio-button">
+<app-example-viewer title="Bouton radio compact" configFolder="radio-button">
   <div class="radio-button-container">
     <mat-radio-group>
       <mat-radio-button
         compact
-        [checked]="checkedCompact()"
-        [disabled]="disabledCompact()"
-        value="compact"
-        (change)="checkedCompact.set(true)"
-        >Ceci est un bouton radio compact</mat-radio-button
+        [checked]="checkedCompact1()"
+        [disabled]="disabledCompact1()"
+        value="compact1"
+        (change)="checkedCompact1.set(true)"
       >
+        Ceci est un bouton radio compact
+      </mat-radio-button>
+      <mat-radio-button
+        compact
+        [checked]="checkedCompact2()"
+        [disabled]="disabledCompact2()"
+        value="compact2"
+        (change)="checkedCompact2.set(true)"
+      >
+        Ceci est un autre bouton radio compact
+      </mat-radio-button>
     </mat-radio-group>
 
     <div class="buttons">
@@ -63,16 +85,23 @@
         compact
         mat-stroked-button
         color="primary"
-        (click)="this.disabledCompact.set(!this.disabledCompact())"
+        (click)="
+          this.disabledCompact1.set(!this.disabledCompact1());
+          this.disabledCompact2.set(!this.disabledCompact2())
+        "
       >
-        {{ disabledCompact() ? 'Activer' : 'Désactiver' }}
+        {{
+          disabledCompact1() || disabledCompact2() ? 'Activer' : 'Désactiver'
+        }}
       </button>
       <button
         compact
         mat-stroked-button
         color="primary"
-        [disabled]="!checkedCompact()"
-        (click)="this.checkedCompact.set(!this.checkedCompact())"
+        [disabled]="!checkedCompact1() && !checkedCompact2()"
+        (click)="
+          this.checkedCompact1.set(false); this.checkedCompact2.set(false)
+        "
       >
         Décocher
       </button>

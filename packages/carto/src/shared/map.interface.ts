@@ -5,7 +5,7 @@ export interface ISdgMap<T = unknown> {
   readonly options: IMapBaseOptions;
   initialExtent: Extent | undefined;
 
-  setInitialExtent(): void;
+  setInitialExtent(extent?: Extent): void;
   getExtent(): Extent;
   setTarget(id: string | HTMLElement | undefined): void;
   fit(extent: Extent): void;

@@ -15,19 +15,16 @@
 <app-example-viewer
   title="Variantes"
   configFolder="button"
-  codeFolder="button"
   class="button-types"
 >
-  <sdg-button-raised color="primary" (click)="handleClick()"
-    >Raised</sdg-button-raised
-  >
-  <sdg-button-stroked color="primary" (click)="handleClick()"
-    >Stroked</sdg-button-stroked
-  >
-  <sdg-button color="primary" (click)="handleClick()">Basic</sdg-button>
-  <sdg-button-flat color="primary" (click)="handleClick()"
-    >Flat</sdg-button-flat
-  >
+  <button mat-raised-button color="primary" (click)="handleClick()">
+    Raised
+  </button>
+  <button mat-stroked-button color="primary" (click)="handleClick()">
+    Stroked
+  </button>
+  <button mat-button color="primary" (click)="handleClick()">Basic</button>
+  <button mat-flat-button color="primary" (click)="handleClick()">Flat</button>
 </app-example-viewer>
 
 <p>
@@ -35,24 +32,29 @@
   "color" tout en respectant le thème de l'application.
 </p>
 <app-example-viewer title="Couleurs" class="button-types">
-  <sdg-button-flat color="primary" (click)="handleClick()"
-    >Primaire</sdg-button-flat
-  >
-  <sdg-button-flat color="warn" (click)="handleClick()"
-    >Avertissement</sdg-button-flat
-  >
+  <button mat-flat-button color="primary" (click)="handleClick()">
+    Primaire
+  </button>
+  <button mat-flat-button color="warn" (click)="handleClick()">
+    Avertissement
+  </button>
 </app-example-viewer>
 
 <p>Pour répliquer l'exemple du SDG:</p>
 <app-example-viewer title="Types de boutons (SDG)" class="button-types">
-  <sdg-button-flat color="primary" (click)="handleClick()"
-    >Principal</sdg-button-flat
+  <button mat-flat-button color="primary" (click)="handleClick()">
+    Principal
+  </button>
+  <button mat-stroked-button color="primary" (click)="handleClick()">
+    Secondaire
+  </button>
+  <button mat-button color="primary" (click)="handleClick()">Tertiaire</button>
+  <button
+    mat-flat-button
+    color="warn"
+    [disabled]="true"
+    (click)="handleClick()"
   >
-  <sdg-button-stroked color="primary" (click)="handleClick()"
-    >Secondaire</sdg-button-stroked
-  >
-  <sdg-button color="primary" (click)="handleClick()">Tertiaire</sdg-button>
-  <sdg-button-flat color="warn" (click)="handleClick()"
-    >Avertissement</sdg-button-flat
-  >
+    Avertissement
+  </button>
 </app-example-viewer>

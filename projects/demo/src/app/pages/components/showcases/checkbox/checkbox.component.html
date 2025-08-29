@@ -1,0 +1,58 @@
+<p>
+  <span
+    >La <b>case à cocher</b> permet à l'utilisateur de sélectionner une ou
+    plusieurs options dans une liste. Pour plus d'information, voir la
+  </span>
+  <span
+    ><sdg-external-link
+      text="Case à cocher"
+      url="https://design.quebec.ca/design/composants/formulaire/case-a-cocher"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer title="Case à cocher" configFolder="checkbox">
+  <div class="checkbox-container">
+    <mat-checkbox [disabled]="disabled1()" value="normal1"
+      >Ceci est une case à cocher</mat-checkbox
+    >
+    <mat-checkbox [disabled]="disabled2()" value="normal2"
+      >Ceci est une autre case à cocher</mat-checkbox
+    >
+
+    <button
+      compact
+      mat-stroked-button
+      color="primary"
+      (click)="
+        this.disabled1.set(!this.disabled1());
+        this.disabled2.set(!this.disabled2())
+      "
+    >
+      {{ disabled1() || disabled2() ? 'Activer' : 'Désactiver' }}
+    </button>
+  </div>
+</app-example-viewer>
+
+<app-example-viewer title="Case à cocher compacte" configFolder="checkbox">
+  <div class="checkbox-container">
+    <mat-checkbox compact [disabled]="disabledCompact1()" value="compact1"
+      >Ceci est une case à cocher compacte</mat-checkbox
+    >
+    <mat-checkbox compact [disabled]="disabledCompact2()" value="compact2"
+      >Ceci est une autre case à cocher compacte</mat-checkbox
+    >
+
+    <button
+      compact
+      mat-stroked-button
+      color="primary"
+      (click)="
+        this.disabledCompact1.set(!this.disabledCompact1());
+        this.disabledCompact2.set(!this.disabledCompact2())
+      "
+    >
+      {{ disabledCompact1() || disabledCompact2() ? 'Activer' : 'Désactiver' }}
+    </button>
+  </div>
+</app-example-viewer>

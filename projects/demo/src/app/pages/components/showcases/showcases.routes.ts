@@ -75,6 +75,19 @@ export const routes: SdgRoutes = [
       import('./button/button.component').then((m) => m.ButtonDemoComponent)
   },
   {
+    path: 'case-a-cocher',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.checkbox'
+    },
+    description:
+      "La case à cocher permet à l'utilisateur de sélectionner une ou plusieurs options dans une liste.",
+    loadComponent: () =>
+      import('./checkbox/checkbox.component').then(
+        (m) => m.CheckboxDemoComponent
+      )
+  },
+  {
     path: 'coordonnees',
     title: AppTitleResolver,
     data: {

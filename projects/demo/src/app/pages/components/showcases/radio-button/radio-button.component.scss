@@ -1,0 +1,10 @@
+.radio-button-container {
+  display: flex;
+  flex-flow: column;
+  row-gap: 16px;
+
+  .buttons {
+    display: flex;
+    column-gap: 8px;
+  }
+}

@@ -5,6 +5,7 @@
 @use './icon';
 @use './input';
 @use './sidenav';
+@use './radio-button';
 
 @mixin overrides() {
   @include button.overrides();
@@ -14,4 +15,5 @@
   @include icon.overrides();
   @include input.overrides();
   @include sidenav.overrides();
+  @include radio-button.overrides();
 }

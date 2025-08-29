@@ -214,6 +214,19 @@ export const routes: SdgRoutes = [
       import('./footer/footer.component').then((m) => m.FooterDemoComponent)
   },
   {
+    path: 'radio',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.radioButton'
+    },
+    description:
+      "Le bouton radio, ou case d'option, permet à l'utilisateur de choisir une seule option dans une liste.",
+    loadComponent: () =>
+      import('./radio-button/radio-button.component').then(
+        (m) => m.RadioButtonDemoComponent
+      )
+  },
+  {
     path: 'tuile',
     title: AppTitleResolver,
     data: {

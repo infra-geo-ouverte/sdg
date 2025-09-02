@@ -1,0 +1,40 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-chip {
+    $background-color: var(--sdg-color-blue-pale);
+    $focus-color: var(--sdg-color-blue-normal);
+    $disabled-background-color: var(--sdg-color-grey-pale);
+    $disabled-color: var(--sdg-color-grey-light);
+
+    @include mat.chips-overrides(
+      (
+        container-shape-radius: 0,
+
+        outline-width: 1px,
+        outline-color: $background-color,
+
+        focus-outline-color: $focus-color,
+        disabled-outline-color: $disabled-background-color,
+
+        with-trailing-icon-disabled-trailing-icon-opacity: 1,
+        with-trailing-icon-disabled-trailing-icon-color: $disabled-color,
+        with-trailing-icon-trailing-icon-color: $focus-color,
+
+        label-text-color: $focus-color,
+        label-text-weight: 550,
+
+        trailing-action-focus-state-layer-opacity: 0,
+        trailing-action-hover-state-layer-opacity: 0,
+
+        trailing-action-state-layer-color: transparent,
+
+        selected-trailing-icon-color: $focus-color,
+        selected-disabled-trailing-icon-color: $disabled-color,
+        selected-trailing-action-state-layer-color: transparent,
+
+        selected-label-text-color: $focus-color
+      )
+    );
+  }
+}

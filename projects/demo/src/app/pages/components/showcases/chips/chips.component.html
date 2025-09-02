@@ -1,0 +1,55 @@
+<p>
+  <span
+    >L'<b>étiquette</b> est un élément interactif permettant d'indiquer une
+    sélection ou de mettre en évidence un lien. Pour plus d'information, voir
+    les </span
+  ><span
+    ><sdg-external-link
+      text="Étiquettes"
+      url="https://design.quebec.ca/design/composants/navigation/etiquettes"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Étiquettes liées à un sélecteur"
+  configFolder="chips"
+>
+  <form>
+    <mat-chip-grid #chipGrid>
+      @for (selectedColor of selectedColors(); track selectedColor) {
+        <mat-chip-row (removed)="remove(selectedColor)">
+          {{ selectedColor }}
+          <button matChipRemove>
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-chip-row>
+      }
+    </mat-chip-grid>
+    <mat-form-field>
+      <mat-label>Couleurs</mat-label>
+      <input
+        matInput
+        name="currentColor"
+        placeholder="Sélectionner une couleur"
+        #colorInput
+        [(ngModel)]="currentColor"
+        [matChipInputFor]="chipGrid"
+        [matAutocomplete]="auto"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+      <mat-autocomplete
+        #auto="matAutocomplete"
+        (optionSelected)="selected($event); colorInput.value = ''"
+      >
+        @for (color of filteredColors(); track color) {
+          <mat-option [value]="color">{{ color }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</app-example-viewer>
+
+<app-example-viewer title="Étiquettes" configFolder="chips">
+</app-example-viewer>

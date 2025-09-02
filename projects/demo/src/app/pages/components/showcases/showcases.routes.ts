@@ -99,6 +99,17 @@ export const routes: SdgRoutes = [
       import('./contact/contact.component').then((m) => m.ContactDemoComponent)
   },
   {
+    path: 'etiquettes',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.chips'
+    },
+    description:
+      "L'étiquette est un élément interactif permettant d'indiquer une sélection ou de mettre en évidence un lien.",
+    loadComponent: () =>
+      import('./chips/chips.component').then((m) => m.ChipsDemoComponent)
+  },
+  {
     path: 'fil-ariane',
     title: AppTitleResolver,
     data: {

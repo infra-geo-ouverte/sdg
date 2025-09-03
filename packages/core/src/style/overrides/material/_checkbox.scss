@@ -10,8 +10,6 @@
     $checkbox-size: calc($base-size * 3);
     $size-with-padding: var(--mdc-checkbox-state-layer-size);
 
-    left: calc($base-size * -1) !important;
-
     @include mat.checkbox-overrides(
       (
         label-text-size: var(--sdg-font-size-md),

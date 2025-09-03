@@ -1,0 +1,120 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-checkbox {
+    $disabled-color: var(--sdg-color-grey-light);
+    $unselected-color: var(--sdg-color-blue-dark);
+    $selected-color: var(--sdg-color-blue-normal);
+
+    $base-size: 8px;
+    $checkbox-size: calc($base-size * 3);
+    $size-with-padding: var(--mdc-checkbox-state-layer-size);
+
+    @include mat.checkbox-overrides(
+      (
+        label-text-size: var(--sdg-font-size-md),
+        label-text-line-height: var(--sdg-font-size-md),
+        // same as font size to avoid extra space above and below
+        label-text-color: $unselected-color,
+
+        disabled-label-color: $disabled-color,
+        disabled-unselected-icon-color: $disabled-color,
+        disabled-selected-checkmark-color: var(--sdg-color-grey-pale),
+        disabled-selected-icon-color: $disabled-color,
+
+        unselected-icon-color: $unselected-color,
+        unselected-hover-icon-color: $unselected-color,
+        unselected-focus-icon-color: $selected-color,
+
+        unselected-hover-state-layer-opacity: 0,
+        unselected-focus-state-layer-opacity: 0,
+        unselected-pressed-state-layer-opacity: 0,
+
+        unselected-hover-state-layer-color: transparent,
+        unselected-focus-state-layer-color: transparent,
+        unselected-pressed-state-layer-color: transparent,
+
+        selected-icon-color: $selected-color,
+        selected-hover-icon-color: $selected-color,
+        selected-focus-icon-color: $selected-color,
+        selected-pressed-icon-color: $selected-color,
+
+        selected-hover-state-layer-opacity: 0,
+        selected-focus-state-layer-opacity: 0,
+        selected-pressed-state-layer-opacity: 0,
+
+        selected-hover-state-layer-color: transparent,
+        selected-focus-state-layer-color: transparent,
+        selected-pressed-state-layer-color: transparent
+      )
+    );
+
+    .mdc-checkbox__native-control {
+      top: calc($base-size / 2);
+      left: calc($base-size / 2);
+      right: calc($base-size / 2);
+
+      &:focus:checked ~ .mdc-checkbox__background {
+        border-color: $unselected-color;
+      }
+    }
+
+    .mdc-checkbox {
+      height: $checkbox-size;
+      width: $checkbox-size;
+      flex-basis: $checkbox-size;
+
+      .mdc-checkbox__background {
+        height: $checkbox-size;
+        width: $checkbox-size;
+        border-radius: 0px;
+      }
+    }
+
+    .mat-mdc-checkbox-touch-target {
+      height: $size-with-padding;
+      width: $size-with-padding;
+    }
+
+    .mdc-label {
+      padding-left: 0;
+      transform: translateY(
+        1px
+      ); // visually center the label with the radio button
+    }
+
+    &[compact] {
+      $checkbox-size: calc($base-size * 2);
+      $size-with-padding: calc($checkbox-size + ($base-size * 2));
+
+      @include mat.checkbox-overrides(
+        (
+          state-layer-size: $size-with-padding
+        )
+      );
+
+      .mdc-checkbox__native-control {
+        top: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .mdc-checkbox {
+        height: $checkbox-size;
+        width: $checkbox-size;
+        flex-basis: $checkbox-size;
+
+        .mdc-checkbox__background {
+          height: $checkbox-size;
+          width: $checkbox-size;
+          border-width: 1px;
+        }
+      }
+
+      .mat-mdc-checkbox-touch-target {
+        height: $size-with-padding;
+        width: $size-with-padding;
+      }
+    }
+  }
+}

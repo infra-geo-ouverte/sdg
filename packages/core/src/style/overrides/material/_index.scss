@@ -1,4 +1,5 @@
 @use './button';
+@use './checkbox';
 @use './dialog';
 @use './divider';
 @use './form-field';
@@ -9,6 +10,7 @@
 
 @mixin overrides() {
   @include button.overrides();
+  @include checkbox.overrides();
   @include dialog.overrides();
   @include divider.overrides();
   @include form-field.overrides();

@@ -1,0 +1,16 @@
+app-example-viewer {
+  ::ng-deep mat-card-content {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
+  }
+}
+
+.checkbox-container {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  width: fit-content;
+}

@@ -1,11 +1,53 @@
 @use '@angular/material' as mat;
 
 @mixin overrides() {
+  .mat-mdc-chip-set {
+    .mdc-evolution-chip {
+      margin: 0;
+      min-height: 40px;
+      max-height: 60px;
+      min-width: 56px;
+
+      &-set__chips {
+        margin: 0;
+        gap: 8px;
+      }
+
+      &__action-primary {
+        padding-left: 4px;
+      }
+    }
+  }
+
+  .mdc-evolution-chip__action--presentational {
+    cursor: pointer;
+  }
+
+  .mat-mdc-standard-chip {
+    &.mdc-evolution-chip--with-trailing-action .mdc-evolution-chip__action {
+      &--primary {
+        padding-left: 8px;
+      }
+
+      &--trailing {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+    }
+
+    & .mdc-evolution-chip__action {
+      &--primary {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+
   .mat-mdc-chip {
     $background-color: var(--sdg-color-blue-pale);
     $focus-color: var(--sdg-color-blue-normal);
     $disabled-background-color: var(--sdg-color-grey-pale);
-    $disabled-color: var(--sdg-color-grey-light);
+    $disabled-color: var(--sdg-color-grey-normal);
 
     @include mat.chips-overrides(
       (
@@ -15,7 +57,19 @@
         outline-color: $background-color,
 
         focus-outline-color: $focus-color,
+        focus-state-layer-color: transparent,
+        focus-state-layer-opacity: 0,
+
         disabled-outline-color: $disabled-background-color,
+        disabled-label-text-color: $disabled-color,
+        disabled-container-opacity: 1,
+
+        hover-state-layer-opacity: 0,
+        hover-state-layer-color: transparent,
+
+        elevated-container-color: $background-color,
+        elevated-selected-container-color: $background-color,
+        elevated-disabled-container-color: $disabled-background-color,
 
         with-trailing-icon-disabled-trailing-icon-opacity: 1,
         with-trailing-icon-disabled-trailing-icon-color: $disabled-color,
@@ -26,14 +80,18 @@
 
         trailing-action-focus-state-layer-opacity: 0,
         trailing-action-hover-state-layer-opacity: 0,
-
         trailing-action-state-layer-color: transparent,
+        trailing-action-focus-opacity: 1,
+        trailing-action-opacity: 1,
 
+        selected-hover-state-layer-opacity: 0,
+        selected-hover-state-layer-color: transparent,
         selected-trailing-icon-color: $focus-color,
-        selected-disabled-trailing-icon-color: $disabled-color,
         selected-trailing-action-state-layer-color: transparent,
-
-        selected-label-text-color: $focus-color
+        selected-disabled-trailing-icon-color: $disabled-color,
+        selected-label-text-color: $focus-color,
+        selected-focus-state-layer-opacity: 0,
+        selected-focus-state-layer-color: transparent
       )
     );
   }

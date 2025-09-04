@@ -11,10 +11,13 @@ import {
   MatAutocompleteModule,
   MatAutocompleteSelectedEvent
 } from '@angular/material/autocomplete';
+import { MatButtonModule } from '@angular/material/button';
 import { MatChipInputEvent, MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterLink } from '@angular/router';
 
 import { ExternalLinkComponent } from '@igo2/sdg-common';
 
@@ -30,7 +33,10 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
     MatFormFieldModule,
     MatAutocompleteModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatTooltipModule,
+    RouterLink
   ],
   templateUrl: './chips.component.html',
   styleUrl: './chips.component.scss',
@@ -39,7 +45,16 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 export class ChipsDemoComponent {
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
   readonly currentColor = model('');
-  readonly allColors: string[] = ['Rouge', 'Vert', 'Bleu', 'Jaune', 'Rose'];
+  readonly allColors: string[] = [
+    'Rouge',
+    'Orange',
+    'Jaune',
+    'Vert',
+    'Bleu',
+    'Indigo',
+    'Violet',
+    'Toutes les couleurs'
+  ];
   readonly selectedColors = signal(['Rouge']);
   readonly filteredColors = computed(() => {
     const currentColor = this.currentColor().toLowerCase();
@@ -49,6 +64,9 @@ export class ChipsDemoComponent {
         )
       : this.allColors.slice();
   });
+
+  selectorChipsDisabled = signal<boolean>(false);
+  navigationChipsDisabled = signal<boolean>(false);
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();

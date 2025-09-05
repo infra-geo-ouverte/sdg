@@ -1,5 +1,7 @@
 @use '@angular/material' as mat;
 
+$focus-color: var(--sdg-color-blue-light);
+
 @mixin overrides() {
   .mat-mdc-chip-set {
     .mdc-evolution-chip {
@@ -19,19 +21,30 @@
     }
   }
 
-  .mdc-evolution-chip__action--presentational {
-    cursor: pointer;
+  .mdc-evolution-chip__action {
+    &--presentational {
+      cursor: pointer;
+    }
+
+    &--primary:hover::before {
+      border-color: $focus-color !important;
+    }
+
+    &--primary:focus::before {
+      border-width: 2px;
+      outline: 2px solid $focus-color;
+    }
   }
 
   .mat-mdc-standard-chip {
     &.mdc-evolution-chip--with-trailing-action .mdc-evolution-chip__action {
       &--primary {
         padding-left: 8px;
+        margin-right: -4px;
       }
 
       &--trailing {
-        padding-left: 6px;
-        padding-right: 6px;
+        margin-right: -2px;
       }
     }
 
@@ -43,9 +56,13 @@
     }
   }
 
+  .mat-mdc-chip-remove .mat-icon {
+    z-index: 1;
+  }
+
   .mat-mdc-chip {
     $background-color: var(--sdg-color-blue-pale);
-    $focus-color: var(--sdg-color-blue-normal);
+    $text-color: var(--sdg-color-blue-piv);
     $disabled-background-color: var(--sdg-color-grey-pale);
     $disabled-color: var(--sdg-color-grey-normal);
 
@@ -56,7 +73,7 @@
         outline-width: 1px,
         outline-color: $background-color,
 
-        focus-outline-color: $focus-color,
+        focus-outline-color: var(--sdg-color-white),
         focus-state-layer-color: transparent,
         focus-state-layer-opacity: 0,
 
@@ -73,25 +90,17 @@
 
         with-trailing-icon-disabled-trailing-icon-opacity: 1,
         with-trailing-icon-disabled-trailing-icon-color: $disabled-color,
-        with-trailing-icon-trailing-icon-color: $focus-color,
+        with-trailing-icon-trailing-icon-color: $text-color,
 
-        label-text-color: $focus-color,
-        label-text-weight: 550,
-
-        trailing-action-focus-state-layer-opacity: 0,
-        trailing-action-hover-state-layer-opacity: 0,
-        trailing-action-state-layer-color: transparent,
+        label-text-color: $text-color,
+        label-text-weight: 600,
+        label-text-line-height: var(--sdg-line-height-sm),
+        label-text-size: var(--sdg-font-size-sm),
+        trailing-action-focus-state-layer-opacity: 1,
+        trailing-action-hover-state-layer-opacity: 1,
+        trailing-action-state-layer-color: var(--sdg-color-grey-light),
         trailing-action-focus-opacity: 1,
-        trailing-action-opacity: 1,
-
-        selected-hover-state-layer-opacity: 0,
-        selected-hover-state-layer-color: transparent,
-        selected-trailing-icon-color: $focus-color,
-        selected-trailing-action-state-layer-color: transparent,
-        selected-disabled-trailing-icon-color: $disabled-color,
-        selected-label-text-color: $focus-color,
-        selected-focus-state-layer-opacity: 0,
-        selected-focus-state-layer-color: transparent
+        trailing-action-opacity: 1
       )
     );
   }

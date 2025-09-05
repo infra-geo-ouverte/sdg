@@ -1,0 +1,28 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-tab-group {
+    $blue-piv: var(--sdg-color-blue-piv);
+
+    @include mat.tabs-overrides(
+      (
+        active-indicator-color: $blue-piv,
+        active-indicator-height: 4px,
+        active-hover-indicator-color: $blue-piv,
+        active-focus-indicator-color: $blue-piv,
+        active-ripple-color: transparent,
+        active-label-text-color: var(--sdg-color-blue-dark),
+        inactive-ripple-color: transparent,
+        inactive-label-text-color: $blue-piv,
+        inactive-focus-label-text-color: $blue-piv,
+        inactive-hover-label-text-color: $blue-piv,
+
+        divider-color: var(--sdg-color-grey-light),
+        divider-height: 1px,
+
+        label-text-size: var(--sdg-font-size-md),
+        label-text-line-height: var(--sdg-line-height-md)
+      )
+    );
+  }
+}

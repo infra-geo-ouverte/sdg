@@ -1,6 +1,6 @@
 <div class="sdg-footer-navigation-container" [class]="containerClass()">
   @if (logo()) {
-    <a [routerLink]="['/']"
+    <a [routerLink]="['/', currentLanguage() ?? '']"
       ><img
         class="sdg-footer-navigation-logo"
         [src]="logo()!.url"

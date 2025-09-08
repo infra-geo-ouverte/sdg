@@ -1,8 +1,11 @@
 @use '@angular/material' as mat;
 
 $focus-color: var(--sdg-color-blue-light);
+$white: var(--sdg-color-white);
 
 @mixin overrides() {
+  $border-outline-width: 2px;
+
   .mat-mdc-chip-set {
     .mdc-evolution-chip {
       margin: 0;
@@ -18,6 +21,11 @@ $focus-color: var(--sdg-color-blue-light);
       &__action-primary {
         padding-left: 4px;
       }
+
+      &:focus-visible {
+        border: $border-outline-width solid $white;
+        outline: $border-outline-width solid $focus-color;
+      }
     }
   }
 
@@ -31,8 +39,8 @@ $focus-color: var(--sdg-color-blue-light);
     }
 
     &--primary:focus::before {
-      border-width: 2px;
-      outline: 2px solid $focus-color;
+      border-width: $border-outline-width;
+      outline: $border-outline-width solid $focus-color;
     }
   }
 
@@ -80,7 +88,7 @@ $focus-color: var(--sdg-color-blue-light);
         outline-width: 1px,
         outline-color: $background-color,
 
-        focus-outline-color: var(--sdg-color-white),
+        focus-outline-color: $white,
         focus-state-layer-color: transparent,
         focus-state-layer-opacity: 0,
 

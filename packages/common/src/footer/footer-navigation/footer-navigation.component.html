@@ -9,9 +9,11 @@
     /></a>
   } @else if (title()) {
     <h2>
-      <a class="sdg-footer-navigation-title" [routerLink]="['/']">{{
-        title()
-      }}</a>
+      <a
+        class="sdg-footer-navigation-title"
+        [routerLink]="['/', currentLanguage() ?? '']"
+        >{{ title() }}</a
+      >
     </h2>
   }
   <div class="sdg-footer-navigation-site-map-links">

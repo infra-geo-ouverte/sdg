@@ -1,6 +1,8 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
+import { Language } from '@igo2/sdg-core';
+
 import { FooterNavLogo, SiteMapLinks } from '../footer.interface';
 
 @Component({
@@ -15,4 +17,5 @@ export class FooterNavigationComponent {
   readonly logo = input<FooterNavLogo>();
   readonly siteMapLinks = input<SiteMapLinks>();
   readonly containerClass = input<string>();
+  readonly currentLanguage = input<Language>();
 }

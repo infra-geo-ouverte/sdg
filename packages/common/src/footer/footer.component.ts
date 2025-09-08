@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
+import { Language } from '@igo2/sdg-core';
+
 import { FooterCopyrightComponent } from './footer-copyright/footer-copyright.component';
 import { FooterLinksComponent } from './footer-links/footer-links.component';
 import { FooterNavigationComponent } from './footer-navigation/footer-navigation.component';
@@ -27,4 +29,5 @@ export class FooterComponent {
   readonly externalLinks = input<SiteMapLinks>();
   readonly copyright = input.required<FooterCopyright>();
   readonly containerClass = input<string>('');
+  readonly currentLanguage = input<Language>();
 }

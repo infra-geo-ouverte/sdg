@@ -11,7 +11,7 @@
     <h2>
       <a
         class="sdg-footer-navigation-title"
-        [routerLink]="['/', currentLanguage()]"
+        [routerLink]="['/', currentLanguage() ?? '']"
         >{{ title() }}</a
       >
     </h2>

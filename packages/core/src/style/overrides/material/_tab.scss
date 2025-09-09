@@ -3,25 +3,50 @@
 @mixin overrides() {
   .mat-mdc-tab-group {
     $blue-piv: var(--sdg-color-blue-piv);
+    $blue-dark: var(--sdg-color-blue-dark);
+
+    .mat-mdc-tab-labels {
+      column-gap: 24px;
+    }
+
+    .mdc-tab {
+      padding: 0 8px;
+      min-width: unset;
+
+      &--active {
+        font-weight: bold;
+      }
+
+      &:hover:not(&--active) {
+        .mdc-tab-indicator {
+          border-bottom: 4px solid var(--sdg-color-grey-pale);
+        }
+      }
+    }
 
     @include mat.tabs-overrides(
       (
         active-indicator-color: $blue-piv,
         active-indicator-height: 4px,
         active-hover-indicator-color: $blue-piv,
+        active-hover-label-text-color: $blue-dark,
         active-focus-indicator-color: $blue-piv,
+        active-focus-label-text-color: $blue-dark,
         active-ripple-color: transparent,
-        active-label-text-color: var(--sdg-color-blue-dark),
+        active-label-text-color: $blue-dark,
+        //
         inactive-ripple-color: transparent,
         inactive-label-text-color: $blue-piv,
         inactive-focus-label-text-color: $blue-piv,
         inactive-hover-label-text-color: $blue-piv,
-
+        //
         divider-color: var(--sdg-color-grey-light),
         divider-height: 1px,
-
+        //
         label-text-size: var(--sdg-font-size-md),
-        label-text-line-height: var(--sdg-line-height-md)
+        label-text-line-height: var(--sdg-line-height-md),
+        //
+        container-height: 40px
       )
     );
   }

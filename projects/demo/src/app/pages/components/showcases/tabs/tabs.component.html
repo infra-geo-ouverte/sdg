@@ -5,18 +5,38 @@
     connexes tout en restant au même endroit dans la page. Pour plus
     d'information, voir les
   </span>
-  <span
-    ><sdg-external-link
+  <span>
+    <sdg-external-link
       text="Onglets"
       url="https://design.quebec.ca/design/composants/onglets"
-  /></span>
+    />
+  </span>
   <span>du Système de design gouvernemental.</span>
 </p>
 
 <app-example-viewer title="Onglets" configFolder="tabs">
-  <mat-tab-group>
-    <mat-tab label="Onglet 1">Contenu de l'onglet 1</mat-tab>
-    <mat-tab label="Onglet 2">Contenu de l'onglet 2</mat-tab>
-    <mat-tab label="Onglet 3">Contenu de l'onglet 3</mat-tab>
+  <mat-tab-group [mat-stretch-tabs]="false">
+    <mat-tab label="Chat">
+      <div class="tab-content">
+        Le chat domestique (Felis catus ou Felis silvestris catus) est la forme
+        domestique du chat sauvage Felis silvestris, une espèce de mammifères
+        carnivores, de la famille des Félidés.
+      </div>
+    </mat-tab>
+    <mat-tab label="Chien">
+      <div class="tab-content">
+        Le chien, plus précisément désigné sous le nom de chien domestique
+        (Canis familiaris ou Canis lupus familiaris), est une espèce de
+        mammifère de la famille des Canidés (Canidae). Il s'agit de la forme
+        domestiquée du loup gris (Canis lupus), laquelle comprend également le
+        dingo, retourné à l'état sauvage.
+      </div>
+    </mat-tab>
+    <mat-tab label="Poisson rouge">
+      <div class="tab-content">
+        Le Poisson rouge ou Carassin doré (Carassius auratus) est une espèce de
+        poissons d'eau douce appartenant à la famille des Cyprinidés.
+      </div>
+    </mat-tab>
   </mat-tab-group>
 </app-example-viewer>

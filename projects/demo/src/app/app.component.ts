@@ -12,7 +12,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 
-import { IgoLanguageModule } from '@igo2/core/language';
 import {
   FooterComponent,
   HeaderComponent,
@@ -23,13 +22,8 @@ import {
   TopPageButtonComponent,
   isNavigationLink
 } from '@igo2/sdg-common';
-import {
-  Language,
-  SdgRoute,
-  TitleResolverPipe,
-  resolveTitle
-} from '@igo2/sdg-core';
-import { DomUtils } from '@igo2/utils';
+import { SdgRoute, TitleResolverPipe, resolveTitle } from '@igo2/sdg-core';
+import { Language, TranslationPipe, TranslationService } from '@igo2/sdg-i18n';
 
 import { delay, first } from 'rxjs';
 
@@ -37,7 +31,6 @@ import { environment } from '../environments/environment';
 import { EnvironmentOptions } from '../environments/environment.interface';
 import { routes } from './app.routes';
 import { AppTitleResolver } from './config/title-resolver';
-import { AppTranslationService } from './config/translation/translation.service';
 
 @Component({
   selector: 'app-root',
@@ -49,9 +42,9 @@ import { AppTranslationService } from './config/translation/translation.service'
     MatIconModule,
     MatMenuModule,
     MatSlideToggleModule,
-    IgoLanguageModule,
     FooterComponent,
-    TopPageButtonComponent
+    TopPageButtonComponent,
+    TranslationPipe
   ],
   providers: [TitleResolverPipe],
   templateUrl: './app.component.html',
@@ -70,7 +63,7 @@ export class AppComponent implements OnInit {
   constructor(
     @Inject(DOCUMENT) private document: Document,
     private router: Router,
-    private translationService: AppTranslationService,
+    private translationService: TranslationService,
     private titleResolver: AppTitleResolver,
     private titleResolverPipe: TitleResolverPipe
   ) {
@@ -172,9 +165,9 @@ export class AppComponent implements OnInit {
     const stylesheet = this.document.getElementById('splash-screen-stylesheet');
 
     setTimeout(() => {
-      DomUtils.remove(intro);
+      intro.parentNode?.removeChild(intro);
       if (stylesheet) {
-        DomUtils.remove(stylesheet);
+        stylesheet.parentNode?.removeChild(stylesheet);
       }
     }, destroyingAnimationTime);
   }

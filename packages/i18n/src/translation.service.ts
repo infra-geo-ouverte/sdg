@@ -2,35 +2,32 @@ import { Location } from '@angular/common';
 import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { LanguageService } from '@igo2/core/language';
 import {
-  Language,
+  TranslateService,
   Translation,
-  TranslationObject,
-  parseUrlWithLanguage
-} from '@igo2/sdg-core';
-import { TranslationService } from '@igo2/sdg-core';
-
-import { TranslateService } from '@ngx-translate/core';
+  TranslationObject
+} from '@ngx-translate/core';
 import { Observable } from 'rxjs';
+
+import { Language } from './translation.interface';
+import { parseUrlWithLanguage } from './translation.utils';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppTranslationService
-  extends LanguageService
-  implements TranslationService
-{
+export class TranslationService {
   lang: WritableSignal<Language> = signal('fr');
 
   constructor(
-    private router: Router,
-    private location: Location,
-    translateService: TranslateService
+    public router: Router,
+    public location: Location,
+    public translate: TranslateService
   ) {
-    super(translateService);
+    this.lang.set(this.translate.getFallbackLang() as Language);
+  }
 
-    this.lang.set(this.translate.defaultLang as Language);
+  get currentLoader() {
+    return this.translate.currentLoader;
   }
 
   get(

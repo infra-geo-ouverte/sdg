@@ -7,8 +7,6 @@ import {
   input
 } from '@angular/core';
 
-import { uuid } from '@igo2/utils';
-
 import { ISdgMap, IViewBaseOptions } from '../map.interface';
 
 @Component({
@@ -22,7 +20,7 @@ export class SdgMapBrowserComponent implements AfterViewInit, OnDestroy {
   readonly map = input.required<ISdgMap<unknown>>();
   readonly view = input<IViewBaseOptions>();
 
-  readonly id = `map-target-${uuid()}`;
+  readonly id = `map-target-${crypto.randomUUID()}`;
 
   constructor() {
     effect(() => {

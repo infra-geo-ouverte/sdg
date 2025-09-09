@@ -1,14 +1,15 @@
 import { TestBed } from '@angular/core/testing';
 
+import { TranslationService } from '@igo2/sdg-i18n';
+
 import { TEST_CONFIG } from '../test-config';
 import { AppComponent } from './app.component';
-import { AppTranslationService } from './config/translation/translation.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [...TEST_CONFIG.providers!, AppTranslationService]
+      providers: [...TEST_CONFIG.providers!, TranslationService]
     }).compileComponents();
   });
 

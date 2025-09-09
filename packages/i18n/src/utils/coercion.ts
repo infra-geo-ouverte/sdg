@@ -1,4 +1,4 @@
-import { Translation, TranslationObject } from '../translation';
+import { Translation, TranslationObject } from '../translation.interface';
 
 export function labelAttribute(
   value: Translation | TranslationObject,

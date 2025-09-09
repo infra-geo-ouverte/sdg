@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
-import { Language } from '@igo2/sdg-core';
+import { Language } from '@igo2/sdg-i18n';
 
 import { FooterCopyrightComponent } from './footer-copyright/footer-copyright.component';
 import { FooterLinksComponent } from './footer-links/footer-links.component';

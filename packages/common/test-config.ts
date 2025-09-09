@@ -4,7 +4,6 @@ import { TestModuleMetadata } from '@angular/core/testing';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
-import { provideMockTranslation } from '@igo2/core/language';
 import {
   SDG_ANCHOR_MENU_LABELS,
   SDG_BLOCK_LINK_LABELS,
@@ -12,7 +11,7 @@ import {
   SDG_SEE_ALSO_LABELS,
   SDG_SEQUENTIAL_LINKS_LABELS
 } from '@igo2/sdg-common';
-import { TranslationService, provideTranslatedLabels } from '@igo2/sdg-core';
+import { TranslationService, provideTranslatedLabels } from '@igo2/sdg-i18n';
 
 class MockTranslationService {
   get(key: string) {
@@ -23,7 +22,6 @@ class MockTranslationService {
 export const TEST_CONFIG: TestModuleMetadata = {
   providers: [
     provideRouter([]),
-    provideMockTranslation(),
     provideHttpClient(),
     provideHttpClientTesting(),
     provideAnimations(),

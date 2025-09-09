@@ -2,8 +2,6 @@ import { signal } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { IgoLanguageModule } from '@igo2/core/language';
-
 import { TEST_CONFIG } from '../../test-config';
 import { NavigationComponent } from './navigation.component';
 import { INavigationLinks } from './navigation.interface';
@@ -21,7 +19,7 @@ describe('NavigationComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NavigationComponent, IgoLanguageModule],
+      imports: [NavigationComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 

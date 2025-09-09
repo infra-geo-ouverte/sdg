@@ -1,5 +1,10 @@
 import { provideHttpClient } from '@angular/common/http';
-import { ApplicationConfig } from '@angular/core';
+import {
+  ApplicationConfig,
+  inject,
+  provideAppInitializer
+} from '@angular/core';
+import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   PreloadAllModules,
@@ -7,9 +12,6 @@ import {
   withPreloading
 } from '@angular/router';
 
-import { provideIcon } from '@igo2/common/icon';
-import { withUrlDefaultLanguage } from '@igo2/core/language';
-import { provideMessage } from '@igo2/core/message';
 import {
   SDG_ANCHOR_MENU_LABELS,
   SDG_BLOCK_LINK_LABELS,
@@ -21,31 +23,34 @@ import {
 import {
   provideTranslatedLabels,
   provideTranslation,
-  withIgo2Translation,
-  withRouterTitleResolver
-} from '@igo2/sdg-core';
+  withLanguageFromUrl,
+  withRouterTitleResolver,
+  withWaitOnI18nReady
+} from '@igo2/sdg-i18n';
 
-import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { AppTitleResolver } from './config/title-resolver';
-import { AppTranslationService } from './config/translation/translation.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideAnimations(),
     provideHttpClient(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideTranslation(
-      withIgo2Translation(environment.language!, AppTranslationService),
+    provideTranslation([
       withRouterTitleResolver(AppTitleResolver),
-      withUrlDefaultLanguage() as any
-    ),
-    provideMessage(),
+      withLanguageFromUrl(),
+      withWaitOnI18nReady()
+    ]),
     provideNavigationTitle({
       separator: '·',
       suffix: 'Démo SDG'
     }),
-    provideIcon(),
+    MatIconModule,
+    provideAppInitializer(() => {
+      const iconRegistry = inject(MatIconRegistry);
+      iconRegistry.setDefaultFontSetClass('material-symbols-outlined');
+      return;
+    }),
     provideTranslatedLabels(SDG_ANCHOR_MENU_LABELS, 'sdg.anchorMenu'),
     provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink'),
     provideTranslatedLabels(SDG_SEE_ALSO_LABELS, 'sdg.seeAlso'),

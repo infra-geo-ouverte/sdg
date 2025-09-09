@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg-common';
+import { TranslationService } from '@igo2/sdg-i18n';
 
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 @Component({
   selector: 'app-block-link',
@@ -67,7 +67,7 @@ export class BlockLinkDemoComponent {
     }
   ];
 
-  constructor(private translationService: AppTranslationService) {
+  constructor(private translationService: TranslationService) {
     this.getSections(this.sections1);
     this.getSections(this.sections2);
     this.getSections(this.sections3);

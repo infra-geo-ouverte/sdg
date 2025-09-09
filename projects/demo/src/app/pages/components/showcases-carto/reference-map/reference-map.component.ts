@@ -7,6 +7,7 @@ import {
   withMapOptions
 } from '@igo2/sdg-carto/ol';
 import { ExternalLinkComponent } from '@igo2/sdg-common';
+import { TranslationService } from '@igo2/sdg-i18n';
 
 import { default as olGeoJSON } from 'ol/format/GeoJSON.js';
 import TileLayer from 'ol/layer/Tile';
@@ -19,7 +20,6 @@ import Style from 'ol/style/Style.js';
 
 import type { GeoJSON } from 'geojson';
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-import { AppTranslationService } from 'projects/demo/src/app/config/translation/translation.service';
 
 const geojson: GeoJSON = {
   type: 'FeatureCollection',
@@ -58,7 +58,7 @@ const BASEMAP = () =>
       withMapOptions({
         translation: {
           key: 'showcasesCarto',
-          service: AppTranslationService
+          service: TranslationService
         }
       })
     )

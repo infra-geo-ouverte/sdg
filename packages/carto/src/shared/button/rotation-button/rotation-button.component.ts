@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { labelAttribute } from '@igo2/sdg-core';
+import { labelAttribute } from '@igo2/sdg-i18n';
 
 import { fromEvent } from 'rxjs';
 

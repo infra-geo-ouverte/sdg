@@ -12,12 +12,11 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { IgoLanguageModule } from '@igo2/core/language';
 import { BreakpointService } from '@igo2/sdg-core';
 
 @Component({
   selector: 'sdg-paginator',
-  imports: [IgoLanguageModule, MatButtonModule, MatIconModule],
+  imports: [MatButtonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './paginator.component.html',
   styleUrls: ['./paginator.component.scss']

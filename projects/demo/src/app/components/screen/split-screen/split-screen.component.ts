@@ -9,9 +9,7 @@ import {
   BreadcrumbsWithRouterComponent,
   CharterBannerComponent
 } from '@igo2/sdg-common';
-import { Language } from '@igo2/sdg-core';
-
-import { AppTranslationService } from '../../../config/translation/translation.service';
+import { Language, TranslationService } from '@igo2/sdg-i18n';
 
 @Component({
   selector: 'app-split-screen',
@@ -24,7 +22,7 @@ export class SplitScreenComponent {
   readonly title = input<string>();
   readonly showCharterBanner = input<boolean>(false);
 
-  constructor(private translationService: AppTranslationService) {}
+  constructor(private translationService: TranslationService) {}
 
   get lang(): WritableSignal<Language> {
     return this.translationService.lang;

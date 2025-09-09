@@ -1,6 +1,6 @@
 import { InjectionToken, Provider, Type } from '@angular/core';
 
-import type { TranslationService } from '@igo2/sdg-core';
+import type { TranslationService } from '@igo2/sdg-i18n';
 
 import { MapLabels } from './reference-map.interface';
 

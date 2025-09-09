@@ -1,5 +1,4 @@
-import { ISdgMap } from '@igo2/sdg-carto';
-import { ObjectUtils } from '@igo2/utils';
+import { ISdgMap, merge } from '@igo2/sdg-carto';
 
 import Collection from 'ol/Collection';
 import olMap from 'ol/Map';
@@ -28,7 +27,7 @@ export class SdgOlMap implements ISdgMap<olMap> {
   initialExtent: Extent | undefined;
 
   constructor(options: IOlMapOptions) {
-    this.options = ObjectUtils.mergeDeep(DEFAULT_OPTIONS, options);
+    this.options = merge(DEFAULT_OPTIONS, options);
 
     this.engine = new olMap({
       interactions: this.getInteractions(),

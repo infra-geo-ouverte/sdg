@@ -32,8 +32,5 @@ export const environment: EnvironmentOptions = {
       logo: 'images/piv-pied-page.svg',
       logoUrl: 'https://www.quebec.ca/gouvernement/ministere/securite-publique'
     }
-  },
-  language: {
-    prefix: ['locale/']
   }
 };

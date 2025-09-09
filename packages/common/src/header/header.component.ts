@@ -10,7 +10,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { BreakpointService, Language } from '@igo2/sdg-core';
+import { BreakpointService } from '@igo2/sdg-core';
+import { Language } from '@igo2/sdg-i18n';
 
 import {
   HeaderLabels,

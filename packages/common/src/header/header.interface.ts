@@ -1,4 +1,4 @@
-import { Language } from '@igo2/sdg-core';
+import { Language } from '@igo2/sdg-i18n';
 
 export interface HeaderLabels {
   contactUs: string;

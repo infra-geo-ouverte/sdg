@@ -6,14 +6,13 @@ import {
   RouteTranslateKey,
   TitleResolver
 } from '@igo2/sdg-core';
+import { TranslationService } from '@igo2/sdg-i18n';
 
 import { Observable, tap } from 'rxjs';
 
-import { AppTranslationService } from './translation/translation.service';
-
 @Injectable({ providedIn: 'root' })
 export class AppTitleResolver implements TitleResolver {
-  constructor(private translationService: AppTranslationService) {}
+  constructor(private translationService: TranslationService) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<string> {
     return this.translationService

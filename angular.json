@@ -29,14 +29,6 @@
                 "glob": "**/*",
                 "input": "projects/demo/public",
                 "output": ""
-              },
-              {
-                "glob": "**/*",
-                "input": "node_modules/@igo2/core/locale",
-                "output": "locale/libs_locale",
-                "ignore": [
-                  "**/*.core.json"
-                ]
               }
             ],
             "styles": [
@@ -264,6 +256,49 @@
               "packages/common/**/*.html"
             ],
             "eslintConfig": "packages/common/eslint.config.mjs"
+          }
+        }
+      }
+    },
+    "i18n": {
+      "projectType": "library",
+      "root": "packages/i18n",
+      "sourceRoot": "packages/i18n/src",
+      "prefix": "sdg",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "packages/i18n/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/i18n/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "packages/i18n/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "packages/i18n/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/i18n/**/*.ts",
+              "packages/i18n/**/*.html"
+            ],
+            "eslintConfig": "packages/i18n/eslint.config.mjs"
           }
         }
       }

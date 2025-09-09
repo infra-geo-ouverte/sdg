@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { Language } from '@igo2/sdg-core';
+import { Language } from '@igo2/sdg-i18n';
 
 import { FooterNavLogo, SiteMapLinks } from '../footer.interface';
 

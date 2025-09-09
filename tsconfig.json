@@ -31,6 +31,9 @@
       ],
       "@igo2/sdg-carto/*": [
         "packages/carto/*/src/public-api",
+      ],
+      "@igo2/sdg-i18n": [
+        "./packages/i18n/src/public-api"
       ]
     }
   },

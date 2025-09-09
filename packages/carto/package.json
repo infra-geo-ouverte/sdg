@@ -39,7 +39,7 @@
     "@angular/material": "^19.2.0",
     "@angular/platform-browser": "^19.2.0",
     "@igo2/sdg-core": "*",
-    "@igo2/utils": "^19.0.0-next",
+    "@igo2/sdg-i18n": "*",
     "ol": "^10.5.0",
     "rxjs": "~7.8.0"
   },

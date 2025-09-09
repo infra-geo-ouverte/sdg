@@ -14,9 +14,8 @@ import {
 import {
   provideTranslatedLabels,
   provideTranslation,
-  withIgo2TranslationMock,
   withRouterTitleResolver
-} from '@igo2/sdg-core';
+} from '@igo2/sdg-i18n';
 
 import { AppTitleResolver } from './app/config/title-resolver';
 
@@ -25,10 +24,7 @@ export const TEST_CONFIG: TestModuleMetadata = {
     provideRouter([]),
     provideHttpClient(),
     provideHttpClientTesting(),
-    provideTranslation(
-      withIgo2TranslationMock(),
-      withRouterTitleResolver(AppTitleResolver)
-    ),
+    provideTranslation([withRouterTitleResolver(AppTitleResolver)]),
     provideAnimations(),
     provideTranslatedLabels(SDG_ANCHOR_MENU_LABELS, 'sdg.anchorMenu'),
     provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink'),

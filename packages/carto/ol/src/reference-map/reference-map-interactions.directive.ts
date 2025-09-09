@@ -15,7 +15,7 @@ import {
 } from '@angular/core';
 
 import { IUseTimeout, detectTouchscreen, useTimeout } from '@igo2/sdg-carto';
-import { labelAttribute } from '@igo2/sdg-core';
+import { labelAttribute } from '@igo2/sdg-i18n';
 
 import MapBrowserEvent from 'ol/MapBrowserEvent';
 import { platformModifierKeyOnly } from 'ol/events/condition';

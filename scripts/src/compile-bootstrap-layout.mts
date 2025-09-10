@@ -3,7 +3,7 @@ import { compile } from 'sass';
 
 import { PATHS } from './core/paths.mts';
 
-const LAYOUT_PATTERNS = ['.container', '.col-', '.row-', '.d-flex', '.flex'];
+const LAYOUT_PATTERNS = ['.container', '.col', '.row', '.d-flex', '.flex'];
 
 export async function compileBootstrapLayout(input: string) {
   const result = compile(input, {

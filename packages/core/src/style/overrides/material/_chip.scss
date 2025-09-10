@@ -1,0 +1,122 @@
+@use '@angular/material' as mat;
+
+$focus-color: var(--sdg-color-blue-light);
+$white: var(--sdg-color-white);
+
+@mixin overrides() {
+  $border-outline-width: 2px;
+
+  .mat-mdc-chip-set {
+    .mdc-evolution-chip {
+      margin: 0;
+      min-height: 40px;
+      max-height: 60px;
+      min-width: 56px;
+
+      &-set__chips {
+        margin: 0;
+        gap: 8px;
+      }
+
+      &__action-primary {
+        padding-left: 4px;
+      }
+
+      &:focus-visible {
+        border: $border-outline-width solid $white;
+        outline: $border-outline-width solid $focus-color;
+      }
+    }
+  }
+
+  .mdc-evolution-chip__action {
+    &--presentational {
+      cursor: pointer;
+    }
+
+    &--primary:hover::before {
+      border-color: $focus-color !important;
+    }
+
+    &--primary:focus::before {
+      border-width: $border-outline-width;
+      outline: $border-outline-width solid $focus-color;
+    }
+  }
+
+  .mat-mdc-standard-chip {
+    &.mdc-evolution-chip--with-trailing-action .mdc-evolution-chip__action {
+      &--primary {
+        padding-left: 8px;
+      }
+
+      &--trailing {
+        padding-left: 4px;
+        padding-right: 6px;
+      }
+    }
+
+    & .mdc-evolution-chip__action {
+      &--primary {
+        padding-left: 8px;
+        padding-right: 8px;
+      }
+    }
+  }
+
+  .mat-mdc-chip-remove {
+    &::after {
+      left: 2px;
+      right: 4px;
+    }
+
+    .mat-icon {
+      z-index: 1;
+    }
+  }
+
+  .mat-mdc-chip {
+    $background-color: var(--sdg-color-blue-pale);
+    $text-color: var(--sdg-color-blue-piv);
+    $disabled-background-color: var(--sdg-color-grey-pale);
+    $disabled-color: var(--sdg-color-grey-normal);
+
+    @include mat.chips-overrides(
+      (
+        container-shape-radius: 0,
+
+        outline-width: 1px,
+        outline-color: $background-color,
+
+        focus-outline-color: $white,
+        focus-state-layer-color: transparent,
+        focus-state-layer-opacity: 0,
+
+        disabled-outline-color: $disabled-background-color,
+        disabled-label-text-color: $disabled-color,
+        disabled-container-opacity: 1,
+
+        hover-state-layer-opacity: 0,
+        hover-state-layer-color: transparent,
+
+        elevated-container-color: $background-color,
+        elevated-selected-container-color: $background-color,
+        elevated-disabled-container-color: $disabled-background-color,
+
+        with-trailing-icon-disabled-trailing-icon-opacity: 1,
+        with-trailing-icon-disabled-trailing-icon-color: $disabled-color,
+        with-trailing-icon-trailing-icon-color: $text-color,
+
+        label-text-color: $text-color,
+        label-text-weight: 600,
+        label-text-line-height: var(--sdg-line-height-sm),
+        label-text-size: var(--sdg-font-size-sm),
+        trailing-action-focus-state-layer-opacity: 1,
+        trailing-action-hover-state-layer-opacity: 1,
+        trailing-action-state-layer-color: var(--sdg-color-grey-light),
+        trailing-action-focus-opacity: 1,
+        trailing-action-opacity: 1
+      )
+    );
+  }
+}

@@ -1,5 +1,6 @@
 @use './button';
 @use './checkbox';
+@use './chip';
 @use './dialog';
 @use './divider';
 @use './form-field';
@@ -11,6 +12,7 @@
 @mixin overrides() {
   @include button.overrides();
   @include checkbox.overrides();
+  @include chip.overrides();
   @include dialog.overrides();
   @include divider.overrides();
   @include form-field.overrides();

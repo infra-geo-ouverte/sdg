@@ -1,6 +1,12 @@
 {
   "name": "@igo2/sdg-i18n",
   "version": "1.0.0-next.92",
+  "license": "LiLiQ-R",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infra-geo-ouverte/sdg.git",
+    "directory": "packages/i18n"
+  },
   "exports": {
     ".": {
       "import": "./src/public-api.ts"

@@ -26,6 +26,6 @@ sdg-breadcrumbs-with-router {
     margin-top: 72px;
   }
   &-content {
-    flex: 1;
+    overflow-x: auto;
   }
 }

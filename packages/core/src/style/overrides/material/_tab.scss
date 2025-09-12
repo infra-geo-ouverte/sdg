@@ -4,6 +4,7 @@
   .mat-mdc-tab-group {
     $blue-piv: var(--sdg-color-blue-piv);
     $blue-dark: var(--sdg-color-blue-dark);
+    $grey-pale: var(--sdg-color-grey-pale);
 
     .mat-mdc-tab-labels {
       column-gap: 24px;
@@ -19,8 +20,47 @@
 
       &:hover:not(&--active) {
         .mdc-tab-indicator {
-          border-bottom: 4px solid var(--sdg-color-grey-pale);
+          border-bottom: 4px solid $grey-pale;
         }
+      }
+
+      &:focus:not(&--active) {
+        .mdc-tab-indicator {
+          border: 2px solid var(--sdg-color-blue-light);
+        }
+      }
+    }
+
+    .mat-mdc-tab-header-pagination {
+      min-width: 40px;
+
+      &-after,
+      &-before {
+        padding: 0;
+      }
+
+      &-after {
+        .mat-mdc-tab-header-pagination-chevron {
+          transform: rotate(45deg) translateX(-2px);
+          height: 10px;
+          width: 10px;
+        }
+      }
+
+      &-before {
+        .mat-mdc-tab-header-pagination-chevron {
+          transform: rotate(225deg) translate(-2px, 2px);
+          height: 10px;
+          width: 10px;
+        }
+      }
+
+      &:hover {
+        background-color: $grey-pale;
+      }
+
+      &:active {
+        background-color: var(--sdg-color-blue-pale);
       }
     }
 
@@ -45,6 +85,8 @@
         //
         label-text-size: var(--sdg-font-size-md),
         label-text-line-height: var(--sdg-line-height-md),
+        //
+        pagination-icon-color: $blue-dark,
         //
         container-height: 40px
       )

@@ -214,6 +214,17 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'onglets',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.tabs'
+    },
+    description:
+      "Les onglets sont utilisés pour regrouper et présenter divers aspects d'un sujet. Ils permettent à l'utilisateur de consulter des contenus connexes tout en restant au même endroit dans la page.",
+    loadComponent: () =>
+      import('./tabs/tabs.component').then((m) => m.TabsDemoComponent)
+  },
+  {
     path: 'pagination',
     title: AppTitleResolver,
     data: {

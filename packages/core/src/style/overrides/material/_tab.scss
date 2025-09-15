@@ -1,0 +1,95 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-tab-group {
+    $blue-piv: var(--sdg-color-blue-piv);
+    $blue-dark: var(--sdg-color-blue-dark);
+    $grey-pale: var(--sdg-color-grey-pale);
+
+    .mat-mdc-tab-labels {
+      column-gap: 24px;
+    }
+
+    .mdc-tab {
+      padding: 0 8px;
+      min-width: unset;
+
+      &--active {
+        font-weight: bold;
+      }
+
+      &:hover:not(&--active) {
+        .mdc-tab-indicator {
+          border-bottom: 4px solid $grey-pale;
+        }
+      }
+
+      &:focus {
+        .mdc-tab-indicator {
+          border: 2px solid var(--sdg-color-blue-light);
+        }
+      }
+    }
+
+    .mat-mdc-tab-header-pagination {
+      min-width: 40px;
+
+      &-after,
+      &-before {
+        padding: 0;
+      }
+
+      &-after {
+        .mat-mdc-tab-header-pagination-chevron {
+          transform: rotate(45deg) translateX(-2px);
+          height: 10px;
+          width: 10px;
+        }
+      }
+
+      &-before {
+        .mat-mdc-tab-header-pagination-chevron {
+          transform: rotate(225deg) translate(-2px, 2px);
+          height: 10px;
+          width: 10px;
+        }
+      }
+
+      &:hover {
+        background-color: $grey-pale;
+      }
+
+      &:active {
+        background-color: var(--sdg-color-blue-pale);
+      }
+    }
+
+    @include mat.tabs-overrides(
+      (
+        active-indicator-color: $blue-piv,
+        active-indicator-height: 4px,
+        active-hover-indicator-color: $blue-piv,
+        active-hover-label-text-color: $blue-dark,
+        active-focus-indicator-color: $blue-piv,
+        active-focus-label-text-color: $blue-dark,
+        active-ripple-color: transparent,
+        active-label-text-color: $blue-dark,
+        //
+        inactive-ripple-color: transparent,
+        inactive-label-text-color: $blue-piv,
+        inactive-focus-label-text-color: $blue-piv,
+        inactive-hover-label-text-color: $blue-piv,
+        //
+        divider-color: var(--sdg-color-grey-light),
+        divider-height: 1px,
+        //
+        label-text-size: var(--sdg-font-size-md),
+        label-text-line-height: var(--sdg-line-height-md),
+        //
+        pagination-icon-color: $blue-dark,
+        //
+        container-height: 40px
+      )
+    );
+  }
+}

@@ -34,7 +34,9 @@ export class SequentialLinksComponent {
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    const labelsOverride = inject(SDG_SEQUENTIAL_LINKS_LABELS);
+    const labelsOverride = inject(SDG_SEQUENTIAL_LINKS_LABELS, {
+      optional: true
+    });
     if (labelsOverride) {
       this.previous = labelsOverride.previous;
       this.next = labelsOverride.next;

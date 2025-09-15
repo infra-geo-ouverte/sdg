@@ -38,7 +38,7 @@ export class BlockLinkSeeMoreComponent {
   seeMore = 'Voir plus';
 
   constructor() {
-    const labelsOverride = inject(SDG_BLOCK_LINK_LABELS);
+    const labelsOverride = inject(SDG_BLOCK_LINK_LABELS, { optional: true });
     if (labelsOverride) {
       this.seeMore = labelsOverride.seeMore;
     }

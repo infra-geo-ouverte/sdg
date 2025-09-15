@@ -28,7 +28,7 @@ export class SeeAlsoComponent {
   title = 'À consulter aussi';
 
   constructor() {
-    const labelsOverride = inject(SDG_SEE_ALSO_LABELS);
+    const labelsOverride = inject(SDG_SEE_ALSO_LABELS, { optional: true });
     if (labelsOverride) {
       this.title = labelsOverride.title;
     }

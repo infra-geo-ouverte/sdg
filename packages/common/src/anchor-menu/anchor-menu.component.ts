@@ -32,7 +32,7 @@ export class AnchorMenuComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     @Inject(DOCUMENT) private document: Document
   ) {
-    const labelsOverride = inject(SDG_ANCHOR_MENU_LABELS);
+    const labelsOverride = inject(SDG_ANCHOR_MENU_LABELS, { optional: true });
     if (labelsOverride) {
       this.title = labelsOverride.title;
     }

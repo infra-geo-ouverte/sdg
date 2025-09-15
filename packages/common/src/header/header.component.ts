@@ -45,7 +45,7 @@ export class HeaderComponent {
   constructor(private breakpointService: BreakpointService) {
     this.isHandset = this.breakpointService.isHandset;
 
-    const labelsOverride = inject(SDG_HEADER_LABELS);
+    const labelsOverride = inject(SDG_HEADER_LABELS, { optional: true });
     if (labelsOverride) {
       this.contactUs = labelsOverride.contactUs;
     }

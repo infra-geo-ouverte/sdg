@@ -57,7 +57,9 @@ function googleAnalyticsFactory(
 
     // Disable automatic page view tracking
     gtag('config', options.targetId, {
-      send_page_view: false
+      send_page_view: false,
+      cookie_flags: 'SameSite=None;Secure',
+      ...(options.config ?? {})
     });
 
     gaService.initialize();

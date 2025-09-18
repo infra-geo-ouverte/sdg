@@ -51,8 +51,10 @@ export function provideTranslatedLabels(
 
 export function provideTranslation(
   features: TranslationFeature<TranslationFeatureKind>[],
-  config?: RootTranslateServiceConfig & {
-    loader: Partial<TranslateHttpLoaderConfig>;
+  config?: Omit<RootTranslateServiceConfig, 'loader'> & {
+    loader:
+      | Partial<TranslateHttpLoaderConfig>
+      | RootTranslateServiceConfig['loader'];
   }
 ) {
   const providers: (Provider | EnvironmentProviders)[] = [];
@@ -73,14 +75,16 @@ export function provideTranslation(
 function getLoader(
   loader: Provider | Partial<TranslateHttpLoaderConfig> | undefined
 ) {
-  return loader && isProvider(loader)
-    ? loader
-    : provideTranslateHttpLoader({
-        prefix: '/locale/',
-        suffix: '.json',
-        useHttpBackend: true,
-        ...(loader ?? {})
-      });
+  if (loader && isProvider(loader)) {
+    return loader;
+  }
+
+  return provideTranslateHttpLoader({
+    prefix: '/locale/',
+    suffix: '.json',
+    useHttpBackend: true,
+    ...(loader ?? {})
+  });
 }
 
 function isProvider(obj: any): obj is Provider {

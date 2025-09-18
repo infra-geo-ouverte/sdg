@@ -28,6 +28,7 @@ import {
   withWaitOnI18nReady
 } from '@igo2/sdg-i18n';
 
+import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { AppTitleResolver } from './config/title-resolver';
 
@@ -36,11 +37,18 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideHttpClient(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    provideTranslation([
-      withRouterTitleResolver(AppTitleResolver),
-      withLanguageFromUrl(),
-      withWaitOnI18nReady()
-    ]),
+    provideTranslation(
+      [
+        withRouterTitleResolver(AppTitleResolver),
+        withLanguageFromUrl(),
+        withWaitOnI18nReady()
+      ],
+      {
+        loader: {
+          prefix: environment.production ? '/sdg/locale/' : '/locale/'
+        }
+      }
+    ),
     provideNavigationTitle({
       separator: '·',
       suffix: 'Démo SDG'

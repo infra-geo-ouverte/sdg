@@ -91,7 +91,10 @@ describe('withGoogleAnalytics', () => {
     // The second call to gtag('config', options.targetId, ...)
     expect(dataLayer[1][0]).toBe('config');
     expect(dataLayer[1][1]).toBe(mockTargetId);
-    expect(dataLayer[1][2]).toEqual({ send_page_view: false });
+    expect(dataLayer[1][2]).toEqual({
+      send_page_view: false,
+      cookie_flags: 'SameSite=None;Secure'
+    });
 
     // Assert that the GoogleAnalyticsService was initialized.
     expect(gaService.initialize).toHaveBeenCalled();

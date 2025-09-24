@@ -41,10 +41,10 @@ import { Breadcrumb, Breadcrumbs } from './shared/breadcrumbs.interface';
   styles: `
     :host {
       display: block;
-    }
 
-    .d-none {
-      display: none;
+      &.d-none {
+        display: none;
+      }
     }
   `,
   host: {

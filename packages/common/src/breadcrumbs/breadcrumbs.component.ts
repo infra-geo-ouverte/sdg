@@ -17,10 +17,10 @@ import { Breadcrumbs } from './shared';
   styles: `
     :host {
       display: block;
-    }
 
-    .d-none {
-      display: none;
+      &.d-none {
+        display: none;
+      }
     }
   `,
   host: {

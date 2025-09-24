@@ -42,6 +42,10 @@ import { Breadcrumb, Breadcrumbs } from './shared/breadcrumbs.interface';
     :host {
       display: block;
     }
+
+    .d-none {
+      display: none;
+    }
   `,
   host: {
     '[class.d-none]': '!hasBreadcrumbs()'

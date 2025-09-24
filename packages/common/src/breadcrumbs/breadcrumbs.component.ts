@@ -18,6 +18,10 @@ import { Breadcrumbs } from './shared';
     :host {
       display: block;
     }
+
+    .d-none {
+      display: none;
+    }
   `,
   host: {
     '[class.d-none]': '!hasBreadcrumbs()'

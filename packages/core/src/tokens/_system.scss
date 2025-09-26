@@ -10,10 +10,7 @@
 @use './token-utils';
 
 @mixin theme($withDarkMode: false) {
-  @include _system-colors();
-  @include _system-typographies();
-  @include _system-layout();
-  @include _system-level-elevation();
+  @include system-tokens();
 
   @if ($withDarkMode) {
     body.dark-mode {
@@ -27,6 +24,13 @@
 
   @include overrides.igo2-lib-overrides();
   @include overrides.material-overrides();
+}
+
+@mixin system-tokens() {
+  @include _system-colors();
+  @include _system-typographies();
+  @include _system-layout();
+  @include _system-level-elevation();
 }
 
 @mixin _system-level-elevation() {

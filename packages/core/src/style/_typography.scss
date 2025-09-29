@@ -81,7 +81,8 @@
     max-inline-size: var(--sdg-max-content-width);
   }
 
-  h1 {
+  h1,
+  .h1 {
     @include header-font('h1');
     @include title-border;
 
@@ -93,7 +94,8 @@
     }
   }
 
-  h2 {
+  h2,
+  .h2 {
     @include header-font('h2');
 
     @include breakpoints.media(mobile) {
@@ -102,7 +104,8 @@
     }
   }
 
-  h3 {
+  h3,
+  .h3 {
     @include header-font('h3');
 
     @include breakpoints.media(mobile) {
@@ -110,15 +113,18 @@
     }
   }
 
-  h4 {
+  h4,
+  .h4 {
     @include header-font('h4');
   }
 
-  h5 {
+  h5,
+  .h5 {
     @include header-font('h5');
   }
 
-  h6 {
+  h6,
+  .h6 {
     @include header-font('h6');
   }
 

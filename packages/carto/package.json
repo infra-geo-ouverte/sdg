@@ -34,10 +34,10 @@
     "tslib": "^2.6.0"
   },
   "peerDependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/core": "^19.2.0",
-    "@angular/material": "^19.2.0",
-    "@angular/platform-browser": "^19.2.0",
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
+    "@angular/material": "^19.0.0",
+    "@angular/platform-browser": "^19.0.0",
     "@igo2/sdg-core": "*",
     "@igo2/sdg-i18n": "*",
     "ol": "^10.5.0",

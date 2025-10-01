@@ -24,8 +24,8 @@
     "watch": "ng build i18n --watch"
   },
   "peerDependencies": {
-    "@angular/common": "^19.2.0",
-    "@angular/core": "^19.2.0",
+    "@angular/common": "^19.0.0",
+    "@angular/core": "^19.0.0",
     "@igo2/sdg-core": "*",
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0"

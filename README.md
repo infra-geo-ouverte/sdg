@@ -1,100 +1,64 @@
-[Issues](https://github.com/infra-geo-ouverte/sdg/issues) | [Demo](https://infra-geo-ouverte.github.io/sdg)
+<h1 align="center">Composants Angular du Système de design gouvernemental du Québec</h1>
 
-# Libairie du Système de design gouvernemental du Québec (SDG) de IGO pour Angular
+<p align="center">
+  <img src="projects/demo/src/public/images/splash_screen.png" alt="igo-logo" width="120px" height="120px"/>
+  <br>
+  <em>
+  La libairie du Système de design gouvernemental du Québec (SDG) de IGO dont l'objectif est d'offrir une suite de composants Angular basé sur le système de design gouvernemental.
+  </em>
+</p>
 
-## Présentation
-
-La libairie du [Système de design gouvernemental du Québec (SDG)](https://design.quebec.ca/) de IGO dont l'objectif est d'offrir une suite de composante Angular basé sur le système de design gouvernemental. Il offre aussi un assemblage cartographique pour faciliter l'intégration de carte tout en utilisant les techniques de IGO [IGO2-LIB](https://github.com/infra-geo-ouverte/igo2-lib).
-
-## Contenu
-
-| Section                                   | Description                                     |
-| ----------------------------------------- | ----------------------------------------------- |
-| [🚧 Requis](#-requis)                     | Dépendances requises                            |
-| [🚀 Config dans un projet](#-config-dans-un-projet) | Comment configurer le projet                    |
-| [📜 Commandes](#-commandes)               | Commandes npm disponible                        |
-| [🌎 Contribution](#-contribution)         | Explication minimale du flow de développement   |
-| [🧰 Dépannage](#-dépannage)               | Liste des problèmes possible avec les solutions |
-
-## 🚧 Requis
-
-- [Git]
-- [Node.js] qui inclus le [Node Package Manager][npm]
-- Extensions: Eslint, Prettier, Angular Language Service dans votre IDE
-
-## 🚀 Config dans un projet
-
-Installer les librairies, il existe 3 modules (carto, core et common):
-
-```shell
-npm install @igo2/sdg-common --save
-```
+<p align="center">
+  <a href="https://design.quebec.ca"><strong>Système de design gouvernemental du Québec</strong></a>
+  <br>
+  <a href="https://infra-geo-ouverte.github.io/sdg"><strong>Démo (SDG - Angular)</strong></a>
+  <br>
+</p>
 
 
-```typescript
-import { YOUR_IMPORT_NAME } from "@igo2/sdg-common"
-```
+<p align="center">
+  <a href="https://www.npmjs.com/@igo2/sdg-core">
+    <img src="https://img.shields.io/npm/v/@igo2/sdg-core.svg?logo=npm&logoColor=fff&label=NPM+package&color=limegreen" alt="@igo2/sdg on npm" />
+  </a>
+</p>
 
-Il existe des sous-module comme pour le volet cartographique. Un exemple d'importation du volet carto pour le moteur cartographique Openlayers via le sous-module:
+<hr>
 
-```typescript
-import { SdgOlReferenceMapComponent } from "@igo2/sdg-carto/ol"
-```
+## Documentation
 
-## 📜 Commandes
+Démarrer avec librairie @igo2/sdg, documentation et contribuer au projet. 
 
-| Commande | Description                                     |
-| -------- | ----------------------------------------------- |
-| `start`  | Lancer la démo                                  |
-| `lint`   | Permet de valider la syntaxe du projet          |
-| `format` | Corriger automatiquement les erreurs de syntaxe |
-| `test`   | Permet de rouler la suite de test Karma         |
+- [Contribuer au projet](docs/DEV_README.md)
+- [Documentation](https://infra-geo-ouverte.github.io/sdg)
+- [Configuration du développement](https://infra-geo-ouverte.github.io/sdg/fr/guides)
 
-## 🌎 Contribution
 
-### Première étape
+## Écosystème
 
-1. Prendre/assigner une sous-tâche Github en priorité avant une nouvelle story.
-2. Mettre cette sous-tâche/story en « In Progress ».
-3. Ensuite:
-   1. Si nouvelle story, faire un kickoff technique avec le tech lead, l'architecte associé et désigneur si nécessaire.
-   2. Pour une sous-tâche, simplement aviser la personne associée à la story liée.
-4. Faire ce qui est demandé dans la story/sous-tâche.
-5. Créer une PR sur Github avec une description la plus claire possible avec des screenshots/vidéos si changement visuel.
-6. Mettre la story/sous-tâche en « Code review ».
-7. Une fois approuvé, merger la PR. Si la tâche faite est une sous-tâche, simplement la mettre à « Done » sinon mettre la story à « QA ».
-8. Si nouvelle story, faire la validation sur la DEV de ce qui a été fait et mettre en « In Review ».
+- [core](packages/core/README.md) - Le noyau de base contenant la thématisation et styles
+- [common](packages/common/README.md) - Les composants communs
+- [carto](packages/carto/README.md) - Les composants cartographique
+- [i18n](packages/i18n/README.md) - Internationalisation
 
-### Message de commit
+## Application basé sur la librairie
 
-Ce projet utilise un déploiement automatisé qui est basé sur [Conventional Commits][conventional-commits], une convention des messages de commit. Il y une validation du message de commit.
+- [Québec En Alerte](https://alerte.geo.msp.gouv.qc.ca) (À VENIR)
+- [Vigilance](https://vigilance.geo.msp.gouv.qc.ca) (À VENIR)
 
-Ressources:
+## Suivre les changements
 
-- Semantic-Release comment ça fonctionne [le format du message de commit][semantic-release]
+[Découvrez les dernières améliorations](https://github.com/infra-geo-ouverte/sdg/releases)
 
-## 🧰 Dépannage
 
-À documenter...
+### Vous voulez aider?
 
-## SYMLINK - Config et démarrage (AVANCÉ)
+Vous voulez signaler un bogue, contribuer au code ou améliorer la documentation? Super! 
 
-Le lien symbolique permet de développer un projet d'assemblage de manière intégré avec la librairie.
+Pour [signaler un bogue](https://github.com/infra-geo-ouverte/sdg/issues)
 
-1. Cloner un projet d'assemblage qui utilise cette librairie dans le dossier projects. Ex:
-   ```
-   cd projects
-   git clone https://github.com/infra-geo-ouverte/igo2-quebec
-   git checkout next
-   ```
-2. Assurez-vous que vos branches sélectionné de la lib et du projet sont compatibles
-3. Dans une fenêtre terminal, rouler la commande `npm i` pour installer les dépendances.
-4. Assurez vous que l'installation n'a pas créé de dossier `node_modules` dans les répertoires de projets `projects/PROJECT_NAME`. S'il existe, supprimer le ou du moins le dossier `@igo2/sdg`.
-5. Excéuter le build pour la librairie `npm run build -w @igo2/sdg`
-6. Dans VsCode, vous pouvez lancer le processus à partir du panneau `Run and Debug` pour bénéficier des breakpoints sinon exécuter la commande (valider dans les scripts du projet) `npm run link-sdg.start -w PROJECT_NAME`
+Pour [ajouter une fonctionnalité manquante](https://github.com/infra-geo-ouverte/sdg/pulls) débuter par documenter le besoin
 
-[git]: https://git-scm.com/
-[node.js]: https://nodejs.org/
-[npm]: https://www.npmjs.com/get-npm
-[conventional-commits]: https://www.conventionalcommits.org/en/v1.0.0/
-[semantic-release]: https://semantic-release.gitbook.io/semantic-release#how-does-it-work
+Pour [des questions](https://github.com/infra-geo-ouverte/sdg/discussions)
+
+
+**Vous aimez @igo2/sdg? Donnez une étoile à notre dépôt :star: :arrow_up:.**

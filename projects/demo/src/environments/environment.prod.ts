@@ -2,7 +2,7 @@ import { EnvironmentOptions } from './environment.interface';
 
 export const environment: EnvironmentOptions = {
   production: true,
-  title: "Système d'assemblage gouvernemental (Angular)",
+  title: 'Composants Angular - Système de design gouvernemental',
   header: {
     contactUsRoute: 'contact-us',
     languages: {

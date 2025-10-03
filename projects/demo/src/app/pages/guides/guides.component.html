@@ -1,3 +1,236 @@
 <app-basic-screen title="Guides">
-  <p>guides works!</p>
+  <p>Cette documentation est dédié aux développeurs</p>
+
+  <p>
+    Cette bibliothèque est basé sur <code>&#64;angular/material</code>. Ce choix
+    a été fait notamment pour la grande qualité d'accessibilité offerte aux
+    utilisateurs, ainsi que pour la cohérence et la robustesse de ses composants
+    d'interface.
+  </p>
+
+  <p>
+    Les composants sont développés pour prendre en compte l'accessibilité et
+    pour la majorité compatible avec le
+    <a href="https://angular.dev/guide/ssr">"server side rendering"</a>
+  </p>
+
+  <section>
+    <h2>Installation</h2>
+    <p>
+      La bibliothèque <b>&#64;igo2/sdg</b> est divisée en quatre modules&nbsp;:
+    </p>
+    <ul>
+      <li>&#64;igo2/sdg-core</li>
+      <li>&#64;igo2/sdg-common</li>
+      <li>&#64;igo2/sdg-carto</li>
+      <li>&#64;igo2/sdg-i18n</li>
+    </ul>
+    <p>
+      Pour installer le module principal&nbsp;:
+
+      <app-docs-code code="npm install @igo2/sdg-core" lang="shell" />
+    </p>
+
+    <p>
+      Installez les autres modules selon vos besoins&nbsp;:
+
+      <app-docs-code
+        code="npm install @igo2/sdg-i18n @igo2/sdg-common @igo2/sdg-carto"
+        lang="shell"
+      />
+    </p>
+  </section>
+
+  <section>
+    <h2>Thématisation et styles</h2>
+    <p>
+      Les composants sont basés sur les variables CSS défini à partir du theme
+      SDG et Material. Pour appliquer le thème à votre application, importez le
+      mixin principal dans votre feuille de style globale:
+
+      <app-docs-code [code]="example1" lang="scss" />
+    </p>
+
+    <section>
+      <h3>Tokens CSS</h3>
+      <p>
+        Les composants sont basés sur les variable CSS défini ci-dessous. Les
+        variables permettent d'améliorer la maintenabilité en stylant différent
+        aspect couleurs, la typographie, l'espacement et la disposition de
+        manière globale. Ces tokens permettent d'assurer la cohérence du design
+        et une personnalisation facile. La manière la plus simple de voir
+        l'ensemble des variables CSS est d'ajouter le style et d'inspecter le
+        style de votre application car ces variables sont générés dynamiquement
+        lors de l'improtation.
+      </p>
+      <ul>
+        <li>
+          <strong>Couleurs&nbsp;:</strong>
+
+          <p>
+            <code>--sdg-color-NOM_COULEUR-VARIANTE</code>
+          </p>
+          <p>
+            <b>NOM_COULEUR&nbsp;:</b>
+            <code>blue|grey|pink|red|green|yellow|violet|white|black</code>
+            *white et black ne continennent pas de variente
+            <br />
+            <b>VARIANTE&nbsp;:</b><code>pale|light|normal|medium|dark</code>
+          </p>
+          <p>
+            <a
+              target="_blank"
+              href="https://design.quebec.ca/design/bases/couleurs"
+              >Consulter les couleurs de SDG</a
+            >
+          </p>
+        </li>
+        <li>
+          <strong>Palettes&nbsp;:</strong>
+          <code>--sdg-palette-NOM_COULEUR-GRADIENT</code>
+          <p>Les gradients sont cotés de 100 à 900</p>
+        </li>
+        <li>
+          <strong>Typographie&nbsp;:</strong>,
+          <ul>
+            <li><code>--sdg-font-size-*</code></li>
+            <li><code>--sdg-line-height-*</code></li>
+            <li>
+              <code>--sdg-title-margin-NIVEAU_TITRE-(mt|mb)</code>
+              <span> mt: margin-top et mb: margin-bottom</span>
+              <p><b>NIVEAU_TITRE&nbsp;:</b> <code>h1|h2|h3|h4|h5|h6</code></p>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <strong>Élévation&nbsp;:</strong> <code>--sdg-elevation-*</code>
+        </li>
+        <li>
+          <strong>Disposition&nbsp;:</strong>
+          <ul>
+            <li><code>--sdg-spacer-*</code></li>
+            <li><code>--sdg-max-content-width</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        Vous pouvez référencer ces tokens dans vos propres styles pour une
+        intégration complète au thème.
+      </p>
+    </section>
+
+    <section>
+      <h3>Style de mise en page</h3>
+      <p>
+        En dehors des normes SDG, un sous-ensemble de classes pour la mise en
+        page provenant de
+        <a href="https://getbootstrap.com/">Bootstrap</a> est disponible.
+        Importer le style dans le fichier style.scss
+
+        <app-docs-code code="@use '@igo2/sdg-core/layout';" lang="sass" />
+      </p>
+
+      <strong>Règles de filtrage</strong> (dans l'objectif d'optimisation de la
+      taille applicative)&nbsp;:
+      <ul>
+        <li>.container</li>
+        <li>.col</li>
+        <li>.row</li>
+        <li>.d-flex</li>
+        <li>.flex</li>
+      </ul>
+      <p>
+        <strong>Règles de filtrage&nbsp;:</strong> seules les règles CSS dont
+        les sélecteurs contiennent un de ces motifs sont incluses dans les
+        styles distribués.
+      </p>
+    </section>
+  </section>
+
+  <section>
+    <h2>Concept et configuration de l'application</h2>
+    <p>
+      Pour configurer votre application avec Angular, vous pouvez utiliser les
+      outils et interfaces fournis par <code>&#64;igo2/sdg</code>.
+    </p>
+
+    <h3>Routing</h3>
+    <p>
+      Nous réutilisons le Routing d'Angular mais avec quelques distinctions qui
+      bénéficieront à quelques composants. Nous proposons une interface
+      personnalisée <code>SdgRoutes</code> pour définir les routes de
+      l'application. Cette interface est totalement optionnelle et étend la
+      configuration standard d'Angular Router et permet d'ajoute des propriétés
+      utiles pour certains composants (ex. : fil d'Ariane).
+      <app-docs-code [code]="example2" lang="typescript" />
+    </p>
+
+    <p>
+      Par exemple, la propriété <code>isHome</code> permet d'indiquer la page
+      d'accueil, et <code>hidden</code> permet de masquer une route dans la
+      navigation principale ou le fil d'Ariane.
+    </p>
+
+    <section>
+      <h3>Internationalisation (i18n)</h3>
+      <p>
+        Basé sur la librairie ngx-translate, plusieurs fonctionnalités sont
+        offertes pour faciliter la gestion de la traduction et des libellés des
+        composants. Ce module est optionnel, il est possible d'utiliser la
+        stratégie d'internationalisation qui convient le mieux à vos besoins
+      </p>
+
+      <section>
+        <h4>provideTranslation</h4>
+        <p>
+          Le provider <code>provideTranslation</code> permet de configurer
+          l'internationalisation de l'application. Il offre plusieurs
+          fonctionnalités&nbsp;:
+        </p>
+        <ul>
+          <li>
+            <strong>withRouterTitleResolver</strong> : synchronise le titre de
+            la page avec la route active.
+          </li>
+          <li>
+            <strong>withLanguageFromUrl</strong> : détecte la langue à partir de
+            l'URL.
+          </li>
+          <li>
+            <strong>withWaitOnI18nReady</strong> : attend que les traductions
+            soient chargées avant d'afficher l'application.
+          </li>
+        </ul>
+        <p>
+          Exemple d'utilisation&nbsp;:
+
+          <app-docs-code [code]="example3" lang="typescript" />
+        </p>
+      </section>
+
+      <section>
+        <h4>Configuration globale des libellés avec provideTranslatedLabels</h4>
+        <p>
+          Le provider <code>provideTranslatedLabels</code> permet de définir
+          globalement les libellés par défaut de certains composants (menus,
+          en-têtes, liens, etc.). Cela facilite la personnalisation et la
+          traduction centralisée de l'interface utilisateur.
+        </p>
+        <p>
+          Exemple&nbsp;:
+
+          <app-docs-code
+            code="provideTranslatedLabels(SDG_HEADER_LABELS, 'sdg.header')"
+            lang="typescript"
+          />
+        </p>
+        <p>
+          Ici, tous les libellés par défaut du composant
+          <code>Header</code> seront traduits selon la configuration fournie et
+          la clé d'accès du fichier JSON de traduction.
+        </p>
+      </section>
+    </section>
+  </section>
 </app-basic-screen>

@@ -8,12 +8,7 @@ import { Breadcrumbs } from './shared';
   selector: 'sdg-breadcrumbs',
   imports: [BreadcrumbsListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <sdg-breadcrumbs-list
-      [breadcrumbs]="breadcrumbsList()"
-      [isHandset]="isHandset()"
-    />
-  `,
+  template: `<sdg-breadcrumbs-list [breadcrumbs]="breadcrumbsList()" />`,
   styles: `
     :host {
       display: block;

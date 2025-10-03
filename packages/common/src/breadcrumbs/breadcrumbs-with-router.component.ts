@@ -14,7 +14,6 @@ import {
 } from '@angular/router';
 
 import {
-  BreakpointService,
   RouteTitleKey,
   SdgRoute,
   SdgRoutes,
@@ -32,12 +31,7 @@ import { Breadcrumb, Breadcrumbs } from './shared/breadcrumbs.interface';
   selector: 'sdg-breadcrumbs-with-router',
   imports: [RouterModule, BreadcrumbsListComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <sdg-breadcrumbs-list
-      [breadcrumbs]="breadcrumbsList()"
-      [isHandset]="isHandset()"
-    />
-  `,
+  template: `<sdg-breadcrumbs-list [breadcrumbs]="breadcrumbsList()" />`,
   styles: `
     :host {
       display: block;
@@ -63,10 +57,9 @@ export class BreadcrumbsWithRouterComponent
     private activatedRoute: ActivatedRoute,
     private router: Router,
     @Optional()
-    private titleResolver: TitleResolver,
-    breakpointService: BreakpointService
+    private titleResolver: TitleResolver
   ) {
-    super(breakpointService);
+    super();
   }
 
   ngOnInit(): void {
@@ -210,10 +203,12 @@ export class BreadcrumbsWithRouterComponent
 
       const title = route.snapshot.title ?? '';
       const url = (lastUrl = `${lastUrl}/${route.snapshot.url.join('/')}`);
+      const redirectTo = config.children?.[0].redirectTo;
       const breadcrumb: Breadcrumb = {
         id: `${title}-${url}`,
         title,
-        url
+        url,
+        redirectTo: typeof redirectTo === 'string' ? redirectTo : undefined
       };
 
       return breadcrumbs.concat(breadcrumb);

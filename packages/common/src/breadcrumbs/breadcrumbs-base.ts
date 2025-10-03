@@ -1,7 +1,5 @@
 import { Directive, Signal, computed } from '@angular/core';
 
-import { BreakpointService } from '@igo2/sdg-core';
-
 import {
   AnyBreadcrumb,
   BreadcrumbMenu,
@@ -14,11 +12,8 @@ export abstract class BreadcrumbsBase {
 
   abstract breadcrumbs: Signal<Breadcrumbs>;
   breadcrumbsList = this.getBreadcrumbs();
-  isHandset: Signal<boolean>;
 
-  constructor(private breakpointService: BreakpointService) {
-    this.isHandset = this.breakpointService.isHandset;
-  }
+  constructor() {}
 
   isMenu(breadcrumb: AnyBreadcrumb): breadcrumb is BreadcrumbMenu {
     return !!(breadcrumb as BreadcrumbMenu)?.menu;
@@ -28,9 +23,7 @@ export abstract class BreadcrumbsBase {
     return computed(() => {
       const breads = this.breadcrumbs();
 
-      if (this.isHandset()) {
-        return breads.length > 1 ? [breads.at(-2)!] : [];
-      } else if (breads.length >= 5) {
+      if (breads.length >= 5) {
         const menu: BreadcrumbMenu = {
           id: 'menu',
           menu: breads.slice(2, -2)

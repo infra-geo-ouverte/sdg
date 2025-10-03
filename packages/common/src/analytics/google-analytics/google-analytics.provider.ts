@@ -1,5 +1,10 @@
 import { DOCUMENT, isPlatformServer } from '@angular/common';
-import { PLATFORM_ID, inject, provideAppInitializer } from '@angular/core';
+import {
+  PLATFORM_ID,
+  TransferState,
+  inject,
+  provideAppInitializer
+} from '@angular/core';
 
 import { AnalyticsFeature, AnalyticsFeatureKind } from '../analytics.interface';
 import { IGoogleAnalyticsOptions } from './google-analytics.interface';
@@ -22,9 +27,7 @@ export function withGoogleAnalytics(
           return;
         }
 
-        const document = inject(DOCUMENT);
-        const gaService = inject(GoogleAnalyticsService);
-        return googleAnalyticsFactory(document, gaService, options);
+        return googleAnalyticsFactory(options);
       })
     ]
   };
@@ -33,11 +36,11 @@ export function withGoogleAnalytics(
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
 declare let gtag: Function;
 
-function googleAnalyticsFactory(
-  document: Document,
-  gaService: GoogleAnalyticsService,
-  options: IGoogleAnalyticsOptions
-): void {
+function googleAnalyticsFactory(options: IGoogleAnalyticsOptions): void {
+  const document = inject(DOCUMENT);
+  const gaService = inject(GoogleAnalyticsService);
+  const transferState = inject(TransferState);
+
   // Dynamically load the Google Analytics script
   const script = document.createElement('script');
   script.async = true;
@@ -67,7 +70,10 @@ function googleAnalyticsFactory(
     /**
      * Track the first page view but after we fallback on the default TagManager event. You can manage this event in the TagManger admin console.
      * https://support.google.com/tagmanager/answer/7679319?hl=en&ref_topic=7679108&sjid=1071553345249084852-NA
+     * Use the empty transfer state to detect Client only rendered pages
      */
-    gaService.trackFirstPageView();
+    if (!transferState.isEmpty) {
+      gaService.trackFirstSSRPageView();
+    }
   };
 }

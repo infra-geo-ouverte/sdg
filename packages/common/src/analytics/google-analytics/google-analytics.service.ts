@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { Subscription, filter, first } from 'rxjs';
@@ -12,7 +12,10 @@ declare let gtag: Function;
 export class GoogleAnalyticsService {
   private routerEvents$$?: Subscription;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private ngZone: NgZone
+  ) {}
 
   initialize(): void {
     if (!gtag) {
@@ -24,7 +27,7 @@ export class GoogleAnalyticsService {
     gtag('event', eventName, eventParams);
   }
 
-  trackFirstPageView(): void {
+  trackFirstSSRPageView(): void {
     if (this.routerEvents$$) {
       throw new Error(
         'Page tracking is already instantiated for Google Analytics'
@@ -37,8 +40,11 @@ export class GoogleAnalyticsService {
         first()
       )
       .subscribe((event: NavigationEnd) => {
-        gtag!('event', 'page_view', {
-          page_path: event.urlAfterRedirects
+        // WORKAROUND, the gtag call is blocking the SSR hydratation
+        this.ngZone.runOutsideAngular(() => {
+          gtag('event', 'page_view', {
+            page_path: event.urlAfterRedirects
+          });
         });
       });
   }

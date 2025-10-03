@@ -17,7 +17,7 @@ describe('withGoogleAnalytics', () => {
   beforeEach(() => {
     gaService = jasmine.createSpyObj('GoogleAnalyticsService', [
       'initialize',
-      'trackFirstPageView'
+      'trackFirstSSRPageView'
     ]);
     const headElement = jasmine.createSpyObj('HTMLHeadElement', [
       'appendChild',
@@ -98,6 +98,5 @@ describe('withGoogleAnalytics', () => {
 
     // Assert that the GoogleAnalyticsService was initialized.
     expect(gaService.initialize).toHaveBeenCalled();
-    expect(gaService.trackFirstPageView).toHaveBeenCalled();
   }));
 });

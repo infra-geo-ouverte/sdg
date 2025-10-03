@@ -13,7 +13,7 @@
     <mat-icon
       class="sdg-lateral-menu-section-header-arrow"
       color="primary"
-      [@openCloseArrow]="opened() ? 'opened' : 'closed'"
+      [class.--opened]="opened()"
     >
       <!-- icon name: keyboard_arrow_down -->
       <svg viewBox="0 -960 960 960">
@@ -22,16 +22,15 @@
     </mat-icon>
   </button>
 
-  <div
-    class="sdg-lateral-menu-section-subsections"
-    [@openCloseSection]="opened() ? 'opened' : 'closed'"
-  >
-    @for (item of section().items; track item) {
-      <sdg-lateral-menu-item
-        [item]="item"
-        [isSectionItem]="true"
-        [(menuOpened)]="menuOpened"
-      />
-    }
+  <div class="sdg-lateral-menu-section-subsections" [class.--opened]="opened()">
+    <div class="sdg-lateral-menu-section-subsections-content">
+      @for (item of section().items; track item) {
+        <sdg-lateral-menu-item
+          [item]="item"
+          [isSectionItem]="true"
+          [(menuOpened)]="menuOpened"
+        />
+      }
+    </div>
   </div>
 </div>

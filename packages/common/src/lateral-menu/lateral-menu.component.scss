@@ -1,14 +1,12 @@
+@use '@igo2/sdg-core' as sdg;
+@use './lateral-menu-animation' as animation;
+
 :host {
   display: flex;
   flex-direction: column;
 }
 
 .sdg-lateral-menu {
-  &-sections {
-    display: flex;
-    flex-direction: column;
-  }
-
   &-route-title {
     font-size: 14px;
     font-weight: bold;
@@ -35,4 +33,26 @@
       font-weight: bold;
     }
   }
+
+  &-route-title {
+    display: block;
+
+    @include sdg.media(mobile) {
+      display: none;
+    }
+  }
+
+  &-route-title-mobile {
+    display: none;
+
+    @include sdg.media(mobile) {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
+
+@include animation.openClose(
+  'sdg-lateral-menu-sections',
+  'sdg-lateral-menu-sections-content'
+);

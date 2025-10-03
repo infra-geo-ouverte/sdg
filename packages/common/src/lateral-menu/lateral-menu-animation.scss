@@ -1,0 +1,66 @@
+@use '@igo2/sdg-core' as sdg;
+
+$animation: 0.2s ease-in-out;
+
+@mixin _openClose($containerClassName, $contentClassName, $openedClassName) {
+  grid-template-rows: 0fr;
+
+  .#{$contentClassName} {
+    min-height: 0;
+    visibility: hidden;
+  }
+
+  &.#{$openedClassName} {
+    grid-template-rows: 1fr;
+
+    .#{$contentClassName} {
+      visibility: visible;
+    }
+  }
+}
+
+@mixin openClose(
+  $containerClassName,
+  $contentClassName,
+  $onlyMobile: true,
+  $openedClassName: '--opened'
+) {
+  .#{$containerClassName} {
+    display: grid;
+    overflow: hidden;
+    grid-template-rows: 1fr;
+    transition: grid-template-rows $animation;
+
+    .#{$contentClassName} {
+      transition: visibility $animation;
+      visibility: visible;
+    }
+
+    @if $onlyMobile {
+      @include sdg.media(mobile) {
+        @include _openClose(
+          $containerClassName,
+          $contentClassName,
+          $openedClassName
+        );
+      }
+    } @else {
+      @include _openClose(
+        $containerClassName,
+        $contentClassName,
+        $openedClassName
+      );
+    }
+  }
+
+  mat-icon {
+    svg {
+      transform: rotate(0deg);
+      transition: transform $animation;
+    }
+
+    &.#{$openedClassName} svg {
+      transform: rotate(180deg);
+    }
+  }
+}

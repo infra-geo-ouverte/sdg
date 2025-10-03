@@ -24,7 +24,6 @@
     "watch": "ng build common --watch && npm run postbuild"
   },
   "peerDependencies": {
-    "@angular/animations": "^19.0.0",
     "@angular/cdk": "^19.0.0",
     "@angular/common": "^19.0.0",
     "@angular/core": "^19.0.0",

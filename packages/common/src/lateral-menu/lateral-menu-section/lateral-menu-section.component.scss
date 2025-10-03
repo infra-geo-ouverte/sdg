@@ -1,4 +1,5 @@
 @use '@igo2/sdg-core' as sdg;
+@use '../lateral-menu-animation' as animation;
 
 .sdg-lateral-menu-section {
   display: flex;
@@ -46,12 +47,15 @@
   }
 
   &-subsections {
-    display: flex;
-    flex-direction: column;
-
     @include sdg.media(mobile) {
       background-color: var(--sdg-color-blue-pale);
       padding-left: 24px;
     }
   }
 }
+
+@include animation.openClose(
+  'sdg-lateral-menu-section-subsections',
+  'sdg-lateral-menu-section-subsections-content',
+  false
+);

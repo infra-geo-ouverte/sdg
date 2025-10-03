@@ -1,12 +1,4 @@
 import {
-  AUTO_STYLE,
-  animate,
-  state,
-  style,
-  transition,
-  trigger
-} from '@angular/animations';
-import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
@@ -25,32 +17,7 @@ import { LateralMenuItem } from '../lateral-menu.interface';
   imports: [MatIconModule, LateralMenuItemComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './lateral-menu-section.component.html',
-  styleUrls: ['./lateral-menu-section.component.scss'],
-  animations: [
-    trigger('openCloseSection', [
-      state('closed', style({ height: 0, overflow: 'hidden' })),
-      state(
-        'opened',
-        style({
-          height: AUTO_STYLE,
-          overflow: AUTO_STYLE,
-          'padding-top': '8px',
-          'padding-bottom': '8px'
-        })
-      ),
-      transition('closed <=> opened', animate('0.2s ease-in-out'))
-    ]),
-    trigger('openCloseArrow', [
-      state('closed', style({ transform: 'rotate(0)' })),
-      state(
-        'opened',
-        style({
-          transform: 'rotate(180deg)'
-        })
-      ),
-      transition('closed <=> opened', animate('0.2s ease-in-out'))
-    ])
-  ]
+  styleUrls: ['./lateral-menu-section.component.scss']
 })
 export class LateralMenuSectionComponent implements OnInit {
   readonly section = input.required<LateralMenuItem>();

@@ -1,0 +1,184 @@
+@use 'highlight.js/scss/github.scss';
+
+:host {
+  code {
+    color: var(--sdg-color-text);
+    padding: 16px;
+    border-radius: 16px;
+    background-color: var(--sdg-color-grey-pale) !important;
+    max-inline-size: var(--sdg-max-content-width);
+  }
+
+  ::ng-deep {
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-subst {
+      color: var(--sdg-color-text);
+    }
+  }
+}
+
+/*
+
+Dark style from softwaremaniacs.org (c) Ivan Sagalaev <Maniac@SoftwareManiacs.Org>
+
+*/
+::ng-deep {
+  .hljs {
+    display: block;
+    overflow-x: auto;
+    padding: 0.5em;
+    background: #fff;
+    color: black;
+  }
+
+  /* Gray DOCTYPE selectors like WebKit */
+  .xml .hljs-meta {
+    color: #c0c0c0;
+  }
+
+  .hljs-comment,
+  .hljs-quote {
+    color: #007400;
+  }
+
+  .hljs-tag,
+  .hljs-attribute,
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-literal,
+  .hljs-name {
+    color: #aa0d91;
+  }
+
+  .hljs-variable,
+  .hljs-template-variable {
+    color: #3f6e74;
+  }
+
+  .hljs-code,
+  .hljs-string,
+  .hljs-meta-string {
+    color: #c41a16;
+  }
+
+  .hljs-regexp,
+  .hljs-link {
+    color: #0e0eff;
+  }
+
+  .hljs-title,
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-number {
+    color: #1c00cf;
+  }
+
+  .hljs-section,
+  .hljs-meta {
+    color: #643820;
+  }
+
+  .hljs-class .hljs-title,
+  .hljs-type,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-params {
+    color: #5c2699;
+  }
+
+  .hljs-attr {
+    color: #836c28;
+  }
+
+  .hljs-subst {
+    color: #000;
+  }
+
+  .hljs-formula {
+    background-color: #eee;
+    font-style: italic;
+  }
+
+  .hljs-addition {
+    background-color: #baeeba;
+  }
+
+  .hljs-deletion {
+    background-color: #ffc8bd;
+  }
+
+  .hljs-selector-id,
+  .hljs-selector-class {
+    color: #9b703f;
+  }
+
+  .hljs-doctag,
+  .hljs-strong {
+    font-weight: bold;
+  }
+
+  .hljs-emphasis {
+    font-style: italic;
+  }
+
+  .dark {
+    .hljs {
+      display: block;
+      overflow-x: auto;
+      padding: 0.5em;
+      background: #444;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-literal,
+    .hljs-section,
+    .hljs-link {
+      color: white;
+    }
+
+    .hljs,
+    .hljs-subst {
+      color: #ddd;
+    }
+
+    .hljs-string,
+    .hljs-title,
+    .hljs-name,
+    .hljs-type,
+    .hljs-attribute,
+    .hljs-symbol,
+    .hljs-bullet,
+    .hljs-built_in,
+    .hljs-addition,
+    .hljs-variable,
+    .hljs-template-tag,
+    .hljs-template-variable {
+      color: #d88;
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-deletion,
+    .hljs-meta {
+      color: #777;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-literal,
+    .hljs-title,
+    .hljs-section,
+    .hljs-doctag,
+    .hljs-type,
+    .hljs-name,
+    .hljs-strong {
+      font-weight: bold;
+    }
+
+    .hljs-emphasis {
+      font-style: italic;
+    }
+  }
+}

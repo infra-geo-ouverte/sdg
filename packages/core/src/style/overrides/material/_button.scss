@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
 @mixin overrides() {
-  .mdc-button {
+  .mat-mdc-button {
     $height: 56px;
     $font-size: var(--sdg-font-size-md);
     $border-radius: 0;
@@ -48,6 +48,24 @@
       );
 
       min-width: calc($height * 2) !important;
+    }
+  }
+
+  .mat-mdc-button-base {
+    &.on-primary {
+      @include mat.button-overrides(
+        (
+          filled-state-layer-color: var(--sdg-color-grey-pale),
+          outlined-state-layer-color: var(--sdg-color-grey-pale),
+          protected-state-layer-color: var(--sdg-color-grey-pale),
+          text-state-layer-color: var(--sdg-color-grey-pale)
+        )
+      );
+      @include mat.icon-button-overrides(
+        (
+          state-layer-color: var(--sdg-color-grey-pale)
+        )
+      );
     }
   }
 

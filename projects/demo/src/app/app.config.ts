@@ -45,6 +45,7 @@ export const appConfig: ApplicationConfig = {
       ],
       {
         loader: {
+          // WORKAROUND for the demo on the Github page
           prefix: environment.production ? '/sdg/locale/' : '/locale/'
         }
       }

@@ -2,12 +2,11 @@ import { Component } from '@angular/core';
 
 import {
   IOlMapOptions,
-  SdgOlReferenceMapComponent,
-  provideMap,
-  withMapOptions
+  SDG_REFERENCE_MAP_LABELS,
+  SdgReferenceMapOlComponent
 } from '@igo2/sdg-carto/ol';
 import { ExternalLinkComponent } from '@igo2/sdg-common';
-import { TranslationService } from '@igo2/sdg-i18n';
+import { provideTranslatedLabels } from '@igo2/sdg-i18n';
 
 import { default as olGeoJSON } from 'ol/format/GeoJSON.js';
 import TileLayer from 'ol/layer/Tile';
@@ -49,19 +48,14 @@ const BASEMAP = () =>
 @Component({
   selector: 'app-reference-map',
   imports: [
-    SdgOlReferenceMapComponent,
+    SdgReferenceMapOlComponent,
     ExampleViewerComponent,
     ExternalLinkComponent
   ],
   providers: [
-    provideMap(
-      withMapOptions({
-        translation: {
-          key: 'showcasesCarto',
-          service: TranslationService
-        }
-      })
-    )
+    // Useful to configure globally the labels of the ReferenceMap.
+    // For local configuration you should use the input "labels"
+    provideTranslatedLabels(SDG_REFERENCE_MAP_LABELS, 'showcasesCarto')
   ],
   templateUrl: './reference-map.component.html',
   styleUrl: './reference-map.component.scss'

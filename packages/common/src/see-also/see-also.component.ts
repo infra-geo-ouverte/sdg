@@ -2,17 +2,22 @@ import {
   ChangeDetectionStrategy,
   Component,
   InjectionToken,
-  inject,
   input
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { SeeAlsoLabels, SeeAlsoLinks } from './see-also.interface';
+import { WithLabels } from '@igo2/sdg-core';
 
-export const SDG_SEE_ALSO_LABELS = new InjectionToken<SeeAlsoLabels>(
+import { ISeeAlsoLabels, SeeAlsoLinks } from './see-also.interface';
+
+export const SDG_SEE_ALSO_LABELS = new InjectionToken<ISeeAlsoLabels>(
   'SDG_SEE_ALSO_LABELS'
 );
+
+const DEFAULT_LABELS: ISeeAlsoLabels = {
+  title: 'À consulter aussi'
+};
 
 @Component({
   selector: 'sdg-see-also',
@@ -21,16 +26,11 @@ export const SDG_SEE_ALSO_LABELS = new InjectionToken<SeeAlsoLabels>(
   templateUrl: './see-also.component.html',
   styleUrls: ['./see-also.component.scss']
 })
-export class SeeAlsoComponent {
+export class SeeAlsoComponent extends WithLabels<ISeeAlsoLabels> {
   readonly links = input.required<SeeAlsoLinks>();
   readonly files = input<SeeAlsoLinks>([]);
 
-  title = 'À consulter aussi';
-
   constructor() {
-    const labelsOverride = inject(SDG_SEE_ALSO_LABELS, { optional: true });
-    if (labelsOverride) {
-      this.title = labelsOverride.title;
-    }
+    super(DEFAULT_LABELS, SDG_SEE_ALSO_LABELS);
   }
 }

@@ -3,43 +3,50 @@ import { ComponentFixture } from '@angular/core/testing';
 
 import { IOlMapOptions } from '../map';
 import {
-  SDG_REFERENCE_MAP_OPTIONS,
-  SdgReferenceMapDefaultOptions
+  SDG_REFERENCE_MAP_CONFIG,
+  SDG_REFERENCE_MAP_LABELS
 } from './reference-map';
-import { SdgOlReferenceMapComponent } from './reference-map.component';
+import { SdgReferenceMapOlComponent } from './reference-map.component';
+import {
+  ISdgMapLabels,
+  ISdgReferenceMapConfig
+} from './reference-map.interface';
 
-describe('SdgOlReferenceMapComponent', () => {
-  let component: SdgOlReferenceMapComponent;
-  let fixture: ComponentFixture<SdgOlReferenceMapComponent>;
+describe('SdgReferenceMapOlComponent', () => {
+  let component: SdgReferenceMapOlComponent;
+  let fixture: ComponentFixture<SdgReferenceMapOlComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SdgOlReferenceMapComponent],
+      imports: [SdgReferenceMapOlComponent],
       providers: [
         {
-          provide: SDG_REFERENCE_MAP_OPTIONS,
+          provide: SDG_REFERENCE_MAP_CONFIG,
           useValue: {
-            helpMessageDuration: 3000,
-            labels: {
-              buttons: {
-                geolocation: {
-                  active: 'Activate geolocation',
-                  inactive: 'Deactivate geolocation'
-                }
-              },
-              restrictions: {
-                ctrlScroll: 'Use Ctrl + scroll to zoom the map',
-                twoFingers: 'Use two fingers to zoom the map'
+            helpMessageDuration: 3000
+          } satisfies ISdgReferenceMapConfig
+        },
+        {
+          provide: SDG_REFERENCE_MAP_LABELS,
+          useValue: {
+            buttons: {
+              geolocation: {
+                active: 'Activate geolocation',
+                inactive: 'Deactivate geolocation'
               }
+            },
+            restrictions: {
+              ctrlScroll: 'Use Ctrl + scroll to zoom the map',
+              twoFingers: 'Use two fingers to zoom the map'
             }
-          } satisfies SdgReferenceMapDefaultOptions
+          } satisfies ISdgMapLabels
         }
       ]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SdgOlReferenceMapComponent);
+    fixture = TestBed.createComponent(SdgReferenceMapOlComponent);
     component = fixture.componentInstance;
 
     fixture.componentRef.setInput('options', {
@@ -69,16 +76,16 @@ describe('SdgOlReferenceMapComponent', () => {
     TestBed.resetTestingModule(); // Reset the testing module to allow overriding providers
 
     TestBed.configureTestingModule({
-      imports: [SdgOlReferenceMapComponent],
+      imports: [SdgReferenceMapOlComponent],
       providers: [
         {
-          provide: SDG_REFERENCE_MAP_OPTIONS,
+          provide: SDG_REFERENCE_MAP_CONFIG,
           useValue: {}
         }
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SdgOlReferenceMapComponent);
+    fixture = TestBed.createComponent(SdgReferenceMapOlComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('options', {
       view: {
@@ -89,6 +96,6 @@ describe('SdgOlReferenceMapComponent', () => {
 
     fixture.detectChanges();
 
-    expect(component.defaultOptions).toEqual({});
+    expect(component.config).toEqual({});
   });
 });

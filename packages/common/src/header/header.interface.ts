@@ -1,6 +1,4 @@
-import { Language } from '@igo2/sdg-i18n';
-
-export interface HeaderLabels {
+export interface IHeaderLabels {
   contactUs: string;
 }
 
@@ -17,10 +15,10 @@ export interface IHeaderContactUs {
 export interface IHeaderLanguages {
   /** For now, we take only two language */
   choices: [IHeaderLanguageChoice, IHeaderLanguageChoice];
-  default: Language;
+  default: string;
 }
 
 export interface IHeaderLanguageChoice {
   label: string;
-  key: Language;
+  key: string;
 }

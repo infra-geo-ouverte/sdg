@@ -2,19 +2,25 @@ import {
   ChangeDetectionStrategy,
   Component,
   InjectionToken,
-  inject,
   input
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { WithLabels } from '@igo2/sdg-core';
+
 import {
-  SequentialLink,
-  SequentialLinksLabels
+  ISequentialLinksLabels,
+  SequentialLink
 } from './sequential-links.interface';
 
 export const SDG_SEQUENTIAL_LINKS_LABELS =
-  new InjectionToken<SequentialLinksLabels>('SDG_SEQUENTIAL_LINKS_LABELS');
+  new InjectionToken<ISequentialLinksLabels>('SDG_SEQUENTIAL_LINKS_LABELS');
+
+const DEFAULT_LABELS: ISequentialLinksLabels = {
+  previous: 'Précédent',
+  next: 'Suivant'
+};
 
 @Component({
   selector: 'sdg-sequential-links',
@@ -23,24 +29,15 @@ export const SDG_SEQUENTIAL_LINKS_LABELS =
   templateUrl: './sequential-links.component.html',
   styleUrls: ['./sequential-links.component.scss']
 })
-export class SequentialLinksComponent {
+export class SequentialLinksComponent extends WithLabels<ISequentialLinksLabels> {
   readonly previousLink = input<SequentialLink>();
   readonly nextLink = input<SequentialLink>();
-
-  previous = 'Précédent';
-  next = 'Suivant';
 
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute
   ) {
-    const labelsOverride = inject(SDG_SEQUENTIAL_LINKS_LABELS, {
-      optional: true
-    });
-    if (labelsOverride) {
-      this.previous = labelsOverride.previous;
-      this.next = labelsOverride.next;
-    }
+    super(DEFAULT_LABELS, SDG_SEQUENTIAL_LINKS_LABELS);
   }
 
   goToLink(url: string) {

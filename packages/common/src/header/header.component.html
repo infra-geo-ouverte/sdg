@@ -23,8 +23,8 @@
           <a
             class="sdg-header-content-title"
             [routerLink]="['/', currentLanguage() ?? '']"
-            >{{ title() }}</a
-          >
+            >{{ title() }}
+          </a>
         </h6>
       </div>
     </div>
@@ -35,15 +35,16 @@
             class="sdg-header-content-options-language"
             tabindex="0"
             (click)="changeLanguage(nextLanguage!.key)"
-            (keypress.enter)="changeLanguage(nextLanguage!.key)"
-            >{{ nextLanguage!.label }}
+            (keyup.enter)="changeLanguage(nextLanguage!.key)"
+          >
+            {{ nextLanguage!.label }}
           </a>
         }
         @if (contactUsRoute()) {
           <a
             class="sdg-header-content-options-contact-us"
             [routerLink]="contactUsRoute()!"
-            >{{ contactUs }}</a
+            >{{ labels().contactUs }}</a
           >
         }
       </div>

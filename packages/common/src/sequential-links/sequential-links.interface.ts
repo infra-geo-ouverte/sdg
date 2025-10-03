@@ -1,4 +1,4 @@
-export interface SequentialLinksLabels {
+export interface ISequentialLinksLabels {
   previous: string;
   next: string;
 }

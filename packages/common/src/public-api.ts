@@ -1,8 +1,8 @@
 export * from './alert';
+export * from './analytics';
 export * from './anchor-menu';
 export * from './block-link';
 export * from './breadcrumbs';
-
 export * from './charter-banner';
 export * from './contact';
 export * from './see-also';

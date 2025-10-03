@@ -1,33 +1,33 @@
 <sdg-map-browser
-  sdgReferenceMapInteractions
   [map]="map"
-  [labels]="defaultOptions?.labels?.restrictions"
-  [mesageDuration]="defaultOptions?.helpMessageDuration"
+  sdgReferenceMapInteractions
+  [mesageDuration]="config()?.helpMessageDuration"
+  [labels]="labels().restrictions"
   class="flex-fill"
 >
   <div class="sdg-reference-map-actions --vertical --bottom --right">
     <sdg-rotation-button
       [map]="map"
       color="primary"
-      [labels]="defaultOptions?.labels?.buttons?.rotation"
+      [labels]="labels().buttons?.rotation"
     />
 
     <sdg-home-button
       [map]="map"
       color="primary"
-      [labels]="defaultOptions?.labels?.buttons?.home"
+      [labels]="labels().buttons?.home"
     />
 
     <sdg-geolocate-button
       [controller]="geolocation"
       color="primary"
-      [labels]="defaultOptions?.labels?.buttons?.geolocation"
+      [labels]="labels().buttons?.geolocation"
     />
 
     <sdg-zoom-button
       [map]="map"
       color="primary"
-      [labels]="defaultOptions?.labels?.buttons?.zoom"
+      [labels]="labels().buttons?.zoom"
     />
 
     <ng-content />

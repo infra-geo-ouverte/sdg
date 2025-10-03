@@ -1,4 +1,5 @@
 @use '@igo2/sdg-core' as sdg;
+@use '@angular/material' as mat;
 
 :host {
   background-color: var(--sdg-palette-blue-600);
@@ -42,10 +43,32 @@
       }
     }
 
+    &-title-container {
+      margin: 16px 0;
+
+      &-mobile {
+        display: none;
+      }
+
+      @include sdg.media(mobile) {
+        margin-top: 0;
+
+        &-mobile {
+          display: block;
+        }
+        &-desktop {
+          display: none;
+        }
+      }
+
+      > h6 {
+        font-weight: normal !important;
+        margin: 0 !important;
+      }
+    }
+
     &-title {
-      font-family: var(
-        --sdg-font-family-title
-      ); // override font family to title
+      font-family: var(--sdg-font-family-title);
       line-height: 20px;
       color: var(--sdg-color-white);
       text-decoration: none;
@@ -53,31 +76,7 @@
       -webkit-line-clamp: 3;
       line-clamp: 3;
       -webkit-box-orient: vertical;
-
-      &-container {
-        margin: 16px 0;
-        overflow: hidden;
-
-        &-mobile {
-          display: none;
-        }
-
-        @include sdg.media(mobile) {
-          margin-top: 0;
-
-          &-mobile {
-            display: block;
-          }
-          &-desktop {
-            display: none;
-          }
-        }
-
-        > h6 {
-          font-weight: normal !important;
-          margin: 0 !important;
-        }
-      }
+      overflow: hidden;
 
       &:hover {
         text-decoration: underline;
@@ -90,9 +89,7 @@
 
       &-language,
       &-contact-us {
-        font-family: var(
-          --sdg-font-family-title
-        ); // override font family to title
+        font-family: var(--sdg-font-family-title);
         font-size: 12px;
         white-space: nowrap;
         line-height: 20px;

@@ -2,10 +2,8 @@
 @use './typography-utils' as *;
 @use '../tokens/token-utils';
 
-@mixin typo-set-base-styles {
-  :root {
-    font-size: var(--sdg-font-size-root-percent);
-  }
+@mixin typo-base {
+  font-size: var(--sdg-font-size-root-percent);
 
   body {
     color: var(--sdg-color-text);

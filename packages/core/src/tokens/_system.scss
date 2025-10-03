@@ -2,6 +2,7 @@
 
 @use '../style/overrides';
 @use '../style/elevation';
+@use '../style/typography';
 @use './sys-colors';
 @use './sys-elevation';
 @use './sys-layout';
@@ -21,6 +22,8 @@
   body {
     background-color: var(--sdg-color-background);
   }
+
+  @include typography.typo-base();
 
   @include overrides.igo2-lib-overrides();
   @include overrides.material-overrides();

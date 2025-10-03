@@ -31,8 +31,7 @@
     "@angular/material": "^19.0.0",
     "@angular/platform-browser": "^19.0.0",
     "@angular/router": "^19.0.0",
-    "@igo2/sdg-core": "*",
-    "@igo2/sdg-i18n": "*"
+    "@igo2/sdg-core": "*"
   },
   "dependencies": {
     "tslib": "^2.6.0"

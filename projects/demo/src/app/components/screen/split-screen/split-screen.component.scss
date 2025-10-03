@@ -24,6 +24,10 @@ sdg-breadcrumbs-with-router {
   &-lateral-menu {
     flex: 0 0 25%;
     margin-top: 72px;
+
+    @include sdg.media(mobile) {
+      margin-top: 40px;
+    }
   }
   &-content {
     overflow-x: auto;

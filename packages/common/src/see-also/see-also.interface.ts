@@ -1,4 +1,4 @@
-export interface SeeAlsoLabels {
+export interface ISeeAlsoLabels {
   title: string;
 }
 

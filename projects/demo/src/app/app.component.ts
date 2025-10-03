@@ -3,8 +3,8 @@ import {
   Component,
   Inject,
   OnInit,
-  WritableSignal,
-  signal
+  Signal,
+  WritableSignal
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,6 +30,7 @@ import { delay, first } from 'rxjs';
 import { environment } from '../environments/environment';
 import { EnvironmentOptions } from '../environments/environment.interface';
 import { routes } from './app.routes';
+import { AppService } from './app.service';
 import { AppTitleResolver } from './config/title-resolver';
 
 @Component({
@@ -56,8 +57,6 @@ export class AppComponent implements OnInit {
   links: INavigationLinks;
   siteMapLinks: SiteMapLinks;
 
-  isDarkMode = signal(false);
-
   copyright = this.config.footer.copyright;
 
   constructor(
@@ -65,7 +64,8 @@ export class AppComponent implements OnInit {
     private router: Router,
     private translationService: TranslationService,
     private titleResolver: AppTitleResolver,
-    private titleResolverPipe: TitleResolverPipe
+    private titleResolverPipe: TitleResolverPipe,
+    private appService: AppService
   ) {
     const contactUsRoute = environment.header.contactUsRoute;
     if (contactUsRoute) {
@@ -82,6 +82,10 @@ export class AppComponent implements OnInit {
     return this.translationService.lang;
   }
 
+  get isDarkMode(): Signal<boolean> {
+    return this.appService.isDarkMode;
+  }
+
   ngOnInit(): void {
     this.handleSplashScreen();
   }
@@ -91,15 +95,7 @@ export class AppComponent implements OnInit {
   }
 
   toggleTheme(): void {
-    const isDark = this.isDarkMode();
-
-    this.document.body.classList[isDark ? 'remove' : 'add']('dark-mode');
-    this.document.documentElement.style.setProperty(
-      'color-scheme',
-      isDark ? 'light' : 'dark'
-    );
-
-    this.isDarkMode.update((value) => !value);
+    this.appService.toggleDarkMode(this.document);
   }
 
   private getLinks(): INavigationLinks {

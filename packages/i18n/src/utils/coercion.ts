@@ -1,8 +1,8 @@
 import { Translation, TranslationObject } from '../translation.interface';
 
 export function labelAttribute(
-  value: Translation | TranslationObject,
+  value: Translation | TranslationObject | undefined,
   defaultValue: Translation | TranslationObject = {}
 ): Translation | TranslationObject {
-  return value ? { ...defaultValue, ...value } : defaultValue;
+  return { ...defaultValue, ...(value ?? {}) };
 }

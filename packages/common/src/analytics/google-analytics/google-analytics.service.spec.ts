@@ -79,17 +79,17 @@ describe('GoogleAnalyticsService', () => {
     });
   });
 
-  describe('trackFirstPageView', () => {
+  describe('trackFirstSSRPageView', () => {
     it('should throw an error if page tracking is already instantiated', () => {
-      service.trackFirstPageView();
-      expect(() => service.trackFirstPageView()).toThrowError(
+      service.trackFirstSSRPageView();
+      expect(() => service.trackFirstSSRPageView()).toThrowError(
         'Page tracking is already instantiated for Google Analytics'
       );
     });
 
     it('should call gtag with the page path on the first NavigationEnd', () => {
       // Act
-      service.trackFirstPageView();
+      service.trackFirstSSRPageView();
       const mockEvent = new NavigationEnd(1, '/test-page', '/test-page');
       routerEvents.next(mockEvent);
 
@@ -98,19 +98,5 @@ describe('GoogleAnalyticsService', () => {
         page_path: '/test-page'
       });
     });
-
-    // DISABLE, THIS IS NOT STABLE AND FAIL IN CERTAIN OCCASION
-    // it('should not call gtag after the first navigation', () => {
-    //   // Act
-    //   service.trackFirstPageView();
-
-    //   // Simulate
-    //   routerEvents.next(new NavigationEnd(1, '/test-page', '/test-page'));
-
-    //   routerEvents.next(new NavigationEnd(2, '/test-page2', '/test-page2'));
-
-    //   // Assert
-    //   expect(gtagSpy).toHaveBeenCalledTimes(1);
-    // });
   });
 });

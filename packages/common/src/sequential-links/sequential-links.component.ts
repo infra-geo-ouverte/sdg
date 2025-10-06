@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   InjectionToken,
+  inject,
   input
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,13 +31,13 @@ const DEFAULT_LABELS: ISequentialLinksLabels = {
   styleUrls: ['./sequential-links.component.scss']
 })
 export class SequentialLinksComponent extends WithLabels<ISequentialLinksLabels> {
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+
   readonly previousLink = input<SequentialLink>();
   readonly nextLink = input<SequentialLink>();
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {
+  constructor() {
     super(DEFAULT_LABELS, SDG_SEQUENTIAL_LINKS_LABELS);
   }
 

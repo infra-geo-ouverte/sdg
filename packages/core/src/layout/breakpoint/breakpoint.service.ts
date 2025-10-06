@@ -1,17 +1,19 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Injectable, Signal, signal } from '@angular/core';
+import { Injectable, Signal, inject, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BreakpointService {
+  private breakpointObserver = inject(BreakpointObserver);
+
   private _isHandset = signal(false);
 
   get isHandset(): Signal<boolean> {
     return this._isHandset.asReadonly();
   }
 
-  constructor(private breakpointObserver: BreakpointObserver) {
+  constructor() {
     this.handleBreakpoint();
   }
 

@@ -2,10 +2,10 @@ import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
   inject,
-  provideAppInitializer
+  provideAppInitializer,
+  provideZonelessChangeDetection
 } from '@angular/core';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import {
   PreloadAllModules,
   provideRouter,
@@ -34,8 +34,8 @@ import { AppTitleResolver } from './config/title-resolver';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideAnimations(),
     provideHttpClient(),
+    provideZonelessChangeDetection(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
     provideTranslation(
       [

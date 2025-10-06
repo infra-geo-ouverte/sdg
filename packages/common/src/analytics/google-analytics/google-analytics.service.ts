@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 
 import { Subscription, filter, first } from 'rxjs';
@@ -10,12 +10,10 @@ declare let gtag: Function;
   providedIn: 'root'
 })
 export class GoogleAnalyticsService {
-  private routerEvents$$?: Subscription;
+  private router = inject(Router);
+  private ngZone = inject(NgZone);
 
-  constructor(
-    private router: Router,
-    private ngZone: NgZone
-  ) {}
+  private routerEvents$$?: Subscription;
 
   initialize(): void {
     if (!gtag) {

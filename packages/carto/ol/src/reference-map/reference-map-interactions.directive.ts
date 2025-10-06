@@ -43,6 +43,9 @@ const LABELS_DEFAULT: IRestrictionLabels = {
 export class SdgReferenceMapInteractionsDirective
   implements OnInit, OnDestroy, AfterViewInit
 {
+  private renderer = inject(Renderer2);
+  private elementRef = inject(ElementRef);
+
   readonly map = input.required<SdgOlMap>();
 
   readonly mesageDuration = input<number, number | undefined>(
@@ -68,10 +71,7 @@ export class SdgReferenceMapInteractionsDirective
   private _destroy$ = new Subject();
   private messageElement: HTMLElement | undefined;
 
-  constructor(
-    private renderer: Renderer2,
-    private elementRef: ElementRef
-  ) {
+  constructor() {
     effect(() => {
       this.isHover() && this.mapEventRestriction()
         ? this.addMessageElement()

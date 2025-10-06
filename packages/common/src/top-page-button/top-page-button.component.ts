@@ -1,9 +1,10 @@
-import { DOCUMENT, ViewportScroller } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
+  DOCUMENT,
   OnDestroy,
+  inject,
   input,
   signal
 } from '@angular/core';
@@ -19,17 +20,18 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrls: ['./top-page-button.component.scss']
 })
 export class TopPageButtonComponent implements OnDestroy {
+  private document = inject<Document>(DOCUMENT);
+  private viewportScroller = inject(ViewportScroller);
+
   tooltip = input.required<string>();
 
   showButton = signal<boolean>(false);
   private currentScrollPositionY = signal<number>(0);
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private viewportScroller: ViewportScroller
-  ) {
+  constructor() {
     this.document.addEventListener('scroll', this.handleScroll);
   }
+
   private handleScroll = () => {
     const scrollPositionY = this.viewportScroller.getScrollPosition()[1];
 

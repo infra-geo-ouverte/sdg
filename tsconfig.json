@@ -11,7 +11,7 @@
     "sourceMap": true,
     "declaration": false,
     "experimentalDecorators": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
@@ -27,10 +27,10 @@
         "packages/core/src/public-api"
       ],
       "@igo2/sdg-carto": [
-        "packages/carto/src/public-api",
+        "packages/carto/src/public-api"
       ],
       "@igo2/sdg-carto/*": [
-        "packages/carto/*/src/public-api",
+        "packages/carto/*/src/public-api"
       ],
       "@igo2/sdg-i18n": [
         "./packages/i18n/src/public-api"

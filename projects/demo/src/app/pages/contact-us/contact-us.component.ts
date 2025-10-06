@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { RouteTitleKey } from '@igo2/sdg-core';
@@ -12,9 +12,11 @@ import { BasicScreenComponent } from '../../components';
   styleUrl: './contact-us.component.scss'
 })
 export class ContactUsComponent {
+  private route = inject(ActivatedRoute);
+
   title: string;
 
-  constructor(private route: ActivatedRoute) {
+  constructor() {
     this.title = this.route.routeConfig?.data![RouteTitleKey];
   }
 }

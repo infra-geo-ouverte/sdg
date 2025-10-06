@@ -1,4 +1,4 @@
-import { Component, WritableSignal } from '@angular/core';
+import { Component, WritableSignal, inject } from '@angular/core';
 
 import { ExternalLinkComponent, HeaderComponent } from '@igo2/sdg-common';
 import { Language, TranslationService } from '@igo2/sdg-i18n';
@@ -14,9 +14,9 @@ import { EnvironmentOptions } from 'projects/demo/src/environments/environment.i
   styleUrl: './header.component.scss'
 })
 export class HeaderDemoComponent {
-  config: EnvironmentOptions = environment;
+  private translationService = inject(TranslationService);
 
-  constructor(private translationService: TranslationService) {}
+  config: EnvironmentOptions = environment;
 
   get currentLanguage(): WritableSignal<Language> {
     return this.translationService.lang;

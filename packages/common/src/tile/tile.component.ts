@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  input
+} from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
@@ -10,14 +15,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./tile.component.scss']
 })
 export class TileComponent {
+  private router = inject(Router);
+
   readonly icon = input<string>();
   readonly title = input.required<string, string>({
     transform: this.titleValidation
   });
   readonly message = input<string>();
   readonly href = input.required<string>();
-
-  constructor(private router: Router) {}
 
   private titleValidation(title: string): string {
     return title.length > 45 ? `${title.slice(0, 45)}...` : title;

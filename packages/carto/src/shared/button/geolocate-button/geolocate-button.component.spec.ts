@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'packages/carto/test-config';
 import { of } from 'rxjs';
 
 import { GeolocationBase } from '../..';
@@ -35,7 +36,10 @@ describe('GeolocateButtonComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [],
       imports: [GeolocateButtonComponent],
-      providers: [{ provide: GeolocationBase, useValue: mockController }]
+      providers: [
+        { provide: GeolocationBase, useValue: mockController },
+        ...(TEST_CONFIG.providers ?? [])
+      ]
     }).compileComponents();
 
     fixture = TestBed.createComponent(GeolocateButtonComponent);

@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'packages/carto/test-config';
+
 import { ISdgMap } from '../../map.interface';
 import { RotationButtonComponent } from './rotation-button.component';
 
@@ -29,7 +31,7 @@ describe('RotationButtonComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [],
       imports: [RotationButtonComponent],
-      providers: []
+      providers: TEST_CONFIG.providers
     }).compileComponents();
 
     fixture = TestBed.createComponent(RotationButtonComponent);

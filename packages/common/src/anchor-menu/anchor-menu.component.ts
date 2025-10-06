@@ -1,10 +1,10 @@
-import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
+  DOCUMENT,
   InjectionToken,
   OnInit,
+  inject,
   input
 } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
@@ -32,12 +32,12 @@ export class AnchorMenuComponent
   extends WithLabels<AnchorMenuLabels>
   implements OnInit
 {
+  private activatedRoute = inject(ActivatedRoute);
+  private document = inject<Document>(DOCUMENT);
+
   readonly anchors = input.required<Anchor[]>();
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    @Inject(DOCUMENT) private document: Document
-  ) {
+  constructor() {
     super(DEFAULT_LABELS, SDG_ANCHOR_MENU_LABELS);
   }
 

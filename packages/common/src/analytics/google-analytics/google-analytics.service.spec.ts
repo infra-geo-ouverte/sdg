@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 
+import { TEST_CONFIG } from 'packages/common/test-config';
 import { Subject } from 'rxjs';
 
 import { GoogleAnalyticsService } from './google-analytics.service';
@@ -29,6 +30,7 @@ describe('GoogleAnalyticsService', () => {
     // Set up the testing module with mock providers
     TestBed.configureTestingModule({
       providers: [
+        ...(TEST_CONFIG.providers ?? []),
         GoogleAnalyticsService,
         {
           provide: Router,

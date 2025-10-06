@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'packages/carto/test-config';
+
 import { ISdgMap } from '../../map.interface';
 import { ZoomButtonComponent } from './zoom-button.component';
 
@@ -30,7 +32,8 @@ describe('ZoomButtonComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [],
-      imports: [ZoomButtonComponent]
+      imports: [ZoomButtonComponent],
+      providers: TEST_CONFIG.providers
     }).compileComponents();
 
     fixture = TestBed.createComponent(ZoomButtonComponent);

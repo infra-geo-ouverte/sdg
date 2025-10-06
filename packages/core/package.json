@@ -7,6 +7,9 @@
     "url": "git+https://github.com/infra-geo-ouverte/sdg.git",
     "directory": "packages/core"
   },
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
   "exports": {
     ".": {
       "import": "./src/public-api.ts",
@@ -28,11 +31,11 @@
     "watch": "ng build core --watch && npm run postbuild"
   },
   "peerDependencies": {
-    "@angular/cdk": "^19.0.0",
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angular/material": "^19.0.0",
-    "@angular/router": "^19.0.0"
+    "@angular/cdk": "^20.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/material": "^20.0.0",
+    "@angular/router": "^20.0.0"
   },
   "dependencies": {
     "tslib": "^2.6.0"

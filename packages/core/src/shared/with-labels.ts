@@ -7,6 +7,7 @@ type Labels = Record<string, any>;
 export class WithLabels<T extends Labels> {
   labels = model<T>({} as T);
 
+  // eslint-disable-next-line @angular-eslint/prefer-inject
   constructor(defaultLabels: T | undefined, labelsToken: InjectionToken<T>) {
     this.setLabels(defaultLabels, labelsToken);
   }

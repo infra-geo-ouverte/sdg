@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'projects/demo/src/test-config';
+
 import { DocsCodeComponent } from './docs-code.component';
 
 describe('DocsCodeComponent', () => {
@@ -8,7 +10,8 @@ describe('DocsCodeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DocsCodeComponent]
+      imports: [DocsCodeComponent],
+      providers: TEST_CONFIG.providers
     }).compileComponents();
 
     fixture = TestBed.createComponent(DocsCodeComponent);

@@ -1,4 +1,4 @@
-import { AfterContentInit, Component, ElementRef } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, inject } from '@angular/core';
 
 import {
   Anchor,
@@ -16,9 +16,9 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
   styleUrl: './anchor-menu.component.scss'
 })
 export class AnchorMenuDemoComponent implements AfterContentInit {
-  anchors: Anchor[] = [];
+  private elementRef = inject(ElementRef);
 
-  constructor(private elementRef: ElementRef) {}
+  anchors: Anchor[] = [];
 
   ngAfterContentInit() {
     this.anchors = findTitleAnchors(this.elementRef.nativeElement);

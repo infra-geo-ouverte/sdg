@@ -1,13 +1,11 @@
-import { DOCUMENT, ViewportScroller } from '@angular/common';
-import {
-  ComponentFixture,
-  TestBed,
-  fakeAsync,
-  tick
-} from '@angular/core/testing';
+import { ViewportScroller } from '@angular/common';
+import { DOCUMENT } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { TEST_CONFIG } from 'packages/common/test-config';
 
 import { TopPageButtonComponent } from './top-page-button.component';
 
@@ -23,7 +21,8 @@ describe('TopPageButtonComponent', () => {
         MatButtonModule,
         MatTooltipModule,
         TopPageButtonComponent
-      ]
+      ],
+      providers: TEST_CONFIG.providers
     }).compileComponents();
 
     fixture = TestBed.createComponent(TopPageButtonComponent);
@@ -41,29 +40,25 @@ describe('TopPageButtonComponent', () => {
     expect(component.showButton()).toBeFalse();
   });
 
-  it('should show button when scrolling up', fakeAsync(() => {
+  it('should show button when scrolling up', () => {
     window.scrollY = 200;
     document.dispatchEvent(new Event('scroll'));
-    tick();
 
     window.scrollY = 100;
     document.dispatchEvent(new Event('scroll'));
-    tick();
 
     expect(component.showButton()).toBeTrue();
-  }));
+  });
 
-  it('should hide button when scrolling down', fakeAsync(() => {
+  it('should hide button when scrolling down', () => {
     window.scrollY = 100;
     document.dispatchEvent(new Event('scroll'));
-    tick();
 
     window.scrollY = 200;
     document.dispatchEvent(new Event('scroll'));
-    tick();
 
     expect(component.showButton()).toBeFalse();
-  }));
+  });
 
   it('should call scrollToPosition when scrollToTop is called', () => {
     const viewportScroller = TestBed.inject(ViewportScroller);

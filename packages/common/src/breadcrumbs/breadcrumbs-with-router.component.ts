@@ -3,7 +3,7 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  Optional,
+  inject,
   signal
 } from '@angular/core';
 import {
@@ -49,18 +49,13 @@ export class BreadcrumbsWithRouterComponent
   extends BreadcrumbsBase
   implements OnInit, OnDestroy
 {
+  private activatedRoute = inject(ActivatedRoute);
+  private router = inject(Router);
+  private titleResolver = inject(TitleResolver, { optional: true });
+
   breadcrumbs = signal<Breadcrumbs>([]);
 
   private _takeUntil = new Subject<boolean>();
-
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private router: Router,
-    @Optional()
-    private titleResolver: TitleResolver
-  ) {
-    super();
-  }
 
   ngOnInit(): void {
     const breads = this.getBreadsFromRouterSegments();

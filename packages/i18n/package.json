@@ -7,6 +7,9 @@
     "url": "git+https://github.com/infra-geo-ouverte/sdg.git",
     "directory": "packages/i18n"
   },
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
   "exports": {
     ".": {
       "import": "./src/public-api.ts"
@@ -24,8 +27,8 @@
     "watch": "ng build i18n --watch"
   },
   "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
     "@igo2/sdg-core": "*",
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0"

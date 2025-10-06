@@ -1,7 +1,7 @@
 @use '@angular/material' as mat;
 
 @mixin overrides() {
-  .mat-mdc-button {
+  .mdc-button {
     $height: 56px;
     $font-size: var(--sdg-font-size-md);
     $border-radius: 0;

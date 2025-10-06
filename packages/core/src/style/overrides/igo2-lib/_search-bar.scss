@@ -23,12 +23,14 @@
       color: var(--sdg-color-white);
     }
 
-    @include mat.form-field-overrides(
-      (
-        container-height: 40px,
-        container-vertical-padding: 8px
-      )
-    );
+    mat-form-field {
+      @include mat.form-field-overrides(
+        (
+          container-height: 40px,
+          container-vertical-padding: 8px
+        )
+      );
+    }
 
     .mdc-icon-button.mat-mdc-button-base {
       @include mat.icon-button-overrides(

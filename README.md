@@ -1,10 +1,10 @@
-<h1 align="center">Composants Angular du Système de design gouvernemental du Québec</h1>
+<h1 align="center">Composants Angular basés sur le Système de design gouvernemental du Québec</h1>
 
 <p align="center">
   <img src="projects/demo/src/public/images/splash_screen.png" alt="igo-logo" width="120px" height="120px"/>
   <br>
   <em>
-  La libairie du Système de design gouvernemental du Québec (SDG) de IGO dont l'objectif est d'offrir une suite de composants Angular basé sur le système de design gouvernemental.
+  Composants internationalisés et accessibles à tous fondés sur les normes du Système de design gouvernemental du Québec (SDG).
   </em>
 </p>
 
@@ -26,7 +26,7 @@
 
 ## Documentation
 
-Démarrer avec librairie @igo2/sdg, documentation et contribuer au projet. 
+Démarrer avec la librairie @igo2/sdg, consulter la documentation et contribuer au projet. 
 
 - [Contribuer au projet](docs/DEV_README.md)
 - [Documentation](https://infra-geo-ouverte.github.io/sdg)
@@ -35,12 +35,12 @@ Démarrer avec librairie @igo2/sdg, documentation et contribuer au projet.
 
 ## Écosystème
 
-- [core](packages/core/README.md) - Le noyau de base contenant la thématisation et styles
+- [core](packages/core/README.md) - Le noyau de base contenant la thématisation et les styles
 - [common](packages/common/README.md) - Les composants communs
-- [carto](packages/carto/README.md) - Les composants cartographique
+- [carto](packages/carto/README.md) - Les composants cartographiques
 - [i18n](packages/i18n/README.md) - Internationalisation
 
-## Application basé sur la librairie
+## Applications basées sur la librairie
 
 - [Québec En Alerte](https://alerte.geo.msp.gouv.qc.ca) (À VENIR)
 - [Vigilance](https://vigilance.geo.msp.gouv.qc.ca) (À VENIR)
@@ -50,13 +50,13 @@ Démarrer avec librairie @igo2/sdg, documentation et contribuer au projet.
 [Découvrez les dernières améliorations](https://github.com/infra-geo-ouverte/sdg/releases)
 
 
-### Vous voulez aider?
+### Vous voulez aider ou contribuer?
 
 Vous voulez signaler un bogue, contribuer au code ou améliorer la documentation? Super! 
 
 Pour [signaler un bogue](https://github.com/infra-geo-ouverte/sdg/issues)
 
-Pour [ajouter une fonctionnalité manquante](https://github.com/infra-geo-ouverte/sdg/pulls) débuter par documenter le besoin
+Pour [ajouter une fonctionnalité manquante](https://github.com/infra-geo-ouverte/sdg/pulls) débutez en documentant le besoin
 
 Pour [des questions](https://github.com/infra-geo-ouverte/sdg/discussions)
 

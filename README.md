@@ -28,7 +28,7 @@
 
 Démarrer avec la librairie @igo2/sdg, consulter la documentation et contribuer au projet. 
 
-- [Contribuer au projet](docs/DEV_README.md)
+- [Contribuer au projet](docs/DEV_CONTRIBUTION.md)
 - [Documentation](https://infra-geo-ouverte.github.io/sdg)
 - [Configuration du développement](https://infra-geo-ouverte.github.io/sdg/fr/guides)
 

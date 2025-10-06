@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import {
   BlockLinkComponent,
@@ -19,10 +19,12 @@ import { routes } from './showcases/showcases.routes';
   styleUrl: './components.component.scss'
 })
 export class ComponentsComponent {
+  private titleResolverPipe = inject(TitleResolverPipe);
+
   sections: BlockLinkSections;
   sectionsCarto: BlockLinkSections;
 
-  constructor(private titleResolverPipe: TitleResolverPipe) {
+  constructor() {
     this.sections = this.setSections(routes, 'common');
     this.sectionsCarto = this.setSections(routesCarto, 'carto');
   }

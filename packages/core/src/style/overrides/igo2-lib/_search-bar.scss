@@ -41,8 +41,8 @@
       // reset the default padding of Material. Igo is overriding it
       padding: calc(
         calc(
-            var(--mdc-icon-button-state-layer-size, 40px) - var(
-                --mdc-icon-button-icon-size,
+            var(--mat-icon-button-state-layer-size, 40px) - var(
+                --mat-icon-button-icon-size,
                 24px
               )
           ) /

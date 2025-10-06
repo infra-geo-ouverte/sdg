@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'packages/carto/test-config';
+
 import { ISdgMap, IViewBaseOptions } from '../map.interface';
 import { SdgMapBrowserComponent } from './map-browser.component';
 
@@ -16,7 +18,8 @@ describe('SdgMapBrowserComponent', () => {
     ]);
 
     await TestBed.configureTestingModule({
-      imports: [SdgMapBrowserComponent]
+      imports: [SdgMapBrowserComponent],
+      providers: TEST_CONFIG.providers
     }).compileComponents();
 
     fixture = TestBed.createComponent(SdgMapBrowserComponent);

@@ -1,7 +1,7 @@
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestModuleMetadata } from '@angular/core/testing';
-import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter } from '@angular/router';
 
 import {
@@ -24,8 +24,8 @@ export const TEST_CONFIG: TestModuleMetadata = {
     provideRouter([]),
     provideHttpClient(),
     provideHttpClientTesting(),
+    provideZonelessChangeDetection(),
     provideTranslation([withRouterTitleResolver(AppTitleResolver)]),
-    provideAnimations(),
     provideTranslatedLabels(SDG_ANCHOR_MENU_LABELS, 'sdg.anchorMenu'),
     provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink'),
     provideTranslatedLabels(SDG_SEE_ALSO_LABELS, 'sdg.seeAlso'),

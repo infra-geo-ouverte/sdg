@@ -13,8 +13,6 @@ export abstract class BreadcrumbsBase {
   abstract breadcrumbs: Signal<Breadcrumbs>;
   breadcrumbsList = this.getBreadcrumbs();
 
-  constructor() {}
-
   isMenu(breadcrumb: AnyBreadcrumb): breadcrumb is BreadcrumbMenu {
     return !!(breadcrumb as BreadcrumbMenu)?.menu;
   }

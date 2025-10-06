@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'packages/carto/test-config';
+
 import { Extent, ISdgMap } from '../../map.interface';
 import { HomeButtonComponent } from './home-button.component';
 
@@ -13,7 +15,8 @@ describe('HomeButtonComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [],
-      imports: [HomeButtonComponent]
+      imports: [HomeButtonComponent],
+      providers: TEST_CONFIG.providers
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeButtonComponent);

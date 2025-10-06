@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg-common';
 import { TranslationService } from '@igo2/sdg-i18n';
@@ -12,6 +12,8 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
   styleUrl: './block-link.component.scss'
 })
 export class BlockLinkDemoComponent {
+  private translationService = inject(TranslationService);
+
   sections1: BlockLinkSections = [
     {
       title: 'showcases.notice',
@@ -67,7 +69,7 @@ export class BlockLinkDemoComponent {
     }
   ];
 
-  constructor(private translationService: TranslationService) {
+  constructor() {
     this.getSections(this.sections1);
     this.getSections(this.sections2);
     this.getSections(this.sections3);

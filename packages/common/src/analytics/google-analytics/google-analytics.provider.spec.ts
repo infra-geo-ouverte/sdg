@@ -1,6 +1,7 @@
-import { DOCUMENT } from '@angular/common';
-import { ApplicationRef, PLATFORM_ID, inject } from '@angular/core';
-import { TestBed, fakeAsync, tick } from '@angular/core/testing';
+import { ApplicationRef, DOCUMENT, PLATFORM_ID, inject } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+
+import { TEST_CONFIG } from 'packages/common/test-config';
 
 import { withGoogleAnalytics } from './google-analytics.provider';
 import { GoogleAnalyticsService } from './google-analytics.service';
@@ -44,6 +45,7 @@ describe('withGoogleAnalytics', () => {
 
     TestBed.configureTestingModule({
       providers: [
+        ...(TEST_CONFIG.providers ?? []),
         ...withGoogleAnalytics({ targetId: mockTargetId }).providers,
         { provide: DOCUMENT, useValue: doc },
         { provide: GoogleAnalyticsService, useValue: gaService }
@@ -60,13 +62,11 @@ describe('withGoogleAnalytics', () => {
     });
   });
 
-  it('should initialize Google Analytics on the browser', fakeAsync(() => {
+  it('should initialize Google Analytics on the browser', () => {
     TestBed.runInInjectionContext(() => {
       const appRef = inject(ApplicationRef);
       appRef.tick(); // Trigger the initializer
     });
-
-    tick();
 
     // Retrieve the script object from the mock call.
     const script = scriptElementMock;
@@ -98,5 +98,5 @@ describe('withGoogleAnalytics', () => {
 
     // Assert that the GoogleAnalyticsService was initialized.
     expect(gaService.initialize).toHaveBeenCalled();
-  }));
+  });
 });

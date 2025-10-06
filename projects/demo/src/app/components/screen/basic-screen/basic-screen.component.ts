@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   WritableSignal,
+  inject,
   input
 } from '@angular/core';
 
@@ -19,10 +20,10 @@ import { Language, TranslationService } from '@igo2/sdg-i18n';
   styleUrl: './basic-screen.component.scss'
 })
 export class BasicScreenComponent {
+  private translationService = inject(TranslationService);
+
   readonly title = input.required<string>();
   readonly showCharterBanner = input<boolean>(false);
-
-  constructor(private translationService: TranslationService) {}
 
   get lang(): WritableSignal<Language> {
     return this.translationService.lang;

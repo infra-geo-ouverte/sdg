@@ -1,11 +1,11 @@
-import { DOCUMENT } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
-  Inject,
+  DOCUMENT,
   OnInit,
   Signal,
   effect,
+  inject,
   input,
   output
 } from '@angular/core';
@@ -22,6 +22,9 @@ import { BreakpointService } from '@igo2/sdg-core';
   styleUrls: ['./paginator.component.scss']
 })
 export class PaginatorComponent implements OnInit {
+  private document = inject<Document>(DOCUMENT);
+  private breakpointService = inject(BreakpointService);
+
   readonly listLength = input.required<number>();
   readonly pageSize = input.required<number>();
   readonly middlePagesMaxRange = input<number>(1);
@@ -41,10 +44,7 @@ export class PaginatorComponent implements OnInit {
   lastPagesIndexes: number[] = [];
   pagesIndexes: number[] = [];
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private breakpointService: BreakpointService
-  ) {
+  constructor() {
     this.isHandset = this.breakpointService.isHandset;
 
     effect(() => {

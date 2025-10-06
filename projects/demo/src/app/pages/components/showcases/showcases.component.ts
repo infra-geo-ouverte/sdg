@@ -1,4 +1,4 @@
-import { Component, OnDestroy, signal } from '@angular/core';
+import { Component, OnDestroy, inject, signal } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -26,16 +26,16 @@ import { routes } from './showcases.routes';
   styleUrl: './showcases.component.scss'
 })
 export class ShowcasesComponent implements OnDestroy {
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+  private titleResolverPipe = inject(TitleResolverPipe);
+
   sections: LateralMenuSections;
   title = signal<string | undefined>(undefined);
 
   private _destroy$ = new Subject();
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private titleResolverPipe: TitleResolverPipe
-  ) {
+  constructor() {
     this.sections = routes
       .filter((route) => isSection(route))
       .map((item, itemIndex) => {

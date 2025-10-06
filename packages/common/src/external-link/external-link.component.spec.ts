@@ -1,6 +1,8 @@
 import { ComponentRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
+import { TEST_CONFIG } from 'packages/common/test-config';
+
 import { ExternalLinkComponent } from './external-link.component';
 
 describe('ExternalLinkComponent', () => {
@@ -10,7 +12,8 @@ describe('ExternalLinkComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExternalLinkComponent]
+      imports: [ExternalLinkComponent],
+      providers: TEST_CONFIG.providers
     }).compileComponents();
 
     fixture = TestBed.createComponent(ExternalLinkComponent);

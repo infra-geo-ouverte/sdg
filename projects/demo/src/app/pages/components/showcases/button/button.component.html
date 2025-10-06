@@ -17,14 +17,16 @@
   configFolder="button"
   class="button-types"
 >
-  <button mat-raised-button color="primary" (click)="handleClick()">
+  <button matButton="elevated" color="primary" (click)="handleClick()">
     Raised
   </button>
-  <button mat-stroked-button color="primary" (click)="handleClick()">
+  <button matButton="outlined" color="primary" (click)="handleClick()">
     Stroked
   </button>
-  <button mat-button color="primary" (click)="handleClick()">Basic</button>
-  <button mat-flat-button color="primary" (click)="handleClick()">Flat</button>
+  <button matButton color="primary" (click)="handleClick()">Basic</button>
+  <button matButton="filled" color="primary" (click)="handleClick()">
+    Flat
+  </button>
 </app-example-viewer>
 
 <p>
@@ -32,25 +34,25 @@
   "color" tout en respectant le thème de l'application.
 </p>
 <app-example-viewer title="Couleurs" class="button-types">
-  <button mat-flat-button color="primary" (click)="handleClick()">
+  <button matButton="filled" color="primary" (click)="handleClick()">
     Primaire
   </button>
-  <button mat-flat-button color="warn" (click)="handleClick()">
+  <button matButton="filled" color="warn" (click)="handleClick()">
     Avertissement
   </button>
 </app-example-viewer>
 
 <p>Pour répliquer l'exemple du SDG:</p>
 <app-example-viewer title="Types de boutons (SDG)" class="button-types">
-  <button mat-flat-button color="primary" (click)="handleClick()">
+  <button matButton="filled" color="primary" (click)="handleClick()">
     Principal
   </button>
-  <button mat-stroked-button color="primary" (click)="handleClick()">
+  <button matButton="outlined" color="primary" (click)="handleClick()">
     Secondaire
   </button>
-  <button mat-button color="primary" (click)="handleClick()">Tertiaire</button>
+  <button matButton color="primary" (click)="handleClick()">Tertiaire</button>
   <button
-    mat-flat-button
+    matButton="filled"
     color="warn"
     [disabled]="true"
     (click)="handleClick()"

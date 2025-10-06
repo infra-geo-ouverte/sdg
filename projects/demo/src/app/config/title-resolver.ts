@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ActivatedRouteSnapshot, Data, Route } from '@angular/router';
 
 import {
@@ -12,7 +12,7 @@ import { Observable, tap } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AppTitleResolver implements TitleResolver {
-  constructor(private translationService: TranslationService) {}
+  private translationService = inject(TranslationService);
 
   resolve(route: ActivatedRouteSnapshot): Observable<string> {
     return this.translationService

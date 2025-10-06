@@ -1,4 +1,4 @@
-import { Component, OnDestroy, signal } from '@angular/core';
+import { Component, OnDestroy, inject, signal } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -26,16 +26,16 @@ import { routes } from './showcases-carto.routes';
   styleUrl: './showcases-carto.component.scss'
 })
 export class ShowcasesCartoComponent implements OnDestroy {
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+  private titleResolverPipe = inject(TitleResolverPipe);
+
   sections: LateralMenuSections;
   title = signal<string | undefined>(undefined);
 
   private _destroy$ = new Subject();
 
-  constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private titleResolverPipe: TitleResolverPipe
-  ) {
+  constructor() {
     this.router.events
       .pipe(
         filter((events) => events instanceof NavigationEnd),

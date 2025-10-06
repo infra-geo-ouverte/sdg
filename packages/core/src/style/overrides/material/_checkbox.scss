@@ -8,7 +8,7 @@
 
     $base-size: 8px;
     $checkbox-size: calc($base-size * 3);
-    $size-with-padding: var(--mdc-checkbox-state-layer-size);
+    $size-with-padding: var(--mat-checkbox-state-layer-size);
 
     @include mat.checkbox-overrides(
       (

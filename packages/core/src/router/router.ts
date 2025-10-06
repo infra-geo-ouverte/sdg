@@ -11,7 +11,7 @@ function hasStaticTitle(config: Route): boolean {
 
 export function resolveTitle(
   config: Route,
-  titleResolver?: TitleResolver
+  titleResolver?: TitleResolver | null
 ): string | undefined {
   if (hasStaticTitle(config)) {
     return config.title as string;

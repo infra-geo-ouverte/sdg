@@ -1,6 +1,6 @@
-import { DOCUMENT, isPlatformServer } from '@angular/common';
+import { isPlatformServer } from '@angular/common';
 import { HttpBackend } from '@angular/common/http';
-import { PLATFORM_ID, inject } from '@angular/core';
+import { DOCUMENT, PLATFORM_ID, inject } from '@angular/core';
 
 import { TranslateLoader } from '@ngx-translate/core';
 import {

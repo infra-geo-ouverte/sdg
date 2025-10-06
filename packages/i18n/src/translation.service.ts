@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Injectable, WritableSignal, signal } from '@angular/core';
+import { Injectable, WritableSignal, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
 import {
@@ -16,13 +16,13 @@ import { parseUrlWithLanguage } from './translation.utils';
   providedIn: 'root'
 })
 export class TranslationService {
+  router = inject(Router);
+  location = inject(Location);
+  translate = inject(TranslateService);
+
   lang: WritableSignal<Language> = signal('fr');
 
-  constructor(
-    public router: Router,
-    public location: Location,
-    public translate: TranslateService
-  ) {
+  constructor() {
     this.lang.set(this.translate.getFallbackLang() as Language);
   }
 

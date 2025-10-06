@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
+  inject,
   input,
   model,
   signal
@@ -20,14 +21,14 @@ import { LateralMenuItem } from '../lateral-menu.interface';
   styleUrls: ['./lateral-menu-section.component.scss']
 })
 export class LateralMenuSectionComponent implements OnInit {
+  private router = inject(Router);
+
   readonly section = input.required<LateralMenuItem>();
   readonly menuOpened = model.required<boolean>();
 
   opened = signal(false);
 
   active = false;
-
-  constructor(public router: Router) {}
 
   ngOnInit(): void {
     this.active = this.router.url.includes(this.section().path);

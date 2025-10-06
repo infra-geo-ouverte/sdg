@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { Injectable, InjectionToken, inject } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { RouterStateSnapshot, TitleStrategy } from '@angular/router';
 
@@ -10,13 +10,8 @@ export const TITLE_OPTIONS = new InjectionToken<INavigationTitleOptions | null>(
 
 @Injectable()
 export class NavigationTitleStrategy extends TitleStrategy {
-  constructor(
-    private readonly title: Title,
-    @Inject(TITLE_OPTIONS)
-    private options?: INavigationTitleOptions
-  ) {
-    super();
-  }
+  private readonly title = inject(Title);
+  private options = inject<INavigationTitleOptions | null>(TITLE_OPTIONS);
 
   override async updateTitle(routerState: RouterStateSnapshot) {
     const { suffix = null, separator = null } = this.options ?? {};

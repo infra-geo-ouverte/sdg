@@ -1,10 +1,10 @@
-import { DOCUMENT } from '@angular/common';
 import {
   Component,
-  Inject,
+  DOCUMENT,
   OnInit,
   Signal,
-  WritableSignal
+  WritableSignal,
+  inject
 } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -52,6 +52,13 @@ import { AppTitleResolver } from './config/title-resolver';
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  private document = inject<Document>(DOCUMENT);
+  private router = inject(Router);
+  private translationService = inject(TranslationService);
+  private titleResolver = inject(AppTitleResolver);
+  private titleResolverPipe = inject(TitleResolverPipe);
+  private appService = inject(AppService);
+
   config: EnvironmentOptions = environment;
   contactUsRoute: string | undefined;
   links: INavigationLinks;
@@ -59,14 +66,7 @@ export class AppComponent implements OnInit {
 
   copyright = this.config.footer.copyright;
 
-  constructor(
-    @Inject(DOCUMENT) private document: Document,
-    private router: Router,
-    private translationService: TranslationService,
-    private titleResolver: AppTitleResolver,
-    private titleResolverPipe: TitleResolverPipe,
-    private appService: AppService
-  ) {
+  constructor() {
     const contactUsRoute = environment.header.contactUsRoute;
     if (contactUsRoute) {
       this.contactUsRoute = `${this.currentLanguage()}/${contactUsRoute}`;

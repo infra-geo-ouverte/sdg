@@ -4,12 +4,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   ElementRef,
-  Inject,
   OnDestroy,
   OnInit,
   PLATFORM_ID,
   Signal,
   computed,
+  inject,
   input,
   signal,
   viewChild,
@@ -44,6 +44,10 @@ const TABS_MIN_DISPLAYED = 2 as const;
   styleUrl: './navigation.component.scss'
 })
 export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
+  private host = inject(ElementRef);
+  private breakpointService = inject(BreakpointService);
+  private platformId = inject(PLATFORM_ID);
+
   readonly links = input.required<INavigationLinks>();
   readonly containerClass = input.required<string>();
   /**
@@ -73,11 +77,7 @@ export class NavigationComponent implements OnInit, AfterViewInit, OnDestroy {
   private _resizeSubject = new Subject<ResizeObserverEntry[]>();
   private _destroyed = new Subject<void>();
 
-  constructor(
-    private host: ElementRef,
-    private breakpointService: BreakpointService,
-    @Inject(PLATFORM_ID) private platformId: string
-  ) {
+  constructor() {
     this.isHandset = this.breakpointService.isHandset;
 
     if (isPlatformBrowser(this.platformId)) {

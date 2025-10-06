@@ -1,7 +1,7 @@
 <h1 align="center">Composants Angular basés sur le Système de design gouvernemental du Québec</h1>
 
 <p align="center">
-  <img src="projects/demo/src/public/images/splash_screen.png" alt="igo-logo" width="120px" height="120px"/>
+  <img src="projects/demo/public/images/splash_screen.png" alt="igo-logo" width="120px" height="120px"/>
   <br>
   <em>
   Composants internationalisés et accessibles à tous fondés sur les normes du Système de design gouvernemental du Québec (SDG).

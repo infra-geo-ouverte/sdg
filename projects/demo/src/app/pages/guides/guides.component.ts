@@ -1,5 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 
+import { ExternalLinkComponent } from '@igo2/sdg-common';
+
 import hljs from 'highlight.js';
 
 import { BasicScreenComponent } from '../../components';
@@ -7,7 +9,7 @@ import { DocsCodeComponent } from '../../components/docs-code/docs-code.componen
 
 @Component({
   selector: 'app-guides',
-  imports: [BasicScreenComponent, DocsCodeComponent],
+  imports: [BasicScreenComponent, DocsCodeComponent, ExternalLinkComponent],
   templateUrl: './guides.component.html',
   styleUrl: './guides.component.scss'
 })
@@ -31,7 +33,7 @@ html {
   @include mat.theme(sdg.$material-theme);
 
   // La propriété boolean permet de générer, pour le thème sombre,
-  // ses variante des variables CSS
+  // ses variantes des variables CSS
   @include sdg.theme(true);
 }`;
 

@@ -4,7 +4,7 @@
   <img src="projects/demo/public/images/splash_screen.png" alt="igo-logo" width="120px" height="120px"/>
   <br>
   <em>
-  Composants internationalisés et accessibles à tous fondés sur les normes du Système de design gouvernemental du Québec (SDG).
+  Cette librairie a pour objectif de rendre disponible des composants qui facilitent l’implémentation des normes du Système de design gouvernemental (SDG) dans les applications web basées sur Angular. 
   </em>
 </p>
 

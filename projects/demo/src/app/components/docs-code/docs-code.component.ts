@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, computed, input } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  computed,
+  inject,
+  input
+} from '@angular/core';
 
 import hljs from 'highlight.js';
 
@@ -11,14 +17,17 @@ import { AppService } from '../../app.service';
   styleUrl: './docs-code.component.scss'
 })
 export class DocsCodeComponent implements AfterViewInit {
+  private appService = inject(AppService);
+
   readonly code = input.required<string>();
   readonly lang = input.required<string>();
+
   className = computed(() => {
     const baseClass = `language-${this.lang()}`;
     return this.appService.isDarkMode() ? `${baseClass} dark` : baseClass;
   });
 
-  constructor(private appService: AppService) {
+  constructor() {
     hljs.highlightAll();
   }
 

@@ -106,8 +106,14 @@ $devices: (
   @if $breakpoint {
     $max-width: map.get($grids, $breakpoint, max-width);
     @if $max-width {
-      @media (max-width: $max-width) {
-        @content;
+      @if $device != 'mobile-landscape' {
+        @media (max-width: $max-width) {
+          @content;
+        }
+      } @else {
+        @media (max-width: max-width(mobile)) or ((max-width: $max-width) and (orientation: landscape)) {
+          @content;
+        }
       }
     } @else {
       @content;

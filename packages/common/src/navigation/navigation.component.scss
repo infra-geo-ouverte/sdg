@@ -21,7 +21,7 @@ $font-size-mobile: 13px;
     &-container {
       padding: 0 16px;
 
-      @include sdg.media(mobile-landscape) {
+      @include sdg.media-mobile-landscape() {
         padding: 0 8px;
       }
     }
@@ -44,7 +44,7 @@ $font-size-mobile: 13px;
         }
       }
 
-      @include sdg.media(mobile-landscape) {
+      @include sdg.media-mobile-landscape() {
         height: fit-content;
         min-height: $row-height-mobile;
       }
@@ -53,7 +53,7 @@ $font-size-mobile: 13px;
     &-actions {
       display: flex;
 
-      @include sdg.media(mobile-landscape) {
+      @include sdg.media-mobile-landscape() {
         margin-bottom: 0;
       }
 
@@ -61,7 +61,7 @@ $font-size-mobile: 13px;
         button {
           margin-left: 24px;
 
-          @include sdg.media(mobile-landscape) {
+          @include sdg.media-mobile-landscape() {
             margin-left: 16px;
           }
         }
@@ -80,7 +80,7 @@ $font-size-mobile: 13px;
       }
     }
 
-    @include sdg.media(mobile-landscape) {
+    @include sdg.media-mobile-landscape() {
       --tab-inner-spacing: 8px;
     }
 
@@ -110,7 +110,7 @@ $font-size-mobile: 13px;
     max-width: 100%;
     overflow: hidden;
 
-    @include sdg.media(mobile-landscape) {
+    @include sdg.media-mobile-landscape() {
       width: 100%;
       flex-grow: unset;
       height: fit-content;
@@ -135,7 +135,7 @@ $font-size-mobile: 13px;
       }
     }
 
-    @include sdg.media(mobile-landscape) {
+    @include sdg.media-mobile-landscape() {
       font-size: $font-size-mobile;
     }
   }
@@ -165,7 +165,7 @@ $font-size-mobile: 13px;
       mat-icon {
         margin-left: 4px;
 
-        @include sdg.media(mobile-landscape) {
+        @include sdg.media-mobile-landscape() {
           margin-left: 0px;
         }
       }
@@ -186,7 +186,7 @@ $font-size-mobile: 13px;
     )
   );
 
-  @include sdg.media(mobile-landscape) {
+  @include sdg.media-mobile-landscape() {
     @include mat.button-overrides(
       (
         filled-container-height: 24px,
@@ -223,7 +223,7 @@ $font-size-mobile: 13px;
     }
   }
 
-  @include sdg.media(mobile-landscape) {
+  @include sdg.media-mobile-landscape() {
     @include mat.tabs-overrides(
       (
         container-height: $row-height-mobile

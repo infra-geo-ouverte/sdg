@@ -1,0 +1,62 @@
+<p>
+  <span
+    >Les <b>boutons</b> indiquent les actions qui peuvent être exécutées sur une
+    page. Le libellé d'un bouton annonce l'action qui se produit lorsque
+    l'utilisateur interagit avec celui-ci. Pour plus d'information, voir le
+  </span>
+  <span
+    ><sdg-external-link
+      text="Bouton"
+      url="https://design.quebec.ca/design/composants/boutons"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Variantes"
+  configFolder="button"
+  class="button-types"
+>
+  <button matButton="elevated" color="primary" (click)="handleClick()">
+    Raised
+  </button>
+  <button matButton="outlined" color="primary" (click)="handleClick()">
+    Stroked
+  </button>
+  <button matButton color="primary" (click)="handleClick()">Basic</button>
+  <button matButton="filled" color="primary" (click)="handleClick()">
+    Flat
+  </button>
+</app-example-viewer>
+
+<p>
+  Angular Material offre la possibilité de contrôler la couleur via la propriété
+  "color" tout en respectant le thème de l'application.
+</p>
+<app-example-viewer title="Couleurs" class="button-types">
+  <button matButton="filled" color="primary" (click)="handleClick()">
+    Primaire
+  </button>
+  <button matButton="filled" color="warn" (click)="handleClick()">
+    Avertissement
+  </button>
+</app-example-viewer>
+
+<p>Pour répliquer l'exemple du SDG:</p>
+<app-example-viewer title="Types de boutons (SDG)" class="button-types">
+  <button matButton="filled" color="primary" (click)="handleClick()">
+    Principal
+  </button>
+  <button matButton="outlined" color="primary" (click)="handleClick()">
+    Secondaire
+  </button>
+  <button matButton color="primary" (click)="handleClick()">Tertiaire</button>
+  <button
+    matButton="filled"
+    color="warn"
+    [disabled]="true"
+    (click)="handleClick()"
+  >
+    Avertissement
+  </button>
+</app-example-viewer>

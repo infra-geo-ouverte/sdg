@@ -1,0 +1,44 @@
+<sdg-header
+  [title]="config.title"
+  [languages]="config.header.languages"
+  [currentLanguage]="currentLanguage()"
+  [contactUsRoute]="contactUsRoute"
+  containerClass="container"
+  (languageChange)="handleLanguageChange($event)"
+/>
+
+<sdg-navigation
+  [links]="links"
+  containerClass="container"
+  [exactPathMatch]="`/${currentLanguage()}`"
+>
+  <ng-container navigation-actions>
+    <button mat-icon-button class="on-primary" [matMenuTriggerFor]="menu">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <div mat-menu-item>
+        <mat-slide-toggle
+          labelPosition="before"
+          [checked]="isDarkMode()"
+          (click)="toggleTheme()"
+        >
+          {{ 'darkMode' | translate }}
+        </mat-slide-toggle>
+      </div>
+    </mat-menu>
+  </ng-container>
+  <router-outlet />
+</sdg-navigation>
+
+<footer>
+  <sdg-footer
+    [title]="config.title"
+    [siteMapLinks]="siteMapLinks"
+    [copyright]="copyright"
+    containerClass="container"
+    [currentLanguage]="currentLanguage()"
+  />
+</footer>
+
+<sdg-top-page-button tooltip="Retour en haut" />

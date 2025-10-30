@@ -1,0 +1,18 @@
+@use '../base-button/base-button';
+@use '@angular/material' as mat;
+
+:host {
+  display: flex;
+  flex-direction: column;
+
+  @include mat.elevation(3);
+
+  button:first-child {
+    border-bottom: 1px solid #ccc !important;
+    margin-bottom: 0px !important;
+  }
+}
+
+button {
+  box-shadow: none !important;
+}

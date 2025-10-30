@@ -1,0 +1,36 @@
+:host {
+  display: flex;
+  flex-flow: column;
+}
+
+.sdg-see-also {
+  &-title {
+    margin-top: 0 !important;
+    padding-top: 40px;
+    border-top: 2px solid var(--sdg-color-blue-dark);
+  }
+
+  &-links,
+  &-files {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
+    border-bottom: 1px solid var(--sdg-color-grey-light);
+    padding: 40px 0;
+  }
+
+  &-links {
+    padding-top: 0;
+  }
+
+  &-file {
+    display: flex;
+    align-items: center;
+
+    &-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 28px;
+    }
+  }
+}

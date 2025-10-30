@@ -1,0 +1,37 @@
+@use '@igo2/sdg-core' as sdg;
+
+.block-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 48px var(--sdg-grid-spacing-max);
+
+  @include sdg.media(laptop) {
+    column-gap: var(--sdg-grid-spacing-xl);
+  }
+
+  @include sdg.media(tablet) {
+    column-gap: var(--sdg-grid-spacing-lg);
+  }
+
+  &-container {
+    padding: 48px 0;
+    background-color: var(--sdg-color-blue-pale);
+  }
+
+  & > * {
+    flex-basis: calc(100% / 3 - var(--sdg-grid-spacing-max));
+
+    @include sdg.media(laptop) {
+      flex-basis: calc(100% / 3 - var(--sdg-grid-spacing-xl));
+    }
+
+    @include sdg.media(tablet) {
+      flex-basis: calc(100% / 2 - var(--sdg-grid-spacing-lg));
+    }
+
+    @include sdg.media(mobile) {
+      flex-basis: 100%;
+    }
+  }
+}

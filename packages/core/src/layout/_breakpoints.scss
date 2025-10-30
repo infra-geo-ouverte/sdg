@@ -1,0 +1,130 @@
+@use 'sass:map';
+
+// https://design.quebec.ca/design/bases/grille-8px#c84016
+$grids: (
+  sm: (
+    min-width: 0,
+    max-width: 575px,
+    container-max-width: container-max-width('mobile'),
+    columns: 4,
+    spacing: 16px,
+    margins: 8px
+  ),
+  md: (
+    min-width: 576px,
+    max-width: 767px,
+    container-max-width: container-max-width('mobile-landscape'),
+    columns: 4,
+    spacing: 16px,
+    margins: 8px
+  ),
+  lg: (
+    min-width: 768px,
+    max-width: 991px,
+    container-max-width: container-max-width('tablet'),
+    columns: 12,
+    spacing: 24px,
+    margins: 12px
+  ),
+  xl: (
+    min-width: 992px,
+    max-width: 1199px,
+    container-max-width: container-max-width('laptop'),
+    columns: 12,
+    spacing: 24px,
+    margins: 12px
+  ),
+  max: (
+    min-width: 1200px,
+    max-width: 9999px,
+    container-max-width: container-max-width('desktop'),
+    columns: 12,
+    spacing: 32px,
+    margins: 16px
+  )
+) !default;
+
+$devices: (
+  mobile: 'sm',
+  mobile-landscape: 'md',
+  tablet: 'lg',
+  laptop: 'xl',
+  desktop: 'max'
+);
+
+// Flattens a nested map, concatenating keys with '-' and returning a flat map.
+@function get-grid-tokens() {
+  $result: ();
+  @each $breakpoint, $valueMap in $grids {
+    @each $key, $value in $valueMap {
+      $full-key: $key + '-' + $breakpoint;
+      $result: map.merge(
+        $result,
+        (
+          $full-key: $value
+        )
+      );
+    }
+  }
+  @return $result;
+}
+
+@function breakpoint($device) {
+  @return map.get($devices, $device);
+}
+
+@function min-width($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    @return map.get($grids, $breakpoint, min-width);
+  }
+}
+
+@function max-width($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    @return map.get($grids, $breakpoint, max-width);
+  }
+}
+
+@function container-max-width($device) {
+  $breakpoint: breakpoint($device);
+  $margins: map.get($grids, $breakpoint, margins);
+
+  @if $breakpoint == 'sm' {
+    @return calc(map.get($grids, $breakpoint, max-width) - 2 * $margins);
+  } @else {
+    @return calc(map.get($grids, $breakpoint, min-width) - 2 * $margins);
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+// https://github.com/twbs/bootstrap/blob/main/scss/mixins/_breakpoints.scss
+@mixin media($device) {
+  $breakpoint: breakpoint($device);
+  @if $breakpoint {
+    $max-width: map.get($grids, $breakpoint, max-width);
+    @if $max-width {
+      @media (max-width: $max-width) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  }
+}
+
+@mixin media-mobile-landscape() {
+  $breakpoint: breakpoint(mobile-landscape);
+  @if $breakpoint {
+    $max-width: map.get($grids, $breakpoint, max-width);
+    @if $max-width {
+      @media (max-width: max-width(mobile)) or ((max-width: $max-width) and (orientation: landscape)) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  }
+}

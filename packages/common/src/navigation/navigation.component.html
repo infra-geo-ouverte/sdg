@@ -1,0 +1,83 @@
+<div class="sdg-navigation-header">
+  <div class="sdg-navigation-header-container" [class]="containerClass()">
+    <div
+      #headerRow
+      class="sdg-navigation-header-row"
+      [class.--two-lines]="isOnTwoLine()"
+    >
+      <div #tabsSection class="sdg-navigation-tab-panel">
+        <nav
+          mat-tab-nav-bar
+          [tabPanel]="tabPanel"
+          [mat-stretch-tabs]="false"
+          disablePagination
+        >
+          @for (link of linksInTabs(); track link) {
+            <a
+              mat-tab-link
+              class="sdg-navigation-tab-link"
+              [routerLink]="link.path"
+              routerLinkActive="--active"
+              [routerLinkActiveOptions]="{
+                exact: link.path === exactPathMatch()
+              }"
+              #rla="routerLinkActive"
+              [active]="rla.isActive"
+            >
+              {{ link.title }}
+            </a>
+          }
+          @if (linksInMore() && linksInMore().length) {
+            <a
+              mat-tab-link
+              class="sdg-navigation-more-links"
+              tabindex="0"
+              (keydown)="(undefined)"
+              (keyup)="(undefined)"
+              (click)="buttonMoreLink._elementRef.nativeElement.click()"
+            >
+              <button
+                #buttonMoreLink
+                mat-flat-button
+                [matMenuTriggerFor]="menu"
+                (click)="$event.stopImmediatePropagation()"
+              >
+                <div class="sdg-navigation-more-links-container">
+                  Plus
+                  <mat-icon>
+                    <!-- icon name: keyboard_arrow_down -->
+                    <svg viewBox="0 -960 960 960">
+                      <path
+                        d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z"
+                      />
+                    </svg>
+                  </mat-icon>
+                </div>
+              </button>
+              <mat-menu #menu="matMenu">
+                @for (moreLink of linksInMore(); track moreLink) {
+                  <a
+                    mat-menu-item
+                    [routerLink]="moreLink.path"
+                    routerLinkActive="--active"
+                    [routerLinkActiveOptions]="{ exact: moreLink.path === '' }"
+                    #rla="routerLinkActive"
+                    >{{ moreLink.title }}</a
+                  >
+                }
+              </mat-menu>
+            </a>
+          }
+        </nav>
+      </div>
+      <!-- This section is a starting point, but at the moment it is not in the SPEC compliances and the implementation is subject to change at any moment -->
+      <div #actionsSection class="sdg-navigation-header-actions">
+        <ng-content select="[navigation-actions]" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<mat-tab-nav-panel #tabPanel class="sdg-navigation-content">
+  <ng-content />
+</mat-tab-nav-panel>

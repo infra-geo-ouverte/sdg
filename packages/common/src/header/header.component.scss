@@ -1,0 +1,105 @@
+@use '@igo2/sdg-core' as sdg;
+@use '@angular/material' as mat;
+
+:host {
+  background-color: var(--sdg-palette-blue-600);
+}
+
+.sdg-header {
+  &-container {
+    display: flex;
+    flex-flow: column;
+    background-color: var(--sdg-palette-blue-600);
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    column-gap: 40px;
+    min-height: 72px;
+
+    @include sdg.media(mobile) {
+      column-gap: 0;
+      justify-content: space-between;
+    }
+
+    &-logo {
+      display: flex;
+      align-items: center;
+
+      svg {
+        width: 200px;
+
+        @include sdg.media(mobile) {
+          width: 175px;
+        }
+      }
+
+      &-title {
+        display: flex;
+        align-items: center;
+        column-gap: calc(var(--sdg-grid-spacing-max) * 2);
+        flex-grow: 1;
+      }
+    }
+
+    &-title-container {
+      margin: 16px 0;
+
+      &-mobile {
+        display: none;
+      }
+
+      @include sdg.media(mobile) {
+        margin-top: 0;
+
+        &-mobile {
+          display: block;
+        }
+        &-desktop {
+          display: none;
+        }
+      }
+
+      > h6 {
+        font-weight: normal !important;
+        margin: 0 !important;
+      }
+    }
+
+    &-title {
+      font-family: var(--sdg-font-family-title);
+      line-height: 20px;
+      color: var(--sdg-color-white);
+      text-decoration: none;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    &-options {
+      display: flex;
+      flex-flow: column;
+
+      &-language,
+      &-contact-us {
+        font-family: var(--sdg-font-family-title);
+        font-size: 12px;
+        white-space: nowrap;
+        line-height: 20px;
+        color: var(--sdg-color-white);
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

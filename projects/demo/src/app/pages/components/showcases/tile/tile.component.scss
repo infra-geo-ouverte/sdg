@@ -1,0 +1,20 @@
+@use '@igo2/sdg-core' as sdg;
+
+.tiles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 32px var(--sdg-grid-spacing-max);
+
+  @include sdg.media(tablet) {
+    row-gap: 24px;
+  }
+
+  & > * {
+    flex-basis: calc(100% / 2 - var(--sdg-grid-spacing-max));
+
+    @include sdg.media(tablet) {
+      flex-basis: 100%;
+    }
+  }
+}

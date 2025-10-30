@@ -1,0 +1,109 @@
+@use 'sass:map';
+@use '../style/typography-utils' as *;
+@use './token-utils';
+
+$typography: (
+  font: (
+    family: (
+      text: (
+        'Open Sans',
+        sans-serif
+      ),
+      title: (
+        'Roboto',
+        sans-serif
+      )
+    ),
+    size: (
+      root-percent: #{$percent-root-font-size}#{'%'},
+      h6: rem(16),
+      h5: rem(19),
+      h4: rem(21),
+      h3: rem(28),
+      h2: rem(36),
+      h1: rem(48),
+      80: rem(12),
+      90: rem(14),
+      100: rem(16),
+      120: rem(18),
+      200: rem(22),
+      xs: var(--sdg-font-size-80),
+      sm: var(--sdg-font-size-90),
+      md: var(--sdg-font-size-100),
+      lg: var(--sdg-font-size-120),
+      xl: var(--sdg-font-size-200),
+      content: var(--sdg-font-size-md)
+    ),
+    weight: (
+      regular: 400,
+      medium: 500,
+      semi-bold: 600,
+      bold: 700
+    )
+  ),
+  line-height: (
+    h6: rem(20),
+    h5: rem(24),
+    h4: rem(24),
+    h3: rem(32),
+    h2: rem(40),
+    h1: rem(56),
+    90: rem(20),
+    100: rem(24),
+    120: rem(28),
+    200: rem(32),
+    sm: var(--sdg-line-height-90),
+    md: var(--sdg-line-height-100),
+    lg: var(--sdg-line-height-120),
+    xl: var(--sdg-line-height-200)
+  ),
+  title: (
+    margin: (
+      h1: (
+        mt: var(--sdg-spacer-72),
+        mb: var(--sdg-spacer-32)
+      ),
+      h2: (
+        mt: var(--sdg-spacer-lg),
+        mb: var(--sdg-spacer-sm)
+      ),
+      h3: (
+        mt: var(--sdg-spacer-md),
+        mb: var(--sdg-spacer-sm)
+      ),
+      h4: (
+        mt: var(--sdg-spacer-md),
+        mb: var(--sdg-spacer-xs)
+      ),
+      h5: (
+        mt: var(--sdg-spacer-sm),
+        mb: 0
+      ),
+      h6: (
+        mt: var(--sdg-spacer-sm),
+        mb: 0
+      )
+    )
+  )
+);
+
+$typography-mobile: (
+  font: (
+    size: (
+      h3: rem(25),
+      h2: rem(28),
+      h1: rem(36)
+    )
+  ),
+  line-height: (
+    h2: rem(40),
+    h1: rem(56)
+  )
+);
+
+@function sys-typography-values() {
+  @return map.merge(
+    token-utils.flatten-tokens-map($typography),
+    token-utils.flatten-tokens-map($typography-mobile, 'mobile')
+  );
+}

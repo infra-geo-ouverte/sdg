@@ -1,0 +1,58 @@
+@use '@igo2/sdg-core' as sdg;
+@use './lateral-menu-animation' as animation;
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.sdg-lateral-menu {
+  &-route-title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 16px 8px;
+    margin: 0;
+    border-bottom: 1px solid var(--sdg-color-grey-light);
+
+    &-mobile {
+      display: flex;
+      align-items: center;
+      border: none;
+      background-color: var(--sdg-color-blue-pale);
+      padding: 8px;
+      cursor: pointer;
+    }
+
+    &-text-mobile {
+      flex-grow: 1;
+      font-family: var(--sdg-font-family-text);
+      font-size: 16px;
+      color: var(--sdg-color-blue-piv);
+      margin: 0;
+      text-align: left;
+      font-weight: bold;
+    }
+  }
+
+  &-route-title {
+    display: block;
+
+    @include sdg.media(mobile) {
+      display: none;
+    }
+  }
+
+  &-route-title-mobile {
+    display: none;
+
+    @include sdg.media(mobile) {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+@include animation.openClose(
+  'sdg-lateral-menu-sections',
+  'sdg-lateral-menu-sections-content'
+);

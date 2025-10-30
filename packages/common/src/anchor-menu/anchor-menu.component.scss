@@ -1,0 +1,21 @@
+.sdg-anchor-menu-container {
+  display: flex;
+  flex-flow: column;
+  row-gap: 16px;
+  max-width: var(--sdg-max-content-width);
+  margin: 24px 0px;
+  border-top: 1px solid var(--sdg-color-grey-light);
+  border-bottom: 1px solid var(--sdg-color-grey-light);
+  padding: 32px;
+  background-color: var(--sdg-color-grey-pale);
+}
+
+a {
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

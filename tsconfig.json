@@ -1,0 +1,49 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "bundler",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": [
+      "ES2022",
+      "dom"
+    ],
+    "paths": {
+      "@igo2/sdg-common": [
+        "packages/common/src/public-api"
+      ],
+      "@igo2/sdg-core": [
+        "packages/core/src/public-api"
+      ],
+      "@igo2/sdg-carto": [
+        "packages/carto/src/public-api"
+      ],
+      "@igo2/sdg-carto/*": [
+        "packages/carto/*/src/public-api"
+      ],
+      "@igo2/sdg-i18n": [
+        "./packages/i18n/src/public-api"
+      ]
+    }
+  },
+  "exclude": [
+    "dist/**",
+  ],
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

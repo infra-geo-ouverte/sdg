@@ -1,0 +1,51 @@
+<p>
+  <span
+    >L'<b>avis</b> est un message contextuel qui peut s'afficher sur une page ou
+    sur plusieurs pages d'un même sujet. Pour plus d'information, voir l'</span
+  >
+  <span
+    ><sdg-external-link
+      text="Avis"
+      url="https://design.quebec.ca/design/composants/avis"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer title="Avis" configFolder="notice" codeFolder="notice">
+  <sdg-notice
+    type="General"
+    title="Ceci est un avis général"
+    [message]="message"
+  />
+
+  <sdg-notice
+    type="Warning"
+    title="Ceci est un avis d'avertissement"
+    [message]="message"
+  />
+
+  <sdg-notice
+    type="Error"
+    title="Ceci est un avis d'erreur"
+    [message]="message"
+  />
+
+  <sdg-notice
+    type="Success"
+    title="Ceci est un avis de succès"
+    [message]="message"
+  />
+
+  <sdg-notice
+    type="Complementary"
+    title="Ceci est un avis complémentaire avec l'icône par défaut"
+    [message]="message"
+  />
+
+  <sdg-notice
+    type="Complementary"
+    icon="star"
+    title="Ceci est un avis complémentaire avec une icône personnalisée"
+    [message]="message"
+  />
+</app-example-viewer>

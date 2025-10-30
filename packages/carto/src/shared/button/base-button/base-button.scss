@@ -1,0 +1,22 @@
+@use '@angular/material' as mat;
+
+:host {
+  button {
+    padding: 8px;
+
+    @include mat.fab-overrides(
+      (
+        small-container-color: var(--sdg-color-background),
+        small-foreground-color: var(--sdg-color-blue-piv)
+      )
+    );
+  }
+}
+
+button {
+  border-radius: 0 !important;
+  .mat-ripple,
+  .mdc-icon-button__ripple {
+    border-radius: 0 !important;
+  }
+}

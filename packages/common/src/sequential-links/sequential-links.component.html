@@ -1,0 +1,35 @@
+@if (previousLink()) {
+  <button
+    class="sdg-sequential-links-link"
+    (click)="goToLink(previousLink()!.url)"
+  >
+    <mat-icon class="sdg-sequential-links-arrow">
+      <!-- icon name: arrow_left_alt -->
+      <svg viewBox="0 -960 960 960">
+        <path
+          d="M400-240 160-480l240-240 56 58-142 142h486v80H314l142 142-56 58Z"
+        />
+      </svg>
+    </mat-icon>
+    <div class="sdg-sequential-links-content">
+      <span class="sdg-sequential-links-title">{{ labels().previous }}</span>
+      <span class="sdg-sequential-links-text">{{ previousLink()?.text }}</span>
+    </div>
+  </button>
+}
+@if (nextLink()) {
+  <button class="sdg-sequential-links-link" (click)="goToLink(nextLink()!.url)">
+    <mat-icon class="sdg-sequential-links-arrow">
+      <!-- icon name: arrow_right_alt -->
+      <svg viewBox="0 -960 960 960">
+        <path
+          d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z"
+        />
+      </svg>
+    </mat-icon>
+    <div class="sdg-sequential-links-content">
+      <span class="sdg-sequential-links-title">{{ labels().next }}</span>
+      <span class="sdg-sequential-links-text">{{ nextLink()?.text }}</span>
+    </div>
+  </button>
+}

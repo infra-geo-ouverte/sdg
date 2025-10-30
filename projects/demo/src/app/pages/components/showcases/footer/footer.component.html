@@ -1,0 +1,48 @@
+<p>
+  Le <b>pied de page</b> permet d'accéder aux différentes sections du site web,
+  de consulter des liens complémentaires et d'accéder aux informations de droit
+  d'auteur.
+</p>
+
+<p>
+  Malgré que ce type de composant est utilisé au travers des sites
+  gouvernementaux, aucune spécification officielle n'est disponible pour le
+  moment.
+</p>
+
+<app-example-viewer
+  title="Pied de page avec titre et liens complémentaires"
+  configFolder="footer"
+  codeFolder="footer"
+>
+  <sdg-footer
+    [title]="title"
+    [siteMapLinks]="siteMapLinks"
+    [externalLinks]="externalLinks"
+    [copyright]="copyright"
+    [containerClass]="containerClass"
+  />
+</app-example-viewer>
+
+<app-example-viewer
+  title="Pied de page avec logo"
+  configFolder="footer"
+  codeFolder="footer"
+>
+  <sdg-footer
+    [title]="title"
+    [logo]="logo"
+    [siteMapLinks]="siteMapLinks"
+    [externalLinks]="externalLinks"
+    [copyright]="copyright"
+    [containerClass]="containerClass"
+  />
+</app-example-viewer>
+
+<app-example-viewer
+  title="Pied de page avec mention de droit d'auteur seulement"
+  configFolder="footer"
+  codeFolder="footer"
+>
+  <sdg-footer [copyright]="copyright" [containerClass]="containerClass" />
+</app-example-viewer>

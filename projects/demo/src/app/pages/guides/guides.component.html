@@ -1,0 +1,256 @@
+<app-basic-screen title="Guides">
+  <p>Cette librairie est basée sur <code>&#64;angular/material</code>.</p>
+
+  <p>
+    La majorité des composants sont également compatibles avec le
+    <sdg-external-link
+      text="Server-Side Rendering (SSR)"
+      url="https://angular.dev/guide/ssr"
+    />
+  </p>
+
+  <section>
+    <h2>Installation</h2>
+
+    <p>
+      La librairie <code><b>&#64;igo2/sdg</b></code> est divisée en quatre
+      modules&nbsp;:
+    </p>
+
+    <ul>
+      <li><code>&#64;igo2/sdg-core</code>;</li>
+      <li><code>&#64;igo2/sdg-common</code>;</li>
+      <li><code>&#64;igo2/sdg-carto</code>;</li>
+      <li><code>&#64;igo2/sdg-i18n</code>.</li>
+    </ul>
+
+    <p>
+      Pour installer le module principal&nbsp;:
+      <app-docs-code code="npm install @igo2/sdg-core" lang="shell" />
+    </p>
+
+    <p>
+      Pour installer les autres modules, au besoin&nbsp;:
+      <app-docs-code
+        code="npm install @igo2/sdg-i18n @igo2/sdg-common @igo2/sdg-carto"
+        lang="shell"
+      />
+    </p>
+  </section>
+
+  <section>
+    <h2>Thématisation et styles</h2>
+
+    <p>
+      Les composants de la librairie sont basés sur les spécifications du SDG
+      afin d'obtenir des styles et une thématisation cohérents. Pour appliquer
+      le thème SDG à votre application, importez le
+      <code>mixin</code> principal dans votre feuille de style globale&nbsp;:
+
+      <app-docs-code [code]="example1" lang="scss" />
+    </p>
+
+    <section>
+      <h3>Variables CSS</h3>
+
+      <p>
+        Les composants sont basés sur diverses variables CSS définies
+        ci-dessous. Ces variables permettent d'améliorer la cohérence des styles
+        et de personnaliser facilement les couleurs, la typographie,
+        l'espacement, etc.
+      </p>
+
+      <p>
+        La manière la plus simple de voir l'ensemble des variables CSS est
+        d'ajouter le style SDG puis d'inspecter les styles de votre application,
+        car ces variables sont générées dynamiquement lors de l'importation.
+      </p>
+
+      <ul>
+        <li>
+          <b>Couleurs</b>&nbsp;:
+
+          <p>
+            <code>--sdg-color-NOM_COULEUR-VARIANTE</code>
+          </p>
+
+          <p>
+            <code><b>NOM_COULEUR</b></code
+            >&nbsp;:
+            <code>blue|grey|pink|red|green|yellow|violet|white|black</code>
+            <br />
+            * <code>white</code> et <code>black</code> ne possèdent pas de
+            variantes.
+            <br />
+            <code><b>VARIANTE</b></code
+            >&nbsp;:
+            <code>pale|light|normal|medium|dark</code>
+          </p>
+
+          <sdg-external-link
+            url="https://design.quebec.ca/design/bases/couleurs"
+            text="Consultez les couleurs du SDG"
+          />
+        </li>
+
+        <li>
+          <b>Palettes</b>&nbsp;:
+
+          <p><code>--sdg-palette-NOM_COULEUR-GRADIENT</code></p>
+          <p>Les gradients sont cotés de 100 à 900.</p>
+        </li>
+
+        <li>
+          <b>Typographie</b>&nbsp;:
+          <ul>
+            <li><code>--sdg-font-size-*</code></li>
+            <li><code>--sdg-line-height-*</code></li>
+            <li>
+              <code>--sdg-title-margin-NIVEAU_TITRE-(mt|mb)</code>
+              <code>mt</code>: margin-top <code>mb</code>: margin-bottom
+
+              <p>
+                <code><b>NIVEAU_TITRE</b></code
+                >&nbsp;: <code>h1|h2|h3|h4|h5|h6</code>
+              </p>
+            </li>
+          </ul>
+        </li>
+
+        <li><b>Élévation</b>&nbsp;: <code>--sdg-elevation-*</code></li>
+        <li>
+          <b>Disposition</b>&nbsp;:
+          <ul>
+            <li><code>--sdg-spacer-*</code></li>
+            <li><code>--sdg-max-content-width</code></li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        Vous pouvez référencer ces variables dans vos propres styles pour une
+        intégration complète au thème.
+      </p>
+    </section>
+
+    <section>
+      <h3>Styles de mise en page</h3>
+
+      <p>
+        En dehors des spécifications SDG, un sous-ensemble de classes pour la
+        mise en page provenant de
+        <sdg-external-link text="Bootstrap" url="https://getbootstrap.com/" />
+        est disponible. Importez le style dans le fichier
+        <code>style.scss</code>&nbsp;:
+
+        <app-docs-code code="@use '@igo2/sdg-core/layout';" lang="sass" />
+      </p>
+
+      <b>Règles de filtrage</b>&nbsp;:
+      <ul>
+        <li><code>.container</code></li>
+        <li><code>.col</code></li>
+        <li><code>.row</code></li>
+        <li><code>.d-flex</code></li>
+        <li><code>.flex</code></li>
+      </ul>
+      <p>
+        Seules les règles CSS dont les sélecteurs contiennent un de ces motifs
+        sont incluses dans les styles distribués, dans un objectif
+        d'optimisation de la taille applicative.
+      </p>
+    </section>
+  </section>
+
+  <section>
+    <h2>Concept et configuration de l'application</h2>
+    <p>
+      Pour configurer votre application avec Angular, vous pouvez utiliser les
+      outils et interfaces fournis par <code>&#64;igo2/sdg</code>.
+    </p>
+
+    <h3>Routing</h3>
+    <p>
+      Le routing d'Angular est réutilisé mais avec quelques distinctions et
+      particularités qui viennent bonifier quelques composants. Une interface
+      personnalisée
+      <code>SdgRoutes</code> permet de définir les routes de l'application.
+      Cette interface optionnelle étend la configuration standard d'Angular
+      Router et permet d'ajouter des propriétés utiles pour certains
+      composants&nbsp;:
+
+      <app-docs-code [code]="example2" lang="typescript" />
+    </p>
+
+    <p>
+      Par exemple, la propriété <code>isHome</code> permet d'indiquer la page
+      d'accueil, et <code>hidden</code> permet de masquer une route dans le menu
+      de navigation principale ou dans le fil d'Ariane.
+    </p>
+
+    <section>
+      <h3>Internationalisation (i18n)</h3>
+      <p>
+        Basée sur la librairie <code>ngx-translate</code>, plusieurs
+        fonctionnalités sont offertes pour faciliter la gestion de la traduction
+        et des libellés des composants. Ce module est optionnel et il est
+        possible d'utiliser la stratégie d'internationalisation qui convient le
+        mieux à vos besoins.
+      </p>
+
+      <section>
+        <h4><code>provideTranslation</code></h4>
+        <p>
+          Le provider <code>provideTranslation</code> permet de configurer
+          l'internationalisation de l'application. Il offre plusieurs
+          fonctionnalités&nbsp;:
+        </p>
+        <ul>
+          <li>
+            <code><b>withRouterTitleResolver</b></code
+            >&nbsp;: synchronise le titre de la page avec la route active.
+          </li>
+          <li>
+            <code><b>withLanguageFromUrl</b></code
+            >&nbsp;: détecte la langue à partir de l'URL de la page courante.
+          </li>
+          <li>
+            <code><b>withWaitOnI18nReady</b></code
+            >&nbsp;: attend que les traductions soient chargées avant d'afficher
+            l'application.
+          </li>
+        </ul>
+        <p>
+          <b>Exemple d'utilisation</b>&nbsp;:
+
+          <app-docs-code [code]="example3" lang="typescript" />
+        </p>
+      </section>
+
+      <section>
+        <h4>
+          Configuration globale des libellés avec
+          <code>provideTranslatedLabels</code>
+        </h4>
+        <p>
+          Le provider <code>provideTranslatedLabels</code> permet de définir
+          globalement les libellés par défaut de certains composants (menus,
+          en-têtes, liens, etc.). Cela facilite la personnalisation et la
+          traduction centralisée de l'interface utilisateur.
+        </p>
+        <p>
+          <b>Exemple</b>&nbsp;:
+
+          <app-docs-code
+            code="provideTranslatedLabels(SDG_HEADER_LABELS, 'sdg.header')"
+            lang="typescript"
+          />
+        </p>
+        <p>
+          Ici, tous les libellés par défaut du composant
+          <code>sdg-header</code> seront traduits selon la configuration fournie
+          et la clé d'accès du fichier JSON de traduction.
+        </p>
+      </section>
+    </section>
+  </section>
+</app-basic-screen>

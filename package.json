@@ -1,0 +1,83 @@
+{
+  "name": "@igo2/sdg",
+  "version": "1.0.0-next.111",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infra-geo-ouverte/sdg.git"
+  },
+  "license": "LiLiQ-R",
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
+  "workspaces": [
+    "packages/*",
+    "projects/*"
+  ],
+  "scripts": {
+    "postinstall": "git config core.hooksPath .config/git-hooks",
+    "ng": "ng",
+    "start": "npm run start -w demo",
+    "build.libs": "node --import tsx scripts/src/build-library.mts",
+    "format": "npm run format --workspaces --if-present",
+    "format.fix": "npm run format.fix --workspaces --if-present",
+    "lint": "ng lint --quiet",
+    "lint.fix": "ng lint --fix",
+    "test": "ng test --no-watch --browsers=ChromeHeadless",
+    "test.watch": "ng test --browsers=ChromeHeadless",
+    "circular-deps": "madge --circular --extensions ts packages"
+  },
+  "dependencies": {
+    "@angular/cdk": "^20.2.7",
+    "@angular/common": "^20.3.3",
+    "@angular/compiler": "^20.3.3",
+    "@angular/core": "^20.3.3",
+    "@angular/forms": "^20.3.3",
+    "@angular/material": "^20.2.7",
+    "@angular/platform-browser": "^20.3.3",
+    "@angular/router": "^20.3.3",
+    "@angular/ssr": "^20.3.4",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.3.4",
+    "@angular/cli": "^20.3.4",
+    "@angular/compiler-cli": "^20.3.3",
+    "@commitlint/cli": "^20.0.0",
+    "@commitlint/config-conventional": "^20.0.0",
+    "@commitlint/format": "^20.0.0",
+    "@commitlint/types": "^20.0.0",
+    "@semantic-release/exec": "^7.0.0",
+    "@semantic-release/git": "^10.0.0",
+    "@semantic-release/github": "^11.0.0",
+    "@stylistic/eslint-plugin": "^5.0.0",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.0",
+    "@types/geojson": "^7946.0.16",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^24.0.0",
+    "angular-eslint": "^20.0.0",
+    "eslint": "^9.21.0",
+    "execa": "^9.5.0",
+    "jasmine-core": "~5.1.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "madge": "^8.0.0",
+    "ng-packagr": "^20.3.0",
+    "postcss": "^8.5.6",
+    "prettier": "^3.5.0",
+    "semantic-release": "^24.2.0",
+    "tsx": "^4.0.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.0.0"
+  },
+  "madge": {
+    "detectiveOptions": {
+      "ts": {
+        "skipTypeImports": true
+      }
+    }
+  }
+}

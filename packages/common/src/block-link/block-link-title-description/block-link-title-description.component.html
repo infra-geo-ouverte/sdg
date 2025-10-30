@@ -1,0 +1,20 @@
+<sdg-anchor [path]="section().path"
+  ><h5
+    class="sdg-block-link-title"
+    [class.--no-description]="!section().description"
+  >
+    <span>{{ section().title }}</span>
+    <mat-icon class="sdg-block-link-title-arrow" color="accent">
+      <!-- icon name: east -->
+      <svg viewBox="0 -960 960 960">
+        <path
+          d="m600-200-57-56 184-184H80v-80h647L544-704l56-56 280 280-280 280Z"
+        />
+      </svg>
+    </mat-icon>
+  </h5>
+
+  @if (section().description) {
+    <p class="sdg-block-link-description">{{ section().description }}</p>
+  }
+</sdg-anchor>

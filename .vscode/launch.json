@@ -1,0 +1,38 @@
+{
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "serve Demo",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/"
+    },
+    {
+      "name": "test",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "npm: test.watch",
+      "url": "http://localhost:9876/debug.html"
+    },
+    {
+      "name": "serve (IGO2-QUEBEC)",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "igo2-quebec/start",
+      "url": "http://127.0.0.1:4200",
+      "webRoot": "${workspaceFolder}/projects/igo2-quebec",
+      "sourceMaps": true
+    },
+    {
+      "name": "serve (QEA-Client)",
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "qea-client/start",
+      "url": "http://localhost:4210",
+      "webRoot": "${workspaceFolder}/projects/qea-client",
+      "sourceMaps": true
+    }
+  ]
+}

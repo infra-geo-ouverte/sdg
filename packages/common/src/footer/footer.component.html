@@ -1,0 +1,21 @@
+@if (title() || logo() || siteMapLinks()) {
+  <sdg-footer-navigation
+    [title]="title()"
+    [logo]="logo()"
+    [siteMapLinks]="siteMapLinks()"
+    [containerClass]="containerClass()"
+    [currentLanguage]="currentLanguage()"
+  />
+}
+
+@if (externalLinks()) {
+  <sdg-footer-links
+    [externalLinks]="externalLinks()"
+    [containerClass]="containerClass()"
+  />
+}
+
+<sdg-footer-copyright
+  [copyright]="copyright()"
+  [containerClass]="containerClass()"
+/>

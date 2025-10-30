@@ -1,0 +1,99 @@
+@use 'sass:map';
+@use './token-utils';
+@use './sys-palettes';
+
+$light-colors: (
+  'blue': (
+    pale: map.get(sys-palettes.$palettes, 'blue', 100),
+    light: map.get(sys-palettes.$palettes, 'blue', 350),
+    normal: map.get(sys-palettes.$palettes, 'blue', 550),
+    piv: map.get(sys-palettes.$palettes, 'blue', 600),
+    medium: map.get(sys-palettes.$palettes, 'blue', 650),
+    dark: map.get(sys-palettes.$palettes, 'blue', 700)
+  ),
+  'grey': (
+    pale: map.get(sys-palettes.$palettes, 'grey', 100),
+    light: map.get(sys-palettes.$palettes, 'grey', 200),
+    normal: map.get(sys-palettes.$palettes, 'grey', 350),
+    medium: map.get(sys-palettes.$palettes, 'grey', 450),
+    dark: map.get(sys-palettes.$palettes, 'grey', 600)
+  ),
+  'pink': (
+    pale: map.get(sys-palettes.$palettes, 'red', 50),
+    normal: map.get(sys-palettes.$palettes, 'red', 300)
+  ),
+  'red': (
+    normal: map.get(sys-palettes.$palettes, 'red', 500),
+    dark: map.get(sys-palettes.$palettes, 'red', 800)
+  ),
+  'green': (
+    pale: map.get(sys-palettes.$palettes, 'green', 100),
+    normal: map.get(sys-palettes.$palettes, 'green', 500),
+    dark: map.get(sys-palettes.$palettes, 'green', 600)
+  ),
+  'yellow': (
+    pale: map.get(sys-palettes.$palettes, 'yellow', 100),
+    normal: map.get(sys-palettes.$palettes, 'yellow', 400),
+    dark: map.get(sys-palettes.$palettes, 'yellow', 600)
+  ),
+  'violet': (
+    normal: map.get(sys-palettes.$palettes, 'violet', 500)
+  ),
+  'white': #ffffff,
+  'black': #000000,
+  accent: map.get(sys-palettes.$palettes, 'red', 300),
+  text: var(--sdg-color-blue-dark),
+  background: var(--sdg-color-white)
+);
+
+// https://design.quebec.ca/design/bases/theme-sombre
+$dark-colors: (
+  blue: (
+    pale: map.get(sys-palettes.$palettes, 'blue', 800),
+    light: map.get(sys-palettes.$palettes, 'blue', 500),
+    normal: map.get(sys-palettes.$palettes, 'blue', 400),
+    piv: map.get(sys-palettes.$palettes, 'blue', 300),
+    medium: map.get(sys-palettes.$palettes, 'blue', 200),
+    dark: map.get(sys-palettes.$palettes, 'blue', 150)
+  ),
+  grey: (
+    pale: map.get(sys-palettes.$palettes, 'grey', 850),
+    light: map.get(sys-palettes.$palettes, 'grey', 700),
+    normal: map.get(sys-palettes.$palettes, 'grey', 500),
+    medium: map.get(sys-palettes.$palettes, 'grey', 400),
+    dark: map.get(sys-palettes.$palettes, 'grey', 300)
+  ),
+  pink: (
+    pale: map.get(sys-palettes.$palettes, 'red', 800),
+    normal: map.get(sys-palettes.$palettes, 'red', 550)
+  ),
+  red: (
+    normal: map.get(sys-palettes.$palettes, 'red', 400),
+    dark: map.get(sys-palettes.$palettes, 'red', 200)
+  ),
+  green: (
+    pale: map.get(sys-palettes.$palettes, 'green', 800),
+    normal: map.get(sys-palettes.$palettes, 'green', 400),
+    dark: map.get(sys-palettes.$palettes, 'green', 200)
+  ),
+  yellow: (
+    pale: map.get(sys-palettes.$palettes, 'yellow', 800),
+    normal: map.get(sys-palettes.$palettes, 'yellow', 650),
+    dark: map.get(sys-palettes.$palettes, 'yellow', 450)
+  ),
+  violet: (
+    normal: map.get(sys-palettes.$palettes, 'violet', 300)
+  ),
+  accent: map.get(sys-palettes.$palettes, 'red', 350),
+  text: map.get(sys-palettes.$palettes, 'grey', 150),
+  background: map.get(sys-palettes.$palettes, 'grey', 900)
+);
+
+@function sys-color-values() {
+  @return token-utils.flatten-tokens-map($light-colors, 'color');
+}
+
+@function sys-dark-color-values() {
+  $values: map.merge($light-colors, $dark-colors);
+  @return token-utils.flatten-tokens-map($values, 'color');
+}

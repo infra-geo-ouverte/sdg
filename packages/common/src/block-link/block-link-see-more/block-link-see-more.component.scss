@@ -1,0 +1,19 @@
+sdg-anchor ::ng-deep a {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  font-size: 14px;
+  color: var(--sdg-color-blue-piv);
+  margin: 0 !important;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.sdg-block-link-see-more-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+}

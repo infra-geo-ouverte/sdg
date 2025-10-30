@@ -1,0 +1,29 @@
+<!-- Mobile title button, shown only on small screens via CSS -->
+<button
+  mat-icon-button
+  class="sdg-lateral-menu-route-title-mobile"
+  (click)="opened.set(!opened())"
+>
+  <span class="sdg-lateral-menu-route-title-text-mobile">{{ title() }}</span>
+  <mat-icon color="primary" [class.--opened]="opened()">
+    <!-- icon name: keyboard_arrow_down -->
+    <svg viewBox="0 -960 960 960">
+      <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+    </svg>
+  </mat-icon>
+</button>
+
+<!-- Desktop title, shown only on large screens via CSS -->
+<span class="sdg-lateral-menu-route-title">{{ title() }}</span>
+
+<div class="sdg-lateral-menu-sections" [class.--opened]="opened()">
+  <div class="sdg-lateral-menu-sections-content">
+    @for (item of sections(); track item) {
+      @if (item.items) {
+        <sdg-lateral-menu-section [section]="item" [(menuOpened)]="opened" />
+      } @else {
+        <sdg-lateral-menu-item [item]="item" [(menuOpened)]="opened" />
+      }
+    }
+  </div>
+</div>

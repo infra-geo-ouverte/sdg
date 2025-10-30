@@ -1,0 +1,17 @@
+@if (lang() === 'en' && showCharterBanner()) {
+  <sdg-charter-banner containerClass="container" />
+}
+
+<sdg-breadcrumbs-with-router class="container" />
+
+<div class="container split-screen-container">
+  <div class="split-screen-lateral-menu">
+    <ng-content select="[left-slot]" />
+  </div>
+  <div class="split-screen-content">
+    @if (title()) {
+      <h1>{{ title() }}</h1>
+    }
+    <ng-content />
+  </div>
+</div>

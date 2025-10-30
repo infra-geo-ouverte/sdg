@@ -1,0 +1,91 @@
+@use '@igo2/sdg-core' as sdg;
+
+.sdg-tile {
+  &-container {
+    display: flex;
+    flex-flow: column;
+    row-gap: 4px;
+    border: 1px solid var(--sdg-color-grey-light);
+    background-color: var(--sdg-color-background);
+    box-shadow: var(--sdg-elevation-1);
+    padding: 32px 24px 24px 24px;
+    width: fit-content;
+    min-width: 200px;
+    max-width: 500px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--sdg-color-blue-normal);
+      box-shadow: var(--sdg-elevation-2);
+    }
+
+    &:hover .sdg-tile-arrow {
+      visibility: visible;
+    }
+
+    @include sdg.media(mobile) {
+      flex-flow: row;
+      align-items: center;
+      column-gap: 16px;
+      padding: 24px;
+    }
+  }
+
+  &-title {
+    font-size: 18px;
+    color: var(--sdg-color-text);
+
+    &.--no-message {
+      text-align: center;
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      column-gap: 16px;
+
+      &.--no-message {
+        flex-flow: column;
+        row-gap: 8px;
+
+        @include sdg.media(mobile) {
+          flex-flow: row;
+        }
+      }
+    }
+  }
+
+  &-icon {
+    color: var(--sdg-color-text);
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+  }
+
+  &-message {
+    color: var(--sdg-color-text);
+    text-align: left;
+    flex-grow: 1;
+    font-size: 14px;
+    padding-top: 4px;
+  }
+
+  &-arrow {
+    font-variation-settings: 'wght' 800;
+    flex-shrink: 0;
+    visibility: hidden;
+    align-self: flex-end;
+    width: 12px;
+    height: 12px;
+    font-size: 12px;
+
+    @include sdg.media(mobile) {
+      visibility: visible;
+
+      &.--no-message {
+        align-self: auto;
+      }
+    }
+  }
+}

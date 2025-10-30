@@ -1,0 +1,18 @@
+<button
+  mat-mini-fab
+  color="primary"
+  disableRipple
+  [class.--visible]="showButton()"
+  [matTooltip]="tooltip()"
+  matTooltipPosition="left"
+  (click)="scrollToTop()"
+>
+  <mat-icon>
+    <!-- icon name: north -->
+    <svg viewBox="0 -960 960 960">
+      <path
+        d="M440-80v-647L256-544l-56-56 280-280 280 280-56 57-184-184v647h-80Z"
+      />
+    </svg>
+  </mat-icon>
+</button>

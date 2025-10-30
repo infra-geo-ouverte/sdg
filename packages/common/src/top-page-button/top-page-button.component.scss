@@ -1,0 +1,37 @@
+@use '@angular/material' as mat;
+
+button {
+  visibility: hidden;
+  opacity: 0;
+  box-shadow: var(--sdg-elevation-1);
+  transition:
+    visibility 0.3s,
+    opacity 0.3s linear;
+
+  &:hover,
+  &:active {
+    box-shadow: var(--sdg-elevation-1);
+  }
+
+  &:focus {
+    box-shadow: var(--sdg-elevation-2);
+    border: 2px solid var(--sdg-color-blue-dark);
+    outline: 2px solid var(--sdg-color-blue-light);
+  }
+
+  &:hover {
+    @include mat.fab-overrides(
+      (
+        state-layer-color: var(--sdg-color-blue-normal),
+        hover-state-layer-opacity: 1,
+        focus-state-layer-opacity: 1
+      )
+    );
+  }
+
+  &.--visible {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.3s linear;
+  }
+}

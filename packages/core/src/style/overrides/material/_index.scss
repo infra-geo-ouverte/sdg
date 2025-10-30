@@ -1,0 +1,25 @@
+@use './button';
+@use './checkbox';
+@use './chip';
+@use './dialog';
+@use './divider';
+@use './form-field';
+@use './icon';
+@use './input';
+@use './sidenav';
+@use './radio-button';
+@use './tab';
+
+@mixin overrides() {
+  @include button.overrides();
+  @include checkbox.overrides();
+  @include chip.overrides();
+  @include dialog.overrides();
+  @include divider.overrides();
+  @include form-field.overrides();
+  @include icon.overrides();
+  @include input.overrides();
+  @include sidenav.overrides();
+  @include radio-button.overrides();
+  @include tab.overrides();
+}

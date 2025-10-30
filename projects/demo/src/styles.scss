@@ -1,0 +1,37 @@
+@use '@igo2/sdg-core/layout';
+
+@use 'theme/theme.scss';
+
+body,
+html {
+  height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  overflow: auto;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Fit Linearicons with the mat-icon
+mat-icon.lnr {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.pre-code {
+  display: block;
+  margin: 24px auto;
+  overflow-x: auto;
+  padding: 20px;
+  white-space: pre-wrap;
+  border: solid 1px #ccc;
+  border-radius: 12px;
+}

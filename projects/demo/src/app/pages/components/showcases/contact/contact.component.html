@@ -1,0 +1,49 @@
+<p>
+  <span
+    >Le <b>bloc de coordonnées</b> sert à présenter des informations de contact
+    telles que le numéro de téléphone, l'adresse, le courriel et les heures
+    d'ouverture d'un lieu ou d'un service. Pour plus d'information, voir le bloc
+  </span>
+  <span
+    ><sdg-external-link
+      text="Coordonnées"
+      url="https://design.quebec.ca/design/composants/coordonnees"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>Il est possible de formater les éléments du bloc selon un modèle défini:</p>
+
+<app-example-viewer
+  title="Bloc de coordonnées"
+  configFolder="contact"
+  codeFolder="contact"
+>
+  <sdg-contact title="Joindre John Doe" [contact]="contact" />
+</app-example-viewer>
+
+<p>
+  Il est possible de modifier le modèle afin de personnaliser certains éléments
+  du bloc:
+</p>
+
+<app-example-viewer
+  title="Bloc de coordonnées (Modèle personnalisé)"
+  configFolder="contact"
+  codeFolder="contact"
+>
+  <sdg-contact title="Joindre John Doe " [contact]="contactCustomModel" />
+</app-example-viewer>
+
+<p>
+  Il est finalement possible d'utiliser directement un objet où les éléments
+  sont déjà formatés:
+</p>
+
+<app-example-viewer
+  title="Bloc de coordonnées (Objet)"
+  configFolder="contact"
+  codeFolder="contact"
+>
+  <sdg-contact title="Joindre John Doe" [contact]="contactObject" />
+</app-example-viewer>

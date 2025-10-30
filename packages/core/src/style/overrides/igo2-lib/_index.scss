@@ -1,0 +1,9 @@
+@use './list';
+@use './panel';
+@use './search-bar';
+
+@mixin overrides() {
+  @include list.overrides();
+  @include panel.overrides();
+  @include search-bar.overrides();
+}

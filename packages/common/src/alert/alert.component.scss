@@ -1,0 +1,73 @@
+@use '@angular/material' as mat;
+@use '@igo2/sdg-core' as sdg;
+
+:host {
+  display: block;
+
+  &.--general {
+    background-color: var(--sdg-color-blue-pale);
+  }
+  &.--warning {
+    background-color: var(--sdg-color-yellow-pale);
+  }
+}
+
+.sdg-alert {
+  &-container {
+    display: flex;
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    column-gap: 24px;
+
+    @include sdg.media(mobile) {
+      padding-top: 16px;
+      padding-bottom: 16px;
+      align-items: start;
+    }
+  }
+
+  &-icon {
+    flex-shrink: 0;
+
+    &.--general {
+      @include mat.icon-overrides(
+        (
+          color: var(--sdg-color-blue-piv)
+        )
+      );
+    }
+
+    &.--warning {
+      @include mat.icon-overrides(
+        (
+          color: var(--sdg-color-yellow-dark)
+        )
+      );
+    }
+  }
+
+  &-message {
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 600;
+
+    @include sdg.media(mobile) {
+      font-family: var(--sdg-font-family-text);
+      font-size: 14px;
+    }
+  }
+
+  &-button {
+    @include mat.icon-button-overrides(
+      (
+        icon-size: 24px,
+        state-layer-size: 24px
+      )
+    );
+
+    &.mat-mdc-icon-button.mat-mdc-button-base {
+      padding: 0;
+    }
+  }
+}

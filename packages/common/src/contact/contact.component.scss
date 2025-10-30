@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  flex-flow: column;
+  border: 1px solid var(--sdg-color-grey-light);
+  padding: 24px 16px;
+}
+
+.sdg-contact {
+  &-title {
+    font-weight: bold;
+    width: fit-content;
+
+    &-contact {
+      display: flex;
+      flex-flow: column;
+      row-gap: 24px;
+    }
+  }
+
+  &-contact {
+    display: flex;
+    flex-flow: column;
+    row-gap: 16px;
+  }
+
+  &-info {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
+
+    mat-icon {
+      align-self: flex-start;
+    }
+  }
+
+  &-address {
+    display: flex;
+    flex-flow: column;
+  }
+}

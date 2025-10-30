@@ -1,0 +1,76 @@
+@use '@igo2/sdg-core' as sdg;
+
+:host {
+  display: flex;
+  background-color: var(--sdg-color-background);
+  border: 1px solid var(--sdg-color-grey-light);
+}
+
+.sdg-notice {
+  &-colored-zone {
+    padding: 24px 8px 0px 8px;
+    width: 40px;
+
+    &-icon {
+      &.--general {
+        color: var(--sdg-color-blue-piv);
+      }
+
+      &.--warning {
+        color: var(--sdg-color-yellow-dark);
+      }
+
+      &.--error {
+        color: var(--sdg-color-red-normal);
+      }
+
+      &.--success {
+        color: var(--sdg-color-green-normal);
+      }
+
+      &.--complementary {
+        color: var(--sdg-palette-grey-700);
+      }
+    }
+
+    &.--general {
+      background-color: var(--sdg-color-blue-pale);
+    }
+
+    &.--warning {
+      background-color: var(--sdg-color-yellow-pale);
+    }
+
+    &.--error {
+      background-color: var(--sdg-color-pink-pale);
+    }
+
+    &.--success {
+      background-color: var(--sdg-color-green-pale);
+    }
+
+    &.--complementary {
+      background-color: var(--sdg-color-grey-pale);
+    }
+  }
+
+  &-content {
+    padding: 24px 32px 24px 16px;
+    width: 100%;
+
+    @include sdg.media(mobile) {
+      padding: 24px 24px 24px 16px;
+    }
+
+    &-title,
+    &-message {
+      font-size: 14px !important;
+      margin: 0 !important;
+      line-height: 18px;
+    }
+
+    &-title {
+      font-family: var(--sdg-font-family-text) !important;
+    }
+  }
+}

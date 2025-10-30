@@ -1,0 +1,59 @@
+<p>
+  <span
+    >Le <b>menu de navigation principale</b> est un élément essentiel pour une
+    navigation fluide et intuitive sur un site Web ou une application. Pour plus
+    d'information, voir le
+  </span>
+  <span
+    ><sdg-external-link
+      text="Menu de navigation principale"
+      url="https://design.quebec.ca/design/modeles/menu-navigation-principale"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  À noter que l'implémentation est partielle. Seuls la conceptualisation, les
+  éléments de navigation et une partie des icônes utilitaires ont été réalisés.
+</p>
+
+<app-example-viewer
+  title="Navigation"
+  configFolder="navigation"
+  codeFolder="navigation"
+>
+  <sdg-navigation [links]="mockLinks" containerClass="container" />
+</app-example-viewer>
+
+<app-example-viewer
+  title="Navigation avec débordement"
+  configFolder="navigation"
+  codeFolder="navigation"
+>
+  <sdg-navigation [links]="mockLinksForOverflow" containerClass="container" />
+</app-example-viewer>
+
+<p>
+  La section des boutons utilitaires est incomplète. Pour le moment, ceux-ci ne
+  sont pas conformes et ne respectent pas les spécifications du SDG.
+</p>
+
+<app-example-viewer
+  title="Navigation avec débordement et boutons utilitaires"
+  configFolder="navigation"
+  codeFolder="navigation"
+>
+  <sdg-navigation [links]="mockLinksForOverflow" containerClass="container">
+    <ng-container navigation-actions>
+      <button mat-icon-button>
+        <mat-icon>settings</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>person</mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon>notifications</mat-icon>
+      </button>
+    </ng-container>
+  </sdg-navigation>
+</app-example-viewer>

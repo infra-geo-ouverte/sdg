@@ -1,0 +1,29 @@
+<button class="sdg-tile-container" (click)="goToLink()">
+  <div class="sdg-tile-title-icon" [class.--no-message]="!message()">
+    @if (icon()) {
+      <mat-icon class="sdg-tile-icon">{{ icon() }}</mat-icon>
+    }
+    <b>
+      <span class="sdg-tile-title" [class.--no-message]="!message()">
+        {{ title() }}
+      </span>
+    </b>
+  </div>
+  @if (message()) {
+    <div class="sdg-tile-message">
+      {{ message() }}
+    </div>
+  }
+  <mat-icon
+    class="sdg-tile-arrow"
+    [class.--no-message]="!message()"
+    color="accent"
+  >
+    <!-- icon name: arrow_forward -->
+    <svg viewBox="0 -960 960 960">
+      <path
+        d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"
+      />
+    </svg>
+  </mat-icon>
+</button>

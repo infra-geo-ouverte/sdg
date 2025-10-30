@@ -1,0 +1,21 @@
+@if (section().icon) {
+  <sdg-block-link-icon
+    [icon]="section().icon!"
+    [path]="section().path"
+    [description]="section().description"
+  />
+}
+
+<div class="sdg-block-link-content">
+  <sdg-block-link-title-description [section]="section()" />
+
+  @if (section().subsections) {
+    <div class="sdg-block-link-subsections">
+      @for (subsection of section().subsections; track subsection) {
+        <sdg-block-link-subsection [subsection]="subsection" />
+      }
+    </div>
+  }
+
+  <sdg-block-link-see-more [path]="section().path" />
+</div>

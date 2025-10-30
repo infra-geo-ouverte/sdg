@@ -1,0 +1,11 @@
+@use '@angular/material' as mat;
+
+@use '@igo2/sdg-core' as sdg;
+
+html {
+  color-scheme: light;
+
+  @include mat.theme(sdg.$material-theme);
+
+  @include sdg.theme(true);
+}

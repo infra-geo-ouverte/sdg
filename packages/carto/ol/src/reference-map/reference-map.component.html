@@ -1,0 +1,35 @@
+<sdg-map-browser
+  [map]="map"
+  sdgReferenceMapInteractions
+  [mesageDuration]="config()?.helpMessageDuration"
+  [labels]="labels().restrictions"
+  class="flex-fill"
+>
+  <div class="sdg-reference-map-actions --vertical --bottom --right">
+    <sdg-rotation-button
+      [map]="map"
+      color="primary"
+      [labels]="labels().buttons?.rotation"
+    />
+
+    <sdg-home-button
+      [map]="map"
+      color="primary"
+      [labels]="labels().buttons?.home"
+    />
+
+    <sdg-geolocate-button
+      [controller]="geolocation"
+      color="primary"
+      [labels]="labels().buttons?.geolocation"
+    />
+
+    <sdg-zoom-button
+      [map]="map"
+      color="primary"
+      [labels]="labels().buttons?.zoom"
+    />
+
+    <ng-content />
+  </div>
+</sdg-map-browser>

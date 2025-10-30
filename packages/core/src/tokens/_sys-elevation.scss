@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '../style/elevation';
+
+@function sys-elevation-values() {
+  $result: ();
+
+  @each $key, $value in elevation.$shadow-elevations {
+    $result: map.merge(
+      $result,
+      (
+        'elevation-#{$key}': elevation.get-box-shadow($key)
+      )
+    );
+  }
+
+  @return $result;
+}

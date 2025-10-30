@@ -1,0 +1,72 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  igo-search-bar {
+    background-color: var(--sdg-color-background);
+
+    // Workaroung, OPEN SANS font add a mysterious 1px for the height
+    .mat-mdc-form-field-infix {
+      max-height: 40px;
+    }
+
+    button[mat-icon-button] {
+      border-radius: 0;
+      background-color: var(--sdg-color-blue-piv);
+
+      &:hover {
+        background-color: var(--sdg-color-blue-normal);
+      }
+    }
+
+    mat-icon {
+      color: var(--sdg-color-white);
+    }
+
+    mat-form-field {
+      @include mat.form-field-overrides(
+        (
+          container-height: 40px,
+          container-vertical-padding: 8px
+        )
+      );
+    }
+
+    .mdc-icon-button.mat-mdc-button-base {
+      @include mat.icon-button-overrides(
+        (
+          state-layer-size: 40px
+        )
+      );
+      // reset the default padding of Material. Igo is overriding it
+      padding: calc(
+        calc(
+            var(--mat-icon-button-state-layer-size, 40px) - var(
+                --mat-icon-button-icon-size,
+                24px
+              )
+          ) /
+          2
+      );
+    }
+  }
+
+  igo-search-results {
+    igo-collapsible {
+      .mdc-list-item__primary-text {
+        color: var(--sdg-color-text);
+        font-weight: bold;
+      }
+    }
+
+    igo-search-results-item {
+      .mdc-list-item__primary-text {
+        font-weight: normal;
+      }
+    }
+
+    .mdc-list-item--with-leading-icon .mdc-list-item__start {
+      color: var(--sdg-color-text);
+    }
+  }
+}

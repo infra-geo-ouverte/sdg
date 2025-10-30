@@ -1,0 +1,63 @@
+@use 'sass:map';
+
+@use '../style/overrides';
+@use '../style/elevation';
+@use '../style/typography';
+@use './sys-colors';
+@use './sys-elevation';
+@use './sys-layout';
+@use './sys-palettes';
+@use './sys-typography';
+@use './token-utils';
+
+@mixin theme($withDarkMode: false) {
+  @include system-tokens();
+
+  @if ($withDarkMode) {
+    body.dark-mode {
+      @include _system-dark-colors();
+    }
+  }
+
+  body {
+    background-color: var(--sdg-color-background);
+  }
+
+  @include typography.typo-base();
+
+  @include overrides.igo2-lib-overrides();
+  @include overrides.material-overrides();
+}
+
+@mixin system-tokens() {
+  @include _system-colors();
+  @include _system-typographies();
+  @include _system-layout();
+  @include _system-level-elevation();
+}
+
+@mixin _system-level-elevation() {
+  $elevations: sys-elevation.sys-elevation-values();
+  @include token-utils.values($elevations);
+}
+
+@mixin _system-colors() {
+  $palettes: sys-palettes.sys-palette-values();
+  $colors: sys-colors.sys-color-values();
+
+  @include token-utils.values(map.merge($palettes, $colors));
+}
+
+@mixin _system-dark-colors() {
+  @include token-utils.values(sys-colors.sys-dark-color-values());
+}
+
+@mixin _system-typographies() {
+  $typography: sys-typography.sys-typography-values();
+  @include token-utils.values($typography);
+}
+
+@mixin _system-layout() {
+  $values: sys-layout.sys-layout-values();
+  @include token-utils.values($values);
+}

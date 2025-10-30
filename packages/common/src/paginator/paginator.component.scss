@@ -1,0 +1,57 @@
+.sdg-paginator {
+  &-button,
+  &-page,
+  &-ellipsis {
+    line-height: 40px;
+    min-width: 40px;
+    height: 40px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:focus {
+      outline: 2px solid var(--sdg-color-blue-light);
+    }
+
+    &:hover {
+      outline: none;
+      background-color: var(--sdg-color-grey-pale);
+    }
+
+    &:active {
+      outline: none;
+      background-color: var(--sdg-color-blue-pale);
+    }
+
+    &.--active {
+      outline: none;
+      color: var(--sdg-color-text);
+      font-weight: bold;
+      cursor: default;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  &-chevron {
+    vertical-align: middle;
+    font-variation-settings: 'wght' 400;
+  }
+
+  &-page {
+    font-size: 16px;
+    color: var(--sdg-color-blue-piv);
+  }
+
+  &-ellipsis {
+    color: var(--sdg-color-text);
+    cursor: default;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

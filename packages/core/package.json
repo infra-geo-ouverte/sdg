@@ -1,0 +1,47 @@
+{
+  "name": "@igo2/sdg-core",
+  "version": "1.0.0-next.111",
+  "license": "LiLiQ-R",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infra-geo-ouverte/sdg.git",
+    "directory": "packages/core"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
+  "exports": {
+    ".": {
+      "import": "./src/public-api.ts",
+      "sass": "./_index.scss"
+    },
+    "./layout": {
+      "sass": "./src/layout/bootstrap-layout.scss"
+    }
+  },
+  "scripts": {
+    "build": "ng build core --configuration production",
+    "postbuild": "node --import tsx ../../scripts/src/post-build.mts core",
+    "format": "prettier --check ./src/**/*.{ts,js,html,scss,css,json}",
+    "format.fix": "prettier --write ./src/**/*.{ts,js,html,scss,css,json}",
+    "lint": "ng lint core",
+    "lint.fix": "ng lint core --fix",
+    "test": "ng test core --watch=false",
+    "test.watch": "ng test core",
+    "watch": "ng build core --watch && npm run postbuild"
+  },
+  "peerDependencies": {
+    "@angular/cdk": "^20.0.0",
+    "@angular/common": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/material": "^20.0.0",
+    "@angular/router": "^20.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.6.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^5.3.0"
+  },
+  "sideEffects": false
+}

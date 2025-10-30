@@ -1,0 +1,65 @@
+<p>
+  Le <b>lien en bloc</b> est un élément de navigation qui permet aux
+  utilisateurs de naviguer rapidement vers différentes sections d'une
+  application ou vers un site web externe. Le lien en bloc contient le titre de
+  la section à consulter ainsi que des informations complémentaires. Il peut
+  aussi contenir des liens vers des sous-sections.
+</p>
+
+<p>
+  Malgré que ce type de composant est utilisé au travers des sites
+  gouvernementaux, aucune spécification officielle n'est disponible pour le
+  moment.
+</p>
+
+<p>
+  Dans sa forme de base, le lien en bloc contient un titre, une description,
+  ainsi qu'un lien menant à la section ou un site web voulu:
+</p>
+
+<app-example-viewer
+  title="Liens en bloc de base"
+  configFolder="block-link"
+  codeFolder="block-link"
+>
+  <div class="block-links">
+    @for (section of sections1; track section) {
+      <sdg-block-link [section]="section" />
+    }
+  </div>
+</app-example-viewer>
+
+<p>
+  Le lien en bloc peut aussi contenir des liens vers des sous-sections ou des
+  sites web. La description est facultative lorsque des liens sont présents. Le
+  titre du lien en bloc est plus foncé lorsque la description est absente:
+</p>
+
+<app-example-viewer
+  title="Liens en bloc avec liens"
+  configFolder="block-link"
+  codeFolder="block-link"
+>
+  <div class="block-links">
+    @for (section of sections2; track section) {
+      <sdg-block-link [section]="section" />
+    }
+  </div>
+</app-example-viewer>
+
+<p>
+  Finalement, le lien en bloc peut être accompagné d'une icône. L'icône est plus
+  foncée lorsqu'il n'y a pas de description:
+</p>
+
+<app-example-viewer
+  title="Lien en bloc avec icône"
+  configFolder="block-link"
+  codeFolder="block-link"
+>
+  <div class="block-links">
+    @for (section of sections3; track section) {
+      <sdg-block-link [section]="section" />
+    }
+  </div>
+</app-example-viewer>

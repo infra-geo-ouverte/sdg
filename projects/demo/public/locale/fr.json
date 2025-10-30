@@ -1,0 +1,76 @@
+{
+  "header": {
+    "contactUs": "Nous joindre"
+  },
+  "navigation": {
+    "about": "À propos",
+    "components": "Composants",
+    "guides": "Guides"
+  },
+  "darkMode": "Thème foncé",
+  "showcases": {
+    "alert": "Alerte",
+    "anchorMenu": "Menu d'ancres",
+    "blockLink": "Lien en bloc",
+    "button": "Bouton",
+    "breadcrumbs": "Fil d'Ariane",
+    "charterBanner": "Bandeau Charte de la langue française",
+    "checkbox": "Case à cocher",
+    "chips": "Étiquettes",
+    "seeAlso": "À consulter aussi",
+    "contact": "Coordonnées",
+    "externalLink": "Lien externe",
+    "footer": "Pied de page",
+    "header": "Bandeau d'en-tête du PIV",
+    "lateralMenu": "Menu latéral",
+    "navigation": "Menu de navigation principale",
+    "notice": "Avis",
+    "paginator": "Pagination",
+    "radioButton": "Bouton radio",
+    "sequentialLinks": "Liens séquentiels",
+    "tabs": "Onglets",
+    "tile": "Tuile cliquable",
+    "topPage": "Haut de page"
+  },
+  "showcasesCarto": {
+    "referenceMap": "Carte de référence",
+    "buttons": {
+      "zoom": {
+        "zoomIn": "Zoom avant",
+        "zoomOut": "Zoom arrière"
+      },
+      "rotation": {
+        "reset": "Réinitialiser la carte vers le nord"
+      },
+      "home": {
+        "goHome": "Vue cartographique par défaut"
+      },
+      "geolocation": {
+        "active": "Afficher votre position",
+        "inactive": "Masquer votre position"
+      }
+    },
+    "restrictions": {
+      "ctrlScroll": "Vous pouvez zoomer sur la carte à l'aide de CTRL+Molette de défilement",
+      "twoFingers": "Utilisez deux doigts pour déplacer la carte"
+    }
+  },
+  "sdg": {
+    "anchorMenu": {
+      "title": "Dans cette page :"
+    },
+    "blockLink": {
+      "seeMore": "Voir plus"
+    },
+    "header": {
+      "contactUs": "Nous joindre"
+    },
+    "seeAlso": {
+      "title": "À consulter aussi"
+    },
+    "sequentialLinks": {
+      "previous": "Précédent",
+      "next": "Suivant"
+    }
+  }
+}

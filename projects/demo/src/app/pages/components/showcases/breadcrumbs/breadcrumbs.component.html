@@ -1,0 +1,44 @@
+<p>
+  <span
+    >Le <b>fil d'Ariane</b> (ou <b>breadcrumbs</b>) est essentiel sur les sites
+    où les pages sont organisées hiérarchiquement, tels que les sites
+    d'information, de commerce électronique et de dossiers en ligne. Pour plus
+    d'information, voir le
+  </span>
+  <span
+    ><sdg-external-link
+      text="Fil d'Ariane"
+      url="https://design.quebec.ca/design/composants/navigation/fil-ariane"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+<p>
+  Deux types de fils d'Ariane sont disponibles: un premier qui utilise
+  l'autogénération basé sur le Router d'Angular et un second, qui opte pour une
+  définition plus standard, où on peut spécifier les éléments via l'input.
+</p>
+
+<p>
+  Pour utiliser l'autogénération, utiliser la variante de composant
+  BreadcrumbsWithRouterComponent
+</p>
+
+<app-example-viewer
+  title="Fil d'Ariane avec Angular Router"
+  configFolder="breadcrumbs"
+  codeFolder="breadcrumbs"
+>
+  <sdg-breadcrumbs-with-router />
+</app-example-viewer>
+<p>
+  Pour référencer manuellement les éléments du fils, on utilise le input
+  BreadcrumbsComponent. Cet exemple démontre l'utilisation avec un overflow via
+  les ... qui est ajouté lorsqu'on a 5 niveaux ou plus.
+</p>
+<app-example-viewer
+  title="Fil d'Ariane manuel"
+  configFolder="breadcrumbs"
+  codeFolder="breadcrumbs"
+>
+  <sdg-breadcrumbs [breadcrumbs]="breadcrumbs" />
+</app-example-viewer>

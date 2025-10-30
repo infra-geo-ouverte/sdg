@@ -1,0 +1,32 @@
+.sdg-footer {
+  &-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &-copyright {
+    &-content {
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      row-gap: 4px;
+    }
+
+    &-logo-link {
+      display: flex;
+
+      &-logo {
+        height: 35px;
+      }
+    }
+
+    &-copyright {
+      font-size: 14px;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

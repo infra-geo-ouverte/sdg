@@ -1,0 +1,28 @@
+@use './token-utils';
+@use '../layout/breakpoints';
+@use '../style/typography-utils' as *;
+
+@function sys-layout-values() {
+  $base-spacer: 8 !default;
+
+  $values: (
+    max-content-width: 825px,
+    spacer: (
+      8: rem(1 * $base-spacer),
+      16: rem(2 * $base-spacer),
+      24: rem(3 * $base-spacer),
+      32: rem(4 * $base-spacer),
+      48: rem(6 * $base-spacer),
+      72: rem(9 * $base-spacer),
+      96: rem(12 * $base-spacer),
+      xs: var(--sdg-spacer-8),
+      sm: var(--sdg-spacer-16),
+      md: var(--sdg-spacer-24),
+      lg: var(--sdg-spacer-48),
+      xl: var(--sdg-spacer-96)
+    ),
+    grid: breakpoints.get-grid-tokens()
+  );
+
+  @return token-utils.flatten-tokens-map($values);
+}

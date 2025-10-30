@@ -1,0 +1,35 @@
+@use '@igo2/sdg-core' as sdg;
+
+sdg-breadcrumbs-with-router {
+  margin-top: 16px;
+}
+
+.split-screen {
+  &-container {
+    display: flex;
+    column-gap: var(--sdg-grid-spacing-max);
+    flex: 1;
+    @include sdg.media(laptop) {
+      column-gap: var(--sdg-grid-spacing-xl);
+    }
+
+    @include sdg.media(tablet) {
+      column-gap: var(--sdg-grid-spacing-lg);
+    }
+
+    @include sdg.media(mobile) {
+      flex-direction: column;
+    }
+  }
+  &-lateral-menu {
+    flex: 0 0 25%;
+    margin-top: 72px;
+
+    @include sdg.media(mobile) {
+      margin-top: 40px;
+    }
+  }
+  &-content {
+    overflow-x: auto;
+  }
+}

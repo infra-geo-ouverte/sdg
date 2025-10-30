@@ -1,0 +1,76 @@
+{
+  "header": {
+    "contactUs": "Contact us"
+  },
+  "navigation": {
+    "about": "About",
+    "components": "Components",
+    "guides": "Guides"
+  },
+  "darkMode": "Dark mode",
+  "showcases": {
+    "alert": "Alert",
+    "anchorMenu": "Anchor menu",
+    "blockLink": "Block link",
+    "button": "Button",
+    "breadcrumbs": "Breadcrumbs",
+    "charterBanner": "Charter of the French language banner",
+    "checkbox": "Checkbox",
+    "chips": "Chips",
+    "seeAlso": "See also",
+    "contact": "Contact",
+    "externalLink": "External link",
+    "footer": "Footer",
+    "header": "Header",
+    "lateralMenu": "Lateral menu",
+    "navigation": "Main navigation menu",
+    "notice": "Notice",
+    "paginator": "Paginator",
+    "radioButton": "Radio button",
+    "sequentialLinks": "Sequential links",
+    "tabs": "Tabs",
+    "tile": "Clickable tile",
+    "topPage": "Scroll to top"
+  },
+  "showcasesCarto": {
+    "referenceMap": "Reference map",
+    "buttons": {
+      "zoom": {
+        "zoomIn": "Zoom in",
+        "zoomOut": "Zoom out"
+      },
+      "rotation": {
+        "reset": "Reset the map to the north"
+      },
+      "home": {
+        "goHome": "Default map view"
+      },
+      "geolocation": {
+        "active": "Find your location",
+        "inactive": "Hide your location"
+      }
+    },
+    "restrictions": {
+      "ctrlScroll": "Use ctrl + scroll to zoom the map",
+      "twoFingers": "Use two fingers to move the map"
+    }
+  },
+  "sdg": {
+    "anchorMenu": {
+      "title": "On this page:"
+    },
+    "blockLink": {
+      "seeMore": "See more"
+    },
+    "header": {
+      "contactUs": "Contact us"
+    },
+    "seeAlso": {
+      "title": "See also"
+    },
+    "sequentialLinks": {
+      "previous": "Previous",
+      "next": "Next"
+    }
+  }
+}

@@ -14,5 +14,6 @@ export * from './navigation';
 export * from './notice';
 export * from './paginator';
 export * from './sequential-links';
+export * from './shared/form-field-label/form-field-label.component';
 export * from './tile';
 export * from './top-page-button';

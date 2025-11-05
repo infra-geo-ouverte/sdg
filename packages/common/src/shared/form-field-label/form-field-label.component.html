@@ -1,0 +1,13 @@
+<span class="form-field-label-label" [class.--disabled]="disabled()"
+  >{{ label() }}
+  @if (required()) {
+    <span class="form-field-label-asterisk">*</span>
+  }
+</span>
+@if (clarification()) {
+  <span
+    class="form-field-label-clarification"
+    [class.--disabled]="disabled()"
+    >{{ clarification() }}</span
+  >
+}

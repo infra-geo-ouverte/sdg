@@ -21,6 +21,7 @@
     "contact": "Coordonnées",
     "externalLink": "Lien externe",
     "footer": "Pied de page",
+    "formField": "Champ texte",
     "header": "Bandeau d'en-tête du PIV",
     "lateralMenu": "Menu latéral",
     "navigation": "Menu de navigation principale",
@@ -28,6 +29,7 @@
     "paginator": "Pagination",
     "radioButton": "Bouton radio",
     "sequentialLinks": "Liens séquentiels",
+    "select": "Liste déroulante",
     "tabs": "Onglets",
     "tile": "Tuile cliquable",
     "topPage": "Haut de page"

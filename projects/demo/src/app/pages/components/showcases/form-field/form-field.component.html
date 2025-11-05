@@ -22,9 +22,14 @@
 <app-example-viewer title="Champ texte de base" configFolder="form-field">
   <div class="form-field-list">
     <div class="form-field-container">
-      <sdg-form-field-label label="Grand" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="large"
+        label="Grand"
+        [disabled]="disabled1()"
+      />
       <mat-form-field lg>
         <input
+          id="large"
           matInput
           placeholder="555, avenue principale, Québec"
           [disabled]="disabled1()"
@@ -32,27 +37,59 @@
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Moyen" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="medium"
+        label="Moyen"
+        [disabled]="disabled1()"
+      />
       <mat-form-field md>
-        <input matInput placeholder="Jean Tremblay" [disabled]="disabled1()" />
+        <input
+          id="medium"
+          matInput
+          placeholder="Jean Tremblay"
+          [disabled]="disabled1()"
+        />
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Petit" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="small"
+        label="Petit"
+        [disabled]="disabled1()"
+      />
       <mat-form-field sm>
-        <input matInput placeholder="H0H 0H0" [disabled]="disabled1()" />
+        <input
+          id="small"
+          matInput
+          placeholder="H0H 0H0"
+          [disabled]="disabled1()"
+        />
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Très petit" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="extra-small"
+        label="Très petit"
+        [disabled]="disabled1()"
+      />
       <mat-form-field xs>
-        <input matInput placeholder="23" [disabled]="disabled1()" />
+        <input
+          id="extra-small"
+          matInput
+          placeholder="23"
+          [disabled]="disabled1()"
+        />
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Multiligne" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="multiline"
+        label="Multiligne"
+        [disabled]="disabled1()"
+      />
       <mat-form-field multi>
         <textarea
+          id="multiline"
           matInput
           [placeholder]="
             `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`
@@ -85,21 +122,21 @@
 >
   <div class="form-field-list-multiple">
     <div class="form-field-container">
-      <sdg-form-field-label label="Prénom" />
+      <sdg-form-field-label controlId="first-name" label="Prénom" />
       <mat-form-field md>
-        <input matInput placeholder="Jean" />
+        <input id="first-name" matInput placeholder="Jean" />
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Nom" />
+      <sdg-form-field-label controlId="name" label="Nom" />
       <mat-form-field md>
-        <input matInput placeholder="Tremblay" />
+        <input id="name" matInput placeholder="Tremblay" />
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Date de naissance" />
+      <sdg-form-field-label controlId="birthdate" label="Date de naissance" />
       <mat-form-field md>
-        <input matInput placeholder="1960-01-01" />
+        <input id="birthdate" matInput placeholder="1960-01-01" />
       </mat-form-field>
     </div>
   </div>
@@ -116,12 +153,14 @@
 >
   <div class="form-field-container">
     <sdg-form-field-label
+      controlId="address"
       label="Adresse"
       clarification="#, rue, ville"
       [disabled]="disabled2()"
     />
     <mat-form-field lg>
       <input
+        id="address"
         matInput
         [attr.maxlength]="maxLength"
         placeholder="555, avenue principale, Québec"
@@ -171,36 +210,40 @@
   title="Champ texte obligatoire avec message d'erreur"
   configFolder="form-field"
 >
-  <div class="form-field-container">
-    <sdg-form-field-label
-      label="Adresse courriel"
-      [required]="true"
-      [disabled]="disabled3()"
-    />
-    <mat-form-field lg>
-      <input
-        matInput
-        required
-        placeholder="jean.tremblay@outlook.com"
-        [attr.maxlength]="maxLength"
-        [formControl]="email"
-        (blur)="updateErrorMessage()"
+  <div class="form-field-list">
+    <div class="form-field-container">
+      <sdg-form-field-label
+        controlId="email"
+        label="Adresse courriel"
+        [required]="true"
+        [disabled]="disabled3()"
       />
-      <mat-hint align="end">{{ `Maximum ${maxLength} caractères` }}</mat-hint>
-      @if (email.invalid) {
-        <mat-error>
-          <mat-icon>warning</mat-icon>
-          {{ errorMessage() }}
-        </mat-error>
-      }
-    </mat-form-field>
+      <mat-form-field lg>
+        <input
+          id="email"
+          matInput
+          required
+          placeholder="jean.tremblay@outlook.com"
+          [attr.maxlength]="maxLength"
+          [formControl]="email"
+          (blur)="updateErrorMessage()"
+        />
+        <mat-hint align="end">{{ `Maximum ${maxLength} caractères` }}</mat-hint>
+        @if (email.invalid) {
+          <mat-error>
+            <mat-icon>warning</mat-icon>
+            {{ errorMessage() }}
+          </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <button
+      compact
+      mat-stroked-button
+      color="primary"
+      (click)="this.disabled3.set(!this.disabled3())"
+    >
+      {{ disabled3() ? 'Activer le champ texte' : 'Désactiver le champ texte' }}
+    </button>
   </div>
-  <button
-    compact
-    mat-stroked-button
-    color="primary"
-    (click)="this.disabled3.set(!this.disabled3())"
-  >
-    {{ disabled3() ? 'Activer le champ texte' : 'Désactiver le champ texte' }}
-  </button>
 </app-example-viewer>

@@ -6,6 +6,7 @@ import { Component, input } from '@angular/core';
   styleUrls: ['./form-field-label.component.scss']
 })
 export class FormFieldLabelComponent {
+  readonly controlId = input.required<string>();
   readonly label = input.required<string>();
   readonly clarification = input<string>();
   readonly required = input<boolean>(false);

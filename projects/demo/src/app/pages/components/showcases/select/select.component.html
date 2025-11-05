@@ -15,9 +15,14 @@
 <app-example-viewer title="Liste déroulante" configFolder="select">
   <div class="form-field-list">
     <div class="form-field-container">
-      <sdg-form-field-label label="Grande" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="large"
+        label="Grande"
+        [disabled]="disabled1()"
+      />
       <mat-form-field lg>
         <mat-select
+          id="large"
           [disabled]="disabled1()"
           placeholder="Sélectionnez une couleur"
         >
@@ -28,9 +33,14 @@
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Moyenne" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="medium"
+        label="Moyenne"
+        [disabled]="disabled1()"
+      />
       <mat-form-field md>
         <mat-select
+          id="medium"
           [disabled]="disabled1()"
           placeholder="Sélectionnez une couleur"
         >
@@ -41,9 +51,14 @@
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Petite" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="small"
+        label="Petite"
+        [disabled]="disabled1()"
+      />
       <mat-form-field sm>
         <mat-select
+          id="small"
           [disabled]="disabled1()"
           placeholder="Sélectionnez une couleur"
         >
@@ -54,9 +69,14 @@
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label label="Très petite" [disabled]="disabled1()" />
+      <sdg-form-field-label
+        controlId="extra-small"
+        label="Très petite"
+        [disabled]="disabled1()"
+      />
       <mat-form-field xs>
         <mat-select
+          id="extra-small"
           [disabled]="disabled1()"
           placeholder="Sélectionnez une couleur"
         >
@@ -115,12 +135,14 @@
   <div class="form-field-list">
     <div class="form-field-container">
       <sdg-form-field-label
+        controlId="color-control"
         label="Grande"
         [disabled]="disabled2()"
         [required]="true"
       />
       <mat-form-field md>
         <mat-select
+          id="color-control"
           [formControl]="colorControl"
           placeholder="Sélectionnez une couleur"
         >

@@ -6,9 +6,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
-import { ExternalLinkComponent } from '@igo2/sdg-common';
+import {
+  ExternalLinkComponent,
+  FormFieldLabelComponent
+} from '@igo2/sdg-common';
 
-import { FormFieldLabelComponent } from 'packages/common/src/shared/form-field-label/form-field-label.component';
 import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 import { merge } from 'rxjs';
 

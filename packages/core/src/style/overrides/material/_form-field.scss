@@ -43,6 +43,10 @@
     );
 
     &.mat-form-field-disabled {
+      .mdc-text-field {
+        background-color: var(--sdg-color-grey-pale);
+      }
+
       mat-hint {
         color: var(--sdg-color-grey-normal) !important;
       }

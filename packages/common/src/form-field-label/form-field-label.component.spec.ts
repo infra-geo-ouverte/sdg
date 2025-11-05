@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { TEST_CONFIG } from '../../../test-config';
+import { TEST_CONFIG } from '../../test-config';
 import { FormFieldLabelComponent } from './form-field-label.component';
 
 describe('FormFieldLabelComponent', () => {
@@ -19,6 +19,7 @@ describe('FormFieldLabelComponent', () => {
   });
 
   it('should create', () => {
+    fixture.componentRef.setInput('controlId', 'test-control');
     fixture.componentRef.setInput('label', 'Test Label');
     fixture.detectChanges();
     expect(component).toBeTruthy();
@@ -26,6 +27,7 @@ describe('FormFieldLabelComponent', () => {
 
   describe('Label rendering', () => {
     it('should render the label text', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.detectChanges();
 
@@ -38,6 +40,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should render the asterisk when required is true', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('required', true);
       fixture.detectChanges();
@@ -50,6 +53,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should not render the asterisk when required is false', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('required', false);
       fixture.detectChanges();
@@ -61,6 +65,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should apply disabled class when disabled is true', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('disabled', true);
       fixture.detectChanges();
@@ -72,6 +77,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should not apply disabled class when disabled is false', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('disabled', false);
       fixture.detectChanges();
@@ -85,6 +91,7 @@ describe('FormFieldLabelComponent', () => {
 
   describe('Clarification rendering', () => {
     it('should render clarification text when provided', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('clarification', 'This is a clarification');
       fixture.detectChanges();
@@ -99,6 +106,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should not render clarification when not provided', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.detectChanges();
 
@@ -109,6 +117,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should apply disabled class to clarification when disabled is true', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('clarification', 'Clarification text');
       fixture.componentRef.setInput('disabled', true);
@@ -121,6 +130,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should not apply disabled class to clarification when disabled is false', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.componentRef.setInput('clarification', 'Clarification text');
       fixture.componentRef.setInput('disabled', false);
@@ -135,6 +145,7 @@ describe('FormFieldLabelComponent', () => {
 
   describe('CSS Styles', () => {
     it('should have correct display and flex properties on host', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.detectChanges();
 
@@ -146,6 +157,7 @@ describe('FormFieldLabelComponent', () => {
     });
 
     it('should have bold font weight on label', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.detectChanges();
 
@@ -160,6 +172,7 @@ describe('FormFieldLabelComponent', () => {
 
   describe('Input combinations', () => {
     it('should handle all inputs together', () => {
+      fixture.componentRef.setInput('controlId', 'test-control');
       fixture.componentRef.setInput('label', 'Complete Label');
       fixture.componentRef.setInput('clarification', 'Complete clarification');
       fixture.componentRef.setInput('required', true);

@@ -10,6 +10,8 @@
     $text-line-height: var(--sdg-line-height-md);
     $text-size: var(--sdg-font-size-md);
 
+    max-width: 100%;
+
     @include mat.form-field-density(-4);
 
     @include mat.form-field-overrides(

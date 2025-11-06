@@ -1,4 +1,8 @@
-<label [for]="controlId()" class="form-field-label-container">
+<label
+  [for]="controlId()"
+  class="form-field-label-container"
+  [class]="formControlSize()"
+>
   <div class="form-field-label-label" [class.--disabled]="disabled()">
     {{ label() }}
     @if (required()) {

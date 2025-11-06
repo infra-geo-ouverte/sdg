@@ -23,7 +23,24 @@
   <div class="form-field-list">
     <div class="form-field-container">
       <sdg-form-field-label
+        controlId="extra-large"
+        formControlSize="xl"
+        label="Très grand"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field xl>
+        <input
+          id="extra-large"
+          matInput
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          [disabled]="disabled1()"
+        />
+      </mat-form-field>
+    </div>
+    <div class="form-field-container">
+      <sdg-form-field-label
         controlId="large"
+        formControlSize="lg"
         label="Grand"
         [disabled]="disabled1()"
       />
@@ -39,7 +56,8 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="medium"
-        label="Moyen"
+        formControlSize="md"
+        label="Moyen Moyen Moyen Moyen Moyen Moyen Moyen Moyen Moyen Moyen Moyen Moyen Moyen Moyen "
         [disabled]="disabled1()"
       />
       <mat-form-field md>
@@ -54,6 +72,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="small"
+        formControlSize="sm"
         label="Petit"
         [disabled]="disabled1()"
       />
@@ -69,6 +88,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="extra-small"
+        formControlSize="xs"
         label="Très petit"
         [disabled]="disabled1()"
       />
@@ -84,6 +104,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="multiline"
+        formControlSize="multi"
         label="Multiligne"
         [disabled]="disabled1()"
       />
@@ -122,19 +143,27 @@
 >
   <div class="form-field-list-multiple">
     <div class="form-field-container">
-      <sdg-form-field-label controlId="first-name" label="Prénom" />
+      <sdg-form-field-label
+        controlId="first-name"
+        formControlSize="md"
+        label="Prénom"
+      />
       <mat-form-field md>
         <input id="first-name" matInput placeholder="Jean" />
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label controlId="name" label="Nom" />
+      <sdg-form-field-label controlId="name" formControlSize="md" label="Nom" />
       <mat-form-field md>
         <input id="name" matInput placeholder="Tremblay" />
       </mat-form-field>
     </div>
     <div class="form-field-container">
-      <sdg-form-field-label controlId="birthdate" label="Date de naissance" />
+      <sdg-form-field-label
+        controlId="birthdate"
+        formControlSize="md"
+        label="Date de naissance"
+      />
       <mat-form-field md>
         <input id="birthdate" matInput placeholder="1960-01-01" />
       </mat-form-field>
@@ -151,32 +180,35 @@
   title="Champ texte de base avec indicateur"
   configFolder="form-field"
 >
-  <div class="form-field-container">
-    <sdg-form-field-label
-      controlId="address"
-      label="Adresse"
-      clarification="#, rue, ville"
-      [disabled]="disabled2()"
-    />
-    <mat-form-field lg>
-      <input
-        id="address"
-        matInput
-        [attr.maxlength]="maxLength"
-        placeholder="555, avenue principale, Québec"
+  <div class="form-field-list">
+    <div class="form-field-container">
+      <sdg-form-field-label
+        controlId="address"
+        formControlSize="lg"
+        label="Adresse"
+        clarification="#, rue, ville"
         [disabled]="disabled2()"
       />
-      <mat-hint align="end">{{ `Maximum ${maxLength} caractères` }}</mat-hint>
-    </mat-form-field>
+      <mat-form-field lg>
+        <input
+          id="address"
+          matInput
+          [attr.maxlength]="maxLength"
+          placeholder="555, avenue principale, Québec"
+          [disabled]="disabled2()"
+        />
+        <mat-hint align="end">{{ `Maximum ${maxLength} caractères` }}</mat-hint>
+      </mat-form-field>
+    </div>
+    <button
+      compact
+      mat-stroked-button
+      color="primary"
+      (click)="this.disabled2.set(!this.disabled2())"
+    >
+      {{ disabled2() ? 'Activer le champ texte' : 'Désactiver le champ texte' }}
+    </button>
   </div>
-  <button
-    compact
-    mat-stroked-button
-    color="primary"
-    (click)="this.disabled2.set(!this.disabled2())"
-  >
-    {{ disabled2() ? 'Activer le champ texte' : 'Désactiver le champ texte' }}
-  </button>
 </app-example-viewer>
 
 <p>
@@ -214,6 +246,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="email"
+        formControlSize="lg"
         label="Adresse courriel"
         [required]="true"
         [disabled]="disabled3()"

@@ -16,7 +16,27 @@
   <div class="form-field-list">
     <div class="form-field-container">
       <sdg-form-field-label
+        controlId="extra-large"
+        formControlSize="xl"
+        label="Très grande"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field xl>
+        <mat-select
+          id="extra-large"
+          [disabled]="disabled1()"
+          placeholder="Sélectionnez une couleur"
+        >
+          @for (color of colors; track color) {
+            <mat-option [value]="color.value">{{ color.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="form-field-container">
+      <sdg-form-field-label
         controlId="large"
+        formControlSize="lg"
         label="Grande"
         [disabled]="disabled1()"
       />
@@ -35,6 +55,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="medium"
+        formControlSize="md"
         label="Moyenne"
         [disabled]="disabled1()"
       />
@@ -53,6 +74,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="small"
+        formControlSize="sm"
         label="Petite"
         [disabled]="disabled1()"
       />
@@ -71,6 +93,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="extra-small"
+        formControlSize="xs"
         label="Très petite"
         [disabled]="disabled1()"
       />
@@ -136,6 +159,7 @@
     <div class="form-field-container">
       <sdg-form-field-label
         controlId="color-control"
+        formControlSize="md"
         label="Grande"
         [disabled]="disabled2()"
         [required]="true"

@@ -4,6 +4,28 @@
   &-container {
     display: flex;
     flex-flow: column;
+    max-width: 100%;
+
+    &.xl {
+      width: 825px;
+    }
+
+    &.lg,
+    &.multi {
+      width: 528px;
+    }
+
+    &.md {
+      width: 498px;
+    }
+
+    &.sm {
+      width: 312px;
+    }
+
+    &.xs {
+      width: 126px;
+    }
   }
 
   &-label {

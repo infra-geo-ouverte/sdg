@@ -1,11 +1,10 @@
-:host {
-  display: flex;
-  flex-flow: column;
-  width: fit-content;
-}
-
 .form-field-label {
   $grey-normal: var(--sdg-color-grey-normal);
+
+  &-container {
+    display: flex;
+    flex-flow: column;
+  }
 
   &-label {
     font-size: var(--sdg-font-size-md);

@@ -1,17 +1,15 @@
-<label
-  [for]="controlId()"
-  class="form-field-label-label"
-  [class.--disabled]="disabled()"
-  >{{ label() }}
-  @if (required()) {
-    <span class="form-field-label-asterisk">*</span>
+<label [for]="controlId()" class="form-field-label-container">
+  <div class="form-field-label-label" [class.--disabled]="disabled()">
+    {{ label() }}
+    @if (required()) {
+      <span class="form-field-label-asterisk">*</span>
+    }
+  </div>
+  @if (clarification()) {
+    <span
+      class="form-field-label-clarification"
+      [class.--disabled]="disabled()"
+      >{{ clarification() }}</span
+    >
   }
 </label>
-@if (clarification()) {
-  <label
-    [for]="controlId()"
-    class="form-field-label-clarification"
-    [class.--disabled]="disabled()"
-    >{{ clarification() }}</label
-  >
-}

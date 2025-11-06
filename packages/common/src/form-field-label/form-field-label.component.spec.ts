@@ -149,8 +149,10 @@ describe('FormFieldLabelComponent', () => {
       fixture.componentRef.setInput('label', 'Test Label');
       fixture.detectChanges();
 
-      const host = fixture.nativeElement;
-      const styles = window.getComputedStyle(host);
+      const labelContainer = fixture.debugElement.query(
+        By.css('.form-field-label-container')
+      );
+      const styles = window.getComputedStyle(labelContainer.nativeElement);
 
       expect(styles.display).toBe('flex');
       expect(styles.flexFlow).toBe('column nowrap');

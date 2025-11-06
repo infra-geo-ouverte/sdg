@@ -123,4 +123,17 @@
       }
     }
   }
+
+  .mat-mdc-input-element {
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 8px;
+      height: auto;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--sdg-color-blue-piv);
+      border-radius: 4px;
+    }
+  }
 }

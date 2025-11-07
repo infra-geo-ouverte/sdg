@@ -11,12 +11,6 @@
     }
   }
 
-  &-container {
-    display: flex;
-    flex-direction: column;
-    row-gap: 4px;
-  }
-
   &-label {
     font-size: var(--sdg-font-size-md);
     line-height: var(--sdg-line-height-md);

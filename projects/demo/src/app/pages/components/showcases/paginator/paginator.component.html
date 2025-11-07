@@ -18,24 +18,22 @@
   configFolder="paginator"
   codeFolder="paginator"
 >
-  <div class="form-field-container">
-    <sdg-form-field-label
-      controlId="page-size-select"
-      formControlSize="xs"
-      label="Nombre d'éléments par page"
-    />
-    <mat-form-field xs>
-      <mat-select id="page-size-select" [(ngModel)]="selectedPageSize">
-        @for (pageSize of pageSizes; track pageSize) {
-          <mat-option [value]="pageSize"> {{ pageSize }}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-  </div>
+  <sdg-form-field-label
+    controlId="page-size-select"
+    formControlSize="xs"
+    label="Nombre d'éléments par page"
+  />
+  <mat-form-field xs>
+    <mat-select id="page-size-select" [(ngModel)]="selectedPageSize">
+      @for (pageSize of pageSizes; track pageSize) {
+        <mat-option [value]="pageSize"> {{ pageSize }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
 
   <div class="list">
     @for (element of shownList; track element) {
-      <p>{{ element }}</p>
+      <span class="text">{{ element }}</span>
     }
   </div>
 

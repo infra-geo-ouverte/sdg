@@ -8,3 +8,9 @@ sdg-paginator {
   align-items: center;
   justify-content: center;
 }
+
+.form-field-container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+}

@@ -5,7 +5,7 @@
 @use './divider';
 @use './form-field';
 @use './icon';
-@use './input';
+@use './select';
 @use './sidenav';
 @use './radio-button';
 @use './tab';
@@ -16,9 +16,9 @@
   @include chip.overrides();
   @include dialog.overrides();
   @include divider.overrides();
+  @include select.overrides();
   @include form-field.overrides();
   @include icon.overrides();
-  @include input.overrides();
   @include sidenav.overrides();
   @include radio-button.overrides();
   @include tab.overrides();

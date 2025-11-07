@@ -88,6 +88,19 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'champ-texte',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.formField'
+    },
+    description:
+      'Le champ texte est un espace dans lequel est saisie une information qui tient sur une ou plusieurs lignes de texte.',
+    loadComponent: () =>
+      import('./form-field/form-field.component').then(
+        (m) => m.FormFieldDemoComponent
+      )
+  },
+  {
     path: 'coordonnees',
     title: AppTitleResolver,
     data: {
@@ -173,6 +186,17 @@ export const routes: SdgRoutes = [
       import('./block-link/block-link.component').then(
         (m) => m.BlockLinkDemoComponent
       )
+  },
+  {
+    path: 'liste-deroulante',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.select'
+    },
+    description:
+      "La liste déroulante permet à l'utilisateur de sélectionner une ou plusieurs des options contenues dans une liste.",
+    loadComponent: () =>
+      import('./select/select.component').then((m) => m.SelectDemoComponent)
   },
   {
     path: 'menu-lateral',

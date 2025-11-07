@@ -5,7 +5,9 @@ import {
   provideAppInitializer,
   provideZonelessChangeDetection
 } from '@angular/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
+import { MAT_SELECT_CONFIG } from '@angular/material/select';
 import {
   PreloadAllModules,
   provideRouter,
@@ -64,6 +66,14 @@ export const appConfig: ApplicationConfig = {
     provideTranslatedLabels(SDG_BLOCK_LINK_LABELS, 'sdg.blockLink'),
     provideTranslatedLabels(SDG_SEE_ALSO_LABELS, 'sdg.seeAlso'),
     provideTranslatedLabels(SDG_HEADER_LABELS, 'sdg.header'),
-    provideTranslatedLabels(SDG_SEQUENTIAL_LINKS_LABELS, 'sdg.sequentialLinks')
+    provideTranslatedLabels(SDG_SEQUENTIAL_LINKS_LABELS, 'sdg.sequentialLinks'),
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' }
+    },
+    {
+      provide: MAT_SELECT_CONFIG,
+      useValue: { hideSingleSelectionIndicator: true }
+    }
   ]
 };

@@ -72,7 +72,7 @@
   </form>
   <button
     compact
-    mat-stroked-button
+    matButton="outlined"
     (click)="selectorChipsDisabled.set(!selectorChipsDisabled())"
   >
     {{ selectorChipsDisabled() ? 'Activer' : 'Désactiver' }}
@@ -108,7 +108,7 @@
   </mat-chip-listbox>
   <button
     compact
-    mat-stroked-button
+    matButton="outlined"
     (click)="navigationChipsDisabled.set(!navigationChipsDisabled())"
   >
     {{ navigationChipsDisabled() ? 'Activer' : 'Désactiver' }}

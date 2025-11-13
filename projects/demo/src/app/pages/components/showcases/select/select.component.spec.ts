@@ -220,9 +220,7 @@ describe('SelectDemoComponent', () => {
 
   describe('Button behavior', () => {
     it('should render toggle buttons', () => {
-      const buttons = fixture.debugElement.queryAll(
-        By.css('button[mat-stroked-button]')
-      );
+      const buttons = fixture.debugElement.queryAll(By.css('button'));
       expect(buttons.length).toBe(2);
     });
 

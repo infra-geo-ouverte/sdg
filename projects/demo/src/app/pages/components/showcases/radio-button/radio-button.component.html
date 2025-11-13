@@ -35,7 +35,7 @@
     <div class="buttons">
       <button
         compact
-        mat-stroked-button
+        matButton="outlined"
         color="primary"
         (click)="
           this.disabled1.set(!this.disabled1());
@@ -46,7 +46,7 @@
       </button>
       <button
         compact
-        mat-stroked-button
+        matButton="outlined"
         color="primary"
         [disabled]="!checked1() && !checked2()"
         (click)="this.checked1.set(false); this.checked2.set(false)"
@@ -83,7 +83,7 @@
     <div class="buttons">
       <button
         compact
-        mat-stroked-button
+        matButton="outlined"
         color="primary"
         (click)="
           this.disabledCompact1.set(!this.disabledCompact1());
@@ -96,7 +96,7 @@
       </button>
       <button
         compact
-        mat-stroked-button
+        matButton="outlined"
         color="primary"
         [disabled]="!checkedCompact1() && !checkedCompact2()"
         (click)="

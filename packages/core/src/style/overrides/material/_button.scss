@@ -72,6 +72,7 @@
   .mat-mdc-outlined-button {
     border-color: currentColor !important;
     border-width: 2px !important;
+    background-color: var(--sdg-color-white) !important;
 
     &[compact] {
       border-width: 1px !important;

@@ -3,6 +3,7 @@
 @use './chip';
 @use './dialog';
 @use './divider';
+@use './expansion-panel';
 @use './form-field';
 @use './icon';
 @use './select';
@@ -16,6 +17,7 @@
   @include chip.overrides();
   @include dialog.overrides();
   @include divider.overrides();
+  @include expansion-panel.overrides();
   @include select.overrides();
   @include form-field.overrides();
   @include icon.overrides();

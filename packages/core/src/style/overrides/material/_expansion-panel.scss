@@ -1,0 +1,62 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-expansion-panel {
+    $grey-pale: var(--sdg-color-grey-pale);
+    $grey-hover: var(#e7e7ea);
+
+    $blue-dark: var(--sdg-color-blue-dark);
+
+    @include mat.expansion-overrides(
+      (
+        container-shape: 0,
+        container-elevation-shadow: none,
+        container-text-color: none,
+        container-text-tracking: none,
+
+        header-description-color: var(--sdg-color-grey-medium),
+        header-focus-state-layer-color: $grey-pale,
+        header-hover-state-layer-color: $grey-hover,
+        header-indicator-color: $blue-dark,
+        header-text-color: $blue-dark,
+        header-text-weight: 600,
+        header-text-size: var(--sdg-font-size-md),
+        header-text-line-height: var(--sdg-line-height-md),
+        header-text-font: var(--sdg-font-family-text),
+        header-text-tracking: none,
+        header-collapsed-state-height: 56px,
+        header-expanded-state-height: 56px
+      )
+    );
+
+    &.mat-expanded {
+      outline: 1px solid var(--sdg-color-grey-light);
+    }
+
+    .mat-expansion-panel-header {
+      background-color: $grey-pale;
+      padding: 0 16px;
+
+      &-description {
+        justify-content: flex-end;
+        font-weight: normal;
+      }
+
+      &.cdk-keyboard-focused {
+        border: 2px solid var(--sdg-color-blue-light);
+      }
+
+      &.mat-expanded {
+        background-color: $grey-pale;
+      }
+    }
+
+    .mat-expansion-panel-body {
+      padding: 24px 16px;
+    }
+
+    &:hover {
+      outline: 1px solid var(--sdg-color-grey-light) !important;
+    }
+  }
+}

@@ -5,6 +5,19 @@ import { AppTitleResolver } from '../../../config/title-resolver';
 export const routes: SdgRoutes = [
   { path: '', redirectTo: 'breadcrumbs', pathMatch: 'full' },
   {
+    path: 'accordeon',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.expansionPanel'
+    },
+    description:
+      "L'accordéon permet de réduire temporairement la quantité d'information affichée sur une page.",
+    loadComponent: () =>
+      import('./expansion-panel/expansion-panel.component').then(
+        (m) => m.ExpansionPanelDemoComponent
+      )
+  },
+  {
     path: 'a-consulter-aussi',
     title: AppTitleResolver,
     data: {

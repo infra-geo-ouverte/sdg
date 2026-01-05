@@ -1,8 +1,7 @@
 name: Deploy demo content to Pages
 
 on:
-  push:
-    branches: ['next']
+  workflow_call:
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:

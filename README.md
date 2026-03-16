@@ -42,7 +42,7 @@ Démarrer avec la librairie @igo2/sdg, consulter la documentation et contribuer 
 
 ## Applications basées sur la librairie
 
-- [Québec En Alerte](https://alerte.geo.msp.gouv.qc.ca) (À VENIR)
+- [Québec En Alerte](https://alerte.gouv.qc.ca)
 - [Vigilance](https://vigilance.geo.msp.gouv.qc.ca) (À VENIR)
 
 ## Suivre les changements

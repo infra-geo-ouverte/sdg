@@ -14,12 +14,10 @@ export class WithLabels<T extends Labels> {
 
   private setLabels(defaultLabels: T | undefined, token: InjectionToken<T>) {
     const labelsOverride = inject(token, { optional: true });
-    if (labelsOverride) {
-      this.labels.update((value) => ({
-        ...(defaultLabels ?? {}),
-        ...labelsOverride,
-        ...value
-      }));
-    }
+    this.labels.update((value) => ({
+      ...(defaultLabels ?? {}),
+      ...(labelsOverride ?? {}),
+      ...value
+    }));
   }
 }

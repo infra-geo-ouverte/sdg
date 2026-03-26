@@ -8,7 +8,8 @@ import { WithLabels } from '@igo2/sdg-core';
 import {
   IHeaderLabels,
   IHeaderLanguageChoice,
-  IHeaderLanguages
+  IHeaderLanguages,
+  IHeaderLogo
 } from './header.interface';
 
 export const SDG_HEADER_LABELS = new InjectionToken<IHeaderLabels>(
@@ -25,6 +26,7 @@ const DEFAULT_LABELS: IHeaderLabels = { contactUs: 'Nous joindre' };
 })
 export class HeaderComponent extends WithLabels<IHeaderLabels> {
   readonly title = input.required<string>();
+  readonly logo = input<IHeaderLogo>();
   readonly contactUsRoute = input<string>();
   readonly languages = input<IHeaderLanguages>();
   readonly currentLanguage = input<string>();

@@ -1,4 +1,7 @@
-<div class="sdg-header-container" [class]="containerClass()">
+<div
+  class="sdg-header-container"
+  [class]="containerClass() ?? 'sdg-header-container-default-padding'"
+>
   <div class="sdg-header-content">
     <div class="sdg-header-content-logo-title">
       @let logo = this.logo();
@@ -48,12 +51,22 @@
             {{ nextLanguage!.label }}
           </a>
         }
-        @if (contactUsRoute()) {
-          <a
-            class="sdg-header-content-options-contact-us"
-            [routerLink]="contactUsRoute()!"
-            >{{ labels().contactUs }}</a
-          >
+        @let contactUsRoute = this.contactUsRoute();
+        @if (contactUsRoute) {
+          @if (isContactUsExternal()) {
+            <a
+              class="sdg-header-content-options-contact-us"
+              [href]="contactUsRoute"
+              target="_blank"
+              >{{ labels().contactUs }}
+            </a>
+          } @else {
+            <a
+              class="sdg-header-content-options-contact-us"
+              [routerLink]="contactUsRoute"
+              >{{ labels().contactUs }}
+            </a>
+          }
         }
       </div>
     }

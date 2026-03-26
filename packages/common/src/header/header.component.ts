@@ -1,4 +1,10 @@
-import { Component, InjectionToken, input, output } from '@angular/core';
+import {
+  Component,
+  InjectionToken,
+  computed,
+  input,
+  output
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
@@ -30,9 +36,14 @@ export class HeaderComponent extends WithLabels<IHeaderLabels> {
   readonly contactUsRoute = input<string>();
   readonly languages = input<IHeaderLanguages>();
   readonly currentLanguage = input<string>();
-  readonly containerClass = input.required<string>();
+  readonly containerClass = input<string>();
 
-  languageChange = output<string>();
+  readonly languageChange = output<string>();
+
+  readonly isContactUsExternal = computed(() => {
+    const route = this.contactUsRoute();
+    return route ? /^(http|https|mailto):/i.test(route) : false;
+  });
 
   constructor() {
     super(DEFAULT_LABELS, SDG_HEADER_LABELS);

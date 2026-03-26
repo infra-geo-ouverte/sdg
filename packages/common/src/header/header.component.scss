@@ -9,7 +9,11 @@
   &-container {
     display: flex;
     flex-flow: column;
-    background-color: var(--sdg-palette-blue-600);
+
+    &-default-padding {
+      padding-left: 16px;
+      padding-right: 16px;
+    }
   }
 
   &-content {

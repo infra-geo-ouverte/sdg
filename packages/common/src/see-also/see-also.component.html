@@ -2,7 +2,11 @@
 
 <div class="sdg-see-also-links">
   @for (link of links(); track link) {
-    <a [routerLink]="link.url">{{ link.label }}</a>
+    @if (detectLink(link.url)) {
+      <sdg-external-link [text]="link.label" [url]="link.url" />
+    } @else {
+      <a [routerLink]="link.url">{{ link.label }}</a>
+    }
   }
 </div>
 

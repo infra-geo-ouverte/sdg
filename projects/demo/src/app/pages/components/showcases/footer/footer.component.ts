@@ -7,9 +7,8 @@ import {
   SiteMapLinks
 } from '@igo2/sdg-common';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-import { environment } from 'projects/demo/src/environments/environment';
-import { EnvironmentOptions } from 'projects/demo/src/environments/environment.interface';
+import { environment } from '../../../../../environments/environment';
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-footer',
@@ -18,7 +17,7 @@ import { EnvironmentOptions } from 'projects/demo/src/environments/environment.i
   styleUrl: './footer.component.scss'
 })
 export class FooterDemoComponent {
-  config: EnvironmentOptions = environment;
+  config = environment;
 
   title: string = this.config.title;
   logo: FooterNavLogo = { url: 'images/signature-PIV.svg', height: 50 };

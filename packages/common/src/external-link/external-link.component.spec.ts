@@ -1,8 +1,7 @@
 import { ComponentRef } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from 'packages/common/test-config';
-
+import { TEST_CONFIG } from '../../test-config';
 import { ExternalLinkComponent } from './external-link.component';
 
 describe('ExternalLinkComponent', () => {

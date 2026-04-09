@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from 'packages/carto/test-config';
-
+import { TEST_CONFIG } from '../../../../test-config';
 import { ISdgMap } from '../../map.interface';
 import { RotationButtonComponent } from './rotation-button.component';
 

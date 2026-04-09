@@ -6,7 +6,7 @@ import {
   SeeAlsoLinks
 } from '@igo2/sdg-common';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-see-also',

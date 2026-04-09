@@ -3,7 +3,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ExternalLinkComponent } from '@igo2/sdg-common';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-expansion-panel',

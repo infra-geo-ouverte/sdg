@@ -22,9 +22,9 @@ import {
 })
 export class FooterComponent {
   readonly title = input<string>();
-  readonly logo = input<FooterNavLogo>();
-  readonly siteMapLinks = input<SiteMapLinks>();
-  readonly externalLinks = input<SiteMapLinks>();
+  readonly logo = input<FooterNavLogo | undefined>(undefined);
+  readonly siteMapLinks = input<SiteMapLinks | undefined>(undefined);
+  readonly externalLinks = input<SiteMapLinks | undefined>(undefined);
   readonly copyright = input.required<FooterCopyright>();
   readonly containerClass = input<string>('');
   readonly currentLanguage = input<string>();

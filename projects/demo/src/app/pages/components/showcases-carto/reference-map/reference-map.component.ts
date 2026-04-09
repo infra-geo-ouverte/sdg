@@ -18,7 +18,8 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style.js';
 
 import type { GeoJSON } from 'geojson';
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+
+import { ExampleViewerComponent } from '../../../../components';
 
 const geojson: GeoJSON = {
   type: 'FeatureCollection',

@@ -11,8 +11,9 @@ import {
   FormFieldLabelComponent
 } from '@igo2/sdg-common';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
 import { merge } from 'rxjs';
+
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-form-field',

@@ -1,9 +1,9 @@
 import { TestBed } from '@angular/core/testing';
 import { NavigationEnd, Router } from '@angular/router';
 
-import { TEST_CONFIG } from 'packages/common/test-config';
 import { Subject } from 'rxjs';
 
+import { TEST_CONFIG } from '../../../test-config';
 import { GoogleAnalyticsService } from './google-analytics.service';
 
 // The global gtag function is typically added to the window object by the Google Analytics script.

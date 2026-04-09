@@ -4,7 +4,7 @@ import { MatRadioModule } from '@angular/material/radio';
 
 import { ExternalLinkComponent } from '@igo2/sdg-common';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-radio-button',

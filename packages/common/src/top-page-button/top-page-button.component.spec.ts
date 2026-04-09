@@ -5,8 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { TEST_CONFIG } from 'packages/common/test-config';
-
+import { TEST_CONFIG } from '../../test-config';
 import { TopPageButtonComponent } from './top-page-button.component';
 
 describe('TopPageButtonComponent', () => {

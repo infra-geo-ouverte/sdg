@@ -3,9 +3,8 @@ import { Component, WritableSignal, inject } from '@angular/core';
 import { ExternalLinkComponent, HeaderComponent } from '@igo2/sdg-common';
 import { Language, TranslationService } from '@igo2/sdg-i18n';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-import { environment } from 'projects/demo/src/environments/environment';
-import { EnvironmentOptions } from 'projects/demo/src/environments/environment.interface';
+import { environment } from '../../../../../environments/environment';
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-header',
@@ -16,7 +15,7 @@ import { EnvironmentOptions } from 'projects/demo/src/environments/environment.i
 export class HeaderDemoComponent {
   private translationService = inject(TranslationService);
 
-  config: EnvironmentOptions = environment;
+  config = environment;
 
   get currentLanguage(): WritableSignal<Language> {
     return this.translationService.lang;

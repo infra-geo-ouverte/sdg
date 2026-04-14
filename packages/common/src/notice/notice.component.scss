@@ -64,9 +64,9 @@
 
     &-title,
     &-message {
-      font-size: 14px !important;
+      font-size: var(--sdg-font-size-sm) !important;
       margin: 0 !important;
-      line-height: 18px;
+      line-height: var(--sdg-line-height-90);
     }
 
     &-title {

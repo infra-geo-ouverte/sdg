@@ -7,6 +7,8 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
+import { pathIsExternal } from '@igo2/sdg-core';
+
 @Component({
   selector: 'sdg-tile',
   imports: [MatIconModule],
@@ -18,20 +20,29 @@ export class TileComponent {
   private router = inject(Router);
 
   readonly icon = input<string>();
+  /** The icon needs to be registred via the MatIconRegistry */
+  readonly iconSvg = input<string>();
+
   readonly title = input.required<string, string>({
     transform: this.titleValidation
   });
-  readonly message = input<string>();
+  readonly message = input<string, string>('', {
+    transform: this.messageValidation
+  });
   readonly href = input.required<string>();
 
   private titleValidation(title: string): string {
     return title.length > 45 ? `${title.slice(0, 45)}...` : title;
   }
 
+  private messageValidation(message: string): string {
+    return message.length > 140 ? `${message.slice(0, 140)}...` : message;
+  }
+
   goToLink() {
-    const regex = /^https?:\/\//;
-    regex.test(this.href())
-      ? window.open(this.href(), '_blank')
-      : this.router.navigate([this.href()]);
+    const href = this.href();
+    pathIsExternal(href)
+      ? window.open(href, '_blank')
+      : this.router.navigate([href]);
   }
 }

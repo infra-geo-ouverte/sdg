@@ -3,18 +3,15 @@
 .tiles {
   display: flex;
   flex-wrap: wrap;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 32px var(--sdg-grid-spacing-max);
+  row-gap: var(--sdg-grid-spacing-max);
 
   @include sdg.media(tablet) {
-    row-gap: 24px;
+    row-gap: var(--sdg-grid-spacing-max);
   }
 
-  & > * {
-    flex-basis: calc(100% / 2 - var(--sdg-grid-spacing-max));
-
-    @include sdg.media(tablet) {
-      flex-basis: 100%;
-    }
+  sdg-tile {
+    flex-grow: 1;
   }
 }

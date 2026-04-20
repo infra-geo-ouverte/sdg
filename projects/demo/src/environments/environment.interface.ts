@@ -8,6 +8,7 @@ export interface EnvironmentOptions {
   production: boolean;
   title: string;
   description?: string;
+  baseHref?: string;
   header: IHeaderConfig;
   navigation?: {
     options: INavigationOptions;

@@ -7,5 +7,6 @@ import { environment as prodEnvironment } from './environment.prod';
 
 export const environment: EnvironmentOptions = {
   ...prodEnvironment,
+  baseHref: undefined,
   production: false
 };

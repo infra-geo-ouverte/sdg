@@ -3,8 +3,16 @@ export interface IHeaderLabels {
 }
 
 export interface IHeaderConfig {
+  /** Default to the Quebec Government logo */
+  logo?: IHeaderLogo;
   contactUsRoute?: string;
   languages?: IHeaderLanguages;
+}
+
+export interface IHeaderLogo {
+  src: string;
+  href: string;
+  alt?: string;
 }
 
 export interface IHeaderContactUs {

@@ -1,0 +1,74 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  $blue-dark: var(--sdg-color-blue-dark);
+  $blue-piv: var(--sdg-color-blue-piv);
+  $grey-medium: var(--sdg-color-grey-medium);
+
+  $text-font: var(--sdg-font-family-text);
+  $text-line-height: var(--sdg-line-height-md);
+  $text-size: var(--sdg-font-size-md);
+
+  .mat-mdc-form-field {
+    @include mat.select-overrides(
+      (
+        enabled-trigger-text-color: $blue-dark,
+        enabled-arrow-color: $blue-piv,
+        //
+        disabled-trigger-text-color: $grey-medium,
+        disabled-arrow-color: var(--sdg-color-grey-normal),
+        //
+        placeholder-text-color: $grey-medium,
+        //
+        trigger-text-font: $text-font,
+        trigger-text-line-height: $text-line-height,
+        trigger-text-size: $text-size
+      )
+    );
+  }
+
+  .mat-mdc-select-panel {
+    @include mat.select-overrides(
+      (
+        container-elevation-shadow: none,
+        //
+        panel-background-color: var(--sdg-color-background)
+      )
+    );
+
+    padding: 0 !important;
+    border: 1px solid $grey-medium;
+    border-radius: 0 !important;
+
+    .mat-mdc-option {
+      min-height: 0;
+      padding: 8px;
+
+      .mdc-list-item__primary-text {
+        color: $blue-dark;
+        font-family: $text-font;
+        font-size: $text-size;
+        line-height: $text-line-height;
+      }
+
+      &:hover {
+        background-color: var(--sdg-color-grey-pale);
+      }
+
+      &-active {
+        background-color: var(--sdg-color-blue-pale) !important;
+      }
+    }
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 8px;
+      height: auto;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $blue-piv;
+      border-radius: 4px;
+    }
+  }
+}

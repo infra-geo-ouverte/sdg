@@ -3,7 +3,7 @@ import { Component, inject } from '@angular/core';
 import { BlockLinkComponent, BlockLinkSections } from '@igo2/sdg-common';
 import { TranslationService } from '@igo2/sdg-i18n';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-block-link',

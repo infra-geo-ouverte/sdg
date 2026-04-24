@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from 'packages/carto/test-config';
 import { of } from 'rxjs';
 
 import { GeolocationBase } from '../..';
+import { TEST_CONFIG } from '../../../../test-config';
 import { GeolocateButtonComponent } from './geolocate-button.component';
 
 const POSITION_MOCKED: GeolocationPosition = {

@@ -5,6 +5,19 @@ import { AppTitleResolver } from '../../../config/title-resolver';
 export const routes: SdgRoutes = [
   { path: '', redirectTo: 'breadcrumbs', pathMatch: 'full' },
   {
+    path: 'accordeon',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.expansionPanel'
+    },
+    description:
+      "L'accordéon permet de réduire temporairement la quantité d'information affichée sur une page.",
+    loadComponent: () =>
+      import('./expansion-panel/expansion-panel.component').then(
+        (m) => m.ExpansionPanelDemoComponent
+      )
+  },
+  {
     path: 'a-consulter-aussi',
     title: AppTitleResolver,
     data: {
@@ -85,6 +98,19 @@ export const routes: SdgRoutes = [
     loadComponent: () =>
       import('./checkbox/checkbox.component').then(
         (m) => m.CheckboxDemoComponent
+      )
+  },
+  {
+    path: 'champ-texte',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.formField'
+    },
+    description:
+      'Le champ texte est un espace dans lequel est saisie une information qui tient sur une ou plusieurs lignes de texte.',
+    loadComponent: () =>
+      import('./form-field/form-field.component').then(
+        (m) => m.FormFieldDemoComponent
       )
   },
   {
@@ -173,6 +199,17 @@ export const routes: SdgRoutes = [
       import('./block-link/block-link.component').then(
         (m) => m.BlockLinkDemoComponent
       )
+  },
+  {
+    path: 'liste-deroulante',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.select'
+    },
+    description:
+      "La liste déroulante permet à l'utilisateur de sélectionner une ou plusieurs des options contenues dans une liste.",
+    loadComponent: () =>
+      import('./select/select.component').then((m) => m.SelectDemoComponent)
   },
   {
     path: 'menu-lateral',

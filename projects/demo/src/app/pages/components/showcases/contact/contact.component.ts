@@ -8,8 +8,7 @@ import {
   IContactData
 } from '@igo2/sdg-common';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
-
+import { ExampleViewerComponent } from '../../../../components';
 import { ContactCustom } from './contact-custom';
 
 const currentDate = new Date();

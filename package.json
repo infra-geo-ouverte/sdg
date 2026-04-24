@@ -1,6 +1,6 @@
 {
   "name": "@igo2/sdg",
-  "version": "1.0.0",
+  "version": "1.1.0-next.18",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/infra-geo-ouverte/sdg.git"
@@ -28,21 +28,21 @@
   },
   "dependencies": {
     "@angular/cdk": "^20.2.7",
-    "@angular/common": "^20.3.3",
-    "@angular/compiler": "^20.3.3",
-    "@angular/core": "^20.3.3",
-    "@angular/forms": "^20.3.3",
+    "@angular/common": "^20.3.14",
+    "@angular/compiler": "^20.3.14",
+    "@angular/core": "^20.3.14",
+    "@angular/forms": "^20.3.14",
     "@angular/material": "^20.2.7",
-    "@angular/platform-browser": "^20.3.3",
-    "@angular/router": "^20.3.3",
-    "@angular/ssr": "^20.3.4",
+    "@angular/platform-browser": "^20.3.14",
+    "@angular/router": "^20.3.14",
+    "@angular/ssr": "^20.3.13",
     "rxjs": "~7.8.0",
     "tslib": "^2.6.0"
   },
   "devDependencies": {
     "@angular/build": "^20.3.4",
     "@angular/cli": "^20.3.4",
-    "@angular/compiler-cli": "^20.3.3",
+    "@angular/compiler-cli": "^20.3.14",
     "@commitlint/cli": "^20.0.0",
     "@commitlint/config-conventional": "^20.0.0",
     "@commitlint/format": "^20.0.0",

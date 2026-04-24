@@ -3,9 +3,13 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
-import { ExternalLinkComponent, PaginatorComponent } from '@igo2/sdg-common';
+import {
+  ExternalLinkComponent,
+  FormFieldLabelComponent,
+  PaginatorComponent
+} from '@igo2/sdg-common';
 
-import { ExampleViewerComponent } from 'projects/demo/src/app/components';
+import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-paginator',
@@ -15,7 +19,8 @@ import { ExampleViewerComponent } from 'projects/demo/src/app/components';
     PaginatorComponent,
     MatFormFieldModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    FormFieldLabelComponent
   ],
   templateUrl: './paginator.component.html',
   styleUrl: './paginator.component.scss'

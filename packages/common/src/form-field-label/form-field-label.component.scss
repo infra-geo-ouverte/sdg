@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+}
+
+.form-field-label {
+  $grey-normal: var(--sdg-color-grey-normal);
+
+  &-container {
+    display: flex;
+    flex-flow: column;
+    max-width: 100%;
+    padding-bottom: 4px;
+
+    &.xl {
+      width: 825px;
+    }
+
+    &.lg,
+    &.multi {
+      width: 528px;
+    }
+
+    &.md,
+    &.sm,
+    &.xs {
+      width: 249px;
+    }
+  }
+
+  &-label {
+    font-size: var(--sdg-font-size-md);
+    line-height: var(--sdg-line-height-md);
+    font-weight: bold;
+
+    &.--disabled {
+      color: $grey-normal;
+    }
+  }
+
+  &-asterisk {
+    color: var(--sdg-color-red-normal);
+    font-size: var(--sdg-font-size-xl);
+  }
+
+  &-clarification {
+    font-size: var(--sdg-font-size-sm);
+    line-height: var(--sdg-line-height-sm);
+
+    &.--disabled {
+      color: $grey-normal;
+    }
+  }
+}

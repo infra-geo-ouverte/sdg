@@ -1,0 +1,13 @@
+.form-field {
+  &-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    &-multiple {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+  }
+}

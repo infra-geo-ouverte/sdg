@@ -53,4 +53,20 @@ describe('HeaderComponent', () => {
     );
     expect(contactUsElement).toBeTruthy();
   });
+
+  it('should compute isContactUsExternal correctly and render external link attributes', () => {
+    fixture.componentRef.setInput('contactUsRoute', '/internal-route');
+    fixture.detectChanges();
+    expect(component.isContactUsExternal()).toBeFalse();
+
+    fixture.componentRef.setInput('contactUsRoute', 'https://external.com');
+    fixture.detectChanges();
+    expect(component.isContactUsExternal()).toBeTrue();
+
+    const contactUsElement = fixture.nativeElement.querySelector(
+      '.sdg-header-content-options-contact-us'
+    );
+    expect(contactUsElement.getAttribute('href')).toBe('https://external.com');
+    expect(contactUsElement.getAttribute('target')).toBe('_blank');
+  });
 });

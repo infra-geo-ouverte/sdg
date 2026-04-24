@@ -1,20 +1,140 @@
-@use 'sass:map';
 @use '@angular/material' as mat;
-@use '../../../tokens/sys-colors';
 
 @mixin overrides() {
-  .mat-mdc-text-field-wrapper,
-  .mdc-notched-outline__leading,
-  .mdc-notched-outline__trailing {
-    border-radius: 0 !important;
+  .mat-mdc-form-field {
+    $blue-dark: var(--sdg-color-blue-dark);
+    $grey-medium: var(--sdg-color-grey-medium);
+    $red-normal: var(--sdg-color-red-normal);
+
+    $text-font: var(--sdg-font-family-text);
+    $text-line-height: var(--sdg-line-height-md);
+    $text-size: var(--sdg-font-size-md);
+
+    max-width: 100%;
+
+    @include mat.form-field-density(-4);
+
+    @include mat.form-field-overrides(
+      (
+        outlined-outline-width: 1px,
+        outlined-outline-color: $grey-medium,
+        outlined-disabled-input-text-color: $grey-medium,
+        outlined-disabled-outline-color: $grey-medium,
+        outlined-error-hover-outline-color: $red-normal,
+        outlined-focus-outline-width: 2px,
+        outlined-focus-outline-color: $blue-dark,
+        outlined-hover-outline-color: $grey-medium,
+        outlined-input-text-color: $blue-dark,
+        outlined-input-text-placeholder-color: $grey-medium,
+        outlined-container-shape: 0,
+        //
+        disabled-input-text-placeholder-color: $grey-medium,
+        //
+        error-text-color: $red-normal,
+        //
+        focus-state-layer-opacity: 0,
+        //
+        hover-state-layer-opacity: 0,
+        //
+        state-layer-color: transparent,
+        //
+        container-text-font: $text-font,
+        container-text-line-height: $text-line-height,
+        container-text-size: $text-size
+      )
+    );
+
+    &.mat-form-field-disabled {
+      .mdc-text-field {
+        background-color: var(--sdg-color-grey-pale);
+      }
+
+      mat-hint {
+        color: var(--sdg-color-grey-normal) !important;
+      }
+    }
+
+    .mdc-text-field {
+      background-color: var(--sdg-color-background);
+      padding: 0 8px;
+
+      &--focused {
+        outline: 2px solid var(--sdg-color-blue-light);
+      }
+
+      &--disabled {
+        background-color: var(--sdg-color-grey-pale);
+      }
+    }
+
+    &[xl] {
+      width: 825px;
+    }
+
+    &[lg],
+    &[multi] {
+      width: 528px;
+    }
+
+    &[md] {
+      width: 249px;
+    }
+
+    &[sm] {
+      width: 156px;
+    }
+
+    &[xs] {
+      width: 63px;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+      .mat-mdc-form-field-hint-wrapper {
+        padding: 0;
+
+        mat-hint {
+          padding-top: 4px;
+          font-family: $text-font;
+          font-weight: 400;
+          font-size: var(--sdg-font-size-sm);
+          line-height: var(--sdg-line-height-sm);
+          color: var(--sdg-color-grey-dark);
+        }
+      }
+    }
+
+    .mat-mdc-form-field-error-wrapper {
+      padding: 0;
+
+      mat-error {
+        display: flex;
+        align-items: center;
+        column-gap: 8px;
+        padding-top: 8px;
+        font-family: $text-font;
+        font-weight: 600;
+        font-size: $text-size;
+        line-height: $text-line-height;
+
+        mat-icon {
+          font-size: 24px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
   }
 
-  @include mat.form-field-overrides(
-    (
-      outlined-outline-color: rgba(
-          map.get(sys-colors.$light-colors, 'black'),
-          0.38
-        )
-    )
-  );
+  .mat-mdc-input-element {
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 8px;
+      height: auto;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--sdg-color-blue-piv);
+      border-radius: 4px;
+    }
+  }
 }

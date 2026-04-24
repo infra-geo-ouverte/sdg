@@ -1,8 +1,7 @@
 import { ApplicationRef, DOCUMENT, PLATFORM_ID, inject } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from 'packages/common/test-config';
-
+import { TEST_CONFIG } from '../../../test-config';
 import { withGoogleAnalytics } from './google-analytics.provider';
 import { GoogleAnalyticsService } from './google-analytics.service';
 

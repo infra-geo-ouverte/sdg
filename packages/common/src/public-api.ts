@@ -8,6 +8,7 @@ export * from './contact';
 export * from './see-also';
 export * from './external-link';
 export * from './footer';
+export * from './form-field-label/form-field-label.component';
 export * from './header';
 export * from './lateral-menu';
 export * from './navigation';

@@ -1,0 +1,280 @@
+<p>
+  <span
+    >Le <b>champ texte</b> est un espace dans lequel est saisie une information
+    qui tient sur une ou plusieurs lignes de texte. Il peut s'agir d'une
+    combinaison de lettres, de chiffres et de symboles. Pour plus d'information,
+    voir le
+  </span>
+  <span
+    ><sdg-external-link
+      text="Champ texte"
+      url="https://design.quebec.ca/design/composants/formulaire/champ-texte"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  Les champs texte sont placés les uns au-dessus des autres par défaut. La
+  longueur du champ doit être adaptée à la réponse requise, selon les formats
+  disponibles.
+</p>
+
+<app-example-viewer title="Champ texte de base" configFolder="form-field">
+  <div class="form-field-list">
+    <div>
+      <sdg-form-field-label
+        controlId="extra-large"
+        formControlSize="xl"
+        label="Très grand"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field xl>
+        <input
+          id="extra-large"
+          matInput
+          placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          [disabled]="disabled1()"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="large"
+        formControlSize="lg"
+        label="Grand"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field lg>
+        <input
+          id="large"
+          matInput
+          placeholder="555, avenue principale, Québec"
+          [disabled]="disabled1()"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="medium"
+        formControlSize="md"
+        label="Moyen"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field md>
+        <input
+          id="medium"
+          matInput
+          placeholder="Jean Tremblay"
+          [disabled]="disabled1()"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="small"
+        formControlSize="sm"
+        label="Petit"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field sm>
+        <input
+          id="small"
+          matInput
+          placeholder="H0H 0H0"
+          [disabled]="disabled1()"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="extra-small"
+        formControlSize="xs"
+        label="Très petit"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field xs>
+        <input
+          id="extra-small"
+          matInput
+          placeholder="23"
+          [disabled]="disabled1()"
+        />
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="multiline"
+        formControlSize="multi"
+        label="Multiligne"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field multi>
+        <textarea
+          id="multiline"
+          matInput
+          [placeholder]="`Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`"
+          [disabled]="disabled1()"
+        ></textarea>
+      </mat-form-field>
+    </div>
+    <button
+      compact
+      matButton="outlined"
+      color="primary"
+      (click)="this.disabled1.set(!this.disabled1())"
+    >
+      {{
+        disabled1() ? 'Activer les champs texte' : 'Désactiver les champs texte'
+      }}
+    </button>
+  </div>
+</app-example-viewer>
+
+<p>
+  Dans le format bureau, deux champs peuvent être placés côte à côte seulement
+  s'ils sont complémentaires.
+</p>
+
+<app-example-viewer
+  title="Champs texte complémentaires"
+  configFolder="form-field"
+>
+  <div class="form-field-list-multiple">
+    <div>
+      <sdg-form-field-label
+        controlId="first-name"
+        formControlSize="md"
+        label="Prénom"
+      />
+      <mat-form-field md>
+        <input id="first-name" matInput placeholder="Jean" />
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label controlId="name" formControlSize="md" label="Nom" />
+      <mat-form-field md>
+        <input id="name" matInput placeholder="Tremblay" />
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="birthdate"
+        formControlSize="md"
+        label="Date de naissance"
+      />
+      <mat-form-field md>
+        <input id="birthdate" matInput placeholder="1960-01-01" />
+      </mat-form-field>
+    </div>
+  </div>
+</app-example-viewer>
+
+<p>
+  Le nombre de caractères maximum peut être indiqué sous le champ texte, aligné
+  avec l'extrémité droite.
+</p>
+
+<app-example-viewer
+  title="Champ texte de base avec indicateur"
+  configFolder="form-field"
+>
+  <div class="form-field-list">
+    <div>
+      <sdg-form-field-label
+        controlId="address"
+        formControlSize="lg"
+        label="Adresse"
+        clarification="#, rue, ville"
+        [disabled]="disabled2()"
+      />
+      <mat-form-field lg>
+        <input
+          id="address"
+          matInput
+          [attr.maxlength]="maxLength"
+          placeholder="555, avenue principale, Québec"
+          [disabled]="disabled2()"
+        />
+        <mat-hint align="end">{{ `Maximum ${maxLength} caractères` }}</mat-hint>
+      </mat-form-field>
+    </div>
+    <button
+      compact
+      matButton="outlined"
+      color="primary"
+      (click)="this.disabled2.set(!this.disabled2())"
+    >
+      {{ disabled2() ? 'Activer le champ texte' : 'Désactiver le champ texte' }}
+    </button>
+  </div>
+</app-example-viewer>
+
+<p>
+  <span
+    >L'<b>indicateur de champ obligatoire</b> précise qu'un ou des éléments
+    doivent être remplis obligatoirement pour la réussite de la tâche. Pour plus
+    d'information, voir l'</span
+  ><span
+    ><sdg-external-link
+      text="Indicateur de champ obligatoire"
+      url="https://design.quebec.ca/design/composants/formulaires/indicateur-champ-obligatoire"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  <span
+    >Dans un formulaire, un <b>message d'erreur</b> permet d'identifier les
+    éléments de formulaire erronés et d'indiquer le correctif à appliquer. Pour
+    plus d'information, voir le
+  </span>
+  <span
+    ><sdg-external-link
+      text="Message d'erreur"
+      url="https://design.quebec.ca/design/composants/formulaire/message-erreur"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Champ texte obligatoire avec message d'erreur"
+  configFolder="form-field"
+>
+  <div class="form-field-list">
+    <div>
+      <sdg-form-field-label
+        controlId="email"
+        formControlSize="lg"
+        label="Adresse courriel"
+        [required]="true"
+        [disabled]="disabled3()"
+      />
+      <mat-form-field lg>
+        <input
+          id="email"
+          matInput
+          required
+          placeholder="jean.tremblay@outlook.com"
+          [attr.maxlength]="maxLength"
+          [formControl]="email"
+          (blur)="updateErrorMessage()"
+        />
+        <mat-hint align="end">{{ `Maximum ${maxLength} caractères` }}</mat-hint>
+        @if (email.invalid) {
+          <mat-error>
+            <mat-icon>warning</mat-icon>
+            {{ errorMessage() }}
+          </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <button
+      compact
+      matButton="outlined"
+      color="primary"
+      (click)="this.disabled3.set(!this.disabled3())"
+    >
+      {{ disabled3() ? 'Activer le champ texte' : 'Désactiver le champ texte' }}
+    </button>
+  </div>
+</app-example-viewer>

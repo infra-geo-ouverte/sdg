@@ -1,0 +1,19 @@
+<label
+  [for]="controlId()"
+  class="form-field-label-container"
+  [class]="formControlSize()"
+>
+  <div class="form-field-label-label" [class.--disabled]="disabled()">
+    {{ label() }}
+    @if (required()) {
+      <span class="form-field-label-asterisk">*</span>
+    }
+  </div>
+  @if (clarification()) {
+    <span
+      class="form-field-label-clarification"
+      [class.--disabled]="disabled()"
+      >{{ clarification() }}</span
+    >
+  }
+</label>

@@ -69,7 +69,7 @@ export class SdgOlMap implements ISdgMap<olMap> {
 
   updateView(options: IOlViewOptions): void {
     const viewOptions: IOlViewOptions = {
-      ...this.view.getProperties(),
+      ...(this.view.getProperties() as IOlViewOptions),
       ...options
     };
 

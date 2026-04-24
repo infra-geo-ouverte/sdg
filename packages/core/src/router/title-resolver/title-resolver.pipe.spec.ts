@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
-import { TEST_CONFIG } from 'packages/core/test-config';
-
+import { TEST_CONFIG } from '../../../test-config';
 import { TitleResolver } from './title-resolver';
 import { TitleResolverPipe } from './title-resolver.pipe';
 

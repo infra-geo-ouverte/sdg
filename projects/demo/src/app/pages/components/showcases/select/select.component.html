@@ -1,0 +1,198 @@
+<p>
+  <span
+    >La <b>liste déroulante</b> permet à l'utilisateur de sélectionner une ou
+    plusieurs des options contenues dans une liste. Pour plus d'information,
+    voir la
+  </span>
+  <span
+    ><sdg-external-link
+      text="Liste déroulante"
+      url="https://design.quebec.ca/design/composants/formulaire/liste-deroulante"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer title="Liste déroulante" configFolder="select">
+  <div class="form-field-list">
+    <div>
+      <sdg-form-field-label
+        controlId="extra-large"
+        formControlSize="xl"
+        label="Très grande"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field xl>
+        <mat-select
+          id="extra-large"
+          [disabled]="disabled1()"
+          placeholder="Sélectionnez une couleur"
+        >
+          @for (color of colors; track color) {
+            <mat-option [value]="color.value">{{ color.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="large"
+        formControlSize="lg"
+        label="Grande"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field lg>
+        <mat-select
+          id="large"
+          [disabled]="disabled1()"
+          placeholder="Sélectionnez une couleur"
+        >
+          @for (color of colors; track color) {
+            <mat-option [value]="color.value">{{ color.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="medium"
+        formControlSize="md"
+        label="Moyenne"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field md>
+        <mat-select
+          id="medium"
+          [disabled]="disabled1()"
+          placeholder="Sélectionnez une couleur"
+        >
+          @for (color of colors; track color) {
+            <mat-option [value]="color.value">{{ color.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="small"
+        formControlSize="sm"
+        label="Petite"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field sm>
+        <mat-select
+          id="small"
+          [disabled]="disabled1()"
+          placeholder="Sélectionnez une couleur"
+        >
+          @for (color of colors; track color) {
+            <mat-option [value]="color.value">{{ color.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <sdg-form-field-label
+        controlId="extra-small"
+        formControlSize="xs"
+        label="Très petite"
+        [disabled]="disabled1()"
+      />
+      <mat-form-field xs>
+        <mat-select
+          id="extra-small"
+          [disabled]="disabled1()"
+          placeholder="Sélectionnez une couleur"
+        >
+          @for (color of colors; track color) {
+            <mat-option [value]="color.value">{{ color.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button
+      compact
+      matButton="outlined"
+      color="primary"
+      (click)="this.disabled1.set(!this.disabled1())"
+    >
+      {{
+        disabled1()
+          ? 'Activer les listes déroulantes'
+          : 'Désactiver les listes déroulantes'
+      }}
+    </button>
+  </div>
+</app-example-viewer>
+
+<p>
+  <span
+    >L'<b>indicateur de champ obligatoire</b> précise qu'un ou des éléments
+    doivent être remplis obligatoirement pour la réussite de la tâche. Pour plus
+    d'information, voir l'</span
+  ><span
+    ><sdg-external-link
+      text="Indicateur de champ obligatoire"
+      url="https://design.quebec.ca/design/composants/formulaires/indicateur-champ-obligatoire"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  <span
+    >Dans un formulaire, un <b>message d'erreur</b> permet d'identifier les
+    éléments de formulaire erronés et d'indiquer le correctif à appliquer. Pour
+    plus d'information, voir le
+  </span>
+  <span
+    ><sdg-external-link
+      text="Message d'erreur"
+      url="https://design.quebec.ca/design/composants/formulaire/message-erreur"
+  /></span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Liste déroulante obligatoire avec message d'erreur"
+  configFolder="select"
+>
+  <div class="form-field-list">
+    <div>
+      <sdg-form-field-label
+        controlId="color-control"
+        formControlSize="md"
+        label="Grande"
+        [disabled]="disabled2()"
+        [required]="true"
+      />
+      <mat-form-field md>
+        <mat-select
+          id="color-control"
+          [formControl]="colorControl"
+          placeholder="Sélectionnez une couleur"
+        >
+          @for (color of colors; track color) {
+            <mat-option [value]="color.value">{{ color.viewValue }}</mat-option>
+          }
+        </mat-select>
+        @if (colorControl.hasError('required') && !disabled2()) {
+          <mat-error>
+            <mat-icon>warning</mat-icon>
+            Choisissez une couleur
+          </mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <button
+      compact
+      matButton="outlined"
+      color="primary"
+      (click)="this.disabled2.set(!this.disabled2())"
+    >
+      {{
+        disabled2()
+          ? 'Activer la liste déroulante'
+          : 'Désactiver la liste déroulante'
+      }}
+    </button>
+  </div>
+</app-example-viewer>

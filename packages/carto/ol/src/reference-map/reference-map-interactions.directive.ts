@@ -3,7 +3,6 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
-  HostListener,
   OnDestroy,
   OnInit,
   PLATFORM_ID,
@@ -38,7 +37,14 @@ const LABELS_DEFAULT: IRestrictionLabels = {
 };
 
 @Directive({
-  selector: '[sdgReferenceMapInteractions]'
+  selector: '[sdgReferenceMapInteractions]',
+  host: {
+    '(mouseenter)': 'hostMouseEnter()',
+    '(mouseleave)': 'hostMouseLeave()',
+    '(wheel)': 'hostWheel($event)',
+    '(touchstart)': 'hostTouchStart()',
+    '(touchend)': 'hostTouchEnd()'
+  }
 })
 export class SdgReferenceMapInteractionsDirective
   implements OnInit, OnDestroy, AfterViewInit
@@ -79,23 +85,23 @@ export class SdgReferenceMapInteractionsDirective
     });
   }
 
-  @HostListener('mouseenter', ['$event']) hostMouseEnter(): void {
+  hostMouseEnter(): void {
     this.onMapEnter();
   }
 
-  @HostListener('mouseleave', ['$event']) hostMouseLeave(): void {
+  hostMouseLeave(): void {
     this.onMapLeave();
   }
 
-  @HostListener('wheel', ['$event']) hostWheel(event: WheelEvent): void {
+  hostWheel(event: WheelEvent): void {
     this.onMouseWheel(event);
   }
 
-  @HostListener('touchstart', ['$event']) hostTouchStart(): void {
+  hostTouchStart(): void {
     this.onMapEnter();
   }
 
-  @HostListener('touchend', ['$event']) hostTouchEnd(): void {
+  hostTouchEnd(): void {
     this.onMapLeave();
   }
 

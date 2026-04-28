@@ -93,23 +93,12 @@
           }
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "projects/demo/tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/demo/src/favicon.ico",
-              "projects/demo/src/assets"
-            ],
-            "styles": [
-              "projects/demo/src/styles.scss"
-            ],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules"
-              ]
-            },
-            "scripts": []
+            "runnerConfig": "vitest.config.ts",
+            "coverage": true,
+            "browsers": ["chromium"]
           }
         },
         "lint": {
@@ -146,9 +135,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "packages/carto/tsconfig.spec.json"
+            "runnerConfig": "vitest.config.ts",
+            "coverage": true
           }
         },
         "lint": {
@@ -185,9 +175,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "packages/core/tsconfig.spec.json"
+            "runnerConfig": "vitest.config.ts",
+            "coverage": true
           }
         },
         "lint": {
@@ -224,9 +215,11 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "packages/common/tsconfig.spec.json"
+            "runnerConfig": "vitest.config.ts",
+            "coverage": true,
+            "browsers": ["chromium"]
           }
         },
         "lint": {
@@ -263,9 +256,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "packages/i18n/tsconfig.spec.json"
+            "runnerConfig": "vitest.config.ts",
+            "coverage": true
           }
         },
         "lint": {

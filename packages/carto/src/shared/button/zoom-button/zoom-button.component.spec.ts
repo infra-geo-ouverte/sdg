@@ -7,27 +7,29 @@ import { ZoomButtonComponent } from './zoom-button.component';
 describe('ZoomButtonComponent', () => {
   let component: ZoomButtonComponent;
   let fixture: ComponentFixture<ZoomButtonComponent>;
-  let mockMap: jasmine.SpyObj<ISdgMap>;
+  let mockMap: ISdgMap;
+  let getZoomSpy: ReturnType<typeof vi.fn>;
 
   beforeEach(async () => {
-    mockMap = jasmine.createSpyObj('ISdgMap', [
-      'getZoom',
-      'getMaxZoom',
-      'getMinZoom',
-      'goTo',
-      'getMovementTarget'
-    ]);
-    mockMap.getZoom.and.returnValue(1);
-    mockMap.getMaxZoom.and.returnValue(10);
-    mockMap.getMinZoom.and.returnValue(0);
-    mockMap.getMovementTarget.and.returnValue({
-      addEventListener: jasmine
-        .createSpy('addEventListener')
-        .and.callFake((_, callback) => {
-          callback();
-        }),
-      removeEventListener: jasmine.createSpy('removeEventListener')
-    });
+    getZoomSpy = vi.fn().mockReturnValue(1);
+    mockMap = {
+      getZoom: getZoomSpy,
+      getMaxZoom: vi.fn().mockReturnValue(10),
+      getMinZoom: vi.fn().mockReturnValue(0),
+      goTo: vi.fn(),
+      getMovementTarget: vi.fn().mockReturnValue({
+        addEventListener: vi.fn(
+          (_event: string, callback: EventListenerOrEventListenerObject) => {
+            if (typeof callback === 'function') {
+              callback(new Event('change'));
+            } else {
+              callback.handleEvent(new Event('change'));
+            }
+          }
+        ),
+        removeEventListener: vi.fn()
+      })
+    } as unknown as ISdgMap;
 
     await TestBed.configureTestingModule({
       declarations: [],
@@ -51,15 +53,15 @@ describe('ZoomButtonComponent', () => {
   });
 
   it('should disable zoom in button when zoom is at max', () => {
-    mockMap.getZoom.and.returnValue(10);
+    getZoomSpy.mockReturnValue(10);
     component.ngOnInit();
-    expect(component.maxDisabled()).toBeTrue();
+    expect(component.maxDisabled()).toBeTruthy();
   });
 
   it('should disable zoom out button when zoom is at min', () => {
-    mockMap.getZoom.and.returnValue(0);
+    getZoomSpy.mockReturnValue(0);
     component.ngOnInit();
-    expect(component.minDisabled()).toBeTrue();
+    expect(component.minDisabled()).toBeTruthy();
   });
 
   it('should call map.goTo with increased zoom on zoomIn', () => {
@@ -73,7 +75,7 @@ describe('ZoomButtonComponent', () => {
   });
 
   it('should update zoom value on map resolution change', () => {
-    mockMap.getZoom.and.returnValue(5);
+    getZoomSpy.mockReturnValue(5);
     component.ngOnInit();
     expect(component.zoom()).toBe(5);
   });

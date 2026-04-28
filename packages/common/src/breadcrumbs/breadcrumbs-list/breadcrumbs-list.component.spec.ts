@@ -32,7 +32,7 @@ describe('BreadcrumbsListComponent', () => {
         id: '0',
         menu: [{ id: '1', title: 'Test', url: '/test' }]
       };
-      expect(component.isMenu(menuBreadcrumb)).toBeTrue();
+      expect(component.isMenu(menuBreadcrumb)).toBeTruthy();
     });
 
     it('should return false for Breadcrumb', () => {
@@ -42,7 +42,7 @@ describe('BreadcrumbsListComponent', () => {
         url: '/test',
         redirectTo: 'test'
       };
-      expect(component.isMenu(breadcrumb)).toBeFalse();
+      expect(component.isMenu(breadcrumb)).toBeFalsy();
     });
   });
 
@@ -59,7 +59,7 @@ describe('BreadcrumbsListComponent', () => {
         }
       ];
       component['assignFirstParent'](breads);
-      expect((breads[1] as Breadcrumb).firstParent).toBeTrue();
+      expect((breads[1] as Breadcrumb).firstParent).toBeTruthy();
     });
 
     it('should set firstParent on the first valid parent', () => {
@@ -69,7 +69,7 @@ describe('BreadcrumbsListComponent', () => {
         { id: '2', title: 'Child', url: '/parent/child', redirectTo: 'child' }
       ];
       component['assignFirstParent'](breads);
-      expect((breads[1] as Breadcrumb).firstParent).toBeTrue();
+      expect((breads[1] as Breadcrumb).firstParent).toBeTruthy();
     });
 
     it('should not set firstParent if no valid parent exists', () => {

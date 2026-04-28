@@ -29,11 +29,14 @@ jobs:
     - name: Security
       run: npm audit --omit dev && npm audit signatures
 
+    - name: Install Playwright dependencies
+      run: npx playwright install --with-deps chromium
+
     - name: Quality
       run: npm run circular-deps & npm run lint
 
     - name: Test
-      run: npm run test
+      run: npm run test.ci
 
     - name: Build Demo
       run: npm run build -w demo

@@ -47,7 +47,7 @@ describe('CheckboxDemoComponent', () => {
     const compactCheckbox = fixture.debugElement.query(
       By.css('mat-checkbox[compact]')
     );
-    expect(compactCheckbox.nativeElement.hasAttribute('compact')).toBeTrue();
+    expect(compactCheckbox.nativeElement.hasAttribute('compact')).toBeTruthy();
   });
 
   it('should apply custom size to compact checkbox', () => {

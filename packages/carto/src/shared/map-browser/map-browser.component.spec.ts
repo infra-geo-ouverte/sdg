@@ -7,14 +7,14 @@ import { SdgMapBrowserComponent } from './map-browser.component';
 describe('SdgMapBrowserComponent', () => {
   let component: SdgMapBrowserComponent;
   let fixture: ComponentFixture<SdgMapBrowserComponent>;
-  let mockMap: jasmine.SpyObj<ISdgMap<unknown>>;
+  let mockMap: ISdgMap<unknown>;
 
   beforeEach(async () => {
-    mockMap = jasmine.createSpyObj('ISdgMap', [
-      'setTarget',
-      'updateView',
-      'setInitialExtent'
-    ]);
+    mockMap = {
+      setTarget: vi.fn(),
+      updateView: vi.fn(),
+      setInitialExtent: vi.fn()
+    } as unknown as ISdgMap<unknown>;
 
     await TestBed.configureTestingModule({
       imports: [SdgMapBrowserComponent],

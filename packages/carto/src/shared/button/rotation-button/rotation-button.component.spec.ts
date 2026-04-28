@@ -7,25 +7,27 @@ import { RotationButtonComponent } from './rotation-button.component';
 describe('RotationButtonComponent', () => {
   let component: RotationButtonComponent;
   let fixture: ComponentFixture<RotationButtonComponent>;
-  let mockMap: jasmine.SpyObj<ISdgMap>;
+  let mockMap: ISdgMap;
 
   beforeEach(async () => {
-    mockMap = jasmine.createSpyObj('ISdgMap', [
-      'getMovementTarget',
-      'getRotationDegree',
-      'goTo'
-    ]);
-    mockMap.getMovementTarget.and.returnValue({
-      addEventListener: jasmine
-        .createSpy('addEventListener')
-        .and.callFake((event, callback) => {
-          if (event === 'change:rotation') {
-            callback();
+    mockMap = {
+      getMovementTarget: vi.fn().mockReturnValue({
+        addEventListener: vi.fn(
+          (event: string, callback: EventListenerOrEventListenerObject) => {
+            if (event === 'change:rotation') {
+              if (typeof callback === 'function') {
+                callback(new Event('change'));
+              } else {
+                callback.handleEvent(new Event('change'));
+              }
+            }
           }
-        }),
-      removeEventListener: jasmine.createSpy('removeEventListener') // Added mock for removeEventListener
-    });
-    mockMap.getRotationDegree.and.returnValue(45);
+        ),
+        removeEventListener: vi.fn()
+      }),
+      getRotationDegree: vi.fn().mockReturnValue(45),
+      goTo: vi.fn()
+    } as unknown as ISdgMap;
 
     await TestBed.configureTestingModule({
       declarations: [],

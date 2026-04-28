@@ -46,14 +46,14 @@ describe('SdgOlMap', () => {
 
   it('should fit the view to an extent', () => {
     const extent: Extent = [0, 0, 100, 100];
-    spyOn(map.view, 'fit');
+    vi.spyOn(map.view, 'fit');
     map.fit(extent);
     expect(map.view.fit).toHaveBeenCalledWith(extent, options.view.animation);
   });
 
   it('should animate the view', () => {
     const animationOptions = { zoom: 4, duration: 300 };
-    spyOn(map.view, 'animate');
+    vi.spyOn(map.view, 'animate');
     map.goTo(animationOptions);
     expect(map.view.animate).toHaveBeenCalledWith({
       ...options.view.animation,
@@ -62,9 +62,9 @@ describe('SdgOlMap', () => {
   });
 
   it('should get zoom, min zoom, and max zoom', () => {
-    spyOn(map.view, 'getZoom').and.returnValue(3);
-    spyOn(map.view, 'getMinZoom').and.returnValue(1);
-    spyOn(map.view, 'getMaxZoom').and.returnValue(10);
+    vi.spyOn(map.view, 'getZoom').mockReturnValue(3);
+    vi.spyOn(map.view, 'getMinZoom').mockReturnValue(1);
+    vi.spyOn(map.view, 'getMaxZoom').mockReturnValue(10);
 
     expect(map.getZoom()).toBe(3);
     expect(map.getMinZoom()).toBe(1);

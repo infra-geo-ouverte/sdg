@@ -22,8 +22,9 @@
     "format.fix": "npm run format.fix --workspaces --if-present",
     "lint": "ng lint --quiet",
     "lint.fix": "ng lint --fix",
-    "test": "ng test --no-watch --browsers=ChromeHeadless",
-    "test.watch": "ng test --browsers=ChromeHeadless",
+    "test": "ng test --no-watch",
+    "test.ci": "ng test --no-watch --browsers=ChromiumHeadless",
+    "test.watch": "ng test",
     "circular-deps": "madge --circular --extensions ts packages"
   },
   "dependencies": {
@@ -54,17 +55,13 @@
     "@stylistic/eslint-plugin": "^5.0.0",
     "@trivago/prettier-plugin-sort-imports": "^6.0.0",
     "@types/geojson": "^7946.0.16",
-    "@types/jasmine": "~5.1.0",
     "@types/node": "^24.0.0",
+    "@vitest/browser-playwright": "^4.1.5",
+    "@vitest/coverage-v8": "^4.1.5",
     "angular-eslint": "^21.0.0",
     "eslint": "^10.2.0",
     "execa": "^9.5.0",
-    "jasmine-core": "~5.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "jsdom": "^29.1.0",
     "madge": "^8.0.0",
     "ng-packagr": "^21.2.3",
     "postcss": "^8.5.0",
@@ -72,7 +69,8 @@
     "semantic-release": "^25.0.0",
     "tsx": "^4.21.0",
     "typescript": "~5.9.3",
-    "typescript-eslint": "^8.59.0"
+    "typescript-eslint": "^8.59.0",
+    "vitest": "^4.1.5"
   },
   "madge": {
     "detectiveOptions": {

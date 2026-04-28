@@ -20,12 +20,15 @@ const MOCK_POSITION: GeolocationPosition = {
 
 describe('SdgOlGeolocationController', () => {
   let controller: SdgOlGeolocationController;
-  let mockMap: jasmine.SpyObj<SdgOlMap>;
+  let mockMap: SdgOlMap;
 
   beforeEach(() => {
-    mockMap = jasmine.createSpyObj('SdgOlMap', ['fit'], {
-      engine: jasmine.createSpyObj('engine', ['removeLayer'])
-    });
+    mockMap = {
+      fit: vi.fn(),
+      engine: {
+        removeLayer: vi.fn()
+      }
+    } as unknown as SdgOlMap;
     TestBed.configureTestingModule({});
     controller = new SdgOlGeolocationController(mockMap);
   });
@@ -37,16 +40,17 @@ describe('SdgOlGeolocationController', () => {
   it('should center the map on the given position', () => {
     controller.zoomToPosition(MOCK_POSITION);
 
-    expect(mockMap.fit).toHaveBeenCalledWith(jasmine.any(Array));
+    expect(mockMap.fit).toHaveBeenCalledWith(expect.any(Array));
   });
 
   it('should remove the position from the map', () => {
-    const unsubscribeSpy = jasmine.createSpy('unsubscribe');
+    const unsubscribeSpy = vi.fn();
     controller['subscriptions$$'] = { unsubscribe: unsubscribeSpy } as any;
 
-    const mockSource = jasmine.createSpyObj('VectorSource', ['clear']);
-    controller['layer'] = jasmine.createSpyObj('VectorLayer', ['getSource']);
-    (controller['layer']!.getSource as jasmine.Spy).and.returnValue(mockSource);
+    const mockSource = { clear: vi.fn() };
+    controller['layer'] = {
+      getSource: vi.fn().mockReturnValue(mockSource)
+    } as any;
 
     controller.unshowPosition();
 
@@ -57,29 +61,28 @@ describe('SdgOlGeolocationController', () => {
   });
 
   it('should show the position on the map', () => {
-    const mockSource = jasmine.createSpyObj('VectorSource', [
-      'clear',
-      'addFeature'
-    ]);
-    const mockLayer = jasmine.createSpyObj('VectorLayer', [
-      'getSource',
-      'setMap'
-    ]);
-    mockLayer.getSource.and.returnValue(mockSource);
+    const mockSource = {
+      clear: vi.fn(),
+      addFeature: vi.fn()
+    };
+    const mockLayer = {
+      getSource: vi.fn().mockReturnValue(mockSource),
+      setMap: vi.fn()
+    };
 
-    spyOn(controller['position$'], 'subscribe').and.callFake(
-      (callback: (position: GeolocationPosition | undefined) => void) => {
-        callback(MOCK_POSITION);
-        return {
-          unsubscribe: jasmine.createSpy('unsubscribe'),
-          closed: false,
-          add: jasmine.createSpy('add'),
-          remove: jasmine.createSpy('remove')
-        } as unknown as Subscription;
-      }
-    );
+    vi.spyOn(controller['position$'], 'subscribe').mockImplementation(((
+      next?: ((position: GeolocationPosition | undefined) => void) | null
+    ) => {
+      next?.(MOCK_POSITION);
+      return {
+        unsubscribe: vi.fn(),
+        closed: false,
+        add: vi.fn(),
+        remove: vi.fn()
+      } as unknown as Subscription;
+    }) as any);
 
-    spyOn(controller as any, 'createLayer').and.returnValue(mockLayer);
+    vi.spyOn(controller as any, 'createLayer').mockReturnValue(mockLayer);
 
     controller.showPosition();
 

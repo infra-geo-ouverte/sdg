@@ -1,4 +1,4 @@
-import { ApplicationRef, DOCUMENT, PLATFORM_ID, inject } from '@angular/core';
+import { ApplicationRef, PLATFORM_ID, inject } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../test-config';
@@ -7,22 +7,22 @@ import { GoogleAnalyticsService } from './google-analytics.service';
 
 describe('withGoogleAnalytics', () => {
   const mockTargetId = 'GA-123456789';
-  let gaService: jasmine.SpyObj<GoogleAnalyticsService>;
-  let doc: jasmine.SpyObj<Document>; // Mock the gtag function and window.dataLayer for the test
+  let gaService: Pick<
+    GoogleAnalyticsService,
+    'initialize' | 'trackFirstSSRPageView'
+  >;
+  let createElementSpy: ReturnType<typeof vi.fn>;
+  let appendChildSpy: ReturnType<typeof vi.fn>;
 
   let dataLayer: any[] = [];
-  let gtag: jasmine.Spy;
+  let gtag: ReturnType<typeof vi.fn>;
   let scriptElementMock: any;
 
   beforeEach(() => {
-    gaService = jasmine.createSpyObj('GoogleAnalyticsService', [
-      'initialize',
-      'trackFirstSSRPageView'
-    ]);
-    const headElement = jasmine.createSpyObj('HTMLHeadElement', [
-      'appendChild',
-      'querySelectorAll'
-    ]);
+    gaService = {
+      initialize: vi.fn(),
+      trackFirstSSRPageView: vi.fn()
+    };
 
     // Create a simple, mutable mock object.
     scriptElementMock = {
@@ -31,20 +31,31 @@ describe('withGoogleAnalytics', () => {
       onload: null
     } as HTMLScriptElement;
 
-    doc = jasmine.createSpyObj(
-      'Document',
-      ['createElement', 'getElementById'],
-      {
-        head: headElement
-      }
-    );
+    const originalCreateElement = document.createElement.bind(document);
+    createElementSpy = vi
+      .spyOn(document, 'createElement')
+      .mockImplementation((...args: any[]) => {
+        const [tagName] = args;
+        if (typeof tagName === 'string' && tagName.toLowerCase() === 'script') {
+          return scriptElementMock;
+        }
 
-    doc.getElementById.and.returnValue(null);
+        return originalCreateElement(tagName);
+      });
 
-    doc.createElement.and.returnValue(scriptElementMock);
+    const originalAppendChild = document.head.appendChild.bind(document.head);
+    appendChildSpy = vi
+      .spyOn(document.head, 'appendChild')
+      .mockImplementation((node: Node) => {
+        if (node === scriptElementMock) {
+          return node;
+        }
+
+        return originalAppendChild(node);
+      });
 
     dataLayer = [];
-    gtag = jasmine.createSpy('gtag');
+    gtag = vi.fn();
     (window as any).dataLayer = dataLayer;
     (window as any).gtag = gtag; // Configure the TestBed with the provider and its dependencies
 
@@ -52,18 +63,22 @@ describe('withGoogleAnalytics', () => {
       providers: [
         ...(TEST_CONFIG.providers ?? []),
         ...withGoogleAnalytics({ targetId: mockTargetId }).providers,
-        { provide: DOCUMENT, useValue: doc },
         { provide: GoogleAnalyticsService, useValue: gaService }
       ]
     });
   });
 
-  it('should not initialize on the server', (done) => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+    delete (window as any).dataLayer;
+    delete (window as any).gtag;
+  });
+
+  it('should not initialize on the server', () => {
     TestBed.overrideProvider(PLATFORM_ID, { useValue: 'server' }); // The provideAppInitializer factory returns a function. We need to call that function to trigger the initialization.
 
     TestBed.runInInjectionContext(() => {
-      expect(doc.createElement).not.toHaveBeenCalled();
-      done();
+      expect(createElementSpy).not.toHaveBeenCalledWith('script');
     });
   });
 
@@ -77,13 +92,13 @@ describe('withGoogleAnalytics', () => {
     const script = scriptElementMock;
 
     // Assert that a script tag was created.
-    expect(doc.createElement).toHaveBeenCalledWith('script'); // Assert that the properties were correctly mutated by the factory.
+    expect(createElementSpy).toHaveBeenCalledWith('script'); // Assert that the properties were correctly mutated by the factory.
 
     expect(script.async).toBe(true);
     expect(script.src).toContain(
       `https://www.googletagmanager.com/gtag/js?id=${mockTargetId}`
     );
-    expect(doc.head.appendChild).toHaveBeenCalledWith(script);
+    expect(appendChildSpy).toHaveBeenCalledWith(script);
 
     // Manually trigger the onload event of the script.
     script.onload!(new Event('load'));
@@ -91,7 +106,7 @@ describe('withGoogleAnalytics', () => {
     // Assert that the dataLayer has received the two expected calls.
     // The first call to gtag('js', new Date())
     expect(dataLayer[0][0]).toBe('js');
-    expect(dataLayer[0][1]).toEqual(jasmine.any(Date));
+    expect(dataLayer[0][1]).toEqual(expect.any(Date));
 
     // The second call to gtag('config', options.targetId, ...)
     expect(dataLayer[1][0]).toBe('config');

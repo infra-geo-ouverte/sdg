@@ -15,32 +15,16 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "lib": [
-      "ES2022",
-      "dom"
-    ],
     "types": ["node", "jasmine"],
     "paths": {
-      "@igo2/sdg-common": [
-        "./packages/common/src/public-api"
-      ],
-      "@igo2/sdg-core": [
-        "./packages/core/src/public-api"
-      ],
-      "@igo2/sdg-carto": [
-        "./packages/carto/src/public-api"
-      ],
-      "@igo2/sdg-carto/*": [
-        "./packages/carto/*/src/public-api"
-      ],
-      "@igo2/sdg-i18n": [
-        "./packages/i18n/src/public-api"
-      ]
+      "@igo2/sdg-common": ["./packages/common/src/public-api"],
+      "@igo2/sdg-core": ["./packages/core/src/public-api"],
+      "@igo2/sdg-carto": ["./packages/carto/src/public-api"],
+      "@igo2/sdg-carto/*": ["./packages/carto/*/src/public-api"],
+      "@igo2/sdg-i18n": ["./packages/i18n/src/public-api"]
     }
   },
-  "exclude": [
-    "dist/**",
-  ],
+  "exclude": ["dist/**"],
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

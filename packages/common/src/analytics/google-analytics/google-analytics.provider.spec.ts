@@ -31,9 +31,15 @@ describe('withGoogleAnalytics', () => {
       onload: null
     } as HTMLScriptElement;
 
-    doc = jasmine.createSpyObj('Document', ['createElement'], {
-      head: headElement
-    });
+    doc = jasmine.createSpyObj(
+      'Document',
+      ['createElement', 'getElementById'],
+      {
+        head: headElement
+      }
+    );
+
+    doc.getElementById.and.returnValue(null);
 
     doc.createElement.and.returnValue(scriptElementMock);
 

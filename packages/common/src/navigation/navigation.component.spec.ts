@@ -44,10 +44,11 @@ describe('NavigationComponent', () => {
   describe('resize handling', () => {
     it('should handle resize when no overflow', () => {
       // Mock the required element dimensions
-      spyOnProperty(
+      vi.spyOn(
         component['tabsSection']()?.nativeElement as HTMLElement,
-        'clientWidth'
-      ).and.returnValue(1000); // Large enough to fit all tabs
+        'clientWidth',
+        'get'
+      ).mockReturnValue(1000); // Large enough to fit all tabs
 
       component['handleResize']();
 
@@ -57,16 +58,16 @@ describe('NavigationComponent', () => {
 
     /* it('should move links to more menu when overflow occurs', () => {
       // Mock small viewport
-      spyOnProperty(
+      vi.spyOnProperty(
         component['tabsNavbarSection']()?._tabListContainer
           .nativeElement as HTMLElement,
         'clientWidth'
-      ).and.returnValue(200); // Small enough to cause overflow
+      ).mockReturnValue(200); // Small enough to cause overflow
 
-      spyOnProperty(
+      vi.spyOnProperty(
         component['tabsSection']()?.nativeElement as HTMLElement,
         'clientWidth'
-      ).and.returnValue(200);
+      ).mockReturnValue(200);
 
       component['handleResize']();
 
@@ -92,9 +93,9 @@ describe('NavigationComponent', () => {
 
   describe('cleanup', () => {
     it('should clean up resize observer on destroy', () => {
-      const resizeObserverSpy = jasmine.createSpyObj('ResizeObserver', [
-        'unobserve'
-      ]);
+      const resizeObserverSpy = {
+        unobserve: vi.fn()
+      } as unknown as ResizeObserver;
       component['_resizeObserver'] = resizeObserverSpy;
 
       component.ngOnDestroy();

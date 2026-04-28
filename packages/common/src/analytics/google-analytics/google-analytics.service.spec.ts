@@ -15,17 +15,15 @@ describe('GoogleAnalyticsService', () => {
   let service: GoogleAnalyticsService;
   const routerEvents = new Subject<unknown>();
 
-  // Use a Jasmine spy to track calls to the global gtag function
-  let gtagSpy: jasmine.Spy;
+  let gtagSpy: ReturnType<typeof vi.fn>;
 
   beforeEach(() => {
-    // 1. Manually define the global gtag function on the window object.
-    // This function will be a mock that does nothing.
-    // The cast to `any` is needed to satisfy TypeScript.
-    (window as any).gtag = () => {};
-
-    // Mock the global gtag function before configuring the module
-    gtagSpy = spyOn(window as any, 'gtag');
+    gtagSpy = vi.fn();
+    Object.defineProperty(window, 'gtag', {
+      value: gtagSpy,
+      writable: true,
+      configurable: true
+    });
 
     // Set up the testing module with mock providers
     TestBed.configureTestingModule({
@@ -45,15 +43,18 @@ describe('GoogleAnalyticsService', () => {
 
   // Reset the spy after each test
   afterEach(() => {
-    gtagSpy.calls.reset();
+    gtagSpy.mockClear();
   });
 
   describe('initialize', () => {
     it('should throw an error if gtag is not created', () => {
+      const originalGtag = (window as any).gtag;
+
       // Temporarily redefine gtag as undefined for this test
       Object.defineProperty(window, 'gtag', {
         value: undefined,
-        writable: true
+        writable: true,
+        configurable: true
       });
 
       expect(() => service.initialize()).toThrowError(
@@ -62,8 +63,9 @@ describe('GoogleAnalyticsService', () => {
 
       // Restore the original spy after the test
       Object.defineProperty(window, 'gtag', {
-        value: gtagSpy,
-        writable: true
+        value: originalGtag,
+        writable: true,
+        configurable: true
       });
     });
 

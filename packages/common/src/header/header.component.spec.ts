@@ -57,11 +57,11 @@ describe('HeaderComponent', () => {
   it('should compute isContactUsExternal correctly and render external link attributes', () => {
     fixture.componentRef.setInput('contactUsRoute', '/internal-route');
     fixture.detectChanges();
-    expect(component.isContactUsExternal()).toBeFalse();
+    expect(component.isContactUsExternal()).toBeFalsy();
 
     fixture.componentRef.setInput('contactUsRoute', 'https://external.com');
     fixture.detectChanges();
-    expect(component.isContactUsExternal()).toBeTrue();
+    expect(component.isContactUsExternal()).toBeTruthy();
 
     const contactUsElement = fixture.nativeElement.querySelector(
       '.sdg-header-content-options-contact-us'

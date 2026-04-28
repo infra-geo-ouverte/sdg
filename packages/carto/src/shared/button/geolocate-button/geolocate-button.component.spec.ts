@@ -22,16 +22,15 @@ const POSITION_MOCKED: GeolocationPosition = {
 describe('GeolocateButtonComponent', () => {
   let component: GeolocateButtonComponent;
   let fixture: ComponentFixture<GeolocateButtonComponent>;
-  let mockController: jasmine.SpyObj<GeolocationBase>;
+  let mockController: GeolocationBase;
 
   beforeEach(async () => {
-    mockController = jasmine.createSpyObj(
-      'GeolocationBase',
-      ['activate', 'deactivate', 'zoomToPosition'],
-      {
-        position$: of(POSITION_MOCKED)
-      }
-    );
+    mockController = {
+      activate: vi.fn(),
+      deactivate: vi.fn(),
+      zoomToPosition: vi.fn(),
+      position$: of(POSITION_MOCKED)
+    } as unknown as GeolocationBase;
 
     await TestBed.configureTestingModule({
       declarations: [],
@@ -54,11 +53,11 @@ describe('GeolocateButtonComponent', () => {
   });
 
   it('should toggle isActive state', () => {
-    expect(component.isActive()).toBeFalse();
+    expect(component.isActive()).toBeFalsy();
     component.toggle();
-    expect(component.isActive()).toBeTrue();
+    expect(component.isActive()).toBeTruthy();
     component.toggle();
-    expect(component.isActive()).toBeFalse();
+    expect(component.isActive()).toBeFalsy();
   });
 
   it('should activate the controller when toggled to active', () => {

@@ -64,7 +64,7 @@ describe('SdgReferenceMapOlComponent', () => {
   });
 
   it('should initialize map and geolocation on ngOnInit', () => {
-    spyOn(component, 'ngOnInit').and.callThrough();
+    vi.spyOn(component, 'ngOnInit');
 
     component.ngOnInit();
 

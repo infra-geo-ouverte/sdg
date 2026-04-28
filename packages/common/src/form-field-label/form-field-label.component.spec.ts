@@ -166,7 +166,7 @@ describe('FormFieldLabelComponent', () => {
       const styles = window.getComputedStyle(labelContainer.nativeElement);
 
       expect(styles.display).toBe('flex');
-      expect(styles.flexFlow).toBe('column nowrap');
+      expect(styles.flexFlow).toMatch(/^column( nowrap)?$/);
     });
 
     it('should have bold font weight on label', () => {
@@ -180,7 +180,7 @@ describe('FormFieldLabelComponent', () => {
       );
       const styles = window.getComputedStyle(labelElement.nativeElement);
 
-      expect(styles.fontWeight).toBe('700'); // bold = 700
+      expect(['700', 'bold']).toContain(styles.fontWeight);
     });
   });
 

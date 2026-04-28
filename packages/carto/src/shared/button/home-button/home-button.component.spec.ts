@@ -7,10 +7,12 @@ import { HomeButtonComponent } from './home-button.component';
 describe('HomeButtonComponent', () => {
   let component: HomeButtonComponent;
   let fixture: ComponentFixture<HomeButtonComponent>;
-  let mockMap: jasmine.SpyObj<ISdgMap>;
+  let mockMap: ISdgMap;
 
   beforeEach(async () => {
-    mockMap = jasmine.createSpyObj('ISdgMap', ['fit']);
+    mockMap = {
+      fit: vi.fn()
+    } as unknown as ISdgMap;
 
     await TestBed.configureTestingModule({
       declarations: [],

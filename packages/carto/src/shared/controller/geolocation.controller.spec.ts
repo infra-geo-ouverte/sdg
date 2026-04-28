@@ -28,9 +28,18 @@ describe('GeolocationBase', () => {
     );
     geolocation['_position$'] = positionSubject;
 
+    Object.defineProperty(navigator, 'geolocation', {
+      value: {
+        getCurrentPosition: vi.fn(),
+        watchPosition: vi.fn(),
+        clearWatch: vi.fn()
+      },
+      configurable: true
+    });
+
     // Mock navigator.geolocation
-    spyOn(navigator.geolocation, 'getCurrentPosition').and.callFake(
-      (success) => {
+    vi.spyOn(navigator.geolocation, 'getCurrentPosition').mockImplementation(
+      (success: PositionCallback) => {
         const mockPosition: GeolocationPosition = {
           coords: {
             latitude: 10,
@@ -47,24 +56,26 @@ describe('GeolocationBase', () => {
       }
     );
 
-    spyOn(navigator.geolocation, 'watchPosition').and.callFake((success) => {
-      const mockPosition: GeolocationPosition = {
-        coords: {
-          latitude: 10,
-          longitude: 20,
-          accuracy: 5,
-          altitude: null,
-          altitudeAccuracy: null,
-          heading: null,
-          speed: null
-        } as GeolocationCoordinates,
-        timestamp: Date.now()
-      } as GeolocationPosition;
-      success(mockPosition);
-      return 1;
-    });
+    vi.spyOn(navigator.geolocation, 'watchPosition').mockImplementation(
+      (success: PositionCallback) => {
+        const mockPosition: GeolocationPosition = {
+          coords: {
+            latitude: 10,
+            longitude: 20,
+            accuracy: 5,
+            altitude: null,
+            altitudeAccuracy: null,
+            heading: null,
+            speed: null
+          } as GeolocationCoordinates,
+          timestamp: Date.now()
+        } as GeolocationPosition;
+        success(mockPosition);
+        return 1;
+      }
+    );
 
-    spyOn(navigator.geolocation, 'clearWatch').and.callFake(() => {
+    vi.spyOn(navigator.geolocation, 'clearWatch').mockImplementation(() => {
       // Mock implementation for clearWatch
       return;
     });
@@ -76,8 +87,8 @@ describe('GeolocationBase', () => {
   });
 
   it('should toggle tracking on and off', () => {
-    spyOn(geolocation, 'activate').and.callThrough();
-    spyOn(geolocation, 'deactivate').and.callThrough();
+    vi.spyOn(geolocation, 'activate');
+    vi.spyOn(geolocation, 'deactivate');
 
     geolocation.toggle(true);
     expect(geolocation.activate).toHaveBeenCalled();
@@ -117,7 +128,7 @@ describe('GeolocationBase', () => {
       TIMEOUT: 3
     };
 
-    spyOn(positionSubject, 'error').and.callThrough();
+    vi.spyOn(positionSubject, 'error');
     positionSubject.error(mockError);
 
     expect(positionSubject.error).toHaveBeenCalledWith(mockError);

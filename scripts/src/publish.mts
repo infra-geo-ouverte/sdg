@@ -1,6 +1,6 @@
 import { readdirSync } from 'node:fs';
 
-import { PackageName, publishPackage } from './core/packages.mts';
+import { publishPackage } from './core/packages.mts';
 import { PATHS } from './core/paths.mts';
 import { executor } from './utils/executor.mts';
 import * as log from './utils/log.mts';
@@ -13,7 +13,7 @@ executor('Library publishing', async () => {
     const folders = readdirSync(PATHS.packages);
     for (const name of folders) {
       log.info(`Start publishing @igo2/sdg-${name}@${version}`);
-      await publishPackage(name as PackageName, version);
+      await publishPackage(name, version);
       log.success(`@igo2/sdg-${name}@${version} was published successfully`);
     }
     log.info(`Published ${type} release version ${version}`);

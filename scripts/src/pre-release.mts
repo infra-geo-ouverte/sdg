@@ -49,11 +49,15 @@ export async function setDistributionVersion(
   const packageJSON = getPackageJson('dist', folder);
   packageJSON.version = version;
 
-  Object.keys(packageJSON.peerDependencies).forEach((key) => {
+  const peerDependencies = packageJSON.peerDependencies ?? {};
+
+  Object.keys(peerDependencies).forEach((key) => {
     if (key.includes(scope)) {
-      packageJSON.peerDependencies[key] = `^${version}`;
+      peerDependencies[key] = `^${version}`;
     }
   });
+
+  packageJSON.peerDependencies = peerDependencies;
 
   await writeFile2(resolve(PATHS.dist, folder, 'package.json'), packageJSON);
   log.success(

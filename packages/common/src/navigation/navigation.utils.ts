@@ -1,5 +1,4 @@
-import { SdgRoute } from '@igo2/sdg-core';
-
+import { SdgRoute } from '../router';
 import { INavigationLink } from './navigation.interface';
 
 export function isNavigationLink(link: SdgRoute): link is INavigationLink {

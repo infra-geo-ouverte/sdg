@@ -11,7 +11,7 @@ import {
   LateralMenuItem,
   LateralMenuSections
 } from '@igo2/sdg-common';
-import { SdgRoute, TitleResolverPipe } from '@igo2/sdg-core';
+import { SdgRoute, TitleResolverPipe } from '@igo2/sdg-common';
 
 import { Subject, filter, takeUntil } from 'rxjs';
 

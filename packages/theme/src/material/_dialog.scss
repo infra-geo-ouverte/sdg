@@ -1,4 +1,4 @@
-@use '../../../style/typography-utils';
+@use '@igo2/sdg-core' as sdg;
 
 @mixin overrides() {
   .mdc-dialog {
@@ -12,7 +12,7 @@
       padding-top: 8px !important; // Workaround, this should be 32px but Material apply a default height for the title.
       padding-bottom: 24px !important;
 
-      @include typography-utils.title-border;
+      @include sdg.title-border;
     }
 
     &__tile,

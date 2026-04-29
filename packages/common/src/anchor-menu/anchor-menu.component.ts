@@ -9,8 +9,7 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 
-import { WithLabels } from '@igo2/sdg-core';
-
+import { WithLabels } from '../shared';
 import { Anchor, AnchorMenuLabels } from './anchor-menu.interface';
 
 export const SDG_ANCHOR_MENU_LABELS = new InjectionToken<AnchorMenuLabels>(

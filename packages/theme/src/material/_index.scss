@@ -10,6 +10,14 @@
 @use './sidenav';
 @use './radio-button';
 @use './tab';
+@use './theme' as theme-def;
+
+$theme: theme-def.$theme;
+$primary-palette: theme-def.$primary-palette;
+
+@mixin high-contrast-overrides($theme-type) {
+  @include theme-def.high-contrast-overrides($theme-type);
+}
 
 @mixin overrides() {
   @include button.overrides();

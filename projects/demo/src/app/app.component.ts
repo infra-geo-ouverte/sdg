@@ -22,7 +22,7 @@ import {
   TopPageButtonComponent,
   isNavigationLink
 } from '@igo2/sdg-common';
-import { SdgRoute, TitleResolverPipe, resolveTitle } from '@igo2/sdg-core';
+import { SdgRoute, TitleResolverPipe, resolveTitle } from '@igo2/sdg-common';
 import { Language, TranslationPipe, TranslationService } from '@igo2/sdg-i18n';
 
 import { delay, first } from 'rxjs';

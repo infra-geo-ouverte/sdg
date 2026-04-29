@@ -8,8 +8,8 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { WithLabels, pathIsExternal } from '@igo2/sdg-core';
-
+import { pathIsExternal } from '../../router';
+import { WithLabels } from '../../shared';
 import { AnchorComponent } from '../../shared/anchor/anchor.component';
 import { BlockLinkLabels, BlockLinkSection } from '../block-link.interface';
 

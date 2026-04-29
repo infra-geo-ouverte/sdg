@@ -9,8 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { WithLabels } from '@igo2/sdg-core';
-
+import { WithLabels } from '../shared';
 import {
   IHeaderLabels,
   IHeaderLanguageChoice,

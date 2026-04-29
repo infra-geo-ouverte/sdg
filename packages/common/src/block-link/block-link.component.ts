@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { pathIsExternal } from '@igo2/sdg-core';
-
+import { pathIsExternal } from '../router';
 import { BlockLinkIconComponent } from './block-link-icon/block-link-icon.component';
 import { BlockLinkSeeMoreComponent } from './block-link-see-more/block-link-see-more.component';
 import { BlockLinkSubsectionComponent } from './block-link-subsection/block-link-subsection.component';

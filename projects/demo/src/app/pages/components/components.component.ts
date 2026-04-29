@@ -5,7 +5,7 @@ import {
   BlockLinkSection,
   BlockLinkSections
 } from '@igo2/sdg-common';
-import { SdgRoute, SdgRoutes, TitleResolverPipe } from '@igo2/sdg-core';
+import { SdgRoute, SdgRoutes, TitleResolverPipe } from '@igo2/sdg-common';
 
 import { BasicScreenComponent } from '../../components';
 import { routes as routesCarto } from './showcases-carto/showcases-carto.routes';

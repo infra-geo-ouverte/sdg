@@ -21,10 +21,9 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTabLink, MatTabNav, MatTabsModule } from '@angular/material/tabs';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
-import { BreakpointService } from '@igo2/sdg-core';
-
 import { Observable, Subject, filter, shareReplay, takeUntil } from 'rxjs';
 
+import { BreakpointService } from '../layout/breakpoint';
 import { INavigationLink, INavigationLinks } from './navigation.interface';
 
 const TABS_MIN_DISPLAYED = 2 as const;

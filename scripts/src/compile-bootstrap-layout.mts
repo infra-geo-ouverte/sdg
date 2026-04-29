@@ -12,7 +12,7 @@ export async function compileBootstrapLayout(input: string) {
       'color-functions',
       'global-builtin',
       'import',
-      'mixed-decls'
+      'if-function'
     ]
   });
 

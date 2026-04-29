@@ -1,5 +1,9 @@
 <app-basic-screen title="Guides">
-  <p>Cette librairie est basée sur <code>&#64;angular/material</code>.</p>
+  <p>
+    Cette librairie fournit l'infrastructure de design du Système de Design
+    Gouvernemental du Québec (SDG) avec des composants Angular basés sur
+    <code>&#64;angular/material</code>.
+  </p>
 
   <p>
     La majorité des composants sont également compatibles avec le
@@ -13,28 +17,44 @@
     <h2>Installation</h2>
 
     <p>
-      La librairie <code><b>&#64;igo2/sdg</b></code> est divisée en quatre
+      La librairie <code><b>&#64;igo2/sdg</b></code> est divisée en plusieurs
       modules&nbsp;:
     </p>
 
     <ul>
-      <li><code>&#64;igo2/sdg-core</code>;</li>
-      <li><code>&#64;igo2/sdg-common</code>;</li>
-      <li><code>&#64;igo2/sdg-carto</code>;</li>
-      <li><code>&#64;igo2/sdg-i18n</code>.</li>
+      <li>
+        <code>&#64;igo2/sdg-core</code> — Styles fondamentaux et tokens de
+        design (SCSS uniquement, aucune dépendance Angular)
+      </li>
+      <li>
+        <code>&#64;igo2/sdg-common</code> — Composants UI Angular et utilitaires
+        de routing
+      </li>
+      <li><code>&#64;igo2/sdg-carto</code> — Composants cartographiques</li>
+      <li><code>&#64;igo2/sdg-i18n</code> — Internationalisation (i18n)</li>
+      <li><code>&#64;igo2/sdg-theme</code> — Thématisation et styles</li>
     </ul>
 
     <p>
-      Pour installer le module principal&nbsp;:
-      <app-docs-code code="npm install @igo2/sdg-core" lang="shell" />
+      Pour utiliser les composants et utilitaires SDG, installez le module
+      commun et le thème&nbsp;:
+      <app-docs-code
+        code="npm install @igo2/sdg-common @igo2/sdg-theme"
+        lang="shell"
+      />
     </p>
 
     <p>
       Pour installer les autres modules, au besoin&nbsp;:
       <app-docs-code
-        code="npm install @igo2/sdg-i18n @igo2/sdg-common @igo2/sdg-carto"
+        code="npm install @igo2/sdg-i18n @igo2/sdg-carto"
         lang="shell"
       />
+    </p>
+
+    <p>
+      Les styles fondamentaux de <code>@igo2/sdg-core</code> sont
+      automatiquement inclus par <code>@igo2/sdg-common</code>.
     </p>
   </section>
 
@@ -47,7 +67,21 @@
       le thème SDG à votre application, importez le
       <code>mixin</code> principal dans votre feuille de style globale&nbsp;:
 
-      <app-docs-code [code]="example1" lang="scss" />
+      <app-docs-code
+        code="// Utilisation dans theme.scss
+@use '@angular/material' as mat;
+@use '@igo2/sdg-theme';
+
+html {
+  color-scheme: light;
+
+  @include mat.theme(sdg-theme.$material-theme);
+  // La propriété boolean permet de générer les
+  // variables CSS pour le thème sombre
+  @include sdg-theme.theme(true);
+}"
+        lang="scss"
+      />
     </p>
 
     <section>
@@ -136,11 +170,10 @@
       <h3>Styles de mise en page</h3>
 
       <p>
-        En dehors des spécifications SDG, un sous-ensemble de classes pour la
-        mise en page provenant de
+        Un sous-ensemble de classes pour la mise en page provenant de
         <sdg-external-link text="Bootstrap" url="https://getbootstrap.com/" />
-        est disponible. Importez le style dans le fichier
-        <code>style.scss</code>&nbsp;:
+        est disponible via <code>@igo2/sdg-core</code>. Importez le style dans
+        le fichier <code>style.scss</code>&nbsp;:
 
         <app-docs-code code="@use '@igo2/sdg-core/layout';" lang="sass" />
       </p>
@@ -165,7 +198,7 @@
     <h2>Concept et configuration de l'application</h2>
     <p>
       Pour configurer votre application avec Angular, vous pouvez utiliser les
-      outils et interfaces fournis par <code>&#64;igo2/sdg</code>.
+      outils et interfaces fournis par <code>&#64;igo2/sdg-common</code>.
     </p>
 
     <h3>Routing</h3>

@@ -153,6 +153,38 @@
         }
       }
     },
+    "theme": {
+      "projectType": "library",
+      "root": "packages/theme",
+      "sourceRoot": "packages/theme/src",
+      "prefix": "sdg",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "options": {
+            "project": "packages/theme/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "packages/theme/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "packages/theme/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "packages/theme/**/*.ts"
+            ],
+            "eslintConfig": "packages/theme/eslint.config.mjs"
+          }
+        }
+      }
+    },
     "core": {
       "projectType": "library",
       "root": "packages/core",

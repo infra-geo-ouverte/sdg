@@ -12,7 +12,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
-import { BreakpointService } from '@igo2/sdg-core';
+import { BreakpointService } from '../layout/breakpoint';
 
 @Component({
   selector: 'sdg-paginator',

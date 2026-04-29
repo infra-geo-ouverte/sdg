@@ -1,0 +1,34 @@
+{
+  "name": "@igo2/sdg-theme",
+  "version": "1.0.0",
+  "license": "LiLiQ-R",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/infra-geo-ouverte/sdg.git",
+    "directory": "packages/theme"
+  },
+  "engines": {
+    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+  },
+  "exports": {
+    ".": {
+      "sass": "./_index.scss"
+    }
+  },
+  "scripts": {
+    "build": "ng build theme --configuration production",
+    "postbuild": "node --import tsx ../../scripts/src/post-build.mts theme",
+    "format": "prettier --check ./src/**/*.{ts,scss,css,json}",
+    "format.fix": "prettier --write ./src/**/*.{ts,scss,css,json}",
+    "lint": "ng lint theme",
+    "lint.fix": "ng lint theme --fix"
+  },
+  "peerDependencies": {
+    "@angular/material": "^21.0.0",
+    "@igo2/sdg-core": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.6.0"
+  },
+  "sideEffects": false
+}

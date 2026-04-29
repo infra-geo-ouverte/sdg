@@ -7,7 +7,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
-import { pathIsExternal } from '@igo2/sdg-core';
+import { pathIsExternal } from '../router';
 
 @Component({
   selector: 'sdg-tile',

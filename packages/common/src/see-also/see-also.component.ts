@@ -7,8 +7,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { WithLabels } from '@igo2/sdg-core';
-
+import { WithLabels } from '../shared';
 import { ISeeAlsoLabels, SeeAlsoLinks } from './see-also.interface';
 
 export const SDG_SEE_ALSO_LABELS = new InjectionToken<ISeeAlsoLabels>(

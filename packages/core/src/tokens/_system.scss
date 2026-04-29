@@ -1,33 +1,11 @@
 @use 'sass:map';
 
-@use '../style/overrides';
-@use '../style/elevation';
-@use '../style/typography';
 @use './sys-colors';
 @use './sys-elevation';
 @use './sys-layout';
 @use './sys-palettes';
 @use './sys-typography';
 @use './token-utils';
-
-@mixin theme($withDarkMode: false) {
-  @include system-tokens();
-
-  @if ($withDarkMode) {
-    body.dark-mode {
-      @include _system-dark-colors();
-    }
-  }
-
-  body {
-    background-color: var(--sdg-color-background);
-  }
-
-  @include typography.typo-base();
-
-  @include overrides.igo2-lib-overrides();
-  @include overrides.material-overrides();
-}
 
 @mixin system-tokens() {
   @include _system-colors();
@@ -50,6 +28,10 @@
 
 @mixin _system-dark-colors() {
   @include token-utils.values(sys-colors.sys-dark-color-values());
+}
+
+@mixin system-dark-colors() {
+  @include _system-dark-colors();
 }
 
 @mixin _system-typographies() {

@@ -9,7 +9,7 @@ import {
   provideAppInitializer
 } from '@angular/core';
 
-import { TitleResolver } from '@igo2/sdg-core';
+import { TitleResolver } from '@igo2/sdg-common';
 
 import {
   Language,

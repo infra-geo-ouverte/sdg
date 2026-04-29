@@ -15,7 +15,7 @@ import {
   SdgMapBrowserComponent,
   ZoomButtonComponent
 } from '@igo2/sdg-carto';
-import { WithLabels } from '@igo2/sdg-core';
+import { WithLabels } from '@igo2/sdg-common';
 
 import { IOlMapOptions, SdgOlGeolocationController, SdgOlMap } from '../map';
 import {

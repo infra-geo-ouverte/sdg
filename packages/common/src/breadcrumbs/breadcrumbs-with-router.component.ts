@@ -13,16 +13,15 @@ import {
   RouterModule
 } from '@angular/router';
 
+import { Subject, filter, takeUntil } from 'rxjs';
+
 import {
   RouteTitleKey,
   SdgRoute,
   SdgRoutes,
   TitleResolver,
   resolveTitle
-} from '@igo2/sdg-core';
-
-import { Subject, filter, takeUntil } from 'rxjs';
-
+} from '../router';
 import { BreadcrumbsBase } from './breadcrumbs-base';
 import { BreadcrumbsListComponent } from './breadcrumbs-list/breadcrumbs-list.component';
 import { Breadcrumb, Breadcrumbs } from './shared/breadcrumbs.interface';

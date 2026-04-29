@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import { provideHttpClient } from '@angular/common/http';
 import {
   ApplicationConfig,
@@ -39,6 +40,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideZonelessChangeDetection(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
+    { provide: APP_BASE_HREF, useValue: environment.baseHref ?? '/' },
     provideTranslation(
       [
         withRouterTitleResolver(AppTitleResolver),
@@ -47,14 +49,13 @@ export const appConfig: ApplicationConfig = {
       ],
       {
         loader: {
-          // WORKAROUND for the demo on the Github page
-          prefix: environment.production ? '/sdg/locale/' : '/locale/'
+          prefix: `${environment.baseHref ?? '/'}locale/`
         }
       }
     ),
     provideNavigationTitle({
       separator: '·',
-      suffix: 'Démo SDG'
+      suffix: 'title'
     }),
     MatIconModule,
     provideAppInitializer(() => {

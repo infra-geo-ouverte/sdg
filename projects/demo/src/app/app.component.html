@@ -1,5 +1,5 @@
 <sdg-header
-  [title]="config.title"
+  [title]="translatedTitle"
   [languages]="config.header.languages"
   [currentLanguage]="currentLanguage()"
   [contactUsRoute]="contactUsRoute"
@@ -33,7 +33,7 @@
 
 <footer>
   <sdg-footer
-    [title]="config.title"
+    [title]="translatedTitle"
     [siteMapLinks]="siteMapLinks"
     [copyright]="copyright"
     containerClass="container"

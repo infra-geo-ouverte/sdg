@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import {
   DOCUMENT,
   EnvironmentProviders,
@@ -154,8 +155,9 @@ function defaultLanguageSegmentFactory(
     } satisfies TranslateServiceConfig;
     const doc = inject(DOCUMENT);
     const url = new URL(doc.location.href);
-
-    const langInSegment = url.pathname.split('/').filter(Boolean)[0];
+    const app_base_href = inject(APP_BASE_HREF);
+    const url_after_baseHref = url.pathname.split(app_base_href)[1];
+    const langInSegment = url_after_baseHref.split('/').filter(Boolean)[0];
     if (allowedLanguages.includes(langInSegment)) {
       return {
         ...defaultConfig,

@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 
 import { WithLabels } from '@igo2/sdg-core';
 
+import { ExternalLinkComponent } from '../external-link';
 import { ISeeAlsoLabels, SeeAlsoLinks } from './see-also.interface';
 
 export const SDG_SEE_ALSO_LABELS = new InjectionToken<ISeeAlsoLabels>(
@@ -21,7 +22,7 @@ const DEFAULT_LABELS: ISeeAlsoLabels = {
 
 @Component({
   selector: 'sdg-see-also',
-  imports: [RouterLink, MatIconModule],
+  imports: [RouterLink, MatIconModule, ExternalLinkComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './see-also.component.html',
   styleUrls: ['./see-also.component.scss']
@@ -32,5 +33,14 @@ export class SeeAlsoComponent extends WithLabels<ISeeAlsoLabels> {
 
   constructor() {
     super(DEFAULT_LABELS, SDG_SEE_ALSO_LABELS);
+  }
+
+  detectLink(url: string): boolean {
+    try {
+      const parsed = new URL(url);
+      return parsed.protocol === 'http:' || parsed.protocol === 'https:';
+    } catch {
+      return false;
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { APP_BASE_HREF } from '@angular/common';
 import {
   Component,
   DOCUMENT,
@@ -63,6 +64,7 @@ export class AppComponent implements OnInit {
   contactUsRoute: string | undefined;
   links: INavigationLinks;
   siteMapLinks: SiteMapLinks;
+  translatedTitle: string;
 
   copyright = this.config.footer.copyright;
 
@@ -76,6 +78,7 @@ export class AppComponent implements OnInit {
 
     this.links = this.getLinks();
     this.siteMapLinks = this.getSiteMapLinks();
+    this.translatedTitle = this.translationService.get(this.config.title);
   }
 
   get currentLanguage(): WritableSignal<Language> {
@@ -182,8 +185,9 @@ function isSiteMapLink(route: SdgRoute): route is SiteMapLink {
 
 function getUrlLang(document: Document): Language | undefined {
   const url = new URL(document.location.href);
-  const urlLang = url.pathname.split('/').filter(Boolean)[0];
-
+  const app_base_href = inject(APP_BASE_HREF);
+  const url_after_baseHref = url.pathname.split(app_base_href)[1];
+  const urlLang = url_after_baseHref.split('/').filter(Boolean)[0];
   if (['fr', 'en'].includes(urlLang as Language)) {
     return urlLang as Language;
   }

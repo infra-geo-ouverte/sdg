@@ -30,13 +30,7 @@
       <div
         class="sdg-header-content-title-container sdg-header-content-title-container-desktop"
       >
-        <h6>
-          <a
-            class="sdg-header-content-title"
-            [routerLink]="['/', currentLanguage() ?? '']"
-            >{{ title() }}
-          </a>
-        </h6>
+        <h6><ng-container *ngTemplateOutlet="titleContent" /></h6>
       </div>
     </div>
     @if (languages() || contactUsRoute()) {
@@ -74,8 +68,18 @@
   <div
     class="sdg-header-content-title-container sdg-header-content-title-container-mobile"
   >
-    <h6>
-      <a class="sdg-header-content-title" [routerLink]="['/']">{{ title() }}</a>
-    </h6>
+    <h6><ng-container *ngTemplateOutlet="titleContent" /></h6>
   </div>
 </div>
+
+<ng-template #titleContent>
+  @if (noHomeRouting()) {
+    <span class="text sdg-header-content-title">{{ title() }}</span>
+  } @else {
+    <a
+      class="sdg-header-content-title --hover"
+      [routerLink]="['/', currentLanguage() ?? '']"
+      >{{ title() }}</a
+    >
+  }
+</ng-template>

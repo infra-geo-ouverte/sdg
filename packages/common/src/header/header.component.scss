@@ -75,7 +75,7 @@
 
     &-title {
       font-family: var(--sdg-font-family-title);
-      line-height: 20px;
+      line-height: var(--sdg-line-height-sm);
       color: var(--sdg-color-white);
       text-decoration: none;
       display: -webkit-box;
@@ -84,7 +84,7 @@
       -webkit-box-orient: vertical;
       overflow: hidden;
 
-      &:hover {
+      &.--hover:hover {
         text-decoration: underline;
       }
     }

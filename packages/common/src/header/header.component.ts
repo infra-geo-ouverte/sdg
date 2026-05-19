@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   Component,
   InjectionToken,
@@ -28,7 +29,7 @@ const DEFAULT_LABELS: IHeaderLabels = { contactUs: 'Nous joindre' };
   selector: 'sdg-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [RouterLink, MatButtonModule, MatIconModule]
+  imports: [NgTemplateOutlet, RouterLink, MatButtonModule, MatIconModule]
 })
 export class HeaderComponent extends WithLabels<IHeaderLabels> {
   readonly title = input.required<string>();
@@ -37,6 +38,7 @@ export class HeaderComponent extends WithLabels<IHeaderLabels> {
   readonly languages = input<IHeaderLanguages>();
   readonly currentLanguage = input<string>();
   readonly containerClass = input<string>();
+  readonly noHomeRouting = input<boolean>();
 
   readonly languageChange = output<string>();
 

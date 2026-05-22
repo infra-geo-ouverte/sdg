@@ -17,7 +17,6 @@ describe('NoticeComponent', () => {
     component = fixture.componentInstance;
     fixture.componentRef.setInput('type', 'General');
     fixture.componentRef.setInput('title', 'Title');
-    fixture.componentRef.setInput('message', 'Message');
     fixture.detectChanges();
   });
 

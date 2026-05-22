@@ -21,7 +21,6 @@ export class NoticeComponent {
   readonly type = input.required<keyof typeof NoticeType>();
   readonly icon = input<string>();
   readonly title = input.required<string>();
-  readonly message = input.required<string>();
 
   readonly coloredZoneClass = computed(() => `--${NoticeType[this.type()]}`);
 }

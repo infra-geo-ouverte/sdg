@@ -12,40 +12,35 @@
 </p>
 
 <app-example-viewer title="Avis" configFolder="notice" codeFolder="notice">
-  <sdg-notice
-    type="General"
-    title="Ceci est un avis général"
-    [message]="message"
-  />
+  <sdg-notice type="General" title="Ceci est un avis général">
+    <p>{{ message }}</p>
+  </sdg-notice>
 
-  <sdg-notice
-    type="Warning"
-    title="Ceci est un avis d'avertissement"
-    [message]="message"
-  />
+  <sdg-notice type="Warning" title="Ceci est un avis d'avertissement">
+    <p>{{ message }}</p>
+  </sdg-notice>
 
-  <sdg-notice
-    type="Error"
-    title="Ceci est un avis d'erreur"
-    [message]="message"
-  />
+  <sdg-notice type="Error" title="Ceci est un avis d'erreur">
+    <p>{{ message }}</p>
+  </sdg-notice>
 
-  <sdg-notice
-    type="Success"
-    title="Ceci est un avis de succès"
-    [message]="message"
-  />
+  <sdg-notice type="Success" title="Ceci est un avis de succès">
+    <p>{{ message }}</p>
+    <a routerLink="">À propos</a>
+  </sdg-notice>
 
   <sdg-notice
     type="Complementary"
     title="Ceci est un avis complémentaire avec l'icône par défaut"
-    [message]="message"
-  />
+  >
+    <p>{{ message }}</p>
+  </sdg-notice>
 
   <sdg-notice
     type="Complementary"
     icon="star"
     title="Ceci est un avis complémentaire avec une icône personnalisée"
-    [message]="message"
-  />
+  >
+    <p>{{ message }}</p>
+  </sdg-notice>
 </app-example-viewer>

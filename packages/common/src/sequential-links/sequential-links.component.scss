@@ -6,6 +6,7 @@
 
 .sdg-sequential-links {
   &-arrow {
+    flex-shrink: 0;
     color: var(--sdg-color-text);
     font-variation-settings: 'wght' 350;
   }

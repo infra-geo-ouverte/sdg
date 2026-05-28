@@ -53,7 +53,14 @@
     ::ng-deep * {
       font-size: var(--sdg-font-size-md) !important;
       font-weight: var(--sdg-font-weight-semi-bold);
-      margin: 0 !important;
+
+      &:first-child {
+        margin-top: 0 !important;
+      }
+
+      &:last-child {
+        margin-bottom: 0 !important;
+      }
 
       @include sdg.media(mobile) {
         font-size: var(--sdg-font-size-sm) !important;

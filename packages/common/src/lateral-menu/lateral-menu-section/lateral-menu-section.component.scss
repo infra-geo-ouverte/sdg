@@ -49,12 +49,21 @@ $blue-pale: var(--sdg-color-blue-pale);
     &.--active-section {
       background-color: $blue-pale;
     }
+
+    &:focus-visible {
+      outline: solid 2px var(--sdg-color-blue-light);
+      outline-offset: -2px;
+    }
   }
 
   &-subsections {
     @include sdg.media(mobile) {
       background-color: $blue-pale;
       padding-left: $spacer-md;
+    }
+
+    &-content {
+      padding: $spacer-xs 0 $spacer-xs $spacer-md;
     }
   }
 }

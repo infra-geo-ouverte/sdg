@@ -1,6 +1,9 @@
 @use '@igo2/sdg-core' as sdg;
 @use './lateral-menu-animation' as animation;
 
+$spacer-xs: var(--sdg-spacer-xs);
+$spacer-sm: var(--sdg-spacer-sm);
+
 :host {
   display: flex;
   flex-direction: column;
@@ -8,29 +11,30 @@
 
 .sdg-lateral-menu {
   &-route-title {
-    font-size: 14px;
-    font-weight: bold;
-    padding: 16px 8px;
+    font-size: var(--sdg-font-size-sm);
+    line-height: var(--sdg-line-height-sm);
+    font-weight: var(--sdg-font-weight-bold);
+    padding: $spacer-sm $spacer-xs $spacer-sm 0;
     margin: 0;
     border-bottom: 1px solid var(--sdg-color-grey-light);
 
     &-mobile {
       display: flex;
       align-items: center;
+      justify-content: space-between;
       border: none;
       background-color: var(--sdg-color-blue-pale);
-      padding: 8px;
+      padding: $spacer-xs;
       cursor: pointer;
     }
 
     &-text-mobile {
-      flex-grow: 1;
       font-family: var(--sdg-font-family-text);
-      font-size: 16px;
+      font-size: var(--sdg-font-size-md);
       color: var(--sdg-color-blue-piv);
       margin: 0;
       text-align: left;
-      font-weight: bold;
+      font-weight: var(--sdg-font-weight-semi-bold);
     }
   }
 

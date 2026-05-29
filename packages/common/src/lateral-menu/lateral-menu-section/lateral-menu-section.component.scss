@@ -1,6 +1,10 @@
 @use '@igo2/sdg-core' as sdg;
 @use '../lateral-menu-animation' as animation;
 
+$spacer-xs: var(--sdg-spacer-xs);
+$spacer-md: var(--sdg-spacer-md);
+$blue-pale: var(--sdg-color-blue-pale);
+
 .sdg-lateral-menu-section {
   display: flex;
   flex-flow: column;
@@ -13,23 +17,24 @@
   &-header {
     display: flex;
     align-items: center;
-    column-gap: 8px;
-    padding: 16px 8px;
+    justify-content: space-between;
+    column-gap: $spacer-xs;
+    padding: var(--sdg-spacer-sm) $spacer-xs;
     border: none;
+    background-color: transparent;
     cursor: pointer;
 
     @include sdg.media(mobile) {
-      padding: 8px 8px 8px 24px;
+      padding: $spacer-xs $spacer-xs $spacer-xs $spacer-md;
     }
 
     &-title {
-      flex-grow: 1;
-      text-align: start;
-      font-size: 14px;
+      font-size: var(--sdg-font-size-sm);
+      line-height: var(--sdg-line-height-sm);
       color: var(--sdg-color-blue-piv);
 
       @include sdg.media(mobile) {
-        font-size: 16px;
+        font-size: var(--sdg-font-size-md);
       }
 
       &.--active-section {
@@ -38,18 +43,18 @@
     }
 
     &:hover:not(.--active-section) {
-      background-color: rgba(var(--sdg-color-blue-pale), 0.5);
+      background-color: color-mix(in srgb, $blue-pale 50%, transparent);
     }
 
     &.--active-section {
-      background-color: var(--sdg-color-blue-pale);
+      background-color: $blue-pale;
     }
   }
 
   &-subsections {
     @include sdg.media(mobile) {
-      background-color: var(--sdg-color-blue-pale);
-      padding-left: 24px;
+      background-color: $blue-pale;
+      padding-left: $spacer-md;
     }
   }
 }

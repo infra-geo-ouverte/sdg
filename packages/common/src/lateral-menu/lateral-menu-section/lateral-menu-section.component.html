@@ -23,7 +23,10 @@
   </button>
 
   <div class="sdg-lateral-menu-section-subsections" [class.--opened]="opened()">
-    <div class="sdg-lateral-menu-section-subsections-content">
+    <div
+      class="sdg-lateral-menu-section-subsections-content"
+      [class.--opened]="opened()"
+    >
       @for (item of section().items; track item) {
         <sdg-lateral-menu-item
           [item]="item"

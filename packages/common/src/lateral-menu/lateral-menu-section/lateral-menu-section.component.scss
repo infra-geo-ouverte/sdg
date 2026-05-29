@@ -63,7 +63,11 @@ $blue-pale: var(--sdg-color-blue-pale);
     }
 
     &-content {
-      padding: $spacer-xs 0 $spacer-xs $spacer-md;
+      padding: 0 0 0 $spacer-md;
+
+      &.--opened {
+        padding: $spacer-xs 0 $spacer-xs $spacer-md;
+      }
     }
   }
 }

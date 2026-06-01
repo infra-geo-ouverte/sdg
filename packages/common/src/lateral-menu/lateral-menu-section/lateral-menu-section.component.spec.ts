@@ -278,7 +278,7 @@ describe('LateralMenuSectionComponent', () => {
       expect(styles.paddingBottom).toBe('0px');
     });
 
-    it('should change padding on subsections content when --opened class is applied', () => {
+    it('should change padding on subsections content when --opened class is applied', async () => {
       Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const content: HTMLElement = fixture.nativeElement.querySelector(
@@ -294,9 +294,10 @@ describe('LateralMenuSectionComponent', () => {
       expect(closedStyles.paddingRight).toBe('0px');
       expect(closedStyles.paddingBottom).toBe('0px');
 
-      // Toggle to opened
+      // Toggle to opened and wait for the CSS transition to complete (0.2s)
       component.opened.set(true);
       fixture.detectChanges();
+      await new Promise<void>((resolve) => setTimeout(resolve, 300));
 
       const openedStyles = getComputedStyle(content);
       expect(openedStyles.paddingTop).toBe('4px');

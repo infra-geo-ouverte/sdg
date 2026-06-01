@@ -77,3 +77,12 @@ $blue-pale: var(--sdg-color-blue-pale);
   'sdg-lateral-menu-section-subsections-content',
   false
 );
+
+.sdg-lateral-menu-section-subsections
+  .sdg-lateral-menu-section-subsections-content {
+  $transition: 0.2s ease-in-out;
+  transition:
+    visibility $transition,
+    padding-top $transition,
+    padding-bottom $transition;
+}

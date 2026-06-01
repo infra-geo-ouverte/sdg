@@ -1,5 +1,14 @@
 @use '@igo2/sdg-core' as sdg;
 
+$spacer-xs: var(--sdg-spacer-xs);
+$spacer-sm: var(--sdg-spacer-sm);
+$spacer-md: var(--sdg-spacer-md);
+$blue-pale: var(--sdg-color-blue-pale);
+$font-size-sm: var(--sdg-font-size-sm);
+$font-size-md: var(--sdg-font-size-md);
+$line-height-sm: var(--sdg-line-height-sm);
+$line-height-md: var(--sdg-line-height-md);
+
 :host {
   display: flex;
   flex-direction: column;
@@ -7,46 +16,58 @@
 
 .sdg-lateral-menu {
   &-item {
-    font-size: 14px;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
     border-bottom: 1px solid var(--sdg-color-grey-light);
     width: 100%;
-    padding: 16px 8px;
+    padding: $spacer-sm $spacer-xs;
     text-decoration: none;
 
     @include sdg.media(mobile) {
-      font-size: 16px;
-      padding: 8px 0px 8px 24px;
-      background-color: var(--sdg-color-blue-pale);
+      font-size: $font-size-md;
+      line-height: $line-height-md;
+      padding: $spacer-xs 0 $spacer-xs $spacer-md;
+      background-color: $blue-pale;
       border: none;
     }
 
     &.--active-item {
-      background-color: var(--sdg-color-blue-pale);
+      background-color: $blue-pale;
       font-weight: bold;
     }
 
     &:hover:not(.--active-item) {
-      background-color: rgba(var(--sdg-color-blue-pale), 0.5);
+      background-color: color-mix(in srgb, $blue-pale 50%, transparent);
 
       @include sdg.media(mobile) {
-        background-color: var(--sdg-color-blue-pale);
+        background-color: $blue-pale;
       }
+    }
+
+    &:focus-visible {
+      outline: solid 2px var(--sdg-color-blue-light);
+      outline-offset: -2px;
     }
   }
 
   &-section-item {
-    font-size: 14px;
-    line-height: 20px;
-    width: 100%;
-    padding: 8px 0px 8px 24px;
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+    padding: $spacer-xs 0;
     text-decoration: none;
 
     @include sdg.media(mobile) {
-      font-size: 16px;
+      font-size: $font-size-md;
+      line-height: $line-height-md;
     }
 
     &:hover {
       text-decoration: underline;
+    }
+
+    &:focus-visible {
+      outline: solid 2px var(--sdg-color-blue-light);
+      outline-offset: 6px;
     }
 
     &.--active-item {

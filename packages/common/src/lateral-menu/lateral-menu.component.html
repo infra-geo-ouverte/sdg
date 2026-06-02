@@ -20,7 +20,11 @@
   <div class="sdg-lateral-menu-sections-content">
     @for (item of sections(); track item) {
       @if (item.items) {
-        <sdg-lateral-menu-section [section]="item" [(menuOpened)]="opened" />
+        <sdg-lateral-menu-section
+          [section]="item"
+          [(menuOpened)]="opened"
+          [currentUrl]="currentUrl()"
+        />
       } @else {
         <sdg-lateral-menu-item [item]="item" [(menuOpened)]="opened" />
       }

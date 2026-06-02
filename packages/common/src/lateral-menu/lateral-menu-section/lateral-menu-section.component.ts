@@ -1,18 +1,13 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  DestroyRef,
-  OnInit,
-  inject,
+  computed,
+  effect,
   input,
   model,
   signal
 } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatIconModule } from '@angular/material/icon';
-import { NavigationEnd, Router } from '@angular/router';
-
-import { filter } from 'rxjs';
 
 import { LateralMenuItemComponent } from '../lateral-menu-item/lateral-menu-item.component';
 import { LateralMenuItem } from '../lateral-menu.interface';
@@ -24,34 +19,23 @@ import { LateralMenuItem } from '../lateral-menu.interface';
   templateUrl: './lateral-menu-section.component.html',
   styleUrls: ['./lateral-menu-section.component.scss']
 })
-export class LateralMenuSectionComponent implements OnInit {
-  private router = inject(Router);
-  private destroyRef = inject(DestroyRef);
-
+export class LateralMenuSectionComponent {
   readonly section = input.required<LateralMenuItem>();
   readonly menuOpened = model.required<boolean>();
+  readonly currentUrl = input.required<string>();
 
   opened = signal(false);
-  active = signal(false);
+  active = computed(() => {
+    const url = this.currentUrl();
+    const path = this.section().path;
+    return url.includes(path);
+  });
 
-  ngOnInit(): void {
-    this.updateActive(this.router.url);
-
-    this.router.events
-      .pipe(
-        filter((event) => event instanceof NavigationEnd),
-        takeUntilDestroyed(this.destroyRef)
-      )
-      .subscribe((event) => {
-        this.updateActive(event.urlAfterRedirects);
-      });
-  }
-
-  private updateActive(url: string): void {
-    this.active.set(url.includes(this.section().path));
-
-    if (this.active()) {
-      this.opened.set(true);
-    }
+  constructor() {
+    effect(() => {
+      if (this.active()) {
+        this.opened.set(true);
+      }
+    });
   }
 }

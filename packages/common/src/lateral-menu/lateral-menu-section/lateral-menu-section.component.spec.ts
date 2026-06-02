@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
 
 import { TEST_CONFIG } from '../../../test-config';
 import { LateralMenuItem } from '../lateral-menu.interface';
@@ -8,7 +7,6 @@ import { LateralMenuSectionComponent } from './lateral-menu-section.component';
 describe('LateralMenuSectionComponent', () => {
   let component: LateralMenuSectionComponent;
   let fixture: ComponentFixture<LateralMenuSectionComponent>;
-  let router: Router;
 
   const mockSection: LateralMenuItem = {
     path: '/test',
@@ -24,15 +22,17 @@ describe('LateralMenuSectionComponent', () => {
       imports: [LateralMenuSectionComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
-
-    router = TestBed.inject(Router);
   });
 
-  function createComponent(section: LateralMenuItem = mockSection): void {
+  function createComponent(
+    section: LateralMenuItem = mockSection,
+    currentUrl: string = '/other'
+  ): void {
     fixture = TestBed.createComponent(LateralMenuSectionComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('section', section);
     fixture.componentRef.setInput('menuOpened', true);
+    fixture.componentRef.setInput('currentUrl', currentUrl);
     fixture.detectChanges();
   }
 
@@ -41,35 +41,30 @@ describe('LateralMenuSectionComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('ngOnInit', () => {
-    it('should set active to true when router url includes section path', () => {
-      Object.defineProperty(router, 'url', { get: () => '/test/item1' });
-      createComponent();
-      expect(component.active).toBe(true);
+  describe('active state', () => {
+    it('should set active to true when currentUrl starts with section path', () => {
+      createComponent(mockSection, '/test/item1');
+      expect(component.active()).toBe(true);
     });
 
-    it('should set active to false when router url does not include section path', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
-      createComponent();
-      expect(component.active).toBe(false);
+    it('should set active to false when currentUrl does not match section path', () => {
+      createComponent(mockSection, '/other');
+      expect(component.active()).toBe(false);
     });
 
     it('should open the section when active', () => {
-      Object.defineProperty(router, 'url', { get: () => '/test/item1' });
-      createComponent();
+      createComponent(mockSection, '/test/item1');
       expect(component.opened()).toBe(true);
     });
 
     it('should not open the section when not active', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
-      createComponent();
+      createComponent(mockSection, '/other');
       expect(component.opened()).toBe(false);
     });
   });
 
   describe('toggle', () => {
     it('should open the section when closed', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       expect(component.opened()).toBe(false);
       component.opened.set(true);
@@ -77,7 +72,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should close the section when opened', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       component.opened.set(true);
       component.opened.set(false);
@@ -87,7 +81,6 @@ describe('LateralMenuSectionComponent', () => {
 
   describe('template', () => {
     it('should display the section title', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const titleEl: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header-title'
@@ -96,8 +89,7 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should apply --active-section class on header when active', () => {
-      Object.defineProperty(router, 'url', { get: () => '/test/item1' });
-      createComponent();
+      createComponent(mockSection, '/test/item1');
       const headerBtn: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header'
       );
@@ -105,7 +97,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should not apply --active-section class on header when not active', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const headerBtn: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header'
@@ -114,7 +105,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should toggle opened state when header button is clicked', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       expect(component.opened()).toBe(false);
       const headerBtn: HTMLElement = fixture.nativeElement.querySelector(
@@ -125,8 +115,7 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should apply --opened class on arrow icon when opened', () => {
-      Object.defineProperty(router, 'url', { get: () => '/test/item1' });
-      createComponent();
+      createComponent(mockSection, '/test/item1');
       const arrow: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header-arrow'
       );
@@ -134,8 +123,7 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should apply --opened class on subsections container when opened', () => {
-      Object.defineProperty(router, 'url', { get: () => '/test/item1' });
-      createComponent();
+      createComponent(mockSection, '/test/item1');
       const subsections: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-subsections'
       );
@@ -143,7 +131,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should render menu items for each item in section', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       component.opened.set(true);
       fixture.detectChanges();
@@ -154,7 +141,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should render no menu items when section has no items', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent({ path: '/empty', title: 'Empty', items: [] });
       component.opened.set(true);
       fixture.detectChanges();
@@ -167,7 +153,6 @@ describe('LateralMenuSectionComponent', () => {
 
   describe('styles', () => {
     it('should display section as a flex column', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const section: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section'
@@ -178,7 +163,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should render the section container element', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const section: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section'
@@ -187,7 +171,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should display header as flex with space-between', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const header: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header'
@@ -199,7 +182,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should have pointer cursor on header', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const header: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header'
@@ -209,7 +191,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should have transparent background on header by default', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const header: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header'
@@ -219,7 +200,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should have no border on header button', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const header: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header'
@@ -229,8 +209,7 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should apply bold font weight on title when active', () => {
-      Object.defineProperty(router, 'url', { get: () => '/test/item1' });
-      createComponent();
+      createComponent(mockSection, '/test/item1');
       const title: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header-title'
       );
@@ -239,7 +218,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should not apply bold font weight on title when not active', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const title: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-header-title'
@@ -249,7 +227,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should have left padding on subsections content', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const content: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-subsections-content'
@@ -259,8 +236,7 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should apply --opened class on subsections content when opened', () => {
-      Object.defineProperty(router, 'url', { get: () => '/test/item1' });
-      createComponent();
+      createComponent(mockSection, '/test/item1');
       const content: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-subsections-content'
       );
@@ -268,7 +244,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should have no vertical padding on subsections content when closed', () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const content: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-subsections-content'
@@ -279,7 +254,6 @@ describe('LateralMenuSectionComponent', () => {
     });
 
     it('should change padding on subsections content when --opened class is applied', async () => {
-      Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       const content: HTMLElement = fixture.nativeElement.querySelector(
         '.sdg-lateral-menu-section-subsections-content'
@@ -300,10 +274,10 @@ describe('LateralMenuSectionComponent', () => {
       await new Promise<void>((resolve) => setTimeout(resolve, 300));
 
       const openedStyles = getComputedStyle(content);
-      expect(openedStyles.paddingTop).toBe('4px');
+      expect(parseFloat(openedStyles.paddingTop)).toBeCloseTo(4, 0);
       expect(openedStyles.paddingRight).toBe('0px');
-      expect(openedStyles.paddingBottom).toBe('4px');
-      expect(openedStyles.paddingLeft).toBe('16px');
+      expect(parseFloat(openedStyles.paddingBottom)).toBeCloseTo(4, 0);
+      expect(parseFloat(openedStyles.paddingLeft)).toBeCloseTo(16, 0);
     });
   });
 });

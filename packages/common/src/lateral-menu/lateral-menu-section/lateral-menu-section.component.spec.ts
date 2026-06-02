@@ -72,7 +72,7 @@ describe('LateralMenuSectionComponent', () => {
       Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       expect(component.opened()).toBe(false);
-      component.toggle();
+      component.opened.set(true);
       expect(component.opened()).toBe(true);
     });
 
@@ -80,7 +80,7 @@ describe('LateralMenuSectionComponent', () => {
       Object.defineProperty(router, 'url', { get: () => '/other' });
       createComponent();
       component.opened.set(true);
-      component.toggle();
+      component.opened.set(false);
       expect(component.opened()).toBe(false);
     });
   });

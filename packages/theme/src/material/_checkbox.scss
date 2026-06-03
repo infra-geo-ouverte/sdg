@@ -82,9 +82,7 @@
 
     .mdc-label {
       padding-left: 0;
-      transform: translateY(
-        1px
-      ); // visually center the label with the radio button
+      transform: translateY(1px); // visually center the label with the checkbox
     }
 
     &[compact] {

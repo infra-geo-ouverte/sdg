@@ -44,7 +44,7 @@
       )
     );
 
-    margin-left: calc($radio-button-size * -1 / 2);
+    margin-left: calc($radio-button-size * -1 / 2 + 2px);
 
     .mdc-radio {
       height: $radio-button-size;

@@ -10,7 +10,7 @@
     $text-line-height: var(--sdg-line-height-md);
     $text-size: var(--sdg-font-size-md);
 
-    max-width: 100%;
+    width: 100%;
 
     @include mat.form-field-density(-4);
 
@@ -68,24 +68,24 @@
     }
 
     &[xl] {
-      width: 825px;
+      max-width: 825px;
     }
 
     &[lg],
     &[multi] {
-      width: 528px;
+      max-width: 528px;
     }
 
     &[md] {
-      width: 249px;
+      max-width: 249px;
     }
 
     &[sm] {
-      width: 156px;
+      max-width: 156px;
     }
 
     &[xs] {
-      width: 63px;
+      max-width: 63px;
     }
 
     .mat-mdc-form-field-subscript-wrapper {

@@ -5,6 +5,7 @@ import {
   provideAppInitializer,
   provideZonelessChangeDetection
 } from '@angular/core';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MAT_SELECT_CONFIG } from '@angular/material/select';
@@ -73,6 +74,10 @@ export const appConfig: ApplicationConfig = {
     },
     {
       provide: MAT_SELECT_CONFIG,
+      useValue: { hideSingleSelectionIndicator: true }
+    },
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
       useValue: { hideSingleSelectionIndicator: true }
     }
   ]

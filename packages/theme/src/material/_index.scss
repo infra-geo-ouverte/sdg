@@ -1,3 +1,4 @@
+@use './autocomplete';
 @use './button';
 @use './checkbox';
 @use './chip';
@@ -6,6 +7,7 @@
 @use './expansion-panel';
 @use './form-field';
 @use './icon';
+@use './option';
 @use './select';
 @use './sidenav';
 @use './radio-button';
@@ -20,6 +22,7 @@ $primary-palette: theme-def.$primary-palette;
 }
 
 @mixin overrides() {
+  @include autocomplete.overrides();
   @include button.overrides();
   @include checkbox.overrides();
   @include chip.overrides();
@@ -29,6 +32,7 @@ $primary-palette: theme-def.$primary-palette;
   @include select.overrides();
   @include form-field.overrides();
   @include icon.overrides();
+  @include option.overrides();
   @include sidenav.overrides();
   @include radio-button.overrides();
   @include tab.overrides();

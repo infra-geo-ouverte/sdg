@@ -1,0 +1,21 @@
+@mixin overrides() {
+  .mat-mdc-option {
+    min-height: 0;
+    padding: var(--sdg-spacer-xs);
+
+    .mdc-list-item__primary-text {
+      color: var(--sdg-color-blue-dark);
+      font-family: var(--sdg-font-family-text);
+      font-size: var(--sdg-font-size-md);
+      line-height: var(--sdg-line-height-md);
+    }
+
+    &:hover {
+      background-color: var(--sdg-color-grey-pale);
+    }
+
+    &-active {
+      background-color: var(--sdg-color-blue-pale) !important;
+    }
+  }
+}

@@ -48,7 +48,7 @@
       padding: 0;
 
       mat-icon {
-        padding: 0 4px 0 0 !important;
+        padding: 0 var(--sdg-spacer-xs) 0 0 !important;
       }
     }
 
@@ -58,7 +58,7 @@
 
     .mdc-text-field {
       background-color: var(--sdg-color-background);
-      padding: 0 8px;
+      padding: 0 var(--sdg-spacer-xs);
 
       &--disabled {
         background-color: var(--sdg-color-grey-pale);

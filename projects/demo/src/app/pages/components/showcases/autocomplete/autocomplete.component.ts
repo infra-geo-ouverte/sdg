@@ -3,6 +3,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 
 import { FormFieldLabelComponent } from '@igo2/sdg-common';
@@ -19,7 +20,8 @@ import { ExampleViewerComponent } from '../../../../components';
     MatInputModule,
     MatAutocompleteModule,
     ExampleViewerComponent,
-    FormFieldLabelComponent
+    FormFieldLabelComponent,
+    MatIconModule
   ],
   templateUrl: './autocomplete.component.html'
 })

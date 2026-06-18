@@ -21,6 +21,7 @@
         [formControl]="myControl"
         [matAutocomplete]="auto"
       />
+      <mat-icon matPrefix color="primary">search</mat-icon>
       <mat-autocomplete #auto="matAutocomplete">
         @for (option of filteredOptions(); track option) {
           <mat-option [value]="option">{{ option }}</mat-option>

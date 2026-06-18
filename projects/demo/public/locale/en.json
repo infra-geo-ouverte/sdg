@@ -9,6 +9,7 @@
   },
   "darkMode": "Dark mode",
   "showcases": {
+    "autocomplete": "Autocomplete",
     "alert": "Alert",
     "anchorMenu": "Anchor menu",
     "blockLink": "Block link",

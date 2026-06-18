@@ -5,6 +5,19 @@ import { AppTitleResolver } from '../../../config/title-resolver';
 export const routes: SdgRoutes = [
   { path: '', redirectTo: 'breadcrumbs', pathMatch: 'full' },
   {
+    path: 'autocompletion',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.autocomplete'
+    },
+    description:
+      "L'autocomplétion est une fonctionnalité associée à un élément de formulaire permettant de filtrer une liste d'options.",
+    loadComponent: () =>
+      import('./autocomplete/autocomplete.component').then(
+        (m) => m.AutocompleteDemoComponent
+      )
+  },
+  {
     path: 'accordeon',
     title: AppTitleResolver,
     data: {

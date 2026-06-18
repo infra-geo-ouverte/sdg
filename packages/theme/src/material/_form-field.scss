@@ -10,7 +10,7 @@
     $text-line-height: var(--sdg-line-height-md);
     $text-size: var(--sdg-font-size-md);
 
-    max-width: 100%;
+    width: 100%;
 
     @include mat.form-field-density(-4);
 
@@ -44,23 +44,21 @@
       )
     );
 
-    &.mat-form-field-disabled {
-      .mdc-text-field {
-        background-color: var(--sdg-color-grey-pale);
-      }
+    &-icon-prefix {
+      padding: 0;
 
-      mat-hint {
-        color: var(--sdg-color-grey-normal) !important;
+      mat-icon {
+        padding: 0 var(--sdg-spacer-xs) 0 0 !important;
       }
+    }
+
+    &.mat-focused {
+      outline: 2px solid var(--sdg-color-blue-light);
     }
 
     .mdc-text-field {
       background-color: var(--sdg-color-background);
-      padding: 0 8px;
-
-      &--focused {
-        outline: 2px solid var(--sdg-color-blue-light);
-      }
+      padding: 0 var(--sdg-spacer-xs);
 
       &--disabled {
         background-color: var(--sdg-color-grey-pale);
@@ -68,24 +66,24 @@
     }
 
     &[xl] {
-      width: 825px;
+      max-width: 825px;
     }
 
     &[lg],
     &[multi] {
-      width: 528px;
+      max-width: 528px;
     }
 
     &[md] {
-      width: 249px;
+      max-width: 249px;
     }
 
     &[sm] {
-      width: 156px;
+      max-width: 156px;
     }
 
     &[xs] {
-      width: 63px;
+      max-width: 63px;
     }
 
     .mat-mdc-form-field-subscript-wrapper {

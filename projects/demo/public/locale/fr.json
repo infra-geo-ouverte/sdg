@@ -9,6 +9,7 @@
   },
   "darkMode": "Thème foncé",
   "showcases": {
+    "autocomplete": "Autocomplétion",
     "alert": "Alerte",
     "anchorMenu": "Menu d'ancres",
     "blockLink": "Lien en bloc",

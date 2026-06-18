@@ -44,23 +44,21 @@
       )
     );
 
-    &.mat-form-field-disabled {
-      .mdc-text-field {
-        background-color: var(--sdg-color-grey-pale);
-      }
+    &-icon-prefix {
+      padding: 0;
 
-      mat-hint {
-        color: var(--sdg-color-grey-normal) !important;
+      mat-icon {
+        padding: 0 4px 0 0 !important;
       }
+    }
+
+    &.mat-focused {
+      outline: 2px solid var(--sdg-color-blue-light);
     }
 
     .mdc-text-field {
       background-color: var(--sdg-color-background);
       padding: 0 8px;
-
-      &--focused {
-        outline: 2px solid var(--sdg-color-blue-light);
-      }
 
       &--disabled {
         background-color: var(--sdg-color-grey-pale);

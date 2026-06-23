@@ -29,7 +29,7 @@ $primary-palette: material.$primary-palette;
     background-color: var(--sdg-color-background);
   }
 
-  @include core.typo-base();
+  @include core.styles();
   @include igo2-lib.overrides();
   @include material.overrides();
 }

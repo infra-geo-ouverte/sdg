@@ -2,7 +2,7 @@
 @use './typography-utils' as *;
 @use '../tokens/token-utils';
 
-@mixin typo-base {
+@mixin typography {
   font-size: var(--sdg-font-size-root-percent);
 
   body {
@@ -59,93 +59,6 @@
 
   strong {
     font-weight: 600;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 72px 0 72px 0 !important;
-
-    &[grey],
-    &[simple] {
-      > thead {
-        color: var(--sdg-color-text);
-      }
-    }
-
-    &[grey] {
-      > thead {
-        background-color: var(--sdg-color-grey-pale);
-        border-bottom: 1px solid var(--sdg-color-grey-light);
-      }
-    }
-
-    &[simple] {
-      > thead {
-        background-color: var(--sdg-color-background);
-        border-bottom: 1px solid var(--sdg-color-blue-dark);
-
-        > tr > th {
-          padding: 0 var(--sdg-spacer-sm) var(--sdg-spacer-xs)
-            var(--sdg-spacer-sm);
-        }
-      }
-
-      > tbody {
-        > tr {
-          &:nth-child(even) {
-            background-color: var(--sdg-color-background);
-          }
-        }
-      }
-    }
-
-    > caption {
-      margin-bottom: var(--sdg-spacer-md);
-      text-align: left;
-      font-size: var(--sdg-font-size-lg);
-      line-height: var(--sdg-line-height-lg);
-      font-weight: var(--sdg-font-weight-bold);
-    }
-
-    > thead {
-      background-color: var(--sdg-palette-blue-650);
-      color: var(--sdg-color-white);
-
-      > tr > th {
-        text-align: left !important;
-        padding: var(--sdg-spacer-sm);
-        font-size: var(--sdg-font-size-md);
-        line-height: var(--sdg-line-height-md);
-        font-weight: var(--sdg-font-weight-bold);
-
-        &[numeric] {
-          text-align: right !important;
-        }
-      }
-    }
-
-    > tbody {
-      > tr {
-        border-bottom: 1px solid var(--sdg-color-grey-light);
-
-        &:nth-child(even) {
-          background-color: var(--sdg-color-grey-pale);
-        }
-
-        > td {
-          text-align: left !important;
-          padding: var(--sdg-spacer-sm);
-          font-size: var(--sdg-font-size-md);
-          line-height: var(--sdg-line-height-md);
-          font-weight: var(--sdg-font-weight-normal);
-
-          &[numeric] {
-            text-align: right !important;
-          }
-        }
-      }
-    }
   }
 
   h1,

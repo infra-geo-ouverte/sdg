@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { AfterContentInit, Component, ElementRef, inject } from '@angular/core';
 
 import {
@@ -11,7 +12,12 @@ import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
   selector: 'app-table',
-  imports: [ExampleViewerComponent, ExternalLinkComponent, AnchorMenuComponent],
+  imports: [
+    ExampleViewerComponent,
+    ExternalLinkComponent,
+    AnchorMenuComponent,
+    NgTemplateOutlet
+  ],
   templateUrl: './table.component.html'
 })
 export class TableDemoComponent implements AfterContentInit {

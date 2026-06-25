@@ -2,6 +2,6 @@
 @use './table' as *;
 
 @mixin styles {
-  @include typography;
+  @include typo-base;
   @include table;
 }

@@ -2,7 +2,7 @@
 @use './typography-utils' as *;
 @use '../tokens/token-utils';
 
-@mixin typography {
+@mixin typo-base {
   font-size: var(--sdg-font-size-root-percent);
 
   body {

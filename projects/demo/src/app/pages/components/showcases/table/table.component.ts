@@ -5,6 +5,7 @@ import {
   Anchor,
   AnchorMenuComponent,
   ExternalLinkComponent,
+  NoticeComponent,
   findTitleAnchors
 } from '@igo2/sdg-common';
 
@@ -16,7 +17,8 @@ import { ExampleViewerComponent } from '../../../../components';
     ExampleViewerComponent,
     ExternalLinkComponent,
     AnchorMenuComponent,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    NoticeComponent
   ],
   templateUrl: './table.component.html'
 })

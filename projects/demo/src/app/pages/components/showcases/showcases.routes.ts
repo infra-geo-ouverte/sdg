@@ -312,6 +312,17 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'tableau',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.table'
+    },
+    description:
+      'Le tableau de données est utilisé pour afficher des données majoritairement/principalement numériques organisées en lignes et en colonnes.',
+    loadComponent: () =>
+      import('./table/table.component').then((m) => m.TableDemoComponent)
+  },
+  {
     path: 'tuile',
     title: AppTitleResolver,
     data: {

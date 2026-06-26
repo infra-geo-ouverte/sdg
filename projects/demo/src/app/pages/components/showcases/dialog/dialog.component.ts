@@ -77,7 +77,7 @@ export class DialogDemoComponent implements AfterContentInit {
       this.result3.set(
         typeof result === 'string'
           ? result
-          : `Nom: ${result.name}, Courriel: ${result.email}`
+          : `Nom: ${result?.name}, Courriel: ${result?.email}`
       );
     });
   }

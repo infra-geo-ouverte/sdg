@@ -1,37 +1,94 @@
 @use '@igo2/sdg-core' as sdg;
+@use '@angular/material' as mat;
 
 @mixin overrides() {
-  .mdc-dialog {
-    max-width: 600px;
+  // Keep this rule at the stylesheet root because the theme mixin is included inside `html {}`.
+  @at-root {
+    html.cdk-global-scrollblock,
+    body.cdk-global-scrollblock {
+      // Keep the native scrollbar visible while preserving CDK scroll lock.
+      overflow-y: scroll !important;
 
-    &__surface {
-      border-radius: 0 !important;
+      // Avoid clipping the page content to viewport height while the dialog is open.
+      height: auto !important;
     }
+  }
 
-    &__title {
-      padding-top: 8px !important; // Workaround, this should be 32px but Material apply a default height for the title.
-      padding-bottom: 24px !important;
+  .mat-mdc-dialog-panel {
+    $color-text: var(--sdg-color-text);
 
-      @include sdg.title-border;
-    }
+    @include mat.dialog-overrides(
+      (
+        container-max-width: 600px,
+        container-min-width: 150px,
+        container-small-max-width: calc(100vw - 32px),
+        container-shape: 0,
+        container-color: var(--sdg-color-background),
+        container-elevation-shadow: none,
+        //
+        subhead-weight: var(--sdg-font-weight-bold),
+        subhead-tracking: 0,
+        subhead-size: var(--sdg-font-size-h4),
+        subhead-line-height: var(--sdg-line-height-h4),
+        subhead-font: var(--sdg-font-family-title),
+        subhead-color: $color-text,
+        //
+        supporting-text-weight: var(--sdg-font-weight-regular),
+        supporting-text-tracking: 0,
+        supporting-text-size: var(--sdg-font-size-md),
+        supporting-text-line-height: var(--sdg-line-height-md),
+        supporting-text-font: var(--sdg-font-family-text),
+        supporting-text-color: $color-text,
+        //
+        headline-padding: 0 32px 24px 32px,
+        //
+        content-padding: 24px 32px 0 32px,
+        //
+        actions-padding: 24px 32px 32px 32px,
+        actions-alignment: flex-end,
+        //
+        with-actions-content-padding: 24px 32px 0 32px
+      )
+    );
 
-    &__tile,
-    &__content,
-    &__actions {
-      padding-left: 32px !important;
-      padding-right: 32px !important;
-    }
+    .mat-mdc-dialog-surface {
+      &:not(:has(button[matIconButton])) {
+        .mat-mdc-dialog-title {
+          padding-top: 32px;
+        }
+      }
 
-    &__actions {
-      padding-top: 24px !important;
-      padding-bottom: 32px !important;
-    }
+      button[matIconButton] {
+        align-self: flex-end;
+        overflow: hidden;
+        z-index: 1;
+      }
 
-    .close-button {
-      $iconButtonPadding: 8px;
-      position: absolute;
-      top: 16px - $iconButtonPadding;
-      right: 16px - $iconButtonPadding;
+      h4 {
+        margin-top: 0 !important;
+      }
+
+      .mat-mdc-dialog-title {
+        margin-top: calc(var(--sdg-title-margin-h4-mt) * -1) !important;
+        @include sdg.title-border;
+      }
+
+      mat-dialog-actions {
+        column-gap: 32px;
+
+        :last-child {
+          margin-left: 0;
+        }
+
+        @include sdg.media(mobile) {
+          flex-flow: column-reverse;
+          row-gap: var(--sdg-spacer-sm);
+
+          .mdc-button {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

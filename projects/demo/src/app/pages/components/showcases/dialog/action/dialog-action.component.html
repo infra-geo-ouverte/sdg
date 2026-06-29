@@ -1,0 +1,49 @@
+<button matIconButton mat-dialog-close color="primary" matTooltip="Fermer">
+  <mat-icon>close</mat-icon>
+</button>
+
+<h4 mat-dialog-title>Ajouter un participant</h4>
+<mat-dialog-content>
+  <div>
+    <sdg-form-field-label
+      controlId="name"
+      formControlSize="md"
+      label="Nom complet"
+    />
+    <mat-form-field md>
+      <input
+        id="name"
+        matInput
+        placeholder="Nom du participant"
+        [formControl]="nameControl"
+      />
+    </mat-form-field>
+  </div>
+  <div>
+    <sdg-form-field-label
+      controlId="email"
+      formControlSize="md"
+      label="Courriel"
+    />
+    <mat-form-field md>
+      <input
+        id="email"
+        matInput
+        placeholder="Courriel du participant"
+        [formControl]="emailControl"
+      />
+    </mat-form-field>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton compact mat-dialog-close="Action annulée">Annuler</button>
+  <button
+    matButton="filled"
+    color="primary"
+    compact
+    [mat-dialog-close]="{ name: nameControl.value, email: emailControl.value }"
+    cdkFocusInitial
+  >
+    Ajouter
+  </button>
+</mat-dialog-actions>

@@ -138,6 +138,17 @@ export const routes: SdgRoutes = [
       import('./contact/contact.component').then((m) => m.ContactDemoComponent)
   },
   {
+    path: 'dialogue-modal',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.dialog'
+    },
+    description:
+      "Le dialogue modal est une boîte qui se superpose au contenu de la page, en plein centre, à la suite d'une action déclenchée directement par l'utilisateur.",
+    loadComponent: () =>
+      import('./dialog/dialog.component').then((m) => m.DialogDemoComponent)
+  },
+  {
     path: 'etiquettes',
     title: AppTitleResolver,
     data: {

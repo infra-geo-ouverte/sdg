@@ -1,0 +1,43 @@
+<p>
+  <span>
+    La <b>carte complète</b> prend la totalité de l’espace de la fenêtre du
+    navigateur et permet plusieurs interactions. Voir la
+  </span>
+  <span
+    ><sdg-external-link
+      text="Carte Complète"
+      url="https://design.quebec.ca/design/modeles/cartographie/types-de-cartes/carte-complete"
+  /></span>
+  <span> du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Interactions de la carte"
+  showcase="carto"
+  configFolder="reference-map"
+  codeFolder="reference-map"
+>
+  <button
+    matButton="outlined"
+    compact
+    class="fullscreen-button"
+    (click)="openFullscreen()"
+  >
+    <mat-icon>fullscreen</mat-icon>
+    Ouvrir en plein écran
+  </button>
+
+  <sdg-ol-full-map [options]="options()" [isHandset]="isHandset()">
+    <ng-template sdgPanelContent="legend">
+      <div>Legend is working</div>
+    </ng-template>
+
+    <!-- <ng-template sdgPanelContent="search">
+      <div>Search is working</div>
+    </ng-template> -->
+
+    <ng-template sdgPanelContent="custom">
+      <div>custom</div>
+    </ng-template>
+  </sdg-ol-full-map>
+</app-example-viewer>

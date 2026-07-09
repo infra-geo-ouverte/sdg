@@ -1,24 +1,24 @@
 import { TestBed } from '@angular/core/testing';
 import { ComponentFixture } from '@angular/core/testing';
 
-import { IOlMapOptions } from '../map';
+import { SdgOlMapOptions } from '../shared/map';
 import {
   SDG_REFERENCE_MAP_CONFIG,
   SDG_REFERENCE_MAP_LABELS
 } from './reference-map';
-import { SdgReferenceMapOlComponent } from './reference-map.component';
+import { SdgOlReferenceMap } from './reference-map.component';
 import {
   ISdgMapLabels,
   ISdgReferenceMapConfig
 } from './reference-map.interface';
 
-describe('SdgReferenceMapOlComponent', () => {
-  let component: SdgReferenceMapOlComponent;
-  let fixture: ComponentFixture<SdgReferenceMapOlComponent>;
+describe('SdgOlReferenceMap', () => {
+  let component: SdgOlReferenceMap;
+  let fixture: ComponentFixture<SdgOlReferenceMap>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SdgReferenceMapOlComponent],
+      imports: [SdgOlReferenceMap],
       providers: [
         {
           provide: SDG_REFERENCE_MAP_CONFIG,
@@ -46,7 +46,7 @@ describe('SdgReferenceMapOlComponent', () => {
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SdgReferenceMapOlComponent);
+    fixture = TestBed.createComponent(SdgOlReferenceMap);
     component = fixture.componentInstance;
 
     fixture.componentRef.setInput('options', {
@@ -54,7 +54,7 @@ describe('SdgReferenceMapOlComponent', () => {
         zoom: 6,
         center: [-71.8, 47.1]
       }
-    } satisfies IOlMapOptions);
+    } satisfies SdgOlMapOptions);
 
     fixture.detectChanges();
   });
@@ -76,7 +76,7 @@ describe('SdgReferenceMapOlComponent', () => {
     TestBed.resetTestingModule(); // Reset the testing module to allow overriding providers
 
     TestBed.configureTestingModule({
-      imports: [SdgReferenceMapOlComponent],
+      imports: [SdgOlReferenceMap],
       providers: [
         {
           provide: SDG_REFERENCE_MAP_CONFIG,
@@ -85,14 +85,14 @@ describe('SdgReferenceMapOlComponent', () => {
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SdgReferenceMapOlComponent);
+    fixture = TestBed.createComponent(SdgOlReferenceMap);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('options', {
       view: {
         zoom: 6,
         center: [-71.8, 47.1]
       }
-    } satisfies IOlMapOptions);
+    } satisfies SdgOlMapOptions);
 
     fixture.detectChanges();
 

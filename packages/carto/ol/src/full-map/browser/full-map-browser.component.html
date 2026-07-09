@@ -1,0 +1,59 @@
+<sdg-map-browser [map]="map">
+  <div class="full-map-browser-controls">
+    <div class="full-map-browser-controls-navigation">
+      @let navigation = options().navigation;
+
+      @if (navigation?.rotation !== false) {
+        <sdg-rotation-button
+          [map]="map"
+          [labels]="labels().rotation"
+          color="primary"
+        />
+      }
+
+      @if (navigation?.home !== false) {
+        <sdg-home-button
+          [map]="map"
+          [options]="homeOptions()"
+          [labels]="labels().home"
+          color="primary"
+        />
+      }
+
+      @if (navigation?.geolocation !== false) {
+        <sdg-geolocate-button
+          [controller]="geolocation"
+          [labels]="labels().geolocation"
+          color="primary"
+        />
+      }
+
+      @if (navigation?.zoom !== false && !isHandset()) {
+        <sdg-zoom-button [map]="map" [labels]="labels().zoom" color="primary" />
+      }
+    </div>
+
+    @if (options().legend) {
+      <button
+        mat-raised-button
+        compact
+        class="full-map-browser-legend-button"
+        [matTooltip]="
+          panelService.expanded() && panelService.type() === 'legend'
+            ? labels().legend?.close
+            : labels().legend?.open
+        "
+        matTooltipPosition="left"
+        (click)="toggleLegend()"
+      >
+        {{ labels().legend?.label }}
+      </button>
+    }
+  </div>
+
+  @if (basemaps().length > 1) {
+    <div class="full-map-browser-basemap-switcher">
+      <sdg-ol-basemap-switcher [map]="map" [basemaps]="basemaps()" />
+    </div>
+  }
+</sdg-map-browser>

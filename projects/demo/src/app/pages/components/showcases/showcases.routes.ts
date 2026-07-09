@@ -323,6 +323,19 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'recherche',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.searchBar'
+    },
+    description:
+      "La barre de recherche permet à l'utilisateur de saisir un terme de recherche et de le soumettre.",
+    loadComponent: () =>
+      import('./search-bar/search-bar.component').then(
+        (m) => m.SearchBarDemoComponent
+      )
+  },
+  {
     path: 'tableau',
     title: AppTitleResolver,
     data: {

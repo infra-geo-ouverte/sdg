@@ -1,0 +1,68 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: block;
+  overflow-y: auto;
+
+  ::ng-deep .mat-expansion-panel .mat-expansion-panel-body {
+    padding: 0;
+  }
+
+  .mat-expansion-panel {
+    @include mat.expansion-overrides(
+      (
+        header-collapsed-state-height: 40px,
+        header-expanded-state-height: 40px
+      )
+    );
+  }
+}
+
+.sdg-search-results {
+  display: flex;
+  flex-direction: column;
+}
+
+.sdg-search-results-group-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--mat-toolbar-container-text-color, rgba(0, 0, 0, 0.6));
+}
+
+.sdg-search-results-group-count {
+  margin-left: 4px;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.sdg-search-results-empty {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px 12px;
+  color: var(--mat-toolbar-container-text-color, rgba(0, 0, 0, 0.54));
+  font-size: 14px;
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+mat-list {
+  padding-top: 0;
+  padding-bottom: 4px;
+}
+
+.sdg-search-results-load-more {
+  display: flex;
+  justify-content: center;
+  padding: 0 16px 8px;
+}
+
+mat-progress-bar {
+  margin-bottom: 2px;
+}

@@ -7,6 +7,7 @@
 @use './expansion-panel';
 @use './form-field';
 @use './icon';
+@use './list';
 @use './option';
 @use './select';
 @use './sidenav';
@@ -32,6 +33,7 @@ $primary-palette: theme-def.$primary-palette;
   @include select.overrides();
   @include form-field.overrides();
   @include icon.overrides();
+  @include list.overrides();
   @include option.overrides();
   @include sidenav.overrides();
   @include radio-button.overrides();

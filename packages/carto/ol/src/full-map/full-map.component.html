@@ -1,0 +1,55 @@
+<sdg-full-map-skeleton
+  [attribution]="options().footer"
+  [isHandset]="isHandset()"
+  [sidepanelWidth]="options().sidepanel?.width"
+>
+  <ng-container panel>
+    <!-- Default panel for search results -->
+    @if (
+      options().search !== false &&
+      panelService.type() === 'search' &&
+      !hasCustomSearchPanel()
+    ) {
+      <sdg-search-results
+        [groups]="displayedGroups()"
+        (resultSelect)="onResultSelect($event)"
+        (loadMore)="onLoadMore($event)"
+      />
+    }
+
+    @for (content of panelContents(); track content.type()) {
+      @if (content.type() === panelService.type()) {
+        <ng-container
+          [ngTemplateOutlet]="content.templateRef"
+          [ngTemplateOutletContext]="{
+            $implicit: searchGroups(),
+            groups: searchGroups(),
+            loading: resultsLoading()
+          }"
+        />
+      }
+    }
+  </ng-container>
+
+  <ng-container search-bar>
+    @if (options().search !== false) {
+      <sdg-search-bar (searchChange)="onSearchChange($event)" />
+    }
+  </ng-container>
+
+  <ng-container footer-actions>
+    @if (options().footer.scaleLine) {
+      <sdg-scale-line [map]="map()!" />
+    }
+  </ng-container>
+
+  <sdg-ol-full-map-browser
+    map
+    class="full-map-browser"
+    [options]="options()"
+    [labels]="labels().browser"
+    [isHandset]="isHandset()"
+    (mapReady)="handleMap($event)"
+    (extentChange)="extentChange.emit(undefined)"
+  />
+</sdg-full-map-skeleton>

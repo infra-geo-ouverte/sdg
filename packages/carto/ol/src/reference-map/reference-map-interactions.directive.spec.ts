@@ -3,15 +3,15 @@ import { PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { SdgMapBrowserComponent } from '@igo2/sdg-carto';
+import { SdgMapBrowser } from '@igo2/sdg-carto';
 
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 
-import { IOlMapOptions, SdgOlMap } from '../map';
-import { SdgReferenceMapInteractionsDirective } from './reference-map-interactions.directive';
+import { SdgOlMap, SdgOlMapOptions } from '../shared/map';
+import { SdgOlReferenceMapInteractionsDirective } from './reference-map-interactions.directive';
 
-const DEFAULT_OPTIONS: IOlMapOptions = {
+const DEFAULT_OPTIONS: SdgOlMapOptions = {
   view: {
     zoom: 6,
     center: [-71.8, 47.1]
@@ -25,19 +25,19 @@ const DEFAULT_OPTIONS: IOlMapOptions = {
 
 @Component({
   template: `<sdg-map-browser
-    sdgReferenceMapInteractions
+    sdgOlReferenceMapInteractions
     [map]="map"
     class="flex-fill"
   />`,
-  imports: [SdgMapBrowserComponent, SdgReferenceMapInteractionsDirective]
+  imports: [SdgMapBrowser, SdgOlReferenceMapInteractionsDirective]
 })
 class TestComponent {
   map = new SdgOlMap(DEFAULT_OPTIONS);
 }
 
-describe('SdgReferenceMapInteractionsDirective', () => {
+describe('SdgOlReferenceMapInteractionsDirective', () => {
   let fixture: ComponentFixture<TestComponent>;
-  let directive: SdgReferenceMapInteractionsDirective;
+  let directive: SdgOlReferenceMapInteractionsDirective;
   let renderer: Renderer2;
   const rendererMock = {
     createElement: vi.fn((name: string) => document.createElement(name)),
@@ -49,7 +49,7 @@ describe('SdgReferenceMapInteractionsDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestComponent, SdgReferenceMapInteractionsDirective],
+      imports: [TestComponent, SdgOlReferenceMapInteractionsDirective],
       providers: [
         { provide: PLATFORM_ID, useValue: 'browser' },
         {
@@ -65,9 +65,11 @@ describe('SdgReferenceMapInteractionsDirective', () => {
 
     fixture = TestBed.createComponent(TestComponent);
     const debugElement = fixture.debugElement.query(
-      By.directive(SdgReferenceMapInteractionsDirective)
+      By.directive(SdgOlReferenceMapInteractionsDirective)
     );
-    directive = debugElement.injector.get(SdgReferenceMapInteractionsDirective);
+    directive = debugElement.injector.get(
+      SdgOlReferenceMapInteractionsDirective
+    );
     renderer = debugElement.injector.get(Renderer2);
 
     fixture.detectChanges();

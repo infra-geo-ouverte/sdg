@@ -23,7 +23,7 @@ import MouseWheelZoom from 'ol/interaction/MouseWheelZoom';
 
 import { Subject, fromEvent, takeUntil } from 'rxjs';
 
-import { SdgOlMap } from '../map';
+import { SdgOlMap } from '../shared/map';
 import { IRestrictionLabels } from './reference-map.interface';
 
 type MapEventRestrictions = 'ctrlScroll' | 'twoFingers';
@@ -37,7 +37,7 @@ const LABELS_DEFAULT: IRestrictionLabels = {
 };
 
 @Directive({
-  selector: '[sdgReferenceMapInteractions]',
+  selector: '[sdgOlReferenceMapInteractions]',
   host: {
     '(mouseenter)': 'hostMouseEnter()',
     '(mouseleave)': 'hostMouseLeave()',
@@ -46,7 +46,7 @@ const LABELS_DEFAULT: IRestrictionLabels = {
     '(touchend)': 'hostTouchEnd()'
   }
 })
-export class SdgReferenceMapInteractionsDirective
+export class SdgOlReferenceMapInteractionsDirective
   implements OnInit, OnDestroy, AfterViewInit
 {
   private renderer = inject(Renderer2);
@@ -138,7 +138,7 @@ export class SdgReferenceMapInteractionsDirective
     target.classList.add('map-references-event-restrictions');
     target.setAttribute(
       'style',
-      `position: absolute; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); text-align: center; display: flex; align-items: center; justify-content: center; pointer-events: none;`
+      `position: absolute; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.3); text-align: center; display: flex; align-items: center; justify-content: center; pointer-events: none; z-index: 1000;`
     );
 
     const paragraph: HTMLElement = this.renderer.createElement('p');

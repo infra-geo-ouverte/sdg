@@ -1,0 +1,33 @@
+<div class="full-map-bottom-sheet-overlay">
+  <button
+    class="full-map-bottom-sheet-toggle-button"
+    (click)="this.panelService.toggle()"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <mat-icon color="primary">
+      {{ panelService.expanded() ? 'expand_more' : 'expand_less' }}
+    </mat-icon>
+  </button>
+  <div
+    #bottomSheetHeader
+    class="full-map-bottom-sheet-header"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <ng-content select="[full-map-bottom-sheet-header]" />
+  </div>
+  <div
+    class="full-map-bottom-sheet-wrapper"
+    [style.height]="panelService.expanded() ? expandedHeight : '0px'"
+  >
+    <div class="full-map-bottom-sheet-content">
+      <ng-content select="[full-map-bottom-sheet-content]" />
+
+      <mat-divider />
+      <footer>
+        <sdg-full-map-skeleton-footer [attribution]="attribution()" />
+      </footer>
+    </div>
+  </div>
+</div>

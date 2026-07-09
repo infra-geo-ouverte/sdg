@@ -1,0 +1,36 @@
+<mat-drawer-container class="full-map-drawer-container" hasBackdrop="false">
+  <mat-drawer
+    class="full-map-drawer"
+    mode="side"
+    [opened]="panelService.expanded()"
+    autoFocus="false"
+  >
+    <div class="full-map-drawer-content">
+      <ng-content select="[full-map-drawer]" />
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <ng-content select="[full-map-map]" />
+    <footer>
+      <div class="full-map-drawer-footer-actions">
+        <ng-content select="[full-map-footer]" />
+      </div>
+      <sdg-full-map-skeleton-footer [attribution]="attribution()" />
+    </footer>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+<button
+  mat-mini-fab
+  class="full-map-drawer-toggle-button"
+  [class.--expanded]="panelService.expanded()"
+  [matTooltip]="
+    (panelService.expanded() ? 'map.panel.close' : 'map.panel.open') | translate
+  "
+  matTooltipPosition="after"
+  (click)="panelService.toggle()"
+>
+  <mat-icon color="primary">
+    {{ panelService.expanded() ? 'chevron_left' : 'chevron_right' }}
+  </mat-icon>
+</button>

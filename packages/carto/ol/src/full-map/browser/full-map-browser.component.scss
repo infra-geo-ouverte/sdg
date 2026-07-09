@@ -1,0 +1,86 @@
+@use '@angular/material' as mat;
+@use '@igo2/sdg-core' as sdg;
+
+$controls-padding: 12px;
+
+:host {
+  ::ng-deep .ol-scale-line {
+    position: relative;
+    transform: none !important;
+    left: unset !important;
+    bottom: unset !important;
+    padding: unset !important;
+
+    &-inner {
+      text-shadow: unset !important;
+      box-shadow: unset !important;
+    }
+  }
+}
+
+sdg-map-browser {
+  .full-map-browser {
+    &-controls {
+      position: absolute;
+      bottom: $controls-padding * 4;
+      right: $controls-padding;
+
+      // This "pointer-event" fix allow to give cursor interaction to the map canvas inside the L shape of this container
+      // This fix  makes the empty parts of this div "invisible" to the mouse and we add the pointer-event only to the buttons
+      pointer-events: none;
+
+      ::ng-deep button {
+        pointer-events: auto;
+      }
+
+      @include sdg.media(mobile) {
+        bottom: calc(
+          var(--sdg-map-bottom-sheet-header-height, 104px) +
+            #{$controls-padding}
+        );
+      }
+    }
+
+    &-controls,
+    &-controls-navigation {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      row-gap: calc($controls-padding / 2);
+    }
+
+    &-legend-button {
+      color: var(--sdg-color-blue-piv) !important;
+    }
+
+    &-basemap-switcher {
+      position: absolute;
+      bottom: calc(var(--sdg-map-footer-height, 36px) + #{$controls-padding});
+      left: $controls-padding;
+      z-index: 1;
+
+      @include sdg.media(mobile) {
+        bottom: calc(
+          var(--sdg-map-bottom-sheet-header-height, 104px) +
+            #{$controls-padding}
+        );
+      }
+    }
+
+    &-scaleline {
+      position: absolute;
+      z-index: 1;
+      height: 21px;
+
+      @include sdg.media(mobile) {
+        top: $controls-padding;
+        right: $controls-padding;
+      }
+
+      @media only screen and (min-width: sdg.min-width(mobile-landscape)) {
+        bottom: calc($controls-padding / 2);
+        left: $controls-padding;
+      }
+    }
+  }
+}

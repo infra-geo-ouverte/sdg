@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 
 import {
-  IOlMapOptions,
   SDG_REFERENCE_MAP_LABELS,
-  SdgReferenceMapOlComponent
+  SdgOlMapOptions,
+  SdgOlReferenceMap
 } from '@igo2/sdg-carto/ol';
 import { ExternalLinkComponent } from '@igo2/sdg-common';
 import { provideTranslatedLabels } from '@igo2/sdg-i18n';
@@ -48,11 +48,7 @@ const BASEMAP = () =>
 
 @Component({
   selector: 'app-reference-map',
-  imports: [
-    SdgReferenceMapOlComponent,
-    ExampleViewerComponent,
-    ExternalLinkComponent
-  ],
+  imports: [SdgOlReferenceMap, ExampleViewerComponent, ExternalLinkComponent],
   providers: [
     // Useful to configure globally the labels of the ReferenceMap.
     // For local configuration you should use the input "labels"
@@ -62,8 +58,8 @@ const BASEMAP = () =>
   styleUrl: './reference-map.component.scss'
 })
 export class ReferenceMapDemoComponent {
-  map1: IOlMapOptions;
-  map2: IOlMapOptions;
+  map1: SdgOlMapOptions;
+  map2: SdgOlMapOptions;
   example = CODE_EXAMPLE;
 
   constructor() {
@@ -73,7 +69,7 @@ export class ReferenceMapDemoComponent {
         zoom: 6,
         center: [-71.8, 47.1]
       },
-      layers: [BASEMAP()]
+      basemaps: [BASEMAP()]
     };
 
     this.map2 = {
@@ -81,8 +77,8 @@ export class ReferenceMapDemoComponent {
         zoom: 6,
         center: [-71.8, 47.1]
       },
+      basemaps: [BASEMAP()],
       layers: [
-        BASEMAP(),
         new VectorLayer({
           style: new Style({
             image: new CircleStyle({

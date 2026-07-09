@@ -1,0 +1,43 @@
+@use '@angular/material' as mat;
+@use '@igo2/sdg-core' as sdg;
+
+$controls-padding: 12px;
+
+.full-map {
+  &-container {
+    position: relative;
+    height: 100%;
+
+    ::ng-deep sdg-search-bar mat-form-field button[mat-icon-button] {
+      background-color: transparent !important;
+    }
+
+    ::ng-deep sdg-search-bar mat-form-field mat-icon {
+      color: var(--sdg-color-blue-piv) !important;
+    }
+  }
+
+  &-browser {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    ::ng-deep {
+      .full-map-browser-scaleline.--panel-expanded {
+        @media only screen and (min-width: sdg.min-width(mobile-landscape)) {
+          left: unset;
+          bottom: unset;
+          top: $controls-padding;
+          right: $controls-padding;
+        }
+
+        @media only screen and (min-width: sdg.min-width(laptop)) {
+          left: calc($controls-padding + var(--sdg-sidepanel-width));
+          bottom: calc($controls-padding / 2);
+          top: unset;
+          right: unset;
+        }
+      }
+    }
+  }
+}

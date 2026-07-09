@@ -1,0 +1,77 @@
+@use '@igo2/sdg-core' as sdg;
+@use '@angular/material' as mat;
+
+$search-bar-left: 16px;
+$search-bar-top: calc($search-bar-left * 2);
+$panel-padding-top: 32px;
+$search-bar-height: 40px;
+$toggle-button-height: 40px;
+
+:host {
+  @include mat.sidenav-overrides(
+    (
+      container-elevation-shadow: none
+    )
+  );
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0 12px;
+  width: 100%;
+  height: 36px;
+  background-color: rgba(255, 255, 255, 0.67);
+  font-size: var(--sdg-font-size-xs);
+}
+
+.full-map-drawer {
+  width: var(--sdg-sidepanel-width);
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+
+  &-container {
+    height: 100%;
+  }
+
+  &-content {
+    display: block;
+    padding: 0 16px 16px;
+    margin-top: $search-bar-top + $search-bar-height + $search-bar-left;
+    height: calc(
+      100% - #{$search-bar-top + $search-bar-height + $search-bar-left}
+    );
+    overflow: auto;
+  }
+
+  &-toggle-button {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: calc(50% - $toggle-button-height / 2);
+    height: $toggle-button-height;
+    width: 24px;
+    border: none;
+    background-color: white;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+    transition: left 0.3s;
+    z-index: 1;
+    cursor: pointer;
+
+    &.--expanded {
+      left: var(--sdg-sidepanel-width);
+    }
+
+    mat-icon {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}

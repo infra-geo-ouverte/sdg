@@ -1,34 +1,45 @@
 <sdg-map-browser
   [map]="map"
-  sdgReferenceMapInteractions
+  sdgOlReferenceMapInteractions
   [mesageDuration]="config()?.helpMessageDuration"
   [labels]="labels().restrictions"
   class="flex-fill"
 >
   <div class="sdg-reference-map-actions --vertical --bottom --right">
-    <sdg-rotation-button
-      [map]="map"
-      color="primary"
-      [labels]="labels().buttons?.rotation"
-    />
+    @let navigation = options().navigation;
 
-    <sdg-home-button
-      [map]="map"
-      color="primary"
-      [labels]="labels().buttons?.home"
-    />
+    @if (navigation?.rotation !== false) {
+      <sdg-rotation-button
+        [map]="map"
+        color="primary"
+        [labels]="labels().buttons?.rotation"
+      />
+    }
 
-    <sdg-geolocate-button
-      [controller]="geolocation"
-      color="primary"
-      [labels]="labels().buttons?.geolocation"
-    />
+    @if (navigation?.home !== false) {
+      <sdg-home-button
+        [map]="map"
+        color="primary"
+        [options]="homeOptions()"
+        [labels]="labels().buttons?.home"
+      />
+    }
 
-    <sdg-zoom-button
-      [map]="map"
-      color="primary"
-      [labels]="labels().buttons?.zoom"
-    />
+    @if (navigation?.geolocation !== false) {
+      <sdg-geolocate-button
+        [controller]="geolocation"
+        color="primary"
+        [labels]="labels().buttons?.geolocation"
+      />
+    }
+
+    @if (navigation?.zoom !== false) {
+      <sdg-zoom-button
+        [map]="map"
+        color="primary"
+        [labels]="labels().buttons?.zoom"
+      />
+    }
 
     <ng-content />
   </div>

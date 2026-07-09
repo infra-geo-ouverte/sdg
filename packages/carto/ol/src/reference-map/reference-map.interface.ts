@@ -1,4 +1,4 @@
-import { IButtonBaseLabels } from '@igo2/sdg-carto';
+import { NavigationLabels } from '@igo2/sdg-carto';
 
 export interface ISdgReferenceMapConfig {
   /** Default duration for the help message. Default to 2000 ms */
@@ -7,7 +7,7 @@ export interface ISdgReferenceMapConfig {
 
 export interface ISdgMapLabels {
   restrictions?: IRestrictionLabels;
-  buttons?: IButtonBaseLabels;
+  buttons?: NavigationLabels;
 }
 
 export interface IRestrictionLabels {

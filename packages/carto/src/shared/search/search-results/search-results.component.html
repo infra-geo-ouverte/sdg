@@ -1,0 +1,47 @@
+<mat-accordion class="sdg-search-results" multi>
+  @for (group of groups(); track group.source.id) {
+    <mat-expansion-panel expanded>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <span class="sdg-search-results-group-title">
+            {{ group.source.title }}
+            @if (!group.loading && group.results.length > 0) {
+              <span class="sdg-search-results-group-count">
+                ({{ group.results.length }})
+              </span>
+            }
+          </span>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      @if (group.loading) {
+        <mat-progress-bar mode="indeterminate" />
+      } @else if (group.results.length === 0) {
+        <div class="sdg-search-results-empty">
+          <mat-icon>search_off</mat-icon>
+          <span>Aucun résultat</span>
+        </div>
+      } @else {
+        <mat-list>
+          @for (result of group.results; track result.id) {
+            <sdg-search-result-item
+              [result]="result"
+              [focused]="isFocused(result)"
+              [selected]="isSelected(result)"
+              (resultFocus)="onResultFocus(result)"
+              (resultUnfocus)="onResultUnfocus(result)"
+              (resultSelect)="onResultSelect(result)"
+            />
+          }
+        </mat-list>
+        @if (groupHasMore(group)) {
+          <div class="sdg-search-results-load-more">
+            <button mat-button compact (click)="onLoadMore(group)">
+              Afficher plus de résultats
+            </button>
+          </div>
+        }
+      }
+    </mat-expansion-panel>
+  }
+</mat-accordion>

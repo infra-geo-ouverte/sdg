@@ -1,0 +1,29 @@
+<p>
+  La <b>barre de recherche</b> permet à l'utilisateur de saisir un terme de
+  recherche. Elle émet le terme au fur et à mesure de la saisie (via
+  <code>searchChange</code>) et lors de la soumission explicite (via
+  <code>search</code>).
+</p>
+
+<app-example-viewer
+  title="Barre de recherche"
+  configFolder="search-bar"
+  codeFolder="search/search-bar"
+>
+  <sdg-search-bar
+    placeholder="Rechercher un élément"
+    (search)="searchTerm.set($event)"
+    (searchChange)="liveTerm.set($event)"
+  />
+
+  @if (liveTerm()) {
+    <p class="mt-2">
+      Saisie en cours&nbsp;: <strong>{{ liveTerm() }}</strong>
+    </p>
+  }
+  @if (searchTerm()) {
+    <p>
+      Dernière recherche soumise&nbsp;: <strong>{{ searchTerm() }}</strong>
+    </p>
+  }
+</app-example-viewer>

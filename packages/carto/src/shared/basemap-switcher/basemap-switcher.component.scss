@@ -1,0 +1,28 @@
+.sdg-basemap-switcher-container {
+  position: relative;
+  cursor: pointer;
+  height: 80px;
+  overflow: hidden;
+  transition: height 200ms ease-in-out;
+}
+
+.sdg-basemap-switcher-container.--expanded {
+  height: auto;
+  overflow: hidden;
+  border-width: 0;
+}
+
+.sdg-basemap-switcher-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sdg-basemap-switcher-more {
+  position: relative;
+  width: 80px;
+  height: 20px;
+  background-color: var(--mat-sys-inverse-on-surface);
+  text-align: center;
+  cursor: pointer;
+}

@@ -33,4 +33,31 @@ describe('labelAttribute', () => {
     const result = labelAttribute(value, defaultValue);
     expect(result).toEqual({});
   });
+
+  it('should deep merge nested objects, keeping defaultValue keys not present in value', () => {
+    const value = { nested: { key1: 'overridden' } };
+    const defaultValue = {
+      nested: { key1: 'default', key2: 'kept' },
+      top: 'kept'
+    };
+    const result = labelAttribute(value, defaultValue);
+    expect(result).toEqual({
+      nested: { key1: 'overridden', key2: 'kept' },
+      top: 'kept'
+    });
+  });
+
+  it('should deep merge multiple levels of nesting', () => {
+    const value = { a: { b: { c: 'new' } } };
+    const defaultValue = { a: { b: { c: 'old', d: 'kept' }, e: 'kept' } };
+    const result = labelAttribute(value, defaultValue);
+    expect(result).toEqual({ a: { b: { c: 'new', d: 'kept' }, e: 'kept' } });
+  });
+
+  it('should overwrite a nested object with a primitive when value provides one', () => {
+    const value = { nested: 'flat' };
+    const defaultValue = { nested: { key1: 'default' } };
+    const result = labelAttribute(value, defaultValue);
+    expect(result).toEqual({ nested: 'flat' });
+  });
 });

@@ -1,0 +1,21 @@
+$xPadding: 16px;
+
+sdg-ol-full-map {
+  display: block;
+  width: calc(100% + ($xPadding * 2));
+  height: 500px;
+
+  margin: 0 -#{$xPadding} -#{$xPadding} !important;
+  overflow: hidden;
+  border-bottom-left-radius: var(
+    --mat-card-outlined-container-shape,
+    var(--mat-sys-corner-medium)
+  );
+  border-bottom-right-radius: var(
+    --mat-card-outlined-container-shape,
+    var(--mat-sys-corner-medium)
+  );
+}
+.fullscreen-button {
+  margin-bottom: 16px;
+}

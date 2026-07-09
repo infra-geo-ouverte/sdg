@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  @include mat.list-overrides(
+    (
+      list-item-container-color: transparent,
+      list-item-container-shape: 0,
+
+      list-item-label-text-color: var(--sdg-color-text),
+      list-item-label-text-font: var(--sdg-font-family-text),
+      list-item-label-text-size: var(--sdg-font-size-md),
+      list-item-label-text-line-height: var(--sdg-line-height-md),
+      list-item-label-text-tracking: normal,
+      list-item-label-text-weight: var(--sdg-font-weight-normal),
+      list-item-supporting-text-color: var(--sdg-color-text),
+      list-item-supporting-text-font: var(--sdg-font-family-text),
+      list-item-supporting-text-size: var(--sdg-font-size-md),
+      list-item-supporting-text-line-height: var(--sdg-line-height-md),
+      list-item-supporting-text-tracking: normal,
+
+      list-item-trailing-supporting-text-color: var(--sdg-color-text),
+      list-item-hover-state-layer-color: var(--sdg-color-grey-pale),
+      list-item-focus-state-layer-color: var(--sdg-color-grey-pale)
+    )
+  );
+}

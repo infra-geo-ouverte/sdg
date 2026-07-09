@@ -1,0 +1,25 @@
+@if (visible) {
+  <div
+    class="sdg-basemap-switcher-container"
+    [class.--expanded]="expanded()"
+    tabindex="0"
+    role="button"
+    [matTooltip]="labels().tooltip"
+    [attr.aria-label]="labels().tooltip"
+    [attr.aria-expanded]="expanded()"
+    (click)="toggle()"
+    (keydown.enter)="toggle()"
+    (keydown.space)="toggle(); $event.preventDefault()"
+    (touchend)="toggle(); $event.preventDefault()"
+  >
+    <div class="sdg-basemap-switcher-list">
+      <ng-content />
+    </div>
+
+    @if (basemapCount() > 2) {
+      <div class="sdg-basemap-switcher-more">
+        <mat-icon color="primary">arrow_drop_down</mat-icon>
+      </div>
+    }
+  </div>
+}

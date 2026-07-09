@@ -31,6 +31,7 @@
     "notice": "Avis",
     "paginator": "Pagination",
     "radioButton": "Bouton radio",
+    "searchBar": "Barre de recherche",
     "sequentialLinks": "Liens séquentiels",
     "select": "Liste déroulante",
     "table": "Tableau de données",
@@ -40,6 +41,7 @@
   },
   "showcasesCarto": {
     "referenceMap": "Carte de référence",
+    "fullMap": "Carte complète",
     "buttons": {
       "zoom": {
         "zoomIn": "Zoom avant",

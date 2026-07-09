@@ -1,0 +1,18 @@
+<mat-list-item
+  class="sdg-search-result-item"
+  [class.--focused]="focused()"
+  [class.--selected]="selected()"
+  [matTooltip]="result().title"
+  (click)="resultSelect.emit(result())"
+  (mouseenter)="resultFocus.emit(result())"
+  (mouseleave)="resultUnfocus.emit(result())"
+>
+  <mat-icon matListItemIcon>{{ result().icon ?? 'location_on' }}</mat-icon>
+  <span
+    matListItemTitle
+    [innerHTML]="result().titleHtml ?? result().title"
+  ></span>
+  @if (result().subtitleHtml) {
+    <span matListItemLine [innerHTML]="result().subtitleHtml"></span>
+  }
+</mat-list-item>

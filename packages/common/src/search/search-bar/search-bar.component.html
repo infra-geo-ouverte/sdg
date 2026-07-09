@@ -1,0 +1,30 @@
+<div class="sdg-search-bar">
+  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+    <input
+      #inputEl
+      matInput
+      autocomplete="off"
+      [placeholder]="placeholder()"
+      [value]="term()"
+      (keyup)="onKeyup($event)"
+    />
+    @if (term()) {
+      <button
+        mat-icon-button
+        class="sdg-search-bar-close-button"
+        matSuffix
+        (click)="onClear()"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+    <button
+      mat-icon-button
+      class="sdg-search-bar-search-button"
+      matSuffix
+      (click)="onSearch()"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+</div>

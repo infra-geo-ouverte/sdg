@@ -1,3 +1,4 @@
+import { IChercheConfig, TerrapiConfig } from '@igo2/sdg-carto';
 import {
   IFooterConfig,
   IHeaderConfig,
@@ -14,4 +15,8 @@ export interface EnvironmentOptions {
   };
   footer: IFooterConfig;
   hasFooter?: boolean;
+  search?: {
+    icherche?: IChercheConfig;
+    terrapi?: TerrapiConfig;
+  };
 }

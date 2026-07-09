@@ -10,6 +10,13 @@
       "url": "http://localhost:4200/"
     },
     {
+      "name": "serve Demo (editor)",
+      "type": "editor-browser",
+      "request": "launch",
+      "preLaunchTask": "npm: start",
+      "url": "http://localhost:4200/"
+    },
+    {
       "name": "test",
       "type": "chrome",
       "request": "launch",
@@ -17,21 +24,12 @@
       "url": "http://localhost:9876/debug.html"
     },
     {
-      "name": "serve (IGO2-QUEBEC)",
+      "name": "serve Client",
       "type": "chrome",
       "request": "launch",
-      "preLaunchTask": "igo2-quebec/start",
-      "url": "http://127.0.0.1:4200",
-      "webRoot": "${workspaceFolder}/projects/igo2-quebec",
-      "sourceMaps": true
-    },
-    {
-      "name": "serve (QEA-Client)",
-      "type": "chrome",
-      "request": "launch",
-      "preLaunchTask": "qea-client/start",
+      "preLaunchTask": "client/start",
       "url": "http://localhost:4210",
-      "webRoot": "${workspaceFolder}/projects/qea-client",
+      "webRoot": "${workspaceFolder}/projects/client",
       "sourceMaps": true
     }
   ]

@@ -1,12 +1,12 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../test-config';
-import { ISdgMap, IViewBaseOptions } from '../map.interface';
-import { SdgMapBrowserComponent } from './map-browser.component';
+import { ISdgMap, IViewBaseOptions } from '../map/map.interface';
+import { SdgMapBrowser } from './map-browser.component';
 
-describe('SdgMapBrowserComponent', () => {
-  let component: SdgMapBrowserComponent;
-  let fixture: ComponentFixture<SdgMapBrowserComponent>;
+describe('SdgMapBrowser', () => {
+  let component: SdgMapBrowser;
+  let fixture: ComponentFixture<SdgMapBrowser>;
   let mockMap: ISdgMap<unknown>;
 
   beforeEach(async () => {
@@ -17,11 +17,11 @@ describe('SdgMapBrowserComponent', () => {
     } as unknown as ISdgMap<unknown>;
 
     await TestBed.configureTestingModule({
-      imports: [SdgMapBrowserComponent],
+      imports: [SdgMapBrowser],
       providers: TEST_CONFIG.providers
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SdgMapBrowserComponent);
+    fixture = TestBed.createComponent(SdgMapBrowser);
     component = fixture.componentInstance;
 
     fixture.componentRef.setInput('map', mockMap);

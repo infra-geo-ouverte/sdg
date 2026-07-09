@@ -33,5 +33,13 @@ export const environment: EnvironmentOptions = {
       logoUrl:
         'https://www.quebec.ca/gouvernement/ministere/securite-interieure'
     }
+  },
+  search: {
+    icherche: {
+      searchUrl: 'https://icherche.geo.msp.gouv.qc.ca'
+    },
+    terrapi: {
+      searchUrl: 'https://terrapi.geo.msp.gouv.qc.ca'
+    }
   }
 };

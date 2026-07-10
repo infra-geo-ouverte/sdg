@@ -29,6 +29,5 @@ $primary-palette: material.$primary-palette;
   }
 
   @include core.styles();
-  @include igo2-lib.overrides();
   @include material.overrides();
 }

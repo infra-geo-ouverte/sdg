@@ -16,6 +16,7 @@ const DEFAULT_OPTIONS: SdgOlMapOptions = {
     zoom: 6,
     center: [-71.8, 47.1]
   },
+  basemaps: [],
   layers: [
     new TileLayer({
       source: new OSM()

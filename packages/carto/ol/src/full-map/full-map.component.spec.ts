@@ -16,6 +16,7 @@ describe('SdgOlFullMap', () => {
       zoom: 6,
       center: [-71.8, 47.1]
     },
+    basemaps: [],
     footer: {
       organization: { name: 'Test Org', url: 'https://example.com' },
       firstPublicationDate: '2024-01-01'

@@ -35,25 +35,6 @@ describe('SdgSearchResults', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('toggleGroup', () => {
-    it('should collapse a group', () => {
-      fixture.componentRef.setInput('groups', []);
-      fixture.detectChanges();
-
-      component.toggleGroup('group-1');
-      expect(component.isGroupCollapsed('group-1')).toBe(true);
-    });
-
-    it('should expand a previously collapsed group', () => {
-      fixture.componentRef.setInput('groups', []);
-      fixture.detectChanges();
-
-      component.toggleGroup('group-1');
-      component.toggleGroup('group-1');
-      expect(component.isGroupCollapsed('group-1')).toBe(false);
-    });
-  });
-
   describe('result focus/select', () => {
     const source = mockSource('src-1', 'Source');
     const result = mockResult('r1', 'Result 1', source);

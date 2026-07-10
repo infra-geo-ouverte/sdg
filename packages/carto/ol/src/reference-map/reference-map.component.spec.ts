@@ -53,7 +53,8 @@ describe('SdgOlReferenceMap', () => {
       view: {
         zoom: 6,
         center: [-71.8, 47.1]
-      }
+      },
+      basemaps: []
     } satisfies SdgOlMapOptions);
 
     fixture.detectChanges();
@@ -91,7 +92,8 @@ describe('SdgOlReferenceMap', () => {
       view: {
         zoom: 6,
         center: [-71.8, 47.1]
-      }
+      },
+      basemaps: []
     } satisfies SdgOlMapOptions);
 
     fixture.detectChanges();

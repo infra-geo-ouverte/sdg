@@ -7,7 +7,7 @@ import olView, { AnimationOptions, ViewOptions } from 'ol/View';
 import View from 'ol/View';
 import { Extent } from 'ol/extent';
 import { Interaction } from 'ol/interaction';
-import { DefaultsOptions, defaults } from 'ol/interaction/defaults';
+import { defaults } from 'ol/interaction/defaults';
 import { fromLonLat } from 'ol/proj';
 
 import { HasEventTargetAddRemove } from 'rxjs/internal/observable/fromEvent';
@@ -31,7 +31,7 @@ export class SdgOlMap implements ISdgMap<olMap> {
     this.options = merge(DEFAULT_OPTIONS, options);
 
     this.engine = new olMap({
-      interactions: this.getInteractions(),
+      interactions: defaults(),
       controls: [],
       layers: [
         ...(this.options.basemaps?.length
@@ -132,23 +132,5 @@ export class SdgOlMap implements ISdgMap<olMap> {
     if (interactionToRemove) {
       interactions.remove(interactionToRemove);
     }
-  }
-
-  private getInteractions(): Collection<Interaction> {
-    let interactions: DefaultsOptions = {};
-    if (this.options.interactions === false) {
-      interactions = {
-        altShiftDragRotate: false,
-        doubleClickZoom: false,
-        keyboard: false,
-        mouseWheelZoom: false,
-        shiftDragZoom: false,
-        dragPan: false,
-        pinchRotate: false,
-        pinchZoom: false
-      };
-    }
-
-    return defaults(interactions);
   }
 }

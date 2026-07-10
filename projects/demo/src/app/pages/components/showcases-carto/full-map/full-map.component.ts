@@ -38,10 +38,10 @@ const MAP_CONFIG: SdgOlFullMapOptions = {
       extent: QUEBEC_EXTENT_3857
     },
     rotation: true,
-    zoom: true
+    zoom: true,
+    scaleLine: true
   },
   footer: {
-    scaleLine: true,
     firstPublicationDate: '2024',
     organization: {
       name: 'Ministère de la Sécurité intérieure',

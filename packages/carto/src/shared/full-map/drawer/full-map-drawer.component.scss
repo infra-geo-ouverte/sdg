@@ -39,7 +39,7 @@ footer {
 
   &-content {
     display: block;
-    padding: 0 16px 16px;
+    padding: 0 0 16px;
     margin-top: $search-bar-top + $search-bar-height + $search-bar-left;
     height: calc(
       100% - #{$search-bar-top + $search-bar-height + $search-bar-left}

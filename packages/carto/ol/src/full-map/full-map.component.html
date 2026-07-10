@@ -38,7 +38,7 @@
   </ng-container>
 
   <ng-container footer-actions>
-    @if (options().footer.scaleLine) {
+    @if (options().navigation?.scaleLine) {
       <sdg-scale-line [map]="map()!" />
     }
   </ng-container>
@@ -51,5 +51,11 @@
     [isHandset]="isHandset()"
     (mapReady)="handleMap($event)"
     (extentChange)="extentChange.emit(undefined)"
-  />
+  >
+    @if (options().navigation?.scaleLine && isHandset()) {
+      <div class="full-map-browser-top-navigation">
+        <sdg-scale-line [map]="map()!" />
+      </div>
+    }
+  </sdg-ol-full-map-browser>
 </sdg-full-map-skeleton>

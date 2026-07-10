@@ -17,8 +17,7 @@ describe('SdgOlMap', () => {
         zoom: 2,
         animation: { duration: 500 }
       },
-      basemaps: [],
-      interactions: true
+      basemaps: []
     };
     map = new SdgOlMap(options);
   });

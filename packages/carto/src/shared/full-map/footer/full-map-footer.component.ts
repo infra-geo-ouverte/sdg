@@ -1,6 +1,11 @@
 import { Component, computed, input } from '@angular/core';
 
-import { IMapFooterAttribution } from '../..';
+import { IMapFooterAttribution, IMapFooterCopyright } from '../..';
+
+const DEFAULT_COPYRIGHT: IMapFooterCopyright = {
+  label: '© Gouvernement du Québec',
+  url: 'https://www.quebec.ca/'
+};
 
 @Component({
   selector: 'sdg-full-map-skeleton-footer',
@@ -15,7 +20,15 @@ import { IMapFooterAttribution } from '../..';
   `
 })
 export class SdgFullMapSkeletonFooter {
-  readonly attribution = input.required<IMapFooterAttribution>();
+  readonly attribution = input.required<
+    IMapFooterAttribution,
+    IMapFooterAttribution
+  >({
+    transform: (attribution) => ({
+      ...attribution,
+      copyright: attribution.copyright ?? DEFAULT_COPYRIGHT
+    })
+  });
 
   readonly publicationYear = computed(() => {
     const date = this.attribution().firstPublicationDate;

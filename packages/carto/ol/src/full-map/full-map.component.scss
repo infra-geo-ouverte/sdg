@@ -22,22 +22,10 @@ $controls-padding: 12px;
     width: 100%;
     height: 100%;
 
-    ::ng-deep {
-      .full-map-browser-scaleline.--panel-expanded {
-        @media only screen and (min-width: sdg.min-width(mobile-landscape)) {
-          left: unset;
-          bottom: unset;
-          top: $controls-padding;
-          right: $controls-padding;
-        }
-
-        @media only screen and (min-width: sdg.min-width(laptop)) {
-          left: calc($controls-padding + var(--sdg-sidepanel-width));
-          bottom: calc($controls-padding / 2);
-          top: unset;
-          right: unset;
-        }
-      }
+    &-top-navigation {
+      position: absolute;
+      top: $controls-padding;
+      right: $controls-padding;
     }
   }
 }

@@ -1,6 +1,7 @@
 <a [href]="attribution().organization.url" target="_blank">
   {{ attribution().organization.name }}
 </a>
-<a href="https://www.quebec.ca/droit-auteur" target="_blank">
-  © Gouvernement du Québec{{ publicationYear() }}
+
+<a [href]="attribution().copyright!.url" target="_blank">
+  {{ attribution().copyright!.label }}
 </a>

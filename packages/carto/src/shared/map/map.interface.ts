@@ -25,7 +25,6 @@ export interface MapOptions {
   view: IViewBaseOptions;
   layers?: unknown[];
   overlay?: boolean;
-  interactions?: boolean;
   legend?: boolean;
   navigation?: {
     /** Default to true */
@@ -36,19 +35,25 @@ export interface MapOptions {
     rotation?: boolean;
     /** Default to true */
     zoom?: boolean;
+    scaleLine?: boolean;
   };
 }
 
-export interface MapFooterOptions extends IMapFooterAttribution {
-  scaleLine?: boolean;
-}
+export type MapFooterOptions = IMapFooterAttribution;
 
 export interface IMapFooterAttribution {
+  /** Default to "Gouvernement du Québec" */
+  copyright?: IMapFooterCopyright;
   organization: {
     name: string;
     url: string;
   };
   firstPublicationDate?: string | Date;
+}
+
+export interface IMapFooterCopyright {
+  label: string;
+  url: string;
 }
 
 export type Extent = [number, number, number, number] | number[];

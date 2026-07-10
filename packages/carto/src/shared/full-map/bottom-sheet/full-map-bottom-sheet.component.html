@@ -18,6 +18,7 @@
     <ng-content select="[full-map-bottom-sheet-header]" />
   </div>
   <div
+    #bottomSheetWrapper
     class="full-map-bottom-sheet-wrapper"
     [style.height]="panelService.expanded() ? expandedHeight : '0px'"
   >

@@ -8,6 +8,7 @@ export type PanelType = 'custom' | 'search' | 'legend' | (string & {});
 export class PanelService {
   type = signal<PanelType>('custom');
   expanded = signal(false);
+  visibleHeight = signal(0);
 
   toggle(type?: PanelType): void {
     if (type && type !== this.type()) {

@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   inject,
   input,
   viewChild
@@ -21,13 +22,15 @@ const SWIPE_THRESHOLD = 30;
   templateUrl: './full-map-bottom-sheet.component.html',
   styleUrl: './full-map-bottom-sheet.component.scss'
 })
-export class SdgFullMapSkeletonBottomSheet implements AfterViewInit {
+export class SdgFullMapSkeletonBottomSheet implements AfterViewInit, OnDestroy {
   panelService = inject(PanelService);
 
   readonly attribution = input.required<IMapFooterAttribution>();
 
   readonly bottomSheetHeaderRef =
     viewChild<ElementRef<HTMLDivElement>>('bottomSheetHeader');
+  readonly wrapperRef =
+    viewChild<ElementRef<HTMLDivElement>>('bottomSheetWrapper');
   expandedHeight: string | undefined;
 
   private touchStartY = 0;
@@ -37,9 +40,24 @@ export class SdgFullMapSkeletonBottomSheet implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    const searchBarHeight =
-      this.bottomSheetHeaderRef()?.nativeElement.offsetHeight ?? 0;
-    this.expandedHeight = `calc((100% * 2 / 3) - ${searchBarHeight}px)`;
+    const headerEl = this.bottomSheetHeaderRef()?.nativeElement;
+    const headerHeight = headerEl?.offsetHeight ?? 0;
+    this.expandedHeight = `calc((100% * 2 / 3) - ${headerHeight}px)`;
+
+    this.panelService.visibleHeight.set(headerHeight);
+
+    const wrapperEl = this.wrapperRef()?.nativeElement;
+    if (wrapperEl) {
+      wrapperEl.addEventListener('transitionend', () => {
+        this.panelService.visibleHeight.set(
+          headerHeight + wrapperEl.offsetHeight
+        );
+      });
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.panelService.visibleHeight.set(0);
   }
 
   onTouchStart(event: TouchEvent): void {

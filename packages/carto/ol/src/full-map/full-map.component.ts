@@ -5,6 +5,7 @@ import {
   OnInit,
   computed,
   contentChildren,
+  effect,
   inject,
   input,
   output,
@@ -150,6 +151,16 @@ export class SdgOlFullMap
 
   constructor() {
     super(undefined, SDG_OL_FULL_MAP_LABELS);
+
+    effect(() => {
+      const map = this.map();
+      const bottomPadding = this.isHandset()
+        ? this.panelService.visibleHeight()
+        : 0;
+      if (map) {
+        map.view.padding = [0, 0, bottomPadding, 0];
+      }
+    });
   }
 
   ngOnInit(): void {

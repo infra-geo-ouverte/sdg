@@ -9,6 +9,8 @@
 .full-map-bottom-sheet {
   &-overlay {
     position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-flow: column;
     justify-content: flex-end;

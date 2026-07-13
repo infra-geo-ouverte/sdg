@@ -26,7 +26,7 @@ describe('SdgSearchBar', () => {
   });
 
   it('should have default placeholder "Rechercher"', () => {
-    expect(component.placeholder()).toBe('Rechercher');
+    expect(component.labels().placeholder).toBe('Rechercher');
   });
 
   it('should have default debounce of 300ms', () => {

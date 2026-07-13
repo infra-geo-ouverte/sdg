@@ -17,10 +17,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { WithLabels } from '@igo2/sdg-common';
-
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+
+import { WithLabels } from '../../shared/with-labels';
 
 const INVALID_KEYS = [
   'Control',

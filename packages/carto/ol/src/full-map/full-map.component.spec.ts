@@ -82,17 +82,17 @@ describe('SdgOlFullMap', () => {
     expect(panelService.type()).toBe('search');
   });
 
-  it('should close panel when empty term is set, panel is search, and no defaultPanel', () => {
+  it('should close panel when empty term is set, panel is search, and no default', () => {
     panelService.toggle('search');
     component.onSearchChange('');
 
     expect(panelService.expanded()).toBe(false);
   });
 
-  it('should navigate to defaultPanel when empty term is set and panel is search', () => {
+  it('should navigate to default when empty term is set and panel is search', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { width: 380, defaultPanel: 'layers' }
+      panel: { width: 380, default: 'layers' }
     });
     panelService.toggle('search');
     component.onSearchChange('');
@@ -108,14 +108,14 @@ describe('SdgOlFullMap', () => {
     expect(component.searchTerm()).toBe('');
   });
 
-  it('should close panel on clearSearch when no defaultPanel', () => {
+  it('should close panel on clearSearch when no default', () => {
     panelService.toggle('search');
     component.clearSearch();
 
     expect(panelService.expanded()).toBe(false);
   });
 
-  it('should reopen panel when searching again after clearSearch without defaultPanel', () => {
+  it('should reopen panel when searching again after clearSearch without default', () => {
     component.onSearchChange('first query');
     expect(panelService.type()).toBe('search');
     expect(panelService.expanded()).toBe(true);
@@ -129,10 +129,10 @@ describe('SdgOlFullMap', () => {
     expect(panelService.type()).toBe('search');
   });
 
-  it('should navigate to defaultPanel on clearSearch', () => {
+  it('should navigate to default on clearSearch', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { width: 380, defaultPanel: 'layers' }
+      panel: { width: 380, default: 'layers' }
     });
     panelService.toggle('search');
     component.clearSearch();
@@ -144,7 +144,7 @@ describe('SdgOlFullMap', () => {
   it('should keep panel closed on clearSearch when panel was already closed', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { width: 380, defaultPanel: 'layers' }
+      panel: { width: 380, default: 'layers' }
     });
     panelService.toggle('search');
     panelService.expanded.set(false);
@@ -170,17 +170,17 @@ describe('SdgOlFullMap', () => {
     expect(component.hasCustomSearchPanel()).toBe(false);
   });
 
-  it('should set panel type to defaultPanel on init', () => {
+  it('should set panel type to default on init', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { defaultPanel: 'layers' }
+      panel: { default: 'layers' }
     });
     component.ngOnInit();
 
     expect(panelService.type()).toBe('layers');
   });
 
-  it('should keep search as default panel type when no defaultPanel and search enabled', () => {
+  it('should keep search as default panel type when no default and search enabled', () => {
     component.ngOnInit();
 
     expect(panelService.type()).toBe('search');

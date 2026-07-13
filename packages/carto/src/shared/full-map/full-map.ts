@@ -14,7 +14,7 @@ export interface SdgFullMapOptions extends MapOptions {
     /** Number of pixels, default to 380 */
     width?: number;
     /** Panel type to navigate back to when leaving search/legend. If undefined, the panel is simply closed. */
-    defaultPanel?: PanelType;
+    default?: PanelType;
   };
   /** Default to true */
   search?: boolean;

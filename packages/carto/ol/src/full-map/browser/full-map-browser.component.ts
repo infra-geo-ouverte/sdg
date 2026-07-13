@@ -98,7 +98,7 @@ export class SdgOlFullMapBrowser implements OnInit, AfterViewInit {
   toggleLegend(): void {
     if (this.panelService.type() === 'legend') {
       if (this.panelService.expanded()) {
-        const defaultPanel = this.options().panel?.defaultPanel;
+        const defaultPanel = this.options().panel?.default;
         if (defaultPanel) {
           this.panelService.toggle(defaultPanel);
         } else {

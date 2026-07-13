@@ -34,7 +34,7 @@ const MAP_CONFIG: SdgOlFullMapOptions = {
   legend: true,
   search: true,
   panel: {
-    defaultPanel: 'custom'
+    default: 'custom'
   },
   navigation: {
     geolocation: true,
@@ -234,7 +234,7 @@ const options: SdgOlFullMapOptions = {
   // ...
   panel: {
     width: 380,              // largeur en px (par défaut : 380)
-    defaultPanel: 'custom'   // panneau affiché par défaut et au retour de la recherche/légende
+    default: 'custom'   // panneau affiché par défaut et au retour de la recherche/légende
   }
 };
 
@@ -251,4 +251,4 @@ const options: SdgOlFullMapOptions = {
 // Contrôle programmatique via PanelService :
 panelService.toggle('legend');       // bascule vers la légende et ouvre le panneau
 panelService.expanded.set(false);    // ferme le panneau
-panelService.resetDefaultType();     // revient au type par défaut (defaultPanel)`;
+panelService.resetDefaultType();     // revient au type par défaut (default)`;

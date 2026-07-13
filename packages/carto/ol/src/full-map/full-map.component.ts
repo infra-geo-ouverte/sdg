@@ -165,13 +165,13 @@ export class SdgOlFullMap
     });
   }
 
-  get defaultPanel(): string | undefined {
-    return this.options().panel?.defaultPanel;
+  get default(): string | undefined {
+    return this.options().panel?.default;
   }
 
   ngOnInit(): void {
-    if (this.defaultPanel) {
-      this.panelService.setDefaultType(this.defaultPanel);
+    if (this.default) {
+      this.panelService.setDefaultType(this.default);
     }
 
     if (this.isHandset()) {
@@ -180,11 +180,11 @@ export class SdgOlFullMap
   }
 
   ngAfterContentInit(): void {
-    if (this.options().search === false && !this.defaultPanel) {
+    if (this.options().search === false && !this.default) {
       const firstPanel = this.panelContents()[0];
       if (!firstPanel) {
         throw new Error(
-          'SdgOlFullMap: search is disabled but no defaultPanel or panel content is provided.'
+          'SdgOlFullMap: search is disabled but no default or panel content is provided.'
         );
       }
       this.panelService.setType(firstPanel.type());
@@ -245,7 +245,7 @@ export class SdgOlFullMap
     this.searchHighlight?.clear();
 
     if (this.panelService.expanded()) {
-      this.navigateToDefaultPanel();
+      this.navigateTodefault();
     } else {
       this.panelService.resetDefaultType();
     }
@@ -254,9 +254,9 @@ export class SdgOlFullMap
       this.panelService.expanded.set(false);
     }
   }
-  private navigateToDefaultPanel(): void {
-    if (this.defaultPanel) {
-      this.panelService.toggle(this.defaultPanel);
+  private navigateTodefault(): void {
+    if (this.default) {
+      this.panelService.toggle(this.default);
     } else {
       this.panelService.expanded.set(false);
     }

@@ -117,7 +117,8 @@ function directedToLonLat(a: number, dirA: string, b: number): LonLat | null {
 
 // One coord component: degrees + minutes (with optional decimal) + optional seconds + cardinal.
 // Handles DMS (`45°30'12"N`), DM (`45°30.5'N`), and space-separated equivalents.
-const DMS_PART = String.raw`(\d{1,3})[°\s]\s*(\d{1,2}(?:[.,]\d+)?)['\s′]?\s*(?:(\d{1,2}(?:[.,]\d+)?)["″]?\s*)?([NSEW])`;
+// Separators use non-overlapping alternatives (°\s* vs \s+) to avoid polynomial backtracking (ReDoS).
+const DMS_PART = String.raw`(\d{1,3})(?:°\s*|\s+)(\d{1,2}(?:[.,]\d+)?)(?:['\′]\s*|\s+)?(?:(\d{1,2}(?:[.,]\d+)?)["″]?\s*)?([NSEW])`;
 const DMS_RE = new RegExp(`^${DMS_PART}[,\\s]+${DMS_PART}$`);
 
 // One coord component: decimal degrees with explicit ° symbol + cardinal.
@@ -128,5 +129,6 @@ const DD_CARDINAL_RE = new RegExp(
 );
 
 // Two signed decimal numbers separated by a comma or whitespace.
+// Uses non-overlapping alternatives (\s*,\s* vs \s+) to avoid polynomial backtracking (ReDoS).
 const PLAIN_RE =
-  /^([+-]?\d{1,3}(?:[.,]\d+)?)\s*[,\s]\s*([+-]?\d{1,3}(?:[.,]\d+)?)$/;
+  /^([+-]?\d{1,3}(?:[.,]\d+)?)(?:\s*,\s*|\s+)([+-]?\d{1,3}(?:[.,]\d+)?)$/;

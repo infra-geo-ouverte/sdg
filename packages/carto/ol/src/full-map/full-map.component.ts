@@ -254,6 +254,7 @@ export class SdgOlFullMap
       this.panelService.expanded.set(false);
     }
   }
+
   private navigateTodefault(): void {
     if (this.default) {
       this.panelService.toggle(this.default);

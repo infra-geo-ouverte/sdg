@@ -26,7 +26,10 @@
     align-items: center;
     align-self: center;
     justify-content: center;
-    background: white;
+    background: var(
+      --mat-sidenav-container-background-color,
+      var(--mat-sys-surface)
+    );
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.12);
     width: 60px;
     height: 24px;
@@ -43,7 +46,10 @@
   }
 
   &-header {
-    background-color: white;
+    background-color: var(
+      --mat-sidenav-container-background-color,
+      var(--mat-sys-surface)
+    );
     padding: 32px 16px;
     pointer-events: auto;
     touch-action: none;
@@ -54,7 +60,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
+    background-color: var(
+      --mat-sidenav-container-background-color,
+      var(--mat-sys-surface)
+    );
     transition: height var(--bottom-sheet-animation-duration) ease;
     pointer-events: auto;
   }

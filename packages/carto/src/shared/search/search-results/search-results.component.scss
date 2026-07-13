@@ -28,7 +28,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  color: var(--mat-toolbar-container-text-color, rgba(0, 0, 0, 0.6));
+  color: var(--mat-toolbar-container-text-color, var(--mat-sys-on-background));
 }
 
 .sdg-search-results-group-count {
@@ -42,7 +42,7 @@
   align-items: center;
   gap: 8px;
   padding: 8px 16px 12px;
-  color: var(--mat-toolbar-container-text-color, rgba(0, 0, 0, 0.54));
+  color: var(--mat-toolbar-container-text-color, var(--mat-sys-on-background));
   font-size: 14px;
 
   mat-icon {

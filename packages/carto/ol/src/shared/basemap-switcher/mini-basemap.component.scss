@@ -2,7 +2,8 @@
   width: 80px;
   height: 80px;
   background-color: rgba(255, 255, 255, 0.01);
-  border: 2px solid white;
+  border: 2px solid
+    var(--mat-sidenav-container-background-color, var(--mat-sys-surface));
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   position: relative;
@@ -31,7 +32,7 @@
   left: 0;
   right: 0;
   text-align: center;
-  color: white;
+  color: var(--mat-sidenav-container-background-color, var(--mat-sys-surface));
   text-shadow: 0 0 5px black;
   font-size: 12px;
   padding: 2px 4px;

@@ -26,9 +26,13 @@ import { SdgOlMap } from '../../shared';
     }
 
     :host::ng-deep .ol-scale-line-inner {
-      border: 1px solid #000;
+      border: 1px solid
+        var(--mat-sidenav-content-text-color, var(--mat-sys-on-background));
       border-top: none;
-      color: #000;
+      color: var(
+        --mat-sidenav-content-text-color,
+        var(--mat-sys-on-background)
+      );
       font-size: 10px;
       text-align: center;
       margin: 1px;

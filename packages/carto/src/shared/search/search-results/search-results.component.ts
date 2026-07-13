@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   input,
   output,
   signal
@@ -41,6 +42,14 @@ export class SdgSearchResults {
 
   readonly focusedResult = signal<SearchResult | undefined>(undefined);
   readonly selectedResult = signal<SearchResult | undefined>(undefined);
+
+  /**
+   * True when there is at most one real source (CoordinatesSource excluded).
+   * In that case the accordion header adds no value and a flat list is shown.
+   */
+  readonly isSingleSource = computed(
+    () => this.groups().filter((g) => g.source.id !== 'coordinates').length <= 1
+  );
 
   isFocused(result: SearchResult): boolean {
     return this.focusedResult() === result;

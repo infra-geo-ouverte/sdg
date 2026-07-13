@@ -146,7 +146,6 @@ describe('SdgOlBasemapSwitcher', () => {
 
   describe('labels', () => {
     it('should use default labels when no labels input is provided', () => {
-      expect(component.labels().title).toBe('Fonds');
       expect(component.labels().tooltip).toBe('Changer le fond de carte');
     });
 
@@ -156,7 +155,6 @@ describe('SdgOlBasemapSwitcher', () => {
         tooltip: 'Switch basemap'
       });
       fixture.detectChanges();
-      expect(component.labels().title).toBe('Basemaps');
       expect(component.labels().tooltip).toBe('Switch basemap');
     });
   });

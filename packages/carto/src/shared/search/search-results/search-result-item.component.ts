@@ -22,7 +22,7 @@ export class SdgSearchResultItem {
   readonly focused = input(false);
   readonly selected = input(false);
 
-  readonly resultSelect = output<SearchResult>();
-  readonly resultFocus = output<SearchResult>();
-  readonly resultUnfocus = output<SearchResult>();
+  readonly select = output<SearchResult>();
+  readonly focus = output<SearchResult>();
+  readonly unfocus = output<SearchResult>();
 }

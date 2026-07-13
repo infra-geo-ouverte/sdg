@@ -30,7 +30,7 @@ footer {
 }
 
 .full-map-drawer {
-  width: var(--sdg-sidepanel-width);
+  width: var(--sdg-panel-width);
   box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
 
   &-container {
@@ -73,7 +73,7 @@ footer {
     cursor: pointer;
 
     &.--expanded {
-      left: var(--sdg-sidepanel-width);
+      left: var(--sdg-panel-width);
     }
 
     mat-icon {

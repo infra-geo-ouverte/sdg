@@ -3,8 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PanelService } from '@igo2/sdg-carto';
 
 import { TEST_CONFIG } from '../../../test-config';
-import { SdgOlFullMapOptions } from './full-map';
-import { SdgOlFullMap } from './full-map.component';
+import { SdgOlFullMap, SdgOlFullMapOptions } from './full-map.component';
 
 describe('SdgOlFullMap', () => {
   let component: SdgOlFullMap;
@@ -93,7 +92,7 @@ describe('SdgOlFullMap', () => {
   it('should navigate to defaultPanel when empty term is set and panel is search', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      sidepanel: { width: 380, defaultPanel: 'layers' }
+      panel: { width: 380, defaultPanel: 'layers' }
     });
     panelService.toggle('search');
     component.onSearchChange('');
@@ -133,7 +132,7 @@ describe('SdgOlFullMap', () => {
   it('should navigate to defaultPanel on clearSearch', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      sidepanel: { width: 380, defaultPanel: 'layers' }
+      panel: { width: 380, defaultPanel: 'layers' }
     });
     panelService.toggle('search');
     component.clearSearch();
@@ -145,7 +144,7 @@ describe('SdgOlFullMap', () => {
   it('should keep panel closed on clearSearch when panel was already closed', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      sidepanel: { width: 380, defaultPanel: 'layers' }
+      panel: { width: 380, defaultPanel: 'layers' }
     });
     panelService.toggle('search');
     panelService.expanded.set(false);
@@ -174,7 +173,7 @@ describe('SdgOlFullMap', () => {
   it('should set panel type to defaultPanel on init', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      sidepanel: { defaultPanel: 'layers' }
+      panel: { defaultPanel: 'layers' }
     });
     component.ngOnInit();
 

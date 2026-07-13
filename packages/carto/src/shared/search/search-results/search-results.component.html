@@ -1,7 +1,7 @@
 <ng-template #emptyResults>
   <div class="sdg-search-results-empty">
     <mat-icon>search_off</mat-icon>
-    <span>Aucun résultat</span>
+    <span>{{ labels().noResults }}</span>
   </div>
 </ng-template>
 
@@ -19,16 +19,16 @@
               [result]="result"
               [focused]="isFocused(result)"
               [selected]="isSelected(result)"
-              (resultFocus)="onResultFocus(result)"
-              (resultUnfocus)="onResultUnfocus(result)"
-              (resultSelect)="onResultSelect(result)"
+              (focus)="onResultFocus(result)"
+              (unfocus)="onResultUnfocus(result)"
+              (select)="onResultSelect(result)"
             />
           }
         </mat-list>
         @if (groupHasMore(group)) {
           <div class="sdg-search-results-load-more">
             <button mat-button compact (click)="onLoadMore(group)">
-              Afficher plus de résultats
+              {{ labels().loadMore }}
             </button>
           </div>
         }
@@ -74,7 +74,7 @@
           @if (groupHasMore(group)) {
             <div class="sdg-search-results-load-more">
               <button mat-button compact (click)="onLoadMore(group)">
-                Afficher plus de résultats
+                {{ labels().loadMore }}
               </button>
             </div>
           }

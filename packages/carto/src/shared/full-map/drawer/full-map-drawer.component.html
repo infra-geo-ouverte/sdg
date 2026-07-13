@@ -25,7 +25,7 @@
   class="full-map-drawer-toggle-button"
   [class.--expanded]="panelService.expanded()"
   [matTooltip]="
-    (panelService.expanded() ? 'map.panel.close' : 'map.panel.open') | translate
+    (panelService.expanded() ? labels().close : labels().open) | translate
   "
   matTooltipPosition="after"
   (click)="panelService.toggle()"

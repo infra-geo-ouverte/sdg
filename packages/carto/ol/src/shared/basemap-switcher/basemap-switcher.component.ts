@@ -15,7 +15,6 @@ import { SdgOlMap } from '..';
 import { SdgOlMiniBasemap } from './mini-basemap.component';
 
 const LABELS_DEFAULT: BasemapSwitcherLabels = {
-  title: 'Fonds',
   tooltip: 'Changer le fond de carte'
 };
 
@@ -80,6 +79,6 @@ export class SdgOlBasemapSwitcher {
   }
 
   getTitle(layer: Layer): string {
-    return (layer.get('title') as string) || this.labels().title;
+    return layer.get('title') as string;
   }
 }

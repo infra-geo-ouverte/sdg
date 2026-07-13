@@ -8,15 +8,18 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { labelAttribute } from '@igo2/sdg-i18n';
+
 import { IMapFooterAttribution } from '../map/map.interface';
 import { SdgFullMapSkeletonBottomSheet } from './bottom-sheet/full-map-bottom-sheet.component';
 import { SdgFullMapSkeletonDrawer } from './drawer/full-map-drawer.component';
+import { SdgFullMapLabels } from './full-map';
 import { PanelService } from './shared/panel.service';
 
 @Component({
   selector: 'sdg-full-map-skeleton',
   host: {
-    '[style.--sdg-sidepanel-width.px]': 'sidepanelWidth()'
+    '[style.--sdg-panel-width.px]': 'panelWidth()'
   },
   imports: [
     CommonModule,
@@ -38,8 +41,14 @@ export class SdgFullMapSkeleton implements OnInit {
 
   readonly attribution = input.required<IMapFooterAttribution>();
   readonly isHandset = input.required<boolean>();
-  readonly sidepanelWidth = input<number | undefined>(undefined);
+  readonly panelWidth = input<number | undefined>(undefined);
   readonly search = input(true);
+  readonly labels = input<SdgFullMapLabels, SdgFullMapLabels | undefined>(
+    undefined,
+    {
+      transform: (value) => labelAttribute(value, undefined)
+    }
+  );
 
   ngOnInit(): void {
     if (this.isHandset()) {

@@ -1,7 +1,8 @@
 <sdg-full-map-skeleton
   [attribution]="options().footer"
   [isHandset]="isHandset()"
-  [sidepanelWidth]="options().sidepanel?.width"
+  [labels]="labels()"
+  [panelWidth]="options().panel?.width"
   [search]="options().search !== false"
 >
   <ng-container panel>
@@ -13,6 +14,7 @@
     ) {
       <sdg-search-results
         [groups]="displayedGroups()"
+        [labels]="labels().search"
         (resultSelect)="onResultSelect($event)"
         (loadMore)="onLoadMore($event)"
       />
@@ -35,6 +37,7 @@
   <ng-container search-bar>
     @if (options().search !== false) {
       <sdg-search-bar
+        [labels]="labels().searchBar"
         (searchChange)="onSearchChange($event)"
         (clear)="clearSearch()"
       />
@@ -51,7 +54,7 @@
     map
     class="full-map-browser"
     [options]="options()"
-    [labels]="labels().browser"
+    [labels]="labels()"
     [isHandset]="isHandset()"
     (mapReady)="handleMap($event)"
     (extentChange)="extentChange.emit(undefined)"

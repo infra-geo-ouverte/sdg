@@ -28,6 +28,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import {
   PanelService,
+  SDG_FULL_MAP_DEFAULT_LABELS,
+  SDG_FULL_MAP_LABELS,
+  SdgFullMapLabels,
+  SdgFullMapOptions,
   SdgFullMapSkeleton,
   SdgPanelContentDirective,
   SdgSearchResults,
@@ -45,14 +49,11 @@ import { SdgSearchBar, WithLabels } from '@igo2/sdg-common';
 import { of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 
-import { SdgOlMap, SdgOlSearchHighlight } from '../shared';
+import { SdgOlMap, SdgOlMapOptions, SdgOlSearchHighlight } from '../shared';
 import { SdgOlFullMapBrowser } from './browser';
-import {
-  SDG_OL_FULL_MAP_LABELS,
-  SdgOlFullMapLabels,
-  SdgOlFullMapOptions
-} from './full-map';
 import { SdgScaleLine } from './scale-line/scale-line.component';
+
+export type SdgOlFullMapOptions = SdgOlMapOptions & SdgFullMapOptions;
 
 @Component({
   selector: 'sdg-ol-full-map',
@@ -78,7 +79,7 @@ import { SdgScaleLine } from './scale-line/scale-line.component';
   styleUrl: './full-map.component.scss'
 })
 export class SdgOlFullMap
-  extends WithLabels<SdgOlFullMapLabels>
+  extends WithLabels<SdgFullMapLabels>
   implements OnInit, AfterContentInit
 {
   private readonly destroyRef = inject(DestroyRef);
@@ -151,7 +152,7 @@ export class SdgOlFullMap
   );
 
   constructor() {
-    super(undefined, SDG_OL_FULL_MAP_LABELS);
+    super(SDG_FULL_MAP_DEFAULT_LABELS, SDG_FULL_MAP_LABELS);
 
     effect(() => {
       const map = this.map();
@@ -165,7 +166,7 @@ export class SdgOlFullMap
   }
 
   get defaultPanel(): string | undefined {
-    return this.options().sidepanel?.defaultPanel;
+    return this.options().panel?.defaultPanel;
   }
 
   ngOnInit(): void {

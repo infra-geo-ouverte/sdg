@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PanelService } from '@igo2/sdg-carto';
 
 import { TEST_CONFIG } from '../../../../test-config';
-import { SdgOlFullMapOptions } from '../full-map';
+import type { SdgOlFullMapOptions } from '../full-map.component';
 import { SdgOlFullMapBrowser } from './full-map-browser.component';
 
 describe('SdgOlFullMapBrowser', () => {
@@ -100,7 +100,7 @@ describe('SdgOlFullMapBrowser', () => {
   it('should navigate to defaultPanel when legend is expanded and type is legend', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      sidepanel: { width: 380, defaultPanel: 'layers' }
+      panel: { width: 380, defaultPanel: 'layers' }
     });
     component.ngOnInit();
     panelService.toggle('legend');

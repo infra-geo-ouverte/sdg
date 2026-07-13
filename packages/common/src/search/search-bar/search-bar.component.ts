@@ -3,6 +3,7 @@ import {
   Component,
   DestroyRef,
   ElementRef,
+  InjectionToken,
   inject,
   input,
   output,
@@ -15,6 +16,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+
+import { WithLabels } from '@igo2/sdg-common';
 
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -32,6 +35,18 @@ const INVALID_KEYS = [
   'ArrowLeft'
 ];
 
+export interface SearchBarLabels {
+  placeholder: string;
+}
+
+export const DEFAULT_SEARCH_BAR_LABELS: Required<SearchBarLabels> = {
+  placeholder: 'Rechercher'
+};
+
+export const SEARCH_BAR_LABELS = new InjectionToken<SearchBarLabels>(
+  'SDG_SEARCH_BAR_LABELS'
+);
+
 @Component({
   selector: 'sdg-search-bar',
   imports: [
@@ -45,10 +60,9 @@ const INVALID_KEYS = [
   styleUrl: './search-bar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SdgSearchBar {
+export class SdgSearchBar extends WithLabels<SearchBarLabels> {
   private readonly destroyRef = inject(DestroyRef);
 
-  readonly placeholder = input<string>('Rechercher');
   readonly debounce = input<number>(300);
   readonly minLength = input<number>(2);
 
@@ -65,6 +79,8 @@ export class SdgSearchBar {
   private readonly stream$ = new Subject<string>();
 
   constructor() {
+    super(DEFAULT_SEARCH_BAR_LABELS, SEARCH_BAR_LABELS);
+
     this.stream$
       .pipe(
         debounceTime(this.debounce()),

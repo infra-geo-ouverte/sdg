@@ -13,6 +13,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
+import { WithLabels } from '@igo2/sdg-common';
+
+import {
+  DEFAULT_SEARCH_LABELS,
+  SEARCH_LABELS,
+  SearchLabels
+} from '../shared/search';
 import {
   SearchResult,
   SearchResultGroup
@@ -34,7 +41,7 @@ import { SdgSearchResultItem } from './search-result-item.component';
     SdgSearchResultItem
   ]
 })
-export class SdgSearchResults {
+export class SdgSearchResults extends WithLabels<SearchLabels> {
   readonly groups = input.required<SearchResultGroup[]>();
 
   readonly resultSelect = output<SearchResult>();
@@ -52,6 +59,10 @@ export class SdgSearchResults {
   readonly isSingleSource = computed(
     () => this.groups().filter((g) => g.source.id !== 'coordinates').length <= 1
   );
+
+  constructor() {
+    super(DEFAULT_SEARCH_LABELS, SEARCH_LABELS);
+  }
 
   isFocused(result: SearchResult): boolean {
     return this.focusedResult() === result;

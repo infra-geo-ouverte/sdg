@@ -6,7 +6,7 @@
       @if (navigation?.rotation !== false) {
         <sdg-rotation-button
           [map]="map"
-          [labels]="labels().rotation"
+          [labels]="labels().navigation?.rotation"
           color="primary"
         />
       }
@@ -15,7 +15,7 @@
         <sdg-home-button
           [map]="map"
           [options]="homeOptions()"
-          [labels]="labels().home"
+          [labels]="labels().navigation?.home"
           color="primary"
         />
       }
@@ -23,13 +23,17 @@
       @if (navigation?.geolocation !== false) {
         <sdg-geolocate-button
           [controller]="geolocation"
-          [labels]="labels().geolocation"
+          [labels]="labels().navigation?.geolocation"
           color="primary"
         />
       }
 
       @if (navigation?.zoom !== false && !isHandset()) {
-        <sdg-zoom-button [map]="map" [labels]="labels().zoom" color="primary" />
+        <sdg-zoom-button
+          [map]="map"
+          [labels]="labels().navigation?.zoom"
+          color="primary"
+        />
       }
     </div>
 
@@ -53,7 +57,11 @@
 
   @if (basemaps().length > 1) {
     <div class="full-map-browser-basemap-switcher">
-      <sdg-ol-basemap-switcher [map]="map" [basemaps]="basemaps()" />
+      <sdg-ol-basemap-switcher
+        [map]="map"
+        [basemaps]="basemaps()"
+        [labels]="labels().basemap"
+      />
     </div>
   }
 

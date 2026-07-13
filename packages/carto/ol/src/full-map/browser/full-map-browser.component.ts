@@ -15,9 +15,9 @@ import {
   GeolocateButtonComponent,
   HomeButtonComponent,
   IHomeOptions,
-  NavigationLabels,
   PanelService,
   RotationButtonComponent,
+  SdgFullMapLabels,
   SdgMapBrowser,
   ZoomButtonComponent,
   resolveOptions
@@ -28,25 +28,22 @@ import Layer from 'ol/layer/Layer';
 
 import { SdgOlBasemapSwitcher } from '../../shared/basemap-switcher';
 import { SdgOlGeolocation, SdgOlMap } from '../../shared/map';
-import { SdgOlFullMapOptions } from '../full-map';
+import type { SdgOlFullMapOptions } from '../full-map.component';
 
 // import ScaleLine from 'ol/control/ScaleLine';
 
-const LABELS_DEFAULT: ISdgOlFullMapBrowserLabels = {
+type SdgOlFullMapBrowserLabels = Pick<
+  SdgFullMapLabels,
+  'legend' | 'basemap' | 'navigation'
+>;
+
+const LABELS_DEFAULT: SdgOlFullMapBrowserLabels = {
   legend: {
     label: 'Légende',
     open: 'Ouvrir la légende',
     close: 'Fermer la légende'
   }
 };
-
-export interface ISdgOlFullMapBrowserLabels extends NavigationLabels {
-  legend?: {
-    label: string;
-    open?: string;
-    close?: string;
-  };
-}
 
 @Component({
   selector: 'sdg-ol-full-map-browser',
@@ -70,8 +67,8 @@ export class SdgOlFullMapBrowser implements OnInit, AfterViewInit {
   readonly options = input.required<SdgOlFullMapOptions>();
   readonly isHandset = input.required<boolean>();
   readonly labels = input<
-    ISdgOlFullMapBrowserLabels,
-    ISdgOlFullMapBrowserLabels | undefined
+    SdgOlFullMapBrowserLabels,
+    SdgOlFullMapBrowserLabels | undefined
   >(LABELS_DEFAULT, {
     transform: (value) => labelAttribute(value, LABELS_DEFAULT)
   });
@@ -101,7 +98,7 @@ export class SdgOlFullMapBrowser implements OnInit, AfterViewInit {
   toggleLegend(): void {
     if (this.panelService.type() === 'legend') {
       if (this.panelService.expanded()) {
-        const defaultPanel = this.options().sidepanel?.defaultPanel;
+        const defaultPanel = this.options().panel?.defaultPanel;
         if (defaultPanel) {
           this.panelService.toggle(defaultPanel);
         } else {

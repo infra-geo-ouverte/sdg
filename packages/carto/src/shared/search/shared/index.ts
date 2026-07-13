@@ -1,4 +1,5 @@
 export * from './coordinate-parser';
+export * from './search';
 export * from './search-source';
 export * from './search-source.interface';
 export * from './search.providers';

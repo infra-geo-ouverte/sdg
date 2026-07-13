@@ -3,9 +3,9 @@
   [class.--focused]="focused()"
   [class.--selected]="selected()"
   [matTooltip]="result().title"
-  (click)="resultSelect.emit(result())"
-  (mouseenter)="resultFocus.emit(result())"
-  (mouseleave)="resultUnfocus.emit(result())"
+  (click)="select.emit(result())"
+  (mouseenter)="focus.emit(result())"
+  (mouseleave)="unfocus.emit(result())"
 >
   <mat-icon matListItemIcon>{{ result().icon ?? 'location_on' }}</mat-icon>
   <span

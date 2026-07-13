@@ -10,10 +10,11 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { labelAttribute } from '@igo2/sdg-i18n';
 
-import { BasemapSwitcherLabels } from './basemap-switcher.interface';
+export interface BasemapSwitcherLabels {
+  tooltip: string;
+}
 
 const LABELS_DEFAULT: BasemapSwitcherLabels = {
-  title: 'Fonds',
   tooltip: 'Changer le fond de carte'
 };
 

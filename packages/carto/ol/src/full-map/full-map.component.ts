@@ -1,5 +1,6 @@
 import { CommonModule, NgTemplateOutlet } from '@angular/common';
 import {
+  AfterContentInit,
   Component,
   DestroyRef,
   OnInit,
@@ -78,7 +79,7 @@ import { SdgScaleLine } from './scale-line/scale-line.component';
 })
 export class SdgOlFullMap
   extends WithLabels<SdgOlFullMapLabels>
-  implements OnInit
+  implements OnInit, AfterContentInit
 {
   private readonly destroyRef = inject(DestroyRef);
 
@@ -163,9 +164,29 @@ export class SdgOlFullMap
     });
   }
 
+  get defaultPanel(): string | undefined {
+    return this.options().sidepanel?.defaultPanel;
+  }
+
   ngOnInit(): void {
+    if (this.defaultPanel) {
+      this.panelService.setDefaultType(this.defaultPanel);
+    }
+
     if (this.isHandset()) {
       this.panelService.expanded.set(false);
+    }
+  }
+
+  ngAfterContentInit(): void {
+    if (this.options().search === false && !this.defaultPanel) {
+      const firstPanel = this.panelContents()[0];
+      if (!firstPanel) {
+        throw new Error(
+          'SdgOlFullMap: search is disabled but no defaultPanel or panel content is provided.'
+        );
+      }
+      this.panelService.setType(firstPanel.type());
     }
   }
 
@@ -209,9 +230,10 @@ export class SdgOlFullMap
 
     if (cleanTerm && this.panelService.type() !== 'search') {
       this.panelService.toggle('search');
+    } else if (cleanTerm && !this.panelService.expanded()) {
+      this.panelService.expanded.set(true);
     } else if (!cleanTerm && this.panelService.type() === 'search') {
       this.searchHighlight?.clear();
-      this.panelService.toggle('custom');
     }
 
     this.searchChange.emit(cleanTerm);
@@ -220,9 +242,21 @@ export class SdgOlFullMap
   clearSearch(): void {
     this.searchTerm.set('');
     this.searchHighlight?.clear();
-    this.panelService.toggle('custom');
+
+    if (this.panelService.expanded()) {
+      this.navigateToDefaultPanel();
+    } else {
+      this.panelService.resetDefaultType();
+    }
 
     if (this.isHandset()) {
+      this.panelService.expanded.set(false);
+    }
+  }
+  private navigateToDefaultPanel(): void {
+    if (this.defaultPanel) {
+      this.panelService.toggle(this.defaultPanel);
+    } else {
       this.panelService.expanded.set(false);
     }
   }

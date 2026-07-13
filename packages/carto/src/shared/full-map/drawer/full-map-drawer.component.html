@@ -5,7 +5,7 @@
     [opened]="panelService.expanded()"
     autoFocus="false"
   >
-    <div class="full-map-drawer-content">
+    <div class="full-map-drawer-content" [class.--no-search-bar]="!search()">
       <ng-content select="[full-map-drawer]" />
     </div>
   </mat-drawer>

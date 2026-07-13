@@ -45,6 +45,11 @@ footer {
       100% - #{$search-bar-top + $search-bar-height + $search-bar-left}
     );
     overflow: auto;
+
+    &.--no-search-bar {
+      margin-top: 0;
+      height: 100%;
+    }
   }
 
   &-toggle-button {

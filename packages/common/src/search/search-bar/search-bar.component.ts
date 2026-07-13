@@ -56,6 +56,7 @@ export class SdgSearchBar {
   readonly search = output<string>();
   /** Emits the search term (debounced) as the user types. */
   readonly searchChange = output<string>();
+  readonly clear = output<void>();
 
   readonly inputEl =
     viewChild.required<ElementRef<HTMLInputElement>>('inputEl');
@@ -94,5 +95,6 @@ export class SdgSearchBar {
     this.term.set('');
     this.stream$.next('');
     this.inputEl().nativeElement.focus();
+    this.clear.emit();
   }
 }

@@ -79,21 +79,37 @@ describe('SdgOlFullMapBrowser', () => {
 
   it('should toggle legend panel when panel type is not legend', () => {
     component.ngOnInit();
-    panelService.toggle('custom');
+    panelService.type.set('layers');
+    panelService.expanded.set(true);
 
     component.toggleLegend();
 
     expect(panelService.type()).toBe('legend');
   });
 
-  it('should toggle to custom when legend is expanded and type is legend', () => {
+  it('should close panel when legend is expanded, type is legend, and no defaultPanel', () => {
     component.ngOnInit();
     panelService.toggle('legend');
     panelService.expanded.set(true);
 
     component.toggleLegend();
 
-    expect(panelService.type()).toBe('custom');
+    expect(panelService.expanded()).toBe(false);
+  });
+
+  it('should navigate to defaultPanel when legend is expanded and type is legend', () => {
+    fixture.componentRef.setInput('options', {
+      ...defaultOptions,
+      sidepanel: { width: 380, defaultPanel: 'layers' }
+    });
+    component.ngOnInit();
+    panelService.toggle('legend');
+    panelService.expanded.set(true);
+
+    component.toggleLegend();
+
+    expect(panelService.type()).toBe('layers');
+    expect(panelService.expanded()).toBe(true);
   });
 
   it('should expand panel when legend is collapsed and type is legend', () => {

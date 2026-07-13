@@ -1,12 +1,15 @@
 import { Injectable, signal } from '@angular/core';
 
-export type PanelType = 'custom' | 'search' | 'legend' | (string & {});
+export type PanelType = 'search' | 'legend' | string;
+
+const DEFAULT_PANEL_TYPE: PanelType = 'search';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PanelService {
-  type = signal<PanelType>('custom');
+  defaultType = signal<PanelType>(DEFAULT_PANEL_TYPE);
+  readonly type = signal<PanelType>(DEFAULT_PANEL_TYPE);
   expanded = signal(false);
   visibleHeight = signal(0);
 
@@ -17,5 +20,18 @@ export class PanelService {
     } else {
       this.expanded.update((value) => !value);
     }
+  }
+
+  setType(type: PanelType): void {
+    this.type.set(type);
+  }
+
+  setDefaultType(type: PanelType): void {
+    this.defaultType.set(type);
+    this.setType(type);
+  }
+
+  resetDefaultType(): void {
+    this.setType(this.defaultType());
   }
 }

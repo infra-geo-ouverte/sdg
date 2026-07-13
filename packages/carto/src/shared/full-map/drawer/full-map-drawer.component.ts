@@ -33,4 +33,5 @@ export class SdgFullMapSkeletonDrawer {
   panelService = inject(PanelService);
   readonly attribution = input.required<IMapFooterAttribution>();
   readonly isHandset = input.required<boolean>();
+  readonly search = input(true);
 }

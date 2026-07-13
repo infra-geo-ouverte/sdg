@@ -39,6 +39,7 @@ export class SdgFullMapSkeleton implements OnInit {
   readonly attribution = input.required<IMapFooterAttribution>();
   readonly isHandset = input.required<boolean>();
   readonly sidepanelWidth = input<number | undefined>(undefined);
+  readonly search = input(true);
 
   ngOnInit(): void {
     if (this.isHandset()) {

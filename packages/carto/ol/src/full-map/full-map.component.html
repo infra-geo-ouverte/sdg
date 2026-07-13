@@ -2,6 +2,7 @@
   [attribution]="options().footer"
   [isHandset]="isHandset()"
   [sidepanelWidth]="options().sidepanel?.width"
+  [search]="options().search !== false"
 >
   <ng-container panel>
     <!-- Default panel for search results -->
@@ -33,7 +34,10 @@
 
   <ng-container search-bar>
     @if (options().search !== false) {
-      <sdg-search-bar (searchChange)="onSearchChange($event)" />
+      <sdg-search-bar
+        (searchChange)="onSearchChange($event)"
+        (clear)="clearSearch()"
+      />
     }
   </ng-container>
 

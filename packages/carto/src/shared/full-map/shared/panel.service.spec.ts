@@ -17,8 +17,8 @@ describe('PanelService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should have default type as "custom"', () => {
-    expect(service.type()).toBe('custom');
+  it('should have default type as "search"', () => {
+    expect(service.type()).toBe('search');
   });
 
   it('should have expanded as false by default', () => {
@@ -37,7 +37,7 @@ describe('PanelService', () => {
     });
 
     it('should set type and expand when called with a different type', () => {
-      service.type.set('custom');
+      service.type.set('legend');
       service.expanded.set(false);
 
       service.toggle('search');

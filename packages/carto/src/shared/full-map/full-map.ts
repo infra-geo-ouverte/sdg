@@ -39,38 +39,3 @@ export interface LegendLabels {
 export const SDG_FULL_MAP_LABELS = new InjectionToken<SdgFullMapLabels>(
   'SDG_FULL_MAP_LABELS'
 );
-
-export const SDG_FULL_MAP_DEFAULT_LABELS: Required<SdgFullMapLabels> = {
-  navigation: {
-    home: {
-      goHome: 'Home'
-    },
-    rotation: { reset: 'Reset rotation' },
-    geolocation: {
-      active: 'My location',
-      inactive: 'Activate geolocation'
-    },
-    zoom: { zoomIn: 'Zoom in', zoomOut: 'Zoom out' }
-  },
-  legend: {
-    label: 'Legend',
-    open: 'Open legend',
-    close: 'Close legend'
-  },
-  search: {
-    clear: 'Clear',
-    noResults: 'No results',
-    results: 'Results',
-    loadMore: 'Load more results'
-  },
-  searchBar: {
-    placeholder: 'Search for a place or address'
-  },
-  basemap: {
-    tooltip: 'Change the basemap'
-  },
-  panel: {
-    open: 'Open the panel',
-    close: 'Close the panel'
-  }
-};

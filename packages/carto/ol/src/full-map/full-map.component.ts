@@ -28,7 +28,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import {
   PanelService,
-  SDG_FULL_MAP_DEFAULT_LABELS,
   SDG_FULL_MAP_LABELS,
   SdgFullMapLabels,
   SdgFullMapOptions,
@@ -152,7 +151,7 @@ export class SdgOlFullMap
   );
 
   constructor() {
-    super(SDG_FULL_MAP_DEFAULT_LABELS, SDG_FULL_MAP_LABELS);
+    super(undefined, SDG_FULL_MAP_LABELS);
 
     effect(() => {
       const map = this.map();

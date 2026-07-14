@@ -53,8 +53,7 @@ export function provideTranslation(
   features: TranslationFeature<TranslationFeatureKind>[],
   config?: Omit<RootTranslateServiceConfig, 'loader'> & {
     loader:
-      | Partial<TranslateHttpLoaderConfig>
-      | RootTranslateServiceConfig['loader'];
+      Partial<TranslateHttpLoaderConfig> | RootTranslateServiceConfig['loader'];
   }
 ) {
   const providers: (Provider | EnvironmentProviders)[] = [];
@@ -87,7 +86,9 @@ function getLoader(
   });
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isProvider(obj: any): obj is Provider {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (obj as any).provide !== undefined;
 }
 

@@ -8,7 +8,7 @@ import {
 } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { TranslationPipe, labelAttribute } from '@igo2/sdg-i18n';
+import { labelAttribute } from '@igo2/sdg-i18n';
 
 import {
   IMapFooterAttribution,
@@ -27,7 +27,6 @@ import { PanelService } from '../shared/panel.service';
     MatDrawer,
     MatDrawerContent,
     MatTooltipModule,
-    TranslationPipe,
     SdgFullMapSkeletonFooter
   ],
   templateUrl: './full-map-drawer.component.html',

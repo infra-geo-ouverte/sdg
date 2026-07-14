@@ -24,9 +24,7 @@
   mat-mini-fab
   class="full-map-drawer-toggle-button"
   [class.--expanded]="panelService.expanded()"
-  [matTooltip]="
-    (panelService.expanded() ? labels().close : labels().open) | translate
-  "
+  [matTooltip]="panelService.expanded() ? labels().close : labels().open"
   matTooltipPosition="after"
   (click)="panelService.toggle()"
 >

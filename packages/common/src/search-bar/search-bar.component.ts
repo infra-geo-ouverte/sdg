@@ -20,7 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import { WithLabels } from '../../shared/with-labels';
+import { WithLabels } from '../shared/with-labels';
 
 const INVALID_KEYS = [
   'Control',
@@ -63,6 +63,7 @@ export const SEARCH_BAR_LABELS = new InjectionToken<SearchBarLabels>(
 export class SdgSearchBar extends WithLabels<SearchBarLabels> {
   private readonly destroyRef = inject(DestroyRef);
 
+  readonly color = input<'dark' | 'light'>('dark');
   readonly debounce = input<number>(300);
   readonly minLength = input<number>(2);
 

@@ -1,29 +1,120 @@
 <p>
-  La <b>barre de recherche</b> permet à l'utilisateur de saisir un terme de
-  recherche. Elle émet le terme au fur et à mesure de la saisie (via
-  <code>searchChange</code>) et lors de la soumission explicite (via
-  <code>search</code>).
+  <span
+    >La <b>barre de recherche</b> permet à l'utilisateur d'effectuer des
+    recherches sur un site Web ou une application en saisissant des mots-clés.
+    Pour plus d'information, voir la
+  </span>
+  <span>
+    <sdg-external-link
+      text="Barre de recherche"
+      url="https://design.quebec.ca/design/composants/barre-recherche"
+    />
+  </span>
+  <span>du Système de design gouvernemental.</span>
 </p>
 
-<app-example-viewer
-  title="Barre de recherche"
-  configFolder="search-bar"
-  codeFolder="search/search-bar"
->
-  <sdg-search-bar
-    placeholder="Rechercher un élément"
-    (search)="searchTerm.set($event)"
-    (searchChange)="liveTerm.set($event)"
-  />
+<p>
+  Une barre de recherche est pertinente sur un site Web ou une application pour
+  permettre aux utilisateurs de trouver rapidement des informations dans un
+  contenu volumineux, d'accéder rapidement à ce qu'ils cherchent, de rechercher
+  des informations spécifiques, d'obtenir de l'aide et du support, etc.
+</p>
 
-  @if (liveTerm()) {
-    <p class="mt-2">
-      Saisie en cours&nbsp;: <strong>{{ liveTerm() }}</strong>
-    </p>
-  }
-  @if (searchTerm()) {
-    <p>
-      Dernière recherche soumise&nbsp;: <strong>{{ searchTerm() }}</strong>
-    </p>
-  }
-</app-example-viewer>
+<sdg-anchor-menu [anchors]="anchors" />
+
+<section>
+  <h2 id="section1">Généralités</h2>
+
+  <p>
+    La barre de recherche n'a pas de libellé au-dessus pour une interface plus
+    épurée. À la place, elle utilise un espace réservé pour guider
+    l'utilisateur. Ce texte succinct informe de la fonction du champ et doit
+    être entièrement lisible en format mobile.
+  </p>
+
+  <p>
+    La barre de recherche est alignée à gauche ou au centre de la page, selon le
+    conteneur principal de la page. La barre de recherche doit être placée dans
+    un élément large, bien visible (comme le
+    <a [routerLink]="['../bandeau-piv']">bandeau d'en-tête du PIV</a> ou en haut
+    de la page), et non imbriquée dans d'autres éléments.
+  </p>
+
+  <p>
+    Sa largeur maximale est de 825 px, avec une largeur idéale de 640 px en
+    format bureau. En format mobile, elle occupe idéalement toute la largeur
+    disponible.
+  </p>
+
+  <p>
+    Un dégagement minimal de 24 px en haut et en bas de la barre de recherche
+    est recommandé.
+  </p>
+
+  <p>
+    La couleur d'arrière-plan du conteneur doit avoir un contraste d'au moins
+    3:1 avec le contour du champ ou son fond blanc.
+  </p>
+
+  <p>
+    Elle émet le terme au fur et à mesure de la saisie (via
+    <code>searchChange</code>) et lors de la soumission explicite (via
+    <code>search</code>).
+  </p>
+
+  <app-example-viewer
+    title="Barre de recherche"
+    configFolder="search-bar"
+    codeFolder="search-bar"
+  >
+    <sdg-search-bar
+      placeholder="Rechercher un élément"
+      (search)="searchTerm1.set($event)"
+      (searchChange)="liveTerm1.set($event)"
+    />
+
+    @if (liveTerm1()) {
+      <p class="mt-2">
+        Saisie en cours&nbsp;: <strong>{{ liveTerm1() }}</strong>
+      </p>
+    }
+    @if (searchTerm1()) {
+      <p>
+        Dernière recherche soumise&nbsp;: <strong>{{ searchTerm1() }}</strong>
+      </p>
+    }
+  </app-example-viewer>
+
+  <p>
+    Lorsque la barre de recherche est affichée sur un arrière-plan sombre, des
+    ajustements à prévoir aux couleurs du bouton de recherche et de l'icône de
+    la loupe. Les couleurs du champ de recherche, du texte saisi et du texte de
+    l'espace réservé restent inchangées.
+  </p>
+
+  <app-example-viewer
+    title="Barre de recherche sur arrière-plan sombre"
+    configFolder="search-bar"
+    codeFolder="search-bar"
+  >
+    <div class="search-bar-dark">
+      <sdg-search-bar
+        placeholder="Rechercher un élément"
+        color="light"
+        (search)="searchTerm2.set($event)"
+        (searchChange)="liveTerm2.set($event)"
+      />
+    </div>
+
+    @if (liveTerm2()) {
+      <p class="mt-2">
+        Saisie en cours&nbsp;: <strong>{{ liveTerm2() }}</strong>
+      </p>
+    }
+    @if (searchTerm2()) {
+      <p>
+        Dernière recherche soumise&nbsp;: <strong>{{ searchTerm2() }}</strong>
+      </p>
+    }
+  </app-example-viewer>
+</section>

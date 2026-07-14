@@ -1,5 +1,5 @@
 <div class="sdg-search-bar">
-  <mat-form-field appearance="outline" subscriptSizing="dynamic">
+  <mat-form-field>
     <input
       #inputEl
       matInput
@@ -10,12 +10,13 @@
     />
     @if (term()) {
       <button
-        mat-icon-button
-        class="sdg-search-bar-close-button"
+        matIconButton
+        class="sdg-search-bar-reset-button"
+        [class.--light]="color() === 'light'"
         matSuffix
         (click)="onClear()"
       >
-        <mat-icon>
+        <mat-icon color="primary">
           <!-- close -->
           <svg viewBox="0 -960 960 960">
             <path
@@ -26,12 +27,13 @@
       </button>
     }
     <button
-      mat-icon-button
+      matIconButton
       class="sdg-search-bar-search-button"
+      [class.--light]="color() === 'light'"
       matSuffix
       (click)="onSearch()"
     >
-      <mat-icon>
+      <mat-icon [class.--light]="color() === 'light'">
         <!-- search -->
         <svg viewBox="0 -960 960 960">
           <path

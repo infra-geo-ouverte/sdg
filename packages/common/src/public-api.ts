@@ -15,7 +15,7 @@ export * from './navigation';
 export * from './notice';
 export * from './paginator';
 export * from './router';
-export * from './search';
+export * from './search-bar';
 export * from './see-also';
 export * from './sequential-links';
 export * from './shared';

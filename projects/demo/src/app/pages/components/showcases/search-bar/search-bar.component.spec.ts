@@ -23,12 +23,12 @@ describe('SearchBarDemoComponent', () => {
   });
 
   it('should update searchTerm on search event', () => {
-    component.searchTerm.set('hello');
-    expect(component.searchTerm()).toBe('hello');
+    component.searchTerm1.set('hello');
+    expect(component.searchTerm1()).toBe('hello');
   });
 
   it('should update liveTerm on searchChange event', () => {
-    component.liveTerm.set('test');
-    expect(component.liveTerm()).toBe('test');
+    component.liveTerm1.set('test');
+    expect(component.liveTerm1()).toBe('test');
   });
 });

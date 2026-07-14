@@ -83,13 +83,16 @@ export class SearchService {
       concat(
         of<SearchResultGroup>({ source, results: [], loading: true }),
         source.search(term, options).pipe(
-          map((results): SearchResultGroup => ({
-            source,
-            results,
-            loading: false
-          })),
-          catchError((): Observable<SearchResultGroup> =>
-            of({ source, results: [], loading: false })
+          map(
+            (results): SearchResultGroup => ({
+              source,
+              results,
+              loading: false
+            })
+          ),
+          catchError(
+            (): Observable<SearchResultGroup> =>
+              of({ source, results: [], loading: false })
           )
         )
       )
@@ -112,13 +115,16 @@ export class SearchService {
       concat(
         of<SearchResultGroup>({ source, results: [], loading: true }),
         source.reverseSearch(lonLat, options).pipe(
-          map((results): SearchResultGroup => ({
-            source,
-            results,
-            loading: false
-          })),
-          catchError((): Observable<SearchResultGroup> =>
-            of({ source, results: [], loading: false })
+          map(
+            (results): SearchResultGroup => ({
+              source,
+              results,
+              loading: false
+            })
+          ),
+          catchError(
+            (): Observable<SearchResultGroup> =>
+              of({ source, results: [], loading: false })
           )
         )
       )

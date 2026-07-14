@@ -8,11 +8,12 @@ $grey-pale: var(--sdg-color-grey-pale);
 @mixin focus-ring {
   position: relative;
   z-index: 1;
-  border-color: transparent;
+  border-color: var(--sdg-color-blue-light);
   box-shadow: inset 0 0 0 2px $blue-dark;
   outline: 2px solid var(--sdg-color-blue-light);
 
   &.--light {
+    border-color: $grey-pale;
     outline-color: $grey-pale;
   }
 }
@@ -58,20 +59,30 @@ $grey-pale: var(--sdg-color-grey-pale);
   }
 }
 
-mat-form-field:has(input:focus) .sdg-search-bar {
-  &-reset-button {
-    border-color: $blue-dark;
-    box-shadow:
-      inset 0 1px 0 0 $blue-dark,
-      inset 0 -1px 0 0 $blue-dark;
+mat-form-field:has(input:focus) {
+  &.--light {
+    outline: 2px solid var(--sdg-color-grey-pale);
+  }
+
+  .sdg-search-bar {
+    &-reset-button {
+      border-color: $blue-dark;
+      box-shadow:
+        inset 0 1px 0 0 $blue-dark,
+        inset 0 -1px 0 0 $blue-dark;
+    }
   }
 }
 
 mat-form-field:focus-within .sdg-search-bar {
   &-reset-button:focus,
   &-search-button:focus {
-    border-color: transparent;
+    border-color: var(--sdg-color-blue-light);
     box-shadow: inset 0 0 0 2px $blue-dark;
+
+    &.--light {
+      border-color: $grey-pale;
+    }
   }
 
   &-search-button {

@@ -1,5 +1,7 @@
+@let colorIsLight = color() === 'light';
+
 <div class="sdg-search-bar">
-  <mat-form-field>
+  <mat-form-field [class.--light]="colorIsLight">
     <input
       #inputEl
       matInput
@@ -12,7 +14,7 @@
       <button
         matIconButton
         class="sdg-search-bar-reset-button"
-        [class.--light]="color() === 'light'"
+        [class.--light]="colorIsLight"
         matSuffix
         (click)="onClear()"
       >
@@ -29,11 +31,11 @@
     <button
       matIconButton
       class="sdg-search-bar-search-button"
-      [class.--light]="color() === 'light'"
+      [class.--light]="colorIsLight"
       matSuffix
       (click)="onSearch()"
     >
-      <mat-icon [class.--light]="color() === 'light'">
+      <mat-icon [class.--light]="colorIsLight">
         <!-- search -->
         <svg viewBox="0 -960 960 960">
           <path

@@ -31,6 +31,14 @@
   (click)="panelService.toggle()"
 >
   <mat-icon color="primary">
-    {{ panelService.expanded() ? 'chevron_left' : 'chevron_right' }}
+    <svg viewBox="0 -960 960 960">
+      @if (panelService.expanded()) {
+        <!-- chevron_left -->
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+      } @else {
+        <!-- chevron_right -->
+        <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+      }
+    </svg>
   </mat-icon>
 </button>

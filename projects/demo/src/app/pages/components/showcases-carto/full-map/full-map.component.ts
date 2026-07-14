@@ -119,6 +119,11 @@ const options: SdgOlFullMapOptions = {
   search: true // par défaut
 };
 
+// ⚠️ La recherche intégrée utilise des icônes de la police Google Material Symbols.
+// Assurez-vous de l'importer dans votre fichier 'index.html'.
+// Exemple :
+// <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
 // Pour personnaliser le panneau de résultats, projeter un ng-template.
 // Les variables de contexte disponibles sont déclarées avec let- :
 <sdg-ol-full-map [options]="options">

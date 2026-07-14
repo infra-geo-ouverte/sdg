@@ -6,7 +6,15 @@
     (touchend)="onTouchEnd($event)"
   >
     <mat-icon color="primary">
-      {{ panelService.expanded() ? 'expand_more' : 'expand_less' }}
+      <svg viewBox="0 -960 960 960">
+        @if (panelService.expanded()) {
+          <!-- keyboard_arrow_down -->
+          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+        } @else {
+          <!-- keyboard_arrow_up -->
+          <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+        }
+      </svg>
     </mat-icon>
   </button>
   <div

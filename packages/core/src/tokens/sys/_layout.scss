@@ -1,8 +1,8 @@
-@use './token-utils';
-@use '../layout/breakpoints';
-@use '../style/typography-utils' as *;
+@use '../token-utils';
+@use '../../layout/breakpoints';
+@use '../../style/typography-utils' as *;
 
-@function sys-layout-values() {
+@function values() {
   $base-spacer: 8 !default;
 
   $values: (

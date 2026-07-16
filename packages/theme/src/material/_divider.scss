@@ -5,7 +5,7 @@
 @mixin overrides() {
   @include mat.divider-overrides(
     (
-      color: rgba(map.get(sdg.$light-colors, 'black'), 0.12)
+      color: rgba(map.get(sdg.$color-light-values, 'black'), 0.12)
     )
   );
 }

@@ -1,10 +1,10 @@
 @use 'sass:map';
 
-@use './sys-colors';
-@use './sys-elevation';
-@use './sys-layout';
-@use './sys-palettes';
-@use './sys-typography';
+@use './ref/palettes';
+@use './sys/color';
+@use './sys/elevation';
+@use './sys/layout';
+@use './sys/typography';
 @use './token-utils';
 
 @mixin system-tokens() {
@@ -15,19 +15,19 @@
 }
 
 @mixin _system-level-elevation() {
-  $elevations: sys-elevation.sys-elevation-values();
+  $elevations: elevation.values();
   @include token-utils.values($elevations);
 }
 
 @mixin _system-colors() {
-  $palettes: sys-palettes.sys-palette-values();
-  $colors: sys-colors.sys-color-values();
+  $palettes-values: palettes.palette-values();
+  $colors: color.values();
 
-  @include token-utils.values(map.merge($palettes, $colors));
+  @include token-utils.values(map.merge($palettes-values, $colors));
 }
 
 @mixin _system-dark-colors() {
-  @include token-utils.values(sys-colors.sys-dark-color-values());
+  @include token-utils.values(color.dark-values());
 }
 
 @mixin system-dark-colors() {
@@ -35,11 +35,11 @@
 }
 
 @mixin _system-typographies() {
-  $typography: sys-typography.sys-typography-values();
-  @include token-utils.values($typography);
+  $typo: typography.values();
+  @include token-utils.values($typo);
 }
 
 @mixin _system-layout() {
-  $values: sys-layout.sys-layout-values();
+  $values: layout.values();
   @include token-utils.values($values);
 }

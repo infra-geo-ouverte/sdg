@@ -1,0 +1,49 @@
+@use 'sass:map';
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:string';
+@use './palettes';
+
+// Raw shadow elevation offsets
+// https://design.quebec.ca
+$shadow-elevations: (
+  0: '0px 0px 0px 0px',
+  1: '0px 1px 4px 0px ',
+  2: '0px 2px 8px 0px',
+  3: '0px 4px 16px 0px',
+  4: '0px 6px 24px 0px'
+);
+
+// The default color "dark-blue" or "#223654" for elevation shadows.
+$color: map.get(palettes.$palettes, 'blue', 700) !default;
+
+@function get-box-shadow($zValue, $shadow-color: $color, $opacity: null) {
+  @if $zValue == null {
+    @return null;
+  }
+
+  @if (meta.type-of($zValue) == string) {
+    @return $zValue;
+  }
+
+  @if meta.type-of($zValue) != number or not math.is-unitless($zValue) {
+    @error '$zValue must be a unitless number, but received `#{$zValue}`';
+  }
+
+  @if $zValue < 0 or $zValue > 4 {
+    @error '$zValue must be between 0 and 4, but received `#{$zValue}`';
+  }
+
+  $z-value: map.get($shadow-elevations, $zValue);
+  $computed-color: _compute-color-opacity($shadow-color, 0.24);
+
+  @return string.unquote('#{$z-value} #{$computed-color}');
+}
+
+@function _compute-color-opacity($color, $opacity) {
+  @if meta.type-of($color) == color and $opacity != null {
+    @return rgba($color, $opacity);
+  } @else {
+    @return $color;
+  }
+}

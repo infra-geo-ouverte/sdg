@@ -1,6 +1,6 @@
 @use 'sass:color';
 
-@use './token-utils';
+@use '../token-utils';
 
 $dark-blue: #223654;
 
@@ -67,6 +67,6 @@ $palettes: (
   )
 );
 
-@function sys-palette-values() {
+@function palette-values() {
   @return token-utils.flatten-tokens-map($palettes, 'palette');
 }

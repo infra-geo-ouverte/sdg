@@ -1,0 +1,17 @@
+@use 'sass:map';
+@use '../ref/elevation' as ref;
+
+@function values() {
+  $result: ();
+
+  @each $key, $value in ref.$shadow-elevations {
+    $result: map.merge(
+      $result,
+      (
+        'elevation-#{$key}': ref.get-box-shadow($key)
+      )
+    );
+  }
+
+  @return $result;
+}

@@ -1,8 +1,8 @@
 @use 'sass:map';
-@use '../style/typography-utils' as *;
-@use './token-utils';
+@use '../../style/typography-utils' as *;
+@use '../token-utils';
 
-$typography: (
+$desktop: (
   font: (
     family: (
       text: (
@@ -87,7 +87,7 @@ $typography: (
   )
 );
 
-$typography-mobile: (
+$mobile: (
   font: (
     size: (
       h3: rem(25),
@@ -101,9 +101,9 @@ $typography-mobile: (
   )
 );
 
-@function sys-typography-values() {
+@function values() {
   @return map.merge(
-    token-utils.flatten-tokens-map($typography),
-    token-utils.flatten-tokens-map($typography-mobile, 'mobile')
+    token-utils.flatten-tokens-map($desktop),
+    token-utils.flatten-tokens-map($mobile, 'mobile')
   );
 }

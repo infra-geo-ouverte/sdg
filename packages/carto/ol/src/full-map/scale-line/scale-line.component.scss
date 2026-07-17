@@ -1,0 +1,37 @@
+@use '@angular/material' as mat;
+
+:host {
+  display: inline-block;
+
+  &.sdg-scale-line-on-map {
+    $background-color: var(
+      --mat-sidenav-content-background,
+      var(--mat-sys-surface)
+    );
+    background: color-mix(in srgb, $background-color 56%, transparent);
+    border-radius: 4px;
+    padding: 4px;
+    @include mat.elevation(3);
+  }
+
+  ::ng-deep {
+    .ol-scale-line {
+      position: relative;
+    }
+
+    .ol-scale-line-inner {
+      border: 1px solid
+        var(--mat-sidenav-content-text-color, var(--mat-sys-on-background));
+      border-top: none;
+      color: var(
+        --mat-sidenav-content-text-color,
+        var(--mat-sys-on-background)
+      );
+      font-size: 10px;
+      text-align: center;
+      margin: 1px;
+      will-change: contents, width;
+      transition: all 0.25s;
+    }
+  }
+}

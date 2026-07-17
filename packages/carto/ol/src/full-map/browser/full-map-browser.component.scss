@@ -3,21 +3,6 @@
 
 $controls-padding: 12px;
 
-:host {
-  ::ng-deep .ol-scale-line {
-    position: relative;
-    transform: none !important;
-    left: unset !important;
-    bottom: unset !important;
-    padding: unset !important;
-
-    &-inner {
-      text-shadow: unset !important;
-      box-shadow: unset !important;
-    }
-  }
-}
-
 sdg-map-browser {
   .full-map-browser {
     &-controls {

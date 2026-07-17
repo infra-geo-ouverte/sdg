@@ -61,7 +61,7 @@
   >
     @if (options().navigation?.scaleLine && isHandset()) {
       <div class="full-map-browser-top-navigation">
-        <sdg-scale-line [map]="map()!" />
+        <sdg-scale-line [map]="map()!" onMap="true" />
       </div>
     }
   </sdg-ol-full-map-browser>

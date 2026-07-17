@@ -12,6 +12,8 @@ import { SdgMapBrowser } from '@igo2/sdg-carto';
 import olMap from 'ol/Map';
 import View from 'ol/View';
 import { defaults } from 'ol/interaction/defaults';
+import BaseLayer from 'ol/layer/Base';
+import LayerGroup from 'ol/layer/Group';
 import Layer from 'ol/layer/Layer';
 
 import { SdgOlMap } from '..';
@@ -25,12 +27,12 @@ import { SdgOlMap } from '..';
 })
 export class SdgOlMiniBasemap implements AfterViewInit {
   readonly parentMap = input.required<SdgOlMap>();
-  readonly basemap = input.required<Layer>();
+  readonly basemap = input.required<BaseLayer>();
   readonly title = input<string>();
   readonly display = input<boolean>(true);
   readonly disabled = input<boolean>(false);
 
-  readonly basemapSelect = output<Layer>();
+  readonly basemapSelect = output<BaseLayer>();
 
   readonly miniMap = signal<SdgOlMap | undefined>(undefined);
 
@@ -49,7 +51,7 @@ export class SdgOlMiniBasemap implements AfterViewInit {
         pinchZoom: false
       }),
       controls: [],
-      layers: [this.cloneLayer(this.basemap())],
+      layers: [this.cloneBaseLayer(this.basemap())],
       view: new View({
         center: parentView.getCenter(),
         zoom: parentView.getZoom(),
@@ -87,6 +89,20 @@ export class SdgOlMiniBasemap implements AfterViewInit {
     if (!this.disabled()) {
       this.basemapSelect.emit(this.basemap());
     }
+  }
+
+  private cloneBaseLayer(layer: BaseLayer): BaseLayer {
+    if (layer instanceof LayerGroup) {
+      return new LayerGroup({
+        opacity: layer.getOpacity(),
+        visible: true,
+        layers: layer
+          .getLayers()
+          .getArray()
+          .map((l) => this.cloneLayer(l as Layer))
+      });
+    }
+    return this.cloneLayer(layer as Layer);
   }
 
   private cloneLayer(layer: Layer): Layer {

@@ -8,11 +8,12 @@ import View from 'ol/View';
 import { Extent } from 'ol/extent';
 import { Interaction } from 'ol/interaction';
 import { defaults } from 'ol/interaction/defaults';
+import BaseLayer from 'ol/layer/Base';
 import { fromLonLat } from 'ol/proj';
 
 import { HasEventTargetAddRemove } from 'rxjs/internal/observable/fromEvent';
 
-import { TOPO_BASEMAP } from '../layer';
+import { BASEMAP_REGISTRY, resolveBasemaps } from '../layer';
 import { SdgOlMapOptions, SdgOlViewOptions } from './map.interface';
 
 const DEFAULT_OPTIONS: Partial<SdgOlMapOptions> = {
@@ -23,6 +24,7 @@ const DEFAULT_OPTIONS: Partial<SdgOlMapOptions> = {
 
 export class SdgOlMap implements ISdgMap<olMap> {
   readonly options: SdgOlMapOptions;
+  readonly basemaps: BaseLayer[];
 
   engine: olMap;
   initialExtent: Extent | undefined;
@@ -30,15 +32,16 @@ export class SdgOlMap implements ISdgMap<olMap> {
   constructor(options: SdgOlMapOptions) {
     this.options = merge(DEFAULT_OPTIONS, options);
 
+    this.basemaps = this.options.basemaps?.length
+      ? resolveBasemaps(this.options.basemaps)
+      : [BASEMAP_REGISTRY.topo()];
+
+    this.basemaps.forEach((b, i) => b.setVisible(i === 0));
+
     this.engine = new olMap({
       interactions: defaults(),
       controls: [],
-      layers: [
-        ...(this.options.basemaps?.length
-          ? this.options.basemaps
-          : [TOPO_BASEMAP]),
-        ...(this.options.layers ?? [])
-      ],
+      layers: [...this.basemaps, ...(this.options.layers ?? [])],
       view: new View(this.options.view)
     });
 

@@ -24,7 +24,7 @@ import {
 } from '@igo2/sdg-carto';
 import { labelAttribute } from '@igo2/sdg-common';
 
-import Layer from 'ol/layer/Layer';
+import BaseLayer from 'ol/layer/Base';
 
 import { SdgOlBasemapSwitcher } from '../../shared/basemap-switcher';
 import { SdgOlGeolocation, SdgOlMap } from '../../shared/map';
@@ -77,14 +77,15 @@ export class SdgOlFullMapBrowser implements OnInit, AfterViewInit {
 
   map!: SdgOlMap;
   geolocation!: SdgOlGeolocation;
+  basemaps: BaseLayer[] = [];
 
-  readonly basemaps = computed<Layer[]>(() => this.options().basemaps ?? []);
   readonly homeOptions = computed<IHomeOptions | undefined>(() =>
     resolveOptions(this.options().navigation?.home)
   );
 
   ngOnInit(): void {
     this.map = new SdgOlMap(this.options());
+    this.basemaps = this.map.basemaps;
 
     this.geolocation = new SdgOlGeolocation(this.map);
 

@@ -50,13 +50,24 @@
 </app-example-viewer>
 
 <section>
-  <h3>Configuration de la carte</h3>
+  <h3>Comportement des basemaps</h3>
   <p>
-    Il est possible de modifier certaines options globalement comme les libellés
-    ou la durée de l'affichage des messages d'aide. Par exemple, pour les
-    libellés vous devez définir la clé de traduction qui sera utilisée pour
-    récupérer les traductions via le TranslationService
+    Le composant utilise les basemaps intégrés et applique un fond par défaut si
+    aucun basemap n'est fourni.
   </p>
+
+  <ol>
+    <li>
+      <b>basemaps: []</b> utilise automatiquement le basemap topo intégré.
+    </li>
+    <li><b>basemaps: ['topo']</b> force explicitement le fond topo intégré.</li>
+    <li>
+      Les clés intégrées disponibles sont <b>topo</b>, <b>imagery</b> et
+      <b>hybrid</b>.
+    </li>
+  </ol>
+
+  <sdg-ol-reference-map [options]="map3" />
 
   <pre class="pre-code">
     <code [innerHTML]="example">

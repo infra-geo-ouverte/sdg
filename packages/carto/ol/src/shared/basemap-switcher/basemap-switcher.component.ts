@@ -9,7 +9,7 @@ import {
 import { BasemapSwitcherLabels, SdgBasemapSwitcher } from '@igo2/sdg-carto';
 import { labelAttribute } from '@igo2/sdg-common';
 
-import Layer from 'ol/layer/Layer';
+import BaseLayer from 'ol/layer/Base';
 
 import { SdgOlMap } from '..';
 import { SdgOlMiniBasemap } from './mini-basemap.component';
@@ -27,7 +27,7 @@ const LABELS_DEFAULT: BasemapSwitcherLabels = {
 })
 export class SdgOlBasemapSwitcher {
   readonly map = input.required<SdgOlMap>();
-  readonly basemaps = input.required<Layer[]>();
+  readonly basemaps = input.required<BaseLayer[]>();
   readonly labels = input<
     BasemapSwitcherLabels,
     BasemapSwitcherLabels | undefined
@@ -42,13 +42,13 @@ export class SdgOlBasemapSwitcher {
    * When collapsed, shows only the first inactive basemap.
    * When expanded, shows all inactive basemaps.
    */
-  readonly inactiveBasemaps = computed<Layer[]>(() => {
+  readonly inactiveBasemaps = computed<BaseLayer[]>(() => {
     const all = this.basemaps();
     const activeIndex = this.activeIndex();
     return all.filter((_, i) => i !== activeIndex);
   });
 
-  readonly displayedBasemaps = computed<Layer[]>(() => {
+  readonly displayedBasemaps = computed<BaseLayer[]>(() => {
     const inactive = this.inactiveBasemaps();
     if (this.expanded()) {
       return inactive;
@@ -58,7 +58,7 @@ export class SdgOlBasemapSwitcher {
 
   readonly activeIndex = signal<number>(0);
 
-  selectBasemap(layer: Layer): void {
+  selectBasemap(layer: BaseLayer): void {
     const basemaps = this.basemaps();
 
     // Find the index of the selected basemap
@@ -78,7 +78,7 @@ export class SdgOlBasemapSwitcher {
     }
   }
 
-  getTitle(layer: Layer): string {
+  getTitle(layer: BaseLayer): string {
     return layer.get('title') as string;
   }
 }

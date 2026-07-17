@@ -55,11 +55,11 @@
     }
   </div>
 
-  @if (basemaps().length > 1) {
+  @if (basemaps.length > 1) {
     <div class="full-map-browser-basemap-switcher">
       <sdg-ol-basemap-switcher
         [map]="map"
-        [basemaps]="basemaps()"
+        [basemaps]="basemaps"
         [labels]="labels().basemap"
       />
     </div>

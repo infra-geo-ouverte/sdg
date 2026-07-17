@@ -11,10 +11,6 @@ import {
 import { SdgOlFullMap, SdgOlFullMapOptions } from '@igo2/sdg-carto/ol';
 import { BreakpointService, ExternalLinkComponent } from '@igo2/sdg-common';
 
-import {
-  IMAGERY_BASEMAP,
-  TOPO_BASEMAP
-} from 'packages/carto/ol/src/shared/layer';
 import { DocsCodeComponent } from 'projects/demo/src/app/components/docs-code/docs-code.component';
 
 import { ExampleViewerComponent } from '../../../../components';
@@ -30,7 +26,7 @@ const MAP_CONFIG: SdgOlFullMapOptions = {
     center: [-71.636918, 54.784257],
     zoom: 5
   },
-  basemaps: [TOPO_BASEMAP, IMAGERY_BASEMAP],
+  basemaps: ['topo', 'imagery', 'hybrid'],
   legend: true,
   search: true,
   panel: {
@@ -109,8 +105,23 @@ export class FullMapDemoComponent implements OnInit {
 
 const BASEMAPS_EXAMPLE = `
 const options: SdgOlFullMapOptions = {
-  // ...
-  basemaps: [TOPO_BASEMAP, IMAGERY_BASEMAP]
+  // Use built-in string keys (a fresh OL layer is created for each map instance)
+  basemaps: ['topo', 'imagery', 'hybrid']
+};
+
+// You can also pass plain OL BaseLayer objects directly:
+import TileLayer from 'ol/layer/Tile';
+import { XYZ } from 'ol/source';
+
+const options: SdgOlFullMapOptions = {
+  basemaps: [
+    new TileLayer({ source: new XYZ({ url: 'https://example.com/{z}/{x}/{y}.png' }) })
+  ]
+};
+
+// Or mix both:
+const options: SdgOlFullMapOptions = {
+  basemaps: ['topo', new TileLayer({ /* … */ })]
 };`;
 
 const SEARCH_EXAMPLE = `

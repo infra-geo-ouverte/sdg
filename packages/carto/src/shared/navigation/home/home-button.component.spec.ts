@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../../test-config';
 import { Extent, ISdgMap } from '../../map/map.interface';
-import { HomeButtonComponent } from './home-button.component';
+import { SdgHomeButton } from './home-button.component';
 
-describe('HomeButtonComponent', () => {
-  let component: HomeButtonComponent;
-  let fixture: ComponentFixture<HomeButtonComponent>;
+describe('SdgHomeButton', () => {
+  let component: SdgHomeButton;
+  let fixture: ComponentFixture<SdgHomeButton>;
   let mockMap: ISdgMap;
 
   beforeEach(async () => {
@@ -16,11 +16,11 @@ describe('HomeButtonComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [],
-      imports: [HomeButtonComponent],
+      imports: [SdgHomeButton],
       providers: TEST_CONFIG.providers
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomeButtonComponent);
+    fixture = TestBed.createComponent(SdgHomeButton);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('map', mockMap);
     fixture.detectChanges();

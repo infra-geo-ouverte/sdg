@@ -10,12 +10,12 @@ import {
 } from '@angular/core';
 
 import {
-  GeolocateButtonComponent,
-  HomeButtonComponent,
   IHomeOptions,
-  RotationButtonComponent,
+  SdgGeolocateButton,
+  SdgHomeButton,
   SdgMapBrowser,
-  ZoomButtonComponent,
+  SdgRotationButton,
+  SdgZoomButton,
   resolveOptions
 } from '@igo2/sdg-carto';
 import { WithLabels } from '@igo2/sdg-common';
@@ -25,7 +25,7 @@ import {
   SDG_REFERENCE_MAP_CONFIG,
   SDG_REFERENCE_MAP_LABELS
 } from './reference-map';
-import { SdgOlReferenceMapInteractionsDirective } from './reference-map-interactions.directive';
+import { SdgOlReferenceMapInteractions } from './reference-map-interactions.directive';
 import {
   ISdgMapLabels,
   ISdgReferenceMapConfig
@@ -34,12 +34,12 @@ import {
 @Component({
   selector: 'sdg-ol-reference-map',
   imports: [
+    SdgGeolocateButton,
+    SdgHomeButton,
     SdgMapBrowser,
-    SdgOlReferenceMapInteractionsDirective,
-    ZoomButtonComponent,
-    RotationButtonComponent,
-    GeolocateButtonComponent,
-    HomeButtonComponent
+    SdgOlReferenceMapInteractions,
+    SdgRotationButton,
+    SdgZoomButton
   ],
   templateUrl: './reference-map.component.html',
   styleUrl: './reference-map.component.scss',

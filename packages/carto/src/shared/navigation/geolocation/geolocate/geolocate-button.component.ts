@@ -27,7 +27,7 @@ const LABELS_DEFAULT: GeolocationLabels = {
   imports: [MatButtonModule, MatTooltipModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class GeolocateButtonComponent {
+export class SdgGeolocateButton {
   controller = input.required<GeolocationBase>();
   color = input<string>();
   labels = input<GeolocationLabels, GeolocationLabels | undefined>(

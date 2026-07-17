@@ -48,9 +48,13 @@ import { SdgSearchBar, WithLabels } from '@igo2/sdg-common';
 import { of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 
-import { SdgOlMap, SdgOlMapOptions, SdgOlSearchHighlight } from '../shared';
+import {
+  SdgOlMap,
+  SdgOlMapOptions,
+  SdgOlScaleLine,
+  SdgOlSearchHighlight
+} from '../shared';
 import { SdgOlFullMapBrowser } from './browser';
-import { SdgScaleLine } from './scale-line/scale-line.component';
 
 export type SdgOlFullMapOptions = SdgOlMapOptions & SdgFullMapOptions;
 
@@ -58,20 +62,20 @@ export type SdgOlFullMapOptions = SdgOlMapOptions & SdgFullMapOptions;
   selector: 'sdg-ol-full-map',
   imports: [
     CommonModule,
-    NgTemplateOutlet,
-    MatTooltipModule,
     MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
     MatDialogModule,
     MatExpansionModule,
-    SdgOlFullMapBrowser,
-    MatProgressSpinnerModule,
-    SdgSearchBar,
-    SdgSearchResults,
-    SdgFullMapSkeleton,
     MatFormFieldModule,
-    SdgScaleLine
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatSidenavModule,
+    MatTooltipModule,
+    NgTemplateOutlet,
+    SdgFullMapSkeleton,
+    SdgOlFullMapBrowser,
+    SdgOlScaleLine,
+    SdgSearchBar,
+    SdgSearchResults
   ],
   providers: [provideSearch(withIChercheSource(), withTerrapiSource())],
   templateUrl: './full-map.component.html',

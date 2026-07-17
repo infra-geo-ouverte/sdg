@@ -12,14 +12,14 @@ import ScaleLine from 'ol/control/ScaleLine';
 import { SdgOlMap } from '../../shared';
 
 @Component({
-  selector: 'sdg-scale-line',
+  selector: 'sdg-ol-scale-line',
   template: '',
   styleUrl: './scale-line.component.scss',
   host: {
     '[class.sdg-scale-line-on-map]': 'onMap()'
   }
 })
-export class SdgScaleLine {
+export class SdgOlScaleLine {
   private readonly elementRef = inject<ElementRef>(ElementRef);
 
   readonly map = input.required<SdgOlMap>();

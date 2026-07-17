@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../../test-config';
 import { ISdgMap } from '../../map/map.interface';
-import { RotationButtonComponent } from './rotation-button.component';
+import { SdgRotationButton } from './rotation-button.component';
 
-describe('RotationButtonComponent', () => {
-  let component: RotationButtonComponent;
-  let fixture: ComponentFixture<RotationButtonComponent>;
+describe('SdgRotationButton', () => {
+  let component: SdgRotationButton;
+  let fixture: ComponentFixture<SdgRotationButton>;
   let mockMap: ISdgMap;
 
   beforeEach(async () => {
@@ -31,11 +31,11 @@ describe('RotationButtonComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [],
-      imports: [RotationButtonComponent],
+      imports: [SdgRotationButton],
       providers: TEST_CONFIG.providers
     }).compileComponents();
 
-    fixture = TestBed.createComponent(RotationButtonComponent);
+    fixture = TestBed.createComponent(SdgRotationButton);
     component = fixture.componentInstance;
 
     fixture.componentRef.setInput('map', mockMap);

@@ -46,7 +46,7 @@ const LABELS_DEFAULT: IRestrictionLabels = {
     '(touchend)': 'hostTouchEnd()'
   }
 })
-export class SdgOlReferenceMapInteractionsDirective
+export class SdgOlReferenceMapInteractions
   implements OnInit, OnDestroy, AfterViewInit
 {
   private renderer = inject(Renderer2);

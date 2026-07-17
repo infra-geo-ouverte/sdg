@@ -9,7 +9,7 @@ import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 
 import { SdgOlMap, SdgOlMapOptions } from '../shared/map';
-import { SdgOlReferenceMapInteractionsDirective } from './reference-map-interactions.directive';
+import { SdgOlReferenceMapInteractions } from './reference-map-interactions.directive';
 
 const DEFAULT_OPTIONS: SdgOlMapOptions = {
   view: {
@@ -30,15 +30,15 @@ const DEFAULT_OPTIONS: SdgOlMapOptions = {
     [map]="map"
     class="flex-fill"
   />`,
-  imports: [SdgMapBrowser, SdgOlReferenceMapInteractionsDirective]
+  imports: [SdgMapBrowser, SdgOlReferenceMapInteractions]
 })
 class TestComponent {
   map = new SdgOlMap(DEFAULT_OPTIONS);
 }
 
-describe('SdgOlReferenceMapInteractionsDirective', () => {
+describe('SdgOlReferenceMapInteractions', () => {
   let fixture: ComponentFixture<TestComponent>;
-  let directive: SdgOlReferenceMapInteractionsDirective;
+  let directive: SdgOlReferenceMapInteractions;
   let renderer: Renderer2;
   const rendererMock = {
     createElement: vi.fn((name: string) => document.createElement(name)),
@@ -50,7 +50,7 @@ describe('SdgOlReferenceMapInteractionsDirective', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestComponent, SdgOlReferenceMapInteractionsDirective],
+      imports: [TestComponent, SdgOlReferenceMapInteractions],
       providers: [
         { provide: PLATFORM_ID, useValue: 'browser' },
         {
@@ -66,11 +66,9 @@ describe('SdgOlReferenceMapInteractionsDirective', () => {
 
     fixture = TestBed.createComponent(TestComponent);
     const debugElement = fixture.debugElement.query(
-      By.directive(SdgOlReferenceMapInteractionsDirective)
+      By.directive(SdgOlReferenceMapInteractions)
     );
-    directive = debugElement.injector.get(
-      SdgOlReferenceMapInteractionsDirective
-    );
+    directive = debugElement.injector.get(SdgOlReferenceMapInteractions);
     renderer = debugElement.injector.get(Renderer2);
 
     fixture.detectChanges();

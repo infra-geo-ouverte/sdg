@@ -49,7 +49,7 @@
 
   <ng-container footer-actions>
     @if (scaleLineOptions) {
-      <sdg-scale-line [map]="map()!" />
+      <sdg-ol-scale-line [map]="map()!" />
     }
   </ng-container>
 
@@ -64,7 +64,7 @@
   >
     @if (scaleLineOptions && isHandset) {
       <div class="full-map-browser-top-navigation">
-        <sdg-scale-line [map]="map()!" onMap="true" />
+        <sdg-ol-scale-line [map]="map()!" onMap="true" />
       </div>
     }
   </sdg-ol-full-map-browser>

@@ -27,7 +27,7 @@ const LABELS_DEFAULT: RotationLabels = {
   imports: [MatTooltipModule, MatButtonModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RotationButtonComponent implements OnInit {
+export class SdgRotationButton implements OnInit {
   map = input.required<ISdgMap>();
   color = input<string>();
   labels = input<RotationLabels, RotationLabels | undefined>(LABELS_DEFAULT, {

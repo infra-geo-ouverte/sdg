@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 
 import { GeolocationBase } from '../../..';
 import { TEST_CONFIG } from '../../../../../test-config';
-import { GeolocateButtonComponent } from './geolocate-button.component';
+import { SdgGeolocateButton } from './geolocate-button.component';
 
 const POSITION_MOCKED: GeolocationPosition = {
   coords: {
@@ -19,9 +19,9 @@ const POSITION_MOCKED: GeolocationPosition = {
   timestamp: Date.now()
 } as GeolocationPosition;
 
-describe('GeolocateButtonComponent', () => {
-  let component: GeolocateButtonComponent;
-  let fixture: ComponentFixture<GeolocateButtonComponent>;
+describe('SdgGeolocateButton', () => {
+  let component: SdgGeolocateButton;
+  let fixture: ComponentFixture<SdgGeolocateButton>;
   let mockController: GeolocationBase;
 
   beforeEach(async () => {
@@ -34,14 +34,14 @@ describe('GeolocateButtonComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [],
-      imports: [GeolocateButtonComponent],
+      imports: [SdgGeolocateButton],
       providers: [
         { provide: GeolocationBase, useValue: mockController },
         ...(TEST_CONFIG.providers ?? [])
       ]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(GeolocateButtonComponent);
+    fixture = TestBed.createComponent(SdgGeolocateButton);
     component = fixture.componentInstance;
 
     fixture.componentRef.setInput('controller', mockController);

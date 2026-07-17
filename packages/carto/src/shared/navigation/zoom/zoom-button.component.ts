@@ -29,7 +29,7 @@ const LABELS_DEFAULT: ZoomLabels = {
   imports: [MatButtonModule, MatTooltipModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ZoomButtonComponent implements OnInit {
+export class SdgZoomButton implements OnInit {
   map = input.required<ISdgMap>();
   color = input<string>();
   labels = input<ZoomLabels, ZoomLabels | undefined>(LABELS_DEFAULT, {

@@ -2,11 +2,11 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../../test-config';
 import { ISdgMap } from '../../map/map.interface';
-import { ZoomButtonComponent } from './zoom-button.component';
+import { SdgZoomButton } from './zoom-button.component';
 
-describe('ZoomButtonComponent', () => {
-  let component: ZoomButtonComponent;
-  let fixture: ComponentFixture<ZoomButtonComponent>;
+describe('SdgZoomButton', () => {
+  let component: SdgZoomButton;
+  let fixture: ComponentFixture<SdgZoomButton>;
   let mockMap: ISdgMap;
   let getZoomSpy: ReturnType<typeof vi.fn>;
 
@@ -33,11 +33,11 @@ describe('ZoomButtonComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [],
-      imports: [ZoomButtonComponent],
+      imports: [SdgZoomButton],
       providers: TEST_CONFIG.providers
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ZoomButtonComponent);
+    fixture = TestBed.createComponent(SdgZoomButton);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('map', mockMap);
     fixture.detectChanges();

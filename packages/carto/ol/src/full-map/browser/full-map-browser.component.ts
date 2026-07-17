@@ -12,14 +12,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import {
-  GeolocateButtonComponent,
-  HomeButtonComponent,
   IHomeOptions,
   PanelService,
-  RotationButtonComponent,
   SdgFullMapLabels,
+  SdgGeolocateButton,
+  SdgHomeButton,
   SdgMapBrowser,
-  ZoomButtonComponent,
+  SdgRotationButton,
+  SdgZoomButton,
   resolveOptions
 } from '@igo2/sdg-carto';
 import { labelAttribute } from '@igo2/sdg-common';
@@ -46,14 +46,14 @@ const LABELS_DEFAULT: SdgOlFullMapBrowserLabels = {
 @Component({
   selector: 'sdg-ol-full-map-browser',
   imports: [
-    SdgMapBrowser,
-    MatTooltipModule,
     MatButtonModule,
-    GeolocateButtonComponent,
-    RotationButtonComponent,
-    ZoomButtonComponent,
-    HomeButtonComponent,
-    SdgOlBasemapSwitcher
+    MatTooltipModule,
+    SdgGeolocateButton,
+    SdgHomeButton,
+    SdgMapBrowser,
+    SdgOlBasemapSwitcher,
+    SdgRotationButton,
+    SdgZoomButton
   ],
   changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './full-map-browser.component.html',

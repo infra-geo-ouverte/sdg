@@ -22,7 +22,7 @@ Button to center the map to the home extent
   imports: [MatButtonModule, MatTooltipModule, MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeButtonComponent {
+export class SdgHomeButton {
   map = input.required<ISdgMap>();
   options = input<IHomeOptions>();
   color = input<string>();

@@ -1,3 +1,5 @@
+@let panelExpanded = panelService.expanded();
+
 <div class="full-map-bottom-sheet-overlay">
   <button
     class="full-map-bottom-sheet-toggle-button"
@@ -7,7 +9,7 @@
   >
     <mat-icon color="primary">
       <svg viewBox="0 -960 960 960">
-        @if (panelService.expanded()) {
+        @if (panelExpanded) {
           <!-- keyboard_arrow_down -->
           <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
         } @else {
@@ -28,12 +30,11 @@
   <div
     #bottomSheetWrapper
     class="full-map-bottom-sheet-wrapper"
-    [style.height]="panelService.expanded() ? expandedHeight : '0px'"
+    [style.height]="panelExpanded ? expandedHeight : '0px'"
   >
     <div class="full-map-bottom-sheet-content">
       <ng-content select="[full-map-bottom-sheet-content]" />
 
-      <mat-divider />
       <footer>
         <sdg-full-map-skeleton-footer [attribution]="attribution()" />
       </footer>

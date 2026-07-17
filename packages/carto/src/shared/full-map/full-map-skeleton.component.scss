@@ -6,7 +6,7 @@ $search-bar-spacing-left: 16px;
 :host {
   --sdg-map-footer-height: 36px;
   --sdg-map-bottom-sheet-header-height: 104px;
-  --sdg-panel-width: 380px;
+  --sdg-panel-width: 390px;
 }
 
 .full-map-skeleton {
@@ -26,9 +26,7 @@ $search-bar-spacing-left: 16px;
       left: $search-bar-spacing-left;
 
       &.--elevated {
-        box-shadow:
-          0 2px 4px rgba(0, 0, 0, 0.2),
-          0 -1px 0px rgba(0, 0, 0, 0.02);
+        box-shadow: var(--sdg-elevation-1);
       }
     }
   }

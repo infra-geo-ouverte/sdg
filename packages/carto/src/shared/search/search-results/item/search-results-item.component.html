@@ -1,15 +1,18 @@
+@let result = this.result();
+@let resultIcon = result.icon;
+@let resultSubtitleHtml = result.subtitleHtml;
+
 <mat-list-item
-  class="sdg-search-result-item"
-  [class.--focused]="focused()"
+  class="sdg-search-results-item"
+  [class.--hovered]="hovered()"
   [class.--selected]="selected()"
-  [matTooltip]="result().title"
-  (click)="select.emit(result())"
-  (mouseenter)="focus.emit(result())"
-  (mouseleave)="unfocus.emit(result())"
+  (click)="select.emit(result)"
+  (mouseenter)="hover.emit(result)"
+  (mouseleave)="unhover.emit(result)"
 >
   <mat-icon matListItemIcon>
-    @if (result().icon) {
-      {{ result().icon }}
+    @if (resultIcon) {
+      {{ resultIcon }}
     } @else {
       <!-- location_on -->
       <svg viewBox="0 -960 960 960">
@@ -19,11 +22,9 @@
       </svg>
     }
   </mat-icon>
-  <span
-    matListItemTitle
-    [innerHTML]="result().titleHtml ?? result().title"
-  ></span>
-  @if (result().subtitleHtml) {
-    <span matListItemLine [innerHTML]="result().subtitleHtml"></span>
+  <span matListItemTitle [innerHTML]="result.titleHtml ?? result.title"></span>
+
+  @if (resultSubtitleHtml) {
+    <span matListItemLine [innerHTML]="resultSubtitleHtml"></span>
   }
 </mat-list-item>

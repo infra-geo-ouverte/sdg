@@ -1,43 +1,45 @@
+@let labels = this.labels();
+
 <sdg-map-browser
   [map]="map"
   sdgOlReferenceMapInteractions
-  [mesageDuration]="config()?.helpMessageDuration"
-  [labels]="labels().restrictions"
+  [messageDuration]="config()?.helpMessageDuration"
+  [labels]="labels.restrictions"
   class="flex-fill"
 >
   <div class="sdg-reference-map-actions --vertical --bottom --right">
     @let navigation = options().navigation;
 
-    @if (navigation?.rotation !== false) {
+    @if (navigation?.rotation) {
       <sdg-rotation-button
         [map]="map"
         color="primary"
-        [labels]="labels().buttons?.rotation"
+        [labels]="labels.buttons?.rotation"
       />
     }
 
-    @if (navigation?.home !== false) {
+    @if (navigation?.home) {
       <sdg-home-button
         [map]="map"
         color="primary"
         [options]="homeOptions()"
-        [labels]="labels().buttons?.home"
+        [labels]="labels.buttons?.home"
       />
     }
 
-    @if (navigation?.geolocation !== false) {
+    @if (navigation?.geolocation) {
       <sdg-geolocate-button
         [controller]="geolocation"
         color="primary"
-        [labels]="labels().buttons?.geolocation"
+        [labels]="labels.buttons?.geolocation"
       />
     }
 
-    @if (navigation?.zoom !== false) {
+    @if (navigation?.zoom) {
       <sdg-zoom-button
         [map]="map"
         color="primary"
-        [labels]="labels().buttons?.zoom"
+        [labels]="labels.buttons?.zoom"
       />
     }
 

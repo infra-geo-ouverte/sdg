@@ -1,56 +1,63 @@
+@let labels = this.labels();
+@let navigationLabels = labels.navigation;
+@let legendLabels = labels.legend;
+@let basemaps = this.basemaps;
+@let options = this.options();
+
 <sdg-map-browser [map]="map">
   <div class="full-map-browser-controls">
     <div class="full-map-browser-controls-navigation">
-      @let navigation = options().navigation;
+      @let navigation = options.navigation;
 
-      @if (navigation?.rotation !== false) {
+      @if (navigation?.rotation) {
         <sdg-rotation-button
           [map]="map"
-          [labels]="labels().navigation?.rotation"
+          [labels]="navigationLabels?.rotation"
           color="primary"
         />
       }
 
-      @if (navigation?.home !== false) {
+      @if (navigation?.home) {
         <sdg-home-button
           [map]="map"
           [options]="homeOptions()"
-          [labels]="labels().navigation?.home"
+          [labels]="navigationLabels?.home"
           color="primary"
         />
       }
 
-      @if (navigation?.geolocation !== false) {
+      @if (navigation?.geolocation) {
         <sdg-geolocate-button
           [controller]="geolocation"
-          [labels]="labels().navigation?.geolocation"
+          [labels]="navigationLabels?.geolocation"
           color="primary"
         />
       }
 
-      @if (navigation?.zoom !== false && !isHandset()) {
+      @if (navigation?.zoom && !isHandset()) {
         <sdg-zoom-button
           [map]="map"
-          [labels]="labels().navigation?.zoom"
+          [labels]="navigationLabels?.zoom"
           color="primary"
         />
       }
     </div>
 
-    @if (options().legend) {
+    @if (options.legend) {
       <button
-        mat-raised-button
+        color="primary"
+        matButton="elevated"
         compact
         class="full-map-browser-legend-button"
         [matTooltip]="
           panelService.expanded() && panelService.type() === 'legend'
-            ? labels().legend?.close
-            : labels().legend?.open
+            ? legendLabels?.close
+            : legendLabels?.open
         "
         matTooltipPosition="left"
         (click)="toggleLegend()"
       >
-        {{ labels().legend?.label }}
+        {{ legendLabels?.label }}
       </button>
     }
   </div>
@@ -60,7 +67,7 @@
       <sdg-ol-basemap-switcher
         [map]="map"
         [basemaps]="basemaps"
-        [labels]="labels().basemap"
+        [labels]="labels.basemap"
       />
     </div>
   }

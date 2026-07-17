@@ -1,4 +1,11 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import {
+  AfterContentInit,
+  Component,
+  ElementRef,
+  OnInit,
+  inject,
+  signal
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,7 +16,13 @@ import {
   SdgPanelContentDirective
 } from '@igo2/sdg-carto';
 import { SdgOlFullMap, SdgOlFullMapOptions } from '@igo2/sdg-carto/ol';
-import { BreakpointService, ExternalLinkComponent } from '@igo2/sdg-common';
+import {
+  Anchor,
+  AnchorMenuComponent,
+  BreakpointService,
+  ExternalLinkComponent,
+  findTitleAnchors
+} from '@igo2/sdg-common';
 
 import { DocsCodeComponent } from 'projects/demo/src/app/components/docs-code/docs-code.component';
 
@@ -59,12 +72,13 @@ const MAP_CONFIG: SdgOlFullMapOptions = {
     SdgPanelContentDirective,
     MatButtonModule,
     MatIconModule,
-    DocsCodeComponent
+    DocsCodeComponent,
+    AnchorMenuComponent
   ],
   templateUrl: './full-map.component.html',
   styleUrl: './full-map.component.scss'
 })
-export class FullMapDemoComponent implements OnInit {
+export class FullMapDemoComponent implements OnInit, AfterContentInit {
   readonly basemapsExample = BASEMAPS_EXAMPLE;
   readonly searchExample = SEARCH_EXAMPLE;
   readonly navigationExample = NAVIGATION_EXAMPLE;
@@ -72,9 +86,11 @@ export class FullMapDemoComponent implements OnInit {
   readonly panelExample = PANEL_EXAMPLE;
   readonly footerExample = FOOTER_EXAMPLE;
   readonly labelsExample = LABELS_EXAMPLE;
+
   private panelService = inject(PanelService);
   private breakpointService = inject(BreakpointService);
   private dialog = inject(MatDialog);
+  private elementRef = inject(ElementRef);
 
   readonly options = signal<SdgOlFullMapOptions>(MAP_CONFIG);
 
@@ -82,10 +98,16 @@ export class FullMapDemoComponent implements OnInit {
     return this.breakpointService.isHandset;
   }
 
+  anchors: Anchor[] = [];
+
   ngOnInit(): void {
     if (this.isHandset()) {
       this.panelService.expanded.set(false);
     }
+  }
+
+  ngAfterContentInit() {
+    this.anchors = findTitleAnchors(this.elementRef.nativeElement);
   }
 
   openFullscreen(): void {
@@ -249,7 +271,6 @@ const PANEL_EXAMPLE = `
 const options: SdgOlFullMapOptions = {
   // ...
   panel: {
-    width: 380,              // largeur en px (par défaut : 380)
     default: 'custom'   // panneau affiché par défaut et au retour de la recherche/légende
   }
 };

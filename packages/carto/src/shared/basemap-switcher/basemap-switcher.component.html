@@ -1,12 +1,15 @@
+@let tooltipLabels = this.labels().tooltip;
+@let expanded = this.expanded();
+
 @if (visible) {
   <div
     class="sdg-basemap-switcher-container"
-    [class.--expanded]="expanded()"
+    [class.--expanded]="expanded"
     tabindex="0"
     role="button"
-    [matTooltip]="labels().tooltip"
-    [attr.aria-label]="labels().tooltip"
-    [attr.aria-expanded]="expanded()"
+    [matTooltip]="tooltipLabels"
+    [attr.aria-label]="tooltipLabels"
+    [attr.aria-expanded]="expanded"
     (click)="toggle()"
     (keydown.enter)="toggle()"
     (keydown.space)="toggle(); $event.preventDefault()"

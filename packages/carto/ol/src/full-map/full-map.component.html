@@ -1,32 +1,35 @@
+@let options = this.options();
+@let searchOptions = options.search;
+@let scaleLineOptions = options.navigation?.scaleLine;
+@let labels = this.labels();
+@let panelType = panelService.type();
+@let isHandset = this.isHandset();
+@let searchGroups = this.searchGroups();
+
 <sdg-full-map-skeleton
-  [attribution]="options().footer"
-  [isHandset]="isHandset()"
-  [labels]="labels()"
-  [panelWidth]="options().panel?.width"
-  [search]="options().search !== false"
+  [attribution]="options.footer"
+  [isHandset]="isHandset"
+  [labels]="labels"
+  [search]="!!searchOptions"
 >
   <ng-container panel>
     <!-- Default panel for search results -->
-    @if (
-      options().search !== false &&
-      panelService.type() === 'search' &&
-      !hasCustomSearchPanel()
-    ) {
+    @if (searchOptions && panelType === 'search' && !hasCustomSearchPanel()) {
       <sdg-search-results
         [groups]="displayedGroups()"
-        [labels]="labels().search"
+        [labels]="labels.search"
         (resultSelect)="onResultSelect($event)"
         (loadMore)="onLoadMore($event)"
       />
     }
 
     @for (content of panelContents(); track content.type()) {
-      @if (content.type() === panelService.type()) {
+      @if (content.type() === panelType) {
         <ng-container
           [ngTemplateOutlet]="content.templateRef"
           [ngTemplateOutletContext]="{
-            $implicit: searchGroups(),
-            groups: searchGroups(),
+            $implicit: searchGroups,
+            groups: searchGroups,
             loading: resultsLoading()
           }"
         />
@@ -35,9 +38,9 @@
   </ng-container>
 
   <ng-container search-bar>
-    @if (options().search !== false) {
+    @if (searchOptions) {
       <sdg-search-bar
-        [labels]="labels().searchBar"
+        [labels]="labels.searchBar"
         (searchChange)="onSearchChange($event)"
         (clear)="clearSearch()"
       />
@@ -45,7 +48,7 @@
   </ng-container>
 
   <ng-container footer-actions>
-    @if (options().navigation?.scaleLine) {
+    @if (scaleLineOptions) {
       <sdg-scale-line [map]="map()!" />
     }
   </ng-container>
@@ -53,13 +56,13 @@
   <sdg-ol-full-map-browser
     map
     class="full-map-browser"
-    [options]="options()"
-    [labels]="labels()"
-    [isHandset]="isHandset()"
+    [options]="options"
+    [labels]="labels"
+    [isHandset]="isHandset"
     (mapReady)="handleMap($event)"
     (extentChange)="extentChange.emit(undefined)"
   >
-    @if (options().navigation?.scaleLine && isHandset()) {
+    @if (scaleLineOptions && isHandset) {
       <div class="full-map-browser-top-navigation">
         <sdg-scale-line [map]="map()!" onMap="true" />
       </div>

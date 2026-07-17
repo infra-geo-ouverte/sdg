@@ -7,14 +7,6 @@ $controls-padding: 12px;
   &-container {
     position: relative;
     height: 100%;
-
-    ::ng-deep sdg-search-bar mat-form-field button[mat-icon-button] {
-      background-color: transparent !important;
-    }
-
-    ::ng-deep sdg-search-bar mat-form-field mat-icon {
-      color: var(--sdg-color-blue-piv) !important;
-    }
   }
 
   &-browser {

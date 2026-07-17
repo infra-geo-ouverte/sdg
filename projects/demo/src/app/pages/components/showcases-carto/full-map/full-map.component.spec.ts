@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { FullMapDemoComponent } from './full-map.component';
 
@@ -8,7 +9,8 @@ describe('FullMapDemoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FullMapDemoComponent]
+      imports: [FullMapDemoComponent],
+      providers: [provideRouter([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FullMapDemoComponent);

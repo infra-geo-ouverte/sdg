@@ -1,26 +1,59 @@
 @use '@angular/material' as mat;
 
+$color-text: var(--sdg-color-text);
+$blue-dark: var(--sdg-color-blue-dark);
+$blue-pale: var(--sdg-color-blue-pale);
+
+$font-family-text: var(--sdg-font-family-text);
+$font-size-md: var(--sdg-font-size-md);
+$line-height-md: var(--sdg-line-height-md);
+$font-weight-normal: var(--sdg-font-weight-normal);
+$font-weight-bold: var(--sdg-font-weight-bold);
+
 @mixin overrides() {
   @include mat.list-overrides(
     (
       list-item-container-color: transparent,
       list-item-container-shape: 0,
-
-      list-item-label-text-color: var(--sdg-color-text),
-      list-item-label-text-font: var(--sdg-font-family-text),
-      list-item-label-text-size: var(--sdg-font-size-md),
-      list-item-label-text-line-height: var(--sdg-line-height-md),
+      //
+      list-item-label-text-color: $color-text,
+      list-item-label-text-font: $font-family-text,
+      list-item-label-text-size: $font-size-md,
+      list-item-label-text-line-height: $line-height-md,
       list-item-label-text-tracking: normal,
-      list-item-label-text-weight: var(--sdg-font-weight-normal),
-      list-item-supporting-text-color: var(--sdg-color-text),
-      list-item-supporting-text-font: var(--sdg-font-family-text),
-      list-item-supporting-text-size: var(--sdg-font-size-md),
-      list-item-supporting-text-line-height: var(--sdg-line-height-md),
+      list-item-label-text-weight: $font-weight-normal,
+      //
+      list-item-supporting-text-color: $color-text,
+      list-item-supporting-text-font: $font-family-text,
+      list-item-supporting-text-size: $font-size-md,
+      list-item-supporting-text-line-height: $line-height-md,
       list-item-supporting-text-tracking: normal,
-
-      list-item-trailing-supporting-text-color: var(--sdg-color-text),
-      list-item-hover-state-layer-color: var(--sdg-color-grey-pale),
-      list-item-focus-state-layer-color: var(--sdg-color-grey-pale)
+      list-item-supporting-text-weight: $font-weight-normal,
+      //
+      list-item-trailing-supporting-text-color: $color-text,
+      list-item-trailing-supporting-text-font: $font-family-text,
+      list-item-trailing-supporting-text-size: $font-size-md,
+      list-item-trailing-supporting-text-line-height: $line-height-md,
+      list-item-trailing-supporting-text-tracking: normal,
+      list-item-trailing-supporting-text-weight: $font-weight-normal,
+      //
+      list-item-focus-label-text-color: $color-text,
+      list-item-focus-state-layer-color: $blue-pale,
+      list-item-focus-state-layer-opacity: 1,
+      //
+      list-item-hover-label-text-color: $color-text,
+      list-item-hover-state-layer-color: $blue-pale,
+      list-item-hover-state-layer-opacity: 1,
+      //
+      list-item-leading-avatar-color: $blue-dark,
+      list-item-leading-avatar-shape: 0,
+      list-item-leading-avatar-size: 24px,
+      //
+      list-item-leading-icon-color: $blue-dark,
+      list-item-leading-icon-size: 24px,
+      list-item-leading-icon-end-space: 12px,
+      //
+      list-item-selected-trailing-icon-color: $blue-dark
     )
   );
 }

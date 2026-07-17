@@ -18,9 +18,6 @@ import { PanelService } from './shared/panel.service';
 
 @Component({
   selector: 'sdg-full-map-skeleton',
-  host: {
-    '[style.--sdg-panel-width.px]': 'panelWidth()'
-  },
   imports: [
     CommonModule,
     MatTooltipModule,
@@ -41,7 +38,6 @@ export class SdgFullMapSkeleton implements OnInit {
 
   readonly attribution = input.required<IMapFooterAttribution>();
   readonly isHandset = input.required<boolean>();
-  readonly panelWidth = input<number | undefined>(undefined);
   readonly search = input(true);
   readonly labels = input<SdgFullMapLabels, SdgFullMapLabels | undefined>(
     undefined,

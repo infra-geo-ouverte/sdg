@@ -1,3 +1,6 @@
+@let labels = this.labels();
+@let groups = this.groups();
+
 <ng-template #emptyResults>
   <div class="sdg-search-results-empty">
     <mat-icon>
@@ -7,34 +10,34 @@
         />
       </svg>
     </mat-icon>
-    <span>{{ labels().noResults }}</span>
+    <span class="text">{{ labels.noResults }}</span>
   </div>
 </ng-template>
 
 @if (isSingleSource()) {
   <div class="sdg-search-results">
-    @for (group of groups(); track group.source.id) {
+    @for (group of groups; track group.source.id) {
       @if (group.loading) {
         <mat-progress-bar mode="indeterminate" />
       } @else if (group.results.length === 0) {
         <ng-container *ngTemplateOutlet="emptyResults" />
       } @else {
-        <mat-list>
+        <mat-action-list>
           @for (result of group.results; track result.id) {
-            <sdg-search-result-item
+            <sdg-search-results-item
               [result]="result"
-              [focused]="isFocused(result)"
+              [hovered]="isHovered(result)"
               [selected]="isSelected(result)"
               (focus)="onResultFocus(result)"
               (unfocus)="onResultUnfocus(result)"
               (select)="onResultSelect(result)"
             />
           }
-        </mat-list>
+        </mat-action-list>
         @if (groupHasMore(group)) {
           <div class="sdg-search-results-load-more">
             <button mat-button compact (click)="onLoadMore(group)">
-              {{ labels().loadMore }}
+              {{ labels.loadMore }}
             </button>
           </div>
         }
@@ -45,7 +48,7 @@
   </div>
 } @else {
   <mat-accordion class="sdg-search-results" multi>
-    @for (group of groups(); track group.source.id) {
+    @for (group of groups; track group.source.id) {
       <mat-expansion-panel expanded>
         <mat-expansion-panel-header>
           <mat-panel-title>
@@ -65,22 +68,22 @@
         } @else if (group.results.length === 0) {
           <ng-container *ngTemplateOutlet="emptyResults" />
         } @else {
-          <mat-list>
+          <mat-action-list>
             @for (result of group.results; track result.id) {
-              <sdg-search-result-item
+              <sdg-search-results-item
                 [result]="result"
-                [focused]="isFocused(result)"
+                [hovered]="isHovered(result)"
                 [selected]="isSelected(result)"
                 (resultFocus)="onResultFocus(result)"
                 (resultUnfocus)="onResultUnfocus(result)"
                 (resultSelect)="onResultSelect(result)"
               />
             }
-          </mat-list>
+          </mat-action-list>
           @if (groupHasMore(group)) {
             <div class="sdg-search-results-load-more">
               <button mat-button compact (click)="onLoadMore(group)">
-                {{ labels().loadMore }}
+                {{ labels.loadMore }}
               </button>
             </div>
           }

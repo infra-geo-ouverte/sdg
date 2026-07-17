@@ -82,7 +82,6 @@ export class SdgOlFullMap
   implements OnInit, AfterContentInit
 {
   private readonly destroyRef = inject(DestroyRef);
-
   readonly panelService = inject(PanelService);
   private readonly searchService = inject(SearchService);
 

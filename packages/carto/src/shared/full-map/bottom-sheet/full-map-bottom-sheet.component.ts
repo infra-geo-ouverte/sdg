@@ -7,7 +7,6 @@ import {
   input,
   viewChild
 } from '@angular/core';
-import { MatDivider } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 
 import { IMapFooterAttribution } from '../../map/map.interface';
@@ -18,7 +17,7 @@ const SWIPE_THRESHOLD = 30;
 
 @Component({
   selector: 'sdg-full-map-skeleton-bottom-sheet',
-  imports: [MatIconModule, SdgFullMapSkeletonFooter, MatDivider],
+  imports: [MatIconModule, SdgFullMapSkeletonFooter],
   templateUrl: './full-map-bottom-sheet.component.html',
   styleUrl: './full-map-bottom-sheet.component.scss'
 })
@@ -68,9 +67,11 @@ export class SdgFullMapSkeletonBottomSheet implements AfterViewInit, OnDestroy {
     const touchEndY = event.changedTouches[0].clientY;
     const deltaY = this.touchStartY - touchEndY;
 
-    if (deltaY > SWIPE_THRESHOLD && !this.panelService.expanded()) {
+    const panelExpanded = this.panelService.expanded();
+
+    if (deltaY > SWIPE_THRESHOLD && !panelExpanded) {
       this.panelService.expanded.set(true);
-    } else if (deltaY < -SWIPE_THRESHOLD && this.panelService.expanded()) {
+    } else if (deltaY < -SWIPE_THRESHOLD && panelExpanded) {
       this.panelService.expanded.set(false);
     }
   }

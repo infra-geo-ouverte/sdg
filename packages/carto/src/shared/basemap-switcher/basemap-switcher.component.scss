@@ -1,28 +1,43 @@
-.sdg-basemap-switcher-container {
-  position: relative;
-  cursor: pointer;
-  height: 80px;
-  overflow: hidden;
-  transition: height 200ms ease-in-out;
-}
+@use '@igo2/sdg-core' as sdg;
 
-.sdg-basemap-switcher-container.--expanded {
-  height: auto;
-  overflow: hidden;
-  border-width: 0;
-}
+.sdg-basemap-switcher {
+  &-container {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    height: 80px;
+    overflow: hidden;
+    transition: height 200ms ease-in-out;
+    row-gap: 4px;
+    box-shadow: var(--sdg-elevation-1);
 
-.sdg-basemap-switcher-list {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
+    &.--expanded {
+      height: auto;
+      overflow: hidden;
+      border-width: 0;
+    }
+  }
 
-.sdg-basemap-switcher-more {
-  position: relative;
-  width: 80px;
-  height: 20px;
-  background-color: var(--mat-sys-inverse-on-surface);
-  text-align: center;
-  cursor: pointer;
+  &-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+
+  &-more {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 80px;
+    height: 24px;
+    background-color: var(--sdg-color-grey-pale);
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--sdg-color-white);
+    }
+  }
 }

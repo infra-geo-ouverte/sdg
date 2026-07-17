@@ -24,7 +24,7 @@ import {
   SearchResult,
   SearchResultGroup
 } from '../shared/search-source.interface';
-import { SdgSearchResultItem } from './search-result-item.component';
+import { SdgSearchResultsItem } from './item/search-results-item.component';
 
 @Component({
   selector: 'sdg-search-results',
@@ -38,7 +38,7 @@ import { SdgSearchResultItem } from './search-result-item.component';
     MatListModule,
     MatIconModule,
     MatProgressBarModule,
-    SdgSearchResultItem
+    SdgSearchResultsItem
   ]
 })
 export class SdgSearchResults extends WithLabels<SearchLabels> {
@@ -49,7 +49,7 @@ export class SdgSearchResults extends WithLabels<SearchLabels> {
   readonly resultUnfocus = output<SearchResult>();
   readonly loadMore = output<SearchResultGroup>();
 
-  readonly focusedResult = signal<SearchResult | undefined>(undefined);
+  readonly hoveredResult = signal<SearchResult | undefined>(undefined);
   readonly selectedResult = signal<SearchResult | undefined>(undefined);
 
   /**
@@ -64,8 +64,8 @@ export class SdgSearchResults extends WithLabels<SearchLabels> {
     super(DEFAULT_SEARCH_LABELS, SEARCH_LABELS);
   }
 
-  isFocused(result: SearchResult): boolean {
-    return this.focusedResult() === result;
+  isHovered(result: SearchResult): boolean {
+    return this.hoveredResult() === result;
   }
 
   isSelected(result: SearchResult): boolean {
@@ -73,13 +73,13 @@ export class SdgSearchResults extends WithLabels<SearchLabels> {
   }
 
   onResultFocus(result: SearchResult): void {
-    this.focusedResult.set(result);
+    this.hoveredResult.set(result);
     this.resultFocus.emit(result);
   }
 
   onResultUnfocus(result: SearchResult): void {
-    if (this.focusedResult() === result) {
-      this.focusedResult.set(undefined);
+    if (this.hoveredResult() === result) {
+      this.hoveredResult.set(undefined);
     }
     this.resultUnfocus.emit(result);
   }

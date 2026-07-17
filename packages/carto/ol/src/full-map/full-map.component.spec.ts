@@ -92,7 +92,7 @@ describe('SdgOlFullMap', () => {
   it('should navigate to default when empty term is set and panel is search', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { width: 380, default: 'layers' }
+      panel: { width: 390, default: 'layers' }
     });
     panelService.toggle('search');
     component.onSearchChange('');
@@ -132,7 +132,7 @@ describe('SdgOlFullMap', () => {
   it('should navigate to default on clearSearch', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { width: 380, default: 'layers' }
+      panel: { width: 390, default: 'layers' }
     });
     panelService.toggle('search');
     component.clearSearch();
@@ -144,7 +144,7 @@ describe('SdgOlFullMap', () => {
   it('should keep panel closed on clearSearch when panel was already closed', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { width: 380, default: 'layers' }
+      panel: { width: 390, default: 'layers' }
     });
     panelService.toggle('search');
     panelService.expanded.set(false);

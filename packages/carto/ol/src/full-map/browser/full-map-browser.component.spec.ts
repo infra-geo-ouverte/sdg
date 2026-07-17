@@ -100,7 +100,7 @@ describe('SdgOlFullMapBrowser', () => {
   it('should navigate to default when legend is expanded and type is legend', () => {
     fixture.componentRef.setInput('options', {
       ...defaultOptions,
-      panel: { width: 380, default: 'layers' }
+      panel: { width: 390, default: 'layers' }
     });
     component.ngOnInit();
     panelService.toggle('legend');

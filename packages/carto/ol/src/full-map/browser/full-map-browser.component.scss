@@ -34,15 +34,10 @@ sdg-map-browser {
       row-gap: calc($controls-padding / 2);
     }
 
-    &-legend-button {
-      color: var(--sdg-color-blue-piv) !important;
-    }
-
     &-basemap-switcher {
       position: absolute;
-      bottom: calc(var(--sdg-map-footer-height, 36px) + #{$controls-padding});
+      bottom: $controls-padding * 4;
       left: $controls-padding;
-      z-index: 1;
 
       @include sdg.media(mobile) {
         bottom: calc(
@@ -54,8 +49,6 @@ sdg-map-browser {
 
     &-scaleline {
       position: absolute;
-      z-index: 1;
-      height: 21px;
 
       @include sdg.media(mobile) {
         top: $controls-padding;

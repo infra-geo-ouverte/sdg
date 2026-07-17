@@ -2,12 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { describe, expect, it } from 'vitest';
 
-import { SearchResult } from '../shared/search-source.interface';
-import { SdgSearchResultItem } from './search-result-item.component';
+import { SearchResult } from '../../shared/search-source.interface';
+import { SdgSearchResultsItem } from './search-results-item.component';
 
-describe('SdgSearchResultItem', () => {
-  let component: SdgSearchResultItem;
-  let fixture: ComponentFixture<SdgSearchResultItem>;
+describe('SdgSearchResultsItem', () => {
+  let component: SdgSearchResultsItem;
+  let fixture: ComponentFixture<SdgSearchResultsItem>;
 
   const mockResult: SearchResult = {
     id: 'item-1',
@@ -20,10 +20,10 @@ describe('SdgSearchResultItem', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SdgSearchResultItem]
+      imports: [SdgSearchResultsItem]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SdgSearchResultItem);
+    fixture = TestBed.createComponent(SdgSearchResultsItem);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('result', mockResult);
     fixture.detectChanges();
@@ -37,18 +37,18 @@ describe('SdgSearchResultItem', () => {
     expect(component.result()).toEqual(mockResult);
   });
 
-  it('should default focused to false', () => {
-    expect(component.focused()).toBe(false);
+  it('should default hovered to false', () => {
+    expect(component.hovered()).toBe(false);
   });
 
   it('should default selected to false', () => {
     expect(component.selected()).toBe(false);
   });
 
-  it('should accept focused input', () => {
-    fixture.componentRef.setInput('focused', true);
+  it('should accept hovered input', () => {
+    fixture.componentRef.setInput('hovered', true);
     fixture.detectChanges();
-    expect(component.focused()).toBe(true);
+    expect(component.hovered()).toBe(true);
   });
 
   it('should accept selected input', () => {

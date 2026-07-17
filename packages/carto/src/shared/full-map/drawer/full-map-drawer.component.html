@@ -1,8 +1,11 @@
+@let panelExpanded = this.panelService.expanded();
+@let labels = this.labels();
+
 <mat-drawer-container class="full-map-drawer-container" hasBackdrop="false">
   <mat-drawer
     class="full-map-drawer"
     mode="side"
-    [opened]="panelService.expanded()"
+    [opened]="panelExpanded"
     autoFocus="false"
   >
     <div class="full-map-drawer-content" [class.--no-search-bar]="!search()">
@@ -21,16 +24,16 @@
 </mat-drawer-container>
 
 <button
-  mat-mini-fab
+  matMiniFab
   class="full-map-drawer-toggle-button"
-  [class.--expanded]="panelService.expanded()"
-  [matTooltip]="panelService.expanded() ? labels().close : labels().open"
+  [class.--expanded]="panelExpanded"
+  [matTooltip]="panelExpanded ? labels.close : labels.open"
   matTooltipPosition="after"
   (click)="panelService.toggle()"
 >
   <mat-icon color="primary">
     <svg viewBox="0 -960 960 960">
-      @if (panelService.expanded()) {
+      @if (panelExpanded) {
         <!-- chevron_left -->
         <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
       } @else {

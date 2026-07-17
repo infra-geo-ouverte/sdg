@@ -1,11 +1,16 @@
-import { Component } from '@angular/core';
+import { AfterContentInit, Component, ElementRef, inject } from '@angular/core';
 
 import {
   SDG_REFERENCE_MAP_LABELS,
   SdgOlMapOptions,
   SdgOlReferenceMap
 } from '@igo2/sdg-carto/ol';
-import { ExternalLinkComponent } from '@igo2/sdg-common';
+import {
+  Anchor,
+  AnchorMenuComponent,
+  ExternalLinkComponent,
+  findTitleAnchors
+} from '@igo2/sdg-common';
 import { provideTranslatedLabels } from '@igo2/sdg-i18n';
 
 import { default as olGeoJSON } from 'ol/format/GeoJSON.js';
@@ -16,6 +21,7 @@ import Stroke from 'ol/style/Stroke.js';
 import Style from 'ol/style/Style.js';
 
 import type { GeoJSON } from 'geojson';
+import { DocsCodeComponent } from 'projects/demo/src/app/components/docs-code/docs-code.component';
 
 import { ExampleViewerComponent } from '../../../../components';
 
@@ -68,7 +74,13 @@ function buildMapOptions(options?: {
 
 @Component({
   selector: 'app-reference-map',
-  imports: [SdgOlReferenceMap, ExampleViewerComponent, ExternalLinkComponent],
+  imports: [
+    SdgOlReferenceMap,
+    ExampleViewerComponent,
+    ExternalLinkComponent,
+    AnchorMenuComponent,
+    DocsCodeComponent
+  ],
   providers: [
     // Useful to configure globally the labels of the ReferenceMap.
     // For local configuration you should use the input "labels"
@@ -77,18 +89,26 @@ function buildMapOptions(options?: {
   templateUrl: './reference-map.component.html',
   styleUrl: './reference-map.component.scss'
 })
-export class ReferenceMapDemoComponent {
-  readonly map1 = buildMapOptions({
-    basemaps: ['topo']
-  });
+export class ReferenceMapDemoComponent implements AfterContentInit {
+  private elementRef = inject(ElementRef);
+
+  readonly map1 = buildMapOptions();
 
   readonly map2 = buildMapOptions({
     includeGeoJson: true
   });
 
-  readonly map3 = buildMapOptions();
+  readonly map3 = buildMapOptions({
+    basemaps: ['imagery']
+  });
 
   readonly example = CODE_EXAMPLE;
+
+  anchors: Anchor[] = [];
+
+  ngAfterContentInit() {
+    this.anchors = findTitleAnchors(this.elementRef.nativeElement);
+  }
 }
 
 const CODE_EXAMPLE = `

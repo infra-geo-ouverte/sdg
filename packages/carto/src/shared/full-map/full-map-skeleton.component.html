@@ -1,3 +1,6 @@
+@let isHandset = this.isHandset();
+@let attribution = this.attribution();
+
 <ng-template #PANEL_TEMPLATE>
   <ng-content select="[panel]" />
 </ng-template>
@@ -20,9 +23,9 @@
 </ng-template>
 
 <div class="full-map-skeleton-container">
-  @if (isHandset()) {
+  @if (isHandset) {
     <ng-template [ngTemplateOutlet]="MAP_TEMPLATE" />
-    <sdg-full-map-skeleton-bottom-sheet [attribution]="attribution()">
+    <sdg-full-map-skeleton-bottom-sheet [attribution]="attribution">
       <ng-template
         full-map-bottom-sheet-header
         [ngTemplateOutlet]="SEARCH_BAR_TEMPLATE"
@@ -36,8 +39,8 @@
     <div class="full-map-skeleton-desktop">
       <ng-template [ngTemplateOutlet]="SEARCH_BAR_TEMPLATE" />
       <sdg-full-map-skeleton-drawer
-        [attribution]="attribution()"
-        [isHandset]="isHandset()"
+        [attribution]="attribution"
+        [isHandset]="isHandset"
         [search]="search()"
         [labels]="labels()?.panel"
       >

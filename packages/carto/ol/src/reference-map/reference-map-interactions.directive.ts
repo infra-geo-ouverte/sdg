@@ -54,7 +54,7 @@ export class SdgOlReferenceMapInteractionsDirective
 
   readonly map = input.required<SdgOlMap>();
 
-  readonly mesageDuration = input<number, number | undefined>(
+  readonly messageDuration = input<number, number | undefined>(
     RESTRICTION_MESSAGE_DEFAULT_DURATION,
     {
       transform: (value) => value ?? RESTRICTION_MESSAGE_DEFAULT_DURATION
@@ -108,7 +108,7 @@ export class SdgOlReferenceMapInteractionsDirective
   ngOnInit(): void {
     this.restrictionMessageTimeout = useTimeout(
       () => this.mapEventRestriction.set(undefined),
-      this.mesageDuration()
+      this.messageDuration()
     );
 
     if (isPlatformBrowser(this.platformId)) {

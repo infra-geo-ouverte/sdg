@@ -49,20 +49,20 @@ describe('SdgSearchResults', () => {
 
     it('should track focused result', () => {
       component.onResultFocus(result);
-      expect(component.isFocused(result)).toBe(true);
+      expect(component.isHovered(result)).toBe(true);
     });
 
     it('should clear focused result on unfocus', () => {
       component.onResultFocus(result);
       component.onResultUnfocus(result);
-      expect(component.isFocused(result)).toBe(false);
+      expect(component.isHovered(result)).toBe(false);
     });
 
     it('should not clear focus if a different result is unfocused', () => {
       const other = mockResult('r2', 'Result 2', source);
       component.onResultFocus(result);
       component.onResultUnfocus(other);
-      expect(component.isFocused(result)).toBe(true);
+      expect(component.isHovered(result)).toBe(true);
     });
 
     it('should track selected result', () => {

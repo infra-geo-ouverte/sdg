@@ -1,3 +1,5 @@
+@use '@igo2/sdg-core' as sdg;
+
 $xPadding: 16px;
 
 sdg-ol-full-map {
@@ -16,6 +18,7 @@ sdg-ol-full-map {
     var(--mat-sys-corner-medium)
   );
 }
+
 .fullscreen-button {
-  margin-bottom: 16px;
+  margin-bottom: var(--sdg-spacer-sm);
 }

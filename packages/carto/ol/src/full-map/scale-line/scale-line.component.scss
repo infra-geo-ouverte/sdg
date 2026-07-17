@@ -1,13 +1,11 @@
 @use '@angular/material' as mat;
+@use '@igo2/sdg-core' as sdg;
 
 :host {
   display: inline-block;
 
   &.sdg-scale-line-on-map {
-    $background-color: var(
-      --mat-sidenav-content-background,
-      var(--mat-sys-surface)
-    );
+    $background-color: var(--sdg-color-white);
     background: color-mix(in srgb, $background-color 56%, transparent);
     border-radius: 4px;
     padding: 4px;
@@ -20,16 +18,11 @@
     }
 
     .ol-scale-line-inner {
-      border: 1px solid
-        var(--mat-sidenav-content-text-color, var(--mat-sys-on-background));
+      border: 1px solid var(--sdg-color-grey-dark);
       border-top: none;
-      color: var(
-        --mat-sidenav-content-text-color,
-        var(--mat-sys-on-background)
-      );
+      color: var(--sdg-color-text);
       font-size: 10px;
       text-align: center;
-      margin: 1px;
       will-change: contents, width;
       transition: all 0.25s;
     }

@@ -30,8 +30,6 @@ import { SdgOlBasemapSwitcher } from '../../shared/basemap-switcher';
 import { SdgOlGeolocation, SdgOlMap } from '../../shared/map';
 import type { SdgOlFullMapOptions } from '../full-map.component';
 
-// import ScaleLine from 'ol/control/ScaleLine';
-
 type SdgOlFullMapBrowserLabels = Pick<
   SdgFullMapLabels,
   'legend' | 'basemap' | 'navigation'
@@ -57,7 +55,7 @@ const LABELS_DEFAULT: SdgOlFullMapBrowserLabels = {
     HomeButtonComponent,
     SdgOlBasemapSwitcher
   ],
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.Eager,
   templateUrl: './full-map-browser.component.html',
   styleUrl: './full-map-browser.component.scss'
 })

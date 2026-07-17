@@ -11,8 +11,6 @@ import { PanelType } from './shared/panel.service';
 
 export interface SdgFullMapOptions extends MapOptions {
   panel?: {
-    /** Number of pixels, default to 380 */
-    width?: number;
     /** Panel type to navigate back to when leaving search/legend. If undefined, the panel is simply closed. */
     default?: PanelType;
   };

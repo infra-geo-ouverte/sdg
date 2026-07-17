@@ -1,15 +1,20 @@
+@let displayedBasemaps = this.displayedBasemaps();
+@let basemaps = this.basemaps();
+
 <sdg-basemap-switcher
-  [basemapCount]="basemaps().length"
+  [basemapCount]="basemaps.length"
   [(expanded)]="expanded"
   [labels]="labels()"
 >
-  @for (basemap of displayedBasemaps(); track basemap) {
+  @for (basemap of displayedBasemaps; track basemap) {
+    @let expanded = this.expanded();
+
     <sdg-ol-mini-basemap
       [parentMap]="map()"
       [basemap]="basemap"
       [title]="getTitle(basemap)"
-      [display]="expanded() || displayedBasemaps().length === 1"
-      [disabled]="!expanded() && basemaps().length > 2"
+      [display]="expanded || displayedBasemaps.length === 1"
+      [disabled]="!expanded && basemaps.length > 2"
       (basemapSelect)="selectBasemap($event)"
     />
   }

@@ -2,76 +2,92 @@
   <span
     >La <b>carte de référence</b> correspond à une vignette cartographique
     permettant la localisation ou la mise en contexte d'un sujet. Elle est
-    placée dans une page informationnelle. Voir la
+    placée dans une page informationnelle. Pour plus d'information, voir la
   </span>
   <span
     ><sdg-external-link
       text="Carte de référence"
       url="https://design.quebec.ca/design/modeles/cartographie/types-de-cartes#c280762"
   /></span>
-  <span> du Système de design gouvernemental.</span>
+  <span>du Système de design gouvernemental.</span>
 </p>
 
 <p>
-  Elle est optimisée pour une navigation fluide sur tous les appareils. Le zoom
-  et le déplacement sont désactivés lors du défilement et des interactions à un
-  doigt, pour une expérience utilisateur sans interruption.
+  Ce support visuel est utilisé pour améliorer la compréhension des informations
+  présentées dans la page et fournir un contexte géographique.
 </p>
-<app-example-viewer
-  title="Interactions de la carte"
-  showcase="carto"
-  configFolder="reference-map"
-  codeFolder="reference-map"
->
+
+<sdg-anchor-menu [anchors]="anchors" />
+
+<section>
+  <h2 id="section1">Configuration</h2>
+
   <section>
+    <h3>Interactions</h3>
+
     <p>
-      Pour une navigation fluide, certaines interactions sont bloquées et un
-      message d'aide apparait indiquant l'interaction à réaliser. Le message
-      s'affiche pour une durée de 2 secondes.
+      La carte de référence est optimisée pour une navigation fluide sur tous
+      les appareils.
     </p>
-    <ol>
+
+    <p>
+      Certaines interactions sont bloquées et un message d'aide apparait
+      indiquant l'interaction à réaliser. Le message s'affiche pour une durée de
+      2 secondes.
+    </p>
+
+    <ul>
       <li>Avec la souris, le zoom est bloqué lors du défilement;</li>
       <li>
         Sur appareil avec écran tactile, le déplacement est bloqué au défilement
         à un doigt.
       </li>
-    </ol>
+    </ul>
   </section>
-  <sdg-ol-reference-map [options]="map1" />
-</app-example-viewer>
 
-<app-example-viewer
-  title="Afficher une donnée GeoJSON"
-  showcase="carto"
-  configFolder="reference-map"
-  codeFolder="reference-map"
->
-  <sdg-ol-reference-map [options]="map2" />
-</app-example-viewer>
+  <app-example-viewer
+    title="Interactions de la carte"
+    showcase="carto"
+    configFolder="reference-map"
+    codeFolder="reference-map"
+  >
+    <sdg-ol-reference-map [options]="map1" />
+  </app-example-viewer>
 
-<section>
-  <h3>Comportement des basemaps</h3>
   <p>
-    Le composant utilise les basemaps intégrés et applique un fond par défaut si
-    aucun basemap n'est fourni.
+    Des données au format GeoJSON peuvent être représentées sur la carte&nbsp;:
   </p>
 
-  <ol>
-    <li>
-      <b>basemaps: []</b> utilise automatiquement le basemap topo intégré.
-    </li>
-    <li><b>basemaps: ['topo']</b> force explicitement le fond topo intégré.</li>
-    <li>
+  <app-example-viewer
+    title="Afficher des données GeoJSON"
+    showcase="carto"
+    configFolder="reference-map"
+    codeFolder="reference-map"
+  >
+    <sdg-ol-reference-map [options]="map2" />
+  </app-example-viewer>
+
+  <section>
+    <h3>Comportement des fonds de carte</h3>
+    <p>
+      Le composant utilise des fonds de carte intégrées et applique un fond par
+      défaut si aucun n'est fourni.
+    </p>
+
+    <p>
       Les clés intégrées disponibles sont <b>topo</b>, <b>imagery</b> et
       <b>hybrid</b>.
-    </li>
-  </ol>
+    </p>
 
-  <sdg-ol-reference-map [options]="map3" />
+    <app-docs-code [code]="example" lang="typescript" />
 
-  <pre class="pre-code">
-    <code [innerHTML]="example">
-
-    </code>
-  </pre>
+    <app-example-viewer
+      title="Comportement des fonds de carte"
+      showcase="carto"
+      configFolder="reference-map"
+      codeFolder="reference-map"
+    >
+      <sdg-ol-reference-map [options]="map3" />
+    </app-example-viewer>
+  </section>
 </section>

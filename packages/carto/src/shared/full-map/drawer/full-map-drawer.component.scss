@@ -3,17 +3,9 @@
 
 $search-bar-left: 16px;
 $search-bar-top: calc($search-bar-left * 2);
-$panel-padding-top: 32px;
+
 $search-bar-height: 40px;
 $toggle-button-height: 40px;
-
-:host {
-  @include mat.sidenav-overrides(
-    (
-      container-elevation-shadow: none
-    )
-  );
-}
 
 footer {
   display: flex;
@@ -22,16 +14,17 @@ footer {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 0 12px;
+  padding: 0px 12px;
   width: 100%;
-  height: 36px;
-  background-color: color-mix(in srgb, var(--mat-sys-surface) 67%, transparent);
+  height: 32px;
+  background-color: color-mix(in srgb, var(--sdg-color-white) 67%, transparent);
   font-size: var(--sdg-font-size-xs);
+  line-height: var(--sdg-line-height-xs);
 }
 
 .full-map-drawer {
   width: var(--sdg-panel-width);
-  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--sdg-elevation-1);
 
   &-container {
     height: 100%;
@@ -39,10 +32,10 @@ footer {
 
   &-content {
     display: block;
-    padding: 0 0 16px;
-    margin-top: $search-bar-top + $search-bar-height + $search-bar-left;
+    padding: 0 0 32px;
+    margin-top: $search-bar-top + $search-bar-height + $search-bar-top;
     height: calc(
-      100% - #{$search-bar-top + $search-bar-height + $search-bar-left}
+      100% - #{$search-bar-top + $search-bar-height + $search-bar-top}
     );
     overflow: auto;
 
@@ -63,10 +56,7 @@ footer {
     height: $toggle-button-height;
     width: 24px;
     border: none;
-    background-color: var(
-      --mat-sidenav-container-background-color,
-      var(--mat-sys-surface)
-    );
+    background-color: var(--sdg-color-background);
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
     transition: left 0.3s;
     z-index: 1;
@@ -77,9 +67,10 @@ footer {
     }
 
     mat-icon {
-      font-size: 32px;
-      width: 32px;
-      height: 32px;
+      $size: 32px;
+      font-size: $size;
+      width: $size;
+      height: $size;
     }
   }
 

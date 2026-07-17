@@ -74,7 +74,7 @@ describe('SdgOlFullMapBrowser', () => {
   });
 
   it('should compute basemaps from options', () => {
-    expect(component.basemaps()).toEqual([]);
+    expect(component.basemaps).toEqual([]);
   });
 
   it('should toggle legend panel when panel type is not legend', () => {

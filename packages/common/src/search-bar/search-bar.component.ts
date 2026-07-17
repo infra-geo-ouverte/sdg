@@ -20,7 +20,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { Subject } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
-import { WithLabels } from '../shared/with-labels';
+import { WithLabels } from '../shared/label/with-labels';
 
 const INVALID_KEYS = [
   'Control',

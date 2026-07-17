@@ -8,7 +8,7 @@ import {
 } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { labelAttribute } from '@igo2/sdg-i18n';
+import { labelAttribute } from '@igo2/sdg-common';
 
 import {
   IMapFooterAttribution,

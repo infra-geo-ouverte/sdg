@@ -7,11 +7,10 @@ import {
   model
 } from '@angular/core';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type Labels = Record<string, any>;
+import { LabelObject } from './label';
 
 @Directive()
-export class WithLabels<T extends Labels> {
+export class WithLabels<T extends LabelObject> {
   labelsToken: T | null;
   defaultLabels: T | null;
 

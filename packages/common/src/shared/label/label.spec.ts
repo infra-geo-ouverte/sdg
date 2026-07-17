@@ -1,4 +1,4 @@
-import { labelAttribute } from './coercion';
+import { labelAttribute } from './label';
 
 describe('labelAttribute', () => {
   it('should merge value and defaultValue when value is provided', () => {

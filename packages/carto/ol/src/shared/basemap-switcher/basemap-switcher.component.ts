@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 import { BasemapSwitcherLabels, SdgBasemapSwitcher } from '@igo2/sdg-carto';
-import { labelAttribute } from '@igo2/sdg-i18n';
+import { labelAttribute } from '@igo2/sdg-common';
 
 import Layer from 'ol/layer/Layer';
 

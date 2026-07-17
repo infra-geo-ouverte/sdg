@@ -8,7 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { labelAttribute } from '@igo2/sdg-i18n';
+import { labelAttribute } from '@igo2/sdg-common';
 
 import { IMapFooterAttribution } from '../map/map.interface';
 import { SdgFullMapSkeletonBottomSheet } from './bottom-sheet/full-map-bottom-sheet.component';

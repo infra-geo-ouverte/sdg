@@ -53,8 +53,7 @@ export function provideTranslation(
   features: TranslationFeature<TranslationFeatureKind>[],
   config?: Omit<RootTranslateServiceConfig, 'loader'> & {
     loader:
-      | Partial<TranslateHttpLoaderConfig>
-      | RootTranslateServiceConfig['loader'];
+      Partial<TranslateHttpLoaderConfig> | RootTranslateServiceConfig['loader'];
   }
 ) {
   const providers: (Provider | EnvironmentProviders)[] = [];

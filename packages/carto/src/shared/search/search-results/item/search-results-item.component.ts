@@ -12,7 +12,6 @@ import { SearchResult } from '../../shared/search-source.interface';
 @Component({
   selector: 'sdg-search-results-item',
   templateUrl: './search-results-item.component.html',
-  styleUrl: './search-results-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [MatListModule, MatIconModule]
 })

@@ -1,8 +1,8 @@
 @let result = this.result();
-@let resultIcon = result.icon;
-@let resultSubtitleHtml = result.subtitleHtml;
 
-<mat-list-item
+<button
+  type="button"
+  mat-list-item
   class="sdg-search-results-item"
   [class.--hovered]="hovered()"
   [class.--selected]="selected()"
@@ -11,6 +11,8 @@
   (mouseleave)="unhover.emit(result)"
 >
   <mat-icon matListItemIcon>
+    @let resultIcon = result.icon;
+
     @if (resultIcon) {
       {{ resultIcon }}
     } @else {
@@ -24,7 +26,9 @@
   </mat-icon>
   <span matListItemTitle [innerHTML]="result.titleHtml ?? result.title"></span>
 
+  @let resultSubtitleHtml = result.subtitleHtml;
+
   @if (resultSubtitleHtml) {
     <span matListItemLine [innerHTML]="resultSubtitleHtml"></span>
   }
-</mat-list-item>
+</button>

@@ -1,7 +1,6 @@
-@let panelExpanded = this.panelService.expanded();
-@let labels = this.labels();
-
 <mat-drawer-container class="full-map-drawer-container" hasBackdrop="false">
+  @let panelExpanded = this.panelService.expanded();
+
   <mat-drawer
     class="full-map-drawer"
     mode="side"
@@ -22,6 +21,8 @@
     </footer>
   </mat-drawer-content>
 </mat-drawer-container>
+
+@let labels = this.labels();
 
 <button
   matMiniFab

@@ -1,4 +1,5 @@
 @use '@igo2/sdg-core' as sdg;
+@use '../../navigation/base-button/base-button.scss';
 
 $background-color: var(--sdg-color-background);
 $box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.12);
@@ -28,12 +29,9 @@ $box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.12);
     display: flex;
     align-items: center;
     align-self: center;
-    justify-content: center;
-    background-color: $background-color;
     box-shadow: $box-shadow;
     width: 60px;
     height: 24px;
-    border: none;
     pointer-events: auto;
     touch-action: none;
     z-index: 1;
@@ -65,12 +63,23 @@ $box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.12);
   }
 
   &-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     width: 100%;
+    min-height: 0;
     overflow-y: auto;
+
+    &-body {
+      flex: 0 0 auto;
+    }
   }
 }
 
 footer {
+  margin-top: auto;
+  flex-shrink: 0;
+
   sdg-full-map-skeleton-footer {
     display: flex;
     flex-flow: column;

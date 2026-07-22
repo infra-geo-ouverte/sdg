@@ -12,10 +12,12 @@ import { labelAttribute } from '@igo2/sdg-common';
 
 export interface BasemapSwitcherLabels {
   tooltip: string;
+  close: string;
 }
 
 const LABELS_DEFAULT: BasemapSwitcherLabels = {
-  tooltip: 'Changer le fond de carte'
+  tooltip: 'Changer le fond de carte',
+  close: 'Fermer le sélecteur de fond de carte'
 };
 
 @Component({

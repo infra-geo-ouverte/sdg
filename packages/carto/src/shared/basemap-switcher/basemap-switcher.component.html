@@ -1,13 +1,14 @@
-@let tooltipLabels = this.labels().tooltip;
-@let expanded = this.expanded();
-
 @if (visible) {
+  @let tooltipLabels = this.labels().tooltip;
+  @let closeLabels = this.labels().close;
+  @let expanded = this.expanded();
+
   <div
     class="sdg-basemap-switcher-container"
     [class.--expanded]="expanded"
     tabindex="0"
     role="button"
-    [matTooltip]="tooltipLabels"
+    [matTooltip]="!expanded ? tooltipLabels : undefined"
     [attr.aria-label]="tooltipLabels"
     [attr.aria-expanded]="expanded"
     (click)="toggle()"
@@ -20,14 +21,19 @@
     </div>
 
     @if (basemapCount() > 2) {
-      <div class="sdg-basemap-switcher-more">
+      <button
+        matMiniFab
+        class="sdg-basemap-switcher-more"
+        [matTooltip]="closeLabels"
+        matTooltipPosition="right"
+      >
         <mat-icon color="primary">
           <!-- arrow_drop_down -->
           <svg viewBox="0 -960 960 960">
             <path d="M480-360 280-560h400L480-360Z" />
           </svg>
         </mat-icon>
-      </div>
+      </button>
     }
   </div>
 }

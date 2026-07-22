@@ -1,8 +1,12 @@
 @let labels = this.labels();
 @let groups = this.groups();
+@let isSingleSource = this.isSingleSource();
 
 <ng-template #emptyResults>
-  <div class="sdg-search-results-empty">
+  <div
+    class="sdg-search-results-empty"
+    [class.--not-single-source]="!isSingleSource"
+  >
     <mat-icon>
       <svg viewBox="0 -960 960 960">
         <path
@@ -14,8 +18,8 @@
   </div>
 </ng-template>
 
-@if (isSingleSource()) {
-  <div class="sdg-search-results">
+@if (isSingleSource) {
+  <div>
     @for (group of groups; track group.source.id) {
       @if (group.loading) {
         <mat-progress-bar mode="indeterminate" />
@@ -35,8 +39,8 @@
           }
         </mat-action-list>
         @if (groupHasMore(group)) {
-          <div class="sdg-search-results-load-more">
-            <button mat-button compact (click)="onLoadMore(group)">
+          <div class="sdg-search-results-load-more --single-source">
+            <button matButton compact (click)="onLoadMore(group)">
               {{ labels.loadMore }}
             </button>
           </div>
@@ -52,15 +56,15 @@
       <mat-expansion-panel expanded>
         <mat-expansion-panel-header>
           <mat-panel-title>
-            <span class="sdg-search-results-group-title">
-              {{ group.source.title }}
-              @if (!group.loading && group.results.length > 0) {
-                <span class="sdg-search-results-group-count">
-                  ({{ group.results.length }})
-                </span>
-              }
-            </span>
+            {{ group.source.title.toLocaleUpperCase() }}
           </mat-panel-title>
+          @if (group.loading) {
+            <mat-panel-description>...</mat-panel-description>
+          } @else if (group.results.length) {
+            <mat-panel-description>
+              {{ group.results.length }}
+            </mat-panel-description>
+          }
         </mat-expansion-panel-header>
 
         @if (group.loading) {
@@ -82,7 +86,7 @@
           </mat-action-list>
           @if (groupHasMore(group)) {
             <div class="sdg-search-results-load-more">
-              <button mat-button compact (click)="onLoadMore(group)">
+              <button matButton compact (click)="onLoadMore(group)">
                 {{ labels.loadMore }}
               </button>
             </div>

@@ -1,4 +1,3 @@
-@let displayedBasemaps = this.displayedBasemaps();
 @let basemaps = this.basemaps();
 
 <sdg-basemap-switcher
@@ -6,6 +5,8 @@
   [(expanded)]="expanded"
   [labels]="labels()"
 >
+  @let displayedBasemaps = this.displayedBasemaps();
+
   @for (basemap of displayedBasemaps; track basemap) {
     @let expanded = this.expanded();
 

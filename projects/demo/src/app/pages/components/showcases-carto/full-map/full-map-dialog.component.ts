@@ -27,45 +27,17 @@ export interface FullMapDialogData {
     <mat-dialog-content class="full-map-dialog-content">
       <sdg-ol-full-map [options]="data.options" [isHandset]="data.isHandset">
         <ng-template sdgPanelContent="legend">
-          <div>Legend is working</div>
+          <div class="template-content">La légende est affichée ici.</div>
         </ng-template>
         <ng-template sdgPanelContent="custom">
-          <div>custom</div>
+          <div class="template-content">
+            Ceci est le contenu affiché par défaut.
+          </div>
         </ng-template>
       </sdg-ol-full-map>
     </mat-dialog-content>
   `,
-  styles: `
-    :host {
-      display: block;
-
-      width: 100%;
-      height: 100%;
-
-      ::ng-deep .full-screen-dialog-close-button {
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        z-index: 1000 !important;
-      }
-    }
-
-    .full-map-dialog-content {
-      max-height: none;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-
-      width: 100%;
-      height: 100%;
-    }
-
-    sdg-ol-full-map {
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
-  `,
+  styleUrl: './full-map-dialog.component.scss',
   imports: [
     MatButtonModule,
     MatDialogModule,

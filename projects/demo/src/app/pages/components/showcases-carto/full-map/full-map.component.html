@@ -16,12 +16,39 @@
 <p>
   Elle est utilisée lorsqu'une vue d'ensemble des données géospatiales est
   pertinente pour l'utilisateur, et lorsque des interactions plus complexes sont
-  nécessaires. Puisque cette représentation cartographique peut offrir des
-  fonctionnalités avancées, elle doit principalement s'adresser à un public
-  captif ou expert.
+  nécessaires.
 </p>
 
 <sdg-anchor-menu [anchors]="anchors" />
+
+<app-example-viewer
+  title="Carte complète - Configuration de base"
+  showcase="carto"
+  configFolder="full-map"
+  codeFolder="full-map"
+>
+  <button
+    matButton="outlined"
+    compact
+    class="fullscreen-button"
+    (click)="openFullscreen()"
+  >
+    <mat-icon>fullscreen</mat-icon>
+    Ouvrir en plein écran
+  </button>
+
+  <sdg-ol-full-map [options]="options()" [isHandset]="isHandset()">
+    <ng-template sdgPanelContent="custom">
+      <div class="template-content">
+        Ceci est le contenu affiché par défaut.
+      </div>
+    </ng-template>
+
+    <ng-template sdgPanelContent="legend">
+      <div class="template-content">La légende est affichée ici.</div>
+    </ng-template>
+  </sdg-ol-full-map>
+</app-example-viewer>
 
 <section>
   <h2 id="section1">Recherche</h2>
@@ -31,25 +58,6 @@
     défaut (<code>search: true</code>)). Lorsqu'une recherche est initiée, le
     panneau principal s'ouvre pour montrer la liste des résultats.
   </p>
-
-  <section>
-    <h3>Format bureau</h3>
-
-    <p>
-      En format bureau, la barre de recherche est placée dans le coin supérieur
-      gauche. Le composant est fixe et s'affiche par-dessus les autres
-      composants d'affichage de la carte, comme le panneau principal.
-    </p>
-  </section>
-
-  <section>
-    <h3>Format mobile</h3>
-
-    <p>
-      En format mobile, la barre de recherche est placée dans le bas de l'écran.
-      Elle reste attachée au panneau principal.
-    </p>
-  </section>
 
   <section>
     <h3>Configuration</h3>
@@ -96,94 +104,6 @@
     Les informations qui s'y trouvent sont essentielles à la tâche; elles
     doivent être claires, concises et se limiter à du contenu textuel.
   </p>
-
-  <section>
-    <h3>Format bureau</h3>
-
-    <p>
-      Dans le format bureau, le panneau principal est placé à gauche et est
-      ouvert par défaut. Le panneau prend toute la hauteur de l'interface.
-      Lorsque le panneau est fermé, seul le bouton rétractable à la gauche de
-      l'écran est visible. La barre de recherche reste affichée au même endroit,
-      que le panneau soit ouvert ou fermé.
-    </p>
-  </section>
-
-  <section>
-    <h3>Format mobile</h3>
-
-    <p>
-      Dans le format mobile, le panneau est masqué, mais demeure accessible en
-      tapant sur le chevron. Lorsque le panneau est ouvert, sa hauteur
-      correspond au ⅔ de celle de la carte et il prend toute la largeur de
-      l'interface. Fermé, c'est uniquement la portion présentant la barre de
-      recherche qui reste visible.
-    </p>
-  </section>
-
-  <section>
-    <h3>Variantes</h3>
-
-    <p>
-      Chaque variante présente un contenu distinct; on ne doit pas les combiner.
-      On doit également éviter d'y placer des informations exhaustives sur
-      l'utilisation de la carte ainsi que les conditions d'utilisation et les
-      droits d'auteur.
-    </p>
-
-    <p>
-      Le panneau principal offre trois variantes pour les types de contenu
-      pouvant y être affiché&nbsp;:
-    </p>
-
-    <ul>
-      <li>Pour présenter un <b>texte d'accueil</b>;</li>
-      <li>Pour présenter les <b>résultats de recherche</b>;</li>
-      <li>Pour présenter le <b>détail d'une sélection</b>.</li>
-    </ul>
-
-    <section>
-      <h4>Variante pour présenter un texte d'accueil</h4>
-
-      <p>
-        Cette variante s'affiche par défaut ou lorsqu'aucune sélection ni
-        recherche n'est activée dans la carte. Elle permet de mettre en contexte
-        l'utilisateur et d'identifier la tâche qu'il est possible d'accomplir
-        sur la carte.
-      </p>
-
-      <p>
-        Le contenu est axé sur la tâche et est remplacé dès qu'une sélection ou
-        une recherche est effectuée, mais l'utilisateur peut toujours y revenir
-        par la navigation du panneau ou lorsque la page est réinitialisée.
-      </p>
-    </section>
-
-    <section>
-      <h4>Variante pour présenter les résultats de recherche</h4>
-
-      <p>
-        Cette variante s'affiche lorsqu'une recherche est initiée et que
-        celle-ci contient plusieurs résultats. L'utilisateur est alors invité à
-        sélectionner un élément dans la liste ou à préciser sa recherche.
-      </p>
-
-      <p>
-        Elle présente la liste des résultats à l'aide d'un défilement continu,
-        lorsque la recherche renvoie plusieurs résultats.
-      </p>
-    </section>
-
-    <section>
-      <h4>Variante pour présenter le détail d'une sélection</h4>
-
-      <p>
-        Cette variante s'affiche lorsqu'une sélection est effectuée sur la
-        carte, via les points d'intérêt, les marqueurs ou dans les résultats de
-        recherche.
-      </p>
-    </section>
-  </section>
 
   <section>
     <h3>Configuration</h3>
@@ -292,41 +212,22 @@
   </ul>
 
   <section>
-    <h3>Format bureau</h3>
-
-    <p>
-      Dans le format bureau, les éléments obligatoires du pied de page sont
-      présentés textuellement sur un bandeau en opacité réduite qui prend toute
-      la largeur de la carte.
-    </p>
-  </section>
-
-  <section>
-    <h3>Format mobile</h3>
-
-    <p>
-      Dans le format mobile, les éléments obligatoires du pied de page sont
-      présentés dans la portion inférieure du panneau lorsqu'il est ouvert.
-    </p>
-  </section>
-
-  <section>
     <h3>Configuration</h3>
 
     <p>
       Le pied de page s'affiche en bas de la carte et présente les informations
-      d'attribution &nbsp; droit d'auteur, organisation responsable et date de
+      d'attribution&nbsp;: droit d'auteur, organisation responsable et date de
       première publication. Il est configuré via l'option <code>footer</code>.
     </p>
 
     <ul>
       <li>
         <code>copyright</code> — libellé et URL du droit d'auteur (par
-        défaut&nbsp;: «&nbsp;© Gouvernement du Québec&nbsp;»).
+        défaut&nbsp;: «&nbsp;© Gouvernement du Québec&nbsp;»);
       </li>
       <li>
         <code>organization</code> — nom et URL de l'organisation responsable
-        (obligatoire).
+        (obligatoire);
       </li>
       <li>
         <code>firstPublicationDate</code> — date ou année de première
@@ -376,30 +277,3 @@
     <app-docs-code [code]="labelsExample" lang="typescript" />
   </section>
 </section>
-
-<app-example-viewer
-  title="Carte complète - Configuration de base"
-  showcase="carto"
-  configFolder="full-map"
-  codeFolder="full-map"
->
-  <button
-    matButton="outlined"
-    compact
-    class="fullscreen-button"
-    (click)="openFullscreen()"
-  >
-    <mat-icon>fullscreen</mat-icon>
-    Ouvrir en plein écran
-  </button>
-
-  <sdg-ol-full-map [options]="options()" [isHandset]="isHandset()">
-    <ng-template sdgPanelContent="custom">
-      <div>custom</div>
-    </ng-template>
-
-    <ng-template sdgPanelContent="legend">
-      <div>Legend is working</div>
-    </ng-template>
-  </sdg-ol-full-map>
-</app-example-viewer>

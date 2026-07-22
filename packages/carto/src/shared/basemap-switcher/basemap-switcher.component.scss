@@ -1,4 +1,5 @@
 @use '@igo2/sdg-core' as sdg;
+@use '../../../../carto/src/shared/navigation/base-button/base-button';
 
 .sdg-basemap-switcher {
   &-container {
@@ -25,19 +26,7 @@
   }
 
   &-more {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
     width: 80px;
     height: 24px;
-    background-color: var(--sdg-color-grey-pale);
-    text-align: center;
-    cursor: pointer;
-
-    &:hover {
-      background-color: var(--sdg-color-white);
-    }
   }
 }

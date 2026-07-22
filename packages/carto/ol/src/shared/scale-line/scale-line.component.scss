@@ -1,14 +1,15 @@
 @use '@angular/material' as mat;
 @use '@igo2/sdg-core' as sdg;
 
+$spacer-xs: var(--sdg-spacer-xs);
+
 :host {
   display: inline-block;
 
   &.sdg-scale-line-on-map {
-    $background-color: var(--sdg-color-white);
-    background: color-mix(in srgb, $background-color 56%, transparent);
-    border-radius: 4px;
-    padding: 4px;
+    background: color-mix(in srgb, var(--sdg-color-grey-pale) 67%, transparent);
+    border-radius: $spacer-xs;
+    padding: $spacer-xs;
     @include mat.elevation(3);
   }
 
@@ -21,7 +22,8 @@
       border: 1px solid var(--sdg-color-grey-dark);
       border-top: none;
       color: var(--sdg-color-text);
-      font-size: 10px;
+      font-size: var(--sdg-font-size-xs);
+      line-height: var(--sdg-line-height-xs);
       text-align: center;
       will-change: contents, width;
       transition: all 0.25s;

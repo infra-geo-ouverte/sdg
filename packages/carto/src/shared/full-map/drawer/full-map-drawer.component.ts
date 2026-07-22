@@ -1,4 +1,5 @@
 import { Component, inject, input } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {
   MatDrawer,
@@ -27,7 +28,8 @@ import { PanelService } from '../shared/panel.service';
     MatDrawer,
     MatDrawerContent,
     MatTooltipModule,
-    SdgFullMapSkeletonFooter
+    SdgFullMapSkeletonFooter,
+    MatButtonModule
   ],
   templateUrl: './full-map-drawer.component.html',
   styleUrl: './full-map-drawer.component.scss'

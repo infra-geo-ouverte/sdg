@@ -33,6 +33,14 @@ describe('SdgSearchResultsItem', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should render a focusable button', () => {
+    const button = fixture.nativeElement.querySelector('button');
+
+    button.focus();
+
+    expect(button).toBe(document.activeElement);
+  });
+
   it('should have result input', () => {
     expect(component.result()).toEqual(mockResult);
   });

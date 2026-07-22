@@ -1,7 +1,8 @@
-@let panelExpanded = panelService.expanded();
-
 <div class="full-map-bottom-sheet-overlay">
+  @let panelExpanded = panelService.expanded();
+
   <button
+    matMiniFab
     class="full-map-bottom-sheet-toggle-button"
     (click)="this.panelService.toggle()"
     (touchstart)="onTouchStart($event)"
@@ -33,7 +34,9 @@
     [style.height]="panelExpanded ? expandedHeight : '0px'"
   >
     <div class="full-map-bottom-sheet-content">
-      <ng-content select="[full-map-bottom-sheet-content]" />
+      <div class="full-map-bottom-sheet-content-body">
+        <ng-content select="[full-map-bottom-sheet-content]" />
+      </div>
 
       <footer>
         <sdg-full-map-skeleton-footer [attribution]="attribution()" />

@@ -1,4 +1,3 @@
-@let miniMap = this.miniMap();
 @let title = this.title();
 
 <div
@@ -11,6 +10,8 @@
   (keydown.space)="selectBasemap(); $event.preventDefault()"
   (touchend)="selectBasemap(); $event.preventDefault()"
 >
+  @let miniMap = this.miniMap();
+
   @if (display() && miniMap) {
     <sdg-map-browser [map]="miniMap!" />
     @if (title) {

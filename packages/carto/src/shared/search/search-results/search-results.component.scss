@@ -1,49 +1,35 @@
 @use '@angular/material' as mat;
 @use '@igo2/sdg-core' as sdg;
 
+$spacer-sm: var(--sdg-spacer-sm);
+
 :host {
   display: block;
 
   ::ng-deep .mat-expansion-panel .mat-expansion-panel-body {
     padding: 0;
   }
-
-  .mat-expansion-panel {
-    @include mat.expansion-overrides(
-      (
-        header-collapsed-state-height: 40px,
-        header-expanded-state-height: 40px
-      )
-    );
-  }
 }
 
 .sdg-search-results {
   display: flex;
-  flex-direction: column;
+  flex-flow: column;
+  row-gap: var(--sdg-grid-spacing-sm);
+  padding: 1px 0;
 
-  &-group-title {
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(
-      --mat-toolbar-container-text-color,
-      var(--mat-sys-on-background)
-    );
-  }
-
-  &-group-count {
-    margin-left: 4px;
-    font-weight: 400;
-    opacity: 0.7;
+  mat-expansion-panel {
+    margin: 0 !important;
   }
 
   &-empty {
     display: flex;
     align-items: center;
-    column-gap: var(--sdg-spacer-xs);
-    padding: 0 var(--sdg-spacer-sm);
+    column-gap: 12px;
+    padding: 0 $spacer-sm;
+
+    &.--not-single-source {
+      padding: var(--sdg-spacer-xs) $spacer-sm;
+    }
 
     mat-icon {
       color: var(--sdg-color-blue-dark);
@@ -54,11 +40,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0px var(--sdg-spacer-sm);
-  }
-}
+    padding: $spacer-sm 0;
 
-mat-list {
-  padding-top: 0px;
-  padding-bottom: var(--sdg-spacer-xs);
+    &.--single-source {
+      padding: $spacer-sm 0 0 0;
+    }
+  }
 }

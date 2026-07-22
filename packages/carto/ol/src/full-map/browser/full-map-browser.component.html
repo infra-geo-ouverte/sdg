@@ -1,15 +1,15 @@
 @let labels = this.labels();
-@let navigationLabels = labels.navigation;
-@let legendLabels = labels.legend;
-@let basemaps = this.basemaps;
 @let options = this.options();
 
 <sdg-map-browser [map]="map">
+  @let basemaps = this.basemaps;
+
   <div class="full-map-browser-controls">
     <div class="full-map-browser-controls-navigation">
-      @let navigation = options.navigation;
+      @let navigationOptions = options.navigation;
+      @let navigationLabels = labels.navigation;
 
-      @if (navigation?.rotation) {
+      @if (navigationOptions?.rotation !== false) {
         <sdg-rotation-button
           [map]="map"
           [labels]="navigationLabels?.rotation"
@@ -17,7 +17,7 @@
         />
       }
 
-      @if (navigation?.home) {
+      @if (navigationOptions?.home !== false) {
         <sdg-home-button
           [map]="map"
           [options]="homeOptions()"
@@ -26,7 +26,7 @@
         />
       }
 
-      @if (navigation?.geolocation) {
+      @if (navigationOptions?.geolocation !== false) {
         <sdg-geolocate-button
           [controller]="geolocation"
           [labels]="navigationLabels?.geolocation"
@@ -34,7 +34,7 @@
         />
       }
 
-      @if (navigation?.zoom && !isHandset()) {
+      @if (navigationOptions?.zoom !== false && !isHandset()) {
         <sdg-zoom-button
           [map]="map"
           [labels]="navigationLabels?.zoom"
@@ -44,6 +44,8 @@
     </div>
 
     @if (options.legend) {
+      @let legendLabels = labels.legend;
+
       <button
         color="primary"
         matButton="elevated"

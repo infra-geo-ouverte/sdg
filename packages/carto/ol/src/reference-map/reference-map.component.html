@@ -10,7 +10,7 @@
   <div class="sdg-reference-map-actions --vertical --bottom --right">
     @let navigation = options().navigation;
 
-    @if (navigation?.rotation) {
+    @if (navigation?.rotation !== false) {
       <sdg-rotation-button
         [map]="map"
         color="primary"
@@ -18,7 +18,7 @@
       />
     }
 
-    @if (navigation?.home) {
+    @if (navigation?.home !== false) {
       <sdg-home-button
         [map]="map"
         color="primary"
@@ -27,7 +27,7 @@
       />
     }
 
-    @if (navigation?.geolocation) {
+    @if (navigation?.geolocation !== false) {
       <sdg-geolocate-button
         [controller]="geolocation"
         color="primary"
@@ -35,7 +35,7 @@
       />
     }
 
-    @if (navigation?.zoom) {
+    @if (navigation?.zoom !== false) {
       <sdg-zoom-button
         [map]="map"
         color="primary"

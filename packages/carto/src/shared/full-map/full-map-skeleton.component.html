@@ -1,6 +1,3 @@
-@let isHandset = this.isHandset();
-@let attribution = this.attribution();
-
 <ng-template #PANEL_TEMPLATE>
   <ng-content select="[panel]" />
 </ng-template>
@@ -23,6 +20,9 @@
 </ng-template>
 
 <div class="full-map-skeleton-container">
+  @let isHandset = this.isHandset();
+  @let attribution = this.attribution();
+
   @if (isHandset) {
     <ng-template [ngTemplateOutlet]="MAP_TEMPLATE" />
     <sdg-full-map-skeleton-bottom-sheet [attribution]="attribution">

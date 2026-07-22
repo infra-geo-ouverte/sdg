@@ -7,6 +7,7 @@ import {
   input,
   viewChild
 } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { IMapFooterAttribution } from '../../map/map.interface';
@@ -17,7 +18,7 @@ const SWIPE_THRESHOLD = 30;
 
 @Component({
   selector: 'sdg-full-map-skeleton-bottom-sheet',
-  imports: [MatIconModule, SdgFullMapSkeletonFooter],
+  imports: [MatIconModule, SdgFullMapSkeletonFooter, MatButtonModule],
   templateUrl: './full-map-bottom-sheet.component.html',
   styleUrl: './full-map-bottom-sheet.component.scss'
 })

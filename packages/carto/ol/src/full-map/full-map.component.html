@@ -1,20 +1,23 @@
 @let options = this.options();
 @let searchOptions = options.search;
-@let scaleLineOptions = options.navigation?.scaleLine;
 @let labels = this.labels();
-@let panelType = panelService.type();
 @let isHandset = this.isHandset();
-@let searchGroups = this.searchGroups();
 
 <sdg-full-map-skeleton
   [attribution]="options.footer"
   [isHandset]="isHandset"
   [labels]="labels"
-  [search]="!!searchOptions"
+  [search]="searchOptions !== false"
 >
   <ng-container panel>
+    @let panelType = panelService.type();
+
     <!-- Default panel for search results -->
-    @if (searchOptions && panelType === 'search' && !hasCustomSearchPanel()) {
+    @if (
+      searchOptions !== false &&
+      panelType === 'search' &&
+      !hasCustomSearchPanel()
+    ) {
       <sdg-search-results
         [groups]="displayedGroups()"
         [labels]="labels.search"
@@ -25,6 +28,8 @@
 
     @for (content of panelContents(); track content.type()) {
       @if (content.type() === panelType) {
+        @let searchGroups = this.searchGroups();
+
         <ng-container
           [ngTemplateOutlet]="content.templateRef"
           [ngTemplateOutletContext]="{
@@ -38,7 +43,7 @@
   </ng-container>
 
   <ng-container search-bar>
-    @if (searchOptions) {
+    @if (searchOptions !== false) {
       <sdg-search-bar
         [labels]="labels.searchBar"
         (searchChange)="onSearchChange($event)"
@@ -46,6 +51,8 @@
       />
     }
   </ng-container>
+
+  @let scaleLineOptions = options.navigation?.scaleLine;
 
   <ng-container footer-actions>
     @if (scaleLineOptions) {

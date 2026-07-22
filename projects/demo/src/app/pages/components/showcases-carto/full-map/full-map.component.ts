@@ -41,7 +41,6 @@ const MAP_CONFIG: SdgOlFullMapOptions = {
   },
   basemaps: ['topo', 'imagery', 'hybrid'],
   legend: true,
-  search: true,
   panel: {
     default: 'custom'
   },
@@ -50,15 +49,13 @@ const MAP_CONFIG: SdgOlFullMapOptions = {
     home: {
       extent: QUEBEC_EXTENT_3857
     },
-    rotation: true,
-    zoom: true,
     scaleLine: true
   },
   footer: {
     firstPublicationDate: '2024',
     organization: {
       name: 'Ministère de la Sécurité intérieure',
-      url: 'https://www.securiteinterieure.gouv.qc.ca/'
+      url: 'https://www.quebec.ca/gouvernement/ministeres-organismes/securite-interieure'
     }
   }
 };
@@ -205,7 +202,7 @@ const options: SdgOlFullMapOptions = {
     },
     organization: {
       name: 'Ministère de la Sécurité intérieure',
-      url: 'https://www.securiteinterieure.gouv.qc.ca'
+      url: 'https://www.quebec.ca/gouvernement/ministeres-organismes/securite-interieure'
     },
     firstPublicationDate: '2024' // optionnel
   }

@@ -1,10 +1,12 @@
 @use '@igo2/sdg-core' as sdg;
 @use '@angular/material' as mat;
+@use '../../navigation/base-button/base-button.scss';
 
 $search-bar-left: 16px;
 $search-bar-top: calc($search-bar-left * 2);
 
 $search-bar-height: 40px;
+$footer-height: 32px;
 $toggle-button-height: 40px;
 
 footer {
@@ -16,8 +18,12 @@ footer {
   right: 0;
   padding: 0px 12px;
   width: 100%;
-  height: 32px;
-  background-color: color-mix(in srgb, var(--sdg-color-white) 67%, transparent);
+  height: $footer-height;
+  background-color: color-mix(
+    in srgb,
+    var(--sdg-color-grey-pale) 67%,
+    transparent
+  );
   font-size: var(--sdg-font-size-xs);
   line-height: var(--sdg-line-height-xs);
 }
@@ -32,35 +38,29 @@ footer {
 
   &-content {
     display: block;
-    padding: 0 0 32px;
+    margin-bottom: 32px;
     margin-top: $search-bar-top + $search-bar-height + $search-bar-top;
     height: calc(
-      100% - #{$search-bar-top + $search-bar-height + $search-bar-top}
+      100% - #{$search-bar-top + $search-bar-height + $search-bar-top +
+        $footer-height}
     );
     overflow: auto;
 
     &.--no-search-bar {
       margin-top: 0;
-      height: 100%;
+      height: calc(100% - #{$footer-height});
     }
   }
 
   &-toggle-button {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     left: 0;
     top: calc(50% - $toggle-button-height / 2);
     height: $toggle-button-height;
     width: 24px;
-    border: none;
-    background-color: var(--sdg-color-background);
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
     transition: left 0.3s;
     z-index: 1;
-    cursor: pointer;
 
     &.--expanded {
       left: var(--sdg-panel-width);
@@ -75,6 +75,6 @@ footer {
   }
 
   &-footer-actions {
-    margin-right: 16px;
+    margin-right: var(--sdg-grid-spacing-sm);
   }
 }

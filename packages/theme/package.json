@@ -21,7 +21,8 @@
     "format": "prettier --check ./src/**/*.{ts,scss,css,json}",
     "format.fix": "prettier --write ./src/**/*.{ts,scss,css,json}",
     "lint": "ng lint theme",
-    "lint.fix": "ng lint theme --fix"
+    "lint.fix": "ng lint theme --fix",
+    "types": "tsc -p ./tsconfig.lib.json --noEmit && tsc -p ./tsconfig.spec.json --noEmit"
   },
   "peerDependencies": {
     "@angular/material": "^21.0.0",

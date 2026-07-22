@@ -7,7 +7,7 @@ import {
   input
 } from '@angular/core';
 
-import { ISdgMap, IViewBaseOptions } from '../map.interface';
+import { ISdgMap, IViewBaseOptions } from '../map/map.interface';
 
 @Component({
   selector: 'sdg-map-browser',
@@ -16,7 +16,7 @@ import { ISdgMap, IViewBaseOptions } from '../map.interface';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SdgMapBrowserComponent implements AfterViewInit, OnDestroy {
+export class SdgMapBrowser implements AfterViewInit, OnDestroy {
   readonly map = input.required<ISdgMap<unknown>>();
   readonly view = input<IViewBaseOptions>();
 

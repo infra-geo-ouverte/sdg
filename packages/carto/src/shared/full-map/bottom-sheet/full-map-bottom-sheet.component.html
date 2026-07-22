@@ -1,0 +1,46 @@
+<div class="full-map-bottom-sheet-overlay">
+  @let panelExpanded = panelService.expanded();
+
+  <button
+    matMiniFab
+    class="full-map-bottom-sheet-toggle-button"
+    (click)="this.panelService.toggle()"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <mat-icon color="primary">
+      <svg viewBox="0 -960 960 960">
+        @if (panelExpanded) {
+          <!-- keyboard_arrow_down -->
+          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+        } @else {
+          <!-- keyboard_arrow_up -->
+          <path d="M480-528 296-344l-56-56 240-240 240 240-56 56-184-184Z" />
+        }
+      </svg>
+    </mat-icon>
+  </button>
+  <div
+    #bottomSheetHeader
+    class="full-map-bottom-sheet-header"
+    (touchstart)="onTouchStart($event)"
+    (touchend)="onTouchEnd($event)"
+  >
+    <ng-content select="[full-map-bottom-sheet-header]" />
+  </div>
+  <div
+    #bottomSheetWrapper
+    class="full-map-bottom-sheet-wrapper"
+    [style.height]="panelExpanded ? expandedHeight : '0px'"
+  >
+    <div class="full-map-bottom-sheet-content">
+      <div class="full-map-bottom-sheet-content-body">
+        <ng-content select="[full-map-bottom-sheet-content]" />
+      </div>
+
+      <footer>
+        <sdg-full-map-skeleton-footer [attribution]="attribution()" />
+      </footer>
+    </div>
+  </div>
+</div>

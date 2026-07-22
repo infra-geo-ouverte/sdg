@@ -15,6 +15,7 @@ import {
   withPreloading
 } from '@angular/router';
 
+import { ICHERCHE_CONFIG, TERRAPI_CONFIG } from '@igo2/sdg-carto';
 import {
   SDG_ANCHOR_MENU_LABELS,
   SDG_BLOCK_LINK_LABELS,
@@ -79,6 +80,18 @@ export const appConfig: ApplicationConfig = {
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
       useValue: { hideSingleSelectionIndicator: true }
+    },
+    {
+      provide: ICHERCHE_CONFIG,
+      useValue: {
+        searchUrl: environment.search?.icherche?.searchUrl ?? '/apis/icherche'
+      }
+    },
+    {
+      provide: TERRAPI_CONFIG,
+      useValue: {
+        searchUrl: environment.search?.terrapi?.searchUrl ?? '/apis/terrapi'
+      }
     }
   ]
 };

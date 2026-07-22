@@ -1,0 +1,32 @@
+@use '@igo2/sdg-core' as sdg;
+@use '../../../../carto/src/shared/navigation/base-button/base-button';
+
+.sdg-basemap-switcher {
+  &-container {
+    position: relative;
+    display: flex;
+    flex-flow: column;
+    height: 80px;
+    overflow: hidden;
+    transition: height 200ms ease-in-out;
+    row-gap: 4px;
+    box-shadow: var(--sdg-elevation-1);
+
+    &.--expanded {
+      height: auto;
+      overflow: hidden;
+      border-width: 0;
+    }
+  }
+
+  &-list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+  }
+
+  &-more {
+    width: 80px;
+    height: 24px;
+  }
+}

@@ -1,3 +1,13 @@
+/**
+ * Extracts the options object from a `boolean | T` toggle pattern.
+ * Returns `undefined` when the value is a boolean, or the object itself otherwise.
+ */
+export function resolveOptions<T extends object>(
+  value: boolean | T | undefined
+): T | undefined {
+  return typeof value === 'object' ? value : undefined;
+}
+
 export function merge(
   target: Record<string, any>,
   source: Record<string, any>,

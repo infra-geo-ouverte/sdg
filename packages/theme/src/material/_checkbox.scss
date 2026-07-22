@@ -52,7 +52,7 @@
       )
     );
 
-    margin-left: calc($checkbox-size * -1 / 2 + 2px);
+    margin-left: calc($checkbox-size * -1 / 2);
 
     .mdc-checkbox {
       height: $checkbox-size;
@@ -82,7 +82,9 @@
 
     .mdc-label {
       padding-left: 0;
-      transform: translateY(1px); // visually center the label with the checkbox
+      transform: translateY(
+        1px
+      ); // visually center the label with the radio button
     }
 
     &[compact] {

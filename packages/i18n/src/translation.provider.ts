@@ -87,7 +87,9 @@ function getLoader(
   });
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isProvider(obj: any): obj is Provider {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (obj as any).provide !== undefined;
 }
 

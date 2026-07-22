@@ -1,0 +1,9 @@
+@let attribution = this.attribution();
+
+<a [href]="attribution.organization.url" target="_blank">
+  {{ attribution.organization.name }}
+</a>
+
+<a [href]="attribution.copyright!.url" target="_blank">
+  {{ attribution.copyright!.label }}
+</a>

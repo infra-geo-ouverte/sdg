@@ -1,0 +1,53 @@
+<ng-template #PANEL_TEMPLATE>
+  <ng-content select="[panel]" />
+</ng-template>
+
+<ng-template #SEARCH_BAR_TEMPLATE>
+  <div
+    class="full-map-skeleton-search-bar"
+    [class.--elevated]="!panelService.expanded()"
+  >
+    <ng-content select="[search-bar]" />
+  </div>
+</ng-template>
+
+<ng-template #MAP_TEMPLATE>
+  <ng-content select="[map]" />
+</ng-template>
+
+<ng-template #FOOTER_TEMPLATE>
+  <ng-content select="[footer-actions]" />
+</ng-template>
+
+<div class="full-map-skeleton-container">
+  @let isHandset = this.isHandset();
+  @let attribution = this.attribution();
+
+  @if (isHandset) {
+    <ng-template [ngTemplateOutlet]="MAP_TEMPLATE" />
+    <sdg-full-map-skeleton-bottom-sheet [attribution]="attribution">
+      <ng-template
+        full-map-bottom-sheet-header
+        [ngTemplateOutlet]="SEARCH_BAR_TEMPLATE"
+      />
+      <ng-template
+        full-map-bottom-sheet-content
+        [ngTemplateOutlet]="PANEL_TEMPLATE"
+      />
+    </sdg-full-map-skeleton-bottom-sheet>
+  } @else {
+    <div class="full-map-skeleton-desktop">
+      <ng-template [ngTemplateOutlet]="SEARCH_BAR_TEMPLATE" />
+      <sdg-full-map-skeleton-drawer
+        [attribution]="attribution"
+        [isHandset]="isHandset"
+        [search]="search()"
+        [labels]="labels()?.panel"
+      >
+        <ng-template full-map-drawer [ngTemplateOutlet]="PANEL_TEMPLATE" />
+        <ng-template full-map-map [ngTemplateOutlet]="MAP_TEMPLATE" />
+        <ng-template full-map-footer [ngTemplateOutlet]="FOOTER_TEMPLATE" />
+      </sdg-full-map-skeleton-drawer>
+    </div>
+  }
+</div>

@@ -31,6 +31,7 @@
     "notice": "Notice",
     "paginator": "Paginator",
     "radioButton": "Radio button",
+    "searchBar": "Search bar",
     "select": "Drop-down list",
     "sequentialLinks": "Sequential links",
     "table": "Data table",
@@ -40,6 +41,7 @@
   },
   "showcasesCarto": {
     "referenceMap": "Reference map",
+    "fullMap": "Full map",
     "buttons": {
       "zoom": {
         "zoomIn": "Zoom in",

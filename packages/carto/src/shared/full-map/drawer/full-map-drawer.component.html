@@ -1,0 +1,46 @@
+<mat-drawer-container class="full-map-drawer-container" hasBackdrop="false">
+  @let panelExpanded = this.panelService.expanded();
+
+  <mat-drawer
+    class="full-map-drawer"
+    mode="side"
+    [opened]="panelExpanded"
+    autoFocus="false"
+  >
+    <div class="full-map-drawer-content" [class.--no-search-bar]="!search()">
+      <ng-content select="[full-map-drawer]" />
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <ng-content select="[full-map-map]" />
+    <footer>
+      <div class="full-map-drawer-footer-actions">
+        <ng-content select="[full-map-footer]" />
+      </div>
+      <sdg-full-map-skeleton-footer [attribution]="attribution()" />
+    </footer>
+  </mat-drawer-content>
+</mat-drawer-container>
+
+@let labels = this.labels();
+
+<button
+  matMiniFab
+  class="full-map-drawer-toggle-button"
+  [class.--expanded]="panelExpanded"
+  [matTooltip]="panelExpanded ? labels.close : labels.open"
+  matTooltipPosition="after"
+  (click)="panelService.toggle()"
+>
+  <mat-icon color="primary">
+    <svg viewBox="0 -960 960 960">
+      @if (panelExpanded) {
+        <!-- chevron_left -->
+        <path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z" />
+      } @else {
+        <!-- chevron_right -->
+        <path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z" />
+      }
+    </svg>
+  </mat-icon>
+</button>

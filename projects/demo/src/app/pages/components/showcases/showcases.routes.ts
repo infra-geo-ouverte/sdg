@@ -90,6 +90,19 @@ export const routes: SdgRoutes = [
       import('./header/header.component').then((m) => m.HeaderDemoComponent)
   },
   {
+    path: 'barre-recherche',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.searchBar'
+    },
+    description:
+      'La barre de recherche permet à l’utilisateur d’effectuer des recherches sur un site Web ou une application en saisissant des mots-clés.',
+    loadComponent: () =>
+      import('./search-bar/search-bar.component').then(
+        (m) => m.SearchBarDemoComponent
+      )
+  },
+  {
     path: 'bouton',
     title: AppTitleResolver,
     data: {

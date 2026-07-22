@@ -10,7 +10,6 @@
  */
 
 @use './src/material' as material;
-@use './src/igo2-lib' as igo2-lib;
 @use '@igo2/sdg-core' as core;
 
 $material-theme: material.$theme;
@@ -30,6 +29,5 @@ $primary-palette: material.$primary-palette;
   }
 
   @include core.styles();
-  @include igo2-lib.overrides();
   @include material.overrides();
 }

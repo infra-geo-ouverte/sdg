@@ -1,0 +1,78 @@
+@let labels = this.labels();
+@let options = this.options();
+
+<sdg-map-browser [map]="map">
+  @let basemaps = this.basemaps;
+
+  <div class="full-map-browser-controls">
+    <div class="full-map-browser-controls-navigation">
+      @let navigationOptions = options.navigation;
+      @let navigationLabels = labels.navigation;
+
+      @if (navigationOptions?.rotation !== false) {
+        <sdg-rotation-button
+          [map]="map"
+          [labels]="navigationLabels?.rotation"
+          color="primary"
+        />
+      }
+
+      @if (navigationOptions?.home !== false) {
+        <sdg-home-button
+          [map]="map"
+          [options]="homeOptions()"
+          [labels]="navigationLabels?.home"
+          color="primary"
+        />
+      }
+
+      @if (navigationOptions?.geolocation !== false) {
+        <sdg-geolocate-button
+          [controller]="geolocation"
+          [labels]="navigationLabels?.geolocation"
+          color="primary"
+        />
+      }
+
+      @if (navigationOptions?.zoom !== false && !isHandset()) {
+        <sdg-zoom-button
+          [map]="map"
+          [labels]="navigationLabels?.zoom"
+          color="primary"
+        />
+      }
+    </div>
+
+    @if (options.legend) {
+      @let legendLabels = labels.legend;
+
+      <button
+        color="primary"
+        matButton="elevated"
+        compact
+        class="full-map-browser-legend-button"
+        [matTooltip]="
+          panelService.expanded() && panelService.type() === 'legend'
+            ? legendLabels?.close
+            : legendLabels?.open
+        "
+        matTooltipPosition="left"
+        (click)="toggleLegend()"
+      >
+        {{ legendLabels?.label }}
+      </button>
+    }
+  </div>
+
+  @if (basemaps.length > 1) {
+    <div class="full-map-browser-basemap-switcher">
+      <sdg-ol-basemap-switcher
+        [map]="map"
+        [basemaps]="basemaps"
+        [labels]="labels.basemap"
+      />
+    </div>
+  }
+
+  <ng-content />
+</sdg-map-browser>

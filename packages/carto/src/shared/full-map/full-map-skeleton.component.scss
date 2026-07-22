@@ -1,0 +1,37 @@
+@use '@angular/material' as mat;
+@use '@igo2/sdg-core' as sdg;
+
+$search-bar-spacing-left: 16px;
+
+:host {
+  --sdg-map-footer-height: 36px;
+  --sdg-map-bottom-sheet-header-height: 104px;
+  --sdg-panel-width: 390px;
+}
+
+.full-map-skeleton {
+  &-container {
+    position: relative;
+    height: 100%;
+  }
+
+  &-desktop {
+    width: 100%;
+    height: 100%;
+
+    .full-map-skeleton-search-bar {
+      position: absolute;
+      width: calc(var(--sdg-panel-width) - $search-bar-spacing-left * 2);
+      top: calc($search-bar-spacing-left * 2);
+      left: $search-bar-spacing-left;
+
+      &.--elevated {
+        box-shadow: var(--sdg-elevation-1);
+      }
+    }
+  }
+
+  &-search-bar {
+    z-index: 2;
+  }
+}

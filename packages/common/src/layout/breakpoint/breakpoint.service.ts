@@ -14,10 +14,10 @@ export class BreakpointService {
   }
 
   constructor() {
-    this.handleBreakpoint();
+    this.handsetBreakpoint();
   }
 
-  private handleBreakpoint(): void {
+  private handsetBreakpoint(): void {
     this.breakpointObserver
       .observe('(max-width: 575px)')
       .subscribe((result) => {

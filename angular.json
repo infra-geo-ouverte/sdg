@@ -81,7 +81,8 @@
               "buildTarget": "demo:build:production"
             },
             "development": {
-              "buildTarget": "demo:build:development"
+              "buildTarget": "demo:build:development",
+              "proxyConfig": "projects/demo/proxy.conf.mjs"
             }
           },
           "defaultConfiguration": "development"

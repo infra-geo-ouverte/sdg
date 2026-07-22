@@ -1,0 +1,23 @@
+@use '@angular/material' as mat;
+@use '@igo2/sdg-core' as sdg;
+
+$controls-padding: 12px;
+
+.full-map {
+  &-container {
+    position: relative;
+    height: 100%;
+  }
+
+  &-browser {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    &-top-navigation {
+      position: absolute;
+      top: $controls-padding;
+      right: $controls-padding;
+    }
+  }
+}

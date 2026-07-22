@@ -6,6 +6,7 @@ $search-bar-left: 16px;
 $search-bar-top: calc($search-bar-left * 2);
 
 $search-bar-height: 40px;
+$panel-width: 390px;
 $footer-height: 32px;
 $toggle-button-height: 40px;
 
@@ -29,7 +30,7 @@ footer {
 }
 
 .full-map-drawer {
-  width: var(--sdg-panel-width);
+  width: $panel-width;
   box-shadow: var(--sdg-elevation-1);
 
   &-container {
@@ -63,7 +64,7 @@ footer {
     z-index: 1;
 
     &.--expanded {
-      left: var(--sdg-panel-width);
+      left: $panel-width;
     }
 
     mat-icon {

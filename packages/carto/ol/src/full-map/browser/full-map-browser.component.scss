@@ -2,6 +2,7 @@
 @use '@igo2/sdg-core' as sdg;
 
 $controls-padding: 12px;
+$map-bottom-sheet-header-height: 104px;
 
 sdg-map-browser {
   .full-map-browser {
@@ -19,10 +20,7 @@ sdg-map-browser {
       }
 
       @include sdg.media(mobile) {
-        bottom: calc(
-          var(--sdg-map-bottom-sheet-header-height, 104px) +
-            #{$controls-padding}
-        );
+        bottom: calc($map-bottom-sheet-header-height + $controls-padding);
       }
     }
 
@@ -40,10 +38,7 @@ sdg-map-browser {
       left: $controls-padding;
 
       @include sdg.media(mobile) {
-        bottom: calc(
-          var(--sdg-map-bottom-sheet-header-height, 104px) +
-            #{$controls-padding}
-        );
+        bottom: calc($map-bottom-sheet-header-height + $controls-padding);
       }
     }
 

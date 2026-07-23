@@ -96,6 +96,9 @@ mat-form-field:focus-within .sdg-search-bar {
 
 .sdg-search-bar {
   &-reset-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid $grey-medium;
     border-left: none;
     border-right: none;
@@ -119,6 +122,9 @@ mat-form-field:focus-within .sdg-search-bar {
   }
 
   &-search-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: 1px solid $grey-medium;
     border-left: none;
     background-color: var(--sdg-color-blue-piv) !important;

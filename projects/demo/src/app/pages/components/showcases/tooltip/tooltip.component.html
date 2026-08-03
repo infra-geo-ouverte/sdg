@@ -1,0 +1,91 @@
+<p>
+  <span>
+    L'<b>infobulle</b> est utilisée pour fournir des informations contextuelles
+    liées à un élément particulier. Pour plus d'information, voir l'</span
+  >
+  <span>
+    <sdg-external-link
+      text="Infobulle"
+      url="https://design.quebec.ca/design/composants/infobulle"
+    />
+  </span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<sdg-anchor-menu [anchors]="anchors" />
+
+<section>
+  <h2 id="section1">Généralités</h2>
+
+  <p>
+    Les infobulles s'utilisent principalement dans les formulaires. Elles
+    fournissent des informations complémentaires ou des précisions.
+  </p>
+
+  <p>
+    Deux variantes sont disponibles selon le type d'information à
+    présenter&nbsp;:
+  </p>
+  <ul>
+    <li>Pour une définition;</li>
+    <li>Pour une précision sur un champ.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="section2">Configuration</h2>
+
+  <p>
+    Il existe quatre <code>input</code> différents pouvant être
+    configurés&nbsp;:
+  </p>
+
+  <ul>
+    <li><code>title</code>&nbsp;: le titre (facultatif) de l'infobulle;</li>
+    <li>
+      <code>icon</code>&nbsp;: l'icône de l'infobulle -
+      <code>info</code> (valeur par défaut) ou <code>help</code>;
+    </li>
+    <li>
+      <code>position</code>&nbsp;: la position de l'infobulle -
+      <code>right</code> (valeur par défaut), <code>left</code>,
+      <code>top</code> ou <code>bottom</code>;
+    </li>
+    <li>
+      <code>buttonTooltip</code>&nbsp;: la mention affichée au survol du bouton
+      de l'infobulle.
+    </li>
+  </ul>
+
+  <p>
+    Si l'espace nécessaire pour afficher l'infobulle est insuffisant selon
+    l'<code>input position</code>, elle sera automatiquement repositionnée.
+  </p>
+
+  <p>
+    De plus, si la boîte de l'infobulle est visible lors du défilement de la
+    page courante et que le bouton de l'infobulle est hors de la zone visible,
+    l'infobulle se fermera automatiquement.
+  </p>
+</section>
+
+<app-example-viewer
+  title="Infobulle"
+  configFolder="tooltip"
+  codeFolder="tooltip"
+>
+  <sdg-tooltip
+    title="Ceci est le titre"
+    position="top"
+    icon="help"
+    buttonTooltip="Ouvrir l'infobulle"
+  >
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit
+      amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+      labore et dolore magna aliqua.
+    </p>
+    <sdg-external-link text="Google" url="https://google.com" />
+  </sdg-tooltip>
+</app-example-viewer>

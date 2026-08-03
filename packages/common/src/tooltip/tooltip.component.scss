@@ -1,0 +1,188 @@
+@use '@angular/material' as mat;
+
+$grey-light: var(--sdg-color-grey-light);
+$color-background: var(--sdg-color-background);
+
+$spacer-xs: var(--sdg-spacer-xs);
+$spacer-sm: var(--sdg-spacer-sm);
+
+$font-size-sm: var(--sdg-font-size-sm);
+$line-height-sm: var(--sdg-line-height-sm);
+
+:host {
+  display: inline-block;
+}
+
+.sdg-tooltip {
+  &-button {
+    position: relative;
+    display: inline-flex;
+  }
+
+  &-content {
+    position: relative;
+    isolation: isolate;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    max-width: 320px;
+    min-width: 216px;
+    max-height: 160px;
+    background-color: $color-background;
+    border: 1px solid $grey-light;
+    box-shadow: var(--sdg-elevation-2);
+
+    &::before,
+    &::after {
+      position: absolute;
+      width: 0;
+      height: 0;
+      content: '';
+    }
+
+    &::before {
+      z-index: 1;
+    }
+
+    &::after {
+      z-index: 2;
+    }
+
+    &.--right {
+      &::before,
+      &::after {
+        top: var(--tooltip-arrow-offset, 50%);
+        border-top: 0.625rem solid transparent;
+        border-right: 0.625rem solid;
+        border-bottom: 0.625rem solid transparent;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        left: -0.6875rem;
+        border-right-color: $grey-light;
+      }
+
+      &::after {
+        left: -0.5625rem;
+        border-right-color: $color-background;
+      }
+    }
+
+    &.--left {
+      &::before,
+      &::after {
+        top: var(--tooltip-arrow-offset, 50%);
+        border-top: 0.625rem solid transparent;
+        border-bottom: 0.625rem solid transparent;
+        border-left: 0.625rem solid;
+        transform: translateY(-50%);
+      }
+
+      &::before {
+        right: -0.6875rem;
+        border-left-color: $grey-light;
+      }
+
+      &::after {
+        right: -0.5625rem;
+        border-left-color: $color-background;
+      }
+    }
+
+    &.--top,
+    &.--bottom {
+      &::before,
+      &::after {
+        left: var(--tooltip-arrow-offset, 50%);
+        border-right: 0.625rem solid transparent;
+        border-left: 0.625rem solid transparent;
+        transform: translateX(-50%);
+      }
+    }
+
+    &.--top {
+      &::before,
+      &::after {
+        border-top: 0.625rem solid;
+      }
+
+      &::before {
+        bottom: -0.6875rem;
+        border-top-color: $grey-light;
+      }
+
+      &::after {
+        bottom: -0.5625rem;
+        border-top-color: $color-background;
+      }
+    }
+
+    &.--bottom {
+      &::before,
+      &::after {
+        border-bottom: 0.625rem solid;
+      }
+
+      &::before {
+        top: -0.6875rem;
+        border-bottom-color: $grey-light;
+      }
+
+      &::after {
+        top: -0.5625rem;
+        border-bottom-color: $color-background;
+      }
+    }
+  }
+
+  &-close {
+    align-self: flex-end;
+  }
+
+  &-body {
+    display: block;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    margin: 0 $spacer-sm $spacer-sm $spacer-sm;
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 8px;
+      height: auto;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--sdg-color-blue-piv);
+      border-radius: 4px;
+    }
+  }
+
+  &-title {
+    display: block;
+    font-weight: var(--sdg-font-weight-bold);
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+  }
+
+  &-message {
+    display: block;
+    overflow-wrap: break-word;
+
+    ::ng-deep * {
+      font-size: $font-size-sm;
+      line-height: $line-height-sm;
+    }
+
+    ::ng-deep > :first-child {
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+    }
+
+    ::ng-deep > :last-child {
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+  }
+}

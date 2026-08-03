@@ -20,4 +20,5 @@ export * from './see-also';
 export * from './sequential-links';
 export * from './shared';
 export * from './tile';
+export * from './tooltip';
 export * from './top-page-button';

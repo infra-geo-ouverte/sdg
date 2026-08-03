@@ -199,6 +199,17 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'infobulle',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.tooltip'
+    },
+    description:
+      "L'infobulle est utilisée pour fournir des informations contextuelles liées à un élément particulier.",
+    loadComponent: () =>
+      import('./tooltip/tooltip.component').then((m) => m.TooltipDemoComponent)
+  },
+  {
     path: 'lien-externe',
     title: AppTitleResolver,
     data: {

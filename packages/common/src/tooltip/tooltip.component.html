@@ -1,0 +1,38 @@
+<button
+  matIconButton
+  class="sdg-tooltip-button"
+  color="primary"
+  [matTooltip]="buttonTooltip()"
+  (click)="toggle($event)"
+>
+  <mat-icon>{{ icon() }}</mat-icon>
+</button>
+
+<ng-template #tooltipContent>
+  <div
+    class="sdg-tooltip-content"
+    [class]="`--${resolvedPosition()}`"
+    [style.--tooltip-arrow-offset]="arrowOffset()"
+  >
+    <button
+      matIconButton
+      class="sdg-tooltip-close"
+      color="primary"
+      matTooltip="Fermer"
+      (click)="close()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="sdg-tooltip-body">
+      @let title = this.title();
+
+      @if (title) {
+        <span class="text sdg-tooltip-title">{{ title }}</span>
+      }
+      <div class="sdg-tooltip-message">
+        <ng-content />
+      </div>
+    </div>
+  </div>
+</ng-template>

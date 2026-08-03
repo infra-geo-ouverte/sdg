@@ -29,12 +29,11 @@
               }
             ],
             "styles": [
+              "node_modules/@angular/cdk/overlay-prebuilt.css",
               "projects/demo/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules"
-              ]
+              "includePaths": ["node_modules"]
             },
             "scripts": []
           },
@@ -178,9 +177,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "packages/theme/**/*.ts"
-            ],
+            "lintFilePatterns": ["packages/theme/**/*.ts"],
             "eslintConfig": "packages/theme/eslint.config.mjs"
           }
         }

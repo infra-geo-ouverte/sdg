@@ -1,7 +1,4 @@
-@use '@igo2/sdg-core' as sdg;
-@use '@angular/material' as mat;
 @use '../../navigation/base-button/base-button.scss';
-
 $search-bar-left: 16px;
 $search-bar-top: calc($search-bar-left * 2);
 

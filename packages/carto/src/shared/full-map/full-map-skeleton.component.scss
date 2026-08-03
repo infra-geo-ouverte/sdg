@@ -1,6 +1,10 @@
-$search-bar-spacing-left: 16px;
-$map-footer-height: 36px;
+$search-bar-horizontal-spacing: var(--sdg-spacer-16);
 $panel-width: 390px;
+
+:host {
+  --sdg-full-map-search-bar-vertical-spacing: #{$search-bar-horizontal-spacing};
+  --sdg-full-map-panel-width: #{$panel-width};
+}
 
 .full-map-skeleton {
   &-container {
@@ -14,9 +18,9 @@ $panel-width: 390px;
 
     .full-map-skeleton-search-bar {
       position: absolute;
-      width: calc($panel-width - $search-bar-spacing-left * 2);
-      top: calc($search-bar-spacing-left * 2);
-      left: $search-bar-spacing-left;
+      width: calc($panel-width - $search-bar-horizontal-spacing * 2);
+      top: calc($search-bar-horizontal-spacing * 2);
+      left: $search-bar-horizontal-spacing;
 
       &.--elevated {
         box-shadow: var(--sdg-elevation-1);

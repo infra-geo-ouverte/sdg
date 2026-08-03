@@ -2,7 +2,7 @@
 
 :host {
   button {
-    padding: 8px;
+    padding: var(--sdg-spacer-8);
 
     @include mat.fab-overrides(
       (

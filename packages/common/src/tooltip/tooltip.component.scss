@@ -9,7 +9,7 @@ $spacer-sm: var(--sdg-spacer-sm);
 $font-size-sm: var(--sdg-font-size-sm);
 $line-height-sm: var(--sdg-line-height-sm);
 
-:host {
+sdg-tooltip {
   display: inline-block;
 }
 
@@ -27,7 +27,7 @@ $line-height-sm: var(--sdg-line-height-sm);
     flex-flow: column;
     max-width: 320px;
     min-width: 216px;
-    max-height: 160px;
+    max-height: var(--sdg-tooltip-max-height, 160px);
     background-color: $color-background;
     border: 1px solid $grey-light;
     box-shadow: var(--sdg-elevation-2);
@@ -170,17 +170,20 @@ $line-height-sm: var(--sdg-line-height-sm);
     display: block;
     overflow-wrap: break-word;
 
-    ::ng-deep * {
+    font-size: $font-size-sm;
+    line-height: $line-height-sm;
+
+    :where(a, span, ul, ol, u, .text, p) {
       font-size: $font-size-sm;
       line-height: $line-height-sm;
     }
 
-    ::ng-deep > :first-child {
+    > :first-child {
       margin-top: 0 !important;
       padding-top: 0 !important;
     }
 
-    ::ng-deep > :last-child {
+    > :last-child {
       margin-bottom: 0 !important;
       padding-bottom: 0 !important;
     }

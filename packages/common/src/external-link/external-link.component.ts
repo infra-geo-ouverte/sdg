@@ -28,10 +28,6 @@ import { isSafeUrl, pathIsExternal } from '../router';
       font-size: 13px;
       margin-right: 2px;
     }
-
-    mat-icon svg {
-      display: block;
-    }
   `
 })
 export class ExternalLinkComponent {

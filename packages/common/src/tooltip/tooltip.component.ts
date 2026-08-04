@@ -3,9 +3,12 @@ import { TemplatePortal } from '@angular/cdk/portal';
 import { ScrollDispatcher } from '@angular/cdk/scrolling';
 import {
   Component,
+  InjectionToken,
   OnDestroy,
   TemplateRef,
   ViewContainerRef,
+  ViewEncapsulation,
+  computed,
   inject,
   input,
   signal,
@@ -16,6 +19,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { Subscription } from 'rxjs';
+
+import { WithLabels } from '../shared';
+
+export interface TooltipLabels {
+  closeTooltip: string;
+  openTooltip: string;
+}
+
+export const SDG_TOOLTIP_LABELS = new InjectionToken<TooltipLabels>(
+  'SDG_TOOLTIP_LABELS'
+);
+
+const DEFAULT_LABELS: TooltipLabels = {
+  closeTooltip: 'Fermer',
+  openTooltip: "Ouvrir l'infobulle"
+};
+
+let uniqueId = 0;
 
 export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
 export type TooltipIcon = 'info' | 'help';
@@ -55,9 +76,13 @@ const POSITIONS: Readonly<Record<TooltipPosition, ConnectedPosition>> = {
   selector: 'sdg-tooltip',
   imports: [MatIconModule, MatButtonModule, MatTooltipModule],
   templateUrl: './tooltip.component.html',
-  styleUrls: ['./tooltip.component.scss']
+  styleUrls: ['./tooltip.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class TooltipComponent implements OnDestroy {
+export class TooltipComponent
+  extends WithLabels<TooltipLabels>
+  implements OnDestroy
+{
   private readonly overlay = inject(Overlay);
   private readonly scrollDispatcher = inject(ScrollDispatcher);
   private readonly viewContainerRef = inject(ViewContainerRef);
@@ -69,14 +94,29 @@ export class TooltipComponent implements OnDestroy {
   readonly icon = input<TooltipIcon>('info');
   readonly title = input<string>();
   readonly buttonTooltip = input<string>();
+  readonly buttonAriaLabel = input<string>();
 
+  protected readonly tooltipId = `sdg-tooltip-${uniqueId++}`;
+  protected readonly titleId = `${this.tooltipId}-title`;
   protected readonly isOpen = signal(false);
+  protected readonly triggerAriaLabel = computed(
+    () =>
+      this.buttonAriaLabel()?.trim() ||
+      this.buttonTooltip()?.trim() ||
+      this.labels().openTooltip.trim() ||
+      DEFAULT_LABELS.openTooltip
+  );
   protected readonly resolvedPosition = signal<TooltipPosition>('right');
   protected readonly arrowOffset = signal('50%');
 
   private overlayRef?: OverlayRef;
-  private scrollSubscription?: Subscription;
+  private subscription?: Subscription;
   private triggerVisibilityObserver?: IntersectionObserver;
+  private triggerElement?: HTMLElement;
+
+  constructor() {
+    super(DEFAULT_LABELS, SDG_TOOLTIP_LABELS);
+  }
 
   toggle(event: MouseEvent): void {
     if (this.overlayRef) {
@@ -89,6 +129,7 @@ export class TooltipComponent implements OnDestroy {
       return;
     }
 
+    this.triggerElement = trigger;
     this.resolvedPosition.set(this.position());
     const positionStrategy = this.overlay
       .position()
@@ -100,45 +141,62 @@ export class TooltipComponent implements OnDestroy {
       positionStrategy,
       scrollStrategy: this.overlay.scrollStrategies.reposition()
     });
-    positionStrategy.positionChanges.subscribe(({ connectionPair }) => {
-      this.resolvedPosition.set(this.getPosition(connectionPair));
-      this.updateArrowOffset(trigger);
-    });
-    this.scrollSubscription = this.scrollDispatcher.scrolled().subscribe(() => {
-      requestAnimationFrame(() => this.updateArrowOffset(trigger));
-    });
-    this.overlayRef.keydownEvents().subscribe((event) => {
-      if (event.key === 'Escape') {
-        this.close();
-      }
-    });
-    this.overlayRef.outsidePointerEvents().subscribe((pointerEvent) => {
-      if (
-        pointerEvent.target instanceof Node &&
-        !trigger.contains(pointerEvent.target)
-      ) {
-        this.close();
-      }
-    });
+    this.subscription = new Subscription();
+    this.subscription.add(
+      positionStrategy.positionChanges.subscribe(({ connectionPair }) => {
+        this.resolvedPosition.set(this.getPosition(connectionPair));
+        this.updateArrowOffset(trigger);
+      })
+    );
+    this.subscription.add(
+      this.scrollDispatcher.scrolled().subscribe(() => {
+        requestAnimationFrame(() => this.updateArrowOffset(trigger));
+      })
+    );
+    this.subscription.add(
+      this.overlayRef.keydownEvents().subscribe((event) => {
+        if (event.key === 'Escape') {
+          this.close();
+        }
+      })
+    );
+    this.subscription.add(
+      this.overlayRef.outsidePointerEvents().subscribe((pointerEvent) => {
+        if (
+          pointerEvent.target instanceof Node &&
+          !trigger.contains(pointerEvent.target)
+        ) {
+          this.close({ restoreFocus: false });
+        }
+      })
+    );
     this.overlayRef.attach(
       new TemplatePortal(this.content(), this.viewContainerRef)
     );
-    this.observeTriggerVisibility(trigger);
     this.isOpen.set(true);
+    this.observeTriggerVisibility(trigger);
   }
 
-  close(): void {
+  close(options?: { restoreFocus?: boolean }): void {
+    const restoreFocus = options?.restoreFocus ?? true;
+
     this.triggerVisibilityObserver?.disconnect();
     this.triggerVisibilityObserver = undefined;
-    this.scrollSubscription?.unsubscribe();
-    this.scrollSubscription = undefined;
+    this.subscription?.unsubscribe();
+    this.subscription = undefined;
     this.overlayRef?.dispose();
     this.overlayRef = undefined;
     this.isOpen.set(false);
+
+    if (restoreFocus && this.triggerElement?.isConnected) {
+      this.triggerElement.focus({ preventScroll: true });
+    }
+
+    this.triggerElement = undefined;
   }
 
   ngOnDestroy(): void {
-    this.close();
+    this.close({ restoreFocus: false });
   }
 
   private observeTriggerVisibility(trigger: HTMLElement): void {
@@ -148,7 +206,7 @@ export class TooltipComponent implements OnDestroy {
 
     this.triggerVisibilityObserver = new IntersectionObserver(([entry]) => {
       if (!entry.isIntersecting) {
-        this.close();
+        this.close({ restoreFocus: false });
       }
     });
     this.triggerVisibilityObserver.observe(trigger);
@@ -172,8 +230,10 @@ export class TooltipComponent implements OnDestroy {
     if (connectionPair.originX === 'start') {
       return 'left';
     }
-
-    return connectionPair.originY === 'top' ? 'top' : 'bottom';
+    if (connectionPair.overlayY === 'bottom') {
+      return 'top';
+    }
+    return 'bottom';
   }
 
   private updateArrowOffset(trigger: HTMLElement): void {

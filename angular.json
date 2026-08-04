@@ -29,7 +29,6 @@
               }
             ],
             "styles": [
-              "node_modules/@angular/cdk/overlay-prebuilt.css",
               "projects/demo/src/styles.scss"
             ],
             "stylePreprocessorOptions": {

@@ -2,6 +2,10 @@
   matIconButton
   class="sdg-tooltip-button"
   color="primary"
+  [attr.aria-label]="triggerAriaLabel()"
+  [attr.aria-expanded]="isOpen()"
+  aria-haspopup="dialog"
+  [attr.aria-controls]="tooltipId"
   [matTooltip]="buttonTooltip()"
   (click)="toggle($event)"
 >
@@ -10,25 +14,27 @@
 
 <ng-template #tooltipContent>
   <div
+    [id]="tooltipId"
     class="sdg-tooltip-content"
     [class]="`--${resolvedPosition()}`"
     [style.--tooltip-arrow-offset]="arrowOffset()"
+    role="dialog"
+    [attr.aria-labelledby]="title() ? titleId : null"
+    [attr.aria-label]="title() ? null : triggerAriaLabel()"
   >
     <button
       matIconButton
       class="sdg-tooltip-close"
       color="primary"
-      matTooltip="Fermer"
+      [matTooltip]="labels().closeTooltip"
       (click)="close()"
     >
       <mat-icon>close</mat-icon>
     </button>
 
     <div class="sdg-tooltip-body">
-      @let title = this.title();
-
-      @if (title) {
-        <span class="text sdg-tooltip-title">{{ title }}</span>
+      @if (title(); as title) {
+        <span [id]="titleId" class="text sdg-tooltip-title">{{ title }}</span>
       }
       <div class="sdg-tooltip-message">
         <ng-content />

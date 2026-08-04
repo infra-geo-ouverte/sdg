@@ -233,7 +233,8 @@ describe('SdgPopover', () => {
     await fixture.whenStable();
 
     const icon = fixture.nativeElement.querySelector('mat-icon') as HTMLElement;
+    const iconPath = icon.querySelector('path');
 
-    expect(icon.textContent?.trim()).toBe('help');
+    expect(iconPath?.getAttribute('d')).toContain('M513.5-254.5');
   });
 });

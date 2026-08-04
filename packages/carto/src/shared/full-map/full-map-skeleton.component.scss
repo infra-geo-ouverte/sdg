@@ -2,7 +2,7 @@ $search-bar-horizontal-spacing: var(--sdg-spacer-16);
 $panel-width: 390px;
 
 :host {
-  --sdg-full-map-search-bar-vertical-spacing: #{$search-bar-horizontal-spacing};
+  --sdg-full-map-search-bar-vertical-spacing: var(--sdg-spacer-32);
   --sdg-full-map-panel-width: #{$panel-width};
 }
 

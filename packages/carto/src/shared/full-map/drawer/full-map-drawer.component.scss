@@ -13,10 +13,8 @@ $search-bar-height: #{var(--sdg-search-bar-height)};
   }
 
   &-content {
-    $vertical-spacing: calc(
-      var(--sdg-full-map-search-bar-vertical-spacing) * 2
-    );
-    $height: calc($vertical-spacing + $search-bar-height);
+    $vertical-spacing: #{var(--sdg-full-map-search-bar-vertical-spacing)};
+    $height: calc($vertical-spacing * 2 + $search-bar-height);
 
     display: block;
     margin-bottom: $footer-height;
@@ -31,7 +29,7 @@ $search-bar-height: #{var(--sdg-search-bar-height)};
   }
 
   &-toggle-button {
-    $height: 40px;
+    $height: #{var(--sdg-search-bar-height)};
 
     position: absolute;
     left: 0;

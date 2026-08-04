@@ -30,6 +30,7 @@
     "navigation": "Menu de navigation principale",
     "notice": "Avis",
     "paginator": "Pagination",
+    "popover": "Infobulle",
     "radioButton": "Bouton radio",
     "searchBar": "Barre de recherche",
     "sequentialLinks": "Liens séquentiels",
@@ -37,7 +38,6 @@
     "table": "Tableau de données",
     "tabs": "Onglets",
     "tile": "Tuile cliquable",
-    "tooltip": "Infobulle",
     "topPage": "Haut de page"
   },
   "showcasesCarto": {

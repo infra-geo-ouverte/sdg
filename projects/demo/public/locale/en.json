@@ -30,6 +30,7 @@
     "navigation": "Main navigation menu",
     "notice": "Notice",
     "paginator": "Paginator",
+    "popover": "Popover",
     "radioButton": "Radio button",
     "searchBar": "Search bar",
     "select": "Drop-down list",
@@ -37,7 +38,6 @@
     "table": "Data table",
     "tabs": "Tabs",
     "tile": "Clickable tile",
-    "tooltip": "Tooltip",
     "topPage": "Scroll to top"
   },
   "showcasesCarto": {

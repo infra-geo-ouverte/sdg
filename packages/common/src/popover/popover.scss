@@ -9,11 +9,11 @@ $spacer-sm: var(--sdg-spacer-sm);
 $font-size-sm: var(--sdg-font-size-sm);
 $line-height-sm: var(--sdg-line-height-sm);
 
-sdg-tooltip {
+sdg-popover {
   display: inline-block;
 }
 
-.sdg-tooltip {
+.sdg-popover {
   &-button {
     position: relative;
     display: inline-flex;
@@ -27,7 +27,7 @@ sdg-tooltip {
     flex-flow: column;
     max-width: 320px;
     min-width: 216px;
-    max-height: var(--sdg-tooltip-max-height, 160px);
+    max-height: var(--sdg-popover-max-height, 160px);
     background-color: $color-background;
     border: 1px solid $grey-light;
     box-shadow: var(--sdg-elevation-2);
@@ -51,7 +51,7 @@ sdg-tooltip {
     &.--right {
       &::before,
       &::after {
-        top: var(--tooltip-arrow-offset, 50%);
+        top: var(--popover-arrow-offset, 50%);
         border-top: 0.625rem solid transparent;
         border-right: 0.625rem solid;
         border-bottom: 0.625rem solid transparent;
@@ -72,7 +72,7 @@ sdg-tooltip {
     &.--left {
       &::before,
       &::after {
-        top: var(--tooltip-arrow-offset, 50%);
+        top: var(--popover-arrow-offset, 50%);
         border-top: 0.625rem solid transparent;
         border-bottom: 0.625rem solid transparent;
         border-left: 0.625rem solid;
@@ -94,7 +94,7 @@ sdg-tooltip {
     &.--bottom {
       &::before,
       &::after {
-        left: var(--tooltip-arrow-offset, 50%);
+        left: var(--popover-arrow-offset, 50%);
         border-right: 0.625rem solid transparent;
         border-left: 0.625rem solid transparent;
         transform: translateX(-50%);
@@ -162,8 +162,8 @@ sdg-tooltip {
   &-title {
     display: block;
     font-weight: var(--sdg-font-weight-bold);
-    font-size: $font-size-sm;
-    line-height: $line-height-sm;
+    font-size: $font-size-sm !important;
+    line-height: $line-height-sm !important;
   }
 
   &-message {

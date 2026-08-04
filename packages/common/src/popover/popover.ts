@@ -22,26 +22,26 @@ import { Subscription } from 'rxjs';
 
 import { WithLabels } from '../shared';
 
-export interface TooltipLabels {
+export interface PopoverLabels {
   closeTooltip: string;
   openTooltip: string;
 }
 
-export const SDG_TOOLTIP_LABELS = new InjectionToken<TooltipLabels>(
-  'SDG_TOOLTIP_LABELS'
+export const SDG_POPOVER_LABELS = new InjectionToken<PopoverLabels>(
+  'SDG_POPOVER_LABELS'
 );
 
-const DEFAULT_LABELS: TooltipLabels = {
+const DEFAULT_LABELS: PopoverLabels = {
   closeTooltip: 'Fermer',
   openTooltip: "Ouvrir l'infobulle"
 };
 
 let uniqueId = 0;
 
-export type TooltipPosition = 'left' | 'right' | 'top' | 'bottom';
-export type TooltipIcon = 'info' | 'help';
+export type PopoverPosition = 'left' | 'right' | 'top' | 'bottom';
+export type PopoverIcon = 'info' | 'help';
 
-const POSITIONS: Readonly<Record<TooltipPosition, ConnectedPosition>> = {
+const POSITIONS: Readonly<Record<PopoverPosition, ConnectedPosition>> = {
   right: {
     originX: 'end',
     originY: 'center',
@@ -73,31 +73,28 @@ const POSITIONS: Readonly<Record<TooltipPosition, ConnectedPosition>> = {
 };
 
 @Component({
-  selector: 'sdg-tooltip',
+  selector: 'sdg-popover',
   imports: [MatIconModule, MatButtonModule, MatTooltipModule],
-  templateUrl: './tooltip.component.html',
-  styleUrls: ['./tooltip.component.scss'],
+  templateUrl: './popover.html',
+  styleUrls: ['./popover.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class TooltipComponent
-  extends WithLabels<TooltipLabels>
-  implements OnDestroy
-{
+export class SdgPopover extends WithLabels<PopoverLabels> implements OnDestroy {
   private readonly overlay = inject(Overlay);
   private readonly scrollDispatcher = inject(ScrollDispatcher);
   private readonly viewContainerRef = inject(ViewContainerRef);
 
   private readonly content =
-    viewChild.required<TemplateRef<unknown>>('tooltipContent');
+    viewChild.required<TemplateRef<unknown>>('popoverContent');
 
-  readonly position = input<TooltipPosition>('right');
-  readonly icon = input<TooltipIcon>('info');
+  readonly position = input<PopoverPosition>('right');
+  readonly icon = input<PopoverIcon>('info');
   readonly title = input<string>();
   readonly buttonTooltip = input<string>();
   readonly buttonAriaLabel = input<string>();
 
-  protected readonly tooltipId = `sdg-tooltip-${uniqueId++}`;
-  protected readonly titleId = `${this.tooltipId}-title`;
+  protected readonly popoverId = `sdg-popover-${uniqueId++}`;
+  protected readonly titleId = `${this.popoverId}-title`;
   protected readonly isOpen = signal(false);
   protected readonly triggerAriaLabel = computed(
     () =>
@@ -106,7 +103,7 @@ export class TooltipComponent
       this.labels().openTooltip.trim() ||
       DEFAULT_LABELS.openTooltip
   );
-  protected readonly resolvedPosition = signal<TooltipPosition>('right');
+  protected readonly resolvedPosition = signal<PopoverPosition>('right');
   protected readonly arrowOffset = signal('50%');
 
   private overlayRef?: OverlayRef;
@@ -115,7 +112,7 @@ export class TooltipComponent
   private triggerElement?: HTMLElement;
 
   constructor() {
-    super(DEFAULT_LABELS, SDG_TOOLTIP_LABELS);
+    super(DEFAULT_LABELS, SDG_POPOVER_LABELS);
   }
 
   toggle(event: MouseEvent): void {
@@ -223,7 +220,7 @@ export class TooltipComponent
     ];
   }
 
-  private getPosition(connectionPair: ConnectedPosition): TooltipPosition {
+  private getPosition(connectionPair: ConnectedPosition): PopoverPosition {
     if (connectionPair.originX === 'end') {
       return 'right';
     }

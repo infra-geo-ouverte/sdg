@@ -4,23 +4,23 @@ import {
   Anchor,
   AnchorMenuComponent,
   ExternalLinkComponent,
-  TooltipComponent,
+  SdgPopover,
   findTitleAnchors
 } from '@igo2/sdg-common';
 
 import { ExampleViewerComponent } from '../../../../components';
 
 @Component({
-  selector: 'app-tooltip',
+  selector: 'app-popover',
   imports: [
     ExampleViewerComponent,
     ExternalLinkComponent,
-    TooltipComponent,
+    SdgPopover,
     AnchorMenuComponent
   ],
-  templateUrl: './tooltip.component.html'
+  templateUrl: './popover.html'
 })
-export class TooltipDemoComponent implements AfterContentInit {
+export class PopoverDemoComponent implements AfterContentInit {
   private elementRef = inject(ElementRef);
 
   anchors: Anchor[] = [];

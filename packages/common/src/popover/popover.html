@@ -1,0 +1,51 @@
+@let triggerAriaLabel = this.triggerAriaLabel(); @let labels = this.labels();
+@let isOpen = this.isOpen();
+
+<button
+  matIconButton
+  class="sdg-popover-button"
+  color="primary"
+  [attr.aria-label]="triggerAriaLabel"
+  [attr.aria-expanded]="isOpen"
+  aria-haspopup="dialog"
+  [attr.aria-controls]="popoverId"
+  [matTooltip]="
+    isOpen ? labels.closeTooltip : (buttonTooltip() ?? labels.openTooltip)
+  "
+  (click)="toggle($event)"
+>
+  <mat-icon>{{ icon() }}</mat-icon>
+</button>
+
+<ng-template #popoverContent>
+  @let title = this.title();
+
+  <div
+    [id]="popoverId"
+    class="sdg-popover-content"
+    [class]="`--${resolvedPosition()}`"
+    [style.--popover-arrow-offset]="arrowOffset()"
+    role="dialog"
+    [attr.aria-labelledby]="title ? titleId : null"
+    [attr.aria-label]="title ? null : triggerAriaLabel"
+  >
+    <button
+      matIconButton
+      class="sdg-popover-close"
+      color="primary"
+      [matTooltip]="labels.closeTooltip"
+      (click)="close()"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    <div class="sdg-popover-body">
+      @if (title) {
+      <span [id]="titleId" class="text sdg-popover-title">{{ title }}</span>
+      }
+      <div class="sdg-popover-message">
+        <ng-content />
+      </div>
+    </div>
+  </div>
+</ng-template>

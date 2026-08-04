@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../../../../test-config';
-import { TooltipDemoComponent } from './tooltip.component';
+import { PopoverDemoComponent } from './popover';
 
-describe('TooltipDemoComponent', () => {
-  let component: TooltipDemoComponent;
-  let fixture: ComponentFixture<TooltipDemoComponent>;
+describe('PopoverDemoComponent', () => {
+  let component: PopoverDemoComponent;
+  let fixture: ComponentFixture<PopoverDemoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TooltipDemoComponent],
+      imports: [PopoverDemoComponent],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TooltipDemoComponent);
+    fixture = TestBed.createComponent(PopoverDemoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,26 +2,26 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TEST_CONFIG } from '../../test-config';
-import { TooltipComponent } from './tooltip.component';
+import { SdgPopover } from './popover';
 
-describe('TooltipComponent', () => {
-  let fixture: ComponentFixture<TooltipComponent>;
+describe('SdgPopover', () => {
+  let fixture: ComponentFixture<SdgPopover>;
   let overlayContainer: OverlayContainer;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TooltipComponent],
+      imports: [SdgPopover],
       providers: [...TEST_CONFIG.providers!]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TooltipComponent);
+    fixture = TestBed.createComponent(SdgPopover);
     overlayContainer = TestBed.inject(OverlayContainer);
     fixture.detectChanges();
   });
 
   it('displays the popup when the info button is clicked', async () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
 
     trigger.click();
@@ -30,45 +30,45 @@ describe('TooltipComponent', () => {
     expect(
       overlayContainer
         .getContainerElement()
-        .querySelector('.sdg-tooltip-content')
+        .querySelector('.sdg-popover-content')
     ).toBeTruthy();
   });
 
   it('adds required ARIA attributes to trigger button', () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
 
     expect(trigger.getAttribute('aria-label')).toBe("Ouvrir l'infobulle");
     expect(trigger.getAttribute('aria-haspopup')).toBe('dialog');
-    expect(trigger.getAttribute('aria-controls')).toContain('sdg-tooltip-');
+    expect(trigger.getAttribute('aria-controls')).toContain('sdg-popover-');
     expect(trigger.getAttribute('aria-expanded')).toBe('false');
   });
 
   it('closes the popup when the close button is clicked', async () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     trigger.click();
     await fixture.whenStable();
 
     const closeButton = overlayContainer
       .getContainerElement()
-      .querySelector('.sdg-tooltip-close') as HTMLButtonElement;
+      .querySelector('.sdg-popover-close') as HTMLButtonElement;
     closeButton.click();
     await fixture.whenStable();
 
     expect(
       overlayContainer
         .getContainerElement()
-        .querySelector('.sdg-tooltip-content')
+        .querySelector('.sdg-popover-content')
     ).toBeNull();
     expect(document.activeElement).toBe(trigger);
   });
 
   it('closes the popup when the trigger is clicked again', async () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     trigger.click();
     await fixture.whenStable();
@@ -79,13 +79,13 @@ describe('TooltipComponent', () => {
     expect(
       overlayContainer
         .getContainerElement()
-        .querySelector('.sdg-tooltip-content')
+        .querySelector('.sdg-popover-content')
     ).toBeNull();
   });
 
   it('closes the popup when clicking outside it', async () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     trigger.click();
     await fixture.whenStable();
@@ -99,13 +99,13 @@ describe('TooltipComponent', () => {
     expect(
       overlayContainer
         .getContainerElement()
-        .querySelector('.sdg-tooltip-content')
+        .querySelector('.sdg-popover-content')
     ).toBeNull();
   });
 
   it('does not restore trigger focus when clicking outside it', async () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     const outsideButton = document.createElement('button');
     document.body.append(outsideButton);
@@ -124,7 +124,7 @@ describe('TooltipComponent', () => {
 
   it('opens to the right by default', async () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     trigger.click();
     await fixture.whenStable();
@@ -132,7 +132,7 @@ describe('TooltipComponent', () => {
     expect(
       overlayContainer
         .getContainerElement()
-        .querySelector('.sdg-tooltip-content.--right')
+        .querySelector('.sdg-popover-content.--right')
     ).toBeTruthy();
     expect(trigger.getAttribute('aria-expanded')).toBe('true');
   });
@@ -148,7 +148,7 @@ describe('TooltipComponent', () => {
     await fixture.whenStable();
 
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     vi.spyOn(trigger, 'getBoundingClientRect').mockReturnValue(
       new DOMRect(400, 300, 40, 40)
@@ -159,7 +159,7 @@ describe('TooltipComponent', () => {
     expect(
       overlayContainer
         .getContainerElement()
-        .querySelector('.sdg-tooltip-content.--top')
+        .querySelector('.sdg-popover-content.--top')
     ).toBeTruthy();
   });
 
@@ -168,17 +168,17 @@ describe('TooltipComponent', () => {
     await fixture.whenStable();
 
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     trigger.click();
     await fixture.whenStable();
 
     const panel = overlayContainer
       .getContainerElement()
-      .querySelector('.sdg-tooltip-content') as HTMLElement;
+      .querySelector('.sdg-popover-content') as HTMLElement;
     const title = overlayContainer
       .getContainerElement()
-      .querySelector('.sdg-tooltip-title') as HTMLElement;
+      .querySelector('.sdg-popover-title') as HTMLElement;
 
     expect(title.textContent?.trim()).toBe('My title');
     expect(panel.getAttribute('role')).toBe('dialog');
@@ -188,18 +188,18 @@ describe('TooltipComponent', () => {
 
   it('does not render the title element when title is not provided', async () => {
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
     trigger.click();
     await fixture.whenStable();
 
     expect(
-      overlayContainer.getContainerElement().querySelector('.sdg-tooltip-title')
+      overlayContainer.getContainerElement().querySelector('.sdg-popover-title')
     ).toBeNull();
 
     const panel = overlayContainer
       .getContainerElement()
-      .querySelector('.sdg-tooltip-content') as HTMLElement;
+      .querySelector('.sdg-popover-content') as HTMLElement;
     expect(panel.getAttribute('aria-labelledby')).toBeNull();
     expect(panel.getAttribute('aria-label')).toBe("Ouvrir l'infobulle");
   });
@@ -209,7 +209,7 @@ describe('TooltipComponent', () => {
     await fixture.whenStable();
 
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
 
     expect(trigger.getAttribute('aria-label')).toBe("Plus d'informations");
@@ -222,7 +222,7 @@ describe('TooltipComponent', () => {
     await fixture.whenStable();
 
     const trigger = fixture.nativeElement.querySelector(
-      '.sdg-tooltip-button'
+      '.sdg-popover-button'
     ) as HTMLButtonElement;
 
     expect(trigger.getAttribute('aria-label')).toBe("Ouvrir l'infobulle");

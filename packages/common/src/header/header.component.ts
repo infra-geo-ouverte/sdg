@@ -28,7 +28,9 @@ const DEFAULT_LABELS: IHeaderLabels = { contactUs: 'Nous joindre' };
   selector: 'sdg-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [NgTemplateOutlet, RouterLink, MatButtonModule, MatIconModule]
+  imports: [NgTemplateOutlet, RouterLink, MatButtonModule, MatIconModule],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class HeaderComponent extends WithLabels<IHeaderLabels> {
   readonly title = input.required<string>();

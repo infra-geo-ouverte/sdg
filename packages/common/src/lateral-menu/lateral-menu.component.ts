@@ -26,7 +26,9 @@ import { LateralMenuSections } from './lateral-menu.interface';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './lateral-menu.component.html',
-  styleUrls: ['./lateral-menu.component.scss']
+  styleUrls: ['./lateral-menu.component.scss'],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class LateralMenuComponent {
   private readonly router = inject(Router);

@@ -23,7 +23,9 @@ import { SdgOlMap } from '..';
   templateUrl: './mini-basemap.component.html',
   styleUrl: './mini-basemap.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [SdgMapBrowser]
+  imports: [SdgMapBrowser],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class SdgOlMiniBasemap implements AfterViewInit {
   readonly parentMap = input.required<SdgOlMap>();

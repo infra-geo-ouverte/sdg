@@ -77,7 +77,9 @@ const POSITIONS: Readonly<Record<PopoverPosition, ConnectedPosition>> = {
   imports: [MatIconModule, MatButtonModule, MatTooltipModule],
   templateUrl: './popover.html',
   styleUrls: ['./popover.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class SdgPopover extends WithLabels<PopoverLabels> implements OnDestroy {
   private readonly overlay = inject(Overlay);

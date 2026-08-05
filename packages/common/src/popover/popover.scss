@@ -3,9 +3,6 @@
 $grey-light: var(--sdg-color-grey-light);
 $color-background: var(--sdg-color-background);
 
-$spacer-xs: var(--sdg-spacer-xs);
-$spacer-sm: var(--sdg-spacer-sm);
-
 $font-size-sm: var(--sdg-font-size-sm);
 $line-height-sm: var(--sdg-line-height-sm);
 
@@ -141,11 +138,13 @@ sdg-popover {
   }
 
   &-body {
+    $spacer-16: var(--sdg-spacer-16);
+
     display: block;
     flex: 1 1 auto;
     min-height: 0;
     overflow-y: auto;
-    margin: 0 $spacer-sm $spacer-sm $spacer-sm;
+    margin: 0 $spacer-16 $spacer-16;
 
     &::-webkit-scrollbar {
       background-color: transparent;

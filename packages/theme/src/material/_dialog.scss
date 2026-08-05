@@ -75,7 +75,7 @@
 
         @include sdg.media(mobile) {
           flex-flow: column-reverse;
-          row-gap: var(--sdg-spacer-sm);
+          row-gap: var(--sdg-spacer-16);
 
           .mdc-button {
             width: 100%;

@@ -1,7 +1,7 @@
 @mixin overrides() {
   .mat-mdc-option {
     min-height: 0;
-    padding: var(--sdg-spacer-xs);
+    padding: var(--sdg-spacer-8);
 
     .mdc-list-item__primary-text {
       color: var(--sdg-color-blue-dark);

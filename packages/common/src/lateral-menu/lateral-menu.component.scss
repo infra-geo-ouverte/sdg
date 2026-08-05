@@ -1,8 +1,8 @@
 @use '@igo2/sdg-core' as sdg;
 @use './lateral-menu-animation' as animation;
 
-$spacer-xs: var(--sdg-spacer-xs);
-$spacer-sm: var(--sdg-spacer-sm);
+$spacer-8: var(--sdg-spacer-8);
+$spacer-16: var(--sdg-spacer-16);
 
 :host {
   display: flex;
@@ -14,7 +14,7 @@ $spacer-sm: var(--sdg-spacer-sm);
     font-size: var(--sdg-font-size-sm);
     line-height: var(--sdg-line-height-sm);
     font-weight: var(--sdg-font-weight-bold);
-    padding: $spacer-sm $spacer-xs $spacer-sm 0;
+    padding: $spacer-16 $spacer-8 $spacer-16 0;
     margin: 0;
     border-bottom: 1px solid var(--sdg-color-grey-light);
 
@@ -24,7 +24,7 @@ $spacer-sm: var(--sdg-spacer-sm);
       justify-content: space-between;
       border: none;
       background-color: var(--sdg-color-blue-pale);
-      padding: $spacer-xs;
+      padding: $spacer-8;
       cursor: pointer;
     }
 

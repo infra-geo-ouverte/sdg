@@ -64,23 +64,23 @@ $desktop: (
         mb: var(--sdg-spacer-32)
       ),
       h2: (
-        mt: var(--sdg-spacer-lg),
-        mb: var(--sdg-spacer-sm)
+        mt: var(--sdg-spacer-48),
+        mb: var(--sdg-spacer-16)
       ),
       h3: (
-        mt: var(--sdg-spacer-md),
-        mb: var(--sdg-spacer-sm)
+        mt: var(--sdg-spacer-24),
+        mb: var(--sdg-spacer-16)
       ),
       h4: (
-        mt: var(--sdg-spacer-md),
-        mb: var(--sdg-spacer-xs)
+        mt: var(--sdg-spacer-24),
+        mb: var(--sdg-spacer-8)
       ),
       h5: (
-        mt: var(--sdg-spacer-sm),
+        mt: var(--sdg-spacer-16),
         mb: 0
       ),
       h6: (
-        mt: var(--sdg-spacer-sm),
+        mt: var(--sdg-spacer-16),
         mb: 0
       )
     )

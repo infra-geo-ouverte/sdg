@@ -87,8 +87,8 @@
     @include breakpoints.media(mobile) {
       font-size: var(--sdg-mobile-font-size-h1);
       line-height: var(--sdg-mobile-line-height-h1);
-      margin-top: var(--sdg-spacer-lg) !important;
-      margin-bottom: var(--sdg-spacer-sm) !important;
+      margin-top: var(--sdg-spacer-48) !important;
+      margin-bottom: var(--sdg-spacer-16) !important;
     }
   }
 

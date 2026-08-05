@@ -1,4 +1,4 @@
-$base-padding: 8px;
+$base-padding: #{var(--sdg-spacer-8)};
 
 :host {
   ::ng-deep {

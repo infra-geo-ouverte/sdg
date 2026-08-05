@@ -83,7 +83,7 @@ footer {
     display: flex;
     flex-flow: column;
     align-items: center;
-    row-gap: 8px;
+    row-gap: var(--sdg-spacer-8);
     padding: 12px;
   }
 }

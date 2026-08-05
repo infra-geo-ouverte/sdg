@@ -1,14 +1,12 @@
 @use '@angular/material' as mat;
 
-$spacer-xs: var(--sdg-spacer-xs);
-
 :host {
   display: inline-block;
 
   &.sdg-scale-line-on-map {
     background: color-mix(in srgb, var(--sdg-color-grey-pale) 67%, transparent);
-    border-radius: $spacer-xs;
-    padding: $spacer-xs;
+    border-radius: 8px;
+    padding: var(--sdg-spacer-8);
     @include mat.elevation(3);
   }
 

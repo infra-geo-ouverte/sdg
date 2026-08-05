@@ -1,8 +1,6 @@
 @use '@igo2/sdg-core' as sdg;
 
-$spacer-xs: var(--sdg-spacer-xs);
-$spacer-sm: var(--sdg-spacer-sm);
-$spacer-md: var(--sdg-spacer-md);
+$spacer-8: var(--sdg-spacer-8);
 $blue-pale: var(--sdg-color-blue-pale);
 $font-size-sm: var(--sdg-font-size-sm);
 $font-size-md: var(--sdg-font-size-md);
@@ -20,13 +18,13 @@ $line-height-md: var(--sdg-line-height-md);
     line-height: $line-height-sm;
     border-bottom: 1px solid var(--sdg-color-grey-light);
     width: 100%;
-    padding: $spacer-sm $spacer-xs;
+    padding: var(--sdg-spacer-16) $spacer-8;
     text-decoration: none;
 
     @include sdg.media(mobile) {
       font-size: $font-size-md;
       line-height: $line-height-md;
-      padding: $spacer-xs 0 $spacer-xs $spacer-md;
+      padding: $spacer-8 0 $spacer-8 var(--sdg-spacer-24);
       background-color: $blue-pale;
       border: none;
     }
@@ -53,7 +51,7 @@ $line-height-md: var(--sdg-line-height-md);
   &-section-item {
     font-size: $font-size-sm;
     line-height: $line-height-sm;
-    padding: $spacer-xs 0;
+    padding: $spacer-8 0;
     text-decoration: none;
 
     @include sdg.media(mobile) {

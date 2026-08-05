@@ -45,7 +45,7 @@ $box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.12);
 
   &-header {
     background-color: $background-color;
-    padding: 32px var(--sdg-spacer-sm);
+    padding: 32px var(--sdg-spacer-16);
     pointer-events: auto;
     touch-action: none;
     box-shadow: $box-shadow;

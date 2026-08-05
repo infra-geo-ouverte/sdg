@@ -1,8 +1,8 @@
 @use '@igo2/sdg-core' as sdg;
 @use '../lateral-menu-animation' as animation;
 
-$spacer-xs: var(--sdg-spacer-xs);
-$spacer-md: var(--sdg-spacer-md);
+$spacer-8: var(--sdg-spacer-8);
+$spacer-24: var(--sdg-spacer-24);
 $blue-pale: var(--sdg-color-blue-pale);
 
 .sdg-lateral-menu-section {
@@ -18,14 +18,14 @@ $blue-pale: var(--sdg-color-blue-pale);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    column-gap: $spacer-xs;
-    padding: var(--sdg-spacer-sm) $spacer-xs;
+    column-gap: $spacer-8;
+    padding: var(--sdg-spacer-16) $spacer-8;
     border: none;
     background-color: transparent;
     cursor: pointer;
 
     @include sdg.media(mobile) {
-      padding: $spacer-xs $spacer-xs $spacer-xs $spacer-md;
+      padding: $spacer-8 $spacer-8 $spacer-8 $spacer-24;
     }
 
     &-title {
@@ -59,14 +59,14 @@ $blue-pale: var(--sdg-color-blue-pale);
   &-subsections {
     @include sdg.media(mobile) {
       background-color: $blue-pale;
-      padding-left: $spacer-md;
+      padding-left: $spacer-24;
     }
 
     &-content {
-      padding: 0 0 0 $spacer-md;
+      padding: 0 0 0 $spacer-24;
 
       &.--opened {
-        padding: $spacer-xs 0 $spacer-xs $spacer-md;
+        padding: $spacer-8 0 $spacer-8 $spacer-24;
       }
     }
   }

@@ -24,8 +24,8 @@
         border-bottom: 1px solid var(--sdg-color-blue-dark);
 
         > tr > th {
-          padding: 0 var(--sdg-spacer-sm) var(--sdg-spacer-xs)
-            var(--sdg-spacer-sm);
+          padding: 0 var(--sdg-spacer-16) var(--sdg-spacer-8)
+            var(--sdg-spacer-16);
         }
       }
 
@@ -39,7 +39,7 @@
     }
 
     > caption {
-      margin-bottom: var(--sdg-spacer-md);
+      margin-bottom: var(--sdg-spacer-24);
       text-align: left;
       font-size: var(--sdg-font-size-lg);
       line-height: var(--sdg-line-height-lg);
@@ -52,7 +52,7 @@
 
       > tr > th {
         text-align: left !important;
-        padding: var(--sdg-spacer-sm);
+        padding: var(--sdg-spacer-16);
         font-size: var(--sdg-font-size-md);
         line-height: var(--sdg-line-height-md);
         font-weight: var(--sdg-font-weight-bold);
@@ -73,7 +73,7 @@
 
         > td {
           text-align: left !important;
-          padding: var(--sdg-spacer-sm);
+          padding: var(--sdg-spacer-16);
           font-size: var(--sdg-font-size-md);
           line-height: var(--sdg-line-height-md);
           font-weight: var(--sdg-font-weight-normal);

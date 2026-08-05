@@ -1,4 +1,4 @@
-$spacer-sm: var(--sdg-spacer-sm);
+$spacer-16: var(--sdg-spacer-16);
 
 :host {
   display: block;
@@ -22,10 +22,10 @@ $spacer-sm: var(--sdg-spacer-sm);
     display: flex;
     align-items: center;
     column-gap: 12px;
-    padding: 0 $spacer-sm;
+    padding: 0 $spacer-16;
 
     &.--not-single-source {
-      padding: var(--sdg-spacer-xs) $spacer-sm;
+      padding: var(--sdg-spacer-8) $spacer-16;
     }
 
     mat-icon {
@@ -37,10 +37,10 @@ $spacer-sm: var(--sdg-spacer-sm);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: $spacer-sm 0;
+    padding: $spacer-16 0;
 
     &.--single-source {
-      padding: $spacer-sm 0 0 0;
+      padding: $spacer-16 0 0 0;
     }
   }
 }

@@ -260,8 +260,8 @@ describe('LateralMenuSectionComponent', () => {
       );
 
       // Set CSS variables so styles can be computed
-      content.style.setProperty('--sdg-spacer-xs', '4px');
-      content.style.setProperty('--sdg-spacer-md', '16px');
+      content.style.setProperty('--sdg-spacer-8', '4px');
+      content.style.setProperty('--sdg-spacer-24', '16px');
 
       const closedStyles = getComputedStyle(content);
       expect(closedStyles.paddingTop).toBe('0px');

@@ -31,7 +31,7 @@ import { ExampleViewerComponent } from '../../../../components';
   styles: `
     .search-bar-dark {
       background-color: var(--sdg-color-blue-dark);
-      padding: var(--sdg-spacer-md);
+      padding: var(--sdg-spacer-24);
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush

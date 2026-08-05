@@ -33,7 +33,7 @@ import { DialogConfirmDemoComponent } from './confirm/dialog-confirm.component';
     .content {
       display: flex;
       flex-flow: column;
-      gap: var(--sdg-spacer-md);
+      gap: var(--sdg-spacer-24);
     }
   `
 })

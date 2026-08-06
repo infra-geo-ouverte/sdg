@@ -20,7 +20,7 @@ export class SdgSearchResultsItem {
   readonly hovered = input(false);
   readonly selected = input(false);
 
-  readonly select = output<SearchResult>();
+  readonly resultSelect = output<SearchResult>();
   readonly hover = output<SearchResult>();
   readonly unhover = output<SearchResult>();
 }

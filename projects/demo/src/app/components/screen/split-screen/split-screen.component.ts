@@ -17,7 +17,9 @@ import { Language, TranslationService } from '@igo2/sdg-i18n';
   imports: [BreadcrumbsWithRouterComponent, CharterBannerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './split-screen.component.html',
-  styleUrl: './split-screen.component.scss'
+  styleUrl: './split-screen.component.scss',
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class SplitScreenComponent {
   private translationService = inject(TranslationService);

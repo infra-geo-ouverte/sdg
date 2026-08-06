@@ -8,7 +8,9 @@ import { FooterNavLogo, SiteMapLinks } from '../footer.interface';
   imports: [RouterLink],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer-navigation.component.html',
-  styleUrls: ['./footer-navigation.component.scss']
+  styleUrls: ['./footer-navigation.component.scss'],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class FooterNavigationComponent {
   readonly title = input<string>();

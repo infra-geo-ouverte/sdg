@@ -23,7 +23,9 @@ type ShowcaseType = 'common' | 'carto';
     MatTooltipModule
   ],
   templateUrl: './example-viewer.component.html',
-  styleUrls: ['./example-viewer.component.scss']
+  styleUrls: ['./example-viewer.component.scss'],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class ExampleViewerComponent {
   readonly title = input.required<string>();

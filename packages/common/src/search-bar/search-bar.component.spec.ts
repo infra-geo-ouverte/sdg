@@ -60,7 +60,7 @@ describe('SdgSearchBar', () => {
     it('should emit search on Enter', () => {
       component.term.set('test query');
       const spy = vi.fn();
-      component.search.subscribe(spy);
+      component.searchSubmit.subscribe(spy);
 
       const input = fixture.nativeElement.querySelector('input');
       const event = new KeyboardEvent('keyup', { key: 'Enter' });
@@ -156,7 +156,7 @@ describe('SdgSearchBar', () => {
   describe('onSearch', () => {
     it('should emit the current term', () => {
       const spy = vi.fn();
-      component.search.subscribe(spy);
+      component.searchSubmit.subscribe(spy);
       component.term.set('my search');
       component.onSearch();
       expect(spy).toHaveBeenCalledWith('my search');

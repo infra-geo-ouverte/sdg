@@ -13,7 +13,9 @@ import { NoticeType } from './notice.interface';
   imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './notice.component.html',
-  styleUrls: ['./notice.component.scss']
+  styleUrls: ['./notice.component.scss'],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class NoticeComponent {
   NoticeType = NoticeType;

@@ -68,7 +68,7 @@ export class SdgSearchBar extends WithLabels<SearchBarLabels> {
   readonly minLength = input<number>(2);
 
   /** Emits the search term when the user presses Enter or clicks the search button. */
-  readonly search = output<string>();
+  readonly searchSubmit = output<string>();
   /** Emits the search term (debounced) as the user types. */
   readonly searchChange = output<string>();
   readonly clear = output<void>();
@@ -105,7 +105,7 @@ export class SdgSearchBar extends WithLabels<SearchBarLabels> {
   }
 
   onSearch(): void {
-    this.search.emit(this.term());
+    this.searchSubmit.emit(this.term());
   }
 
   onClear(): void {

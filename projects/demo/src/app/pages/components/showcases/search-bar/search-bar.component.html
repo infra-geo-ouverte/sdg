@@ -29,7 +29,7 @@
   <p>
     Elle émet le terme au fur et à mesure de la saisie (via
     <code>searchChange</code>) et lors de la soumission explicite (via
-    <code>search</code>).
+    <code>searchSubmit</code>).
   </p>
 
   <app-example-viewer
@@ -39,7 +39,7 @@
   >
     <sdg-search-bar
       placeholder="Rechercher un élément"
-      (search)="searchTerm1.set($event)"
+      (searchSubmit)="searchTerm1.set($event)"
       (searchChange)="liveTerm1.set($event)"
     />
 
@@ -71,7 +71,7 @@
       <sdg-search-bar
         placeholder="Rechercher un élément"
         color="light"
-        (search)="searchTerm2.set($event)"
+        (searchSubmit)="searchTerm2.set($event)"
         (searchChange)="liveTerm2.set($event)"
       />
     </div>

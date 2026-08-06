@@ -6,7 +6,7 @@
   class="sdg-search-results-item"
   [class.--hovered]="hovered()"
   [class.--selected]="selected()"
-  (click)="select.emit(result)"
+  (click)="resultSelect.emit(result)"
   (mouseenter)="hover.emit(result)"
   (mouseleave)="unhover.emit(result)"
 >

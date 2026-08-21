@@ -8,7 +8,7 @@
   @include mat.elevation(3);
 
   button:first-child {
-    border-bottom: 1px solid #ccc !important;
+    border-bottom: 1px solid var(--sdg-color-grey-light) !important;
     margin-bottom: 0px !important;
   }
 }

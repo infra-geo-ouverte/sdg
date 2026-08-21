@@ -81,7 +81,9 @@
 
   .mdc-fab {
     $background: var(--sdg-color-blue-piv);
+    $disabled-background: var(--sdg-color-grey-pale);
     $foreground: var(--sdg-color-white);
+    $disabled-foreground: var(--sdg-color-grey-normal);
     $border-radius: 0;
 
     @include mat.fab-overrides(
@@ -91,7 +93,11 @@
         foreground-color: $foreground,
         small-container-color: $background,
         small-container-shape: $border-radius,
-        small-foreground-color: $foreground
+        small-foreground-color: $foreground,
+        small-disabled-state-container-color: $disabled-background,
+        disabled-state-container-color: $disabled-background,
+        small-disabled-state-foreground-color: $disabled-foreground,
+        disabled-state-foreground-color: $disabled-foreground
       )
     );
   }

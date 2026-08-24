@@ -36,10 +36,10 @@ export const environment: EnvironmentOptions = {
   },
   search: {
     icherche: {
-      searchUrl: 'https://icherche.geo.msp.gouv.qc.ca'
+      searchUrl: 'https://icherche.geo.securite.gouv.qc.ca'
     },
     terrapi: {
-      searchUrl: 'https://terrapi.geo.msp.gouv.qc.ca'
+      searchUrl: 'https://terrapi.geo.securite.gouv.qc.ca'
     }
   }
 };

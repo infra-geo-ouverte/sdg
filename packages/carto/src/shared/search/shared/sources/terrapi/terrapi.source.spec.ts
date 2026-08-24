@@ -41,7 +41,7 @@ describe('TerrapiSource', () => {
 
   it('should use default search URL', () => {
     const { source } = createSource();
-    expect(source.searchUrl).toBe('https://terrapi.geo.msp.gouv.qc.ca');
+    expect(source.searchUrl).toBe('https://terrapi.geo.securite.gouv.qc.ca');
   });
 
   it('should allow config override', () => {
@@ -57,7 +57,7 @@ describe('TerrapiSource', () => {
 
       const req = httpTesting.expectOne(
         (r) =>
-          r.url === 'https://terrapi.geo.msp.gouv.qc.ca/locate' &&
+          r.url === 'https://terrapi.geo.securite.gouv.qc.ca/locate' &&
           r.params.get('loc') === '-73.5,45.5'
       );
       expect(req.request.params.get('geometry')).toBe('true');

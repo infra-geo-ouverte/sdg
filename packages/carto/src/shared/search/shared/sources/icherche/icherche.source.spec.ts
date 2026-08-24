@@ -41,7 +41,7 @@ describe('IChercheSource', () => {
 
   it('should use default search URL', () => {
     const { source } = createSource();
-    expect(source.searchUrl).toBe('https://icherche.geo.msp.gouv.qc.ca');
+    expect(source.searchUrl).toBe('https://icherche.geo.securite.gouv.qc.ca');
   });
 
   it('should allow config override', () => {
@@ -57,7 +57,7 @@ describe('IChercheSource', () => {
 
       const req = httpTesting.expectOne(
         (r) =>
-          r.url === 'https://icherche.geo.msp.gouv.qc.ca/geocode' &&
+          r.url === 'https://icherche.geo.securite.gouv.qc.ca/geocode' &&
           r.params.get('q') === 'Montreal'
       );
       expect(req.request.params.get('geometry')).toBe('true');

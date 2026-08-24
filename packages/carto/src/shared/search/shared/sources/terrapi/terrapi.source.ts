@@ -21,7 +21,7 @@ export const TERRAPI_CONFIG = new InjectionToken<TerrapiConfig>(
   'SDG_TERRAPI_CONFIG'
 );
 
-const DEFAULT_SEARCH_URL = 'https://terrapi.geo.msp.gouv.qc.ca';
+const DEFAULT_SEARCH_URL = 'https://terrapi.geo.securite.gouv.qc.ca';
 const DEFAULT_TYPES = 'adresses,municipalites,mrc,regadmin';
 
 @Injectable()

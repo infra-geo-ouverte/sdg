@@ -3,14 +3,14 @@
  */
 export default {
   '^/apis(?:/local)?/terrapi': {
-    target: 'https://terrapi.devgeo.msp.gouv.qc.ca',
+    target: 'https://terrapi.devgeo.securite.gouv.qc.ca',
     rewrite: (path) => path.replace(/^\/apis(?:\/local)?\/terrapi/, ''),
     secure: false,
     changeOrigin: true,
     configure: configureProxy()
   },
   '^/apis(?:/local)?/icherche': {
-    target: 'https://icherche.devgeo.msp.gouv.qc.ca',
+    target: 'https://icherche.devgeo.securite.gouv.qc.ca',
     rewrite: (path) => path.replace(/^\/apis(?:\/local)?\/icherche/, ''),
     secure: false,
     changeOrigin: true,

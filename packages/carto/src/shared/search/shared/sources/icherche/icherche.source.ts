@@ -21,7 +21,7 @@ export const ICHERCHE_CONFIG = new InjectionToken<IChercheConfig>(
   'SDG_ICHERCHE_CONFIG'
 );
 
-const DEFAULT_SEARCH_URL = 'https://icherche.geo.msp.gouv.qc.ca';
+const DEFAULT_SEARCH_URL = 'https://icherche.geo.securite.gouv.qc.ca';
 const DEFAULT_TYPES = 'adresses,codes-postaux,municipalites,mrc,regadmin,lieux';
 const DEFAULT_LIMIT = 5;
 

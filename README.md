@@ -39,11 +39,12 @@ Démarrer avec la librairie @igo2/sdg, consulter la documentation et contribuer 
 - [common](packages/common/README.md) - Les composants communs
 - [carto](packages/carto/README.md) - Les composants cartographiques
 - [i18n](packages/i18n/README.md) - Internationalisation
+- [theme](packages/theme/README.md) - Override pour les composants Angular Material
 
 ## Applications basées sur la librairie
 
 - [Québec En Alerte](https://alerte.gouv.qc.ca)
-- [Vigilance](https://vigilance.geo.msp.gouv.qc.ca) (À VENIR)
+- [Vigilance](https://vigilance.geo.securite.gouv.qc.ca) (À VENIR)
 
 ## Suivre les changements
 

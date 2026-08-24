@@ -1,0 +1,49 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  $blue-piv: var(--sdg-color-blue-piv);
+  $grey-medium: var(--sdg-color-grey-medium);
+
+  .mat-mdc-select {
+    @include mat.select-overrides(
+      (
+        enabled-trigger-text-color: var(--sdg-color-blue-dark),
+        enabled-arrow-color: var(--sdg-color-blue-piv),
+        //
+        disabled-trigger-text-color: $grey-medium,
+        disabled-arrow-color: var(--sdg-color-grey-normal),
+        //
+        placeholder-text-color: $grey-medium,
+        //
+        trigger-text-font: var(--sdg-font-family-text),
+        trigger-text-line-height: var(--sdg-line-height-md),
+        trigger-text-size: var(--sdg-font-size-md)
+      )
+    );
+
+    &-panel {
+      @include mat.select-overrides(
+        (
+          container-elevation-shadow: none,
+          //
+          panel-background-color: var(--sdg-color-background)
+        )
+      );
+
+      padding: 0 !important;
+      border: 1px solid $grey-medium;
+      border-radius: 0 !important;
+
+      &::-webkit-scrollbar {
+        background-color: transparent;
+        width: 8px;
+        height: auto;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $blue-piv;
+        border-radius: 4px;
+      }
+    }
+  }
+}

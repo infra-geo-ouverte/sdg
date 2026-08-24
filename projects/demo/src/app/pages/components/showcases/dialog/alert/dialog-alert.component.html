@@ -1,0 +1,19 @@
+<h4 mat-dialog-title>Suppression définitive</h4>
+<mat-dialog-content>
+  <span>
+    Cette action supprimera définitivement le document "Rapport_annuel.pdf".
+    Cette opération est irréversible.
+  </span>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton compact mat-dialog-close="Action annulée">Annuler</button>
+  <button
+    matButton="filled"
+    compact
+    color="warn"
+    mat-dialog-close="Le document a été supprimé."
+    cdkFocusInitial
+  >
+    Supprimer
+  </button>
+</mat-dialog-actions>

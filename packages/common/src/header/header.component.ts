@@ -10,8 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
-import { WithLabels } from '@igo2/sdg-core';
-
+import { WithLabels } from '../shared';
 import {
   IHeaderLabels,
   IHeaderLanguageChoice,
@@ -29,7 +28,9 @@ const DEFAULT_LABELS: IHeaderLabels = { contactUs: 'Nous joindre' };
   selector: 'sdg-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [NgTemplateOutlet, RouterLink, MatButtonModule, MatIconModule]
+  imports: [NgTemplateOutlet, RouterLink, MatButtonModule, MatIconModule],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class HeaderComponent extends WithLabels<IHeaderLabels> {
   readonly title = input.required<string>();

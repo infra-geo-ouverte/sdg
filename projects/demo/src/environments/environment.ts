@@ -7,5 +7,13 @@ import { environment as prodEnvironment } from './environment.prod';
 
 export const environment: EnvironmentOptions = {
   ...prodEnvironment,
-  production: false
+  production: false,
+  search: {
+    icherche: {
+      searchUrl: '/apis/icherche'
+    },
+    terrapi: {
+      searchUrl: '/apis/terrapi'
+    }
+  }
 };

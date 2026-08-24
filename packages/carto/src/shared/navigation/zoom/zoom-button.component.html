@@ -1,0 +1,35 @@
+@let labels = this.labels();
+
+@let maxDisabled = this.maxDisabled();
+
+<button
+  matMiniFab
+  matTooltipPosition="left"
+  [matTooltip]="!maxDisabled ? labels.zoomIn : ''"
+  [disabled]="maxDisabled"
+  (click)="zoomIn()"
+>
+  <mat-icon>
+    <!-- icon name: add -->
+    <svg viewBox="0 -960 960 960">
+      <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" />
+    </svg>
+  </mat-icon>
+</button>
+
+@let minDisabled = this.minDisabled();
+
+<button
+  matMiniFab
+  matTooltipPosition="left"
+  [matTooltip]="!minDisabled ? labels.zoomOut : ''"
+  [disabled]="minDisabled"
+  (click)="zoomOut()"
+>
+  <mat-icon>
+    <!-- icon name: remove -->
+    <svg viewBox="0 -960 960 960">
+      <path d="M200-440v-80h560v80H200Z" />
+    </svg>
+  </mat-icon>
+</button>

@@ -17,7 +17,9 @@ import { Language, TranslationService } from '@igo2/sdg-i18n';
   imports: [BreadcrumbsWithRouterComponent, CharterBannerComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './basic-screen.component.html',
-  styleUrl: './basic-screen.component.scss'
+  styleUrl: './basic-screen.component.scss',
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class BasicScreenComponent {
   private translationService = inject(TranslationService);

@@ -1,19 +1,23 @@
+@let active = this.active();
+@let opened = this.opened();
+@let section = this.section();
+
 <div class="sdg-lateral-menu-section">
   <button
     class="sdg-lateral-menu-section-header"
     [class.--active-section]="active"
-    (click)="toggle()"
+    (click)="this.opened.set(!opened)"
   >
     <span
       class="sdg-lateral-menu-section-header-title"
       [class.--active-section]="active"
     >
-      {{ section().title }}
+      {{ section.title }}
     </span>
     <mat-icon
       class="sdg-lateral-menu-section-header-arrow"
       color="primary"
-      [class.--opened]="opened()"
+      [class.--opened]="opened"
     >
       <!-- icon name: keyboard_arrow_down -->
       <svg viewBox="0 -960 960 960">
@@ -22,9 +26,12 @@
     </mat-icon>
   </button>
 
-  <div class="sdg-lateral-menu-section-subsections" [class.--opened]="opened()">
-    <div class="sdg-lateral-menu-section-subsections-content">
-      @for (item of section().items; track item) {
+  <div class="sdg-lateral-menu-section-subsections" [class.--opened]="opened">
+    <div
+      class="sdg-lateral-menu-section-subsections-content"
+      [class.--opened]="opened"
+    >
+      @for (item of section.items; track item) {
         <sdg-lateral-menu-item
           [item]="item"
           [isSectionItem]="true"

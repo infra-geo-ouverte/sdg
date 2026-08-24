@@ -1,0 +1,58 @@
+@use '@igo2/sdg-core' as sdg;
+
+$controls-padding: 12px;
+$map-bottom-sheet-header-height: 104px;
+
+sdg-map-browser {
+  .full-map-browser {
+    &-controls {
+      position: absolute;
+      bottom: $controls-padding * 4;
+      right: $controls-padding;
+
+      // This "pointer-event" fix allow to give cursor interaction to the map canvas inside the L shape of this container
+      // This fix  makes the empty parts of this div "invisible" to the mouse and we add the pointer-event only to the buttons
+      pointer-events: none;
+
+      ::ng-deep button {
+        pointer-events: auto;
+      }
+
+      @include sdg.media(mobile) {
+        bottom: calc($map-bottom-sheet-header-height + $controls-padding);
+      }
+    }
+
+    &-controls,
+    &-controls-navigation {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      row-gap: calc($controls-padding / 2);
+    }
+
+    &-basemap-switcher {
+      position: absolute;
+      bottom: $controls-padding * 4;
+      left: $controls-padding;
+
+      @include sdg.media(mobile) {
+        bottom: calc($map-bottom-sheet-header-height + $controls-padding);
+      }
+    }
+
+    &-scaleline {
+      position: absolute;
+
+      @include sdg.media(mobile) {
+        top: $controls-padding;
+        right: $controls-padding;
+      }
+
+      @media only screen and (min-width: sdg.min-width(mobile-landscape)) {
+        bottom: calc($controls-padding / 2);
+        left: $controls-padding;
+      }
+    }
+  }
+}

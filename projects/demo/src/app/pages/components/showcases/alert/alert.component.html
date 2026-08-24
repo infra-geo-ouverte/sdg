@@ -15,11 +15,9 @@
 
 <app-example-viewer title="Alerte" configFolder="alert" codeFolder="alert">
   <div class="alerts">
-    <sdg-alert
-      type="General"
-      message="Ceci est une alerte informative"
-      containerClass="container"
-    />
+    <sdg-alert type="General" containerClass="container">
+      <p>Ceci est une alerte informative</p>
+    </sdg-alert>
 
     @if (generalAlertIsOpened) {
       <sdg-alert
@@ -28,14 +26,20 @@
         [closeable]="true"
         containerClass="container"
         (closed)="generalAlertIsOpened = false"
-      />
+      >
+        <p>Ceci est une alerte informative pouvant être fermée</p>
+      </sdg-alert>
     }
 
     <sdg-alert
       type="Warning"
       message="Ceci est une alerte"
       containerClass="container"
-    />
+    >
+      <a href="https://www.google.com" target="_blank"
+        >Ceci est une alerte avec un lien</a
+      >
+    </sdg-alert>
 
     @if (alertIsOpened) {
       <sdg-alert
@@ -44,7 +48,9 @@
         [closeable]="true"
         containerClass="container"
         (closed)="alertIsOpened = false"
-      />
+      >
+        <p>Ceci est une alerte pouvant être fermée</p>
+      </sdg-alert>
     }
   </div>
 </app-example-viewer>

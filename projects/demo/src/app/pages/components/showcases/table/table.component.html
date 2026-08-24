@@ -1,0 +1,156 @@
+<sdg-notice type="General" title="Implémentation avec Angular Material">
+  <p>
+    L'implémentation des tableaux avec Angular Material suivra ultérieurement.
+  </p>
+</sdg-notice>
+
+<p>
+  <span
+    >Le <b>tableau de données</b> est utilisé pour afficher des données
+    majoritairement/principalement numériques organisées en lignes et en
+    colonnes. Pour plus d'information, voir le
+  </span>
+  <span>
+    <sdg-external-link
+      text="Tableau de données"
+      url="https://design.quebec.ca/design/composants/tableau-donnees"
+    />
+  </span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  Les tableaux servent à présenter des ensembles de données structurées, qu'ils
+  soient petits, volumineux ou complexes, facilitant ainsi la comparaison et la
+  visualisation claire des informations. Ils sont principalement utilisés pour
+  la présentation de données chiffrées, comme des statistiques, en vue d'une
+  analyse quantitative.
+</p>
+
+<sdg-anchor-menu [anchors]="anchors" />
+
+<section>
+  <h2 id="section1">Généralités</h2>
+
+  <p>Le tableau s'aligne à gauche avec le contenu de la page.</p>
+
+  <p>
+    Les contenus de la cellule sont alignés verticalement par le haut.
+    Horizontalement, l'alignement varie selon le type de données&nbsp;:
+  </p>
+
+  <ul>
+    <li>Le texte est aligné à gauche.</li>
+    <li>Les nombres sont alignés à droite.</li>
+  </ul>
+
+  <p>
+    Un espace de 72 px est prévu au-dessus du titre et de 24 px en dessous,
+    assurant une séparation visuelle claire avec les autres éléments de la page.
+  </p>
+
+  <p>
+    Un espace de 72 px est prévu en dessous du tableau, assurant une séparation
+    visuelle claire avec les autres éléments de la page.
+  </p>
+</section>
+
+<section>
+  <h2 id="section2">Tableau de données standard</h2>
+
+  <p>
+    L'en-tête du <b>tableau standard</b> peut avoir un fond de couleur unie, au
+    choix entre le bleu foncé ou le gris pâle. Le choix dépend de l'esthétisme
+    désiré&nbsp;: la première couleur crée un contraste fort, tandis que la
+    seconde offre une apparence plus sobre.
+  </p>
+
+  <p>
+    Pour améliorer la lisibilité des tableaux standards très longs,
+    l'utilisation de couleurs alternées sur les rangées est recommandée. La
+    première rangée sous l'en-tête reste en blanc; ensuite, les couleurs sont
+    alternées pour les rangées suivantes.
+  </p>
+
+  <p>
+    Le tableau standard est généralement le choix par défaut, car sa présence
+    visuelle attire naturellement l'attention de l'utilisateur.
+  </p>
+
+  <app-example-viewer title="Tableau de données standard" configFolder="table">
+    <table>
+      <ng-container *ngTemplateOutlet="tableContent" />
+    </table>
+
+    <table grey>
+      <ng-container *ngTemplateOutlet="tableContent" />
+    </table>
+  </app-example-viewer>
+</section>
+
+<section>
+  <h2 id="section3">Tableau de données simplifié</h2>
+
+  <p>
+    Le <b>tableau simplifié</b> est préférable lorsque plusieurs tableaux sont
+    présents sur une même page ou lorsque d'autres éléments doivent être mis en
+    avant plutôt que le tableau lui-même.
+  </p>
+
+  <p>
+    L'en-tête du tableau simplifié a une couleur blanche. Le filet sous
+    l'en-tête a la couleur bleu foncé.
+  </p>
+
+  <app-example-viewer title="Tableau de données simplifié" configFolder="table">
+    <table simple>
+      <ng-container *ngTemplateOutlet="tableContent" />
+    </table>
+  </app-example-viewer>
+</section>
+
+<ng-template #tableContent>
+  <caption>
+    Nombre de films classés, selon la catégorie de 2007 à 2017
+  </caption>
+  <thead>
+    <tr>
+      <th>Classement</th>
+      <th numeric>Longs métrages</th>
+      <th numeric>Courts métrages</th>
+      <th numeric>Films annonces</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Visa général</td>
+      <td numeric>38 167</td>
+      <td numeric>14 124</td>
+      <td numeric>7 289</td>
+    </tr>
+    <tr>
+      <td>13 ans et plus</td>
+      <td numeric>15 629</td>
+      <td numeric>490</td>
+      <td numeric>736</td>
+    </tr>
+    <tr>
+      <td>16 ans et plus</td>
+      <td numeric>1 717</td>
+      <td numeric>143</td>
+      <td numeric>1</td>
+    </tr>
+    <tr>
+      <td>18 ans et plus</td>
+      <td numeric>51 727</td>
+      <td numeric>926</td>
+      <td numeric>0</td>
+    </tr>
+    <tr>
+      <td>Refus</td>
+      <td numeric>379</td>
+      <td numeric>28</td>
+      <td numeric>0</td>
+    </tr>
+  </tbody>
+</ng-template>

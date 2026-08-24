@@ -1,0 +1,100 @@
+@let labels = this.labels();
+@let groups = this.groups();
+@let isSingleSource = this.isSingleSource();
+
+<ng-template #emptyResults>
+  <div
+    class="sdg-search-results-empty"
+    [class.--not-single-source]="!isSingleSource"
+  >
+    <mat-icon>
+      <svg viewBox="0 -960 960 960">
+        <path
+          d="M138.5-138.5Q80-197 80-280t58.5-141.5Q197-480 280-480t141.5 58.5Q480-363 480-280t-58.5 141.5Q363-80 280-80t-141.5-58.5ZM824-120 568-376q-12-13-25.5-26.5T516-428q38-24 61-64t23-88q0-75-52.5-127.5T420-760q-75 0-127.5 52.5T240-580q0 6 .5 11.5T242-557q-18 2-39.5 8T164-535q-2-11-3-22t-1-23q0-109 75.5-184.5T420-840q109 0 184.5 75.5T680-580q0 43-13.5 81.5T629-428l251 252-56 56Zm-615-61 71-71 70 71 29-28-71-71 71-71-28-28-71 71-71-71-28 28 71 71-71 71 28 28Z"
+        />
+      </svg>
+    </mat-icon>
+    <span class="text">{{ labels.noResults }}</span>
+  </div>
+</ng-template>
+
+@if (isSingleSource) {
+  <div>
+    @for (group of groups; track group.source.id) {
+      @if (group.loading) {
+        <mat-progress-bar mode="indeterminate" />
+      } @else if (group.results.length === 0) {
+        <ng-container *ngTemplateOutlet="emptyResults" />
+      } @else {
+        <mat-action-list>
+          @for (result of group.results; track result.id) {
+            <sdg-search-results-item
+              [result]="result"
+              [hovered]="isHovered(result)"
+              [selected]="isSelected(result)"
+              (focus)="onResultFocus(result)"
+              (unfocus)="onResultUnfocus(result)"
+              (resultSelect)="onResultSelect(result)"
+            />
+          }
+        </mat-action-list>
+        @if (groupHasMore(group)) {
+          <div class="sdg-search-results-load-more --single-source">
+            <button matButton compact (click)="onLoadMore(group)">
+              {{ labels.loadMore }}
+            </button>
+          </div>
+        }
+      }
+    } @empty {
+      <ng-container *ngTemplateOutlet="emptyResults" />
+    }
+  </div>
+} @else {
+  <mat-accordion class="sdg-search-results" multi>
+    @for (group of groups; track group.source.id) {
+      <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ group.source.title.toLocaleUpperCase() }}
+          </mat-panel-title>
+          @if (group.loading) {
+            <mat-panel-description>...</mat-panel-description>
+          } @else if (group.results.length) {
+            <mat-panel-description>
+              {{ group.results.length }}
+            </mat-panel-description>
+          }
+        </mat-expansion-panel-header>
+
+        @if (group.loading) {
+          <mat-progress-bar mode="indeterminate" />
+        } @else if (group.results.length === 0) {
+          <ng-container *ngTemplateOutlet="emptyResults" />
+        } @else {
+          <mat-action-list>
+            @for (result of group.results; track result.id) {
+              <sdg-search-results-item
+                [result]="result"
+                [hovered]="isHovered(result)"
+                [selected]="isSelected(result)"
+                (resultFocus)="onResultFocus(result)"
+                (resultUnfocus)="onResultUnfocus(result)"
+                (resultSelect)="onResultSelect(result)"
+              />
+            }
+          </mat-action-list>
+          @if (groupHasMore(group)) {
+            <div class="sdg-search-results-load-more">
+              <button matButton compact (click)="onLoadMore(group)">
+                {{ labels.loadMore }}
+              </button>
+            </div>
+          }
+        }
+      </mat-expansion-panel>
+    } @empty {
+      <ng-container *ngTemplateOutlet="emptyResults" />
+    }
+  </mat-accordion>
+}

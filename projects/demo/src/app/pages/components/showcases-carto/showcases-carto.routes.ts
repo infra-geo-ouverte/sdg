@@ -1,4 +1,4 @@
-import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg-core';
+import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg-common';
 
 import { AppTitleResolver } from '../../../config/title-resolver';
 
@@ -15,6 +15,19 @@ export const routes: SdgRoutes = [
     loadComponent: () =>
       import('./reference-map/reference-map.component').then(
         (m) => m.ReferenceMapDemoComponent
+      )
+  },
+  {
+    path: 'full-map',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcasesCarto.fullMap'
+    },
+    description:
+      'La carte complète prend la totalité de l’espace de la fenêtre du navigateur et permet plusieurs interactions.',
+    loadComponent: () =>
+      import('./full-map/full-map.component').then(
+        (m) => m.FullMapDemoComponent
       )
   }
 ];

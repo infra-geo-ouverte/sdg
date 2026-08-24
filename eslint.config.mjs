@@ -1,4 +1,3 @@
-// @ts-check
 import eslint from '@eslint/js';
 import stylistic from '@stylistic/eslint-plugin';
 import angular from 'angular-eslint';
@@ -37,7 +36,7 @@ export default tseslint.config(
           style: 'kebab-case'
         }
       ],
-      '@angular-eslint/no-output-native': 'off',
+      '@angular-eslint/no-output-native': 'error',
       '@stylistic/semi': ['error', 'always'],
       '@typescript-eslint/array-type': 'warn',
       '@typescript-eslint/member-ordering': [
@@ -61,7 +60,6 @@ export default tseslint.config(
       'no-multiple-empty-lines': 'error',
       'no-trailing-spaces': 'error',
       'no-useless-escape': 'warn',
-
       'no-unused-vars': 'off',
       semi: 'off',
       'semi-spacing': 'warn'

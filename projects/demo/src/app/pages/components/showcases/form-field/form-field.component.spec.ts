@@ -290,22 +290,22 @@ describe('FormFieldDemoComponent', () => {
   });
 
   describe('Effect and subscription handling', () => {
-    it('should update error message when email status changes', (done) => {
+    it('should update error message when email status changes', async () => {
       component.email.setValue('invalid');
-      setTimeout(() => {
-        expect(component.errorMessage()).toBe(
-          "L'adresse courriel n'est pas valide."
-        );
-        done();
-      }, 100);
+
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      expect(component.errorMessage()).toBe(
+        "L'adresse courriel n'est pas valide."
+      );
     });
 
-    it('should update error message when email value changes', (done) => {
+    it('should update error message when email value changes', async () => {
       component.email.setValue('test@example.com');
-      setTimeout(() => {
-        expect(component.errorMessage()).toBe('');
-        done();
-      }, 100);
+
+      await new Promise((resolve) => setTimeout(resolve, 100));
+
+      expect(component.errorMessage()).toBe('');
     });
   });
 });

@@ -16,7 +16,6 @@ describe('AlertComponent', () => {
     fixture = TestBed.createComponent(AlertComponent);
     component = fixture.componentInstance;
     fixture.componentRef.setInput('type', 'General');
-    fixture.componentRef.setInput('message', 'Message');
     fixture.detectChanges();
   });
 

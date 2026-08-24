@@ -14,7 +14,6 @@ import { DocsCodeComponent } from '../../components/docs-code/docs-code.componen
   styleUrl: './guides.component.scss'
 })
 export class GuidesComponent implements AfterViewInit {
-  example1 = example1;
   example2 = example2;
   example3 = example3;
 
@@ -22,20 +21,6 @@ export class GuidesComponent implements AfterViewInit {
     hljs.highlightAll();
   }
 }
-
-const example1 = `// File: theme.scss
-@use '@angular/material' as mat;
-@use '@igo2/sdg-core' as sdg;
-
-html {
-  color-scheme: light;
-
-  @include mat.theme(sdg.$material-theme);
-
-  // La propriété boolean permet de générer, pour le thème sombre,
-  // ses variantes des variables CSS
-  @include sdg.theme(true);
-}`;
 
 const example2 = `export interface SdgRoute extends Route {
   isHome?: boolean;

@@ -8,22 +8,22 @@
   &-container {
     display: flex;
     flex-flow: column;
-    max-width: 100%;
+    width: fit-content;
     padding-bottom: 4px;
 
     &.xl {
-      width: 825px;
+      max-width: 825px;
     }
 
     &.lg,
     &.multi {
-      width: 528px;
+      max-width: 528px;
     }
 
     &.md,
     &.sm,
     &.xs {
-      width: 249px;
+      max-width: 249px;
     }
   }
 

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, WritableSignal, inject } from '@angular/core';
 
 import { LateralMenuComponent, LateralMenuSections } from '@igo2/sdg-common';
+import { Language, TranslationService } from '@igo2/sdg-i18n';
 
 import { ExampleViewerComponent } from '../../../../components';
 
@@ -11,7 +12,11 @@ import { ExampleViewerComponent } from '../../../../components';
   styleUrl: './lateral-menu.component.scss'
 })
 export class LateralMenuDemoComponent {
+  private translationService = inject(TranslationService);
   menuTitle = 'Menu latéral';
+
+  private domain = `/${this.currentLanguage()}/composants/showcases/common`;
+
   sections: LateralMenuSections = [
     {
       title: 'À propos',
@@ -19,25 +24,29 @@ export class LateralMenuDemoComponent {
     },
     {
       title: 'Composants',
-      path: '/composants',
+      path: this.domain,
       items: [
         {
           title: 'À consulter aussi',
-          path: '/composants/showcases/a-consulter-aussi'
+          path: `${this.domain}/a-consulter-aussi`
         },
         {
           title: 'Alerte',
-          path: '/composants/showcases/alerte'
+          path: `${this.domain}/alerte`
         },
         {
           title: 'Menu latéral',
-          path: '/composants/showcases/menu-lateral'
+          path: `${this.domain}/menu-lateral`
         }
       ]
     },
     {
       title: 'Guides',
-      path: '/guides'
+      path: `/${this.currentLanguage()}/guides`
     }
   ];
+
+  get currentLanguage(): WritableSignal<Language> {
+    return this.translationService.lang;
+  }
 }

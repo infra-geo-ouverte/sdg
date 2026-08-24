@@ -1,0 +1,78 @@
+@let options = this.options();
+@let searchOptions = options.search;
+@let labels = this.labels();
+@let isHandset = this.isHandset();
+
+<sdg-full-map-skeleton
+  [attribution]="options.footer"
+  [isHandset]="isHandset"
+  [labels]="labels"
+  [search]="searchOptions !== false"
+>
+  <ng-container panel>
+    @let panelType = panelService.type();
+
+    <!-- Default panel for search results -->
+    @if (
+      searchOptions !== false &&
+      panelType === 'search' &&
+      !hasCustomSearchPanel()
+    ) {
+      <sdg-search-results
+        [groups]="displayedGroups()"
+        [labels]="labels.search"
+        (resultSelect)="onResultSelect($event)"
+        (loadMore)="onLoadMore($event)"
+      />
+    }
+
+    @for (content of panelContents(); track content.type()) {
+      @if (content.type() === panelType) {
+        @let searchGroups = this.searchGroups();
+
+        <ng-container
+          [ngTemplateOutlet]="content.templateRef"
+          [ngTemplateOutletContext]="{
+            $implicit: searchGroups,
+            groups: searchGroups,
+            loading: resultsLoading()
+          }"
+        />
+      }
+    }
+  </ng-container>
+
+  <ng-container search-bar>
+    @if (searchOptions !== false) {
+      <sdg-search-bar
+        [labels]="labels.searchBar"
+        (searchChange)="onSearchChange($event)"
+        (clear)="clearSearch()"
+      />
+    }
+  </ng-container>
+
+  @let scaleLineOptions = options.navigation?.scaleLine;
+
+  <ng-container footer-actions>
+    @if (scaleLineOptions) {
+      <sdg-ol-scale-line [map]="map()!" />
+    }
+  </ng-container>
+
+  <sdg-ol-full-map-browser
+    map
+    class="full-map-browser"
+    [options]="options"
+    [labels]="labels"
+    [isHandset]="isHandset"
+    (mapReady)="handleMap($event)"
+    (extentChange)="extentChange.emit(undefined)"
+  >
+    @if (scaleLineOptions && isHandset) {
+      <div class="full-map-browser-top-navigation">
+        <sdg-ol-scale-line [map]="map()!" onMap="true" />
+      </div>
+    }
+  </sdg-ol-full-map-browser>
+</sdg-full-map-skeleton>

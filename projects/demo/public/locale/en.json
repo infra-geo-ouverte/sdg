@@ -9,6 +9,7 @@
   },
   "darkMode": "Dark mode",
   "showcases": {
+    "autocomplete": "Autocomplete",
     "alert": "Alert",
     "anchorMenu": "Anchor menu",
     "blockLink": "Block link",
@@ -17,6 +18,7 @@
     "charterBanner": "Charter of the French language banner",
     "checkbox": "Checkbox",
     "chips": "Chips",
+    "dialog": "Modal dialog",
     "seeAlso": "See also",
     "contact": "Contact",
     "expansionPanel": "Expansion panel",
@@ -28,15 +30,19 @@
     "navigation": "Main navigation menu",
     "notice": "Notice",
     "paginator": "Paginator",
+    "popover": "Popover",
     "radioButton": "Radio button",
+    "searchBar": "Search bar",
     "select": "Drop-down list",
     "sequentialLinks": "Sequential links",
+    "table": "Data table",
     "tabs": "Tabs",
     "tile": "Clickable tile",
     "topPage": "Scroll to top"
   },
   "showcasesCarto": {
     "referenceMap": "Reference map",
+    "fullMap": "Full map",
     "buttons": {
       "zoom": {
         "zoomIn": "Zoom in",

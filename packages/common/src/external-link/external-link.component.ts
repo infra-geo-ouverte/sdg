@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
-import { isSafeUrl, pathIsExternal } from '@igo2/sdg-core';
+import { isSafeUrl, pathIsExternal } from '../router';
 
 @Component({
   selector: 'sdg-external-link',

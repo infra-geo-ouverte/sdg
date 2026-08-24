@@ -3,19 +3,20 @@ import { PLATFORM_ID } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { SdgMapBrowserComponent } from '@igo2/sdg-carto';
+import { SdgMapBrowser } from '@igo2/sdg-carto';
 
 import TileLayer from 'ol/layer/Tile';
 import OSM from 'ol/source/OSM';
 
-import { IOlMapOptions, SdgOlMap } from '../map';
-import { SdgReferenceMapInteractionsDirective } from './reference-map-interactions.directive';
+import { SdgOlMap, SdgOlMapOptions } from '../shared/map';
+import { SdgOlReferenceMapInteractions } from './reference-map-interactions.directive';
 
-const DEFAULT_OPTIONS: IOlMapOptions = {
+const DEFAULT_OPTIONS: SdgOlMapOptions = {
   view: {
     zoom: 6,
     center: [-71.8, 47.1]
   },
+  basemaps: [],
   layers: [
     new TileLayer({
       source: new OSM()
@@ -24,47 +25,50 @@ const DEFAULT_OPTIONS: IOlMapOptions = {
 };
 
 @Component({
-  template: `<igo-map-browser
-    sdgReferenceMapInteractions
+  template: `<sdg-map-browser
+    sdgOlReferenceMapInteractions
     [map]="map"
     class="flex-fill"
   />`,
-  imports: [SdgMapBrowserComponent, SdgReferenceMapInteractionsDirective]
+  imports: [SdgMapBrowser, SdgOlReferenceMapInteractions]
 })
 class TestComponent {
   map = new SdgOlMap(DEFAULT_OPTIONS);
 }
 
-describe('SdgReferenceMapInteractionsDirective', () => {
+describe('SdgOlReferenceMapInteractions', () => {
   let fixture: ComponentFixture<TestComponent>;
-  let directive: SdgReferenceMapInteractionsDirective;
+  let directive: SdgOlReferenceMapInteractions;
   let renderer: Renderer2;
+  const rendererMock = {
+    createElement: vi.fn((name: string) => document.createElement(name)),
+    appendChild: vi.fn((parent: Node, child: Node) =>
+      parent.appendChild(child)
+    ),
+    removeChild: vi.fn((parent: Node, child: Node) => parent.removeChild(child))
+  };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestComponent, SdgReferenceMapInteractionsDirective],
+      imports: [TestComponent, SdgOlReferenceMapInteractions],
       providers: [
         { provide: PLATFORM_ID, useValue: 'browser' },
         {
           provide: Renderer2,
-          useValue: jasmine.createSpyObj('Renderer2', [
-            'createElement',
-            'appendChild',
-            'removeChild'
-          ])
+          useValue: rendererMock
         },
         {
           provide: SdgOlMap,
-          useValue: jasmine.createSpyObj('SdgOlMap', ['engine'])
+          useValue: { engine: vi.fn() }
         }
       ]
     });
 
     fixture = TestBed.createComponent(TestComponent);
     const debugElement = fixture.debugElement.query(
-      By.directive(SdgReferenceMapInteractionsDirective)
+      By.directive(SdgOlReferenceMapInteractions)
     );
-    directive = debugElement.injector.get(SdgReferenceMapInteractionsDirective);
+    directive = debugElement.injector.get(SdgOlReferenceMapInteractions);
     renderer = debugElement.injector.get(Renderer2);
 
     fixture.detectChanges();
@@ -75,19 +79,19 @@ describe('SdgReferenceMapInteractionsDirective', () => {
   });
 
   it('should set isHover to true on mouse enter', () => {
-    spyOn(directive.isHover, 'set');
+    vi.spyOn(directive.isHover, 'set');
     directive.hostMouseEnter();
     expect(directive.isHover.set).toHaveBeenCalledWith(true);
   });
 
   it('should set isHover to false on mouse leave', () => {
-    spyOn(directive.isHover, 'set');
+    vi.spyOn(directive.isHover, 'set');
     directive.hostMouseLeave();
     expect(directive.isHover.set).toHaveBeenCalledWith(false);
   });
 
   it('should set mapEventRestriction to "ctrlScroll" on mouse wheel without modifier key', () => {
-    spyOn(directive.mapEventRestriction, 'set');
+    vi.spyOn(directive.mapEventRestriction, 'set');
     const event = new WheelEvent('wheel', { ctrlKey: false });
     directive['onMouseWheel'](event);
     expect(directive.mapEventRestriction.set).toHaveBeenCalledWith(
@@ -96,9 +100,6 @@ describe('SdgReferenceMapInteractionsDirective', () => {
   });
 
   it('should add a message element when isHover and mapEventRestriction are set', () => {
-    spyOn(renderer, 'createElement').and.callThrough();
-    spyOn(renderer, 'appendChild').and.callThrough();
-
     directive.isHover.set(true);
     directive.mapEventRestriction.set('ctrlScroll');
     directive['addMessageElement']();
@@ -108,8 +109,6 @@ describe('SdgReferenceMapInteractionsDirective', () => {
   });
 
   it('should remove the message element when removeMessageElement is called', () => {
-    spyOn(renderer, 'removeChild').and.callThrough();
-
     directive['messageElement'] = renderer.createElement('div');
     directive['removeMessageElement']();
 
@@ -118,7 +117,7 @@ describe('SdgReferenceMapInteractionsDirective', () => {
   });
 
   it('should reset mapEventRestriction on map leave', () => {
-    spyOn(directive.mapEventRestriction, 'set');
+    vi.spyOn(directive.mapEventRestriction, 'set');
     directive['onMapLeave']();
     expect(directive.mapEventRestriction.set).toHaveBeenCalledWith(undefined);
   });

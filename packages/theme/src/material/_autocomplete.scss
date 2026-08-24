@@ -1,0 +1,27 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-autocomplete-panel {
+    @include mat.autocomplete-overrides(
+      (
+        background-color: var(--sdg-color-background),
+        container-shape: 0,
+        container-elevation-shadow: none
+      )
+    );
+
+    padding: 0 !important;
+    border: 1px solid var(--sdg-color-grey-medium);
+
+    &::-webkit-scrollbar {
+      background-color: transparent;
+      width: 8px;
+      height: auto;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--sdg-color-blue-piv);
+      border-radius: 4px;
+    }
+  }
+}

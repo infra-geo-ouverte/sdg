@@ -19,7 +19,7 @@
   </mat-icon>
 
   <div class="sdg-alert-message">
-    {{ message() }}
+    <ng-content />
   </div>
 
   @if (closeable()) {
@@ -29,7 +29,7 @@
       [disableRipple]="true"
       (click)="close()"
     >
-      <mat-icon>
+      <mat-icon color="primary">
         <svg
           height="24px"
           viewBox="0 -960 960 960"

@@ -1,0 +1,103 @@
+@use '@angular/material' as mat;
+
+$color-text: var(--sdg-color-text);
+$blue-dark: var(--sdg-color-blue-dark);
+$blue-pale: var(--sdg-color-blue-pale);
+
+$font-family-text: var(--sdg-font-family-text);
+$font-size-md: var(--sdg-font-size-md);
+$line-height-md: var(--sdg-line-height-md);
+$font-weight-normal: var(--sdg-font-weight-normal);
+$font-weight-bold: var(--sdg-font-weight-bold);
+
+@mixin overrides() {
+  .mat-mdc-list-base {
+    padding: 0px;
+
+    @include mat.list-overrides(
+      (
+        list-item-container-color: transparent,
+        list-item-container-shape: 0px,
+        //
+        list-item-label-text-color: $color-text,
+        list-item-label-text-font: $font-family-text,
+        list-item-label-text-size: $font-size-md,
+        list-item-label-text-line-height: $line-height-md,
+        list-item-label-text-tracking: normal,
+        list-item-label-text-weight: $font-weight-normal,
+        //
+        list-item-supporting-text-color: $color-text,
+        list-item-supporting-text-font: $font-family-text,
+        list-item-supporting-text-size: 16.8px,
+        // there's a small tag that influences the size
+        list-item-supporting-text-line-height: 24px,
+        list-item-supporting-text-tracking: normal,
+        list-item-supporting-text-weight: $font-weight-normal,
+        //
+        list-item-leading-icon-color: $blue-dark,
+        list-item-leading-icon-size: 24px,
+        list-item-leading-icon-end-space: 12px,
+        //
+        list-item-trailing-supporting-text-color: $color-text,
+        list-item-trailing-supporting-text-font: $font-family-text,
+        list-item-trailing-supporting-text-size: $font-size-md,
+        list-item-trailing-supporting-text-line-height: $line-height-md,
+        list-item-trailing-supporting-text-tracking: normal,
+        list-item-trailing-supporting-text-weight: $font-weight-normal,
+        //
+        list-item-trailing-icon-color: $blue-dark,
+        list-item-trailing-icon-size: 24px,
+        //
+        list-item-focus-label-text-color: $color-text,
+        //
+        list-item-focus-state-layer-opacity: 0,
+        //
+        list-item-hover-label-text-color: $color-text,
+        //
+        list-item-hover-state-layer-opacity: 0,
+        //
+        list-item-hover-leading-icon-color: $blue-dark,
+        //
+        list-item-hover-trailing-icon-color: $blue-dark,
+        //
+        list-item-selected-trailing-icon-color: $blue-dark,
+        //
+        list-item-one-line-container-height: 40px,
+        list-item-two-line-container-height: 60px
+      )
+    );
+
+    mat-list-item,
+    button[mat-list-item] {
+      &.mdc-list-item {
+        &--with-one-line {
+          .mdc-list-item__content {
+            margin-top: 2px;
+          }
+        }
+
+        &--with-two-lines {
+          .mdc-list-item__content {
+            margin-top: -4px;
+          }
+
+          mat-icon {
+            margin-top: 10px !important;
+          }
+        }
+      }
+
+      &:hover {
+        background-color: $blue-pale;
+      }
+
+      &:focus-visible {
+        box-shadow: inset 0 0 0 2px var(--sdg-color-blue-light);
+      }
+
+      &.--selected {
+        background-color: $blue-pale;
+      }
+    }
+  }
+}

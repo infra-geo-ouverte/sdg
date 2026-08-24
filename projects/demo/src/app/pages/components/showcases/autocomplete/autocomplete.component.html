@@ -1,0 +1,32 @@
+<p>
+  L'<b>autocomplétion</b> est une fonctionnalité associée à un élément de
+  formulaire permettant de filtrer une liste d'options.
+</p>
+
+<p>Aucune spécification officielle n'est disponible pour le moment.</p>
+
+<app-example-viewer title="Autocomplétion" configFolder="autocomplete">
+  <form>
+    <sdg-form-field-label
+      controlId="animal"
+      formControlSize="lg"
+      label="Animal"
+    />
+    <mat-form-field class="example-full-width" lg>
+      <input
+        matInput
+        id="animal"
+        type="text"
+        placeholder="Sélectionnez un animal"
+        [formControl]="myControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-icon matPrefix color="primary">search</mat-icon>
+      <mat-autocomplete #auto="matAutocomplete">
+        @for (option of filteredOptions(); track option) {
+          <mat-option [value]="option">{{ option }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+</app-example-viewer>

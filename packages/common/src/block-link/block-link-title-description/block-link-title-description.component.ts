@@ -7,8 +7,7 @@ import {
 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
-import { pathIsExternal } from '@igo2/sdg-core';
-
+import { pathIsExternal } from '../../router';
 import { AnchorComponent } from '../../shared/anchor/anchor.component';
 import { BlockLinkSection } from '../block-link.interface';
 

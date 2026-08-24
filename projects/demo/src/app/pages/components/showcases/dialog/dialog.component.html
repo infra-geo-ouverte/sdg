@@ -1,0 +1,114 @@
+@let result1 = this.result1();
+@let result2 = this.result2();
+@let result3 = this.result3();
+
+<p>
+  <span
+    >Le <b>dialogue modal</b> est une boîte qui se superpose au contenu de la
+    page, en plein centre, à la suite d'une action déclenchée directement par
+    l'utilisateur. Il sert à communiquer de l'information contextuelle. Pour
+    plus d'information, voir le
+  </span>
+  <span>
+    <sdg-external-link
+      text="Dialogue modal"
+      url="https://design.quebec.ca/design/composants/dialogue-modal"
+    />
+  </span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  Le dialogue modal est utilisé pour attirer l'attention de l'utilisateur sur
+  des informations contextuelles à la tâche (par exemple, confirmer ou non la
+  suppression d'un compte) ou pour demander des informations à l'utilisateur
+  (par exemple, les informations de connexion à un compte).
+</p>
+
+<sdg-anchor-menu [anchors]="anchors" />
+
+<section>
+  <h2 id="section1">Généralités</h2>
+
+  <p>
+    Le dialogue modal est centré horizontalement et verticalement dans la
+    fenêtre. Sa hauteur et sa largeur sont variables en fonction du contenu et
+    du support. La largeur maximum est cependant de 600 px.
+  </p>
+
+  <p>
+    En format bureau, les boutons sont alignés en bas à droite et leur ordre est
+    Tertiaire → Secondaire → Principal. En format mobile, si le libellé d'un
+    bouton d'action est trop long, il est possible de placer les boutons un en
+    dessous de l'autre et leur ordre devient Principal → Secondaire → Tertiaire.
+  </p>
+
+  <p>Ce composant se décline en trois variantes&nbsp;:</p>
+
+  <ul>
+    <li>Dialogue d'alerte;</li>
+    <li>Dialogue de confirmation;</li>
+    <li>Dialogue d'action.</li>
+  </ul>
+</section>
+
+<section>
+  <h2 id="section2">Dialogue d'alerte</h2>
+
+  <p>
+    Le <b>dialogue d'alerte</b> apparaît lorsqu'une action immédiate est
+    requise.
+  </p>
+
+  <app-example-viewer title="Dialogue d'alerte" configFolder="dialog">
+    <div class="content">
+      <button matButton="filled" color="primary" (click)="openAlertDialog()">
+        Ouvrir le dialogue d'alerte
+      </button>
+      @if (result1) {
+        <span class="text">{{ result1 }}</span>
+      }
+    </div>
+  </app-example-viewer>
+</section>
+
+<section>
+  <h2 id="section3">Dialogue de confirmation</h2>
+
+  <p>
+    Contrairement au dialogue d'alerte, le <b>dialogue de confirmation</b> n'est
+    pas de nature urgente. Il offre un retour d'information à l'utilisateur, lui
+    permettant de confirmer ou non la réussite de la tâche effectuée.
+  </p>
+
+  <app-example-viewer title="Dialogue de confirmation" configFolder="dialog">
+    <div class="content">
+      <button matButton="filled" color="primary" (click)="openConfirmDialog()">
+        Ouvrir le dialogue de confirmation
+      </button>
+      @if (result2) {
+        <span class="text">{{ result2 }}</span>
+      }
+    </div>
+  </app-example-viewer>
+</section>
+
+<section>
+  <h2 id="section3">Dialogue d'action</h2>
+
+  <p>
+    Le <b>dialogue d'action</b> sert à effectuer une courte tâche contextuelle,
+    par exemple la création d'un nouvel événement au calendrier.
+  </p>
+
+  <app-example-viewer title="Dialogue d'action" configFolder="dialog">
+    <div class="content">
+      <button matButton="filled" color="primary" (click)="openActionDialog()">
+        Ouvrir le dialogue d'action
+      </button>
+      @if (result3) {
+        <span class="text">{{ result3 }}</span>
+      }
+    </div>
+  </app-example-viewer>
+</section>

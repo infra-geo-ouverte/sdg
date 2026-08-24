@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -8,11 +8,11 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
-import { pathIsExternal } from '@igo2/sdg-core';
+import { pathIsExternal } from '../../router';
 
 @Component({
   selector: 'sdg-anchor',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './anchor.component.html',
   styleUrls: ['./anchor.component.scss']

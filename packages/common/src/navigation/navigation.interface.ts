@@ -1,4 +1,4 @@
-import { SdgRoute } from '@igo2/sdg-core';
+import { SdgRoute } from '../router';
 
 export type INavigationLinks = INavigationLink[];
 

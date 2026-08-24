@@ -1,0 +1,279 @@
+<p>
+  <span>
+    La <b>carte complète</b> prend la totalité de l'espace de la fenêtre du
+    navigateur et permet plusieurs interactions. Pour plus d'information, voir
+    la
+  </span>
+  <span>
+    <sdg-external-link
+      text="Carte Complète"
+      url="https://design.quebec.ca/design/modeles/cartographie/types-de-cartes/carte-complete"
+    />
+  </span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<p>
+  Elle est utilisée lorsqu'une vue d'ensemble des données géospatiales est
+  pertinente pour l'utilisateur, et lorsque des interactions plus complexes sont
+  nécessaires.
+</p>
+
+<sdg-anchor-menu [anchors]="anchors" />
+
+<app-example-viewer
+  title="Carte complète - Configuration de base"
+  showcase="carto"
+  configFolder="full-map"
+  codeFolder="full-map"
+>
+  <button
+    matButton="outlined"
+    compact
+    class="fullscreen-button"
+    (click)="openFullscreen()"
+  >
+    <mat-icon>fullscreen</mat-icon>
+    Ouvrir en plein écran
+  </button>
+
+  <sdg-ol-full-map [options]="options()" [isHandset]="isHandset()">
+    <ng-template sdgPanelContent="custom">
+      <div class="template-content">
+        Ceci est le contenu affiché par défaut.
+      </div>
+    </ng-template>
+
+    <ng-template sdgPanelContent="legend">
+      <div class="template-content">La légende est affichée ici.</div>
+    </ng-template>
+  </sdg-ol-full-map>
+</app-example-viewer>
+
+<section>
+  <h2 id="section1">Recherche</h2>
+
+  <p>
+    La barre de recherche doit être visible en tout temps (elle est activée par
+    défaut (<code>search: true</code>)). Lorsqu'une recherche est initiée, le
+    panneau principal s'ouvre pour montrer la liste des résultats.
+  </p>
+
+  <section>
+    <h3>Configuration</h3>
+
+    <p>
+      Il est possible de remplacer le panneau de résultats par défaut en
+      projetant un <code>ng-template</code> avec la directive
+      <code>sdgPanelContent="search"</code>.
+    </p>
+
+    <p>
+      Le contexte suivant est accessible dans le <code>ng-template</code>&nbsp;:
+    </p>
+
+    <ul>
+      <li>
+        <code>$implicit</code> / <code>groups</code> —
+        <code>SearchResultGroup[]</code>&nbsp;: groupes de résultats, un par
+        source de recherche enregistrée. Chaque groupe expose
+        <code>source</code>, <code>results</code>, <code>loading</code> et
+        <code>page</code>.
+      </li>
+      <li>
+        <code>loading</code> — <code>boolean</code>&nbsp;:
+        <code>true</code> tant qu'au moins une source est encore en train de
+        charger des résultats.
+      </li>
+    </ul>
+
+    <app-docs-code [code]="searchExample" lang="typescript" />
+  </section>
+</section>
+
+<section>
+  <h2 id="section2">Panneau</h2>
+
+  <p>
+    Le panneau principal permet de présenter le contenu d'accueil et
+    informationnel d'une carte complète, ainsi que certaines des actions qu'il
+    est possible d'y réaliser.
+  </p>
+
+  <p>
+    Les informations qui s'y trouvent sont essentielles à la tâche; elles
+    doivent être claires, concises et se limiter à du contenu textuel.
+  </p>
+
+  <section>
+    <h3>Configuration</h3>
+
+    <p>
+      Plusieurs types de contenu (ou variantes) peuvent être projetés avec la
+      directive
+      <code>sdgPanelContent</code> en précisant le type&nbsp;:
+      <code>"search"</code>, <code>"legend"</code> ou toute autre valeur
+      personnalisée.
+    </p>
+
+    <p>
+      L'option <code>panel.default</code> permet de définir la variante par
+      défaut à utiliser lorsqu'on quitte la recherche ou la légende. Si elle
+      n'est pas définie, le panneau se ferme simplement. Le
+      <code>PanelService</code> permet de contrôler l'état du panneau
+      programmatiquement.
+    </p>
+
+    <app-docs-code [code]="panelExample" lang="typescript" />
+  </section>
+</section>
+
+<section>
+  <h2 id="section3">Outils d'interaction</h2>
+
+  <p>
+    Les outils d'interaction correspondent aux actions complexes ayant une
+    incidence sur l'affichage et le traitement des données. Il peut s'agir, par
+    exemple, d'outils de mesure, de personnalisation des données et de tracés.
+    Ces outils sont représentés par des boutons situés dans le coin inférieur
+    gauche de la carte, au-dessus du bouton de Fonds de carte.
+  </p>
+
+  <p><em>Cette fonctionnalité n'est pas encore implémentée.</em></p>
+</section>
+
+<section>
+  <h2 id="section4">Outils de navigation</h2>
+
+  <p>
+    Les outils de navigation correspondent aux interactions permettant à
+    l'utilisateur de se positionner dans la carte. Ces outils n'ont pas
+    d'incidence sur les données. On y retrouve les boutons de géolocalisation,
+    ainsi que les niveaux de zoom, par exemple.
+  </p>
+
+  <section>
+    <h3>Configuration</h3>
+
+    <p>
+      Chaque outil est activé par défaut et peut être désactivé
+      individuellement. La barre d'échelle (<code>scaleLine</code>) s'affiche
+      dans le coin inférieur gauche au format bureau et dans le coin supérieur
+      droit au format mobile.
+    </p>
+
+    <app-docs-code [code]="navigationExample" lang="typescript" />
+  </section>
+</section>
+
+<section>
+  <h2 id="section5">Fonds de carte</h2>
+  <p>
+    Le sélecteur de fond de carte s'affiche dans le coin inférieur gauche
+    lorsqu'au moins deux couches sont fournies via l'option
+    <code>basemaps</code>.
+  </p>
+
+  <section>
+    <h3>Configuration</h3>
+
+    <app-docs-code [code]="basemapsExample" lang="typescript" />
+  </section>
+</section>
+
+<section>
+  <h2 id="section6">Légende</h2>
+
+  <p>
+    Le bouton de légende s'affiche en bas à droite de la carte lorsque l'option
+    <code>legend: true</code> est définie. Son contenu est fourni par projection
+    via <code>sdgPanelContent="legend"</code>.
+  </p>
+  <section>
+    <h3>Configuration</h3>
+
+    <app-docs-code [code]="legendExample" lang="typescript" />
+  </section>
+</section>
+
+<section>
+  <h2 id="section7">Pied de page</h2>
+
+  <p>
+    Les éléments obligatoires du pied de page sont présentés
+    textuellement&nbsp;:
+  </p>
+
+  <ul>
+    <li>la signature du ministère ou de l'organisme émetteur de la carte;</li>
+    <li>
+      la mention «© Gouvernement du Québec, [date de première publication]».
+    </li>
+  </ul>
+
+  <section>
+    <h3>Configuration</h3>
+
+    <p>
+      Le pied de page s'affiche en bas de la carte et présente les informations
+      d'attribution&nbsp;: droit d'auteur, organisation responsable et date de
+      première publication. Il est configuré via l'option <code>footer</code>.
+    </p>
+
+    <ul>
+      <li>
+        <code>copyright</code> — libellé et URL du droit d'auteur (par
+        défaut&nbsp;: «&nbsp;© Gouvernement du Québec&nbsp;»);
+      </li>
+      <li>
+        <code>organization</code> — nom et URL de l'organisation responsable
+        (obligatoire);
+      </li>
+      <li>
+        <code>firstPublicationDate</code> — date ou année de première
+        publication (optionnel).
+      </li>
+    </ul>
+
+    <app-docs-code [code]="footerExample" lang="typescript" />
+  </section>
+</section>
+
+<section>
+  <h2 id="section8">Traduction des libellés</h2>
+
+  <p>
+    Tous les libellés affichés par la composante (barre de recherche, panneau,
+    outils de navigation, fonds de carte, légende) peuvent être personnalisés.
+  </p>
+
+  <section>
+    <h3>Configuration</h3>
+
+    <p>
+      Trois mécanismes sont disponibles, par ordre de priorité croissante&nbsp;:
+    </p>
+
+    <ol>
+      <li>
+        <strong>Liaison d'entrée localisé</strong>&nbsp;: passer un objet
+        <code>SdgFullMapLabels</code> directement via <code>[labels]</code> sur
+        la balise <code>&lt;sdg-ol-full-map&gt;</code>. Prend le dessus sur le
+        jeton d'injection.
+      </li>
+      <li>
+        <strong>Jeton d'injection global</strong>&nbsp;: fournir
+        <code>SDG_FULL_MAP_LABELS</code> dans les <code>providers</code> du
+        composant ou de la route pour remplacer les libellés pour toutes les
+        instances.
+      </li>
+      <li>
+        <strong>Jeton d'injection global</strong>&nbsp;: est compatible avec
+        <code>provideTranslatedLabels</code> pour brancher le
+        <code>TranslationService</code>.
+      </li>
+    </ol>
+
+    <app-docs-code [code]="labelsExample" lang="typescript" />
+  </section>
+</section>

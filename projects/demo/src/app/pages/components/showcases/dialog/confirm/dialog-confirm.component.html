@@ -1,0 +1,19 @@
+<button matIconButton mat-dialog-close color="primary" matTooltip="Fermer">
+  <mat-icon>close</mat-icon>
+</button>
+
+<h4 mat-dialog-title>Compte créé</h4>
+<mat-dialog-content>
+  <span class="text">
+    Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.
+  </span>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    matButton="filled"
+    mat-dialog-close="Vous êtes connecté."
+    cdkFocusInitial
+  >
+    Se connecter
+  </button>
+</mat-dialog-actions>

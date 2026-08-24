@@ -1,0 +1,21 @@
+@let title = this.title();
+
+<div
+  class="sdg-mini-basemap-container"
+  tabindex="0"
+  role="button"
+  [attr.aria-label]="title"
+  (click)="selectBasemap()"
+  (keydown.enter)="selectBasemap()"
+  (keydown.space)="selectBasemap(); $event.preventDefault()"
+  (touchend)="selectBasemap(); $event.preventDefault()"
+>
+  @let miniMap = this.miniMap();
+
+  @if (display() && miniMap) {
+    <sdg-map-browser [map]="miniMap!" />
+    @if (title) {
+      <div class="sdg-mini-basemap-title">{{ title }}</div>
+    }
+  }
+</div>

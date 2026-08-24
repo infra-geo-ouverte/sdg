@@ -36,7 +36,7 @@ describe('TopPageButtonComponent', () => {
   });
 
   it('should initialize with showButton as false', () => {
-    expect(component.showButton()).toBeFalse();
+    expect(component.showButton()).toBeFalsy();
   });
 
   it('should show button when scrolling up', () => {
@@ -46,7 +46,7 @@ describe('TopPageButtonComponent', () => {
     window.scrollY = 100;
     document.dispatchEvent(new Event('scroll'));
 
-    expect(component.showButton()).toBeTrue();
+    expect(component.showButton()).toBeTruthy();
   });
 
   it('should hide button when scrolling down', () => {
@@ -56,12 +56,12 @@ describe('TopPageButtonComponent', () => {
     window.scrollY = 200;
     document.dispatchEvent(new Event('scroll'));
 
-    expect(component.showButton()).toBeFalse();
+    expect(component.showButton()).toBeFalsy();
   });
 
   it('should call scrollToPosition when scrollToTop is called', () => {
     const viewportScroller = TestBed.inject(ViewportScroller);
-    const spy = spyOn(viewportScroller, 'scrollToPosition');
+    const spy = vi.spyOn(viewportScroller, 'scrollToPosition');
 
     component.scrollToTop();
 

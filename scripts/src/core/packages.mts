@@ -8,14 +8,12 @@ import * as log from '../utils/log.mts';
 import { PATHS, getPackageJson } from './paths.mts';
 import { RELEASE_TAGS } from './release.interface.mts';
 
-export type PackageName = 'common' | 'core' | 'geo' | 'sdg';
-
 export interface PackageOptions {
-  dependsOn: PackageName[];
+  dependsOn: string[];
   observer: BehaviorSubject<boolean>;
 }
 
-export type PackageTopologies = Map<PackageName, PackageOptions>;
+export type PackageTopologies = Map<string, PackageOptions>;
 
 /**
  *
@@ -23,7 +21,7 @@ export type PackageTopologies = Map<PackageName, PackageOptions>;
  * @returns
  */
 export function getPackagesTopologies(scope = '@igo2/sdg-'): PackageTopologies {
-  const folders = readdirSync(PATHS.packages) as PackageName[];
+  const folders = readdirSync(PATHS.packages) as string[];
   const topologies: PackageTopologies = new Map();
 
   folders.forEach((folder) => {
@@ -39,7 +37,7 @@ export function getPackagesTopologies(scope = '@igo2/sdg-'): PackageTopologies {
       .filter((key) => key.includes(scope))
       .map((key) => {
         return key.split('/sdg-')[1];
-      }) as PackageName[];
+      });
 
     topologies.set(folder, {
       dependsOn: igoDependencies,
@@ -50,7 +48,7 @@ export function getPackagesTopologies(scope = '@igo2/sdg-'): PackageTopologies {
 }
 
 export async function waitOnPackageRelations(
-  relations: PackageName[],
+  relations: string[],
   topologies: PackageTopologies
 ): Promise<boolean> {
   const observers = relations.map((relation) =>

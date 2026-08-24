@@ -62,8 +62,7 @@
       padding: 24px 24px 24px 16px;
     }
 
-    &-title,
-    &-message {
+    &-title {
       font-size: var(--sdg-font-size-sm) !important;
       margin: 0 !important;
       line-height: var(--sdg-line-height-90);
@@ -71,6 +70,21 @@
 
     &-title {
       font-family: var(--sdg-font-family-text) !important;
+    }
+
+    &-message {
+      ::ng-deep * {
+        font-size: var(--sdg-font-size-sm) !important;
+        line-height: var(--sdg-line-height-90) !important;
+
+        &:first-child {
+          margin-top: 0 !important;
+        }
+
+        &:last-child {
+          margin-bottom: 0 !important;
+        }
+      }
     }
   }
 }

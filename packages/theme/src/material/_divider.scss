@@ -1,0 +1,11 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use '@igo2/sdg-core' as sdg;
+
+@mixin overrides() {
+  @include mat.divider-overrides(
+    (
+      color: rgba(map.get(sdg.$color-light-values, 'black'), 0.12)
+    )
+  );
+}

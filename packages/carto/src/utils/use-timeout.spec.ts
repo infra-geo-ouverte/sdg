@@ -1,51 +1,49 @@
 import { useTimeout } from './use-timeout';
 
 describe('useTimeout', () => {
-  let callback: jasmine.Spy;
+  let callback: () => void;
+  let callbackSpy: ReturnType<typeof vi.fn>;
   let timeout: ReturnType<typeof useTimeout>;
 
   beforeEach(() => {
-    callback = jasmine.createSpy('callback');
+    vi.useFakeTimers();
+    callbackSpy = vi.fn();
+    callback = () => (callbackSpy as any)();
     timeout = useTimeout(callback, 1000);
   });
 
   afterEach(() => {
     timeout.clear();
+    vi.useRealTimers();
   });
 
-  it('should call the callback after the specified delay', (done) => {
+  it('should call the callback after the specified delay', () => {
     timeout.set();
 
-    setTimeout(() => {
-      expect(callback).toHaveBeenCalled();
-      done();
-    }, 1100); // Slightly longer than the delay to ensure execution
+    vi.advanceTimersByTime(1100);
+
+    expect(callbackSpy).toHaveBeenCalled();
   });
 
-  it('should not call the callback if cleared before the delay', (done) => {
+  it('should not call the callback if cleared before the delay', () => {
     timeout.set();
     timeout.clear();
 
-    setTimeout(() => {
-      expect(callback).not.toHaveBeenCalled();
-      done();
-    }, 1100);
+    vi.advanceTimersByTime(1100);
+
+    expect(callbackSpy).not.toHaveBeenCalled();
   });
 
-  it('should reset the timeout if set is called again before the delay', (done) => {
+  it('should reset the timeout if set is called again before the delay', () => {
     timeout.set();
 
-    setTimeout(() => {
-      timeout.set(); // Reset the timeout
-    }, 500);
+    vi.advanceTimersByTime(500);
+    timeout.set(); // Reset the timeout
 
-    setTimeout(() => {
-      expect(callback).not.toHaveBeenCalled();
-    }, 900);
+    vi.advanceTimersByTime(400);
+    expect(callbackSpy).not.toHaveBeenCalled();
 
-    setTimeout(() => {
-      expect(callback).toHaveBeenCalled();
-      done();
-    }, 1600); // After the second delay
+    vi.advanceTimersByTime(700);
+    expect(callbackSpy).toHaveBeenCalled();
   });
 });

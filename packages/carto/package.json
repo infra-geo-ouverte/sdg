@@ -26,6 +26,7 @@
     "format.fix": "prettier --write ./src/**/*.{ts,js,html,scss,css,json}",
     "lint": "ng lint carto",
     "lint.fix": "ng lint carto --fix",
+    "types": "tsc -p ./tsconfig.lib.json --noEmit && tsc -p ./tsconfig.spec.json --noEmit",
     "test": "ng test carto --watch=false",
     "test.watch": "ng test carto",
     "watch": "ng build carto --watch && npm run postbuild"
@@ -34,13 +35,13 @@
     "tslib": "^2.6.0"
   },
   "peerDependencies": {
-    "@angular/common": "^20.0.0",
-    "@angular/core": "^20.0.0",
-    "@angular/material": "^20.0.0",
-    "@angular/platform-browser": "^20.0.0",
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/material": "^21.0.0",
+    "@angular/platform-browser": "^21.0.0",
     "@igo2/sdg-core": "*",
-    "@igo2/sdg-i18n": "*",
-    "ol": "^10.5.0",
-    "rxjs": "~7.8.0"
+    "@igo2/sdg-common": "*",
+    "ol": "^10.0.0",
+    "rxjs": "^7.0.0"
   }
 }

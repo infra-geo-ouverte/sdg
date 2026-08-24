@@ -9,6 +9,7 @@
   },
   "darkMode": "Thème foncé",
   "showcases": {
+    "autocomplete": "Autocomplétion",
     "alert": "Alerte",
     "anchorMenu": "Menu d'ancres",
     "blockLink": "Lien en bloc",
@@ -17,6 +18,7 @@
     "charterBanner": "Bandeau Charte de la langue française",
     "checkbox": "Case à cocher",
     "chips": "Étiquettes",
+    "dialog": "Dialogue modal",
     "seeAlso": "À consulter aussi",
     "contact": "Coordonnées",
     "expansionPanel": "Accordéon",
@@ -28,15 +30,19 @@
     "navigation": "Menu de navigation principale",
     "notice": "Avis",
     "paginator": "Pagination",
+    "popover": "Infobulle",
     "radioButton": "Bouton radio",
+    "searchBar": "Barre de recherche",
     "sequentialLinks": "Liens séquentiels",
     "select": "Liste déroulante",
+    "table": "Tableau de données",
     "tabs": "Onglets",
     "tile": "Tuile cliquable",
     "topPage": "Haut de page"
   },
   "showcasesCarto": {
     "referenceMap": "Carte de référence",
+    "fullMap": "Carte complète",
     "buttons": {
       "zoom": {
         "zoomIn": "Zoom avant",

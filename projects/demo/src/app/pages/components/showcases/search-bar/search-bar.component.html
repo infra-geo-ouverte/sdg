@@ -1,0 +1,90 @@
+<p>
+  <span
+    >La <b>barre de recherche</b> permet à l'utilisateur d'effectuer des
+    recherches sur un site Web ou une application en saisissant des mots-clés.
+    Pour plus d'information, voir la
+  </span>
+  <span>
+    <sdg-external-link
+      text="Barre de recherche"
+      url="https://design.quebec.ca/design/composants/barre-recherche"
+    />
+  </span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<sdg-anchor-menu [anchors]="anchors" />
+
+<section>
+  <h2 id="section1">Généralités</h2>
+
+  <p>
+    La barre de recherche est alignée à gauche ou au centre de la page, selon le
+    conteneur principal de la page. La barre de recherche doit être placée dans
+    un élément large, bien visible (comme le
+    <a [routerLink]="['../bandeau-piv']">bandeau d'en-tête du PIV</a> ou en haut
+    de la page), et non imbriquée dans d'autres éléments.
+  </p>
+
+  <p>
+    Elle émet le terme au fur et à mesure de la saisie (via
+    <code>searchChange</code>) et lors de la soumission explicite (via
+    <code>searchSubmit</code>).
+  </p>
+
+  <app-example-viewer
+    title="Barre de recherche"
+    configFolder="search-bar"
+    codeFolder="search-bar"
+  >
+    <sdg-search-bar
+      placeholder="Rechercher un élément"
+      (searchSubmit)="searchTerm1.set($event)"
+      (searchChange)="liveTerm1.set($event)"
+    />
+
+    @if (liveTerm1()) {
+      <p class="mt-2">
+        Saisie en cours&nbsp;: <strong>{{ liveTerm1() }}</strong>
+      </p>
+    }
+    @if (searchTerm1()) {
+      <p>
+        Dernière recherche soumise&nbsp;: <strong>{{ searchTerm1() }}</strong>
+      </p>
+    }
+  </app-example-viewer>
+
+  <p>
+    Lorsque la barre de recherche est affichée sur un arrière-plan sombre, des
+    ajustements à prévoir aux couleurs du bouton de recherche et de l'icône de
+    la loupe. Les couleurs du champ de recherche, du texte saisi et du texte de
+    l'espace réservé restent inchangées.
+  </p>
+
+  <app-example-viewer
+    title="Barre de recherche sur arrière-plan sombre"
+    configFolder="search-bar"
+    codeFolder="search-bar"
+  >
+    <div class="search-bar-dark">
+      <sdg-search-bar
+        placeholder="Rechercher un élément"
+        color="light"
+        (searchSubmit)="searchTerm2.set($event)"
+        (searchChange)="liveTerm2.set($event)"
+      />
+    </div>
+
+    @if (liveTerm2()) {
+      <p class="mt-2">
+        Saisie en cours&nbsp;: <strong>{{ liveTerm2() }}</strong>
+      </p>
+    }
+    @if (searchTerm2()) {
+      <p>
+        Dernière recherche soumise&nbsp;: <strong>{{ searchTerm2() }}</strong>
+      </p>
+    }
+  </app-example-viewer>
+</section>

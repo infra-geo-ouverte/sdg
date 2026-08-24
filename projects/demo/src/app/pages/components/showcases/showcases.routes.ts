@@ -1,9 +1,22 @@
-import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg-core';
+import { RouteTranslateKey, SdgRoutes } from '@igo2/sdg-common';
 
 import { AppTitleResolver } from '../../../config/title-resolver';
 
 export const routes: SdgRoutes = [
   { path: '', redirectTo: 'breadcrumbs', pathMatch: 'full' },
+  {
+    path: 'autocompletion',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.autocomplete'
+    },
+    description:
+      "L'autocomplétion est une fonctionnalité associée à un élément de formulaire permettant de filtrer une liste d'options.",
+    loadComponent: () =>
+      import('./autocomplete/autocomplete.component').then(
+        (m) => m.AutocompleteDemoComponent
+      )
+  },
   {
     path: 'accordeon',
     title: AppTitleResolver,
@@ -77,6 +90,19 @@ export const routes: SdgRoutes = [
       import('./header/header.component').then((m) => m.HeaderDemoComponent)
   },
   {
+    path: 'barre-recherche',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.searchBar'
+    },
+    description:
+      'La barre de recherche permet à l’utilisateur d’effectuer des recherches sur un site Web ou une application en saisissant des mots-clés.',
+    loadComponent: () =>
+      import('./search-bar/search-bar.component').then(
+        (m) => m.SearchBarDemoComponent
+      )
+  },
+  {
     path: 'bouton',
     title: AppTitleResolver,
     data: {
@@ -125,6 +151,17 @@ export const routes: SdgRoutes = [
       import('./contact/contact.component').then((m) => m.ContactDemoComponent)
   },
   {
+    path: 'dialogue-modal',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.dialog'
+    },
+    description:
+      "Le dialogue modal est une boîte qui se superpose au contenu de la page, en plein centre, à la suite d'une action déclenchée directement par l'utilisateur.",
+    loadComponent: () =>
+      import('./dialog/dialog.component').then((m) => m.DialogDemoComponent)
+  },
+  {
     path: 'etiquettes',
     title: AppTitleResolver,
     data: {
@@ -160,6 +197,17 @@ export const routes: SdgRoutes = [
       import('./top-page-button/top-page-button.component').then(
         (m) => m.TopPageButtonDemoComponent
       )
+  },
+  {
+    path: 'infobulle',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.popover'
+    },
+    description:
+      "L'infobulle est utilisée pour fournir des informations contextuelles liées à un élément particulier.",
+    loadComponent: () =>
+      import('./popover/popover').then((m) => m.PopoverDemoComponent)
   },
   {
     path: 'lien-externe',
@@ -297,6 +345,17 @@ export const routes: SdgRoutes = [
       import('./radio-button/radio-button.component').then(
         (m) => m.RadioButtonDemoComponent
       )
+  },
+  {
+    path: 'tableau',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.table'
+    },
+    description:
+      'Le tableau de données est utilisé pour afficher des données majoritairement/principalement numériques organisées en lignes et en colonnes.',
+    loadComponent: () =>
+      import('./table/table.component').then((m) => m.TableDemoComponent)
   },
   {
     path: 'tuile',

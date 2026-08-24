@@ -2,12 +2,12 @@
   &-list {
     display: flex;
     flex-direction: column;
-    row-gap: 32px;
+    row-gap: var(--sdg-grid-spacing-max);
 
     &-multiple {
       display: flex;
       flex-wrap: wrap;
-      gap: 32px;
+      gap: var(--sdg-grid-spacing-max);
     }
   }
 }

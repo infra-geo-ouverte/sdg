@@ -1,0 +1,7 @@
+@use './typography' as *;
+@use './table' as *;
+
+@mixin styles {
+  @include typo-base;
+  @include table;
+}

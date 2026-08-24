@@ -18,7 +18,9 @@ import {
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class FooterComponent {
   readonly title = input<string>();

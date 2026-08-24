@@ -39,30 +39,10 @@
       }
     },
     {
-      "label": "igo2-quebec/start",
-      "type": "npm",
-      "script": "link.start",
-      "path": "projects/igo2-quebec",
-      "isBackground": true,
-      "problemMatcher": {
-        "owner": "typescript",
-        "pattern": "$tsc",
-        "background": {
-          "activeOnStart": true,
-          "beginsPattern": {
-            "regexp": "(.*?)"
-          },
-          "endsPattern": {
-            "regexp": "bundle generation complete"
-          }
-        }
-      }
-    },
-    {
-      "label": "qea-client/start",
+      "label": "client/start",
       "type": "npm",
       "script": "link-sdg.start",
-      "path": "projects/qea-client",
+      "path": "projects/client",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",

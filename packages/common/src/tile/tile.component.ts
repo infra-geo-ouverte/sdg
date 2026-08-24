@@ -7,14 +7,16 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 
-import { pathIsExternal } from '@igo2/sdg-core';
+import { pathIsExternal } from '../router';
 
 @Component({
   selector: 'sdg-tile',
   imports: [MatIconModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './tile.component.html',
-  styleUrls: ['./tile.component.scss']
+  styleUrls: ['./tile.component.scss'],
+  // Prevents the `title` input from leaking as a native title attribute (native tooltip) on the host element
+  host: { '[attr.title]': 'null' }
 })
 export class TileComponent {
   private router = inject(Router);

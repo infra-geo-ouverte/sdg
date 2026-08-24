@@ -1,0 +1,102 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  .mat-mdc-radio-group {
+    display: flex;
+    flex-flow: column;
+  }
+
+  .mat-mdc-radio-button {
+    $disabled-color: var(--sdg-color-grey-light);
+    $unselected-color: var(--sdg-color-blue-dark);
+    $selected-color: var(--sdg-color-blue-normal);
+
+    $base-size: 8px;
+    $radio-button-size: calc($base-size * 3);
+
+    @include mat.radio-overrides(
+      (
+        label-text-size: var(--sdg-font-size-md),
+        label-text-line-height: var(--sdg-line-height-md),
+        label-text-color: var(--sdg-color-text),
+        label-text-font: var(--sdg-font-family-text),
+        label-text-weight: var(--sdg-font-weight-regular),
+        label-text-tracking: 0,
+        //
+        ripple-color: transparent,
+        checked-ripple-color: transparent,
+        //
+        disabled-label-color: $disabled-color,
+        disabled-unselected-icon-color: $disabled-color,
+        disabled-unselected-icon-opacity: 1,
+        disabled-selected-icon-color: $disabled-color,
+        disabled-selected-icon-opacity: 1,
+        //
+        unselected-icon-color: $unselected-color,
+        unselected-hover-icon-color: $unselected-color,
+        unselected-focus-icon-color: $selected-color,
+        unselected-pressed-icon-color: $selected-color,
+        //
+        selected-icon-color: $selected-color,
+        selected-hover-icon-color: $selected-color,
+        selected-focus-icon-color: $selected-color,
+        selected-pressed-icon-color: $selected-color
+      )
+    );
+
+    margin-left: calc($radio-button-size * -1 / 2 + 2px);
+
+    .mdc-radio {
+      height: $radio-button-size;
+      width: $radio-button-size;
+      flex: 0 0 $radio-button-size;
+
+      .mdc-radio__native-control {
+        top: calc($base-size / 2);
+        left: calc($base-size / 2);
+        right: calc($base-size / 2);
+
+        &:checked + .mdc-radio__background > .mdc-radio__inner-circle {
+          transform: scale(0.6);
+        }
+      }
+
+      .mdc-radio__background {
+        height: $radio-button-size;
+        width: $radio-button-size;
+      }
+    }
+
+    .mdc-label {
+      padding: 0;
+      transform: translateY(
+        1px
+      ); // visually center the label with the radio button
+    }
+
+    &[compact] {
+      $radio-button-size: calc($base-size * 2);
+
+      .mdc-radio {
+        height: $radio-button-size;
+        width: $radio-button-size;
+        flex: 0 0 $radio-button-size;
+
+        .mdc-radio__native-control {
+          top: 0;
+          left: 0;
+          right: 0;
+        }
+
+        .mdc-radio__background {
+          height: $radio-button-size;
+          width: $radio-button-size;
+
+          .mdc-radio__outer-circle {
+            border-width: 1px;
+          }
+        }
+      }
+    }
+  }
+}

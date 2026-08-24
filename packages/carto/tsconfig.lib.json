@@ -10,10 +10,12 @@
     "inlineSources": true,
     "types": [],
     "paths": {
-      "@igo2/sdg-*": ["./dist/*"]
+      "@igo2/sdg-*": [
+        "dist/*"
+      ]
     }
   },
   "exclude": [
     "**/*.spec.ts"
-  ]
+  ],
 }

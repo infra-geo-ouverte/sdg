@@ -8,8 +8,7 @@ import {
 import { MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { WithLabels } from '@igo2/sdg-core';
-
+import { WithLabels } from '../shared';
 import {
   ISequentialLinksLabels,
   SequentialLink

@@ -31,7 +31,6 @@ const LABELS_DEFAULT: ZoomLabels = {
 })
 export class SdgZoomButton implements OnInit {
   map = input.required<ISdgMap>();
-  color = input<string>();
   labels = input<ZoomLabels, ZoomLabels | undefined>(LABELS_DEFAULT, {
     transform: (value) => labelAttribute(value, LABELS_DEFAULT)
   });

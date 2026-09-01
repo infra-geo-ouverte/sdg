@@ -1,0 +1,37 @@
+<p>
+  <span>
+    Le <b>commutateur</b> est un élément de contrôle qui permet de basculer
+    entre deux états opposés (activé ou désactivé). Pour plus d'information,
+    voir le
+  </span>
+  <span>
+    <sdg-external-link
+      text="Commutateur"
+      url="https://design.quebec.ca/design/composants/formulaire/commutateur"
+    />
+  </span>
+  <span>du Système de design gouvernemental.</span>
+</p>
+
+<app-example-viewer
+  title="Commutateur"
+  configFolder="slide-toggle"
+  codeFolder="slide-toggle"
+>
+  <div class="slide-toggles">
+    <mat-slide-toggle labelPosition="before" [disabled]="disabled()">
+      Ceci est un commutateur
+    </mat-slide-toggle>
+    <mat-slide-toggle labelPosition="before" [disabled]="disabled()">
+      Ceci est un second commutateur
+    </mat-slide-toggle>
+  </div>
+  <button
+    compact
+    matButton="outlined"
+    color="primary"
+    (click)="this.disabled.set(!this.disabled())"
+  >
+    {{ disabled() ? 'Activer' : 'Désactiver' }}
+  </button>
+</app-example-viewer>

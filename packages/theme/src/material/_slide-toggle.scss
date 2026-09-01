@@ -1,0 +1,114 @@
+@use '@angular/material' as mat;
+
+@mixin overrides() {
+  $background: var(--sdg-color-background);
+  $blue-pale: var(--sdg-color-blue-pale);
+  $blue-normal: var(--sdg-color-blue-normal);
+  $grey-light: var(--sdg-color-grey-light);
+  $grey-dark: var(--sdg-color-grey-dark);
+  $handle-size: 28px;
+  $track-outline-width: 1px;
+  $track-handle-margin-selected: 0 26px;
+
+  .mat-mdc-slide-toggle {
+    @include mat.slide-toggle-overrides(
+      (
+        disabled-track-opacity: 1,
+        disabled-unselected-handle-opacity: 1,
+        disabled-unselected-track-outline-width: $track-outline-width,
+        //
+        hidden-track-opacity: 1,
+        //
+        selected-handle-horizontal-margin: $track-handle-margin-selected,
+        selected-handle-size: $handle-size,
+        selected-pressed-handle-horizontal-margin: $track-handle-margin-selected,
+        selected-track-outline-color: $blue-normal,
+        selected-track-outline-width: $track-outline-width,
+        //
+        track-outline-width: $track-outline-width,
+        track-width: 56px,
+        //
+        unselected-handle-horizontal-margin: 0 2px,
+        unselected-handle-size: $handle-size,
+        //
+        disabled-label-text-color: var(--sdg-color-grey-normal),
+        disabled-selected-handle-color: $background,
+        disabled-selected-track-color: $blue-pale,
+        disabled-unselected-handle-color: $background,
+        disabled-unselected-track-color: $grey-light,
+        disabled-unselected-track-outline-color: $grey-light,
+        //
+        label-text-color: var(--sdg-color-text),
+        //
+        selected-focus-handle-color: $background,
+        selected-focus-state-layer-opacity: 0,
+        selected-focus-track-color: $blue-normal,
+        selected-handle-color: $background,
+        selected-hover-handle-color: $background,
+        selected-hover-state-layer-opacity: 0,
+        selected-hover-track-color: $blue-normal,
+        selected-pressed-handle-color: $background,
+        selected-pressed-state-layer-opacity: 0,
+        selected-pressed-track-color: $blue-normal,
+        selected-track-color: $blue-normal,
+        //
+        track-outline-color: $grey-dark,
+        //
+        unselected-focus-handle-color: $background,
+        unselected-focus-state-layer-opacity: 0,
+        unselected-focus-track-color: $grey-light,
+        unselected-handle-color: $background,
+        unselected-hover-handle-color: $background,
+        unselected-hover-state-layer-opacity: 0,
+        unselected-hover-track-color: $grey-light,
+        unselected-pressed-handle-color: $background,
+        unselected-pressed-state-layer-opacity: 0,
+        unselected-pressed-track-color: $grey-light,
+        unselected-track-color: $grey-light,
+        //
+        handle-elevation-shadow: none,
+        disabled-handle-elevation-shadow: none,
+        //
+        label-text-font: var(--sdg-font-text),
+        label-text-line-height: var(--sdg-line-height-md),
+        label-text-size: var(--sdg-font-size-md),
+        label-text-tracking: normal,
+        label-text-weight: var(--sdg-font-weight-bold)
+      )
+    );
+
+    .mdc-switch {
+      &--selected {
+        &.mdc-switch--disabled {
+          .mdc-switch__track::after {
+            border-color: $blue-pale;
+          }
+        }
+      }
+
+      &:not(.mdc-switch--disabled) {
+        .mdc-switch__handle::after {
+          border-color: $grey-dark;
+        }
+      }
+
+      &:focus-visible {
+        border-radius: 9999px;
+        box-shadow:
+          0 0 0 2px $background,
+          0 0 0 4px var(--sdg-color-blue-light);
+      }
+    }
+
+    .mat-internal-form-field {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+
+      .mdc-label {
+        flex: 1;
+        text-align: left;
+      }
+    }
+  }
+}

@@ -1,5 +1,6 @@
 @use './autocomplete';
 @use './button';
+@use './slide-toggle';
 @use './checkbox';
 @use './chip';
 @use './dialog';
@@ -36,6 +37,7 @@ $primary-palette: theme-def.$primary-palette;
   @include list.overrides();
   @include option.overrides();
   @include sidenav.overrides();
+  @include slide-toggle.overrides();
   @include radio-button.overrides();
   @include tab.overrides();
 }

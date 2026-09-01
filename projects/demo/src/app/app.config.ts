@@ -9,6 +9,7 @@ import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { MAT_SELECT_CONFIG } from '@angular/material/select';
+import { MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS } from '@angular/material/slide-toggle';
 import {
   PreloadAllModules,
   provideRouter,
@@ -80,6 +81,10 @@ export const appConfig: ApplicationConfig = {
     {
       provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
       useValue: { hideSingleSelectionIndicator: true }
+    },
+    {
+      provide: MAT_SLIDE_TOGGLE_DEFAULT_OPTIONS,
+      useValue: { hideIcon: true }
     },
     {
       provide: ICHERCHE_CONFIG,

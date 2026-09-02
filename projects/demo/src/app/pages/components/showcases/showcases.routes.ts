@@ -140,6 +140,19 @@ export const routes: SdgRoutes = [
       )
   },
   {
+    path: 'commutateur',
+    title: AppTitleResolver,
+    data: {
+      [RouteTranslateKey]: 'showcases.slideToggle'
+    },
+    description:
+      'Le commutateur est un élément de contrôle qui permet de basculer entre deux états opposés (activé ou désactivé)',
+    loadComponent: () =>
+      import('./slide-toggle/slide-toggle.component').then(
+        (m) => m.SlideToggleDemoComponent
+      )
+  },
+  {
     path: 'coordonnees',
     title: AppTitleResolver,
     data: {

@@ -1,4 +1,4 @@
-import { WritableSignal, signal } from '@angular/core';
+import { Injectable, WritableSignal, signal } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
 
@@ -18,6 +18,7 @@ export function withTranslationMock(): TranslationFeature<TranslationFeatureKind
   };
 }
 
+@Injectable()
 export class TranslationServiceMock extends TranslationService {
   override lang: WritableSignal<Language> = signal('fr');
 

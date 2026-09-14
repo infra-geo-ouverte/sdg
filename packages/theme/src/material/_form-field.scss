@@ -52,12 +52,13 @@
       }
     }
 
-    &.mat-focused {
+    &.mat-focused > .mat-mdc-text-field-wrapper {
       outline: 2px solid var(--sdg-color-blue-light);
     }
 
     .mdc-text-field {
       background-color: var(--sdg-color-background);
+      border-radius: 0;
       padding: 0 var(--sdg-spacer-8);
 
       &--disabled {

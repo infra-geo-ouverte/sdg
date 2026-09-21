@@ -11,6 +11,7 @@
           [tabPanel]="tabPanel"
           [mat-stretch-tabs]="false"
           disablePagination
+          role="navigation"
         >
           @for (link of linksInTabs(); track link) {
             <a

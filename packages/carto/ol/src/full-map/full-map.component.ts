@@ -227,6 +227,12 @@ export class SdgOlFullMap
     this.mapReady.emit(map);
   }
 
+  onMapClick(): void {
+    if (this.options().panel?.closeOnMapClick !== false) {
+      this.panelService.expanded.set(false);
+    }
+  }
+
   onSearchChange(term?: string): void {
     const cleanTerm = term?.trim() ?? '';
     this.searchTerm.set(cleanTerm);

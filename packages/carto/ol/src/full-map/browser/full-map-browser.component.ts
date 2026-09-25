@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  DestroyRef,
   OnInit,
   computed,
   inject,
@@ -60,6 +61,7 @@ const LABELS_DEFAULT: SdgOlFullMapBrowserLabels = {
   styleUrl: './full-map-browser.component.scss'
 })
 export class SdgOlFullMapBrowser implements OnInit, AfterViewInit {
+  private readonly destroyRef = inject(DestroyRef);
   readonly panelService = inject(PanelService);
 
   readonly options = input.required<SdgOlFullMapOptions>();
@@ -70,6 +72,7 @@ export class SdgOlFullMapBrowser implements OnInit, AfterViewInit {
   >(LABELS_DEFAULT, {
     transform: (value) => labelAttribute(value, LABELS_DEFAULT)
   });
+  readonly mapClick = output<void>();
   readonly mapReady = output<SdgOlMap>();
   readonly extentChange = output<void>();
 
@@ -81,13 +84,21 @@ export class SdgOlFullMapBrowser implements OnInit, AfterViewInit {
     resolveOptions(this.options().navigation?.home)
   );
 
+  private readonly handleMapClick = (): void => this.mapClick.emit();
+
   ngOnInit(): void {
     this.map = new SdgOlMap(this.options());
     this.basemaps = this.map.basemaps;
 
     this.geolocation = new SdgOlGeolocation(this.map);
 
-    this.mapReady.emit(this.map);
+    const map = this.map;
+    map.engine.on('singleclick', this.handleMapClick);
+    this.destroyRef.onDestroy(() =>
+      map.engine.un('singleclick', this.handleMapClick)
+    );
+
+    this.mapReady.emit(map);
   }
 
   ngAfterViewInit(): void {

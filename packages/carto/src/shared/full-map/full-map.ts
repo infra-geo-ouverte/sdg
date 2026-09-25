@@ -11,6 +11,8 @@ import { PanelType } from './shared/panel.service';
 
 export interface SdgFullMapOptions extends MapOptions {
   panel?: {
+    /** Whether clicking the map closes the panel. Default to true. */
+    closeOnMapClick?: boolean;
     /** Panel type to navigate back to when leaving search/legend. If undefined, the panel is simply closed. */
     default?: PanelType;
   };

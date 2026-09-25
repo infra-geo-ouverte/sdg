@@ -60,6 +60,36 @@ describe('SdgOlFullMap', () => {
     expect(panelService.expanded()).toBe(true);
   });
 
+  it('should close the desktop drawer when the map is clicked', () => {
+    panelService.expanded.set(true);
+
+    component.onMapClick();
+
+    expect(panelService.expanded()).toBe(false);
+  });
+
+  it('should close the mobile bottom sheet when the map is clicked', () => {
+    fixture.componentRef.setInput('isHandset', true);
+    panelService.expanded.set(true);
+
+    component.onMapClick();
+
+    expect(panelService.expanded()).toBe(false);
+  });
+
+  it('should keep the mobile bottom sheet open when closeOnMapClick is false', () => {
+    fixture.componentRef.setInput('isHandset', true);
+    fixture.componentRef.setInput('options', {
+      ...defaultOptions,
+      panel: { closeOnMapClick: false }
+    });
+    panelService.expanded.set(true);
+
+    component.onMapClick();
+
+    expect(panelService.expanded()).toBe(true);
+  });
+
   it('should emit searchChange when onSearchChange is called', () => {
     const spy = vi.fn();
     component.searchChange.subscribe(spy);

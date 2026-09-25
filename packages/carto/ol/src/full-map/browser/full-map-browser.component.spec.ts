@@ -77,6 +77,16 @@ describe('SdgOlFullMapBrowser', () => {
     expect(component.basemaps).toEqual([]);
   });
 
+  it('should emit mapClick on an OpenLayers single click', () => {
+    const spy = vi.fn();
+    component.mapClick.subscribe(spy);
+    component.ngOnInit();
+
+    component.map.engine.dispatchEvent('singleclick');
+
+    expect(spy).toHaveBeenCalledOnce();
+  });
+
   it('should toggle legend panel when panel type is not legend', () => {
     component.ngOnInit();
     panelService.type.set('layers');

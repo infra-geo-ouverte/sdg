@@ -67,6 +67,7 @@
     [labels]="labels"
     [isHandset]="isHandset"
     (mapReady)="handleMap($event)"
+    (mapClick)="onMapClick()"
     (extentChange)="extentChange.emit(undefined)"
   >
     @if (scaleLineOptions && isHandset) {

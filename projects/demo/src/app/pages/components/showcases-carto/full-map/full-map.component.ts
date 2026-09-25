@@ -268,7 +268,8 @@ const PANEL_EXAMPLE = `
 const options: SdgOlFullMapOptions = {
   // ...
   panel: {
-    default: 'custom'   // panneau affiché par défaut et au retour de la recherche/légende
+    closeOnMapClick: true, // ferme le panneau lors d'un clic sur la carte (true par défaut)
+    default: 'custom'      // panneau affiché par défaut et au retour de la recherche/légende
   }
 };
 

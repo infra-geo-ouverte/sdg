@@ -24,7 +24,7 @@
         }
       }
 
-      &:focus {
+      &:focus-visible {
         .mdc-tab-indicator {
           border: 2px solid var(--sdg-color-blue-light);
         }

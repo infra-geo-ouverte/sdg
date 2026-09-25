@@ -2,6 +2,7 @@
 
 :host {
   display: flex;
+  max-width: var(--sdg-max-content-width);
   background-color: var(--sdg-color-background);
   border: 1px solid var(--sdg-color-grey-light);
 }

@@ -50,6 +50,23 @@ describe('CheckboxDemoComponent', () => {
     expect(compactCheckbox.nativeElement.hasAttribute('compact')).toBeTruthy();
   });
 
+  it('should align the checkbox icon with its container', () => {
+    const normalCheckbox = fixture.debugElement.query(
+      By.css('mat-checkbox[value="normal1"]')
+    );
+    const checkboxContainer = fixture.debugElement.query(
+      By.css('.checkbox-container')
+    );
+    const checkboxBackground = normalCheckbox.nativeElement.querySelector(
+      '.mdc-checkbox__background'
+    );
+
+    expect(checkboxBackground.getBoundingClientRect().left).toBeCloseTo(
+      checkboxContainer.nativeElement.getBoundingClientRect().left,
+      5
+    );
+  });
+
   it('should apply custom size to compact checkbox', () => {
     const compactCheckbox = fixture.debugElement.query(
       By.css('mat-checkbox[compact]')

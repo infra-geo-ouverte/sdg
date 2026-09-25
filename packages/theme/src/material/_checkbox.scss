@@ -52,7 +52,7 @@
       )
     );
 
-    margin-left: calc($checkbox-size * -1 / 2);
+    margin-left: calc((18px - var(--mat-checkbox-state-layer-size, 40px)) / 2);
 
     .mdc-checkbox {
       height: $checkbox-size;

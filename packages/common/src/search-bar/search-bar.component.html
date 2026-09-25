@@ -15,7 +15,7 @@
         matIconButton
         class="sdg-search-bar-reset-button"
         [class.--light]="colorIsLight"
-        matTooltip="Réinitialiser la recherche"
+        [matTooltip]="labels().reset"
         matSuffix
         (click)="onClear()"
       >
@@ -33,7 +33,7 @@
       matIconButton
       class="sdg-search-bar-search-button"
       [class.--light]="colorIsLight"
-      matTooltip="Faire une recherche"
+      [matTooltip]="labels().search"
       matSuffix
       (click)="onSearch()"
     >

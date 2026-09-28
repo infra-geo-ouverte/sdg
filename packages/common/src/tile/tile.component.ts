@@ -1,6 +1,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   inject,
   input
 } from '@angular/core';
@@ -25,17 +26,20 @@ export class TileComponent {
   /** The icon needs to be registred via the MatIconRegistry */
   readonly iconSvg = input<string>();
 
-  readonly title = input.required<string, string>({
-    transform: this.titleValidation
-  });
+  readonly title = input.required<string>();
   readonly message = input<string, string>('', {
     transform: this.messageValidation
   });
   readonly href = input.required<string>();
+  /** Official specs mention that the title should not exceed 45 characters long, but this can be ignored if necessary */
+  readonly ignoreTitleValidation = input<boolean>(false);
 
-  private titleValidation(title: string): string {
-    return title.length > 45 ? `${title.slice(0, 45)}...` : title;
-  }
+  protected readonly validatedTitle = computed(() => {
+    const title = this.title();
+    return title.length > 45 && !this.ignoreTitleValidation()
+      ? `${title.slice(0, 45)}...`
+      : title;
+  });
 
   private messageValidation(message: string): string {
     return message.length > 140 ? `${message.slice(0, 140)}...` : message;

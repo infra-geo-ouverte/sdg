@@ -37,10 +37,14 @@ const INVALID_KEYS = [
 
 export interface SearchBarLabels {
   placeholder: string;
+  reset: string;
+  search: string;
 }
 
 export const DEFAULT_SEARCH_BAR_LABELS: Required<SearchBarLabels> = {
-  placeholder: 'Rechercher'
+  placeholder: 'Rechercher',
+  reset: 'Réinitialiser la recherche',
+  search: 'Faire une recherche'
 };
 
 export const SEARCH_BAR_LABELS = new InjectionToken<SearchBarLabels>(

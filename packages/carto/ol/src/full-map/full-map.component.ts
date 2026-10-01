@@ -237,6 +237,7 @@ export class SdgOlFullMap
       this.panelService.expanded.set(true);
     } else if (!cleanTerm && this.panelService.type() === 'search') {
       this.searchHighlight?.clear();
+      this.navigateTodefault();
     }
 
     this.searchChange.emit(cleanTerm);

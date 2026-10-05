@@ -84,6 +84,20 @@ describe('SdgSearchBar', () => {
       expect(spy).not.toHaveBeenCalled();
     });
 
+    it('should emit termChange below minLength', () => {
+      const spy = vi.fn();
+      component.termChange.subscribe(spy);
+
+      const input = fixture.nativeElement.querySelector('input');
+      input.value = 'a';
+      const event = new KeyboardEvent('keyup', { key: 'a' });
+      Object.defineProperty(event, 'target', { value: input });
+      component.onKeyup(event);
+
+      vi.advanceTimersByTime(300);
+      expect(spy).toHaveBeenCalledWith('a');
+    });
+
     it('should stream value when length >= minLength after debounce', () => {
       const spy = vi.fn();
       component.searchChange.subscribe(spy);

@@ -55,8 +55,10 @@
 
   <p>
     La barre de recherche doit être visible en tout temps (elle est activée par
-    défaut (<code>search: true</code>)). Lorsqu'une recherche est initiée, le
-    panneau principal s'ouvre pour montrer la liste des résultats.
+    défaut (<code>search.enabled: true</code>)). Lorsqu'une recherche est
+    initiée, le panneau principal s'ouvre pour montrer la liste des résultats.
+    La longueur minimale du terme de recherche est définie par
+    <code>search.minLength</code> (la valeur par défaut est 2).
   </p>
 
   <section>
@@ -118,10 +120,10 @@
 
     <p>
       L'option <code>panel.default</code> permet de définir la variante par
-      défaut à utiliser lorsqu'on quitte la recherche ou la légende. Si elle
-      n'est pas définie, le panneau se ferme simplement. Le
-      <code>PanelService</code> permet de contrôler l'état du panneau
-      programmatiquement.
+      défaut à utiliser lorsqu'on quitte la recherche ou la légende. Effacer la
+      recherche ne ferme pas le panneau; sans variante par défaut, la variante
+      courante reste affichée. Le <code>PanelService</code> permet de contrôler
+      l'état du panneau programmatiquement.
     </p>
 
     <app-docs-code [code]="panelExample" lang="typescript" />

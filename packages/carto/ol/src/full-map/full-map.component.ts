@@ -43,7 +43,7 @@ import {
   withIChercheSource,
   withTerrapiSource
 } from '@igo2/sdg-carto';
-import { SdgSearchBar, WithLabels } from '@igo2/sdg-common';
+import { DEFAULT_MIN_LENGTH, SdgSearchBar, WithLabels } from '@igo2/sdg-common';
 
 import { of } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
@@ -182,7 +182,7 @@ export class SdgOlFullMap
   }
 
   ngAfterContentInit(): void {
-    if (this.options().search === false && !this.default) {
+    if (this.options().search?.enabled === false && !this.default) {
       const firstPanel = this.panelContents()[0];
       if (!firstPanel) {
         throw new Error(
@@ -235,34 +235,37 @@ export class SdgOlFullMap
       this.panelService.toggle('search');
     } else if (cleanTerm && !this.panelService.expanded()) {
       this.panelService.expanded.set(true);
-    } else if (!cleanTerm && this.panelService.type() === 'search') {
+    } else if (!cleanTerm) {
       this.searchHighlight?.clear();
-      this.navigateTodefault();
+      this.navigateToDefault();
     }
 
     this.searchChange.emit(cleanTerm);
   }
 
-  clearSearch(): void {
-    this.searchTerm.set('');
-    this.searchHighlight?.clear();
+  onSearchTermChange(term?: string): void {
+    const cleanTerm = term?.trim() ?? '';
+    const minLength = this.options().search?.minLength ?? DEFAULT_MIN_LENGTH;
 
-    if (this.panelService.expanded()) {
-      this.navigateTodefault();
-    } else {
-      this.panelService.resetDefaultType();
-    }
-
-    if (this.isHandset()) {
-      this.panelService.expanded.set(false);
+    if (
+      cleanTerm.length > 0 &&
+      cleanTerm.length < minLength &&
+      this.panelService.type() === 'search'
+    ) {
+      this.searchHighlight?.clear();
+      this.navigateToDefault();
     }
   }
 
-  private navigateTodefault(): void {
+  clearSearch(): void {
+    this.searchTerm.set('');
+    this.searchHighlight?.clear();
+    this.navigateToDefault();
+  }
+
+  private navigateToDefault(): void {
     if (this.default) {
-      this.panelService.toggle(this.default);
-    } else {
-      this.panelService.expanded.set(false);
+      this.panelService.setType(this.default);
     }
   }
 }

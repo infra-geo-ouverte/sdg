@@ -22,6 +22,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 import { WithLabels } from '../shared/label/with-labels';
 
+export const DEFAULT_MIN_LENGTH = 2;
+
 const INVALID_KEYS = [
   'Control',
   'Shift',
@@ -69,11 +71,13 @@ export class SdgSearchBar extends WithLabels<SearchBarLabels> {
 
   readonly color = input<'dark' | 'light'>('dark');
   readonly debounce = input<number>(300);
-  readonly minLength = input<number>(2);
+  readonly minLength = input<number | undefined>(DEFAULT_MIN_LENGTH);
 
   /** Emits the search term when the user presses Enter or clicks the search button. */
   readonly searchSubmit = output<string>();
-  /** Emits the search term (debounced) as the user types. */
+  /** Emits the term (debounced) as the user types, regardless of its length. */
+  readonly termChange = output<string>();
+  /** Emits an empty or valid-length search term after the debounce. */
   readonly searchChange = output<string>();
   readonly clear = output<void>();
 
@@ -92,7 +96,15 @@ export class SdgSearchBar extends WithLabels<SearchBarLabels> {
         distinctUntilChanged(),
         takeUntilDestroyed(this.destroyRef)
       )
-      .subscribe((term) => this.searchChange.emit(term));
+      .subscribe((term) => {
+        this.termChange.emit(term);
+        if (
+          term.length >= (this.minLength() ?? DEFAULT_MIN_LENGTH) ||
+          term.length === 0
+        ) {
+          this.searchChange.emit(term);
+        }
+      });
   }
 
   onKeyup(event: KeyboardEvent): void {
@@ -103,9 +115,7 @@ export class SdgSearchBar extends WithLabels<SearchBarLabels> {
     }
     const value = (event.target as HTMLInputElement).value;
     this.term.set(value);
-    if (value.length >= this.minLength() || value.length === 0) {
-      this.stream$.next(value);
-    }
+    this.stream$.next(value);
   }
 
   onSearch(): void {

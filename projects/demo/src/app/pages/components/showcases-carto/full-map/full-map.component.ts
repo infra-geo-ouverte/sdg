@@ -146,7 +146,10 @@ const options: SdgOlFullMapOptions = {
 const SEARCH_EXAMPLE = `
 const options: SdgOlFullMapOptions = {
   // ...
-  search: true // par défaut
+  search: {
+    enabled: true, // par défaut
+    minLength: 2   // par défaut
+  }
 };
 
 // ⚠️ La recherche intégrée utilise des icônes de la police Google Material Symbols.

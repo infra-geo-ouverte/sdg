@@ -11,11 +11,15 @@ import { PanelType } from './shared/panel.service';
 
 export interface SdgFullMapOptions extends MapOptions {
   panel?: {
-    /** Panel type to navigate back to when leaving search/legend. If undefined, the panel is simply closed. */
+    /** Panel type to navigate back to when leaving search or legend. */
     default?: PanelType;
   };
-  /** Default to true */
-  search?: boolean;
+  search?: {
+    /** Default to true */
+    enabled?: boolean;
+    /** Default to 2 */
+    minLength?: number;
+  };
   footer: MapFooterOptions;
 }
 

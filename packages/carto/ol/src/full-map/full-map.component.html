@@ -7,14 +7,14 @@
   [attribution]="options.footer"
   [isHandset]="isHandset"
   [labels]="labels"
-  [search]="searchOptions !== false"
+  [search]="searchOptions?.enabled !== false"
 >
   <ng-container panel>
     @let panelType = panelService.type();
 
     <!-- Default panel for search results -->
     @if (
-      searchOptions !== false &&
+      searchOptions?.enabled !== false &&
       panelType === 'search' &&
       !hasCustomSearchPanel()
     ) {
@@ -43,9 +43,11 @@
   </ng-container>
 
   <ng-container search-bar>
-    @if (searchOptions !== false) {
+    @if (searchOptions?.enabled !== false) {
       <sdg-search-bar
         [labels]="labels.searchBar"
+        [minLength]="searchOptions?.minLength"
+        (termChange)="onSearchTermChange($event)"
         (searchChange)="onSearchChange($event)"
         (clear)="clearSearch()"
       />

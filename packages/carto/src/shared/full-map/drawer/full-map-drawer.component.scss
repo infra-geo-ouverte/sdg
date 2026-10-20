@@ -3,6 +3,16 @@
 $footer-height: 32px;
 $panel-width: #{var(--sdg-full-map-panel-width)};
 $search-bar-height: #{var(--sdg-search-bar-height)};
+$drawer-transition: 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+
+// Width of the map hidden by the overlaying panel, consumed by map overlays
+:host {
+  --sdg-full-map-panel-offset: 0px;
+
+  &.--expanded {
+    --sdg-full-map-panel-offset: #{$panel-width};
+  }
+}
 
 .full-map-drawer {
   width: $panel-width;
@@ -64,8 +74,9 @@ footer {
   position: absolute;
   bottom: 0;
   right: 0;
-  padding: 0px 12px;
+  padding: 0px 12px 0px calc(var(--sdg-full-map-panel-offset) + 12px);
   width: 100%;
+  transition: padding-left $drawer-transition;
   height: $footer-height;
   background-color: color-mix(
     in srgb,

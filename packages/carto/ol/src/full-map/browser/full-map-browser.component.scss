@@ -34,7 +34,8 @@ sdg-map-browser {
     &-basemap-switcher {
       position: absolute;
       bottom: $controls-padding * 4;
-      left: $controls-padding;
+      left: calc(var(--sdg-full-map-panel-offset, 0px) + $controls-padding);
+      transition: left 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
 
       @include sdg.media(mobile) {
         bottom: calc($map-bottom-sheet-header-height + $controls-padding);

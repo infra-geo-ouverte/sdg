@@ -12,6 +12,7 @@ export class PanelService {
   readonly type = signal<PanelType>(DEFAULT_PANEL_TYPE);
   expanded = signal(false);
   visibleHeight = signal(0);
+  visibleWidth = signal(0);
 
   toggle(type?: PanelType): void {
     if (type && type !== this.type()) {

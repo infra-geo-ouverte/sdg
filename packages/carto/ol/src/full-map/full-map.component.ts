@@ -158,11 +158,11 @@ export class SdgOlFullMap
 
     effect(() => {
       const map = this.map();
-      const bottomPadding = this.isHandset()
-        ? this.panelService.visibleHeight()
-        : 0;
+      const isHandset = this.isHandset();
+      const bottomPadding = isHandset ? this.panelService.visibleHeight() : 0;
+      const leftPadding = isHandset ? 0 : this.panelService.visibleWidth();
       if (map) {
-        map.view.padding = [0, 0, bottomPadding, 0];
+        map.view.padding = [0, 0, bottomPadding, leftPadding];
       }
     });
   }

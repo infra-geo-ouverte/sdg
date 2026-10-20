@@ -1,4 +1,12 @@
-import { Component, inject, input } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  effect,
+  inject,
+  input,
+  viewChild
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import {
@@ -32,10 +40,15 @@ import { PanelService } from '../shared/panel.service';
     MatButtonModule
   ],
   templateUrl: './full-map-drawer.component.html',
-  styleUrl: './full-map-drawer.component.scss'
+  styleUrl: './full-map-drawer.component.scss',
+  host: {
+    '[class.--expanded]': 'panelService.expanded()'
+  }
 })
-export class SdgFullMapSkeletonDrawer {
+export class SdgFullMapSkeletonDrawer implements OnDestroy {
   panelService = inject(PanelService);
+
+  private readonly drawerRef = viewChild(MatDrawer, { read: ElementRef });
   readonly attribution = input.required<IMapFooterAttribution>();
   readonly isHandset = input.required<boolean>();
   readonly search = input(true);
@@ -46,4 +59,19 @@ export class SdgFullMapSkeletonDrawer {
     transform: (value) =>
       labelAttribute(value, SDG_FULL_MAP_PANEL_LABELS_DEFAULT)
   });
+
+  constructor() {
+    effect(() => {
+      const expanded = this.panelService.expanded();
+      const drawerEl = this.drawerRef()?.nativeElement as
+        HTMLElement | undefined;
+      this.panelService.visibleWidth.set(
+        expanded ? (drawerEl?.offsetWidth ?? 0) : 0
+      );
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.panelService.visibleWidth.set(0);
+  }
 }

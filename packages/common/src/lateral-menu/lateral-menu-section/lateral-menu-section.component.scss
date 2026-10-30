@@ -26,6 +26,7 @@ $blue-pale: var(--sdg-color-blue-pale);
 
     @include sdg.media(mobile) {
       padding: $spacer-8 $spacer-8 $spacer-8 $spacer-24;
+      background-color: $blue-pale;
     }
 
     &-title {
@@ -44,6 +45,10 @@ $blue-pale: var(--sdg-color-blue-pale);
 
     &:hover:not(.--active-section) {
       background-color: color-mix(in srgb, $blue-pale 50%, transparent);
+
+      @include sdg.media(mobile) {
+        background-color: $blue-pale;
+      }
     }
 
     &.--active-section {

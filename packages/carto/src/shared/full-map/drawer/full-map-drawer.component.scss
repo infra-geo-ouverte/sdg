@@ -1,3 +1,4 @@
+@use '@angular/material' as mat;
 @use '../../navigation/base-button/base-button.scss';
 
 $footer-height: 32px;
@@ -49,6 +50,12 @@ $drawer-transition: 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
     box-shadow: 2px 0 4px rgba(0, 0, 0, 0.15);
     transition: left 0.3s;
     z-index: 1;
+
+    @include mat.fab-overrides(
+      (
+        small-touch-target-display: none
+      )
+    );
 
     &.--expanded {
       left: $panel-width;
